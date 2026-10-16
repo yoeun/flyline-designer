@@ -85,6 +85,16 @@ Backing diameter: 20 lb = 0.021 in, 30 lb = 0.025 in.
 | Generic 7–8 wt | 4.0″ | 3.74″ | 2.20″ | 0.95″ |
 | Generic 9–10 wt | 4.4″ | 4.12″ | 2.40″ | 1.10″ |
 
+### Real reels
+
+Rim, width and rated capacity come from retailer listings. Spool diameter is estimated as rim − 0.24″, and the arbor is solved from the rated capacity.
+
+| Model | Rim | Spool (est.) | Width | Rated capacity |
+|---|---|---|---|---|
+| Lamson Liquid S 5+ | 3.65″ | 3.41″ | 1.00″ | WF5 + 100 yd of 20 lb |
+| Lamson Liquid S 7+ | 3.9″ | 3.66″ | 1.15″ | WF7 + 200 yd of 20 lb |
+| Redington Run 5/6 | 3.6″ | 3.36″ | 0.95″ (listings say 0.9–1.0″) | WF5 + 100 yd of 20 lb |
+
 The generic reel face has 8 ports and a metallic sheen.
 
 ### Generic lines (v1)
@@ -120,6 +130,6 @@ Similarity is measured as CIE76 ΔE in Lab color space.
 
 ## Out of scope for v1
 
-- Real reel and line presets. These will be entered by hand later.
+- Real fly line presets. These will be entered by hand later.
 - Units other than feet and yards.
 - Colorblindness simulation.

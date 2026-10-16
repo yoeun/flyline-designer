@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SETUP, LINE_PRESETS, findById } from '../data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById } from '../data/catalog.js';
 import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
@@ -43,6 +43,7 @@ describe('geometry', () => {
 });
 
 describe('arbor size', () => {
+  const generic = (id) => findById(LINE_PRESETS, id).line;
   const reel = { rim: 3.6, spool: 3.36, width: 0.78 };
 
   it('uses the reel arbor when given', () => {
@@ -60,6 +61,12 @@ describe('arbor size', () => {
 
   it('falls back to a fixed ratio of the spool', () => {
     expect(reelArbor(reel)).toBeCloseTo(3.36 * ARBOR_RATIO, 10);
+  });
+
+  it.each(REELS.filter((r) => r.rated).map((r) => [r.id, r]))('%s holds its rated capacity at 100%% fill', (_, reel) => {
+    const line = { ...generic('generic-wf5f'), weight: reel.rated.weight };
+    const { fill } = spoolLayout(setup({ reel: { model: reel.id, color: 'silver' }, line, backing: { yards: reel.rated.yards, pounds: reel.rated.pounds, color: 'blue' } }));
+    expect(fill).toBeCloseTo(1, 6);
   });
 
   it('never solves to an implausibly small arbor', () => {

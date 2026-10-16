@@ -50,6 +50,11 @@ export const REELS = [
   { id: 'g56', name: 'Generic 5–6 wt', rim: 3.6, spool: 3.36, arbor: 1.95, width: 0.78 },
   { id: 'g78', name: 'Generic 7–8 wt', rim: 4.0, spool: 3.74, arbor: 2.2, width: 0.95 },
   { id: 'g910', name: 'Generic 9–10 wt', rim: 4.4, spool: 4.12, arbor: 2.4, width: 1.1 },
+  // Rim, width and rated capacity from retailer listings. Spool is estimated as rim − 0.24″.
+  { id: 'lamson-liquid-s-5', name: 'Lamson Liquid S 5+', rim: 3.65, spool: 3.41, width: 1.0, rated: { weight: 5, yards: 100, pounds: 20 } },
+  { id: 'lamson-liquid-s-7', name: 'Lamson Liquid S 7+', rim: 3.9, spool: 3.66, width: 1.15, rated: { weight: 7, yards: 200, pounds: 20 } },
+  // Listed widths range from 0.9″ to 1.0″.
+  { id: 'redington-run-56', name: 'Redington Run 5/6', rim: 3.6, spool: 3.36, width: 0.95, rated: { weight: 5, yards: 100, pounds: 20 } },
 ];
 
 export const BACKING_DIAMETER = { 20: 0.021, 30: 0.025 };
