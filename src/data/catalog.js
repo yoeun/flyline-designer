@@ -29,7 +29,7 @@ const lineColor = (id) => LINE_COLORS.find((c) => c.id === id);
 export const BACKING_FAMILIES = [
   { id: 'cool', name: 'Cool', use: 'Floating', colors: ['blue', 'purple'].map(lineColor) },
   { id: 'neutral', name: 'Neutral', use: 'Intermediate', colors: ['white', 'green', 'chartreuse', 'black'].map(lineColor) },
-  { id: 'hot', name: 'Hot', use: 'Sinking 3 · 5 · 7', colors: ['yellow', 'orange', 'red'].map(lineColor) },
+  { id: 'hot', name: 'Hot', use: 'Sinking 3 · 5 · 7 · sink tip', colors: ['yellow', 'orange', 'red'].map(lineColor) },
 ];
 
 export const LINE_TYPES = [
@@ -38,6 +38,8 @@ export const LINE_TYPES = [
   { id: 'sink3', name: 'Sinking · Type 3', family: 'hot', diameterFactor: 0.82, suggested: 'yellow' },
   { id: 'sink5', name: 'Sinking · Type 5', family: 'hot', diameterFactor: 0.82, suggested: 'orange' },
   { id: 'sink7', name: 'Sinking · Type 7', family: 'hot', diameterFactor: 0.82, suggested: 'red' },
+  // Sinking head on a floating running line.
+  { id: 'sinktip', name: 'Sink tip', family: 'hot', diameterFactor: 0.82, runningDiameterFactor: 1, suggested: null },
 ];
 
 // Diameters in inches.
@@ -89,6 +91,43 @@ export const LINE_PRESETS = [
       taper: { front: 6, body: 24, back: 4, running: 66 },
       zones: [
         { length: 34, color: 'black' },
+        { length: 0, color: 'chartreuse' },
+      ],
+    },
+  },
+  {
+    id: 'generic-wf5f',
+    name: 'Generic WF5 Floating',
+    line: {
+      type: 'floating',
+      weight: 5,
+      taper: { front: 5.5, body: 30, back: 11.5, running: 43 },
+      zones: [
+        { length: 47, color: 'green' },
+        { length: 0, color: 'yellow' },
+      ],
+    },
+  },
+  {
+    id: 'generic-wf7i',
+    name: 'Generic WF7 Intermediate',
+    line: {
+      type: 'intermediate',
+      weight: 7,
+      taper: { front: 6, body: 26, back: 8, running: 50 },
+      zones: [{ length: 0, color: 'smoke' }],
+    },
+  },
+  {
+    id: 'generic-wf8-sinktip',
+    name: 'Generic WF8 Sink Tip',
+    line: {
+      type: 'sinktip',
+      weight: 8,
+      taper: { front: 4, body: 16, back: 7, running: 73 },
+      zones: [
+        { length: 18, color: 'black' },
+        { length: 9, color: 'blue' },
         { length: 0, color: 'chartreuse' },
       ],
     },

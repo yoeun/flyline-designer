@@ -5,12 +5,14 @@ export const PACK = 1.1;
 const STEP_FT = 0.25;
 
 export function lineDiameters(line) {
-  const factor = findById(LINE_TYPES, line.type)?.diameterFactor ?? 1;
+  const type = findById(LINE_TYPES, line.type);
+  const factor = type?.diameterFactor ?? 1;
+  const runningFactor = type?.runningDiameterFactor ?? factor;
   const w = line.weight;
   return {
     tip: (0.026 + 0.001 * w) * factor,
     body: (0.036 + 0.004 * w) * factor,
-    running: (0.026 + 0.0012 * w) * factor,
+    running: (0.026 + 0.0012 * w) * runningFactor,
   };
 }
 

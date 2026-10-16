@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SETUP } from '../data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, findById } from '../data/catalog.js';
 import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
-import { spoolLayout, totalLength, zoneRanges } from './geometry.js';
+import { lineDiameters, spoolLayout, totalLength, zoneRanges } from './geometry.js';
 import { decodeSetup, encodeSetup } from './share.js';
 
 const setup = (patch = {}) => ({ ...structuredClone(DEFAULT_SETUP), ...patch });
@@ -39,6 +39,27 @@ describe('geometry', () => {
   it('30 lb backing takes more room than 20 lb', () => {
     const b30 = spoolLayout(setup({ backing: { ...DEFAULT_SETUP.backing, pounds: 30 } }));
     expect(b30.fill).toBeGreaterThan(spoolLayout(DEFAULT_SETUP).fill);
+  });
+});
+
+describe('generic line presets', () => {
+  const generic = (id) => findById(LINE_PRESETS, id).line;
+
+  it('sink tip has a sinking head on a floating running line', () => {
+    const tip = lineDiameters(generic('generic-wf8-sinktip'));
+    const floating = lineDiameters({ ...generic('generic-wf8-sinktip'), type: 'floating' });
+    expect(tip.body).toBeCloseTo(floating.body * 0.82, 10);
+    expect(tip.running).toBeCloseTo(floating.running, 10);
+  });
+
+  it.each([
+    ['generic-wf5f', 'g56', 90],
+    ['generic-wf7i', 'g78', 90],
+    ['generic-wf8-sinktip', 'g78', 100],
+  ])('%s is %i ft and fits a %s reel with 100 yd of backing', (id, model, length) => {
+    const line = generic(id);
+    expect(totalLength(line)).toBe(length);
+    expect(spoolLayout(setup({ reel: { model, color: 'silver' }, line })).fits).toBe(true);
   });
 });
 

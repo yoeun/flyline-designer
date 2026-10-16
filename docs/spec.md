@@ -17,6 +17,7 @@ Backing color is the only signal. Line types map to color families:
 | Floating | Cool | blue, purple |
 | Intermediate | Neutral | white, green, chartreuse, black |
 | Sinking | Hot | yellow (Type 3), orange (Type 5), red (Type 7) |
+| Sink tip | Hot | any hot shade |
 
 The app suggests a family. It never forces one.
 
@@ -42,7 +43,7 @@ Taper and color are independent:
 - **Taper sections** set thickness: front taper, body, back taper, running line. Their lengths add up to the total line length.
 - **Color zones** are an ordered list, starting at the tip: `{ length, color }`. The last zone takes up whatever line is left. Zones can be added and removed, and they are edited one at a time in tabs.
 
-Line diameter by weight (inches, floating). Intermediate lines are multiplied by 0.9 and sinking lines by 0.82:
+Line diameter by weight (inches, floating). Intermediate lines are multiplied by 0.9 and sinking lines by 0.82. A sink tip has a sinking head (× 0.82) on a floating running line (× 1):
 
 - tip `0.026 + 0.0010 × wt`
 - body `0.036 + 0.0040 × wt`
@@ -78,6 +79,18 @@ Backing diameter: 20 lb = 0.021 in, 30 lb = 0.025 in.
 | Generic 9–10 wt | 4.4″ | 4.12″ | 2.40″ | 1.10″ |
 
 The generic reel face has 8 ports and a metallic sheen.
+
+### Generic lines (v1)
+
+Taper lengths in feet. Zones run from the tip.
+
+| Preset | Type | Front | Body | Back | Running | Total | Zones |
+|---|---|---|---|---|---|---|---|
+| Generic WF5 Floating | Floating | 5.5 | 30 | 11.5 | 43 | 90 | green 47, yellow rest |
+| Generic WF7 Intermediate | Intermediate | 6 | 26 | 8 | 50 | 90 | smoke |
+| Generic WF8 Sink Tip | Sink tip | 4 | 16 | 7 | 73 | 100 | black 18, blue 9, chartreuse rest |
+
+The floating line follows a 47 ft head with a long back taper, and the sink tip a short 27 ft streamer head on a 100 ft line, modeled loosely on lines being considered. These are estimates, not product specs.
 
 ## Color checks
 
