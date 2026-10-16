@@ -139,6 +139,63 @@ export const LINE_PRESETS = [
       ],
     },
   },
+  // Real lines. Head and total length from maker specs; taper splits are estimates.
+  // Green = moss, yellow = gold.
+  {
+    id: 'rio-premier-gold-wf5f',
+    name: 'RIO Premier Gold WF5F',
+    line: {
+      type: 'floating',
+      weight: 5,
+      taper: { front: 5.5, body: 30, back: 11.5, running: 43 },
+      zones: [
+        { length: 47, color: 'green' },
+        { length: 0, color: 'yellow' },
+      ],
+    },
+  },
+  {
+    id: 'rio-premier-gold-wf8f',
+    name: 'RIO Premier Gold WF8F',
+    line: {
+      type: 'floating',
+      weight: 8,
+      taper: { front: 6, body: 32, back: 12, running: 40 },
+      zones: [
+        { length: 50, color: 'green' },
+        { length: 0, color: 'yellow' },
+      ],
+    },
+  },
+  // Sold in two colorways; zones assume the colors run tip to running line in listed order.
+  {
+    id: 'airflo-streamer-max-short-wf8-bbc',
+    name: 'Airflo Streamer Max Short WF8 · black/blue/chartreuse',
+    line: {
+      type: 'sinktip',
+      weight: 8,
+      taper: { front: 4, body: 16, back: 7, running: 73 },
+      zones: [
+        { length: 18, color: 'black' },
+        { length: 9, color: 'blue' },
+        { length: 0, color: 'chartreuse' },
+      ],
+    },
+  },
+  {
+    id: 'airflo-streamer-max-short-wf8-bro',
+    name: 'Airflo Streamer Max Short WF8 · black/red/orange',
+    line: {
+      type: 'sinktip',
+      weight: 8,
+      taper: { front: 4, body: 16, back: 7, running: 73 },
+      zones: [
+        { length: 18, color: 'black' },
+        { length: 9, color: 'red' },
+        { length: 0, color: 'orange' },
+      ],
+    },
+  },
   {
     id: 'single-wf5f',
     name: 'Single-color WF5F',

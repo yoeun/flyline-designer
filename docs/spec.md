@@ -109,6 +109,19 @@ Taper lengths in feet. Zones run from the tip.
 
 The floating line follows a 47 ft head with a long back taper, and the sink tip a short 27 ft streamer head on a 100 ft line, modeled loosely on lines being considered. These are estimates, not product specs.
 
+### Real lines
+
+Head and total length come from maker specs. Taper splits are estimates. Green stands for moss and yellow for gold.
+
+| Preset | Type | Front | Body | Back | Running | Total | Zones |
+|---|---|---|---|---|---|---|---|
+| RIO Premier Gold WF5F | Floating | 5.5 | 30 | 11.5 | 43 | 90 | green 47, yellow rest |
+| RIO Premier Gold WF8F | Floating | 6 | 32 | 12 | 40 | 90 | green 50, yellow rest |
+| Airflo Streamer Max Short WF8 · black/blue/chartreuse | Sink tip | 4 | 16 | 7 | 73 | 100 | black 18, blue 9, chartreuse rest |
+| Airflo Streamer Max Short WF8 · black/red/orange | Sink tip | 4 | 16 | 7 | 73 | 100 | black 18, red 9, orange rest |
+
+The Airflo line comes in both colorways, so both are presets for comparison. Zones assume the colors run from the tip to the running line in the listed order.
+
 ## Color checks
 
 Similarity is measured as CIE76 ΔE in Lab color space.
@@ -130,6 +143,5 @@ Similarity is measured as CIE76 ΔE in Lab color space.
 
 ## Out of scope for v1
 
-- Real fly line presets. These will be entered by hand later.
 - Units other than feet and yards.
 - Colorblindness simulation.

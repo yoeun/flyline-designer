@@ -95,6 +95,19 @@ describe('generic line presets', () => {
   });
 });
 
+describe('real line presets', () => {
+  it.each([
+    ['rio-premier-gold-wf5f', 47, 90],
+    ['rio-premier-gold-wf8f', 50, 90],
+    ['airflo-streamer-max-short-wf8-bbc', 27, 100],
+    ['airflo-streamer-max-short-wf8-bro', 27, 100],
+  ])('%s has a %i ft head on a %i ft line', (id, head, length) => {
+    const { taper } = findById(LINE_PRESETS, id).line;
+    expect(taper.front + taper.body + taper.back).toBe(head);
+    expect(totalLength(findById(LINE_PRESETS, id).line)).toBe(length);
+  });
+});
+
 describe('color checks', () => {
   it('identical colors have zero distance', () => {
     expect(deltaE('#ee8728', '#ee8728')).toBe(0);
