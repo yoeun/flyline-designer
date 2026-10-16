@@ -32,7 +32,7 @@ Two columns. They stack on narrow screens.
   - **Rack strip**, collapsed by default: saved setups and the color conflicts between them.
 - **Right, options** (stacked sections)
   - **Reel**: model dropdown (generic models in v1), color presets in one row.
-  - **Fly line**: preset dropdown, line type, line weight, taper lengths (front taper, body, back taper, running line), and color zones.
+  - **Fly line**: line dropdown and a one-line summary (type, weight, length, color bar). Line type, weight, taper lengths (front taper, body, back taper, running line) and color zones sit in a **Line details** section, collapsed by default.
   - **Backing**: length (100 / 150 / 200 / 250 yd or custom), strength (20 / 30 lb), and a color grid grouped by family, with the row for the current line type highlighted.
 - **Header**: Save to rack, Copy share link, Export PNG, Export SVG.
 

@@ -521,6 +521,58 @@ select {
   max-width: 110px;
 }
 
+.line-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.line-summary__bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.line-details {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.line-details > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+}
+
+.line-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.line-details > summary::before {
+  content: '▸';
+  display: inline-block;
+}
+
+.line-details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.line-details__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 4px 14px 14px;
+}
+
 .field-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
