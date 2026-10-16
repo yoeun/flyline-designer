@@ -53,7 +53,14 @@ Thickness changes linearly across the tapers.
 
 ## Spool geometry
 
-Each reel model has a rim diameter, a spool (capacity) diameter, an arbor diameter and a spool width.
+Each reel model has a rim diameter, a spool (capacity) diameter, a spool width and an arbor diameter.
+
+Makers rarely publish arbor size, so a reel can leave it out:
+
+1. If the reel gives its **rated capacity** (for example "WF5F + 100 yd of 20 lb"), the arbor is solved so that this load fills the spool exactly: `arbor = 2 × sqrt(R_spool² − area / π)`, where `area` is the rated line (Generic WF5 Floating taper at the rated weight) plus the rated backing. The rated load then shows as 100% fill.
+2. Otherwise the arbor is **0.57 × the spool diameter**, close to the generic reels.
+
+A solved arbor is never smaller than 0.3 × the spool diameter.
 
 Material is wound onto the spool from the arbor outward: backing first, then the fly line from the running-line end to the tip, so the tip is the outermost layer.
 

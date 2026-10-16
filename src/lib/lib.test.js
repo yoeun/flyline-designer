@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { DEFAULT_SETUP, LINE_PRESETS, findById } from '../data/catalog.js';
 import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
-import { lineDiameters, spoolLayout, totalLength, zoneRanges } from './geometry.js';
+import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
 import { decodeSetup, encodeSetup } from './share.js';
 
 const setup = (patch = {}) => ({ ...structuredClone(DEFAULT_SETUP), ...patch });
@@ -39,6 +39,31 @@ describe('geometry', () => {
   it('30 lb backing takes more room than 20 lb', () => {
     const b30 = spoolLayout(setup({ backing: { ...DEFAULT_SETUP.backing, pounds: 30 } }));
     expect(b30.fill).toBeGreaterThan(spoolLayout(DEFAULT_SETUP).fill);
+  });
+});
+
+describe('arbor size', () => {
+  const reel = { rim: 3.6, spool: 3.36, width: 0.78 };
+
+  it('uses the reel arbor when given', () => {
+    expect(reelArbor({ ...reel, arbor: 1.95 })).toBe(1.95);
+  });
+
+  it('solves the arbor so the rated capacity fills the spool exactly', () => {
+    const rated = { weight: 5, yards: 100, pounds: 20 };
+    const arbor = reelArbor({ ...reel, rated });
+    expect(arbor).toBeGreaterThan(1.5);
+    expect(arbor).toBeLessThan(2.5);
+    // More rated backing means a smaller arbor.
+    expect(reelArbor({ ...reel, rated: { ...rated, yards: 150 } })).toBeLessThan(arbor);
+  });
+
+  it('falls back to a fixed ratio of the spool', () => {
+    expect(reelArbor(reel)).toBeCloseTo(3.36 * ARBOR_RATIO, 10);
+  });
+
+  it('never solves to an implausibly small arbor', () => {
+    expect(reelArbor({ ...reel, rated: { weight: 5, yards: 1000, pounds: 30 } })).toBeCloseTo(3.36 * 0.3, 10);
   });
 });
 

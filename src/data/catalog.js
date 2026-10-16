@@ -42,7 +42,9 @@ export const LINE_TYPES = [
   { id: 'sinktip', name: 'Sink tip', family: 'hot', diameterFactor: 0.82, runningDiameterFactor: 1, suggested: null },
 ];
 
-// Diameters in inches.
+// Diameters in inches. A reel can leave out `arbor` and give its rated capacity instead,
+// e.g. rated: { weight: 5, yards: 100, pounds: 20 } for "WF5F + 100 yd of 20 lb";
+// the arbor is then solved so that load exactly fills the spool (see reelArbor).
 export const REELS = [
   { id: 'g34', name: 'Generic 3–4 wt', rim: 3.2, spool: 2.98, arbor: 1.65, width: 0.68 },
   { id: 'g56', name: 'Generic 5–6 wt', rim: 3.6, spool: 3.36, arbor: 1.95, width: 0.78 },

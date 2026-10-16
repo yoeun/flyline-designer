@@ -1,8 +1,11 @@
-import { BACKING_DIAMETER, LINE_TYPES, REELS, findById } from '../data/catalog.js';
+import { BACKING_DIAMETER, LINE_PRESETS, LINE_TYPES, REELS, findById } from '../data/catalog.js';
 
 // Slack in how line packs onto a spool compared with a perfect square stack.
 export const PACK = 1.1;
 const STEP_FT = 0.25;
+// Arbor ÷ spool diameter when a reel has neither an arbor size nor a rated capacity.
+export const ARBOR_RATIO = 0.57;
+const MIN_ARBOR_RATIO = 0.3;
 
 export function lineDiameters(line) {
   const type = findById(LINE_TYPES, line.type);
@@ -74,11 +77,26 @@ const backingAreaPerYard = (pounds, spoolWidth) => {
   return (36 * d * d * PACK) / spoolWidth;
 };
 
+// The line a rated capacity refers to: a generic floating WF line of that weight.
+const ratedLine = (weight) => ({ ...findById(LINE_PRESETS, 'generic-wf5f').line, type: 'floating', weight });
+
+// Arbor diameter (in). Uses the reel's own value if it has one; otherwise solves for the arbor
+// at which the rated line plus rated backing exactly fill the spool; otherwise ARBOR_RATIO × spool.
+export function reelArbor(reel) {
+  if (reel.arbor) return reel.arbor;
+  if (!reel.rated) return reel.spool * ARBOR_RATIO;
+  const line = ratedLine(reel.rated.weight);
+  const area = lineArea(lineProfile(line), 0, totalLength(line), reel.width) + reel.rated.yards * backingAreaPerYard(reel.rated.pounds, reel.width);
+  const spoolR = reel.spool / 2;
+  const arbor = 2 * Math.sqrt(Math.max(0, spoolR * spoolR - area / Math.PI));
+  return Math.max(arbor, reel.spool * MIN_ARBOR_RATIO);
+}
+
 // Rings from the arbor outward: backing, then the fly line from the running-line end to the tip.
 export function spoolLayout(setup) {
   const reel = findById(REELS, setup.reel.model) ?? REELS[1];
   const profile = lineProfile(setup.line);
-  const arborR = reel.arbor / 2;
+  const arborR = reelArbor(reel) / 2;
   const spoolR = reel.spool / 2;
 
   const rings = [];
