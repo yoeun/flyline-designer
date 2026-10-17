@@ -17,9 +17,12 @@ const DIAL =
   }).join('') +
   `<circle r="22" fill="#c9ccc8"/><circle r="19" fill="#1b1d1f"/>${logo(0, 0, 22)}`;
 
+// The window ring behind the five spokes is the spool's, drawn in a much darker shade; the rim lip is the frame's.
+const SPOOL_CAGE = ring(186, 98) + slots(RIM);
 export const drag = svg({
+  under: `<path d="${SPOOL_CAGE}" fill="currentColor" fill-rule="evenodd"/><path d="${SPOOL_CAGE}" fill="#000" fill-opacity=".45" fill-rule="evenodd"/>`,
   body: [
-    ring(200, 98) + slots(RIM),
+    ring(200, 186),
     sageFoot(),
     pad(160, -90, 36, 56),
     ...[-130, -50, 170, 10, 90].map((a) => spoke(a, 60, 190, 30, 24)),
