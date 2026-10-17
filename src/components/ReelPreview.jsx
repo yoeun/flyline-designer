@@ -63,6 +63,7 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
           <g
             transform="scale(-1 1)"
             color={shade(reelHex, 0.5)}
+            style={{ '--reel-accent': 'currentColor' }}
             dangerouslySetInnerHTML={{ __html: frameMarkup(layout.reel.design, OTHER_SIDE[side], `${uid}b`) }}
           />
         </g>
@@ -92,7 +93,7 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
       {showLine && !layout.fits && <circle r={spool} fill="none" stroke="#c0352b" strokeWidth="2.5" strokeDasharray="8 6" />}
 
       {reelOpacity > 0 && (
-        <g color={reelHex} style={finish.accent ? { '--accent': finish.accent } : undefined} opacity={reelOpacity} dangerouslySetInnerHTML={{ __html: frameMarkup(layout.reel.design, side, uid) }} />
+        <g color={reelHex} style={{ '--reel-accent': finish.accent ?? 'currentColor' }} opacity={reelOpacity} dangerouslySetInnerHTML={{ __html: frameMarkup(layout.reel.design, side, uid) }} />
       )}
     </svg>
   );

@@ -4,18 +4,23 @@
     {
       "id": "smoke",
       "name": "Smoke",
-      "hex": "#7f8184"
+      "hex": "#7f8184",
+      "accent": "#e2581f",
+      "notes": "The drag button is orange-red on this finish (accent)."
     },
     {
       "id": "day-break",
       "name": "Day Break",
-      "hex": "#5b6270"
+      "hex": "#5b6270",
+      "accent": "#f2c230",
+      "notes": "The drag button is yellow on this finish (accent)."
     },
     {
       "id": "lamson-og",
       "name": "OG",
       "hex": "#6a582c",
-      "notes": "Olive-bronze. Hex sampled from Lamson's product photo (frame, mean of mid-tones)."
+      "notes": "Olive-bronze. Hex sampled from Lamson's product photo (frame, mean of mid-tones). The drag cap is silver on this finish (accent); on Blackout it is the body color.",
+      "accent": "#9a9da0"
     },
     {
       "id": "lamson-blackout",

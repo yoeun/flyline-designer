@@ -1,20 +1,20 @@
 // Lamson Guru S.
 // The photos are three-quarter views; the straight-on spoke angles, the slot counts and the handle radius are inferred.
-import { P, circle, foot, knob, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, foot, knob, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // Drag side: a wide bar tapering from the foot to the hub, a narrow one down to 6 o'clock, and three spokes a side,
 // all 45° apart. Each runs on through the window ring behind, two windows to a gap.
 const GURU_SPOKES = [-45, 0, 45, 135, 180, -135];
-// Cast drag cap: five swept lobes around a black center.
+// Cast drag cap: five swept lobes around a black center, in the finish's accent (silver on OG) or the body color.
 const guruKnob = () => {
   const lobes = [0, 1, 2, 3, 4]
     .map((k) => {
       const a = -90 + k * 72;
       const [x0, y0] = P(18, rad(a)), [xc, yc] = P(44, rad(a + 14)), [x1, y1] = P(58, rad(a + 34));
-      return `<path d="M${x0.toFixed(1)} ${y0.toFixed(1)}Q${xc.toFixed(1)} ${yc.toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)}" stroke="#6c6f72" stroke-width="7" stroke-linecap="round" fill="none"/>`;
+      return `<path d="M${x0.toFixed(1)} ${y0.toFixed(1)}Q${xc.toFixed(1)} ${yc.toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)}" stroke="#000" stroke-opacity=".3" stroke-width="7" stroke-linecap="round" fill="none"/>`;
     })
     .join('');
-  return `<circle r="64" fill="#3f4245"/><circle r="61" fill="#9a9da0"/>${lobes}<circle r="61" fill="url(#sheen)"/><circle r="17" fill="#1d1f21"/><circle cx="-5" cy="5" r="2.6" fill="#55595c"/><circle cx="5" cy="-5" r="2.6" fill="#55595c"/>`;
+  return `<circle r="64" fill="#3f4245"/><circle r="61" ${ACCENT}/>${lobes}<circle r="61" fill="url(#sheen)"/><circle r="17" fill="#1d1f21"/><circle cx="-5" cy="5" r="2.6" fill="#55595c"/><circle cx="5" cy="-5" r="2.6" fill="#55595c"/>`;
 };
 
 export const drag = svg({

@@ -1,5 +1,5 @@
 // Lamson Liquid S.
-import { P, circle, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // Liquid S spool side: five spokes swept back 40°; the handle sits partway along the one ending at -105°.
 const LIQUID_SPOKES = [0, 1, 2, 3, 4].map((k) => -105 + k * 72);
@@ -8,6 +8,7 @@ const liquidHandle = (() => {
   return [x0 + (x1 - x0) * 0.62, y0 + (y1 - y0) * 0.62];
 })();
 
+// The drag button takes the finish's accent: orange-red on Smoke, yellow on Day Break.
 export const drag = svg({
   back: [ring(190, 116) + slots({ n: 24, rIn: 126, rOut: 180, bar: 12, corner: 7 })],
   body: [
@@ -19,7 +20,7 @@ export const drag = svg({
     strut([-30, -108], P(194, rad(-137)), 20, 15),
     strut([30, -108], P(194, rad(-43)), 20, 15),
   ],
-  details: `<path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" fill="#e2581f"/><circle cx="-4" cy="5" r="3" fill="#7a2a0c"/><circle cx="4" cy="-5" r="3" fill="#7a2a0c"/>`,
+  details: `<path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" ${ACCENT}/><circle cx="-4" cy="5" r="3" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-5" r="3" fill="#000" fill-opacity=".45"/>`,
 });
 
 export const spool = svg({

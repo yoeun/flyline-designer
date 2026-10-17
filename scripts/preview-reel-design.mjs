@@ -31,7 +31,7 @@ const side = (name) => {
     .replace(/^[\s\S]*?<svg[^>]*>/, '')
     .replace(/<\/svg>\s*$/, '')
     .replace(/(id="|url\(#|href="#)([\w-]+)/g, `$1$2-${name}`);
-  return `<figure><svg viewBox="-215 -250 430 470" height="${H}" color="${color}"${accent ? ` style="--accent:${accent}"` : ''}><rect x="-215" y="-250" width="430" height="470" fill="#e9ebe6"/><circle r="182" fill="#5d7f4f"/><circle r="90" fill="#e9ebe6"/>${inner}</svg><figcaption>${design} · ${name}</figcaption></figure>`;
+  return `<figure><svg viewBox="-215 -250 430 470" height="${H}" color="${color}"${accent ? ` style="--reel-accent:${accent}"` : ''}><rect x="-215" y="-250" width="430" height="470" fill="#e9ebe6"/><circle r="182" fill="#5d7f4f"/><circle r="90" fill="#e9ebe6"/>${inner}</svg><figcaption>${design} · ${name}</figcaption></figure>`;
 };
 const photo = (file) => `<figure><img src="${pathToFileURL(resolve(file))}" height="${H}"><figcaption>${file.split('/').pop()}</figcaption></figure>`;
 
