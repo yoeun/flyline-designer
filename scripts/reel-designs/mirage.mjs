@@ -2,11 +2,10 @@
 // The drag-side plate is asymmetric: a solid lobe carrying the logo runs from the hub to the right rim, with a
 // triangular window in it and long curved slots along the rim above and below; three arms sweep from the
 // hub to the left rim and a fourth crosses over the top. The spool's slanted bars show through behind.
-// Foot, drag ring and handle are an accent color (teal or navy by finish), drawn here as a muted teal-blue.
-import { P, arcPts, circle, foot, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+// Foot, drag ring and handle take the finish's accent: teal on Silver Dragonfly, navy on Blackout.
+import { ACCENT, P, arcPts, circle, foot, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
-const ACCENT = '#2c6479';
-const accentFoot = `<path d="${foot(118, -240, 16, 56)}" fill="${ACCENT}"/><path d="${foot(118, -240, 16, 56)}" fill="url(#sheen)"/>`;
+const accentFoot = `<path d="${foot(118, -240, 16, 56)}" ${ACCENT}/><path d="${foot(118, -240, 16, 56)}" fill="url(#sheen)"/>`;
 
 // A plate between radii r0 and r1 from a0 to a1 degrees, with a curved slot cut along it.
 const slotted = (a0, a1, r0, r1, s0, s1, inset) =>
@@ -43,7 +42,7 @@ export const drag = svg({
     circle(74),
   ],
   details:
-    `<circle r="60" fill="${ACCENT}"/><circle r="60" fill="url(#sheen)"/>` +
+    `<circle r="60" ${ACCENT}/><circle r="60" fill="url(#sheen)"/>` +
     `<circle r="44" fill="currentColor"/><circle r="44" fill="#000" fill-opacity=".08"/>${lobes(44)}`,
 });
 
@@ -57,6 +56,6 @@ export const spool = svg({
     circle(44),
   ],
   details:
-    `<circle r="40" fill="${ACCENT}"/><circle r="30" fill="currentColor"/><circle r="30" fill="#000" fill-opacity=".06"/>${lobes(30)}` +
-    `<circle cx="${P(162, rad(96))[0].toFixed(1)}" cy="${P(162, rad(96))[1].toFixed(1)}" r="16" fill="${ACCENT}"/><circle cx="${P(162, rad(96))[0].toFixed(1)}" cy="${P(162, rad(96))[1].toFixed(1)}" r="10" fill="#2b2e31"/>`,
+    `<circle r="40" ${ACCENT}/><circle r="30" fill="currentColor"/><circle r="30" fill="#000" fill-opacity=".06"/>${lobes(30)}` +
+    `<circle cx="${P(162, rad(96))[0].toFixed(1)}" cy="${P(162, rad(96))[1].toFixed(1)}" r="16" ${ACCENT}/><circle cx="${P(162, rad(96))[0].toFixed(1)}" cy="${P(162, rad(96))[1].toFixed(1)}" r="10" fill="#2b2e31"/>`,
 });

@@ -30,13 +30,15 @@
       "id": "orvis-blackout",
       "name": "Blackout",
       "hex": "#27232a",
-      "notes": "Mirage. Hex sampled from Orvis product photo."
+      "notes": "Mirage. Hex sampled from Orvis product photo. Foot, drag ring and handle are navy (accent), sampled from the photo.",
+      "accent": "#23378f"
     },
     {
       "id": "orvis-silver-dragonfly",
       "name": "Silver Dragonfly",
       "hex": "#cfcdca",
-      "notes": "Mirage: clear silver frame with teal accents. Hex sampled from Orvis product photo (frame only)."
+      "notes": "Mirage: clear silver frame with teal accents. Hex sampled from Orvis product photo (frame only). Foot, drag ring and handle are teal (accent), sampled from the photo.",
+      "accent": "#1fa3c6"
     },
     {
       "id": "orvis-copper",
