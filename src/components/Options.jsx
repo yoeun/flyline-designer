@@ -9,6 +9,7 @@ import {
   REELS,
   findById,
   nameOf,
+  presetGroups,
 } from '../data/catalog.js';
 import { totalLength, zoneRanges } from '../lib/geometry.js';
 import { MIN_LENGTH, TAPER_NAMES, formatFeet, removeZone, setTaperLength, setZoneLength, splitZone, zoneName } from '../lib/lineEdit.js';
@@ -154,10 +155,14 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
         <label className="field field--grow">
           <span>Preset</span>
           <Select value={presetId} onChange={(e) => onPreset(e.target.value)}>
-            {LINE_PRESETS.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.name}
-              </option>
+            {presetGroups(LINE_PRESETS).map(([label, presets]) => (
+              <optgroup key={label} label={label}>
+                {presets.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name}
+                  </option>
+                ))}
+              </optgroup>
             ))}
             <option value="custom">Custom</option>
           </Select>

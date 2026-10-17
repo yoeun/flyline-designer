@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById } from '../data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetGroups } from '../data/catalog.js';
 import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
@@ -271,5 +271,13 @@ describe('line editing', () => {
     const s = editorScale(even, 400, 28);
     expect(s.x(30)).toBe(300);
     expect(s.x(120)).toBe(0);
+  });
+});
+
+describe('catalog', () => {
+  it('groups line presets by maker, generic last, keeping every preset once', () => {
+    const groups = presetGroups(LINE_PRESETS);
+    expect(groups.map(([label]) => label)).toEqual(['Airflo', 'RIO', 'Generic & examples']);
+    expect(groups.flatMap(([, presets]) => presets.map((p) => p.id)).sort()).toEqual(LINE_PRESETS.map((p) => p.id).sort());
   });
 });

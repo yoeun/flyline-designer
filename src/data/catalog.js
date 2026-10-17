@@ -139,6 +139,7 @@ export const LINE_PRESETS = [
   // Green = moss, yellow = gold.
   {
     id: 'rio-premier-gold-wf5f',
+    maker: 'RIO',
     name: 'RIO Premier Gold WF5F',
     line: {
       type: 'floating',
@@ -152,6 +153,7 @@ export const LINE_PRESETS = [
   },
   {
     id: 'rio-premier-gold-wf8f',
+    maker: 'RIO',
     name: 'RIO Premier Gold WF8F',
     line: {
       type: 'floating',
@@ -166,6 +168,7 @@ export const LINE_PRESETS = [
   // Sold in two colorways; zones assume the colors run tip to running line in listed order.
   {
     id: 'airflo-streamer-max-short-wf8-bbc',
+    maker: 'Airflo',
     name: 'Airflo Streamer Max Short WF8 · black/blue/chartreuse',
     line: {
       type: 'sinktip',
@@ -180,6 +183,7 @@ export const LINE_PRESETS = [
   },
   {
     id: 'airflo-streamer-max-short-wf8-bro',
+    maker: 'Airflo',
     name: 'Airflo Streamer Max Short WF8 · black/red/orange',
     line: {
       type: 'sinktip',
@@ -205,6 +209,17 @@ export const LINE_PRESETS = [
 ];
 
 export const findById = (list, id) => list.find((x) => x.id === id);
+
+// Presets for the Preset menu, as [label, presets]: makers A–Z, then everything without one.
+export function presetGroups(presets) {
+  const byMaker = new Map();
+  for (const p of presets) {
+    const label = p.maker ?? 'Generic & examples';
+    byMaker.set(label, [...(byMaker.get(label) ?? []), p]);
+  }
+  const makers = [...byMaker.keys()].filter((k) => k !== 'Generic & examples').sort((a, b) => a.localeCompare(b));
+  return [...makers, 'Generic & examples'].filter((k) => byMaker.has(k)).map((k) => [k, byMaker.get(k)]);
+}
 export const hexOf = (id) => (lineColor(id) ?? LINE_COLORS[0]).hex;
 export const nameOf = (id) => (lineColor(id) ?? { name: id }).name;
 
