@@ -17,7 +17,7 @@ const animasKnob =
   `<path d="${knurl(80, 3, 22)}" fill="currentColor"/><path d="${knurl(80, 3, 22)}" fill="#000" fill-opacity=".18"/>` +
   `<circle r="72" fill="#c07a26"/><circle r="72" fill="url(#sheen)"/>` +
   `<circle r="64" fill="none" stroke="#7a4410" stroke-opacity=".7" stroke-width="2.5"/>` +
-  `<text x="0" y="27" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="78" letter-spacing="-22" fill="none" stroke="#7a4410" stroke-width="2.6">RR</text>`;
+  `<text x="-17" y="33" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="96" letter-spacing="-31" fill="none" stroke="#7a4410" stroke-width="2.6">RR</text>`;
 
 // The engraved logo plaque: a thick plate bridging the inner bars of the two upper pairs (see pair below), from the
 // center out.
