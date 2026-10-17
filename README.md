@@ -8,6 +8,7 @@ A design tool to help anglers put together the best looking fly fishing outfit f
 - **Reel selection** with a choice of reel color
 - **Backing color** selection
 - **Fly line selection** with a choice of line color
+- **Clickable line editor** for taper lengths and color zones
 - **Color picker** laid out as a grid of common colors
 - **Export** the preview as a PNG or SVG to share
 
