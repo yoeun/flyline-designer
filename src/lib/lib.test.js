@@ -10,6 +10,7 @@ import {
   findById,
   lineColorway,
   lineSwatches,
+  presetForLine,
   makerGroups,
   reelColors,
   withReelModel,
@@ -468,5 +469,24 @@ describe('rack', () => {
   it('flags edits made after saving', () => {
     const saved = { ...structuredClone(custom), id: 'abc' };
     expect(hasUnsavedChanges({ ...custom, backing: { ...custom.backing, yards: 250 } }, [saved])).toBe(true);
+  });
+});
+
+describe('presetForLine', () => {
+  it('finds the preset a line was loaded from', () => {
+    for (const preset of LINE_PRESETS) expect(presetForLine(structuredClone(preset.line))).toBe(preset.id);
+  });
+
+  it('finds a maker line in any of its colorways', () => {
+    const preset = LINE_PRESETS.find((p) => p.colorways?.length > 1);
+    const line = { ...structuredClone(preset.line), zones: structuredClone(preset.colorways.at(-1).zones) };
+    expect(presetForLine(line)).toBe(preset.id);
+  });
+
+  it('calls an edited line custom', () => {
+    const line = structuredClone(LINE_PRESETS[0].line);
+    line.taper.front += 1;
+    expect(presetForLine(line)).toBe('custom');
+    expect(presetForLine({ ...structuredClone(LINE_PRESETS[0].line), weight: 9 })).toBe('custom');
   });
 });
