@@ -15,6 +15,8 @@ A design tool to help anglers put together the best looking fly fishing outfit f
 ## Tech stack
 
 - [React](https://react.dev/) + [Vite](https://vite.dev/)
+- [Tailwind CSS](https://tailwindcss.com/) v4, alongside the hand-written `src/styles.css` while it's migrated
+- [shadcn/ui](https://ui.shadcn.com/) on [Base UI](https://base-ui.com/): generated components live in `src/components/ui/`. App code uses them through our own wrapper components, never directly, so the library can be swapped later.
 - [Vitest](https://vitest.dev/) for the geometry and color logic
 
 ## Getting started
