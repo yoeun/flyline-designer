@@ -22,7 +22,7 @@ Spare spool lives in the truck: same line, same backing color, so it never gets 
 export const DEMO_RACK = [
   // Liquid S 3+ on 3 wt
   { id: 'demo-1', title: '', styles: ['nymph'], notes: '', reel: { model: 'lamson-liquid-s-3', color: 'smoke' }, line: line('rio-technical-euro-nymph-2-5'), backing: backing(100, 'orange') },
-  { id: 'demo-2', title: '', styles: ['nymph'], notes: 'Competition rig.', reel: { model: 'lamson-liquid-s-3', color: 'day-break' }, line: line('sa-mastery-competition-nymph-level'), backing: backing(100, 'red') },
+  { id: 'demo-2', title: '', styles: ['nymph'], notes: 'Competition rig.', reel: { model: 'lamson-liquid-s-3', color: 'day-break' }, line: line('sa-mastery-euro-tactical-nymph-mono-level'), backing: backing(100, 'red') },
   { id: 'demo-3', title: '', styles: ['dry', 'nymph'], notes: '', reel: { model: 'lamson-liquid-s-3', color: 'smoke' }, line: line('rio-technical-euro-nymph-2-5'), backing: backing(100, 'blue') },
   // Liquid S 5+ on 5 wt
   { id: 'demo-4', title: '', styles: ['dry'], notes: '', reel: { model: 'lamson-liquid-s-5', color: 'smoke' }, line: line('twotone-wf5f'), backing: backing(100, 'red') },

@@ -153,7 +153,7 @@ describe('real line presets', () => {
     ['sa-frequency-sink-tip-wf6', 45, 85],
     ['sa-sonar-titan-intermediate-wf8i', 33.5, 105],
     ['sa-sonar-sink-25-cold-250-s6', 25, 105],
-    ['sa-mastery-competition-nymph-level', 1.5, 80],
+    ['sa-mastery-euro-tactical-nymph-mono-level', 1.5, 80],
     ['airflo-ridge-universal-taper-wf5f', 39, 90],
     ['airflo-streamer-max-short-wf8-s7', 27, 100],
     ['airflo-sixth-sense-wf7-di5', 46, 105],
@@ -459,7 +459,7 @@ describe('line editing', () => {
 describe('catalog', () => {
   it('groups line presets by maker, generic last, keeping every preset once', () => {
     const groups = makerGroups(LINE_PRESETS, 'Generic');
-    expect(groups.map(([label]) => label)).toEqual(['Airflo', 'Cortland', 'RIO', 'Scientific Anglers', 'Generic']);
+    expect(groups.map(([label]) => label)).toEqual(['Airflo', 'Cortland', 'Orvis', 'RIO', 'Royal Wulff', 'Scientific Anglers', 'Generic']);
     expect(groups.flatMap(([, presets]) => presets.map((p) => p.id)).sort()).toEqual(LINE_PRESETS.map((p) => p.id).sort());
   });
 
@@ -714,6 +714,88 @@ describe('demo rack', () => {
   });
 });
 
+describe('maker lines beyond RIO', () => {
+  // Published head and total length per size: [product, size id, head, total].
+  const PUBLISHED = [
+    ...[[3, 47], [4, 48], [5, 49], [6, 50], [7, 51], [8, 52]].map(([w, h]) => ['sa-amplitude-smooth-infinity', `wf${w}f`, h, 90]),
+    ...['sa-amplitude-smooth-mpx', 'sa-mastery-mpx'].flatMap((id) =>
+      [[3, 32], [4, 34], [5, 36], [6, 38], [7, 40], [8, 42]].map(([w, h]) => [id, `wf${w}f`, h, 90]),
+    ),
+    ...[[3, 49.5], [4, 49.5], [5, 50.5], [6, 51], [7, 52], [8, 53]].map(([w, h]) => ['sa-amplitude-smooth-trout-gp', `wf${w}f`, h, 90]),
+    ...[[2, 65], [3, 65], [4, 67], [5, 69], [6, 71], [7, 73]].map(([w, h]) => ['sa-amplitude-smooth-trout-expert', `wf${w}f`, h, 90]),
+    ...[[2, 21.5], [3, 22], [4, 23], [5, 24], [6, 25]].map(([w, h]) => ['sa-amplitude-smooth-creek-trout', `wf${w}f`, h, 90]),
+    ['sa-amplitude-smooth-trout', 'wf5f', 69, 90],
+    ...[6, 7, 8].map((w) => ['sa-amplitude-bass-bug', `wf${w}f`, 43, 90]),
+    ...[5, 6, 7, 8].map((w) => ['sa-sonar-stillwater-clear-camo', `wf${w}i`, 45, 100]),
+    ...[[5, 34], [6, 36], [7, 36], [8, 38]].flatMap(([w, h]) => [3, 6].map((r) => ['sa-frequency-full-sink', `wf${w}s${r}`, h, 85])),
+    ...[5, 6, 7, 8].map((w) => ['sa-frequency-sink-tip', `wf${w}`, 45, 85]),
+    ...[6, 7, 8, 9, 10, 11, 12].map((w) => ['sa-sonar-titan-intermediate', `wf${w}i`, 33.5, 105]),
+    ...['wf6-i23', 'wf6-i35', 'wf8-357', 'wf10-i23', 'wf12-357'].map((id) => ['sa-sonar-titan-3d', id, 33.5, 105]),
+    ...[150, 200, 250, 300, 350].flatMap((g) => [3, 6].map((r) => ['sa-sonar-sink-25-cold', `${g}-s${r}`, 25, 105])),
+    ...[[3, 37, 82], [4, 38, 90], [5, 39, 90], [6, 39, 90], [7, 40, 90], [8, 40, 90]].flatMap(([w, h, t]) => [
+      ['airflo-superflo-max-ridge-universal', `wf${w}f`, h, t],
+      ['airflo-ridge-universal-taper', `wf${w}f`, h, t],
+    ]),
+    ['airflo-ridge-universal-taper', 'wf9f', 40, 90],
+    ...[[5, 22], [6, 24], [7, 24], [8, 27], [9, 27]].flatMap(([w, h]) => [3, 5, 7].map((r) => ['airflo-streamer-max-short', `wf${w}-s${r}`, h, 100])),
+    ...['wf6-di3', 'wf7-di7', 'wf8-di5', 'wf9-di3'].map((id) => ['airflo-sixth-sense', id, 46, 105]),
+    ...[5, 6, 7, 8].map((w) => ['airflo-stillwater-intermediate', `wf${w}`, 46, 105]),
+    ...[2, 3, 4, 5, 6, 7, 8, 9].map((w) => ['cortland-444-peach', `wf${w}f`, 32, 90]),
+    ...[2, 3, 4, 5, 6, 7, 8].map((w) => ['cortland-444-sylk', `wf${w}f`, 37, 90]),
+    ...[4, 5, 6, 7, 8, 9, 10].map((w) => ['cortland-444-clear-camo', `wf${w}i`, 41, 90]),
+    ...[4, 5, 6, 7, 8].map((w) => ['cortland-444-full-sink', `wf${w}s3`, 32, 90]),
+    ...[5, 6, 7, 8].map((w) => ['cortland-444-full-sink', `wf${w}s6`, 32, 90]),
+    ...[5, 6, 7, 8].map((w) => ['cortland-streamer-sink-tip-15', `wf${w}`, 31, 100]),
+    ...[[3, 50, 90], [4, 50, 90], [5, 50.5, 90.5], [6, 52, 90], [7, 52.5, 90.5], [8, 54.5, 90.5]].map(([w, h, t]) => ['orvis-pro-trout-smooth', `wf${w}f`, h, t]),
+    ...[[3, 45.5], [4, 46.5], [5, 47.5], [6, 48.5], [7, 49.5], [8, 50.5]].map(([w, h]) => ['orvis-hydros-trout', `wf${w}f`, h, 90]),
+    ...[2, 3, 4, 5, 6, 7, 8, 9].map((w) => ['royal-wulff-triangle-taper-classic', `wf${w}f`, w <= 5 ? 36 : 40, 90]),
+  ];
+
+  it.each(PUBLISHED)('%s %s has the published %s ft head on a %i ft line', (product, size, head, total) => {
+    const preset = findById(LINE_PRESETS, `${product}-${size}`);
+    expect(preset.product).toBe(product);
+    const { taper } = preset.line;
+    expect(taper.front + taper.body + taper.back).toBe(head);
+    expect(totalLength(preset.line)).toBe(total);
+  });
+
+  it('the size each diagram is drawn for is not estimated; scaled sizes are', () => {
+    const estimated = (id) => findById(LINE_PRESETS, id).estimated;
+    expect(estimated('sa-amplitude-smooth-mpx-wf5f')).toBe(false);
+    expect(estimated('sa-amplitude-smooth-mpx-wf8f')).toBe(true);
+    expect(estimated('sa-amplitude-smooth-infinity-wf6f')).toBe(false);
+    expect(estimated('sa-amplitude-smooth-infinity-wf5f')).toBe(true);
+    expect(estimated('airflo-superflo-max-ridge-universal-wf5f')).toBe(false);
+    expect(estimated('airflo-superflo-max-ridge-universal-wf7f')).toBe(true);
+    // Maker tables per size, or one chart whose head every size shares.
+    for (const product of ['orvis-pro-trout-smooth', 'orvis-hydros-trout', 'royal-wulff-triangle-taper-classic', 'cortland-444-clear-camo', 'sa-sonar-titan-3d']) {
+      expect(productSizes(product).every((p) => !p.estimated), product).toBe(true);
+    }
+  });
+
+  it('marks the lines makers no longer sell as discontinued', () => {
+    const discontinued = new Set(LINE_PRESETS.filter((p) => p.discontinued).map((p) => p.product));
+    for (const id of ['sa-amplitude-smooth-trout', 'airflo-ridge-universal-taper']) expect(discontinued).toContain(id);
+    for (const id of ['sa-amplitude-bass-bug', 'sa-amplitude-smooth-trout-gp', 'airflo-superflo-max-ridge-universal']) expect(discontinued).not.toContain(id);
+  });
+
+  it('Mastery Competition Nymph links load Mastery Euro Tactical Nymph Mono', () => {
+    for (const old of ['sa-mastery-competition-nymph', 'sa-mastery-competition-nymph-level']) {
+      expect(queryToState(`?line=${old}`).presetId).toBe('sa-mastery-euro-tactical-nymph-mono-level');
+    }
+    expect(findById(LINE_PRESETS, 'sa-mastery-euro-tactical-nymph-mono-level').productName).toBe('SA Mastery Euro Tactical Nymph Mono');
+  });
+
+  it('every size and colorway is told apart when a saved line is matched back to its preset', () => {
+    // RIO's OutBound Short Int/5/7 draws exactly like Int/3/5 (see above), so it is left out.
+    for (const preset of LINE_PRESETS.filter((p) => p.maker && !/^rio-premier-outbound-short-wf\d+-int-5-7$/.test(p.id))) {
+      for (const cw of preset.colorways) {
+        expect(presetForLine({ ...structuredClone(preset.line), zones: structuredClone(cw.zones) }), `${preset.id} ${cw.id}`).toBe(preset.id);
+      }
+    }
+  });
+});
+
 describe('maker products', () => {
   const gold = (id) => findById(LINE_PRESETS, `rio-premier-gold-${id}`);
 
@@ -751,7 +833,8 @@ describe('maker products', () => {
       const preset = findById(LINE_PRESETS, LEGACY_PRESET_IDS[id] ?? id);
       expect(preset, id).toBeDefined();
       expect(preset.line, id).toEqual(line);
-      expect(preset.colorways, id).toEqual(colorways);
+      // Sizes may have gained colorways since; the old ones still come first, in order.
+      expect(colorways ? preset.colorways.slice(0, colorways.length) : preset.colorways, id).toEqual(colorways);
     }
   });
 
@@ -782,8 +865,10 @@ describe('maker products', () => {
       'WF7 Sink 3', 'WF7 Sink 5', 'WF7 Sink 6', 'WF7 Sink 7',
       'WF8 Sink 3', 'WF8 Sink 5', 'WF8 Sink 6', 'WF8 Sink 7',
     ]);
-    expect(productSizes('airflo-streamer-max-short')).toHaveLength(3);
-    expect(productSizes('airflo-sixth-sense').map((p) => p.sizeLabel)).toEqual(['WF7 Di3', 'WF7 Di5', 'WF7 Di7']);
+    expect(productSizes('airflo-streamer-max-short')).toHaveLength(15);
+    expect(productSizes('airflo-sixth-sense').map((p) => p.sizeLabel)).toEqual([
+      'WF5/6 Di3', 'WF5/6 Di5', 'WF6/7 Di3', 'WF6/7 Di5', 'WF6/7 Di7', 'WF7/8 Di3', 'WF7/8 Di5', 'WF7/8 Di7', 'WF8/9 Di3', 'WF8/9 Di5', 'WF8/9 Di7',
+    ]);
     expect(productSizes('generic-wf5f')).toEqual([]);
   });
 
@@ -831,7 +916,7 @@ describe('maker products', () => {
     expect(switchLine('rio-premier-fathom', line, 'generic-wf7i').presetId).toBe('rio-premier-fathom-wf7s3');
     expect(switchLine('rio-elite-flats-pro', line, 'generic-wf7i').presetId).toBe('rio-elite-flats-pro-wf7f');
     const two = gold('wf2f').line;
-    expect(switchLine('cortland-444-peach', two, 'rio-premier-gold-wf2f')).toMatchObject({ presetId: 'cortland-444-peach-wf5f', line: findById(LINE_PRESETS, 'cortland-444-peach-wf5f').line });
+    expect(switchLine('sa-amplitude-bass-bug', two, 'rio-premier-gold-wf2f')).toMatchObject({ presetId: 'sa-amplitude-bass-bug-wf6f', line: findById(LINE_PRESETS, 'sa-amplitude-bass-bug-wf6f').line });
   });
 
   it('switching to a generic preset or a size loads its line', () => {

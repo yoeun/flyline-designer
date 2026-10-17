@@ -1154,9 +1154,9 @@
    "type": "intermediate",
    "weight": 7,
    "taper": {
-    "front": 8,
-    "body": 20,
-    "back": 13,
+    "front": 6,
+    "body": 7,
+    "back": 28,
     "running": 49
    },
    "zones": [
@@ -1185,9 +1185,9 @@
    "type": "sink3",
    "weight": 6,
    "taper": {
-    "front": 8,
+    "front": 6,
     "body": 20,
-    "back": 4,
+    "back": 6,
     "running": 58
    },
    "zones": [
