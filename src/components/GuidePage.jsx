@@ -173,7 +173,7 @@ function Explainer({ maker }) {
 }
 
 // Every single-hand line from the makers in src/data/guide, with filters, a taper chart and per-size specs.
-export default function GuidePage({ onBack, onTry }) {
+export default function GuidePage({ onTry }) {
   const [makers, setMakers] = useState(null);
   const [failed, setFailed] = useState(false);
   const [maker, setMakerId] = useState(null);
@@ -199,18 +199,10 @@ export default function GuidePage({ onBack, onTry }) {
     };
   }, []);
 
-  const back = (
-    <button type="button" onClick={onBack} className="flex min-h-9 cursor-pointer items-center gap-1 rounded-lg pr-2 text-[14px] font-semibold text-primary hover:bg-accent">
-      <Icon name="arrow_back" />
-      Back to designer
-    </button>
-  );
-
   if (!makers) {
     return (
       <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Line guide">
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          {back}
           <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Line guide</h2>
         </div>
         <p className="text-[14px] text-muted-foreground">{failed ? 'The line guide could not be loaded. Check your connection and reload.' : 'Loading the line guide…'}</p>
@@ -230,7 +222,6 @@ export default function GuidePage({ onBack, onTry }) {
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Line guide">
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        {back}
         <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Line guide</h2>
         <span className="text-[14px] text-muted-foreground">
           {count} {count === 1 ? 'line' : 'lines'}
