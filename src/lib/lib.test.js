@@ -18,7 +18,7 @@ import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
 import { FRAMES, SIDES, frameMarkup } from './reelFrames.js';
-import { decodeSetup, encodeSetup } from './share.js';
+import { decodeSetup, encodeSetup, queryToState, stateToQuery } from './share.js';
 import { parseTheme, resolveTheme } from './theme.js';
 import {
   clampSelection,
@@ -221,6 +221,64 @@ describe('share links', () => {
 
   it('rejects garbage', () => {
     expect(decodeSetup('not-a-setup')).toBeNull();
+  });
+});
+
+describe('url state', () => {
+  const state = (over = {}) => ({ setup: structuredClone(DEFAULT_SETUP), presetId: LINE_PRESETS[0].id, side: 'drag', mode: 'reel', ...over });
+  const roundTrip = (s) => queryToState(stateToQuery(s));
+
+  it('round-trips the default design', () => {
+    expect(roundTrip(state())).toEqual(state());
+  });
+
+  it('writes catalog picks as readable params', () => {
+    const q = new URLSearchParams(stateToQuery(state({ side: 'spool', mode: 'see-through' })));
+    expect(q.get('reel')).toBe('g56');
+    expect(q.get('line')).toBe(LINE_PRESETS[0].id);
+    expect(q.get('side')).toBe('spool');
+    expect(q.get('view')).toBe('see-through');
+    expect(q.has('l')).toBe(false);
+    expect(q.has('name')).toBe(false);
+  });
+
+  it('round-trips a preset in a non-default colorway', () => {
+    const preset = LINE_PRESETS.find((p) => p.colorways?.length > 1);
+    const s = state({ presetId: preset.id });
+    s.setup.name = preset.name;
+    s.setup.line = { ...structuredClone(preset.line), zones: structuredClone(preset.colorways[1].zones) };
+    expect(new URLSearchParams(stateToQuery(s)).get('colorway')).toBe(preset.colorways[1].id);
+    expect(roundTrip(s)).toEqual(s);
+  });
+
+  it('round-trips a custom line, reel, name and backing', () => {
+    const s = state({ presetId: 'custom', side: 'spool', mode: 'line-only' });
+    s.setup.name = 'My trout line';
+    s.setup.reel = { model: 'lamson-liquid-s-5', color: 'day-break' };
+    s.setup.line.zones[0] = { length: 12, color: 'red' };
+    s.setup.backing = { yards: 150, pounds: 30, color: 'white' };
+    expect(roundTrip(s)).toEqual(s);
+  });
+
+  it('keeps an edited name on a preset line', () => {
+    const s = state();
+    s.setup.name = 'Renamed';
+    expect(roundTrip(s)).toEqual(s);
+  });
+
+  it('falls back to defaults for unknown values', () => {
+    const r = queryToState('reel=nope&line=nope&side=up&view=x&yards=7&lb=1&backing=plaid&l=garbage');
+    expect(r).toEqual(state());
+  });
+
+  it('falls back to a reel color the model comes in', () => {
+    expect(queryToState('reel=lamson-liquid-s-5&color=silver').setup.reel.color).toBe('smoke');
+  });
+
+  it('still loads old hash links', () => {
+    const s = structuredClone(DEFAULT_SETUP);
+    s.name = 'Old link';
+    expect(queryToState('', `#${encodeSetup(s)}`)).toEqual(state({ setup: s, presetId: 'custom' }));
   });
 });
 

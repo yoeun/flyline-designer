@@ -5,11 +5,11 @@ import PreviewModeToggle from './components/PreviewModeToggle.jsx';
 import Rack from './components/Rack.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
 import ThemeToggle from './components/ThemeToggle.jsx';
-import { DEFAULT_SETUP, LINE_PRESETS, findById } from './data/catalog.js';
+import { LINE_PRESETS, findById } from './data/catalog.js';
 import { exportPng, exportSvg } from './lib/export.js';
 import { clampSelection } from './lib/lineEdit.js';
 import { SIDES } from './lib/reelFrames.js';
-import { decodeSetup, encodeSetup } from './lib/share.js';
+import { queryToState, stateToQuery } from './lib/share.js';
 import { STAGE, useTheme } from './lib/theme.js';
 
 const RACK_KEY = 'flyline-designer:rack';
@@ -22,17 +22,13 @@ function loadRack() {
   }
 }
 
-function initialSetup() {
-  const fromHash = decodeSetup(window.location.hash.slice(1));
-  return fromHash ? { setup: fromHash, presetId: 'custom' } : { setup: structuredClone(DEFAULT_SETUP), presetId: LINE_PRESETS[0].id };
-}
-
 const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'flyline';
 
 export default function App() {
-  const [{ setup, presetId }, setState] = useState(initialSetup);
-  const [mode, setMode] = useState('reel');
-  const [side, setSide] = useState('drag');
+  const [initial] = useState(() => queryToState(window.location.search, window.location.hash));
+  const [{ setup, presetId }, setState] = useState({ setup: initial.setup, presetId: initial.presetId });
+  const [mode, setMode] = useState(initial.mode);
+  const [side, setSide] = useState(initial.side);
   const [lineSelection, setLineSelection] = useState(null);
   const [themeChoice, setThemeChoice, theme] = useTheme();
   const [rack, setRack] = useState(loadRack);
@@ -47,6 +43,12 @@ export default function App() {
       // Storage can be unavailable (private mode); the rack then lasts for this visit only.
     }
   }, [rack]);
+
+  // Keep the URL in step with the design so a reload or a copied link restores it.
+  useEffect(() => {
+    const query = stateToQuery({ setup, presetId, side, mode });
+    window.history.replaceState(null, '', `${window.location.pathname}?${query}`);
+  }, [setup, presetId, side, mode]);
 
   useEffect(() => {
     if (!notice) return undefined;
@@ -76,8 +78,7 @@ export default function App() {
   };
 
   const copyLink = async () => {
-    const url = `${window.location.origin}${window.location.pathname}#${encodeSetup(setup)}`;
-    window.history.replaceState(null, '', url);
+    const url = window.location.href;
     try {
       await navigator.clipboard.writeText(url);
       setNotice('Share link copied.');
