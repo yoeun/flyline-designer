@@ -8,8 +8,10 @@ import {
   REEL_COLORS,
   REELS,
   findById,
-  nameOf,
   makerGroups,
+  nameOf,
+  reelColors,
+  withReelModel,
 } from '../data/catalog.js';
 import { totalLength, zoneRanges } from '../lib/geometry.js';
 import { MIN_LENGTH, TAPER_NAMES, formatFeet, removeZone, setTaperLength, setZoneLength, splitZone, zoneName } from '../lib/lineEdit.js';
@@ -40,7 +42,7 @@ export function ReelOptions({ reel, onChange }) {
       <h2>Reel</h2>
       <label className="field">
         <span>Model</span>
-        <Select value={reel.model} onChange={(e) => onChange({ ...reel, model: e.target.value })}>
+        <Select value={reel.model} onChange={(e) => onChange(withReelModel(reel, e.target.value))}>
           {makerGroups(REELS, 'Generic').map(([label, reels]) => (
             <optgroup key={label} label={label}>
               {reels.map((r) => (
@@ -54,7 +56,7 @@ export function ReelOptions({ reel, onChange }) {
       </label>
       <div className="field">
         <span>Color · {color?.name}</span>
-        <Swatches colors={REEL_COLORS} value={reel.color} onChange={(c) => onChange({ ...reel, color: c })} label="Reel color" size={34} />
+        <Swatches colors={reelColors(findById(REELS, reel.model))} value={reel.color} onChange={(c) => onChange({ ...reel, color: c })} label="Reel color" size={34} />
       </div>
     </section>
   );

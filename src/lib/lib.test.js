@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, makerGroups } from '../data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, REELS, REEL_COLORS, findById, makerGroups, reelColors, withReelModel } from '../data/catalog.js';
 import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
@@ -280,6 +280,17 @@ describe('catalog', () => {
     const groups = makerGroups(LINE_PRESETS, 'Generic & examples');
     expect(groups.map(([label]) => label)).toEqual(['Airflo', 'RIO', 'Generic & examples']);
     expect(groups.flatMap(([, presets]) => presets.map((p) => p.id)).sort()).toEqual(LINE_PRESETS.map((p) => p.id).sort());
+  });
+
+  it.each(REELS.map((r) => [r.id, r]))('%s offers only known colors', (_, reel) => {
+    for (const c of reelColors(reel)) expect(REEL_COLORS).toContain(c);
+  });
+
+  it('keeps the reel color when the new model comes in it, otherwise takes its first', () => {
+    const reel = { model: 'redington-behemoth-56', color: 'gunmetal' };
+    expect(withReelModel(reel, 'redington-behemoth-78').color).toBe('gunmetal');
+    expect(withReelModel(reel, 'redington-run-56').color).toBe('black');
+    expect(withReelModel({ model: 'g56', color: 'silver' }, 'lamson-liquid-s-5').color).toBe('smoke');
   });
 
   it('groups reels by maker, generic last', () => {
