@@ -5,10 +5,10 @@ import { P, circle, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut
 // Drag side: a wide bar tapering from the foot to the hub, a slim one down to 6 o'clock and two spokes a side,
 // leaving big open windows. With the two bars they make six spokes 60° apart, each on a bar of the ring behind.
 const SPEEDSTER_SPOKES = [-30, 30, 150, -150];
-// Knurled drag ring around a three-armed spinner.
+// Knurled drag ring around a three-armed spinner, with the Liquid S's orange center button.
 const speedsterKnob = () => {
   const arms = [0, 1, 2].map((k) => spoke(-60 + k * 120, 0, 40, 18, 12, 22)).join('');
-  return `<path d="${knurl(52, 1.6, 48)}" fill="#2e3134"/><circle r="42" fill="#3d4044"/><path d="${arms}" fill="#5a5e62"/><circle r="42" fill="url(#sheen)"/><circle r="13" fill="#26282b"/><circle cx="-4" cy="4" r="2.4" fill="#6a6e72"/><circle cx="4" cy="-4" r="2.4" fill="#6a6e72"/>`;
+  return `<path d="${knurl(52, 1.6, 48)}" fill="#2e3134"/><circle r="42" fill="#3d4044"/><path d="${arms}" fill="#5a5e62"/><circle r="42" fill="url(#sheen)"/><circle r="15" fill="#e2581f"/><circle cx="-4" cy="4" r="2.6" fill="#7a2a0c"/><circle cx="4" cy="-4" r="2.6" fill="#7a2a0c"/>`;
 };
 
 const SLOT_RING = ring(190, 128) + slots({ n: 18, rIn: 140, rOut: 182, bar: 13, corner: 7 });
