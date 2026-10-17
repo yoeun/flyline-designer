@@ -37,7 +37,7 @@ export const spool = svg({
     ring(200, 102) + slots({ ...RIM, rIn: 114 }),
     pad(158, -72, 34, 50),
     pad(158, 108, 30, 44),
-    ...[-84, 36, 156].map((a) => spoke(a, 34, 106, 28, 18, 24)),
+    ...[-90, 30, 150].map((a) => spoke(a, 34, 106, 26, 20)),
     circle(40),
   ],
   details:
