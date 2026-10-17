@@ -27,11 +27,11 @@ Two columns. They stack on narrow screens.
 
 - **Left, preview**
   - Reel preview with a mode switch: **Reel** (default), **See-through**, **Line only**.
-  - Checks: spool fill and backing vs. running line contrast.
+  - Checks: spool fill and backing vs. running line contrast, plus a warning when the line weight is out of range for the reel.
   - **Rack strip**, collapsed by default: saved setups, with a count of the color conflicts between them. **Expand** opens the rack page.
 - **Right, options** (stacked sections)
   - **Reel**: Model and Size in one row, color presets below. Model has one entry per reel model, grouped by maker. Size lists only the sizes that model comes in, labelled the same way for every maker: the line weights it suits, then the maker's size when it differs (e.g. "6/7/8 wt (-7+)", "5/6/7 wt (III)", "7/8 wt"). A new model lands on the first size that suits the line's weight, otherwise the size nearest the current reel's rim.
-  - **Fly line**: Preset, Type and Weight in one row (Type and Weight unlock with the **Custom** preset). Below it, a line editor: a dimension line for the taper sections (front taper, body, back taper, running line) above the line drawn in its color zones. Click a section or zone to edit it underneath (length; zones also get color, Split and Remove). Drag or arrow-key a boundary to resize; dragging keeps the total length.
+  - **Fly line**: Preset, Type and Weight in one row (Type and Weight unlock with the **Custom** preset). A reel size takes its own weights plus one under and one over (underlining and overlining, within 2–12 wt), e.g. 4–8 wt for a 5–7 wt reel. Weight lists only those (a maker line's sizes among them), with over- and underlines labelled; a loaded setup's out-of-range weight still shows, labelled so, and is never changed. Preset disables, and lists last within its maker, lines with no size the reel takes. A product picked from Preset keeps the line's weight if the reel takes it, else lands on its nearest size in the reel's range, else the nearest over- or underline. A new reel size that doesn't take the line's weight moves the line to its nearest size in range (maker lines, keeping the colorway) or the nearest weight in range (any other line, keeping its taper and colors); a maker line with no such size stays as is. Lines tried from the line guide keep the current reel, even out of range. Below it, a line editor: a dimension line for the taper sections (front taper, body, back taper, running line) above the line drawn in its color zones. Click a section or zone to edit it underneath (length; zones also get color, Split and Remove). Drag or arrow-key a boundary to resize; dragging keeps the total length.
   - **Backing**: length (100 / 150 / 200 / 250 yd or custom), strength (20 / 30 lb), and colors in one row in gradient order (red, orange, yellow, chartreuse, green, blue, purple, white, black).
 - **Header**: New, Reset, Save, Save as new (when editing a saved setup), Export PNG, Export SVG, and a System / Light / Dark theme switch.
 
@@ -166,6 +166,7 @@ The Airflo line comes in both colorways, so both are presets for comparison. Zon
 Similarity is measured as CIE76 ΔE in Lab color space.
 
 - **Backing vs. running line:** warn when ΔE < 30. The boundary between them will be hard to see.
+- **Line weight:** warn when the line weight is out of range for the reel, even over- or underlined, e.g. "A 10 wt line is out of range for this reel (suits 5–7 wt; 4–8 wt with over/underlining)." Only a loaded setup or a line from the guide can be out of range.
 - **Across the rack:** warn when two saved setups of *different* line types have backing colors with ΔE < 30, or when any setup's backing is too close to its own running line.
 
 ## Palettes

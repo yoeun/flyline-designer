@@ -1,4 +1,4 @@
-import { REELS, findById, hexOf, nameOf } from '../data/catalog.js';
+import { REELS, allowedWeights, findById, hexOf, nameOf, reelWeightFit } from '../data/catalog.js';
 import { deltaE, SIMILAR_DELTA_E } from './color.js';
 import { innermostLineColor } from './geometry.js';
 import { displayName } from './rack.js';
@@ -7,6 +7,22 @@ export function backingContrast(setup) {
   const run = innermostLineColor(setup.line);
   const value = deltaE(hexOf(setup.backing.color), hexOf(run));
   return { value, similar: value < SIMILAR_DELTA_E, backing: setup.backing.color, run };
+}
+
+const span = (lo, hi) => (lo === hi ? `${lo} wt` : `${lo}–${hi} wt`);
+
+// A line weight the reel doesn't take, even over- or underlined (only a loaded setup can have one).
+export function weightCheck(setup) {
+  const reel = findById(REELS, setup.reel.model);
+  const { weight } = setup.line;
+  if (reelWeightFit(reel, weight) !== 'out') return null;
+  const [lo, hi] = reel.weights;
+  const weights = allowedWeights(reel);
+  const [min, max] = [weights[0], weights.at(-1)];
+  const lining = min < lo && max > hi ? 'over/underlining' : max > hi ? 'overlining' : min < lo ? 'underlining' : null;
+  const also = lining ? `; ${span(min, max)} with ${lining}` : '';
+  const article = weight === 8 || weight === 11 ? 'An' : 'A';
+  return { text: `${article} ${weight} wt line is out of range for this reel (suits ${span(lo, hi)}${also}).` };
 }
 
 // Conflicts across saved setups: a backing that blends into its own line, or two different

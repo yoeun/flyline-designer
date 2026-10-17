@@ -14,12 +14,12 @@ import {
   makerGroups,
   menuId,
   nameOf,
-  productSizes,
   reelColors,
   reelMenu,
   reelSizeLabel,
   reelSizes,
   switchReelModel,
+  weightMenu,
   withReelModel,
 } from '../data/catalog.js';
 import { zoneRanges } from '../lib/geometry.js';
@@ -61,18 +61,24 @@ const HINT = 'text-[13px] text-muted-foreground';
 const MONO = 'font-mono tabular-nums';
 
 // Maker-grouped options for the searchable Model and Preset menus. The catalog is static, so build them once.
-const toGroups = (groups, label) => groups.map(([maker, items]) => ({ label: maker, items: items.map((item) => ({ value: item.id, label: label(item) })) }));
+const toGroups = (groups, label) => groups.map(([maker, items]) => ({ label: maker, items: items.map((item) => ({ value: item.id, label: label(item), disabled: item.disabled })) }));
 // One entry per reel model; its sizes are picked under Size.
 const REEL_GROUPS = toGroups(makerGroups(reelMenu(REEL_MODELS), 'Generic'), (m) => m.name);
-// One entry per maker product; its sizes are picked under Weight. Generic lines sort by weight;
-// maker lines keep the catalog's product order.
-const byWeight = (a, b) => a.line.weight - b.line.weight || a.name.localeCompare(b.name);
-const presetGroups = makerGroups(lineMenu(LINE_PRESETS), 'Generic').map(([maker, presets]) => [maker, maker === 'Generic' ? [...presets].sort(byWeight) : presets]);
-const PRESET_GROUPS = [...toGroups(presetGroups, (p) => p.name), { label: null, items: [{ value: 'custom', label: 'Custom' }] }];
+// One entry per maker product; its sizes are picked under Weight. Lines the reel takes no size of
+// are disabled and go last. Generic lines sort by weight; maker lines keep the catalog's product order.
+const byWeight = (a, b) => Boolean(a.disabled) - Boolean(b.disabled) || a.line.weight - b.line.weight || a.name.localeCompare(b.name);
+// Built once per reel size, as the reel decides which lines are disabled.
+const presetGroupsByReel = new Map();
+function presetGroups(reel) {
+  if (!presetGroupsByReel.has(reel?.id)) {
+    const groups = makerGroups(lineMenu(LINE_PRESETS, reel), 'Generic').map(([maker, presets]) => [maker, maker === 'Generic' ? [...presets].sort(byWeight) : presets]);
+    presetGroupsByReel.set(reel?.id, [...toGroups(groups, (p) => p.name), { label: null, items: [{ value: 'custom', label: 'Custom' }] }]);
+  }
+  return presetGroupsByReel.get(reel?.id);
+}
 
 const STRENGTHS = [20, 30].map((lb) => [lb, `${lb} lb`]);
 const TYPE_ITEMS = LINE_TYPES.map((t) => ({ value: t.id, label: t.name }));
-const WEIGHT_ITEMS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((w) => ({ value: w, label: `${w} wt` }));
 
 const numberOr = (value, fallback) => {
   const n = parseFloat(value);
@@ -177,12 +183,14 @@ function LineSelection({ line, selection, onChange, onSelect, colorLocked }) {
   );
 }
 
-export function FlyLineOptions({ line, backingColor, presetId, onChange, onPreset, onColorway, selection, onSelect, changed, onReset, onOpenGuide }) {
+// `reel` is the reel size, which limits the weights on offer.
+export function FlyLineOptions({ line, reel, backingColor, presetId, onChange, onPreset, onColorway, selection, onSelect, changed, onReset, onOpenGuide }) {
   const locked = presetId !== 'custom';
   const preset = findById(LINE_PRESETS, presetId);
   const colorway = lineColorway(preset, line);
-  // A maker line's weights are the sizes its product is sold in; picking one switches preset.
-  const sizes = preset?.product ? productSizes(preset.product) : null;
+  // A maker line's weights are the sizes its product is sold in; picking one switches preset. Either
+  // way only weights the reel takes are offered, plus the line's own if a loaded setup has another.
+  const sizes = preset?.product ? weightMenu(reel, line, presetId) : null;
   const editRef = useRef(null);
   const selected = selection !== null;
 
@@ -212,12 +220,12 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
         </Button>
       </SectionHeading>
       <div className="flex flex-wrap gap-2.5">
-        <SearchableSelect label="Preset" grow groups={PRESET_GROUPS} value={menuId(presetId)} onChange={onPreset} placeholder="Search lines" />
+        <SearchableSelect label="Preset" grow groups={presetGroups(reel)} value={menuId(presetId)} onChange={onPreset} placeholder="Search lines" />
         <Select label="Type" grow items={TYPE_ITEMS} value={line.type} disabled={locked} onChange={(type) => onChange({ ...line, type })} />
         {sizes ? (
-          <Select key={preset.product} label="Weight" items={sizes.map((s) => ({ value: s.id, label: s.sizeLabel }))} value={presetId} disabled={sizes.length < 2} onChange={onPreset} triggerClassName="w-auto min-w-[85px]" />
+          <Select key={`${preset.product} ${reel?.id}`} label="Weight" items={sizes} value={presetId} disabled={sizes.length < 2} onChange={onPreset} triggerClassName="w-auto min-w-[85px]" />
         ) : (
-          <Select label="Weight" items={WEIGHT_ITEMS} value={line.weight} disabled={locked} onChange={(weight) => onChange({ ...line, weight })} triggerClassName="w-[85px]" />
+          <Select key={reel?.id} label="Weight" items={weightMenu(reel, line, presetId)} value={line.weight} disabled={locked} onChange={(weight) => onChange({ ...line, weight })} triggerClassName="w-[85px]" />
         )}
       </div>
       {/* Keyed so a new preset's selects start fresh: kept mounted, the select reports the old value back. */}

@@ -13,7 +13,7 @@ import Segmented from './components/Segmented.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
 import { Toaster } from './components/ui/sonner.jsx';
 import SetupTitle from './components/SetupTitle.jsx';
-import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetForLine, switchLine } from './data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, fitLineToReel, presetForLine, switchLine } from './data/catalog.js';
 import { DEMO_RACK } from './data/demoRack.js';
 import { exportPng, exportSvg } from './lib/export.js';
 import { rackConflicts } from './lib/checks.js';
@@ -127,6 +127,7 @@ export default function App() {
   const update = (patch, nextPreset = presetId) => setState({ setup: { ...setup, ...patch }, presetId: nextPreset });
 
   const selection = clampSelection(lineSelection, setup.line);
+  const reelSize = findById(REELS, setup.reel.model);
 
   // id is a product or generic preset from the Preset menu, a size from the Weight menu, or 'custom'.
   const applyPreset = (id) => {
@@ -135,8 +136,19 @@ export default function App() {
       setState({ setup, presetId: 'custom' });
       return;
     }
-    const next = switchLine(id, setup.line, presetId);
+    const next = switchLine(id, setup.line, presetId, reelSize);
     if (next) setState({ setup: { ...setup, line: next.line }, presetId: next.presetId });
+  };
+
+  // A new reel size that doesn't take the line's weight moves the line to one it does, where it can.
+  const changeReel = (reel) => {
+    const next = fitLineToReel(setup.line, presetId, findById(REELS, reel.model));
+    if (!next) {
+      update({ reel });
+      return;
+    }
+    setLineSelection(null);
+    setState({ setup: { ...setup, reel, line: next.line }, presetId: next.presetId });
   };
 
   const discardOk = () => !dirty || window.confirm(`Discard your changes to “${displayName(setup)}”? They aren't saved to your rack.`);
@@ -247,7 +259,8 @@ export default function App() {
     setPage('reels');
   };
 
-  // From the guide: a new setup on the current reel and backing, with the guide's line.
+  // From the guide: a new setup on the current reel and backing, with the guide's line, even one the
+  // reel doesn't take (the checks then say so).
   const tryLine = (id) => {
     const preset = findById(LINE_PRESETS, id);
     if (!preset || !discardOk()) return;
@@ -330,7 +343,7 @@ export default function App() {
               <div className="flex flex-wrap items-start justify-between gap-2 self-stretch">
                 <SetupTitle
                   name={displayName(setup)}
-                  subtitle={`${findById(REELS, setup.reel.model)?.name ?? 'Reel'} · ${setup.line.weight} wt`}
+                  subtitle={`${reelSize?.name ?? 'Reel'} · ${setup.line.weight} wt`}
                   isNew={!editingId}
                   detailsChanged={!!changed?.details}
                   onOpenDetails={() => setDetailsMode('edit')}
@@ -366,9 +379,10 @@ export default function App() {
           </section>
 
           <section className="min-w-0 flex-[1_1_380px] divide-y divide-border rounded-panel border border-border bg-card wide:overflow-y-auto" aria-label="Options">
-            <ReelOptions reel={setup.reel} weight={setup.line.weight} onChange={(reel) => update({ reel })} changed={changed?.reel ?? false} onReset={() => resetSection('reel')} />
+            <ReelOptions reel={setup.reel} weight={setup.line.weight} onChange={changeReel} changed={changed?.reel ?? false} onReset={() => resetSection('reel')} />
             <FlyLineOptions
               line={setup.line}
+              reel={reelSize}
               backingColor={setup.backing.color}
               presetId={presetId}
               onPreset={applyPreset}
