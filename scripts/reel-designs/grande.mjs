@@ -1,14 +1,24 @@
 // Redington Grande.
-// Photos are angled; the straight-on layout is inferred. Drag side: a solid 90° wedge from the hub up to the rim
-// under the foot; the other 270° is open between tapered spokes. Red accent ring around the hub on both sides. Handle placement on the
+// Photos are angled; the straight-on layout is inferred. Drag side: a solid wedge up to the rim under the foot, its
+// two edges tangent to the drag boss and 90° apart; the rest is open between tapered spokes. Red accent ring around the hub on both sides. Handle placement on the
 // spool is arbitrary (it turns); it sits opposite a round counterweight.
 import { P, arcPts, circle, f, foot, knob, knurl, rad, ring, roundPoly, spoke, svg } from './lib.mjs';
 
 const RED = '#b0243a';
-// The wedge spans 45° either side of straight up; spokes fill the rest, about 14° apart, clear of its edges.
-const WEDGE = 45;
-const DRAG_SPOKES = Array.from({ length: 19 }, (_, k) => -90 + WEDGE + 9 + (k * (360 - 2 * WEDGE - 18)) / 18);
-const plate = roundPoly([[0, 0], ...arcPts(184, rad(-90 - WEDGE), rad(-90 + WEDGE), 20)], 8);
+// Each edge touches the boss (r 66) at 45° below level and runs up and out at 45° to the rim. Spokes fill the
+// rest, about 14° apart, clear of the edges.
+const BOSS = 66;
+const edgeRim = (sx) => {
+  const t = [sx * BOSS * Math.SQRT1_2, BOSS * Math.SQRT1_2], d = [sx * Math.SQRT1_2, -Math.SQRT1_2];
+  const b = t[0] * d[0] + t[1] * d[1], c = BOSS * BOSS - 184 * 184;
+  const k = -b + Math.sqrt(b * b - c);
+  return { touch: t, rim: [t[0] + d[0] * k, t[1] + d[1] * k] };
+};
+const [LEFT, RIGHT] = [edgeRim(-1), edgeRim(1)];
+const RIM_ANGLE = (Math.atan2(RIGHT.rim[1], RIGHT.rim[0]) * 180) / Math.PI; // right edge's angle at the rim
+const plate = roundPoly([RIGHT.touch, LEFT.touch, LEFT.rim, ...arcPts(184, rad(-180 - RIM_ANGLE), rad(RIM_ANGLE), 20), RIGHT.rim], 8);
+const OPEN = 180 - 2 * RIM_ANGLE - 18; // the open sector (360° less the wedge), less a margin at each edge
+const DRAG_SPOKES = Array.from({ length: 18 }, (_, k) => RIM_ANGLE + 9 + (k * OPEN) / 17);
 
 // Body-colored drag knob: knurled skirt and a raised cap with a dark logo button.
 const grandeKnob =
@@ -25,7 +35,7 @@ export const drag = svg({
     ring(180, 172),
     foot(132, -244, 14, 30),
     plate,
-    circle(66),
+    circle(BOSS),
     ...DRAG_SPOKES.map((a) => spoke(a, 60, 176, 10, 24)),
   ],
   details: '<circle r="183" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="3"/>' + grandeKnob,
