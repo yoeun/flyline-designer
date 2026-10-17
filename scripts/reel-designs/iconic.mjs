@@ -48,7 +48,7 @@ const mirrorX = (d) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x, 
 // [hub angle, rim angle, bow]: six arms 60° apart, all alike: once mirrored they lean counter-clockwise and curve
 // clockwise.
 const ARM_BOW = 30;
-const ARMS = [0, 1, 2, 3, 4, 5].map((k) => [-130 + k * 60, -108 + k * 60, ARM_BOW]);
+const ARMS = [0, 1, 2, 3, 4, 5].map((k) => [-130 + k * 60, -85 + k * 60, ARM_BOW]);
 // The arms start at `armIn`, well inside the hub, so they run deep toward the center under the cap.
 export const iconicDrag = ({ hub = 56, cap = 50, armIn = 30, arms = ARMS, rib = { t: 0.45, shift: 0, bend: 10 } } = {}) =>
   svg({
