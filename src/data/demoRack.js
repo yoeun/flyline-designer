@@ -1,5 +1,5 @@
 // A fixed rack for trying the rack page without saving setups by hand (open the app with ?demo=1).
-// Mostly nine near-identical Liquid S reels told apart by line and backing color. Every line is a real preset except the one titled Custom. Raw entries, run through loadEntries.
+// Nine near-identical Liquid S reels told apart by line and backing color, then one of each other reel model. Every line is a real preset except the one titled Custom. Raw entries, run through loadEntries.
 import { LINE_PRESETS, findById } from './catalog.js';
 
 // A preset's line exactly, optionally in another of its colorways (only the "Custom" entry changes the weight).
@@ -40,4 +40,23 @@ export const DEMO_RACK = [
   // Old format: a name instead of title, no styles or notes
   { id: 'demo-14', name: 'Brook trout', reel: { model: 'redington-run-34', color: 'sand' }, line: line('rio-technical-euro-nymph-2-5'), backing: backing(50, 'green') },
   { id: 'demo-15', title: '', styles: ['dry'], notes: '', reel: { model: 'redington-behemoth-78', color: 'army-green' }, line: line('rio-premier-gold-wf8f'), backing: backing(150, 'blue') },
+  // One of each newer model, in finishes that show off their accent colors
+  { id: 'demo-16', title: '', styles: ['dry'], notes: '', reel: { model: 'lamson-guru-s-5', color: 'lamson-og' }, line: line('rio-premier-gold-wf5f'), backing: backing(100, 'red') },
+  { id: 'demo-17', title: '', styles: ['dry'], notes: '', reel: { model: 'lamson-speedster-s-3', color: 'lamson-ember' }, line: line('rio-premier-gold-wf4f'), backing: backing(50, 'orange') },
+  { id: 'demo-18', title: '', styles: ['streamer'], notes: '', reel: { model: 'lamson-remix-s-7', color: 'day-break' }, line: line('generic-wf7i'), backing: backing(150, 'white') },
+  { id: 'demo-19', title: '', styles: ['streamer', 'nymph'], notes: '', reel: { model: 'orvis-mirage-3', color: 'orvis-silver-dragonfly' }, line: line('wf6i'), backing: backing(100, 'chartreuse') },
+  { id: 'demo-20', title: '', styles: ['dry'], notes: '', reel: { model: 'orvis-battenkill-disc-2', color: 'orvis-copper' }, line: line('rio-premier-gold-wf4f'), backing: backing(50, 'yellow') },
+  { id: 'demo-21', title: '', styles: ['streamer'], notes: '', reel: { model: 'redington-grande-789', color: 'redington-marine' }, line: line('wf8-sink5'), backing: backing(150, 'purple', 30) },
+  { id: 'demo-22', title: '', styles: ['dry'], notes: '', reel: { model: 'redington-zero-23', color: 'burgundy' }, line: line('rio-premier-gold-wf3f'), backing: backing(50, 'white') },
+  { id: 'demo-23', title: '', styles: ['dry', 'nymph'], notes: '', reel: { model: 'redington-rise-iii-56', color: 'redington-amber' }, line: line('generic-wf5f'), backing: backing(100, 'purple') },
+  { id: 'demo-24', title: '', styles: ['dry'], notes: '', reel: { model: 'ross-animas-56', color: 'ross-matte-blue' }, line: line('twotone-wf5f'), backing: backing(75, 'blue') },
+  { id: 'demo-25', title: '', styles: ['streamer'], notes: '', reel: { model: 'ross-evolution-r-78', color: 'ross-matte-olive' }, line: line('generic-wf8-sinktip'), backing: backing(100, 'black') },
+  { id: 'demo-26', title: '', styles: ['dry'], notes: '', reel: { model: 'sage-click-345', color: 'sage-bronze' }, line: line('rio-premier-gold-wf4f'), backing: backing(75, 'yellow') },
+  { id: 'demo-27', title: '', styles: ['nymph'], notes: '', reel: { model: 'sage-spectrum-c-56', color: 'black' }, line: line('rio-premier-gold-wf6f'), backing: backing(100, 'orange') },
+  { id: 'demo-28', title: '', styles: ['streamer'], notes: '', reel: { model: 'sage-spectrum-910', color: 'sage-platinum' }, line: line('rio-premier-gold-wf9f'), backing: backing(150, 'green', 30) },
+  { id: 'demo-29', title: '', styles: ['streamer'], notes: '', reel: { model: 'sage-arbor-xl-678', color: 'sage-frost' }, line: line('generic-wf7i'), backing: backing(150, 'blue') },
+  { id: 'demo-30', title: '', styles: ['dry'], notes: '', reel: { model: 'hatch-iconic-5-plus', color: 'hatch-clear-blue' }, line: line('rio-premier-gold-wf6f'), backing: backing(75, 'green') },
+  { id: 'demo-31', title: '', styles: ['streamer'], notes: '', reel: { model: 'hatch-iconic-mid-arbor-7-plus', color: 'hatch-gray-black' }, line: line('wf8-sink5'), backing: backing(200, 'red') },
+  { id: 'demo-32', title: '', styles: ['nymph'], notes: '', reel: { model: 'hatch-finatic-gen-2-3-plus', color: 'hatch-clear-red' }, line: line('rio-premier-gold-wf4f'), backing: backing(75, 'chartreuse') },
+  { id: 'demo-33', title: '', styles: ['dry'], notes: '', reel: { model: 'piscifun-sword-ii-56', color: 'piscifun-green' }, line: line('generic-wf5f'), backing: backing(100, 'orange') },
 ];

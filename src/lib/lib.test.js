@@ -767,6 +767,10 @@ describe('demo rack', () => {
     }
     expect(models.filter((m) => m.startsWith('redington-behemoth'))).toEqual(['redington-behemoth-78']);
   });
+  it('shows every reel model at least once', () => {
+    const shown = new Set(rack.map((s) => findById(REELS, s.reel.model).product));
+    expect(REEL_MODELS.map((m) => m.id).filter((id) => !shown.has(id))).toEqual([]);
+  });
   it('covers every style, a multi-style and a no-style entry', () => {
     for (const { id } of STYLES) expect(rack.some((s) => s.styles.includes(id))).toBe(true);
     expect(rack.some((s) => s.styles.length > 1)).toBe(true);
