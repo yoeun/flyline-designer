@@ -8,9 +8,10 @@ import { P, bars, circle, foot, knob, rad, ring, roundPoly, spoke, svg } from '.
 
 // Fingers from the rim inward, hooking sideways at the tip.
 const finger = (deg, rOut, rIn, w) => bars([P(rOut, rad(deg)), P(rIn, rad(deg)), P(rIn - 12, rad(deg + 6))], w);
-const FINGERS = Array.from({ length: 24 }, (_, k) => -90 + 7.5 + k * 15);
+// 24 fingers 15° apart; every fourth is a full spoke, so the six spokes sit 60° apart with two level.
+const FINGERS = Array.from({ length: 24 }, (_, k) => k * 15);
 // The handle sits on one of the full spokes, near the rim.
-const HANDLE = -142.5;
+const HANDLE = -120;
 
 // Both sides, with the fingers' inner ends at radius `fingerIn`.
 export const zeroSides = (fingerIn) => ({
