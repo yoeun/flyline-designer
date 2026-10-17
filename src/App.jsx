@@ -68,7 +68,7 @@ export default function App() {
     }
     const preset = findById(LINE_PRESETS, id);
     if (!preset) return;
-    setState({ setup: { ...setup, name: preset.name.replace(' (example)', ''), line: structuredClone(preset.line) }, presetId: id });
+    setState({ setup: { ...setup, name: preset.name, line: structuredClone(preset.line) }, presetId: id });
   };
 
   const saveToRack = () => {

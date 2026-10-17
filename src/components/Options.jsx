@@ -17,6 +17,7 @@ import {
 import { totalLength, zoneRanges } from '../lib/geometry.js';
 import { MIN_LENGTH, TAPER_NAMES, formatFeet, removeZone, setTaperLength, setZoneLength, splitZone, zoneName } from '../lib/lineEdit.js';
 import LineEditor from './LineEditor.jsx';
+import SearchableSelect from './SearchableSelect.jsx';
 import Swatches from './Swatches.jsx';
 
 // Native select (keeps the OS menu, keyboard and mobile pickers) with our own chevron.
@@ -31,6 +32,14 @@ function Select(props) {
   );
 }
 
+// Maker-grouped options for the searchable Model and Preset menus. The catalog is static, so build them once.
+const toGroups = (groups, label) => groups.map(([maker, items]) => ({ label: maker, items: items.map((item) => ({ value: item.id, label: label(item) })) }));
+const REEL_GROUPS = toGroups(makerGroups(REELS, 'Generic'), (r) => `${r.name} · ${r.rim} in`);
+// Generic lines sort by weight; maker lines keep the catalog's product order.
+const byWeight = (a, b) => a.line.weight - b.line.weight || a.name.localeCompare(b.name);
+const presetGroups = makerGroups(LINE_PRESETS, 'Generic').map(([maker, presets]) => [maker, maker === 'Generic' ? [...presets].sort(byWeight) : presets]);
+const PRESET_GROUPS = [...toGroups(presetGroups, (p) => p.name), { label: null, items: [{ value: 'custom', label: 'Custom' }] }];
+
 const numberOr = (value, fallback) => {
   const n = parseFloat(value);
   return Number.isFinite(n) && n >= 0 ? n : fallback;
@@ -41,20 +50,7 @@ export function ReelOptions({ reel, onChange }) {
   return (
     <section className="options-group">
       <h2>Reel</h2>
-      <label className="field">
-        <span>Model</span>
-        <Select value={reel.model} onChange={(e) => onChange(withReelModel(reel, e.target.value))}>
-          {makerGroups(REELS, 'Generic').map(([label, reels]) => (
-            <optgroup key={label} label={label}>
-              {reels.map((r) => (
-                <option key={r.id} value={r.id}>
-                  {r.name} · {r.rim} in
-                </option>
-              ))}
-            </optgroup>
-          ))}
-        </Select>
-      </label>
+      <SearchableSelect label="Model" groups={REEL_GROUPS} value={reel.model} onChange={(id) => onChange(withReelModel(reel, id))} placeholder="Search reels" />
       <div className="field">
         <span>Color · {color?.name}</span>
         <Swatches colors={reelColors(findById(REELS, reel.model))} value={reel.color} onChange={(c) => onChange({ ...reel, color: c })} label="Reel color" size={34} />
@@ -174,21 +170,7 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
     <section className="options-group">
       <h2>Fly line</h2>
       <div className="field-row">
-        <label className="field field--grow">
-          <span>Preset</span>
-          <Select value={presetId} onChange={(e) => onPreset(e.target.value)}>
-            {makerGroups(LINE_PRESETS, 'Generic & examples').map(([label, presets]) => (
-              <optgroup key={label} label={label}>
-                {presets.map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.name}
-                  </option>
-                ))}
-              </optgroup>
-            ))}
-            <option value="custom">Custom</option>
-          </Select>
-        </label>
+        <SearchableSelect label="Preset" className="field field--grow" groups={PRESET_GROUPS} value={presetId} onChange={onPreset} placeholder="Search lines" />
         <label className="field field--grow">
           <span>Type</span>
           <Select value={line.type} disabled={locked} onChange={(e) => onChange({ ...line, type: e.target.value })}>
