@@ -28,6 +28,7 @@ const RACK_KEY = 'flyline-designer:rack';
 
 // The guide and its maker data load on first visit, so the designer doesn't wait for them.
 const GuidePage = lazy(() => import('./components/GuidePage.jsx'));
+const ReelsPage = lazy(() => import('./components/ReelsPage.jsx'));
 
 function loadRack() {
   try {
@@ -241,6 +242,11 @@ export default function App() {
     setPage('guide');
   };
 
+  const openReels = () => {
+    setCameFromDesigner(page === 'designer');
+    setPage('reels');
+  };
+
   // From the guide: a new setup on the current reel and backing, with the guide's line.
   const tryLine = (id) => {
     const preset = findById(LINE_PRESETS, id);
@@ -263,7 +269,7 @@ export default function App() {
   };
 
   // Where each page menu item goes, and what each overflow menu item does; lib/headerMenu.js lists them.
-  const navigate = { designer: backToDesigner, rack: openRack, guide: openGuide };
+  const navigate = { designer: backToDesigner, rack: openRack, guide: openGuide, reels: openReels };
   const menuActions = {
     svg: () => exportSvg(svgRef.current, slug(displayName(setup))),
     png: () => exportPng(svgRef.current, slug(displayName(setup))),
@@ -279,7 +285,7 @@ export default function App() {
           <h1 className="font-heading text-[24px] leading-none font-bold tracking-[0.04em] whitespace-nowrap uppercase">Flyline Designer</h1>
         </div>
         <div className="flex flex-wrap gap-2">
-          {page !== 'guide' && <Button onClick={startNew}>New</Button>}
+          {page !== 'guide' && page !== 'reels' && <Button onClick={startNew}>New</Button>}
           {page === 'designer' && (
             <>
               <Button onClick={resetAll} disabled={!dirty}>
@@ -300,7 +306,11 @@ export default function App() {
       </header>
       <Toaster theme={theme} position="bottom-center" duration={2500} />
 
-      {page === 'guide' ? (
+      {page === 'reels' ? (
+        <Suspense fallback={<p className={`pt-6 text-[14px] text-muted-foreground ${GUTTER}`}>Loading reels…</p>}>
+          <ReelsPage />
+        </Suspense>
+      ) : page === 'guide' ? (
         <Suspense fallback={<p className={`pt-6 text-[14px] text-muted-foreground ${GUTTER}`}>Loading the line guide…</p>}>
           <GuidePage onTry={tryLine} />
         </Suspense>

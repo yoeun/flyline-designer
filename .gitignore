@@ -54,3 +54,6 @@ docs/superpowers/
 
 # Brainstorm mockups and SDD scratch
 .superpowers/
+
+# Maker reel photos, local reference for drawing frames and sampling finishes (not ours to ship).
+data/reel-photos/

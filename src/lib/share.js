@@ -6,7 +6,7 @@ import { STYLES, legacyTitle, normalizeEntry } from './rack.js';
 const SIDE_IDS = ['drag', 'spool'];
 const MODE_IDS = ['reel', 'see-through', 'line-only'];
 // Pages other than the designer; their URLs carry no setup.
-export const PAGES = ['rack', 'guide'];
+export const PAGES = ['rack', 'guide', 'reels'];
 
 const toBase64Url = (value) => {
   const bytes = new TextEncoder().encode(JSON.stringify(value));

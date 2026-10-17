@@ -12,8 +12,8 @@ const OTHER_SIDE = { drag: 'spool', spool: 'drag' };
 const shade = (hex, k) =>
   '#' + [1, 3, 5].map((i) => Math.round(parseInt(hex.slice(i, i + 2), 16) * k).toString(16).padStart(2, '0')).join('');
 
-// mode: 'reel' | 'see-through' | 'line-only'; side: 'drag' | 'spool'
-export default function ReelPreview({ setup, mode = 'reel', side = 'drag', background = '#e9ebe6', size, svgRef, title, className }) {
+// mode: 'reel' | 'see-through' | 'line-only'; side: 'drag' | 'spool'. showLine false draws the reel empty.
+export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showLine = true, background = '#e9ebe6', size, svgRef, title, className }) {
   const uid = useId().replace(/[^a-zA-Z0-9]/g, '');
   const layout = spoolLayout(setup);
   const s = RIM_PX / layout.rimR;
@@ -67,26 +67,28 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', backg
         </g>
       )}
 
-      <g mask={`url(#line-${uid})`}>
-        {/* Outermost ring first so each smaller circle paints over it: no gaps between layers. */}
-        {[...layout.rings].reverse().map((ring, i) => (
-          <circle key={i} r={ring.outer * s} fill={hexOf(ring.color)} />
-        ))}
-        <g fill="none" strokeWidth="0.9">
-          {wraps.map((r, i) => (
-            <circle key={r} r={r} stroke={i % 2 ? '#fff' : '#000'} strokeOpacity={i % 2 ? 0.07 : 0.13} />
+      {showLine && (
+        <g mask={`url(#line-${uid})`}>
+          {/* Outermost ring first so each smaller circle paints over it: no gaps between layers. */}
+          {[...layout.rings].reverse().map((ring, i) => (
+            <circle key={i} r={ring.outer * s} fill={hexOf(ring.color)} />
           ))}
+          <g fill="none" strokeWidth="0.9">
+            {wraps.map((r, i) => (
+              <circle key={r} r={r} stroke={i % 2 ? '#fff' : '#000'} strokeOpacity={i % 2 ? 0.07 : 0.13} />
+            ))}
+          </g>
+          <g fill="none" stroke="#000" strokeOpacity="0.28" strokeWidth="1.2">
+            {layout.rings.map((ring, i) => (
+              <circle key={i} r={ring.outer * s} />
+            ))}
+          </g>
+          <circle r={outer} fill={`url(#line-light-${uid})`} />
         </g>
-        <g fill="none" stroke="#000" strokeOpacity="0.28" strokeWidth="1.2">
-          {layout.rings.map((ring, i) => (
-            <circle key={i} r={ring.outer * s} />
-          ))}
-        </g>
-        <circle r={outer} fill={`url(#line-light-${uid})`} />
-      </g>
+      )}
 
       {lineOnly && <circle r={spool} fill="none" stroke="#5b6862" strokeWidth="1.5" strokeDasharray="5 6" opacity="0.55" />}
-      {!layout.fits && <circle r={spool} fill="none" stroke="#c0352b" strokeWidth="2.5" strokeDasharray="8 6" />}
+      {showLine && !layout.fits && <circle r={spool} fill="none" stroke="#c0352b" strokeWidth="2.5" strokeDasharray="8 6" />}
 
       {reelOpacity > 0 && (
         <g color={reelHex} opacity={reelOpacity} dangerouslySetInnerHTML={{ __html: frameMarkup(layout.reel.design, side, uid) }} />
