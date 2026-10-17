@@ -261,48 +261,6 @@ select {
   height: auto;
 }
 
-/* Segmented controls */
-.segmented {
-  display: inline-flex;
-  gap: 2px;
-  padding: 3px;
-  border-radius: 10px;
-  background: var(--panel-2);
-  border: 1px solid var(--line);
-}
-
-.segmented button {
-  min-height: 34px;
-  padding: 5px 11px;
-  border: 0;
-  border-radius: 7px;
-  background: transparent;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.segmented button[aria-pressed='true'] {
-  background: var(--panel);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-}
-
-.segmented--icons button {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  padding: 0;
-  color: var(--muted);
-}
-
-.segmented--icons button[aria-pressed='true'] {
-  color: var(--ink);
-}
-
-.segmented--icons button[aria-pressed='true'] .icon {
-  font-variation-settings: 'FILL' 1;
-}
-
 /* Checks */
 .checks {
   align-self: stretch;

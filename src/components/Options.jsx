@@ -18,6 +18,7 @@ import { totalLength, zoneRanges } from '../lib/geometry.js';
 import { MIN_LENGTH, TAPER_NAMES, formatFeet, removeZone, setTaperLength, setZoneLength, splitZone, zoneName } from '../lib/lineEdit.js';
 import LineEditor from './LineEditor.jsx';
 import SearchableSelect from './SearchableSelect.jsx';
+import Segmented from './Segmented.jsx';
 import Swatches from './Swatches.jsx';
 
 // Native select (keeps the OS menu, keyboard and mobile pickers) with our own chevron.
@@ -39,6 +40,8 @@ const REEL_GROUPS = toGroups(makerGroups(REELS, 'Generic'), (r) => `${r.name} ·
 const byWeight = (a, b) => a.line.weight - b.line.weight || a.name.localeCompare(b.name);
 const presetGroups = makerGroups(LINE_PRESETS, 'Generic').map(([maker, presets]) => [maker, maker === 'Generic' ? [...presets].sort(byWeight) : presets]);
 const PRESET_GROUPS = [...toGroups(presetGroups, (p) => p.name), { label: null, items: [{ value: 'custom', label: 'Custom' }] }];
+
+const STRENGTHS = [20, 30].map((lb) => [lb, `${lb} lb`]);
 
 const numberOr = (value, fallback) => {
   const n = parseFloat(value);
@@ -225,13 +228,7 @@ export function BackingOptions({ backing, onChange }) {
         <div className="field">
           <span>Length</span>
           <div className="backing-controls">
-            <div className="segmented" role="group" aria-label="Backing length">
-              {BACKING_LENGTHS.map((y) => (
-                <button key={y} type="button" aria-pressed={backing.yards === y} onClick={() => onChange({ ...backing, yards: y })}>
-                  {y}
-                </button>
-              ))}
-            </div>
+            <Segmented label="Backing length" options={BACKING_LENGTHS.map((y) => [y, y])} value={backing.yards} onChange={(yards) => onChange({ ...backing, yards })} />
             <label className="field field--inline">
               <input
                 type="number"
@@ -248,13 +245,7 @@ export function BackingOptions({ backing, onChange }) {
         </div>
         <div className="field">
           <span>Strength</span>
-          <div className="segmented" role="group" aria-label="Backing strength">
-            {[20, 30].map((lb) => (
-              <button key={lb} type="button" aria-pressed={backing.pounds === lb} onClick={() => onChange({ ...backing, pounds: lb })}>
-                {lb} lb
-              </button>
-            ))}
-          </div>
+          <Segmented label="Backing strength" options={STRENGTHS} value={backing.pounds} onChange={(pounds) => onChange({ ...backing, pounds })} />
         </div>
       </div>
       <div className="field">

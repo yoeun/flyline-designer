@@ -3,6 +3,7 @@ import Checks from './components/Checks.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
 import PreviewModeToggle from './components/PreviewModeToggle.jsx';
 import Rack from './components/Rack.jsx';
+import Segmented from './components/Segmented.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
 import ThemeToggle from './components/ThemeToggle.jsx';
 import { DEFAULT_SETUP, LINE_PRESETS, findById, presetForLine } from './data/catalog.js';
@@ -133,13 +134,7 @@ export default function App() {
         <section className="preview-column" aria-label="Preview">
           <div className="stage">
             <div className="stage__controls">
-              <div className="segmented" role="group" aria-label="Reel side">
-                {SIDES.map(([id, label]) => (
-                  <button key={id} type="button" aria-pressed={side === id} onClick={() => setSide(id)}>
-                    {label}
-                  </button>
-                ))}
-              </div>
+              <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
               <PreviewModeToggle value={mode} onChange={setMode} />
             </div>
             <div className="stage__reel">

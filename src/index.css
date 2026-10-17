@@ -45,6 +45,13 @@
   --color-border: var(--line);
   --color-input: var(--line-strong);
   --color-ring: var(--accent);
+  /* App colors shadcn has no name for. */
+  --color-warn: var(--warn-ink);
+  --color-warn-bg: var(--warn-bg);
+  --color-warn-border: var(--warn-border);
+  --color-stage: var(--stage);
+  --color-stage-foreground: var(--stage-ink);
+  --color-swatch-ring: var(--swatch-ring);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
