@@ -180,7 +180,8 @@ const designs = {
     details: `<path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" fill="#e2581f"/><circle cx="-4" cy="5" r="3" fill="#7a2a0c"/><circle cx="4" cy="-5" r="3" fill="#7a2a0c"/>`,
   }),
   'liquid-s-spool': svg({
-    back: [foot(128, -244, 14, 34)],
+    // The frame's slotted ring shows behind the spool, as on the drag side.
+    back: [foot(128, -244, 14, 34), ring(190, 116) + slots({ n: 24, rIn: 126, rOut: 180, bar: 12, corner: 7 })],
     body: [ring(200, 184), ...LIQUID_SPOKES.map((a) => spoke(a, 26, 188, 20, 13, 40)), circle(38)],
     details: `${knob(...liquidHandle, 16)}<circle r="30" fill="#fff" fill-opacity=".1"/>`,
   }),
