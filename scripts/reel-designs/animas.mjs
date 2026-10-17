@@ -1,12 +1,12 @@
 // Ross Animas.
-// Drag side: seven Y spokes (stem from the knob to a mid ring, forking to the rim), the top stem a wide logo plaque,
-// so the outer band has fourteen windows with bars at 3 and 9 o'clock. Spool side: fourteen thin spokes from a
+// Drag side: five pairs of bars from the knob to the rim, evenly spaced with one pair straight down; each pair
+// spreads slightly toward the rim. A logo plaque sits at the top, between the two upper pairs. Behind this main cage,
+// the spool's outer cage of windows shows through, recessed. Spool side: fourteen thin spokes from a
 // small hub to the same mid ring and on to the rim; wood-wrapped handle at 9 o'clock, counterweight at 3.
 // Both from Ross's straight-on product photos; the spool's dark drag housing behind the spokes is left out.
 import { P, circle, f, foot, knurl, pad, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 const N = 7;
-const STEMS = Array.from({ length: N }, (_, k) => -90 + (k * 360) / N);
 const FORK = 360 / N / 4; // each arm of a Y sits this many degrees off its stem
 const OUTER = { n: 2 * N, rIn: 148, rOut: 188, bar: 15, corner: 8, off: -90 + FORK };
 
@@ -26,15 +26,12 @@ const plaqueArt =
   `<path d="M-26 -126L-16 -133L-8 -127L2 -135L12 -127L20 -132L28 -126" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="1.6"/>` +
   `<path d="M-14 -100C-4 -106 4 -96 14 -102M-12 -88C-2 -94 6 -84 16 -90" fill="none" stroke="#000" stroke-opacity=".22" stroke-width="1.6"/>`;
 
+const PAIRS = [0, 1, 2, 3, 4].map((k) => 90 + k * 72);
+const pair = (a) => [-1, 1].map((s) => strut(P(86, rad(a + s * 9)), P(190, rad(a + s * 10.5)), 18, 16));
+
 export const drag = svg({
-  body: [
-    ring(200, 138) + slots(OUTER),
-    ANIMAS_FOOT,
-    ...STEMS.map((a) => (a === -90 ? plaque : spoke(a, 70, 142, 26, 20))),
-    // The Y arms fork just inside the mid ring.
-    ...STEMS.flatMap((a) => [-1, 1].map((s) => strut(P(124, rad(a)), P(140, rad(a + s * FORK * 1.6)), 14, 12))),
-    circle(84),
-  ],
+  back: [ring(186, 138) + slots(OUTER)],
+  body: [ring(200, 184), ANIMAS_FOOT, ...PAIRS.flatMap(pair), plaque, strut([0, -84], [0, -186], 64, 70), circle(84)],
   details: plaqueArt + animasKnob,
 });
 
