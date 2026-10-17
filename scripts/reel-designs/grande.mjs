@@ -1,6 +1,6 @@
 // Redington Grande.
 // Photos are angled; the straight-on layout is inferred. Drag side: a solid wedge up to the rim under the foot, its
-// two edges tangent to the drag boss and 90° apart; the rest is open between tapered spokes. Red accent ring around the hub on both sides. Handle placement on the
+// two edges tangent to the drag boss and 90° apart; the rest is open between tapered spokes. Red accent ring around the spool hub; the drag side is all frame color. Handle placement on the
 // spool is arbitrary (it turns); it sits opposite a round counterweight.
 import { P, arcPts, circle, f, foot, knob, knurl, rad, ring, roundPoly, spoke, svg } from './lib.mjs';
 
@@ -19,13 +19,12 @@ const RIM_ANGLE = (Math.atan2(RIGHT.rim[1], RIGHT.rim[0]) * 180) / Math.PI; // r
 const plate = roundPoly([RIGHT.touch, LEFT.touch, LEFT.rim, ...arcPts(184, rad(-180 - RIM_ANGLE), rad(RIM_ANGLE), 20), RIGHT.rim], 8);
 const DRAG_SPOKES = Array.from({ length: 7 }, (_, k) => k * 30);
 
-// Body-colored drag knob: knurled skirt and a raised cap with a dark logo button.
+// Drag knob, all in the frame color: knurled skirt and a raised cap with a logo button.
 const grandeKnob =
-  `<circle r="66" fill="none" stroke="${RED}" stroke-width="5"/>` +
   `<path d="${knurl(48, 1.5, 60)}" fill="currentColor"/><path d="${knurl(48, 1.5, 60)}" fill="#000" fill-opacity=".35"/>` +
   `<circle r="40" fill="currentColor"/><circle r="40" fill="url(#sheen)"/>` +
   `<circle r="40" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>` +
-  `<circle r="16" fill="#1d1f22"/><circle r="16" fill="url(#sheen)"/>`;
+  `<circle r="16" fill="currentColor"/><circle r="16" fill="url(#sheen)"/><circle r="16" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>`;
 
 export const drag = svg({
   back: [ring(190, 178)],
