@@ -1,6 +1,6 @@
 // Sage Spectrum C.
 // Drag side from Far Bank's photo: 18 deep windows, five wide straight spokes (two up, one each side, one
-// down) and a flat numbered dial with a logo badge, in the finish's accent: silver on Black, dark grey on Grey. Spool side: three straight spokes 120° apart, the handle in line with the top one and
+// down) and a flat numbered dial with a logo badge, in the finish's accent: grey on Black, black on Grey. Spool side: three straight spokes 120° apart, the handle in line with the top one and
 // a small knob opposite at 6 o'clock.
 import { ACCENT, P, circle, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
 import { frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
