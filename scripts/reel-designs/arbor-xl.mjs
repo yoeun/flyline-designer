@@ -11,10 +11,10 @@ const RIM = { n: 20, rIn: 122, rOut: 184, bar: 13, corner: 8, off: -90 };
 // Like the Spectrum C: five straight frame spokes over the spool's window cage, which is drawn in a much darker
 // shade so the two read as separate pieces; the rim lip is the frame's.
 const SPOOL_CAGE = ring(186, 110) + slots(RIM);
-// The knob's face: a slightly lighter disc with three spokes running out from the center.
+// Over the knob's ribs: a light circle outline and three light spokes running out from the center.
 const KNOB_FACE =
-  `<circle r="46" fill="#fff" fill-opacity=".14"/><circle r="46" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
-  [-90, 30, 150].map((a) => `<path d="${spoke(a, 0, 46, 12, 10)}" fill="#000" fill-opacity=".14"/>`).join('');
+  `<circle r="46" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2.5"/>` +
+  [-90, 30, 150].map((a) => `<path d="${spoke(a, 0, 46, 12, 10)}" fill="#fff" fill-opacity=".2"/>`).join('');
 
 export const drag = svg({
   under: `<path d="${SPOOL_CAGE}" fill="currentColor" fill-rule="evenodd"/><path d="${SPOOL_CAGE}" fill="#000" fill-opacity=".45" fill-rule="evenodd"/>`,
@@ -25,7 +25,7 @@ export const drag = svg({
     ...[-130, -50, 170, 10, 90].map((a) => spoke(a, 60, 190, 24, 20)),
     circle(80),
   ],
-  details: frameScrew(0, -150, 8) + dial(78, 58, { ribs: 0, ring: 'currentColor', badge: 16, dots: 20, dotFill: '#1b1d1f', face: KNOB_FACE }),
+  details: frameScrew(0, -150, 8) + dial(78, 58, { ribs: 18, ring: 'currentColor', badge: 16, dots: 20, dotFill: '#1b1d1f', face: KNOB_FACE }),
 });
 
 export const spool = svg({
