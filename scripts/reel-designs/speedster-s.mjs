@@ -24,16 +24,29 @@ export const drag = svg({
   details: speedsterKnob(),
 });
 
-// Spool side: a slotted outer ring and five straight spokes from the hub to the rim, plus a short sixth that
-// ends at the handle in the wide gap at the upper left.
+// Spool side, like the Liquid S: six spokes, each tangent to a small hexagon at the hub, sweeping out clockwise
+// to the cage, where each lands on a bar of the 18-window ring (every third). The handle is on the upper-left spoke.
+const HEX = 38; // hexagon's inner radius: each spoke's line passes this far from the center
+const CAGE = 132; // where the spokes meet the window ring
+const REACH = Math.sqrt(CAGE * CAGE - HEX * HEX);
+const SWEEP = (Math.atan2(REACH, HEX) * 180) / Math.PI; // outer end, degrees clockwise of the tangent point
+const SPOKE_ENDS = [0, 1, 2, 3, 4, 5].map((k) => -75 + k * 60);
+// A spoke: from its hexagon corner (behind the tangent point) into the cage ring.
+const spokeLine = (end) => {
+  const t = rad(end - SWEEP), [tx, ty] = P(HEX, t), d = [-Math.sin(t), Math.cos(t)];
+  const at = (u) => [tx + d[0] * u, ty + d[1] * u];
+  return { from: at(-HEX * Math.tan(rad(30))), cage: at(REACH + 4) };
+};
+const SPOKE_LINES = SPOKE_ENDS.map(spokeLine);
+const handle = SPOKE_LINES[4].cage;
 const holes = [0, 1, 2, 3, 4, 5].map((k) => `<circle cx="${P(13, rad(k * 60)).map((v) => v.toFixed(1)).join('" cy="')}" r="3" fill="#2a2c2e"/>`).join('');
 export const spool = svg({
   back: [foot(128, -244, 14, 34)],
   body: [
-    ring(200, 128) + slots({ n: 16, rIn: 140, rOut: 186, bar: 14, corner: 7 }),
-    ...[-72, -10, 49, 102, 163].map((a) => spoke(a, 26, 192, 22, 15)),
-    spoke(-125, 26, 126, 24, 20),
-    circle(32),
+    ring(200, 128) + slots({ n: 18, rIn: 140, rOut: 186, bar: 14, corner: 7, off: SPOKE_ENDS[0] }),
+    ...SPOKE_LINES.map(({ from, cage }) => strut(from, cage, 22, 16)),
+    roundPoly(SPOKE_LINES.map(({ from }) => from), 3),
+    circle(30),
   ],
-  details: `${knob(...P(130, rad(-125)), 17)}<circle r="22" fill="#000" fill-opacity=".18"/>${holes}<circle r="4" fill="#d6d8d6"/>`,
+  details: `${knob(...handle, 17)}<circle r="20" fill="#000" fill-opacity=".18"/>${holes}<circle r="4" fill="#d6d8d6"/>`,
 });
