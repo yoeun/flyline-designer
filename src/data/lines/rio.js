@@ -115,8 +115,8 @@ const sized = ({ taper: { split, example }, colorways }, { id, label, type, weig
 
 // A line sold in several densities: `sizes` is the spec table as [weight, head, total] rows, and
 // each density says which weights it is made in (all of them by default). Sizes are listed by
-// weight, densities in the order given. `keep` overrides fields of a size by its id.
-const rio = ({ id, name, sizes, densities, keep = {} }) =>
+// weight, densities in the order given.
+const rio = ({ id, name, sizes, densities }) =>
   makerProduct({
     id,
     maker: 'RIO',
@@ -127,8 +127,7 @@ const rio = ({ id, name, sizes, densities, keep = {} }) =>
           .filter(([weight]) => !d.weights || d.weights.includes(weight))
           .map(([weight, head, total]) => sized(d, { id: d.id(weight), label: d.label(weight), type: d.type, weight, head, total: d.total ?? total })),
       )
-      .sort((a, b) => a.weight - b.weight)
-      .map((size) => ({ ...size, ...keep[size.id] })),
+      .sort((a, b) => a.weight - b.weight),
   });
 
 const range = (from, to) => Array.from({ length: to - from + 1 }, (_, i) => from + i);
@@ -485,9 +484,8 @@ const premierGoldMax = rio({
 });
 
 // Premier Fathom. RIO's WF7S6 diagram: front 4+2, body 21, back 8 on 70 ft of running line; every
-// size has a 35 ft head on a 105 ft line. A black head on a running line colored by sink rate. The
-// WF8 Sink 5 and Sink 7 keep the split they had before this diagram (6/22/7) so saved setups still
-// match. 6 ips sits between Type 5 and Type 7; RIO calls it Fast Sink, as it does 5 ips elsewhere,
+// size has a 35 ft head on a 105 ft line. A black head on a running line colored by sink rate.
+// 6 ips sits between Type 5 and Type 7; RIO calls it Fast Sink, as it does 5 ips elsewhere,
 // so it draws as Type 5.
 const FATHOM = { split: [6, 21, 8], example: 7 };
 const fathomRate = (rate, type, id, name, running) => ({
@@ -507,12 +505,10 @@ const fathom = rio({
     fathomRate(6, 'sink5', 'black-green', 'Black/Green', 'rio-sage'),
     { ...fathomRate(7, 'sink7', 'black-grey', 'Black/Grey', 'rio-grey'), weights: range(6, 8) },
   ],
-  keep: { wf8s5: { taper: [6, 22, 7, 70] }, wf8s7: { taper: [6, 22, 7, 70] } },
 });
 
 // Premier AquaLux, 1.5–2 ips. RIO's WF6I diagram: front 4+2, body 22, back 2 on 70 ft of running
-// line. The WF8I keeps the split it had before (4/22/4, from a retailer's copy of an older diagram)
-// so saved setups still match. The whole head is clear.
+// line. The whole head is clear.
 const aquaLux = rio({
   id: 'rio-premier-aqualux',
   name: 'RIO Premier AquaLux',
@@ -524,7 +520,6 @@ const aquaLux = rio({
     [8, 30, 100],
   ],
   densities: [intermediate({ split: [6, 22, 2], example: 6 }, colorway('clear-light-teal', 'Clear/Light Teal', [30, 'rio-clear'], [0, 'rio-light-teal']))],
-  keep: { wf8i: { taper: [4, 22, 4, 70], estimated: false } },
 });
 
 export const PRODUCTS = [

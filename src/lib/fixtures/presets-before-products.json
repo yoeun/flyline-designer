@@ -239,9 +239,9 @@
    "type": "intermediate",
    "weight": 8,
    "taper": {
-    "front": 4,
+    "front": 6,
     "body": 22,
-    "back": 4,
+    "back": 2,
     "running": 70
    },
    "zones": [
@@ -279,8 +279,8 @@
    "weight": 8,
    "taper": {
     "front": 6,
-    "body": 22,
-    "back": 7,
+    "body": 21,
+    "back": 8,
     "running": 70
    },
    "zones": [
@@ -318,8 +318,8 @@
    "weight": 8,
    "taper": {
     "front": 6,
-    "body": 22,
-    "back": 7,
+    "body": 21,
+    "back": 8,
     "running": 70
    },
    "zones": [

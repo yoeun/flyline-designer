@@ -1076,7 +1076,6 @@ describe('RIO lines', () => {
       'rio-premier-gold-max-wf5f',
       'rio-premier-technical-trout-wf-wf5f',
       'rio-premier-aqualux-wf6i',
-      'rio-premier-aqualux-wf8i',
     ]);
   });
 
