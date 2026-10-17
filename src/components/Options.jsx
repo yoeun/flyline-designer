@@ -193,8 +193,10 @@ export function BackingOptions({ backing, onChange }) {
           ))}
         </div>
       </div>
-      <Swatches colors={BACKING_COLORS} value={backing.color} onChange={(c) => onChange({ ...backing, color: c })} label="Backing color" />
-      <p className="hint">Selected: {nameOf(backing.color)}.</p>
+      <div className="field">
+        <span>Color · {nameOf(backing.color)}</span>
+        <Swatches colors={BACKING_COLORS} value={backing.color} onChange={(c) => onChange({ ...backing, color: c })} label="Backing color" />
+      </div>
     </section>
   );
 }
