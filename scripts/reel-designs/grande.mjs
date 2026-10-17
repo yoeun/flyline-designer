@@ -39,10 +39,10 @@ export const drag = svg({
   details: '<circle r="183" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="3"/>' + grandeKnob,
 });
 
-// Spool side, all frame color but a thin red ring at the hub: ~22 tapered spokes, a large knurled center cap and a
+// Spool side, all frame color but a thin red ring at the hub: 14 evenly spaced tapered spokes, a large knurled center cap and a
 // round counterweight opposite the handle.
 const HANDLE = 160;
-const SPOOL_SPOKES = Array.from({ length: 22 }, (_, k) => -90 + (k * 360) / 22);
+const SPOOL_SPOKES = Array.from({ length: 14 }, (_, k) => -90 + (k * 360) / 14);
 export const spool = svg({
   back: [foot(132, -244, 14, 30)],
   body: [
