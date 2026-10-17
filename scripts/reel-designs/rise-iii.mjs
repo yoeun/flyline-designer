@@ -36,7 +36,8 @@ export const spool = svg({
   back: [foot(130, -244, 14, 30)],
   body: [
     ring(200, 112) + slots(WINDOWS),
-    ...[-62, 58, 178].map((a) => spoke(a, 24, 116, 24, 18, -12)),
+    // Three spokes 120° apart, swept slightly; the one at 183° runs level, out to 9 o'clock.
+    ...[0, 1, 2].map((k) => spoke(183 + k * 120, 24, 116, 24, 18, -12)),
     circle(36),
     circle(22, ...P(150, rad(HANDLE))),
   ],
