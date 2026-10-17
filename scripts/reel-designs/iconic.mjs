@@ -40,7 +40,11 @@ export const hatchCap = (r, logo = true) =>
   `<circle r="${r - 6}" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="1.5"/>` +
   (logo ? `<path d="M${-r * 0.42} 0H${r * 0.42}M${-r * 0.28} ${-r * 0.13}V${r * 0.13}M${r * 0.28} ${-r * 0.13}V${r * 0.13}" stroke="#000" stroke-opacity=".45" stroke-width="3.5" stroke-linecap="round"/>` : "");
 
-// The Iconic drag side: six curved arms swirl out from the hub, each gap split by a thinner rib.
+// Mirrors a path left to right (every coordinate pair here is absolute).
+const mirrorX = (d) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x, y) => `${-x} ${y}`);
+
+// The Iconic drag side: six curved arms swirl out from the hub, each gap split by a thinner rib. The arms are laid
+// out below sweeping clockwise and drawn mirrored, so they sweep counter-clockwise like the other reels.
 // [hub angle, rim angle, bow]
 const ARMS = [
   [-130, -112, -14],
@@ -56,11 +60,11 @@ export const iconicDrag = ({ hub = 70, cap = 62, arms = ARMS, rib = { t: 0.45, s
     body: [
       ring(200, 178),
       ...hatchFoot(),
-      ...arms.map(([a0, a1, b]) => arm(a0, hub - 6, a1, 190, 36, 24, b)),
+      ...arms.map(([a0, a1, b]) => mirrorX(arm(a0, hub - 6, a1, 190, 36, 24, b))),
       // Each rib leaves an arm partway out and curves to the rim midway to the next arm.
       ...arms.map(([a0, a1, b], k) => {
         const next = arms[(k + 1) % arms.length][1] + (k === arms.length - 1 ? 360 : 0);
-        return curve(armAt(a0, hub - 6, a1, 190, b, rib.t), P(190, rad((a1 + next) / 2 + rib.shift)), 20, 16, rib.bend);
+        return mirrorX(curve(armAt(a0, hub - 6, a1, 190, b, rib.t), P(190, rad((a1 + next) / 2 + rib.shift)), 20, 16, rib.bend));
       }),
       circle(hub),
     ],
@@ -82,7 +86,8 @@ export const hatchSpool = ({ inner = 132, bars = 12, barSweep = -30, barBend = -
     body: [
       ring(200, 180),
       ring(inner, inner - 16),
-      ...Array.from({ length: bars }, (_, k) => arm(-75 + (k * 360) / bars - barSweep, inner - 8, -75 + (k * 360) / bars, 190, barWidth, 16, barBend)),
+      // The outer cage's bars lean counter-clockwise toward the rim, like the other reels.
+      ...Array.from({ length: bars }, (_, k) => arm(-75 + (k * 360) / bars + barSweep, inner - 8, -75 + (k * 360) / bars, 190, barWidth, 16, -barBend)),
       ...Array.from({ length: spokes }, (_, k) => arm(-90 + (k * 360) / spokes - spokeSweep, hub - 6, -90 + (k * 360) / spokes, inner - 8, 22, 16, spokeBend)),
       circle(hub),
       circle(30, ...P(160, rad(handle))),
