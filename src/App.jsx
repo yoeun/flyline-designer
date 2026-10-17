@@ -7,10 +7,12 @@ import ReelPreview from './components/ReelPreview.jsx';
 import ThemeToggle from './components/ThemeToggle.jsx';
 import { DEFAULT_SETUP, LINE_PRESETS, findById } from './data/catalog.js';
 import { exportPng, exportSvg } from './lib/export.js';
+import { clampSelection } from './lib/lineEdit.js';
 import { decodeSetup, encodeSetup } from './lib/share.js';
 import { STAGE, useTheme } from './lib/theme.js';
 
 const RACK_KEY = 'flyline-designer:rack';
+const TIP = { kind: 'zone', index: 0 };
 const MODES = [
   ['reel', 'Reel'],
   ['see-through', 'See-through'],
@@ -35,6 +37,7 @@ const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^
 export default function App() {
   const [{ setup, presetId }, setState] = useState(initialSetup);
   const [mode, setMode] = useState('reel');
+  const [lineSelection, setLineSelection] = useState(TIP);
   const [themeChoice, setThemeChoice, theme] = useTheme();
   const [rack, setRack] = useState(loadRack);
   const [rackOpen, setRackOpen] = useState(false);
@@ -57,7 +60,14 @@ export default function App() {
 
   const update = (patch, nextPreset = presetId) => setState({ setup: { ...setup, ...patch }, presetId: nextPreset });
 
+  const selection = clampSelection(lineSelection, setup.line);
+
   const applyPreset = (id) => {
+    setLineSelection(TIP);
+    if (id === 'custom') {
+      setState({ setup, presetId: 'custom' });
+      return;
+    }
     const preset = findById(LINE_PRESETS, id);
     if (!preset) return;
     setState({ setup: { ...setup, name: preset.name.replace(' (example)', ''), line: structuredClone(preset.line) }, presetId: id });
@@ -134,6 +144,7 @@ export default function App() {
             onToggle={() => setRackOpen((o) => !o)}
             onLoad={(s) => {
               const { id, ...rest } = structuredClone(s);
+              setLineSelection(TIP);
               setState({ setup: rest, presetId: 'custom' });
             }}
             onRemove={(id) => setRack((r) => r.filter((s) => s.id !== id))}
@@ -142,7 +153,15 @@ export default function App() {
 
         <section className="options-column" aria-label="Options">
           <ReelOptions reel={setup.reel} onChange={(reel) => update({ reel })} />
-          <FlyLineOptions line={setup.line} presetId={presetId} onPreset={applyPreset} onChange={(line) => update({ line }, 'custom')} />
+          <FlyLineOptions
+            line={setup.line}
+            backingColor={setup.backing.color}
+            presetId={presetId}
+            onPreset={applyPreset}
+            onChange={(line) => update({ line }, 'custom')}
+            selection={selection}
+            onSelect={setLineSelection}
+          />
           <BackingOptions backing={setup.backing} lineType={setup.line.type} onChange={(backing) => update({ backing })} />
         </section>
       </main>

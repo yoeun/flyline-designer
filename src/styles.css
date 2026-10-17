@@ -567,120 +567,100 @@ select {
   max-width: 110px;
 }
 
-.line-summary {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 14px;
-}
-
-.line-summary__bar {
-  display: flex;
-  height: 8px;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
-}
-
-.line-details {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
-
-.line-details > summary {
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 14px;
-  font-size: 14px;
-  color: var(--accent);
-  cursor: pointer;
-  list-style: none;
-}
-
-.line-details > summary::-webkit-details-marker {
-  display: none;
-}
-
-.line-details > summary::before {
-  content: '▸';
-  display: inline-block;
-}
-
-.line-details[open] > summary::before {
-  transform: rotate(90deg);
-}
-
-.line-details__body {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 4px 14px 14px;
-}
-
-.field-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.span-2 {
-  grid-column: span 2;
-}
-
-.span-3 {
-  grid-column: span 3;
-}
-
-.taper {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.taper legend {
-  padding: 0;
-  margin-bottom: 6px;
-  font-size: 14px;
+.field select:disabled {
   color: var(--muted);
+  background: var(--panel-2);
 }
 
-.zone-tabs {
+.field-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 10px;
 }
 
-.zone-tab,
-.zone-add {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 40px;
-  padding: 6px 11px;
-  border-radius: 8px;
-  border: 1px solid var(--line-strong);
-  background: var(--panel);
-  font-size: 14px;
+.field--grow {
+  flex: 1 1 140px;
+  min-width: 0;
+}
+
+.line-editor {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.line-editor__rule,
+.line-editor__tick line {
+  stroke: var(--muted);
+  stroke-width: 1;
+}
+
+.line-editor__rule-on {
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.line-editor__name {
+  font: 600 10px var(--font-body);
+  letter-spacing: 0.08em;
+  fill: var(--muted);
+}
+
+.line-editor__len {
+  font: 10px var(--font-mono);
+  fill: var(--muted);
+}
+
+.line-editor__span,
+.line-editor__zone {
   cursor: pointer;
+  outline: none;
 }
 
-.zone-tab.is-active {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+.line-editor__span.is-selected text,
+.line-editor__zone.is-selected text {
+  fill: var(--ink);
+  font-weight: 600;
 }
 
-.zone-add {
-  border-style: dashed;
-  background: transparent;
-  color: var(--accent);
+.line-editor__span:focus-visible > rect:first-child,
+.line-editor__zone:focus-visible > rect:first-child,
+.line-editor__handle:focus-visible > rect {
+  stroke: var(--accent);
+  stroke-width: 2;
 }
 
-.zone-panel {
+.line-editor__outline {
+  fill: none;
+  stroke: var(--ink);
+  stroke-opacity: 0.25;
+}
+
+.line-editor__ring {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.line-editor__handle {
+  cursor: ew-resize;
+  touch-action: none;
+  outline: none;
+}
+
+.line-editor__handle line {
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.line-editor__handle:hover > rect {
+  fill: var(--accent-soft);
+}
+
+.line-selection {
   background: var(--panel-2);
   border-radius: 10px;
   padding: 12px;
@@ -689,18 +669,22 @@ select {
   gap: 12px;
 }
 
-.zone-panel__row {
+.line-selection__head {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
 }
 
-.zone-panel output {
-  min-height: 40px;
+.line-selection__head .field input[type='number'] {
+  max-width: 90px;
+}
+
+.line-selection__actions {
+  margin-left: auto;
   display: flex;
-  align-items: center;
-  color: var(--ink);
+  gap: 14px;
 }
 
 .link-button {
@@ -710,6 +694,11 @@ select {
   font-size: 14px;
   padding: 8px 0;
   cursor: pointer;
+}
+
+.link-button:disabled {
+  opacity: 0.45;
+  cursor: default;
 }
 
 .backing-row {
@@ -797,10 +786,6 @@ select {
 }
 
 @media (max-width: 480px) {
-  .taper {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .family {
     flex-direction: column;
     align-items: flex-start;
