@@ -274,7 +274,10 @@ export default function App() {
           <ThemeToggle value={themeChoice} onChange={setThemeChoice} />
           {page === 'designer' && (
             <>
-              <Button onClick={startNew}>New</Button>
+              <Button variant="primary" className="gap-1.5" onClick={startNew}>
+                <Icon name="add" />
+                New
+              </Button>
               <Button onClick={resetAll} disabled={!dirty}>
                 Reset
               </Button>
@@ -290,7 +293,7 @@ export default function App() {
                 <Icon name="download" />
                 SVG
               </Button>
-              <Button variant="primary" className="gap-1.5" onClick={() => exportPng(svgRef.current, slug(displayName(setup)))} aria-label="Download PNG">
+              <Button className="gap-1.5" onClick={() => exportPng(svgRef.current, slug(displayName(setup)))} aria-label="Download PNG">
                 <Icon name="download" />
                 PNG
               </Button>
