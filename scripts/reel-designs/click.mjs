@@ -17,11 +17,12 @@ const GEAR = knurl(134, 3.5, 44) + circle(124);
 
 // A spoke shaped like a Y: two arms that leave the hub together along the spoke and curve smoothly apart to the
 // rim, so the stem and fork are one flowing shape.
-const ySpoke = (a) => [-1, 1].map((sd) => arm(P(18, rad(a)), P(118, rad(a)), P(150, rad(a + sd * 15)), 30, 16, 20));
+const ySpoke = (a) => [-1, 1].map((sd) => arm(P(18, rad(a)), P(118, rad(a)), P(192, rad(a + sd * 15)), 30, 16, 20));
 const spokes = (first) => [0, 1, 2].flatMap((k) => ySpoke(first + k * 120));
 
 // A frame spoke: a Y like ySpoke, its own width and fork.
-const frameY = (a, w0, w1, spread) => [-1, 1].map((sd) => arm(P(18, rad(a)), P(112, rad(a)), P(150, rad(a + sd * spread)), w0, w1, 20));
+// Its tips run across the window ring to the outer edge of the cage.
+const frameY = (a, w0, w1, spread) => [-1, 1].map((sd) => arm(P(18, rad(a)), P(118, rad(a)), P(192, rad(a + sd * spread)), w0, w1, 20));
 
 export const drag = svg({
   back: [GEAR],
@@ -30,9 +31,9 @@ export const drag = svg({
     sageFoot(),
     pad(166, -90, 34, 40),
     pad(166, 90, 34, 40),
-    ...frameY(-140, 44, 20, 14),
-    ...frameY(-40, 44, 20, 14),
-    ...frameY(90, 40, 20, 12),
+    ...frameY(-140, 44, 18, 16),
+    ...frameY(-40, 44, 18, 16),
+    ...frameY(90, 40, 18, 14),
     circle(34),
     circle(24, 0, 48),
   ],
