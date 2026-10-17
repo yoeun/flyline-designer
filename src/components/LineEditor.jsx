@@ -10,6 +10,9 @@ const MIN_PX = 28;
 const RULE_Y = 34;
 const MID = 76;
 const MAX_HALF = 11;
+const sameLengths = (a, b) =>
+  TAPER_KEYS.every((k) => a.taper[k] === b.taper[k]) && a.zones.every((z, i) => z.length === b.zones[i].length);
+
 const SHORT = { front: 'FRONT', body: 'BODY', back: 'BACK', running: 'RUNNING LINE' };
 
 function zoneLabel(z, count) {
@@ -84,7 +87,8 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
     const h = drag.current && handles.find((c) => c.id === drag.current.id);
     if (!h) return;
     const rect = svgRef.current.getBoundingClientRect();
-    onChange(h.move(line, drag.current.scale.ft(((e.clientX - rect.left) / rect.width) * W - LEFT)));
+    const next = h.move(line, drag.current.scale.ft(((e.clientX - rect.left) / rect.width) * W - LEFT));
+    if (!sameLengths(next, line)) onChange(next);
   };
   const endDrag = () => {
     drag.current = null;
@@ -95,7 +99,8 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
     const delta = { ArrowLeft: step, ArrowRight: -step }[e.key];
     if (delta === undefined) return;
     e.preventDefault();
-    onChange(h.move(line, h.ft + delta));
+    const next = h.move(line, h.ft + delta);
+    if (!sameLengths(next, line)) onChange(next);
   };
 
   return (
@@ -103,6 +108,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
       ref={svgRef}
       viewBox={`0 0 ${W} 114`}
       className="line-editor"
+      role="group"
       aria-label="Fly line editor"
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}
@@ -192,7 +198,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
           onPointerDown={onPointerDown(h)}
           onKeyDown={onHandleKey(h)}
         >
-          <rect x={x(h.ft) - 7} y={h.y1 - 3} width="14" height={h.y2 - h.y1 + 6} rx="4" fill="transparent" />
+          <rect x={x(h.ft) - 10} y={h.y1 - 3} width="20" height={h.y2 - h.y1 + 6} rx="4" fill="transparent" />
           <line x1={x(h.ft)} x2={x(h.ft)} y1={h.y1} y2={h.y2} />
         </g>
       ))}
