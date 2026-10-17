@@ -25,6 +25,7 @@ the Model menu groups models by maker, A–Z, with Generic last.
           "id": "lamson-liquid-s-5",     // stored in saved setups and links: never rename one
           "size": "-5+",                 // the maker's size label
           "name": "…",                   // optional; defaults to "<model name> <size>"
+          "design": "zero-23",           // optional; a drawing for this size alone, over the model's
           "weights": [5, 6],             // line weights it suits, lightest to heaviest
           "rim": 3.65,                   // inches
           "spool": 3.41,                 // capacity diameter, inches
