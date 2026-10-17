@@ -53,9 +53,11 @@ export const rimHandle = (r, deg, size = 18) => knob(...P(r, rad(deg)), size);
 
 const RIM = { n: 20, rIn: 146, rOut: 186, bar: 18, corner: 10, off: -90 };
 
+// The window ring behind the five spokes is the spool's, so it's drawn recessed (darker); the rim lip is the frame's.
 export const drag = svg({
+  back: [ring(188, 134) + slots(RIM)],
   body: [
-    ring(200, 134) + slots(RIM),
+    ring(200, 188),
     sageFoot(),
     pad(166, -90, 34, 44),
     ...[-126, -54, 162, 18, 90].map((a) => spoke(a, 60, 190, 24, 18)),
