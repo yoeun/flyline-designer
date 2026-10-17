@@ -1,6 +1,6 @@
 // Hatch Iconic (Large and Mid Arbor share this frame).
-// Drawn from Hatch's straight-on 5 Plus photos. The drag side's swirl of curved arms is simplified to six
-// arms from the hub to the rim plus one thinner rib per gap; the spool seen behind them is a plain ring.
+// Drawn from Hatch's straight-on 5 Plus photos. The drag side's swirl is simplified to six curved arms from the hub
+// to the rim, over the spool's darker outer cage.
 import { P, circle, f, hexSpokes, knurl, rad, ring, roundPoly, strut, svg } from './lib.mjs';
 
 // A curved bar from point p0 to p2, bowed `bend` sideways at its middle, w0 wide at p0 and w1 at p2.
@@ -43,27 +43,26 @@ export const hatchCap = (r, logo = true) =>
 // Mirrors a path left to right (every coordinate pair here is absolute).
 const mirrorX = (d) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x, y) => `${-x} ${y}`);
 
-// The Iconic drag side: six curved arms swirl out from the hub, each gap split by a thinner rib. The arms are laid
+// The Iconic drag side: six curved arms swirl out from the hub. The arms are laid
 // out below sweeping clockwise and drawn mirrored, so they sweep counter-clockwise like the other reels.
 // [hub angle, rim angle, bow]: six arms 60° apart, all alike: once mirrored they lean counter-clockwise and curve
 // clockwise.
 const ARM_BOW = 30;
 const ARMS = [0, 1, 2, 3, 4, 5].map((k) => [-130 + k * 60, -85 + k * 60, ARM_BOW]);
+// Behind the arms, the spool's outer cage shows in a much darker shade so it reads as a separate piece: a ring
+// where the backing starts (radius ~120 across the sizes) with curved bars leaning out to the rim, drawn like the
+// spool side's.
+const dragCage = (r = 120, bars = 12, sweep = -30, bend = -8) => [
+  ring(r + 6, r - 6),
+  ...Array.from({ length: bars }, (_, k) => arm(-75 + (k * 360) / bars + sweep, r, -75 + (k * 360) / bars, 190, 16, 14, bend)),
+];
+const shaded = (paths) => paths.map((d) => `<path d="${d}" fill="currentColor" fill-rule="evenodd"/><path d="${d}" fill="#000" fill-opacity=".45" fill-rule="evenodd"/>`).join('');
+
 // The arms start at `armIn`, well inside the hub, so they run deep toward the center under the cap.
-export const iconicDrag = ({ hub = 56, cap = 50, armIn = 30, arms = ARMS, rib = { t: 0.45, shift: 0, bend: 10 } } = {}) =>
+export const iconicDrag = ({ hub = 56, cap = 50, armIn = 30, arms = ARMS } = {}) =>
   svg({
-    back: [ring(134, 120)],
-    body: [
-      ring(200, 178),
-      ...hatchFoot(),
-      ...arms.map(([a0, a1, b]) => mirrorX(arm(a0, armIn, a1, 190, 36, 12, b))),
-      // Each rib leaves an arm partway out and curves to the rim midway to the next arm.
-      ...arms.map(([a0, a1, b], k) => {
-        const next = arms[(k + 1) % arms.length][1] + (k === arms.length - 1 ? 360 : 0);
-        return mirrorX(curve(armAt(a0, armIn, a1, 190, b, rib.t), P(190, rad((a1 + next) / 2 + rib.shift)), 20, 16, rib.bend));
-      }),
-      circle(hub),
-    ],
+    under: shaded(dragCage()),
+    body: [ring(200, 184), ...hatchFoot(), ...arms.map(([a0, a1, b]) => mirrorX(arm(a0, armIn, a1, 190, 36, 12, b))), circle(hub)],
     details: hatchCap(cap),
   });
 
