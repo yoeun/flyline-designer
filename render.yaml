@@ -1,0 +1,32 @@
+# Render Blueprint: the app as a Static Site, deployed on every push to main.
+# See the Deploy section of the README for connecting it.
+services:
+  - type: web
+    runtime: static
+    name: flyline-designer
+    branch: main
+    autoDeployTrigger: commit
+    # Tests run first so a failing build is never published.
+    buildCommand: npm ci && npm test && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      # Vite 8 needs Node 20.19+ or 22.12+; match local dev.
+      - key: NODE_VERSION
+        value: "24"
+    routes:
+      # Any path without a file serves the app, so path routes added later (e.g. /r/<id>) won't 404.
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      # Vite puts a content hash in every asset name, so they never change once published.
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      # The page itself is always revalidated, so a deploy takes effect on the next load.
+      - path: /
+        name: Cache-Control
+        value: no-cache
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache

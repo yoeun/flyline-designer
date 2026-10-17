@@ -31,6 +31,22 @@ npm run build    # production build in dist/
 
 To try the rack page without saving setups by hand, open the app with `?demo=1` (for example `http://localhost:5173/?demo=1`). It shows a fixed test rack for that visit and never touches your saved one.
 
+## Deploy
+
+The app is a static site on [Render](https://render.com/), set up by the Blueprint in [render.yaml](render.yaml). Every push to `main` runs the tests, builds, and publishes `dist/`. A failing test stops the deploy.
+
+To connect it (once):
+
+1. In the Render dashboard, choose **New → Blueprint** and pick this repository.
+2. Render reads `render.yaml` and creates the `flyline-designer` static site. Apply it.
+3. Add the final domain under the site's **Settings → Custom Domains** before people start using it. Saved racks live in the browser's `localStorage`, which belongs to one origin, so moving from `*.onrender.com` to a custom domain later would leave everyone's racks behind.
+
+The Blueprint also:
+
+- builds on Node 24 (`NODE_VERSION`). `engines` in `package.json` lists the versions Vite supports.
+- serves `index.html` for any path that isn't a file, so path routes work without a 404.
+- caches hashed files in `/assets/` for a year and has browsers recheck `index.html` on every load, so a deploy shows up on the next visit. A path route added later should get the same `no-cache` header as `/`.
+
 ## Contributing
 
 - PRs are squash merged, and the PR title becomes the commit on `main`.
