@@ -4,7 +4,8 @@ import Button from './components/Button.jsx';
 import Checks from './components/Checks.jsx';
 import DetailsDialog from './components/DetailsDialog.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
-import Icon from './components/Icon.jsx';
+import HeaderMenu from './components/HeaderMenu.jsx';
+import NavMenu from './components/NavMenu.jsx';
 import PreviewModeToggle from './components/PreviewModeToggle.jsx';
 import Rack from './components/Rack.jsx';
 import RackPage from './components/RackPage.jsx';
@@ -12,7 +13,6 @@ import Segmented from './components/Segmented.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
 import { Toaster } from './components/ui/sonner.jsx';
 import SetupTitle from './components/SetupTitle.jsx';
-import ThemeToggle from './components/ThemeToggle.jsx';
 import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetForLine, switchLine } from './data/catalog.js';
 import { DEMO_RACK } from './data/demoRack.js';
 import { exportPng, exportSvg } from './lib/export.js';
@@ -232,7 +232,7 @@ export default function App() {
   };
 
   const openRack = () => {
-    setCameFromDesigner(true);
+    setCameFromDesigner(page === 'designer');
     setPage('rack');
   };
 
@@ -262,26 +262,30 @@ export default function App() {
     setPage('designer');
   };
 
+  // Where each page menu item goes, and what each overflow menu item does; lib/headerMenu.js lists them.
+  const navigate = { designer: backToDesigner, rack: openRack, guide: openGuide };
+  const menuActions = {
+    svg: () => exportSvg(svgRef.current, slug(displayName(setup))),
+    png: () => exportPng(svgRef.current, slug(displayName(setup))),
+  };
+
   return (
     // Side by side, the page fits the window: the reel takes whatever height the checks and rack
     // leave, and the rack list and options panel scroll inside their own boxes.
     <div className="wide:flex wide:h-dvh wide:flex-col">
       <header className={`flex flex-wrap items-center justify-between gap-3 border-b border-border bg-card py-3.5 ${GUTTER}`}>
-        <div className="flex min-w-0 items-center gap-3.5">
+        <div className="flex min-w-0 items-center gap-2">
+          <NavMenu page={page} onNavigate={(id) => navigate[id]()} theme={themeChoice} onTheme={setThemeChoice} />
           <h1 className="font-heading text-[24px] leading-none font-bold tracking-[0.04em] whitespace-nowrap uppercase">Flyline Designer</h1>
         </div>
         <div className="flex flex-wrap gap-2">
-          <ThemeToggle value={themeChoice} onChange={setThemeChoice} />
+          {page !== 'guide' && <Button onClick={startNew}>New</Button>}
           {page === 'designer' && (
             <>
-              <Button variant="primary" className="gap-1.5" onClick={startNew}>
-                <Icon name="add" />
-                New
-              </Button>
               <Button onClick={resetAll} disabled={!dirty}>
                 Reset
               </Button>
-              <Button onClick={() => (editingId ? saveEntry({ asNew: false }) : setDetailsMode('save'))} disabled={!!editingId && !dirty}>
+              <Button variant="primary" onClick={() => (editingId ? saveEntry({ asNew: false }) : setDetailsMode('save'))} disabled={!!editingId && !dirty}>
                 Save
               </Button>
               {editingId && (
@@ -289,32 +293,22 @@ export default function App() {
                   Save as new
                 </Button>
               )}
-              <Button className="gap-1.5" onClick={() => exportSvg(svgRef.current, slug(displayName(setup)))} aria-label="Download SVG">
-                <Icon name="download" />
-                SVG
-              </Button>
-              <Button className="gap-1.5" onClick={() => exportPng(svgRef.current, slug(displayName(setup)))} aria-label="Download PNG">
-                <Icon name="download" />
-                PNG
-              </Button>
             </>
           )}
+          <HeaderMenu page={page} onSelect={(id) => menuActions[id]()} />
         </div>
       </header>
       <Toaster theme={theme} position="bottom-center" duration={2500} />
 
       {page === 'guide' ? (
         <Suspense fallback={<p className={`pt-6 text-[14px] text-muted-foreground ${GUTTER}`}>Loading the line guide…</p>}>
-          <GuidePage onBack={backToDesigner} onTry={tryLine} />
+          <GuidePage onTry={tryLine} />
         </Suspense>
       ) : page === 'rack' ? (
         <RackPage
           setups={rack}
           currentId={editingId}
           conflicts={rackConflicts(rack)}
-          showBack={cameFromDesigner}
-          onBack={backToDesigner}
-          onNew={startNew}
           onLoad={loadEntry}
           onEditDetails={(entry) => setDetailsEntryId(entry.id)}
           onRemove={removeEntry}
