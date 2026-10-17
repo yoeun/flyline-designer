@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Checks from './components/Checks.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
+import PreviewModeToggle from './components/PreviewModeToggle.jsx';
 import Rack from './components/Rack.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
 import ThemeToggle from './components/ThemeToggle.jsx';
@@ -12,11 +13,6 @@ import { STAGE, useTheme } from './lib/theme.js';
 
 const RACK_KEY = 'flyline-designer:rack';
 const TIP = { kind: 'zone', index: 0 };
-const MODES = [
-  ['reel', 'Reel'],
-  ['see-through', 'See-through'],
-  ['line-only', 'Line only'],
-];
 
 function loadRack() {
   try {
@@ -122,13 +118,7 @@ export default function App() {
       <main className="layout">
         <section className="preview-column" aria-label="Preview">
           <div className="stage">
-            <div className="segmented" role="group" aria-label="Preview mode">
-              {MODES.map(([id, label]) => (
-                <button key={id} type="button" aria-pressed={mode === id} onClick={() => setMode(id)}>
-                  {label}
-                </button>
-              ))}
-            </div>
+            <PreviewModeToggle value={mode} onChange={setMode} />
             <div className="stage__reel">
               <ReelPreview setup={setup} mode={mode} background={STAGE[theme]} svgRef={svgRef} title={`${setup.name} preview`} />
             </div>
