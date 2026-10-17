@@ -155,6 +155,7 @@ export default function App() {
             presetId={presetId}
             onPreset={applyPreset}
             onChange={(line) => update({ line }, 'custom')}
+            onColorway={(cw) => update({ line: { ...setup.line, zones: structuredClone(cw.zones) } })}
             selection={selection}
             onSelect={setLineSelection}
           />

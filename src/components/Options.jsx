@@ -2,12 +2,13 @@ import { useEffect, useRef } from 'react';
 import {
   BACKING_COLORS,
   BACKING_LENGTHS,
-  LINE_COLORS,
   LINE_PRESETS,
   LINE_TYPES,
   REEL_COLORS,
   REELS,
   findById,
+  lineColorway,
+  lineSwatches,
   makerGroups,
   nameOf,
   reelColors,
@@ -78,7 +79,7 @@ function LengthField({ label, value, onChange }) {
   );
 }
 
-function LineSelection({ line, selection, onChange, onSelect }) {
+function LineSelection({ line, selection, onChange, onSelect, colorLocked }) {
   if (!selection) return <p className="hint">Click part of the line to edit it.</p>;
   if (selection.kind === 'taper') {
     const { key } = selection;
@@ -98,6 +99,19 @@ function LineSelection({ line, selection, onChange, onSelect }) {
   const name = zoneName(index, count);
   const zone = line.zones[index];
   const drawn = zoneRanges(line)[index].length;
+  if (colorLocked) {
+    return (
+      <div className="line-selection">
+        <div className="line-selection__head">
+          <strong>{name}</strong>
+          <span className="muted">
+            {nameOf(zone.color)} · <span className="mono">{formatFeet(drawn)}</span>
+          </span>
+        </div>
+        <p className="hint">Colors follow the maker's colorway. Choose Custom to recolor.</p>
+      </div>
+    );
+  }
   return (
     <div className="line-selection">
       <div className="line-selection__head">
@@ -126,14 +140,16 @@ function LineSelection({ line, selection, onChange, onSelect }) {
           </button>
         </span>
       </div>
-      <Swatches colors={LINE_COLORS} value={zone.color} onChange={(c) => onChange({ ...line, zones: line.zones.map((z, i) => (i === index ? { ...z, color: c } : z)) })} label={`${name} color`} />
+      <Swatches colors={lineSwatches(line)} value={zone.color} onChange={(c) => onChange({ ...line, zones: line.zones.map((z, i) => (i === index ? { ...z, color: c } : z)) })} label={`${name} color`} />
     </div>
   );
 }
 
-export function FlyLineOptions({ line, backingColor, presetId, onChange, onPreset, selection, onSelect }) {
+export function FlyLineOptions({ line, backingColor, presetId, onChange, onPreset, onColorway, selection, onSelect }) {
   const type = findById(LINE_TYPES, line.type);
   const locked = presetId !== 'custom';
+  const preset = findById(LINE_PRESETS, presetId);
+  const colorway = lineColorway(preset, line);
   const editRef = useRef(null);
   const selected = selection !== null;
 
@@ -194,9 +210,21 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
           </Select>
         </label>
       </div>
+      {preset?.colorways && (
+        <label className="field">
+          <span>Colorway</span>
+          <Select value={colorway?.id} disabled={preset.colorways.length < 2} onChange={(e) => onColorway(findById(preset.colorways, e.target.value))}>
+            {preset.colorways.map((cw) => (
+              <option key={cw.id} value={cw.id}>
+                {cw.name}
+              </option>
+            ))}
+          </Select>
+        </label>
+      )}
       <div ref={editRef} className="line-edit">
-        <LineEditor line={line} selection={selection} onSelect={onSelect} onChange={onChange} backingColor={backingColor} />
-        <LineSelection line={line} selection={selection} onChange={onChange} onSelect={onSelect} />
+        <LineEditor line={line} selection={selection} onSelect={onSelect} onChange={onChange} backingColor={backingColor} zonesLocked={Boolean(colorway)} />
+        <LineSelection line={line} selection={selection} onChange={onChange} onSelect={onSelect} colorLocked={Boolean(colorway)} />
       </div>
       <p className="hint">
         {type?.name} · {line.weight} wt · <span className="mono">{formatFeet(totalLength(line))}</span> total

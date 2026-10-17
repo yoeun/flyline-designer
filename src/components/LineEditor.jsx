@@ -21,7 +21,8 @@ function zoneLabel(z, count) {
 }
 
 // Dimension line for the taper on top, the fly line colored by zone below. Tip on the right.
-export default function LineEditor({ line, selection, onSelect, onChange, backingColor }) {
+// With `zonesLocked` (a maker colorway) the color boundaries can't be dragged.
+export default function LineEditor({ line, selection, onSelect, onChange, backingColor, zonesLocked = false }) {
   const clip = `editor-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   const svgRef = useRef(null);
   const drag = useRef(null);
@@ -59,7 +60,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
       y1: RULE_Y - 9,
       y2: RULE_Y + 9,
     })),
-    ...zones.slice(0, -1).map((z) => ({
+    ...(zonesLocked ? [] : zones.slice(0, -1)).map((z) => ({
       id: `zone-${z.index}`,
       move: (l, ft) => moveZoneBoundary(l, z.index, ft),
       ft: z.end,
