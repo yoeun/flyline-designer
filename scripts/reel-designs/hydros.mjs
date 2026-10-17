@@ -1,5 +1,5 @@
 // Orvis Hydros.
-import { P, circle, dragKnob, foot, knob, pad, rad, ring, screw, slots, spoke, strut, svg } from './lib.mjs';
+import { P, circle, dragKnob, foot, knob, pad, rad, ring, roundPoly, screw, slots, strut, svg } from './lib.mjs';
 
 // The Hydros foot is dark whatever the reel color.
 const HYDROS_FOOT = `<path d="${foot(130, -244, 14, 30)}" fill="#3b3e41"/><path d="${foot(130, -244, 14, 30)}" fill="url(#sheen)"/>`;
@@ -17,15 +17,33 @@ export const drag = svg({
   details: dragKnob(64),
 });
 
-// Spool side: three double spokes, 120° apart. Each pair is two parallel bars as far apart as the hub is wide.
+// Spool side: three arcs, each curving in from the ring to touch the hub and back out, so neighbouring ends
+// read as double spokes 120° apart, each pair as wide as the hub.
 const HUB = 38;
-const HYDROS_SPOKES = [-90, 30, 150].flatMap((deg) => {
-  const a = rad(deg), u = [Math.cos(a), Math.sin(a)], n = [-u[1], u[0]];
-  return [-1, 1].map((side) => {
-    const off = side * (HUB - 6), at = (t) => [n[0] * off + u[0] * t, n[1] * off + u[1] * t];
-    return strut(at(0), at(Math.sqrt(108 * 108 - off * off)), 12, 12);
-  });
-});
+const ARC_R = 108; // where the arcs meet the ring
+const ARC_W = 12;
+const arcBand = (mid) => {
+  const m = rad(mid), u = [Math.cos(m), Math.sin(m)];
+  // The ends sit where a straight pair as wide as the hub would meet the ring, either side of the spokes at mid ± 60°.
+  const theta = rad(60) - Math.asin((HUB - ARC_W / 2) / ARC_R);
+  // A circle through both ends and tangent to the hub at its nearest point: center on the mid ray, d out.
+  const d = (ARC_R * ARC_R - HUB * HUB) / (2 * (ARC_R * Math.cos(theta) - HUB));
+  const rho = d - HUB;
+  const c = [u[0] * d, u[1] * d];
+  const end = (sign) => {
+    const [x, y] = P(ARC_R, m + sign * theta);
+    return Math.atan2(y - c[1], x - c[0]);
+  };
+  let a0 = end(-1), a1 = end(1);
+  // Sweep the short way round, through the side nearest the hub.
+  const near = Math.atan2(-u[1], -u[0]);
+  const within = (a, lo, hi) => ((a - lo + 4 * Math.PI) % (2 * Math.PI)) <= ((hi - lo + 4 * Math.PI) % (2 * Math.PI));
+  if (!within(near, a0, a1)) [a0, a1] = [a1, a0];
+  const span = (a1 - a0 + 4 * Math.PI) % (2 * Math.PI);
+  const along = (r) => Array.from({ length: 25 }, (_, i) => [c[0] + r * Math.cos(a0 + (span * i) / 24), c[1] + r * Math.sin(a0 + (span * i) / 24)]);
+  return roundPoly([...along(rho + ARC_W / 2), ...along(rho - ARC_W / 2).reverse()], 2);
+};
+const HYDROS_SPOKES = [-30, 90, 210].map(arcBand);
 
 export const spool = svg({
   under: HYDROS_FOOT,
