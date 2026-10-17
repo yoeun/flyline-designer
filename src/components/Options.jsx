@@ -16,22 +16,19 @@ import {
 } from '../data/catalog.js';
 import { totalLength, zoneRanges } from '../lib/geometry.js';
 import { MIN_LENGTH, TAPER_NAMES, formatFeet, removeZone, setTaperLength, setZoneLength, splitZone, zoneName } from '../lib/lineEdit.js';
+import Button from './Button.jsx';
+import Field from './Field.jsx';
+import { NumberInput } from './Input.jsx';
 import LineEditor from './LineEditor.jsx';
 import SearchableSelect from './SearchableSelect.jsx';
 import Segmented from './Segmented.jsx';
+import Select from './Select.jsx';
 import Swatches from './Swatches.jsx';
 
-// Native select (keeps the OS menu, keyboard and mobile pickers) with our own chevron.
-function Select(props) {
-  return (
-    <span className="select">
-      <select {...props} />
-      <span className="icon" aria-hidden="true">
-        expand_more
-      </span>
-    </span>
-  );
-}
+const GROUP = 'flex flex-col gap-3.5 px-5.5 py-5';
+const HEADING = 'font-heading text-[20px] leading-[normal] font-bold tracking-[0.06em] uppercase';
+const HINT = 'text-[13px] text-muted-foreground';
+const MONO = 'font-mono tabular-nums';
 
 // Maker-grouped options for the searchable Model and Preset menus. The catalog is static, so build them once.
 const toGroups = (groups, label) => groups.map(([maker, items]) => ({ label: maker, items: items.map((item) => ({ value: item.id, label: label(item) })) }));
@@ -42,6 +39,8 @@ const presetGroups = makerGroups(LINE_PRESETS, 'Generic').map(([maker, presets])
 const PRESET_GROUPS = [...toGroups(presetGroups, (p) => p.name), { label: null, items: [{ value: 'custom', label: 'Custom' }] }];
 
 const STRENGTHS = [20, 30].map((lb) => [lb, `${lb} lb`]);
+const TYPE_ITEMS = LINE_TYPES.map((t) => ({ value: t.id, label: t.name }));
+const WEIGHT_ITEMS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((w) => ({ value: w, label: `${w} wt` }));
 
 const numberOr = (value, fallback) => {
   const n = parseFloat(value);
@@ -51,13 +50,12 @@ const numberOr = (value, fallback) => {
 export function ReelOptions({ reel, onChange }) {
   const color = findById(REEL_COLORS, reel.color);
   return (
-    <section className="options-group">
-      <h2>Reel</h2>
+    <section className={GROUP}>
+      <h2 className={HEADING}>Reel</h2>
       <SearchableSelect label="Model" groups={REEL_GROUPS} value={reel.model} onChange={(id) => onChange(withReelModel(reel, id))} placeholder="Search reels" />
-      <div className="field">
-        <span>Color · {color?.name}</span>
+      <Field label={`Color · ${color?.name}`}>
         <Swatches colors={reelColors(findById(REELS, reel.model))} value={reel.color} onChange={(c) => onChange({ ...reel, color: c })} label="Reel color" size={34} />
-      </div>
+      </Field>
     </section>
   );
 }
@@ -70,24 +68,22 @@ const TAPER_HINTS = {
 };
 
 function LengthField({ label, value, onChange }) {
-  return (
-    <label className="field field--inline">
-      <input type="number" min="0.5" step="0.5" className="mono" aria-label={label} value={value} onChange={(e) => onChange(numberOr(e.target.value, value))} />
-      <span>ft</span>
-    </label>
-  );
+  return <NumberInput label={label} unit="ft" min="0.5" step="0.5" className="w-full max-w-[90px]" value={value} onChange={(e) => onChange(numberOr(e.target.value, value))} />;
 }
 
+const SELECTION = 'flex flex-col gap-3 rounded-lg bg-secondary p-3';
+const SELECTION_HEAD = 'flex flex-wrap items-center gap-2.5 text-[14px]';
+
 function LineSelection({ line, selection, onChange, onSelect, colorLocked }) {
-  if (!selection) return <p className="hint">Click part of the line to edit it.</p>;
+  if (!selection) return <p className={HINT}>Click part of the line to edit it.</p>;
   if (selection.kind === 'taper') {
     const { key } = selection;
     return (
-      <div className="line-selection">
-        <div className="line-selection__head">
+      <div className={SELECTION}>
+        <div className={SELECTION_HEAD}>
           <strong>{TAPER_NAMES[key]}</strong>
           <LengthField label={`${TAPER_NAMES[key]} length in feet`} value={line.taper[key]} onChange={(ft) => onChange(setTaperLength(line, key, ft))} />
-          <span className="muted">{TAPER_HINTS[key]}</span>
+          <span className="text-muted-foreground">{TAPER_HINTS[key]}</span>
         </div>
       </div>
     );
@@ -100,35 +96,34 @@ function LineSelection({ line, selection, onChange, onSelect, colorLocked }) {
   const drawn = zoneRanges(line)[index].length;
   if (colorLocked) {
     return (
-      <div className="line-selection">
-        <div className="line-selection__head">
+      <div className={SELECTION}>
+        <div className={SELECTION_HEAD}>
           <strong>{name}</strong>
-          <span className="muted">
-            {nameOf(zone.color)} · <span className="mono">{formatFeet(drawn)}</span>
+          <span className="text-muted-foreground">
+            {nameOf(zone.color)} · <span className={MONO}>{formatFeet(drawn)}</span>
           </span>
         </div>
-        <p className="hint">Colors follow the maker's colorway. Choose Custom to recolor.</p>
+        <p className={HINT}>Colors follow the maker's colorway. Choose Custom to recolor.</p>
       </div>
     );
   }
   return (
-    <div className="line-selection">
-      <div className="line-selection__head">
+    <div className={SELECTION}>
+      <div className={SELECTION_HEAD}>
         <strong>{name}</strong>
         {index === count - 1 ? (
-          <span className="muted">
-            <span className="mono">{formatFeet(drawn)}</span> · rest of line
+          <span className="text-muted-foreground">
+            <span className={MONO}>{formatFeet(drawn)}</span> · rest of line
           </span>
         ) : (
           <LengthField label={`${name} length in feet`} value={zone.length} onChange={(ft) => onChange(setZoneLength(line, index, ft))} />
         )}
-        <span className="line-selection__actions">
-          <button type="button" className="link-button" disabled={drawn < 2 * MIN_LENGTH} onClick={() => onChange(splitZone(line, index))}>
+        <span className="ml-auto flex gap-3.5">
+          <Button variant="link" disabled={drawn < 2 * MIN_LENGTH} onClick={() => onChange(splitZone(line, index))}>
             Split
-          </button>
-          <button
-            type="button"
-            className="link-button"
+          </Button>
+          <Button
+            variant="link"
             disabled={count < 2}
             onClick={() => {
               onChange(removeZone(line, index));
@@ -136,7 +131,7 @@ function LineSelection({ line, selection, onChange, onSelect, colorLocked }) {
             }}
           >
             Remove
-          </button>
+          </Button>
         </span>
       </div>
       <Swatches colors={lineSwatches(line)} value={zone.color} onChange={(c) => onChange({ ...line, zones: line.zones.map((z, i) => (i === index ? { ...z, color: c } : z)) })} label={`${name} color`} />
@@ -170,49 +165,28 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
   }, [selected, onSelect]);
 
   return (
-    <section className="options-group">
-      <h2>Fly line</h2>
-      <div className="field-row">
-        <SearchableSelect label="Preset" className="field field--grow" groups={PRESET_GROUPS} value={presetId} onChange={onPreset} placeholder="Search lines" />
-        <label className="field field--grow">
-          <span>Type</span>
-          <Select value={line.type} disabled={locked} onChange={(e) => onChange({ ...line, type: e.target.value })}>
-            {LINE_TYPES.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.name}
-              </option>
-            ))}
-          </Select>
-        </label>
-        <label className="field">
-          <span>Weight</span>
-          <Select value={line.weight} disabled={locked} onChange={(e) => onChange({ ...line, weight: Number(e.target.value) })}>
-            {[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((w) => (
-              <option key={w} value={w}>
-                {w} wt
-              </option>
-            ))}
-          </Select>
-        </label>
+    <section className={GROUP}>
+      <h2 className={HEADING}>Fly line</h2>
+      <div className="flex flex-wrap gap-2.5">
+        <SearchableSelect label="Preset" grow groups={PRESET_GROUPS} value={presetId} onChange={onPreset} placeholder="Search lines" />
+        <Select label="Type" grow items={TYPE_ITEMS} value={line.type} disabled={locked} onChange={(type) => onChange({ ...line, type })} />
+        <Select label="Weight" items={WEIGHT_ITEMS} value={line.weight} disabled={locked} onChange={(weight) => onChange({ ...line, weight })} triggerClassName="w-[85px]" />
       </div>
       {preset?.colorways && (
-        <label className="field">
-          <span>Colorway</span>
-          <Select value={colorway?.id} disabled={preset.colorways.length < 2} onChange={(e) => onColorway(findById(preset.colorways, e.target.value))}>
-            {preset.colorways.map((cw) => (
-              <option key={cw.id} value={cw.id}>
-                {cw.name}
-              </option>
-            ))}
-          </Select>
-        </label>
+        <Select
+          label="Colorway"
+          items={preset.colorways.map((cw) => ({ value: cw.id, label: cw.name }))}
+          value={colorway?.id ?? null}
+          disabled={preset.colorways.length < 2}
+          onChange={(id) => onColorway(findById(preset.colorways, id))}
+        />
       )}
-      <div ref={editRef} className="line-edit">
+      <div ref={editRef} className="flex flex-col gap-3.5">
         <LineEditor line={line} selection={selection} onSelect={onSelect} onChange={onChange} backingColor={backingColor} zonesLocked={Boolean(colorway)} />
         <LineSelection line={line} selection={selection} onChange={onChange} onSelect={onSelect} colorLocked={Boolean(colorway)} />
       </div>
-      <p className="hint">
-        {type?.name} · {line.weight} wt · <span className="mono">{formatFeet(totalLength(line))}</span> total
+      <p className={HINT}>
+        {type?.name} · {line.weight} wt · <span className={MONO}>{formatFeet(totalLength(line))}</span> total
         {locked && ' · choose Custom to change type or weight'}
       </p>
     </section>
@@ -220,38 +194,31 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
 }
 
 export function BackingOptions({ backing, onChange }) {
-  const custom = !BACKING_LENGTHS.includes(backing.yards);
   return (
-    <section className="options-group">
-      <h2>Backing</h2>
-      <div className="backing-row">
-        <div className="field">
-          <span>Length</span>
-          <div className="backing-controls">
+    <section className={GROUP}>
+      <h2 className={HEADING}>Backing</h2>
+      <div className="flex flex-wrap items-start gap-x-4 gap-y-2.5">
+        <Field label="Length">
+          <div className="flex flex-wrap items-center gap-2.5">
             <Segmented label="Backing length" options={BACKING_LENGTHS.map((y) => [y, y])} value={backing.yards} onChange={(yards) => onChange({ ...backing, yards })} />
-            <label className="field field--inline">
-              <input
-                type="number"
-                min="0"
-                step="10"
-                className={`mono${custom ? ' is-custom' : ''}`}
-                aria-label="Backing length in yards"
-                value={backing.yards}
-                onChange={(e) => onChange({ ...backing, yards: numberOr(e.target.value, backing.yards) })}
-              />
-              <span>yd</span>
-            </label>
+            <NumberInput
+              label="Backing length in yards"
+              unit="yd"
+              min="0"
+              step="10"
+              className="w-20"
+              value={backing.yards}
+              onChange={(e) => onChange({ ...backing, yards: numberOr(e.target.value, backing.yards) })}
+            />
           </div>
-        </div>
-        <div className="field">
-          <span>Strength</span>
+        </Field>
+        <Field label="Strength">
           <Segmented label="Backing strength" options={STRENGTHS} value={backing.pounds} onChange={(pounds) => onChange({ ...backing, pounds })} />
-        </div>
+        </Field>
       </div>
-      <div className="field">
-        <span>Color · {nameOf(backing.color)}</span>
+      <Field label={`Color · ${nameOf(backing.color)}`}>
         <Swatches colors={BACKING_COLORS} value={backing.color} onChange={(c) => onChange({ ...backing, color: c })} label="Backing color" />
-      </div>
+      </Field>
     </section>
   );
 }

@@ -59,7 +59,14 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  /* The app's own corner sizes: big panels and the cards inside them. */
+  --radius-panel: 16px;
+  --radius-card: 12px;
+  /* Side by side: the page fits the window and the columns scroll on their own. */
+  --breakpoint-wide: 65rem;
 }
+
+/* font-mono resolves to styles.css's --font-mono (IBM Plex Mono), which overrides Tailwind's default on :root. */
 
 /* Raw names some shadcn components read directly. --accent and --muted are left to styles.css. */
 :root {

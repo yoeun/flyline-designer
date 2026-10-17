@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { cn } from '@/lib/utils';
 import { REEL_COLORS, findById, hexOf } from '../data/catalog.js';
 import { spoolLayout } from '../lib/geometry.js';
 import { frameMarkup } from '../lib/reelFrames.js';
@@ -12,7 +13,7 @@ const shade = (hex, k) =>
   '#' + [1, 3, 5].map((i) => Math.round(parseInt(hex.slice(i, i + 2), 16) * k).toString(16).padStart(2, '0')).join('');
 
 // mode: 'reel' | 'see-through' | 'line-only'; side: 'drag' | 'spool'
-export default function ReelPreview({ setup, mode = 'reel', side = 'drag', background = '#e9ebe6', size, svgRef, title }) {
+export default function ReelPreview({ setup, mode = 'reel', side = 'drag', background = '#e9ebe6', size, svgRef, title, className }) {
   const uid = useId().replace(/[^a-zA-Z0-9]/g, '');
   const layout = spoolLayout(setup);
   const s = RIM_PX / layout.rimR;
@@ -35,7 +36,7 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', backg
       height={size ? (size * VIEW.h) / VIEW.w : undefined}
       role="img"
       aria-label={title ?? 'Reel with backing and fly line'}
-      className="reel-preview"
+      className={cn('block h-auto w-full', className)}
     >
       <defs>
         <linearGradient id={`line-light-${uid}`} x1="0" y1="0" x2="1" y2="1">

@@ -1,10 +1,11 @@
 import { useId, useMemo, useRef } from 'react';
 import { Combobox, ComboboxCollection, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxLabel, ComboboxList } from '@/components/ui/combobox';
+import Field from './Field.jsx';
 
 // A select you can type into to filter. groups is [{ label, items: [{ value, label }] }];
 // a group with no label renders its items without a heading. Wraps shadcn's combobox so the
 // rest of the app never imports from ui/ directly.
-export default function SearchableSelect({ label, className = 'field', groups, value, onChange, placeholder = 'Search' }) {
+export default function SearchableSelect({ label, grow = false, groups, value, onChange, placeholder = 'Search' }) {
   const id = useId();
   const inputRef = useRef(null);
   const selected = useMemo(() => {
@@ -21,10 +22,7 @@ export default function SearchableSelect({ label, className = 'field', groups, v
   // An explicit label rather than a wrapping <label>: while the list is open, Base UI hides
   // everything outside it from screen readers, and a wrapping label would lose the input's name.
   return (
-    <div className={className}>
-      <label htmlFor={id} id={`${id}-label`}>
-        {label}
-      </label>
+    <Field label={label} labelId={`${id}-label`} htmlFor={id} grow={grow}>
       <Combobox items={groups} value={selected} onValueChange={(item) => item && onChange(item.value)} isItemEqualToValue={(a, b) => a.value === b.value} onOpenChange={(open, { reason }) => {
           // Typing opens the list too; selecting then would swallow the letter just typed.
           if (open && reason !== 'input-change') selectText();
@@ -57,6 +55,6 @@ export default function SearchableSelect({ label, className = 'field', groups, v
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
-    </div>
+    </Field>
   );
 }
