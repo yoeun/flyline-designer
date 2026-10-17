@@ -47,10 +47,10 @@ export const REELS = [
   { id: 'g78', design: 'generic', name: 'Generic 7–8 wt', rim: 4.0, spool: 3.74, arbor: 2.2, width: 0.95 },
   { id: 'g910', design: 'generic', name: 'Generic 9–10 wt', rim: 4.4, spool: 4.12, arbor: 2.4, width: 1.1 },
   // Rim, width and rated capacity from retailer listings. Spool is estimated as rim − 0.24″.
-  { id: 'lamson-liquid-s-5', design: 'liquid-s', name: 'Lamson Liquid S 5+', rim: 3.65, spool: 3.41, width: 1.0, rated: { weight: 5, yards: 100, pounds: 20 } },
-  { id: 'lamson-liquid-s-7', design: 'liquid-s', name: 'Lamson Liquid S 7+', rim: 3.9, spool: 3.66, width: 1.15, rated: { weight: 7, yards: 200, pounds: 20 } },
+  { id: 'lamson-liquid-s-5', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 5+', rim: 3.65, spool: 3.41, width: 1.0, rated: { weight: 5, yards: 100, pounds: 20 } },
+  { id: 'lamson-liquid-s-7', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 7+', rim: 3.9, spool: 3.66, width: 1.15, rated: { weight: 7, yards: 200, pounds: 20 } },
   // Listed widths range from 0.9″ to 1.0″.
-  { id: 'redington-run-56', design: 'run', name: 'Redington Run 5/6', rim: 3.6, spool: 3.36, width: 0.95, rated: { weight: 5, yards: 100, pounds: 20 } },
+  { id: 'redington-run-56', maker: 'Redington', design: 'run', name: 'Redington Run 5/6', rim: 3.6, spool: 3.36, width: 0.95, rated: { weight: 5, yards: 100, pounds: 20 } },
 ];
 
 export const BACKING_DIAMETER = { 20: 0.021, 30: 0.025 };
@@ -210,15 +210,15 @@ export const LINE_PRESETS = [
 
 export const findById = (list, id) => list.find((x) => x.id === id);
 
-// Presets for the Preset menu, as [label, presets]: makers A–Z, then everything without one.
-export function presetGroups(presets) {
+// Items for a grouped menu, as [label, items]: makers A–Z, then everything without one under `other`.
+export function makerGroups(items, other) {
   const byMaker = new Map();
-  for (const p of presets) {
-    const label = p.maker ?? 'Generic & examples';
-    byMaker.set(label, [...(byMaker.get(label) ?? []), p]);
+  for (const item of items) {
+    const label = item.maker ?? other;
+    byMaker.set(label, [...(byMaker.get(label) ?? []), item]);
   }
-  const makers = [...byMaker.keys()].filter((k) => k !== 'Generic & examples').sort((a, b) => a.localeCompare(b));
-  return [...makers, 'Generic & examples'].filter((k) => byMaker.has(k)).map((k) => [k, byMaker.get(k)]);
+  const makers = [...byMaker.keys()].filter((k) => k !== other).sort((a, b) => a.localeCompare(b));
+  return [...makers, other].filter((k) => byMaker.has(k)).map((k) => [k, byMaker.get(k)]);
 }
 export const hexOf = (id) => (lineColor(id) ?? LINE_COLORS[0]).hex;
 export const nameOf = (id) => (lineColor(id) ?? { name: id }).name;

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetGroups } from '../data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, makerGroups } from '../data/catalog.js';
 import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
@@ -277,9 +277,15 @@ describe('line editing', () => {
 
 describe('catalog', () => {
   it('groups line presets by maker, generic last, keeping every preset once', () => {
-    const groups = presetGroups(LINE_PRESETS);
+    const groups = makerGroups(LINE_PRESETS, 'Generic & examples');
     expect(groups.map(([label]) => label)).toEqual(['Airflo', 'RIO', 'Generic & examples']);
     expect(groups.flatMap(([, presets]) => presets.map((p) => p.id)).sort()).toEqual(LINE_PRESETS.map((p) => p.id).sort());
+  });
+
+  it('groups reels by maker, generic last', () => {
+    const groups = makerGroups(REELS, 'Generic');
+    expect(groups.map(([label]) => label)).toEqual(['Lamson', 'Redington', 'Generic']);
+    expect(groups.flatMap(([, reels]) => reels.map((r) => r.id)).sort()).toEqual(REELS.map((r) => r.id).sort());
   });
 });
 

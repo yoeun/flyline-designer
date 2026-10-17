@@ -9,7 +9,7 @@ import {
   REELS,
   findById,
   nameOf,
-  presetGroups,
+  makerGroups,
 } from '../data/catalog.js';
 import { totalLength, zoneRanges } from '../lib/geometry.js';
 import { MIN_LENGTH, TAPER_NAMES, formatFeet, removeZone, setTaperLength, setZoneLength, splitZone, zoneName } from '../lib/lineEdit.js';
@@ -41,10 +41,14 @@ export function ReelOptions({ reel, onChange }) {
       <label className="field">
         <span>Model</span>
         <Select value={reel.model} onChange={(e) => onChange({ ...reel, model: e.target.value })}>
-          {REELS.map((r) => (
-            <option key={r.id} value={r.id}>
-              {r.name} · {r.rim} in
-            </option>
+          {makerGroups(REELS, 'Generic').map(([label, reels]) => (
+            <optgroup key={label} label={label}>
+              {reels.map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.name} · {r.rim} in
+                </option>
+              ))}
+            </optgroup>
           ))}
         </Select>
       </label>
@@ -155,7 +159,7 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
         <label className="field field--grow">
           <span>Preset</span>
           <Select value={presetId} onChange={(e) => onPreset(e.target.value)}>
-            {presetGroups(LINE_PRESETS).map(([label, presets]) => (
+            {makerGroups(LINE_PRESETS, 'Generic & examples').map(([label, presets]) => (
               <optgroup key={label} label={label}>
                 {presets.map((p) => (
                   <option key={p.id} value={p.id}>
