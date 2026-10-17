@@ -1,8 +1,7 @@
 // Sage Click.
-// A click-and-pawl reel, so the frame side has no drag knob. Frame side (from a straight-on photo): two thick
-// spokes curving up to about 10 and 2 o'clock and two thin ones down to about 8 and 4, each forking into a Y near
-// the window ring, and a straight post down to 6 o'clock carrying the click button. Spool side: three Y spokes
-// 120° apart, one up to 12. The spool's gear teeth show inside the window ring; 22 teardrop windows on both sides.
+// A click-and-pawl reel, so the frame side has no drag knob. Frame side (from a straight-on photo): three Y spokes,
+// two curving up to about 10 and 2 o'clock and one down to 6 o'clock carrying the click button; in photos the
+// spool's own spokes show through between them. Spool side: three Y spokes 120° apart, one up to 12. The spool's gear teeth show inside the window ring; 22 teardrop windows on both sides.
 import { P, circle, knurl, pad, rad, ring, roundPoly, strut, svg } from './lib.mjs';
 import { arm, frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
 
@@ -33,9 +32,7 @@ export const drag = svg({
     pad(166, 90, 34, 40),
     ...frameY(-140, 44, 20, 14),
     ...frameY(-40, 44, 20, 14),
-    ...frameY(146, 20, 12, 12),
-    ...frameY(34, 20, 12, 12),
-    strut([0, 0], [0, 156], 34, 40),
+    ...frameY(90, 40, 20, 12),
     circle(34),
     circle(24, 0, 48),
   ],
