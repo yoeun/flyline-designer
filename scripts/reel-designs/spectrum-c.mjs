@@ -1,8 +1,8 @@
 // Sage Spectrum C.
 // Drag side from Far Bank's photo: 18 deep windows, five wide straight spokes (two up, one each side, one
 // down) and a flat numbered dial with a logo badge. The dial is black on grey reels and grey on black ones;
-// it is drawn dark here. The spool side is only shown angled: its three swept spokes, the handle at about
-// 1 o'clock and the small knob opposite are inferred straight-on.
+// it is drawn dark here. Spool side: three straight spokes 120° apart, the handle in line with the top one and
+// a small knob opposite at 6 o'clock.
 import { P, circle, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
 import { frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
 
@@ -35,13 +35,13 @@ export const spool = svg({
   back: [sageFoot()],
   body: [
     ring(200, 102) + slots({ ...RIM, rIn: 114 }),
-    pad(158, -72, 34, 50),
-    pad(158, 108, 30, 44),
+    pad(158, -90, 34, 50),
+    pad(158, 90, 30, 44),
     ...[-90, 30, 150].map((a) => spoke(a, 34, 106, 26, 20)),
     circle(40),
   ],
   details:
     logo(0, 0, 26) +
-    rimHandle(158, -72, 18) +
-    `<circle cx="${P(158, rad(108))[0].toFixed(1)}" cy="${P(158, rad(108))[1].toFixed(1)}" r="12" fill="#2b2e31"/>`,
+    rimHandle(158, -90, 18) +
+    `<circle cx="${P(158, rad(90))[0].toFixed(1)}" cy="${P(158, rad(90))[1].toFixed(1)}" r="12" fill="#2b2e31"/>`,
 });
