@@ -195,29 +195,95 @@ export function presetForLine(line) {
 // The sizes a maker product comes in, in catalog order; none for anything else.
 export const productSizes = (product) => LINE_PRESETS.filter((p) => p.product === product);
 
-// The first size at a weight, otherwise the one nearest it (ties go lighter).
-export const nearestSize = (sizes, weight) =>
+// Line weights the app offers. Over- and underlining stay within them.
+const MIN_WEIGHT = 2;
+const MAX_WEIGHT = 12;
+
+// How a line weight suits a reel size: 'in' its range, one 'over' or 'under' it (over- or
+// underlining), else 'out'. Without a reel, anything goes.
+export function reelWeightFit(reel, weight) {
+  if (!reel) return 'in';
+  const [lo, hi] = reel.weights;
+  if (lo <= weight && weight <= hi) return 'in';
+  if (weight === hi + 1 && weight <= MAX_WEIGHT) return 'over';
+  if (weight === lo - 1 && weight >= MIN_WEIGHT) return 'under';
+  return 'out';
+}
+
+const fitsReel = (reel, weight) => reelWeightFit(reel, weight) !== 'out';
+
+// Every weight a reel takes, light to heavy, over- and underlines included.
+export function allowedWeights(reel) {
+  const [lo, hi] = reel?.weights ?? [MIN_WEIGHT, MAX_WEIGHT];
+  return Array.from({ length: hi - lo + 3 }, (_, i) => lo - 1 + i).filter((w) => fitsReel(reel, w));
+}
+
+const closest = (sizes, weight) =>
   sizes.reduce((best, s) => {
     const d = Math.abs(s.line.weight - weight), bestD = Math.abs(best.line.weight - weight);
     return d < bestD || (d === bestD && s.line.weight < best.line.weight) ? s : best;
   });
 
+// The first size at a weight, otherwise the one nearest it (ties go lighter). Given a reel, only
+// sizes it takes count: one at the weight, else the nearest in its range, else the nearest over-
+// or underline, else null.
+export function nearestSize(sizes, weight, reel) {
+  if (!reel) return closest(sizes, weight);
+  const fits = sizes.filter((s) => fitsReel(reel, s.line.weight));
+  const inRange = fits.filter((s) => reelWeightFit(reel, s.line.weight) === 'in');
+  if (!fits.length) return null;
+  return fits.find((s) => s.line.weight === weight) ?? closest(inRange.length ? inRange : fits, weight);
+}
+
 // The preset and a copy of its line for an id picked from the Preset menu (a product or a generic
 // preset) or the Weight menu (a size), or null if nothing has that id. A product lands on its size
-// at the line's current weight, or the nearest; a maker line keeps its colorway when the new size
-// comes in it.
-export function switchLine(id, line, fromPresetId) {
+// at the line's current weight, or the nearest (one the reel takes, if given and there is one); a
+// maker line keeps its colorway when the new size comes in it.
+export function switchLine(id, line, fromPresetId, reel) {
   const sizes = productSizes(id);
-  const preset = sizes.length ? nearestSize(sizes, line.weight) : findById(LINE_PRESETS, id);
+  const preset = sizes.length ? (nearestSize(sizes, line.weight, reel) ?? closest(sizes, line.weight)) : findById(LINE_PRESETS, id);
   if (!preset) return null;
   const keep = lineColorway(findById(LINE_PRESETS, fromPresetId), line);
   const colorway = preset.colorways?.find((cw) => cw.id === keep?.id);
   return { presetId: preset.id, line: structuredClone({ ...preset.line, zones: colorway?.zones ?? preset.line.zones }) };
 }
 
+// The line moved to a weight a new reel takes, or null when it already does or can't: a maker line
+// to its nearest size the reel takes (keeping its colorway), any other line to the nearest weight in
+// the reel's range, keeping its taper and colors (a generic preset then turns Custom).
+export function fitLineToReel(line, presetId, reel) {
+  if (fitsReel(reel, line.weight)) return null;
+  const product = findById(LINE_PRESETS, presetId)?.product;
+  if (product) {
+    const size = nearestSize(productSizes(product), line.weight, reel);
+    return size ? switchLine(size.id, line, presetId) : null;
+  }
+  const [lo, hi] = reel.weights;
+  const next = { ...line, weight: Math.min(hi, Math.max(lo, line.weight)) };
+  return { presetId: presetForLine(next), line: next };
+}
+
+const FIT_LABELS = { in: '', over: ' · overline', under: ' · underline', out: ' · out of range' };
+
+// Weight menu entries for a reel: a maker line's sizes, else weights, the reel takes, plus the line's
+// own weight if it doesn't (a setup loaded that way keeps it).
+export function weightMenu(reel, line, presetId) {
+  const product = findById(LINE_PRESETS, presetId)?.product;
+  const label = (text, weight) => `${text}${FIT_LABELS[reelWeightFit(reel, weight)]}`;
+  if (product) {
+    return productSizes(product)
+      .filter((s) => s.id === presetId || fitsReel(reel, s.line.weight))
+      .map((s) => ({ value: s.id, label: label(s.sizeLabel, s.line.weight) }));
+  }
+  const weights = allowedWeights(reel);
+  if (!weights.includes(line.weight)) weights.push(line.weight);
+  return weights.sort((a, b) => a - b).map((w) => ({ value: w, label: label(`${w} wt`, w) }));
+}
+
 // Preset menu entries: one per maker product (named without a size) and one per generic preset.
 // Discontinued products say so and go last, so they come after the current ones once grouped by maker.
-export function lineMenu(presets) {
+// Given a reel, lines it takes no size of are disabled and go after those.
+export function lineMenu(presets, reel) {
   const seen = new Set();
   const entries = [];
   for (const p of presets) {
@@ -227,7 +293,9 @@ export function lineMenu(presets) {
       entries.push({ ...p, id: p.product, name: p.discontinued ? `${p.productName} (discontinued)` : p.productName });
     }
   }
-  return [...entries.filter((e) => !e.discontinued), ...entries.filter((e) => e.discontinued)];
+  const fits = (e) => (e.product ? presets.some((p) => p.product === e.product && fitsReel(reel, p.line.weight)) : fitsReel(reel, e.line.weight));
+  const rank = (e) => (e.disabled ? 2 : 0) + (e.discontinued ? 1 : 0);
+  return entries.map((e) => (fits(e) ? e : { ...e, disabled: true })).sort((a, b) => rank(a) - rank(b));
 }
 
 // The Preset menu entry showing for a preset id: its product, or the preset itself.
