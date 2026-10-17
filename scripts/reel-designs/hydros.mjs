@@ -7,9 +7,12 @@ export const drag = svg({
   under: HYDROS_FOOT,
   body: [
     ring(200, 104) + slots({ n: 14, rIn: 118, rOut: 178, bar: 17, corner: 9, off: -90 + 360 / 28 }),
-    // Two straight bars, wide apart at the top and closer at the bottom.
+    // Two straight bars, wide apart at the top and closer at the bottom, each with a thinner one just inside it
+    // running the same way.
     strut([-68, -190], [-36, 192], 28, 22),
     strut([68, -190], [36, 192], 28, 22),
+    strut([-44, -192], [-16, 192], 16, 12),
+    strut([44, -192], [16, 192], 16, 12),
   ],
   details: dragKnob(64),
 });
