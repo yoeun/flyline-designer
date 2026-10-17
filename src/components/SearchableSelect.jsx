@@ -2,8 +2,8 @@ import { useId, useMemo, useRef } from 'react';
 import { Combobox, ComboboxCollection, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxLabel, ComboboxList } from '@/components/ui/combobox';
 import Field from './Field.jsx';
 
-// A select you can type into to filter. groups is [{ label, items: [{ value, label }] }];
-// a group with no label renders its items without a heading. Wraps shadcn's combobox so the
+// A select you can type into to filter. groups is [{ label, items: [{ value, label, disabled }] }];
+// a group with no label renders its items without a heading, and a disabled item shows but can't be picked. Wraps shadcn's combobox so the
 // rest of the app never imports from ui/ directly.
 export default function SearchableSelect({ label, grow = false, groups, value, onChange, placeholder = 'Search' }) {
   const id = useId();
@@ -45,7 +45,7 @@ export default function SearchableSelect({ label, grow = false, groups, value, o
                 {group.label && <ComboboxLabel>{group.label}</ComboboxLabel>}
                 <ComboboxCollection>
                   {(item) => (
-                    <ComboboxItem key={item.value} value={item}>
+                    <ComboboxItem key={item.value} value={item} disabled={item.disabled}>
                       {item.label}
                     </ComboboxItem>
                   )}

@@ -1,7 +1,8 @@
 import { cn } from '@/lib/utils';
 import { hexOf, nameOf } from '../data/catalog.js';
-import { backingContrast } from '../lib/checks.js';
+import { backingContrast, weightCheck } from '../lib/checks.js';
 import { spoolLayout } from '../lib/geometry.js';
+import Icon from './Icon.jsx';
 
 const R = 10;
 
@@ -19,6 +20,8 @@ const CAPTION = 'text-[12px]';
 export default function Checks({ setup }) {
   const layout = spoolLayout(setup);
   const contrast = backingContrast(setup);
+  // Shown only when the line weight is out of range for the reel.
+  const weight = weightCheck(setup);
   const pct = Math.round(layout.fill * 100);
   const extra = layout.maxBackingYards - setup.backing.yards;
   const fillText = layout.fits
@@ -53,6 +56,16 @@ export default function Checks({ setup }) {
         </span>
         <span className="sr-only">Spool fill {pct}%. {fillText}</span>
       </div>
+      {weight && (
+        <div className={CHECK} title={weight.text}>
+          <Icon name="warning" className="flex-none text-[32px] text-warn" />
+          <span className={TEXT}>
+            <strong className={cn(VALUE, 'text-warn')}>{setup.line.weight} wt</strong>
+            <span className={cn(CAPTION, 'text-warn')}>Out of range</span>
+          </span>
+          <span className="sr-only">{weight.text}</span>
+        </div>
+      )}
       <div className={CHECK} title={contrastText}>
         <span className={cn(TEXT, 'text-right')}>
           <strong className={cn(VALUE, contrastTone ?? 'text-foreground')}>ΔE {Math.round(contrast.value)}</strong>
