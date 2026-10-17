@@ -19,6 +19,7 @@ the Model menu groups models by maker, A–Z, with Generic last.
       "colors": ["smoke", "day-break"],  // finish ids; leave out to offer the generic colors
       "discontinued": true,              // optional; listed last, labelled "(discontinued)"
       "accents": { "black": "#2b2d30" }, // optional accent color per finish for this model, over the finish's own
+      "trims": { "black": "#222426" },   // optional second part color per finish (TRIM in a design), e.g. a foot
       "notes": "Where the numbers came from and which are estimates.",
       "sizes": [                         // small to large
         {

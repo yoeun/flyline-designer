@@ -98,6 +98,8 @@ export function knurl(r, amp, teeth) {
 // Fill for a part in the finish's accent color, where the finish has one (e.g. Lamson Ember's orange); otherwise the
 // reel color. ReelPreview sets --reel-accent on every reel (not --accent: the page theme has one of its own).
 export const ACCENT = 'style="fill:var(--reel-accent, currentColor)"';
+// A second part color, e.g. a foot that differs from both frame and accent; set by --reel-trim, else the reel color.
+export const TRIM = 'style="fill:var(--reel-trim, currentColor)"';
 
 export const SHEEN = `<linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".4"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient>`;
 export const SHEEN_RECT = `<rect x="-215" y="-250" width="430" height="470" fill="url(#sheen)" mask="url(#body-mask)"/>`;

@@ -1,5 +1,5 @@
 // Renders a reel design's drag and spool sides to a PNG, for checking a drawing against the maker's photos:
-//   node scripts/preview-reel-design.mjs <design> [--color #hex] [--accent #hex] [--out file.png] [photo ...]
+//   node scripts/preview-reel-design.mjs <design> [--color #hex] [--accent #hex] [--trim #hex] [--out file.png] [photo ...]
 // Photos (jpg/png/webp) are drawn to the right of the two sides at the same height. Draws the SVGs in
 // src/assets/reels, so run `npm run reels` first. Needs Google Chrome (headless) for the screenshot.
 import { execFileSync } from 'node:child_process';
@@ -19,9 +19,10 @@ const opt = (name, fallback) => {
 };
 const color = opt('--color', '#8a8f94');
 const accent = opt('--accent', null);
+const trim = opt('--trim', null);
 const out = resolve(opt('--out', `${args[0]}-preview.png`));
 const [design, ...photos] = args;
-if (!design) throw new Error('usage: preview-reel-design.mjs <design> [--color #hex] [--accent #hex] [--out file.png] [photo ...]');
+if (!design) throw new Error('usage: preview-reel-design.mjs <design> [--color #hex] [--accent #hex] [--trim #hex] [--out file.png] [photo ...]');
 
 // A side as ReelPreview shows it, roughly: the frame over a wound line that fills the spool.
 const side = (name) => {
@@ -31,7 +32,7 @@ const side = (name) => {
     .replace(/^[\s\S]*?<svg[^>]*>/, '')
     .replace(/<\/svg>\s*$/, '')
     .replace(/(id="|url\(#|href="#)([\w-]+)/g, `$1$2-${name}`);
-  return `<figure><svg viewBox="-215 -250 430 470" height="${H}" color="${color}"${accent ? ` style="--reel-accent:${accent}"` : ''}><rect x="-215" y="-250" width="430" height="470" fill="#e9ebe6"/><circle r="182" fill="#5d7f4f"/><circle r="90" fill="#e9ebe6"/>${inner}</svg><figcaption>${design} · ${name}</figcaption></figure>`;
+  return `<figure><svg viewBox="-215 -250 430 470" height="${H}" color="${color}" style="${accent ? `--reel-accent:${accent};` : ''}${trim ? `--reel-trim:${trim}` : ''}"><rect x="-215" y="-250" width="430" height="470" fill="#e9ebe6"/><circle r="182" fill="#5d7f4f"/><circle r="90" fill="#e9ebe6"/>${inner}</svg><figcaption>${design} · ${name}</figcaption></figure>`;
 };
 const photo = (file) => `<figure><img src="${pathToFileURL(resolve(file))}" height="${H}"><figcaption>${file.split('/').pop()}</figcaption></figure>`;
 

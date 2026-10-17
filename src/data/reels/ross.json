@@ -99,7 +99,7 @@
         "ross-matte-olive",
         "ross-matte-blue"
       ],
-      "notes": "Width, diameter, line weights and capacity from Ross's own Evolution R spec table (rossreels.com, now served at mayflyoutdoors.com/products/ross-reels-evolution-r; matches Fly Fish SD). Current lineup is 4/5, 5/6, 7/8; Fly Fish SD also lists an older 3/4 (3.43″, WF3+100/WF4+85) that Ross no longer sells, so it is left out. Ross lists the same 0.97″ width for every size, published as-is. Rated capacity is the heavier listed line: 4/5 WF5+75, 5/6 WF6+90, 7/8 WF8+150 (lighter: WF4+100, WF5+115, WF7+180). Ross rates capacity on 20 lb backing (legacy.rossreels.com/product-help). Spool is estimated as rim − 0.24″. Trident lists 3.525/3.775/4.025″ diameters and WF4+95, WF5+110, WF8+160 — close, but Ross's figures are used. Colors: Matte Black (shared black), Platinum, Matte Olive, Matte Blue (Trident also sells a Blackout edition, left out); finish hexes sampled from Ross's product photos. Evolution R Salt is a separate model, not added.",
+      "notes": "Width, diameter, line weights and capacity from Ross's own Evolution R spec table (rossreels.com, now served at mayflyoutdoors.com/products/ross-reels-evolution-r; matches Fly Fish SD). Current lineup is 4/5, 5/6, 7/8; Fly Fish SD also lists an older 3/4 (3.43″, WF3+100/WF4+85) that Ross no longer sells, so it is left out. Ross lists the same 0.97″ width for every size, published as-is. Rated capacity is the heavier listed line: 4/5 WF5+75, 5/6 WF6+90, 7/8 WF8+150 (lighter: WF4+100, WF5+115, WF7+180). Ross rates capacity on 20 lb backing (legacy.rossreels.com/product-help). Spool is estimated as rim − 0.24″. Trident lists 3.525/3.775/4.025″ diameters and WF4+95, WF5+110, WF8+160 — close, but Ross's figures are used. Colors: Matte Black (shared black), Platinum, Matte Olive, Matte Blue (Trident also sells a Blackout edition, left out); finish hexes sampled from Ross's product photos. Evolution R Salt is a separate model, not added. On Black and Platinum the whole reel is one color. On Matte Olive the inner spider (ring, spokes and cap) is gold and the foot black; on Matte Blue both are silver (accents, trims).",
       "sizes": [
         {
           "id": "ross-evolution-r-45",
@@ -149,7 +149,15 @@
             "pounds": 20
           }
         }
-      ]
+      ],
+      "accents": {
+        "ross-matte-olive": "#b8893a",
+        "ross-matte-blue": "#b9bdbe"
+      },
+      "trims": {
+        "ross-matte-olive": "#222426",
+        "ross-matte-blue": "#b9bdbe"
+      }
     }
   ]
 }

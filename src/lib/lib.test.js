@@ -22,6 +22,7 @@ import {
   switchLine,
   reelAccent,
   reelColors,
+  reelTrim,
   reelMenu,
   reelSizeLabel,
   reelSizes,
@@ -497,6 +498,13 @@ describe('catalog', () => {
     expect(reelAccent(clearwater, 'dark-pine')).toBe('#b4a984');
     expect(reelAccent(findById(REELS, 'lamson-speedster-s-5'), 'lamson-ember')).toBe('#e2581f');
     expect(reelAccent(findById(REELS, 'g56'), 'black')).toBeNull();
+  });
+
+  it('gives a model a trim color only for the finishes it lists', () => {
+    const evo = findById(REELS, 'ross-evolution-r-56');
+    expect(reelTrim(evo, 'ross-matte-olive')).toBe('#222426');
+    expect(reelTrim(evo, 'black')).toBeNull();
+    expect(reelAccent(evo, 'black')).toBeNull();
   });
 
   it('defines each reel color once, across maker files', () => {

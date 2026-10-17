@@ -238,6 +238,8 @@ export const lineSwatches = (line) => [...LINE_COLORS, ...MAKER_LINE_COLORS.filt
 
 // The accent color for a reel in a finish: the model's own for that finish, else the finish's, else none.
 export const reelAccent = (reel, colorId) => reel?.accents?.[colorId] ?? findById(REEL_COLORS, colorId)?.accent ?? null;
+// The trim color for a reel in a finish (parts like a foot that differ from frame and accent), or none.
+export const reelTrim = (reel, colorId) => reel?.trims?.[colorId] ?? null;
 
 export const reelColors = (reel) => (reel?.colors ?? GENERIC_REEL_COLORS).map((id) => findById(REEL_COLORS, id));
 

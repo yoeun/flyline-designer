@@ -1,9 +1,10 @@
 // Ross Evolution R.
-// Drag side: an outer band of twelve windows (wider posts at 3 and 9 o'clock), an inner ring, and six straight
-// spokes holding a flat body-colored drag cap with the RR monogram; the spool's slotted back shows between them.
+// Drag side: an outer cage of twelve windows (wider posts at 3 and 9 o'clock) in the frame color, and inside it a
+// spider in the finish's accent (gold on Matte Olive, silver on Matte Blue, else the frame color): a ring, six
+// straight spokes and a flat cap with the RR monogram. The foot takes the finish's trim. The spool's slotted back shows between the spokes.
 // Spool side: the same window band, with six spokes running from the hub right out to the rim; black handle
 // at 9 o'clock, round counterweight at 3. Both from Ross's straight-on product photos.
-import { P, circle, f, foot, knob, ring, slots, spoke, svg } from './lib.mjs';
+import { ACCENT, P, TRIM, circle, f, foot, knob, ring, slots, spoke, svg } from './lib.mjs';
 
 const BAND = { n: 12, rIn: 152, rOut: 188, bar: 12, corner: 8, off: -90 };
 const SPOKES = [0, 60, 120, 180, 240, 300];
@@ -11,17 +12,20 @@ const EVO_FOOT = foot(136, -244, 14, 30);
 const RR = (stroke, opacity = 1) =>
   `<text x="0" y="12" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="38" letter-spacing="-10" fill="none" stroke="${stroke}" stroke-opacity="${opacity}" stroke-width="1.8">RR</text>`;
 
+// The spider: ring, spokes and cap, drawn over the frame in the accent with its own shading.
+const SPIDER = [ring(152, 138), ...SPOKES.map((a) => spoke(a, 40, 146, 16, 14)), circle(48)];
+// Each part its own path, so the ring's hole stays open.
+const spiderLayer = (attrs) => SPIDER.map((d) => `<path d="${d}" fill-rule="evenodd" ${attrs}/>`).join('');
+const footArt = `<path d="${EVO_FOOT}" ${TRIM}/><path d="${EVO_FOOT}" fill="url(#sheen)"/>`;
+
 export const drag = svg({
+  under: footArt,
   back: [ring(148, 122) + slots({ n: 18, rIn: 128, rOut: 144, bar: 10, corner: 4 })],
-  body: [
-    ring(200, 146) + slots({ ...BAND, rIn: 160 }),
-    EVO_FOOT,
-    spoke(0, 140, 196, 26),
-    spoke(180, 140, 196, 26),
-    ...SPOKES.map((a) => spoke(a, 40, 150, 16, 14)),
-    circle(48),
-  ],
+  body: [ring(200, 152) + slots({ ...BAND, rIn: 160 }), spoke(0, 150, 196, 26), spoke(180, 150, 196, 26)],
   details:
+    spiderLayer('fill="#000" fill-opacity=".28" transform="translate(2 4)"') +
+    spiderLayer(ACCENT) +
+    spiderLayer('fill="url(#sheen)"') +
     `<circle r="48" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="3"/>` +
     `<circle r="40" fill="#000" fill-opacity=".06"/>` +
     RR('#000', 0.35),
