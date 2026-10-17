@@ -7,9 +7,9 @@ const MODES = [
     'Reel',
     <>
       <circle cx="12" cy="12" r="9.5" strokeWidth="2.2" />
-      <circle cx="12" cy="12" r="2.6" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="12" r="4.6" fill="currentColor" stroke="none" />
       {SPOKES.map((a) => (
-        <line key={a} x1={12 + 2.6 * Math.cos(a)} y1={12 + 2.6 * Math.sin(a)} x2={12 + 9.5 * Math.cos(a)} y2={12 + 9.5 * Math.sin(a)} strokeWidth="1.8" />
+        <line key={a} x1={12 + 4.6 * Math.cos(a)} y1={12 + 4.6 * Math.sin(a)} x2={12 + 9.5 * Math.cos(a)} y2={12 + 9.5 * Math.sin(a)} strokeWidth="1.8" />
       ))}
     </>,
   ],
