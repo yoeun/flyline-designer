@@ -121,8 +121,8 @@ export default function App() {
             <div className="stage__reel">
               <ReelPreview setup={setup} mode={mode} background={STAGE[theme]} svgRef={svgRef} title={`${setup.name} preview`} />
             </div>
+            <Checks setup={setup} />
           </div>
-          <Checks setup={setup} />
           <Rack
             setups={rack}
             open={rackOpen}

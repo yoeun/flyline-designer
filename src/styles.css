@@ -301,82 +301,66 @@ select {
 
 /* Checks */
 .checks {
+  align-self: stretch;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   gap: 12px;
 }
 
 .check {
-  flex: 1 1 240px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 12px 14px;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
 }
 
-.check p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.check.is-warn {
-  background: var(--warn-bg);
-  border-color: var(--warn-border);
-}
-
-.check.is-warn p,
-.check.is-warn strong {
-  color: var(--warn-ink);
-}
-
-.check.is-bad {
-  border-color: var(--bad);
-}
-
-.check.is-bad .meter__bar {
-  background: var(--bad);
-}
-
-.check__head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-weight: 600;
-}
-
-.meter {
-  height: 8px;
-  border-radius: 4px;
-  background: var(--line);
-}
-
-.meter__bar {
-  height: 100%;
-  border-radius: 4px;
-  background: var(--accent);
-}
-
-.pair {
-  display: flex;
-  gap: 6px;
-}
-
-.dot {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 1px solid var(--swatch-ring);
+.check__icon {
+  width: 32px;
+  height: 32px;
   flex: none;
 }
 
-.dot--lg {
-  width: 22px;
-  height: 22px;
+.check__ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.check__fill {
+  fill: var(--accent);
+}
+
+.check__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.check--end .check__text {
+  text-align: right;
+}
+
+.check__text strong {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.check__text span {
+  font-size: 12px;
+}
+
+.check.is-bad .check__fill {
+  fill: var(--bad);
+}
+
+.check.is-bad .check__ring,
+.check.is-bad .check__text > * {
+  color: var(--bad);
+  stroke: var(--bad);
+}
+
+.check.is-warn .check__text > * {
+  color: var(--warn-ink);
 }
 
 /* Rack */
@@ -491,6 +475,23 @@ select {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.conflict {
+  flex: 1 1 240px;
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--warn-ink);
+}
+
+.conflict p {
+  margin: 0;
+  font-size: 14px;
 }
 
 /* Options */
@@ -746,6 +747,63 @@ select {
   border-radius: 50%;
   background: var(--accent);
   border: 2px solid var(--panel);
+}
+
+/* Side by side, the page fits the window: the reel takes whatever height the checks and rack
+   leave, and the rack list and options panel scroll inside their own boxes. */
+@media (min-width: 1040px) {
+  .app {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .layout {
+    flex: 1;
+    min-height: 0;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    padding-bottom: 24px;
+  }
+
+  .preview-column {
+    min-height: 0;
+  }
+
+  .stage {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .stage__reel {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .stage__reel .reel-preview {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .rack {
+    flex: none;
+    max-height: 45%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rack__body {
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .options-column {
+    overflow-y: auto;
+  }
 }
 
 @media (max-width: 480px) {
