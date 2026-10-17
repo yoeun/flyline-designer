@@ -52,7 +52,7 @@ const MONO = 'font-mono tabular-nums';
 
 // Maker-grouped options for the searchable Model and Preset menus. The catalog is static, so build them once.
 const toGroups = (groups, label) => groups.map(([maker, items]) => ({ label: maker, items: items.map((item) => ({ value: item.id, label: label(item) })) }));
-const REEL_GROUPS = toGroups(makerGroups(REELS, 'Generic'), (r) => `${r.name} · ${r.rim} in`);
+const REEL_GROUPS = toGroups(makerGroups(REELS, 'Generic'), (r) => r.name);
 // Generic lines sort by weight; maker lines keep the catalog's product order.
 const byWeight = (a, b) => a.line.weight - b.line.weight || a.name.localeCompare(b.name);
 const presetGroups = makerGroups(LINE_PRESETS, 'Generic').map(([maker, presets]) => [maker, maker === 'Generic' ? [...presets].sort(byWeight) : presets]);
