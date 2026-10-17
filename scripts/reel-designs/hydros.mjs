@@ -17,12 +17,22 @@ export const drag = svg({
   details: dragKnob(64),
 });
 
+// Spool side: three double spokes, 120° apart. Each pair is two parallel bars as far apart as the hub is wide.
+const HUB = 38;
+const HYDROS_SPOKES = [-90, 30, 150].flatMap((deg) => {
+  const a = rad(deg), u = [Math.cos(a), Math.sin(a)], n = [-u[1], u[0]];
+  return [-1, 1].map((side) => {
+    const off = side * (HUB - 6), at = (t) => [n[0] * off + u[0] * t, n[1] * off + u[1] * t];
+    return strut(at(0), at(Math.sqrt(108 * 108 - off * off)), 12, 12);
+  });
+});
+
 export const spool = svg({
   under: HYDROS_FOOT,
   body: [
     ring(200, 100) + slots({ n: 14, rIn: 116, rOut: 176, bar: 17, corner: 9, off: -90 + 360 / 28 }),
-    ...[0, 1, 2, 3, 4].map((k) => spoke(-90 + k * 72, 30, 104, 16, 12, 25)),
-    circle(38),
+    ...HYDROS_SPOKES,
+    circle(HUB),
     pad(146, -38, 46, 64),
   ],
   details:
