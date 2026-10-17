@@ -1,5 +1,19 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SETUP, LINE_PRESETS, REELS, REEL_COLORS, findById, makerGroups, reelColors, withReelModel } from '../data/catalog.js';
+import {
+  DEFAULT_SETUP,
+  LINE_COLORS,
+  LINE_PRESETS,
+  LINE_TYPES,
+  MAKER_LINE_COLORS,
+  REELS,
+  REEL_COLORS,
+  findById,
+  lineColorway,
+  lineSwatches,
+  makerGroups,
+  reelColors,
+  withReelModel,
+} from '../data/catalog.js';
 import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
@@ -111,15 +125,73 @@ describe('generic line presets', () => {
 });
 
 describe('real line presets', () => {
+  const real = LINE_PRESETS.filter((p) => p.maker);
+  const known = (id) => [...LINE_COLORS, ...MAKER_LINE_COLORS].some((c) => c.id === id);
+
   it.each([
     ['rio-premier-gold-wf5f', 47, 90],
     ['rio-premier-gold-wf8f', 50, 90],
-    ['airflo-streamer-max-short-wf8-bbc', 27, 100],
-    ['airflo-streamer-max-short-wf8-bro', 27, 100],
-  ])('%s has a %i ft head on a %i ft line', (id, head, length) => {
+    ['rio-premier-aqualux-wf8i', 30, 100],
+    ['rio-technical-euro-nymph', 1.5, 94],
+    ['rio-premier-fathom-wf8s7', 35, 105],
+    ['sa-amplitude-smooth-infinity-wf6f', 50, 90],
+    ['sa-amplitude-bass-bug-wf8f', 43, 90],
+    ['sa-sonar-stillwater-clear-camo-wf6i', 45, 100],
+    ['sa-frequency-full-sink-wf6s3', 36, 85],
+    ['sa-frequency-sink-tip-wf6', 45, 85],
+    ['sa-sonar-titan-intermediate-wf8i', 33.5, 105],
+    ['sa-sonar-sink-25-cold-250-s6', 25, 105],
+    ['sa-mastery-competition-nymph', 1.5, 80],
+    ['airflo-ridge-universal-taper-wf5f', 39, 90],
+    ['airflo-streamer-max-short-wf8-s7', 27, 100],
+    ['airflo-sixth-sense-wf7-di5', 46, 105],
+    ['airflo-stillwater-intermediate-wf6', 46, 105],
+    ['cortland-444-peach-wf5f', 32, 90],
+    ['cortland-streamer-sink-tip-15-wf7', 31, 100],
+  ])('%s has a %s ft head on a %i ft line', (id, head, length) => {
     const { taper } = findById(LINE_PRESETS, id).line;
     expect(taper.front + taper.body + taper.back).toBe(head);
     expect(totalLength(findById(LINE_PRESETS, id).line)).toBe(length);
+  });
+
+  it.each(real.map((p) => [p.id, p]))('%s starts in its first colorway, in known colors that fit the line', (_, preset) => {
+    expect(preset.line.zones).toEqual(preset.colorways[0].zones);
+    expect(lineColorway(preset, preset.line)).toBe(preset.colorways[0]);
+    for (const cw of preset.colorways) {
+      expect(cw.zones.every((z) => known(z.color))).toBe(true);
+      expect(cw.zones.at(-1).length).toBe(0);
+      expect(cw.zones.reduce((sum, z) => sum + z.length, 0)).toBeLessThan(totalLength(preset.line));
+    }
+    expect(new Set(preset.colorways.map((cw) => cw.id)).size).toBe(preset.colorways.length);
+  });
+
+  it('generic presets use only the base palette and have no colorways', () => {
+    for (const p of LINE_PRESETS.filter((x) => !x.maker)) {
+      expect(p.colorways).toBeUndefined();
+      expect(p.line.zones.every((z) => LINE_COLORS.some((c) => c.id === z.color))).toBe(true);
+    }
+  });
+
+  it('every maker color is used by some preset', () => {
+    const used = new Set(real.flatMap((p) => p.colorways.flatMap((cw) => cw.zones.map((z) => z.color))));
+    expect(MAKER_LINE_COLORS.filter((c) => !used.has(c.id))).toEqual([]);
+  });
+
+  it('covers floating, intermediate, sinking and sink tip lines', () => {
+    expect(new Set(real.map((p) => p.line.type))).toEqual(new Set(LINE_TYPES.map((t) => t.id)));
+  });
+
+  it('a recolored line no longer matches a colorway', () => {
+    const preset = findById(LINE_PRESETS, 'rio-premier-gold-wf5f');
+    const line = { ...preset.line, zones: preset.line.zones.map((z) => ({ ...z, color: 'orange' })) };
+    expect(lineColorway(preset, line)).toBeUndefined();
+    expect(lineColorway(preset, { ...preset.line, zones: preset.colorways[1].zones })).toBe(preset.colorways[1]);
+  });
+
+  it('swatches add the maker colors a line uses to the base palette', () => {
+    const { line } = findById(LINE_PRESETS, 'rio-premier-gold-wf5f');
+    expect(lineSwatches(line).map((c) => c.id)).toEqual([...LINE_COLORS.map((c) => c.id), 'rio-moss', 'rio-gold']);
+    expect(lineSwatches(findById(LINE_PRESETS, 'generic-wf5f').line)).toEqual(LINE_COLORS);
   });
 });
 
@@ -278,7 +350,7 @@ describe('line editing', () => {
 describe('catalog', () => {
   it('groups line presets by maker, generic last, keeping every preset once', () => {
     const groups = makerGroups(LINE_PRESETS, 'Generic & examples');
-    expect(groups.map(([label]) => label)).toEqual(['Airflo', 'RIO', 'Generic & examples']);
+    expect(groups.map(([label]) => label)).toEqual(['Airflo', 'Cortland', 'RIO', 'Scientific Anglers', 'Generic & examples']);
     expect(groups.flatMap(([, presets]) => presets.map((p) => p.id)).sort()).toEqual(LINE_PRESETS.map((p) => p.id).sort());
   });
 
