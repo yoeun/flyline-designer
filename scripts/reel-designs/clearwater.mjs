@@ -12,8 +12,8 @@ const vCage = (inner) =>
     return [-1, 1].map((side) => strut(apex, P(190, rad(a + V_TILT + side * V_SPREAD)), 10, 12));
   }).flat();
 
-// Drag side: four thick bars hugging the knob's boss, each tangent to it: a pair from the foot down to its sides
-// and a mirrored pair from its sides down to the rim, closer together at the bottom (like the 2020–25 Hydros).
+// Drag side: a thick pair from the foot down to the sides of the knob's boss, each tangent to it, and an inner pair
+// from the bottom of the rim up into the boss's lower half, closer together at the bottom (like the 2020–25 Hydros).
 const BOSS = 86;
 const BAR_END = 40; // how far either side of center the bars meet the foot and the bottom of the rim
 const toBoss = (x, y) => {
@@ -31,7 +31,8 @@ export const drag = svg({
     ring(132, 122),
     ...vCage(127),
     foot(124, -244, 14, 30),
-    ...[-1, 1].flatMap((sx) => [-1, 1].map((sy) => toBoss(sx * BAR_END, sy * 194))),
+    ...[-1, 1].map((sx) => toBoss(sx * BAR_END, -194)),
+    ...[-1, 1].map((sx) => strut([sx * 36, 194], [sx * 56, 40], 24, 28)),
     circle(BOSS),
   ],
   details: silverKnob(74),
