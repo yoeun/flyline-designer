@@ -555,9 +555,41 @@ select {
   max-width: 110px;
 }
 
-.field select:disabled {
+.select {
+  position: relative;
+  display: block;
+}
+
+.field .select select {
+  width: 100%;
+  appearance: none;
+  padding-right: 36px;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.select .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.field .select select:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.field .select select:disabled {
   color: var(--muted);
   background: var(--panel-2);
+  border-style: dashed;
+  cursor: not-allowed;
+}
+
+.select:has(select:disabled) .icon {
+  opacity: 0.4;
 }
 
 .field-row {

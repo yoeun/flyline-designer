@@ -15,6 +15,18 @@ import { MIN_LENGTH, TAPER_NAMES, formatFeet, removeZone, setTaperLength, setZon
 import LineEditor from './LineEditor.jsx';
 import Swatches from './Swatches.jsx';
 
+// Native select (keeps the OS menu, keyboard and mobile pickers) with our own chevron.
+function Select(props) {
+  return (
+    <span className="select">
+      <select {...props} />
+      <span className="icon" aria-hidden="true">
+        expand_more
+      </span>
+    </span>
+  );
+}
+
 const numberOr = (value, fallback) => {
   const n = parseFloat(value);
   return Number.isFinite(n) && n >= 0 ? n : fallback;
@@ -27,13 +39,13 @@ export function ReelOptions({ reel, onChange }) {
       <h2>Reel</h2>
       <label className="field">
         <span>Model</span>
-        <select value={reel.model} onChange={(e) => onChange({ ...reel, model: e.target.value })}>
+        <Select value={reel.model} onChange={(e) => onChange({ ...reel, model: e.target.value })}>
           {REELS.map((r) => (
             <option key={r.id} value={r.id}>
               {r.name} · {r.rim} in
             </option>
           ))}
-        </select>
+        </Select>
       </label>
       <div className="field">
         <span>Color · {color?.name}</span>
@@ -141,34 +153,34 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
       <div className="field-row">
         <label className="field field--grow">
           <span>Preset</span>
-          <select value={presetId} onChange={(e) => onPreset(e.target.value)}>
+          <Select value={presetId} onChange={(e) => onPreset(e.target.value)}>
             {LINE_PRESETS.map((p) => (
               <option key={p.id} value={p.id}>
                 {p.name}
               </option>
             ))}
             <option value="custom">Custom</option>
-          </select>
+          </Select>
         </label>
         <label className="field field--grow">
           <span>Type</span>
-          <select value={line.type} disabled={locked} onChange={(e) => onChange({ ...line, type: e.target.value })}>
+          <Select value={line.type} disabled={locked} onChange={(e) => onChange({ ...line, type: e.target.value })}>
             {LINE_TYPES.map((t) => (
               <option key={t.id} value={t.id}>
                 {t.name}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
         <label className="field">
           <span>Weight</span>
-          <select value={line.weight} disabled={locked} onChange={(e) => onChange({ ...line, weight: Number(e.target.value) })}>
+          <Select value={line.weight} disabled={locked} onChange={(e) => onChange({ ...line, weight: Number(e.target.value) })}>
             {[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((w) => (
               <option key={w} value={w}>
                 {w} wt
               </option>
             ))}
-          </select>
+          </Select>
         </label>
       </div>
       <div ref={editRef} className="line-edit">
