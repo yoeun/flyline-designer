@@ -1,0 +1,74 @@
+{
+  "maker": "Piscifun",
+  "finishes": [
+    {
+      "id": "piscifun-green",
+      "name": "Green",
+      "hex": "#4b7247",
+      "notes": "Sword II green. Hex sampled from Piscifun's product photo (average of the frame)."
+    }
+  ],
+  "models": [
+    {
+      "id": "piscifun-sword-ii",
+      "name": "Piscifun Sword II",
+      "design": "sword-ii",
+      "colors": [
+        "black",
+        "piscifun-green"
+      ],
+      "notes": "The Sword II (2020) replaced the original Sword (3/4–9/10; black, gunmetal, space gray, pink). Neither is on piscifun.com any more (both product pages 404 as of Oct 2026); specs come from Piscifun's archived Sword II page (2024–25, Wayback Machine). Rim and width converted from Piscifun's mm figures (73/21, 85/24, 93/28 mm); the same page's inch column and its spec image round differently (2.9/0.83, 3.4/0.91, 3.7/1.06 in). Rated capacity ('braid capacity', 20 lb) is Piscifun's; it gives only one line per size, so the 3/4 and 7/8 ratings are at the lighter weight. Spool is estimated as rim − 0.24″. Black uses the base black (photo samples ~#3b393b). Marked discontinued: piscifun.com no longer lists it.",
+      "sizes": [
+        {
+          "id": "piscifun-sword-ii-34",
+          "size": "3/4",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 2.87,
+          "spool": 2.63,
+          "width": 0.83,
+          "rated": {
+            "weight": 3,
+            "yards": 50,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "piscifun-sword-ii-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.35,
+          "spool": 3.11,
+          "width": 0.94,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "piscifun-sword-ii-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 3.66,
+          "spool": 3.42,
+          "width": 1.1,
+          "rated": {
+            "weight": 7,
+            "yards": 125,
+            "pounds": 20
+          }
+        }
+      ],
+      "discontinued": true
+    }
+  ]
+}

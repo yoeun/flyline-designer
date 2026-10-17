@@ -20,15 +20,15 @@ Backing is spooled to the rated capacity, so the line sits just below the rim. C
 Spare spool lives in the truck: same line, same backing color, so it never gets mixed up with the others on the rack.`;
 
 export const DEMO_RACK = [
-  // Liquid S 3+ on 3 wt
+  // Liquid S -3+ on 3 wt
   { id: 'demo-1', title: '', styles: ['nymph'], notes: '', reel: { model: 'lamson-liquid-s-3', color: 'smoke' }, line: line('rio-technical-euro-nymph-2-5'), backing: backing(100, 'orange') },
   { id: 'demo-2', title: '', styles: ['nymph'], notes: 'Competition rig.', reel: { model: 'lamson-liquid-s-3', color: 'day-break' }, line: line('sa-mastery-euro-tactical-nymph-mono-level'), backing: backing(100, 'red') },
   { id: 'demo-3', title: '', styles: ['dry', 'nymph'], notes: '', reel: { model: 'lamson-liquid-s-3', color: 'smoke' }, line: line('rio-technical-euro-nymph-2-5'), backing: backing(100, 'blue') },
-  // Liquid S 5+ on 5 wt
+  // Liquid S -5+ on 5 wt
   { id: 'demo-4', title: '', styles: ['dry'], notes: '', reel: { model: 'lamson-liquid-s-5', color: 'smoke' }, line: line('twotone-wf5f'), backing: backing(100, 'red') },
   { id: 'demo-5', title: '', styles: ['dry'], notes: LONG_NOTE, reel: { model: 'lamson-liquid-s-5', color: 'day-break' }, line: line('generic-wf5f'), backing: backing(100, 'red') },
   { id: 'demo-6', title: '', styles: ['dry', 'nymph'], notes: '', reel: { model: 'lamson-liquid-s-5', color: 'smoke' }, line: line('rio-premier-gold-wf5f', { colorway: 1 }), backing: backing(100, 'blue') },
-  // Liquid S 7+ on 7 wt
+  // Liquid S -7+ on 7 wt
   { id: 'demo-7', title: '', styles: ['streamer'], notes: 'Slow intermediate for stillwater.', reel: { model: 'lamson-liquid-s-7', color: 'day-break' }, line: line('generic-wf7i'), backing: backing(150, 'white') },
   { id: 'demo-8', title: '', styles: ['streamer'], notes: '', reel: { model: 'lamson-liquid-s-7', color: 'smoke' }, line: line('airflo-sixth-sense-wf7-di5'), backing: backing(150, 'purple') },
   { id: 'demo-9', title: '', styles: ['streamer'], notes: '', reel: { model: 'lamson-liquid-s-7', color: 'day-break' }, line: line('cortland-streamer-sink-tip-15-wf7'), backing: backing(150, 'black') },

@@ -25,6 +25,32 @@
       "id": "dark-pine",
       "name": "Dark Pine",
       "hex": "#565d44"
+    },
+    {
+      "id": "orvis-blackout",
+      "name": "Blackout",
+      "hex": "#27232a",
+      "notes": "Mirage. Hex sampled from Orvis product photo. Foot, drag ring and handle are navy (accent), sampled from the photo.",
+      "accent": "#23378f"
+    },
+    {
+      "id": "orvis-silver-dragonfly",
+      "name": "Silver Dragonfly",
+      "hex": "#cfcdca",
+      "notes": "Mirage: clear silver frame with teal accents. Hex sampled from Orvis product photo (frame only). Foot, drag ring and handle are teal (accent), sampled from the photo.",
+      "accent": "#1fa3c6"
+    },
+    {
+      "id": "orvis-copper",
+      "name": "Copper",
+      "hex": "#9e6e54",
+      "notes": "Battenkill Disc. Hex sampled from Orvis product photo."
+    },
+    {
+      "id": "orvis-matte-olive",
+      "name": "Matte Olive",
+      "hex": "#867949",
+      "notes": "Battenkill Disc. Hex sampled from Orvis product photo."
     }
   ],
   "models": [
@@ -93,7 +119,7 @@
     {
       "id": "orvis-hydros",
       "name": "Orvis Hydros (2020–25)",
-      "design": "hydros",
+      "design": "hydros-2020",
       "colors": [
         "black",
         "silver",
@@ -165,7 +191,7 @@
         "charcoal",
         "dark-pine"
       ],
-      "notes": "Clearwater Cast. Diameter and rated capacity (20 lb backing) from Orvis spec tables via retailers. Orvis doesn't publish spool width; widths are estimates.",
+      "notes": "Clearwater Cast. Diameter and rated capacity (20 lb backing) from Orvis spec tables via retailers. Orvis doesn't publish spool width; widths are estimates. The drag knob matches the frame: black on Black, light gray on Charcoal, khaki on Dark Pine (accents).",
       "sizes": [
         {
           "id": "orvis-clearwater-2",
@@ -212,6 +238,164 @@
           "rated": {
             "weight": 8,
             "yards": 200,
+            "pounds": 20
+          }
+        }
+      ],
+      "accents": {
+        "black": "#2b2d30",
+        "charcoal": "#d6d8d5",
+        "dark-pine": "#b4a984"
+      }
+    },
+    {
+      "id": "orvis-mirage",
+      "name": "Orvis Mirage",
+      "design": "mirage",
+      "colors": [
+        "orvis-blackout",
+        "orvis-silver-dragonfly"
+      ],
+      "notes": "Current Mirage (\"Mirage USA\", 2019 redesign), sizes II–VI plus VI with the deep spool. Line weights and diameters from Orvis (orvis.co.uk/products/mirage-reels); orvis.com US now lists only the Mirage LT and Mirage spools, Orvis UK and retailers still sell the reel. Rated capacity from the Orvis capacity chart as reproduced by Bear's Den (II WF5+100, III WF7+100, IV WF9+175 on 20-lb Dacron; V WF11+200, VI WF13+300 on 30-lb; VI Deep WF14+600 of 50-lb gel spun). VI Deep is entered as 600 yd of 20-lb because 50-lb gel spun is about the diameter of 20-lb Dacron: an estimate. Backcountry gives single backing totals (150/150/200/225/325 yd) that don't match the chart. Trident measured the V (spool 4.18″, width 1.20″, 285 yd backing); other spools are rim − 0.24 and other widths are scaled from the V: estimates. VI Deep width is a guess. Finish hexes sampled from Orvis photos. The VI Deep (13–15 wt, rated with 600 yd of 50 lb gel spun) is left out: the backing model is 20/30 lb Dacron and line weights stop at 12.",
+      "sizes": [
+        {
+          "id": "orvis-mirage-2",
+          "size": "II",
+          "weights": [
+            3,
+            5
+          ],
+          "rim": 3.5,
+          "spool": 3.26,
+          "width": 0.95,
+          "rated": {
+            "weight": 5,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "orvis-mirage-3",
+          "size": "III",
+          "weights": [
+            5,
+            7
+          ],
+          "rim": 3.88,
+          "spool": 3.64,
+          "width": 1.0,
+          "rated": {
+            "weight": 7,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "orvis-mirage-4",
+          "size": "IV",
+          "weights": [
+            7,
+            9
+          ],
+          "rim": 4.25,
+          "spool": 4.01,
+          "width": 1.1,
+          "rated": {
+            "weight": 9,
+            "yards": 175,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "orvis-mirage-5",
+          "size": "V",
+          "weights": [
+            9,
+            11
+          ],
+          "rim": 4.5,
+          "spool": 4.18,
+          "width": 1.2,
+          "rated": {
+            "weight": 11,
+            "yards": 200,
+            "pounds": 30
+          }
+        },
+        {
+          "id": "orvis-mirage-6",
+          "size": "VI",
+          "weights": [
+            11,
+            13
+          ],
+          "rim": 5.0,
+          "spool": 4.76,
+          "width": 1.25,
+          "rated": {
+            "weight": 13,
+            "yards": 300,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "orvis-battenkill-disc",
+      "name": "Orvis Battenkill Disc",
+      "design": "battenkill-disc",
+      "colors": [
+        "black",
+        "orvis-copper",
+        "orvis-matte-olive"
+      ],
+      "notes": "Current Battenkill Disc (mid-arbor, Hydros SL drag). Line weights and diameters from orvis.com (II 3″, III 3.25″, IV 3.6″; some older listings give the IV as 3.5″). Rated capacity on 20-lb Dacron from Trident's Orvis chart (II WF5+50, III WF7+75, IV WF9+175); ADH Fishing lists the middle weights (WF4+125, WF6+100, WF8+200), which disagree for the II. Orvis doesn't publish spool width or capacity diameter: widths are estimates and spools are rim − 0.24. The Battenkill Click is a separate reel. Finish hexes sampled from Orvis photos.",
+      "sizes": [
+        {
+          "id": "orvis-battenkill-disc-2",
+          "size": "II",
+          "weights": [
+            3,
+            5
+          ],
+          "rim": 3.0,
+          "spool": 2.76,
+          "width": 0.8,
+          "rated": {
+            "weight": 5,
+            "yards": 50,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "orvis-battenkill-disc-3",
+          "size": "III",
+          "weights": [
+            5,
+            7
+          ],
+          "rim": 3.25,
+          "spool": 3.01,
+          "width": 0.85,
+          "rated": {
+            "weight": 7,
+            "yards": 75,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "orvis-battenkill-disc-4",
+          "size": "IV",
+          "weights": [
+            7,
+            9
+          ],
+          "rim": 3.6,
+          "spool": 3.36,
+          "width": 1.0,
+          "rated": {
+            "weight": 9,
+            "yards": 175,
             "pounds": 20
           }
         }

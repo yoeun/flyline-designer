@@ -22,6 +22,30 @@
       "name": "Army green",
       "hex": "#5e5f48",
       "notes": "Sold as \"O.D. Green\" (olive drab)."
+    },
+    {
+      "id": "redington-marine",
+      "name": "Marine",
+      "hex": "#1a72a8",
+      "notes": "Grande's bright blue; hex sampled from a Redington product photo (Reds Fly Shop listing)."
+    },
+    {
+      "id": "redington-wolf-grey",
+      "name": "Wolf grey",
+      "hex": "#9c9c9e",
+      "notes": "Zero's light grey; hex sampled from Stillwater Fly Shop product photos (Trident calls it Gray)."
+    },
+    {
+      "id": "redington-avocado",
+      "name": "Avocado",
+      "hex": "#6b7044",
+      "notes": "Zero finish in Redington's spec chart; no photo found, hex estimated."
+    },
+    {
+      "id": "redington-amber",
+      "name": "Amber",
+      "hex": "#dc9a2e",
+      "notes": "Rise III's gold-orange; hex sampled from Trident product photos (they range #d6852c–#f7ba2e with lighting)."
     }
   ],
   "models": [
@@ -175,6 +199,208 @@
           "rated": {
             "weight": 7,
             "yards": 200,
+            "pounds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "redington-grande",
+      "name": "Redington Grande",
+      "design": "grande",
+      "colors": [
+        "black",
+        "champagne",
+        "redington-marine"
+      ],
+      "notes": "Weights and rated capacity from Redington's spec chart (as hosted by Reds Fly Shop) and Trident; rated line (WF6/8/10/12/14) and spool widths (2.6/3.3/3.7/4.0/4.3 cm) from Rudi Heger's table. Diameters 3.7/4.1/4.5/4.8/5.0 in per Trident (Rudi Heger: 9.4/10.4/11.4/12.1/12.7 cm). Spool (capacity) diameters are estimates (rim − 0.24). Trident lists the 9/10/11 at \"275/300\", a typo for 275/30. The 14+ is rated with 750 yd of 50 lb GSP, entered as 30 lb (its nearest allowed value; GSP is thinner, so the solved arbor runs small). Limited Bonefish (7/8/9) and Tarpon (9/10/11) graphic editions not listed as colors. The 14+ is left out: Redington rates it with 750 yd of 50 lb GSP braid, which the backing model (20/30 lb Dacron) can't represent, and line weights stop at 12.",
+      "sizes": [
+        {
+          "id": "redington-grande-567",
+          "size": "5/6/7",
+          "weights": [
+            5,
+            7
+          ],
+          "rim": 3.7,
+          "spool": 3.46,
+          "width": 1.02,
+          "rated": {
+            "weight": 6,
+            "yards": 200,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "redington-grande-789",
+          "size": "7/8/9",
+          "weights": [
+            7,
+            9
+          ],
+          "rim": 4.1,
+          "spool": 3.86,
+          "width": 1.3,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 30
+          }
+        },
+        {
+          "id": "redington-grande-91011",
+          "size": "9/10/11",
+          "weights": [
+            9,
+            11
+          ],
+          "rim": 4.5,
+          "spool": 4.26,
+          "width": 1.46,
+          "rated": {
+            "weight": 10,
+            "yards": 275,
+            "pounds": 30
+          }
+        },
+        {
+          "id": "redington-grande-111213",
+          "size": "11/12/13",
+          "weights": [
+            11,
+            13
+          ],
+          "rim": 4.8,
+          "spool": 4.56,
+          "width": 1.57,
+          "rated": {
+            "weight": 12,
+            "yards": 350,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "redington-zero",
+      "name": "Redington Zero",
+      "design": "zero",
+      "colors": [
+        "black",
+        "redington-wolf-grey",
+        "burgundy",
+        "redington-avocado"
+      ],
+      "notes": "Diameter and capacity from Redington's spec chart and Trident (2/3: 3.0 in, 4/5: 3.3 in, 100 yd/20 lb each); rated lines WF3 and WF5 from Rudi Heger. Redington doesn't publish spool width; widths are estimates (one retailer lists 1.3/1.4 in, which looks like overall reel width). Spool diameters are estimates (rim − 0.24). Colors per Redington chart: Matte Black, Wolf Grey, Burgundy, Avocado; Rudi Heger also sells Sand spare spools.",
+      "sizes": [
+        {
+          "id": "redington-zero-23",
+          "size": "2/3",
+          "weights": [
+            2,
+            3
+          ],
+          "rim": 3.0,
+          "spool": 2.76,
+          "width": 0.85,
+          "rated": {
+            "weight": 3,
+            "yards": 100,
+            "pounds": 20
+          },
+          "design": "zero-23"
+        },
+        {
+          "id": "redington-zero-45",
+          "size": "4/5",
+          "weights": [
+            4,
+            5
+          ],
+          "rim": 3.3,
+          "spool": 3.06,
+          "width": 0.9,
+          "rated": {
+            "weight": 5,
+            "yards": 100,
+            "pounds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "redington-rise-iii",
+      "name": "Redington Rise III",
+      "design": "rise-iii",
+      "discontinued": true,
+      "colors": [
+        "black",
+        "silver",
+        "redington-amber"
+      ],
+      "notes": "Out of production (Trident says the Ace replaced it). Diameter and backing from Marine-Deals listings (3.2/3.6/4.0 in; 75/100/200 yd of 20 lb) and rated lines WF4/6/8/10 from Ole Florida Fly Shop. 9/10: 4.4 in (Rudi Heger 11.1 cm); backing 300 yd/20 lb per Ole Florida and Rudi Heger, though Marine-Deals lists 250. Spool widths are estimates: Rudi Heger lists 3.3 cm for every size and Tackle Tour measured 1.25 in on the original Rise 7/8. Spool diameters are estimates (rim − 0.24). Colors: Black, Silver, Amber per Marine-Deals and Trident photos; Marine-Deals also sold an Olive version, left out for lack of a photo.",
+      "sizes": [
+        {
+          "id": "redington-rise-iii-34",
+          "size": "3/4",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 3.2,
+          "spool": 2.96,
+          "width": 1.05,
+          "rated": {
+            "weight": 4,
+            "yards": 75,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "redington-rise-iii-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.6,
+          "spool": 3.36,
+          "width": 1.1,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "redington-rise-iii-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 4.0,
+          "spool": 3.76,
+          "width": 1.2,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "redington-rise-iii-910",
+          "size": "9/10",
+          "weights": [
+            9,
+            10
+          ],
+          "rim": 4.4,
+          "spool": 4.16,
+          "width": 1.3,
+          "rated": {
+            "weight": 10,
+            "yards": 300,
             "pounds": 20
           }
         }

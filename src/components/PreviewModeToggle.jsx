@@ -1,19 +1,13 @@
+import { ReelIconPaths } from './ReelIcon.jsx';
 import Segmented from './Segmented.jsx';
 
 // Custom icons: Material Symbols has nothing for these reel-specific modes.
-const SPOKES = [0, 60, 120, 180, 240, 300].map((deg) => (deg * Math.PI) / 180);
 
 const MODES = [
   [
     'reel',
     'Reel',
-    <>
-      <circle cx="12" cy="12" r="9.5" strokeWidth="2.2" />
-      <circle cx="12" cy="12" r="4.6" fill="currentColor" stroke="none" />
-      {SPOKES.map((a) => (
-        <line key={a} x1={12 + 4.6 * Math.cos(a)} y1={12 + 4.6 * Math.sin(a)} x2={12 + 9.5 * Math.cos(a)} y2={12 + 9.5 * Math.sin(a)} strokeWidth="1.8" />
-      ))}
-    </>,
+    <ReelIconPaths />,
   ],
   [
     'see-through',

@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 import { NAV_PAGES } from '../lib/headerMenu.js';
 import { THEMES } from '../lib/theme.js';
 import Icon from './Icon.jsx';
+import ReelIcon from './ReelIcon.jsx';
 
 const THEME_ICONS = { system: 'brightness_auto', light: 'light_mode', dark: 'dark_mode' };
 
@@ -36,7 +37,7 @@ export default function NavMenu({ page, onNavigate, theme, onTheme }) {
               className={cn('gap-2.5 px-3 py-2 text-[15px]', current && 'bg-accent font-semibold text-accent-foreground')}
               onClick={() => !current && onNavigate(p.id)}
             >
-              <Icon name={p.icon} />
+              {p.icon === 'reel' ? <ReelIcon /> : <Icon name={p.icon} />}
               {p.label}
             </DropdownMenuItem>
           );

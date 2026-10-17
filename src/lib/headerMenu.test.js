@@ -5,7 +5,7 @@ const ids = (page) => menuGroups(page).map((group) => group.map((item) => item.i
 
 describe('NAV_PAGES', () => {
   it('lists every page in order', () => {
-    expect(NAV_PAGES.map((p) => p.id)).toEqual(['designer', 'rack', 'guide']);
+    expect(NAV_PAGES.map((p) => p.id)).toEqual(['designer', 'rack', 'guide', 'reels']);
   });
 });
 

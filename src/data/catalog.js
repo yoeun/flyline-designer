@@ -39,7 +39,8 @@ export const REEL_COLORS = [
   { id: 'red', name: 'Red', hex: '#8f2c27' },
   { id: 'blue', name: 'Blue', hex: '#2c4f7c' },
   // Maker finishes come from the reel files (see REEL_FILES).
-  ...REEL_FILES.flatMap((f) => f.finishes ?? []).map(({ id, name, hex }) => ({ id, name, hex })),
+  // A finish's `accent` colors the parts a design marks as accents (see scripts/reel-designs/lib.mjs).
+  ...REEL_FILES.flatMap((f) => f.finishes ?? []).map(({ id, name, hex, accent }) => ({ id, name, hex, ...(accent ? { accent } : {}) })),
 ];
 
 // Colors for reels without their own list.
@@ -235,6 +236,11 @@ export const menuId = (presetId) => findById(LINE_PRESETS, presetId)?.product ??
 // Swatches for a line's zones: the base palette plus any maker colors the line already uses.
 export const lineSwatches = (line) => [...LINE_COLORS, ...MAKER_LINE_COLORS.filter((c) => line.zones.some((z) => z.color === c.id))];
 
+// The accent color for a reel in a finish: the model's own for that finish, else the finish's, else none.
+export const reelAccent = (reel, colorId) => reel?.accents?.[colorId] ?? findById(REEL_COLORS, colorId)?.accent ?? null;
+// The trim color for a reel in a finish (parts like a foot that differ from frame and accent), or none.
+export const reelTrim = (reel, colorId) => reel?.trims?.[colorId] ?? null;
+
 export const reelColors = (reel) => (reel?.colors ?? GENERIC_REEL_COLORS).map((id) => findById(REEL_COLORS, id));
 
 // The reel switched to another size, keeping its color when the new size comes in it.
@@ -243,11 +249,17 @@ export function withReelModel(reel, model) {
   return { ...reel, model, color: ids.includes(reel.color) ? reel.color : ids[0] };
 }
 
+// Model menu entries: discontinued models say so and go last, so they come after the current ones once grouped by maker.
+export const reelMenu = (models) => [
+  ...models.filter((m) => !m.discontinued),
+  ...models.filter((m) => m.discontinued).map((m) => ({ ...m, name: `${m.name} (discontinued)` })),
+];
+
 // The sizes a reel model comes in, small to large.
 export const reelSizes = (product) => REELS.filter((r) => r.product === product);
 
 // A reel size as the Size menu shows it: every line weight it suits, then the maker's label when that
-// says something the weights don't, e.g. "5/6 wt (5+)", "5/6/7 wt (III)", "7/8 wt".
+// says something the weights don't, e.g. "4/5/6 wt (-5+)", "5/6/7 wt (III)", "7/8 wt".
 export function reelSizeLabel(size) {
   const [lo, hi] = size.weights;
   const weights = Array.from({ length: hi - lo + 1 }, (_, i) => lo + i).join('/');

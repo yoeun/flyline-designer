@@ -1,0 +1,318 @@
+{
+  "maker": "Sage",
+  "finishes": [
+    {
+      "id": "sage-bronze",
+      "name": "Bronze",
+      "hex": "#8b7356",
+      "notes": "Hex sampled (median of finish pixels) from Far Bank's product photo."
+    },
+    {
+      "id": "sage-flint",
+      "name": "Flint",
+      "hex": "#8c7d76",
+      "notes": "Hex sampled (median of finish pixels) from Far Bank's product photo."
+    },
+    {
+      "id": "sage-stealth",
+      "name": "Stealth",
+      "hex": "#434141",
+      "notes": "Hex sampled (median of finish pixels) from Far Bank's product photo."
+    },
+    {
+      "id": "sage-frost",
+      "name": "Frost",
+      "hex": "#8b8785",
+      "notes": "Hex sampled (median of finish pixels) from Far Bank's product photo."
+    },
+    {
+      "id": "sage-slate",
+      "name": "Slate",
+      "hex": "#6f6867",
+      "notes": "Hex sampled (median of finish pixels) from Far Bank's product photo."
+    },
+    {
+      "id": "sage-tempest-blue",
+      "name": "Tempest Blue",
+      "hex": "#42445a",
+      "notes": "Navy frame with a gunmetal spool; hex sampled from the frame in Far Bank's product photo."
+    },
+    {
+      "id": "sage-grey",
+      "name": "Grey",
+      "hex": "#625c59",
+      "notes": "Hex sampled (median of finish pixels) from Far Bank's product photo."
+    },
+    {
+      "id": "sage-platinum",
+      "name": "Platinum",
+      "hex": "#7e7b7f",
+      "notes": "Hex sampled (median of finish pixels) from Ed's Fly Shop's product photo."
+    }
+  ],
+  "models": [
+    {
+      "id": "sage-click",
+      "name": "Sage Click",
+      "design": "click",
+      "colors": [
+        "sage-bronze",
+        "sage-flint",
+        "sage-stealth"
+      ],
+      "notes": "Current (2021) Click. Rim and capacity from Trident (3.13/3.44/3.75 in; 75/100/100 yd) and Far Bank's listing; Rudi Heger (EU distributor) gives 7.9/8.7/9.5 cm rims, 3.0/3.2/3.3 cm spool widths (used as width), and backing of WF1 + 50 yd/20 lb, WF5 + 100 yd/20 lb, WF6 + 100 yd/30 lb. Rated: 0/1/2 uses Trident's 75 yd with an assumed WF2/20 lb (Heger says WF1 + 50 yd: conflict); 3/4/5 and 4/5/6 follow Heger. Spool diameters are estimates (rim − 0.24).",
+      "sizes": [
+        {
+          "id": "sage-click-012",
+          "size": "0/1/2",
+          "weights": [
+            0,
+            2
+          ],
+          "rim": 3.13,
+          "spool": 2.89,
+          "width": 1.18,
+          "rated": {
+            "weight": 2,
+            "yards": 75,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sage-click-345",
+          "size": "3/4/5",
+          "weights": [
+            3,
+            5
+          ],
+          "rim": 3.44,
+          "spool": 3.2,
+          "width": 1.26,
+          "rated": {
+            "weight": 5,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sage-click-456",
+          "size": "4/5/6",
+          "weights": [
+            4,
+            6
+          ],
+          "rim": 3.75,
+          "spool": 3.51,
+          "width": 1.3,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "sage-spectrum-c",
+      "name": "Sage Spectrum C",
+      "design": "spectrum-c",
+      "colors": [
+        "black",
+        "sage-grey"
+      ],
+      "notes": "The Spectrum still sold by Far Bank (die-cast, 2018). The machined Spectrum, Spectrum LT and Spectrum Max are no longer listed; the original Spectrum is added separately as discontinued, LT and Max are left out. Rim and rated capacity from Trident and Jans; width from The Fly Stop and Mudhole (1 5/16, 1 5/16, 1 3/8 in); 9/10 width (1 1/2 in) from Compleat Angler only. Spool diameters are estimates (rim − 0.24). The drag dial is the other finish's color (accents): grey on Black, black on Grey.",
+      "sizes": [
+        {
+          "id": "sage-spectrum-c-34",
+          "size": "3/4",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 3.31,
+          "spool": 3.07,
+          "width": 1.31,
+          "rated": {
+            "weight": 4,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sage-spectrum-c-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.63,
+          "spool": 3.39,
+          "width": 1.31,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sage-spectrum-c-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 4.0,
+          "spool": 3.76,
+          "width": 1.38,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sage-spectrum-c-910",
+          "size": "9/10",
+          "weights": [
+            9,
+            10
+          ],
+          "rim": 4.31,
+          "spool": 4.07,
+          "width": 1.5,
+          "rated": {
+            "weight": 10,
+            "yards": 200,
+            "pounds": 30
+          }
+        }
+      ],
+      "accents": {
+        "black": "#625c59",
+        "sage-grey": "#222426"
+      }
+    },
+    {
+      "id": "sage-spectrum",
+      "name": "Sage Spectrum",
+      "design": "spectrum",
+      "discontinued": true,
+      "colors": [
+        "black",
+        "sage-platinum"
+      ],
+      "notes": "Original machined Spectrum (2017), no longer on Far Bank. Rim, width and rated capacity from Mudhole's and Orlando Outfitters' spec tables (Jay's agrees on rims); Rudi Heger gives 8.2–11.1 cm rims and 3.2–3.8 cm widths. Mudhole also lists Copper and Lime finishes, left out here. Spool diameters are estimates (rim − 0.24). Drawn from a copy of the Spectrum C design (nearly the same reel), but its dial is the frame color.",
+      "sizes": [
+        {
+          "id": "sage-spectrum-34",
+          "size": "3/4",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 3.25,
+          "spool": 3.01,
+          "width": 1.25,
+          "rated": {
+            "weight": 4,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sage-spectrum-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.63,
+          "spool": 3.39,
+          "width": 1.25,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sage-spectrum-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 4.0,
+          "spool": 3.76,
+          "width": 1.38,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sage-spectrum-910",
+          "size": "9/10",
+          "weights": [
+            9,
+            10
+          ],
+          "rim": 4.38,
+          "spool": 4.14,
+          "width": 1.5,
+          "rated": {
+            "weight": 10,
+            "yards": 200,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "sage-arbor-xl",
+      "name": "Sage Arbor XL",
+      "design": "arbor-xl",
+      "colors": [
+        "sage-slate",
+        "sage-frost",
+        "sage-tempest-blue"
+      ],
+      "notes": "Two sizes only. Rim, width and rated capacity from Trident and Duranglers (4 1/8 and 4 1/2 in; 1 1/8 and 1 1/4 in; WF6 + 100 yd/20 lb, WF8 + 200 yd/20 lb). Trident's 'arbor diameter' repeats the rim, so it is ignored and the arbor is solved from the rating. Spool diameters are estimates (rim − 0.24).",
+      "sizes": [
+        {
+          "id": "sage-arbor-xl-456",
+          "size": "4/5/6",
+          "weights": [
+            4,
+            6
+          ],
+          "rim": 4.13,
+          "spool": 3.89,
+          "width": 1.13,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sage-arbor-xl-678",
+          "size": "6/7/8",
+          "weights": [
+            6,
+            8
+          ],
+          "rim": 4.5,
+          "spool": 4.26,
+          "width": 1.25,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        }
+      ]
+    }
+  ]
+}

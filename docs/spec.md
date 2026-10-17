@@ -30,7 +30,7 @@ Two columns. They stack on narrow screens.
   - Checks: spool fill and backing vs. running line contrast.
   - **Rack strip**, collapsed by default: saved setups, with a count of the color conflicts between them. **Expand** opens the rack page.
 - **Right, options** (stacked sections)
-  - **Reel**: Model and Size in one row, color presets below. Model has one entry per reel model, grouped by maker. Size lists only the sizes that model comes in, labelled the same way for every maker: the line weights it suits, then the maker's size when it differs (e.g. "7/8 wt (7+)", "5/6/7 wt (III)", "7/8 wt"). A new model lands on the first size that suits the line's weight, otherwise the size nearest the current reel's rim.
+  - **Reel**: Model and Size in one row, color presets below. Model has one entry per reel model, grouped by maker. Size lists only the sizes that model comes in, labelled the same way for every maker: the line weights it suits, then the maker's size when it differs (e.g. "6/7/8 wt (-7+)", "5/6/7 wt (III)", "7/8 wt"). A new model lands on the first size that suits the line's weight, otherwise the size nearest the current reel's rim.
   - **Fly line**: Preset, Type and Weight in one row (Type and Weight unlock with the **Custom** preset). Below it, a line editor: a dimension line for the taper sections (front taper, body, back taper, running line) above the line drawn in its color zones. Click a section or zone to edit it underneath (length; zones also get color, Split and Remove). Drag or arrow-key a boundary to resize; dragging keeps the total length.
   - **Backing**: length (100 / 150 / 200 / 250 yd or custom), strength (20 / 30 lb), and colors in one row in gradient order (red, orange, yellow, chartreuse, green, blue, purple, white, black).
 - **Header**: New, Reset, Save, Save as new (when editing a saved setup), Export PNG, Export SVG, and a System / Light / Dark theme switch.
@@ -99,15 +99,17 @@ Backing diameter: 20 lb = 0.021 in, 30 lb = 0.025 in.
 
 Reel data lives in `src/data/reels/<maker>.json`, one file per maker (see the README there). Each model lists its sizes, and each size has its own id, which is what saved setups and links store.
 
+The JSON files are the full list, with sources and estimates in each model's notes. The table below covers the first reels added. The **Reels** page (in the page menu) draws every model and size to scale from both sides, with the maker's specs, for checking the drawings and data at a glance. Page-wide controls show or hide the line and set the backing, head and running line colors. In dev only, it also shows the maker's photos from the gitignored `data/reel-photos/`.
+
 
 Lamson figures come from Lamson's spec table (capacity with the largest line each size takes); the rest come from retailer listings. Spool diameter is estimated as rim − 0.24″, and the arbor is solved from the rated capacity.
 
 | Model | Rim | Spool (est.) | Width | Rated capacity |
 |---|---|---|---|---|
-| Lamson Liquid S 3+ | 3.35″ | 3.11″ | 1.00″ | WF4 + 100 yd of 20 lb |
-| Lamson Liquid S 5+ | 3.65″ | 3.41″ | 1.00″ | WF6 + 100 yd of 20 lb |
-| Lamson Liquid S 7+ | 3.9″ | 3.66″ | 1.15″ | WF8 + 200 yd of 20 lb |
-| Lamson Liquid S 9+ | 4.45″ | 4.21″ | 1.25″ | WF10 + 250 yd of 30 lb |
+| Lamson Liquid S -3+ | 3.35″ | 3.11″ | 1.00″ | WF4 + 100 yd of 20 lb |
+| Lamson Liquid S -5+ | 3.65″ | 3.41″ | 1.00″ | WF6 + 100 yd of 20 lb |
+| Lamson Liquid S -7+ | 3.9″ | 3.66″ | 1.15″ | WF8 + 200 yd of 20 lb |
+| Lamson Liquid S -9+ | 4.45″ | 4.21″ | 1.25″ | WF10 + 250 yd of 30 lb |
 | Orvis Hydros II (2026) | 3.4″ | 3.16″ | 0.85″ (est.) | WF4 + 125 yd of 20 lb (est.) |
 | Orvis Hydros III (2026) | 3.88″ | 3.62″ (measured) | 0.90″ (measured) | arbor 2.43″ (measured) |
 | Orvis Hydros IV (2026) | 4.25″ | 4.01″ | 1.00″ (est.) | WF8 + 200 yd of 20 lb (est.) |
@@ -128,11 +130,11 @@ Lamson figures come from Lamson's spec table (capacity with the largest line eac
 
 Orvis and Redington (for the Behemoth) don't publish spool width, so those widths are estimates. The one exception is the 2026 Hydros III, which Trident Fly Fishing measured in its review (spool 3.62″, arbor 2.43″, width 0.9″); the other 2026 Hydros sizes scale from it. The Behemoth 4/5's 125 yd comes from Far Bank, Redington's parent; Trident lists 75 yd.
 
-Orvis labels sizes II–IV, without weights. The weights shown (3–5, 5–7, 7–9 wt) are estimates centred on each size's rated line.
+Lamson rates each size one line weight either side of its number, hence labels like -7+ (6–8 wt). Orvis labels sizes II–IV, without weights. The weights shown (3–5, 5–7, 7–9 wt) are estimates centred on each size's rated line.
 
 Maker finish colors are sampled from the makers' studio product photos (lit faces, highlights and shadows dropped), since no maker publishes color values.
 
-Each reel names a frame `design` (generic, Liquid S or Run), drawn once as SVG for the drag side and the spool side in `src/assets/reels`. The preview shows the drag side by default; a Drag/Spool toggle switches sides. The wound line shows through the frame's windows, shaded as fine wraps.
+Each reel names a frame `design` (a size can name its own), drawn as SVG for the drag side and the spool side in `src/assets/reels` by `scripts/gen-reel-frames.mjs` from one module per design in `scripts/reel-designs` (`npm run reels`; `npm run reel-preview` renders a design beside the maker's photos). A finish can color a design's accent parts, and a model can set its own `accents` and `trims` per finish. The preview shows the drag side by default; a Drag/Spool toggle switches sides. The wound line shows through the frame's windows, shaded as fine wraps.
 
 ### Generic lines (v1)
 

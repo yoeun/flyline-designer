@@ -1,0 +1,163 @@
+{
+  "maker": "Ross",
+  "finishes": [
+    {
+      "id": "ross-platinum",
+      "name": "Platinum",
+      "hex": "#90958f",
+      "notes": "Sampled from Ross's Animas and Evolution R product photos (avg of #8e8f89 and #929b96)."
+    },
+    {
+      "id": "ross-matte-olive",
+      "name": "Matte Olive",
+      "hex": "#505a2d",
+      "notes": "Sampled from Ross's Animas and Evolution R product photos (avg of #535724 and #4c5e36)."
+    },
+    {
+      "id": "ross-matte-blue",
+      "name": "Matte Blue",
+      "hex": "#084c64",
+      "notes": "Sampled from Ross's Animas and Evolution R product photos (avg of #0b5767 and #044160)."
+    }
+  ],
+  "models": [
+    {
+      "id": "ross-animas",
+      "name": "Ross Animas",
+      "design": "animas",
+      "colors": [
+        "black",
+        "ross-platinum",
+        "ross-matte-olive",
+        "ross-matte-blue"
+      ],
+      "notes": "Width, diameter, line weights and capacity from Ross's own Animas spec table (rossreels.com, now served at mayflyoutdoors.com/products/ross-reels-animas; matches Feather-Craft and Fly Fish SD). Rated capacity is the heavier listed line: 4/5 WF5+50, 5/6 WF6+75, 7/8 WF8+160 (lighter: WF4+70, WF5+100, WF7+180). Ross rates capacity on 20 lb backing (legacy.rossreels.com/product-help). Spool is estimated as rim − 0.24″. Trident lists larger capacities (e.g. 4/5 WF5+130, 7/8 WF8+225) that disagree with Ross; Ross's figures are used. Colors: Matte Black (shared black), Platinum, Matte Olive, Matte Blue; finish hexes sampled from Ross's product photos. Fly-shop exclusive finishes (Mardi Gras, Matte Chocolate, Merlot, Crimson, etc.) are left out. The drag knob varies by finish (accents): gold on Black and Matte Olive, copper on Platinum, silver on Matte Blue. The handle is wood on every finish.",
+      "sizes": [
+        {
+          "id": "ross-animas-45",
+          "size": "4/5",
+          "weights": [
+            4,
+            5
+          ],
+          "rim": 3.25,
+          "spool": 3.01,
+          "width": 0.98,
+          "rated": {
+            "weight": 5,
+            "yards": 50,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "ross-animas-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.5,
+          "spool": 3.26,
+          "width": 1.02,
+          "rated": {
+            "weight": 6,
+            "yards": 75,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "ross-animas-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 3.88,
+          "spool": 3.64,
+          "width": 1.02,
+          "rated": {
+            "weight": 8,
+            "yards": 160,
+            "pounds": 20
+          }
+        }
+      ],
+      "accents": {
+        "black": "#c98a2c",
+        "ross-platinum": "#c07a26",
+        "ross-matte-olive": "#c9922f",
+        "ross-matte-blue": "#c9ccc8"
+      }
+    },
+    {
+      "id": "ross-evolution-r",
+      "name": "Ross Evolution R",
+      "design": "evolution-r",
+      "colors": [
+        "black",
+        "ross-platinum",
+        "ross-matte-olive",
+        "ross-matte-blue"
+      ],
+      "notes": "Width, diameter, line weights and capacity from Ross's own Evolution R spec table (rossreels.com, now served at mayflyoutdoors.com/products/ross-reels-evolution-r; matches Fly Fish SD). Current lineup is 4/5, 5/6, 7/8; Fly Fish SD also lists an older 3/4 (3.43″, WF3+100/WF4+85) that Ross no longer sells, so it is left out. Ross lists the same 0.97″ width for every size, published as-is. Rated capacity is the heavier listed line: 4/5 WF5+75, 5/6 WF6+90, 7/8 WF8+150 (lighter: WF4+100, WF5+115, WF7+180). Ross rates capacity on 20 lb backing (legacy.rossreels.com/product-help). Spool is estimated as rim − 0.24″. Trident lists 3.525/3.775/4.025″ diameters and WF4+95, WF5+110, WF8+160 — close, but Ross's figures are used. Colors: Matte Black (shared black), Platinum, Matte Olive, Matte Blue (Trident also sells a Blackout edition, left out); finish hexes sampled from Ross's product photos. Evolution R Salt is a separate model, not added. On Black and Platinum the whole reel is one color. On Matte Olive the inner spider (ring, spokes and cap) is gold and the foot black; on Matte Blue both are silver (accents, trims).",
+      "sizes": [
+        {
+          "id": "ross-evolution-r-45",
+          "size": "4/5",
+          "weights": [
+            4,
+            5
+          ],
+          "rim": 3.53,
+          "spool": 3.29,
+          "width": 0.97,
+          "rated": {
+            "weight": 5,
+            "yards": 75,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "ross-evolution-r-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.78,
+          "spool": 3.54,
+          "width": 0.97,
+          "rated": {
+            "weight": 6,
+            "yards": 90,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "ross-evolution-r-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 4.03,
+          "spool": 3.79,
+          "width": 0.97,
+          "rated": {
+            "weight": 8,
+            "yards": 150,
+            "pounds": 20
+          }
+        }
+      ],
+      "accents": {
+        "ross-matte-olive": "#b8893a",
+        "ross-matte-blue": "#b9bdbe"
+      },
+      "trims": {
+        "ross-matte-olive": "#222426",
+        "ross-matte-blue": "#b9bdbe"
+      }
+    }
+  ]
+}
