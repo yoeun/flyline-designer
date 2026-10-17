@@ -17,12 +17,25 @@ const GEAR = knurl(134, 3.5, 44) + circle(124);
 
 // A spoke shaped like a Y: two arms that leave the hub together along the spoke and curve smoothly apart to the
 // rim, so the stem and fork are one flowing shape.
-const ySpoke = (a) => [-1, 1].map((sd) => arm(P(18, rad(a)), P(118, rad(a)), P(192, rad(a + sd * 15)), 30, 16, 20));
+const ySpoke = (a) => [-1, 1].map((sd) => arm(P(-14, rad(a)), P(118, rad(a)), P(192, rad(a + sd * 15)), 30, 16, 20));
+// Fills the hub between spokes (at `angles`, degrees) with smooth inward curves, so they flow into each other.
+const web = (angles, r = 52, edge = 18, depth = 16) => {
+  const a = [...angles].sort((x, y) => x - y);
+  const pt = (deg, rr) => P(rr, rad(deg)).map((v) => v.toFixed(1)).join(' ');
+  return (
+    a
+      .map((deg, i) => {
+        const next = i + 1 < a.length ? a[i + 1] : a[0] + 360;
+        return `${i ? 'L' : 'M'}${pt(deg + edge, r)}Q${pt((deg + next) / 2, depth)} ${pt(next - edge, r)}`;
+      })
+      .join('') + 'Z'
+  );
+};
 const spokes = (first) => [0, 1, 2].flatMap((k) => ySpoke(first + k * 120));
 
 // A frame spoke: a Y like ySpoke, its own width and fork.
 // Its tips run across the window ring to the outer edge of the cage.
-const frameY = (a, w0, w1, spread) => [-1, 1].map((sd) => arm(P(18, rad(a)), P(118, rad(a)), P(192, rad(a + sd * spread)), w0, w1, 20));
+const frameY = (a, w0, w1, spread) => [-1, 1].map((sd) => arm(P(-14, rad(a)), P(118, rad(a)), P(192, rad(a + sd * spread)), w0, w1, 20));
 
 export const drag = svg({
   back: [GEAR],
@@ -34,7 +47,7 @@ export const drag = svg({
     ...frameY(-140, 44, 18, 16),
     ...frameY(-40, 44, 18, 16),
     ...frameY(90, 40, 18, 14),
-    circle(34),
+    web([-140, -40, 90]),
     circle(24, 0, 48),
   ],
   details:
@@ -47,7 +60,7 @@ export const drag = svg({
 // Spool side: the spokes turned over; handle near the rim between two of them, a small knob opposite.
 export const spool = svg({
   back: [sageFoot()],
-  body: [ring(200, 140) + RIM, pad(169, -30, 30, 40), pad(169, 150, 26, 36), ...spokes(-90), circle(32)],
+  body: [ring(200, 140) + RIM, pad(169, -30, 30, 40), pad(169, 150, 26, 36), ...spokes(-90), web([-90, 30, 150])],
   details:
     logo(0, 0, 26) +
     rimHandle(169, -30, 18) +
