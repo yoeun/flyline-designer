@@ -27,7 +27,7 @@ const plaqueArt =
   `<path d="M-14 -100C-4 -106 4 -96 14 -102M-12 -88C-2 -94 6 -84 16 -90" fill="none" stroke="#000" stroke-opacity=".22" stroke-width="1.6"/>`;
 
 const PAIRS = [0, 1, 2, 3, 4].map((k) => 90 + k * 72);
-const pair = (a) => [-1, 1].map((s) => strut(P(86, rad(a + s * 9)), P(190, rad(a + s * 10.5)), 18, 16));
+const pair = (a) => [-1, 1].map((s) => strut(P(86, rad(a + s * 15)), P(190, rad(a + s * 13)), 18, 16));
 
 export const drag = svg({
   back: [ring(186, 138) + slots(OUTER)],
