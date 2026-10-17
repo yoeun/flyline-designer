@@ -579,13 +579,13 @@ select {
 }
 
 .line-editor__name {
-  font: 600 10px var(--font-body);
+  font: 600 8px var(--font-body);
   letter-spacing: 0.08em;
   fill: var(--muted);
 }
 
 .line-editor__len {
-  font: 10px var(--font-mono);
+  font: 8.5px var(--font-mono);
   fill: var(--muted);
 }
 
@@ -695,37 +695,6 @@ select {
   width: 80px;
 }
 
-.families {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.family {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 8px 10px;
-  border-radius: 10px;
-}
-
-.family.is-suggested {
-  background: var(--accent-soft);
-}
-
-.family__label {
-  width: 120px;
-  flex: none;
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-}
-
-.family__label span {
-  font-size: 13px;
-  color: var(--muted);
-}
-
 .hint {
   margin: 0;
   font-size: 13px;
@@ -769,10 +738,12 @@ select {
 }
 
 @media (max-width: 480px) {
-  .family {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+  .line-editor__name {
+    font-size: 12px;
+  }
+
+  .line-editor__len {
+    font-size: 12.5px;
   }
 }
 
