@@ -16,11 +16,12 @@ the Model menu groups models by maker, A–Z, with Generic last.
       "name": "Lamson Liquid S",         // shown in the Model menu
       "design": "liquid-s",              // frame drawing in src/assets/reels; unknown designs draw as generic
       "colors": ["smoke", "day-break"],  // finish ids; leave out to offer the generic colors
+      "discontinued": true,              // optional; listed last, labelled "(discontinued)"
       "notes": "Where the numbers came from and which are estimates.",
       "sizes": [                         // small to large
         {
           "id": "lamson-liquid-s-5",     // stored in saved setups and links: never rename one
-          "size": "5+",                  // the maker's size label
+          "size": "-5+",                 // the maker's size label
           "name": "…",                   // optional; defaults to "<model name> <size>"
           "weights": [5, 6],             // line weights it suits, lightest to heaviest
           "rim": 3.65,                   // inches
@@ -36,4 +37,4 @@ the Model menu groups models by maker, A–Z, with Generic last.
 ```
 
 A finish id can be shared across makers (black, silver, gunmetal are in the base palette). Mark
-estimates in `notes`, and keep docs/spec.md's reel table in step.
+estimates in `notes`. Check new reels on the Reels page (`?page=reels`).

@@ -16,6 +16,7 @@ import {
   nameOf,
   productSizes,
   reelColors,
+  reelMenu,
   reelSizeLabel,
   reelSizes,
   switchReelModel,
@@ -62,7 +63,7 @@ const MONO = 'font-mono tabular-nums';
 // Maker-grouped options for the searchable Model and Preset menus. The catalog is static, so build them once.
 const toGroups = (groups, label) => groups.map(([maker, items]) => ({ label: maker, items: items.map((item) => ({ value: item.id, label: label(item) })) }));
 // One entry per reel model; its sizes are picked under Size.
-const REEL_GROUPS = toGroups(makerGroups(REEL_MODELS, 'Generic'), (m) => m.name);
+const REEL_GROUPS = toGroups(makerGroups(reelMenu(REEL_MODELS), 'Generic'), (m) => m.name);
 // One entry per maker product; its sizes are picked under Weight. Generic lines sort by weight;
 // maker lines keep the catalog's product order.
 const byWeight = (a, b) => a.line.weight - b.line.weight || a.name.localeCompare(b.name);

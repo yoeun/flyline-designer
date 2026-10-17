@@ -21,6 +21,7 @@ import {
   productSizes,
   switchLine,
   reelColors,
+  reelMenu,
   reelSizeLabel,
   reelSizes,
   switchReelModel,
@@ -480,7 +481,8 @@ describe('catalog', () => {
 
   it('groups reels by maker, generic last', () => {
     const groups = makerGroups(REELS, 'Generic');
-    expect(groups.map(([label]) => label)).toEqual(['Lamson', 'Orvis', 'Redington', 'Generic']);
+    const makers = [...new Set(REELS.map((r) => r.maker).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    expect(groups.map(([label]) => label)).toEqual([...makers, 'Generic']);
     expect(groups.flatMap(([, reels]) => reels.map((r) => r.id)).sort()).toEqual(REELS.map((r) => r.id).sort());
   });
 
@@ -505,13 +507,13 @@ describe('catalog', () => {
   });
 
   it('names a size after its model unless it gives its own name', () => {
-    expect(findById(REELS, 'lamson-liquid-s-5').name).toBe('Lamson Liquid S 5+');
+    expect(findById(REELS, 'lamson-liquid-s-5').name).toBe('Lamson Liquid S -5+');
     expect(findById(REELS, 'orvis-hydros-2026-3').name).toBe('Orvis Hydros III (2026)');
     expect(findById(REELS, 'g56').name).toBe('Generic 5–6 wt');
   });
 
   it('labels a size by its weights first, then the maker label when it differs', () => {
-    expect(reelSizeLabel(findById(REELS, 'lamson-liquid-s-7'))).toBe('7/8 wt (7+)');
+    expect(reelSizeLabel(findById(REELS, 'lamson-liquid-s-7'))).toBe('6/7/8 wt (-7+)');
     expect(reelSizeLabel(findById(REELS, 'orvis-hydros-3'))).toBe('5/6/7 wt (III)');
     expect(reelSizeLabel(findById(REELS, 'redington-behemoth-78'))).toBe('7/8 wt');
     expect(reelSizeLabel(findById(REELS, 'g34'))).toBe('3/4 wt');
@@ -525,8 +527,13 @@ describe('catalog', () => {
   it('switches model to the nearest size when none suits the line weight', () => {
     // Run tops out at 7/8; a 9 wt on a 4.4" reel lands on the largest.
     expect(switchReelModel({ model: 'g910', color: 'black' }, 'redington-run', 9).model).toBe('redington-run-78');
-    // Liquid S 3+ (3.35") is nearest a 3.2" reel for a 2 wt.
+    // Liquid S -3+ (3.35") is nearest a 3.2" reel for a 2 wt.
     expect(switchReelModel({ model: 'g34', color: 'black' }, 'lamson-liquid-s', 2).model).toBe('lamson-liquid-s-3');
+  });
+
+  it('lists discontinued reel models last, labelled', () => {
+    const menu = reelMenu([{ id: 'a', name: 'A', discontinued: true }, { id: 'b', name: 'B' }]);
+    expect(menu.map((m) => [m.id, m.name])).toEqual([['b', 'B'], ['a', 'A (discontinued)']]);
   });
 
   it('leaves the reel alone for an unknown model', () => {
@@ -724,7 +731,7 @@ describe('demo rack', () => {
 
   const rack = loadEntries(DEMO_RACK);
   it('every entry loads', () => expect(rack).toHaveLength(DEMO_RACK.length));
-  it('nine Liquid S: three each of 3+, 5+, 7+ on 3, 5, 7 wt lines', () => {
+  it('nine Liquid S: three each of -3+, -5+, -7+ on 3, 5, 7 wt lines', () => {
     const ls = rack.filter((s) => s.reel.model.startsWith('lamson-liquid-s'));
     expect(ls).toHaveLength(9);
     for (const [model, wt] of [['lamson-liquid-s-3', 3], ['lamson-liquid-s-5', 5], ['lamson-liquid-s-7', 7]]) {

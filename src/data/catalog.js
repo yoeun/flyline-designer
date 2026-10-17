@@ -243,11 +243,17 @@ export function withReelModel(reel, model) {
   return { ...reel, model, color: ids.includes(reel.color) ? reel.color : ids[0] };
 }
 
+// Model menu entries: discontinued models say so and go last, so they come after the current ones once grouped by maker.
+export const reelMenu = (models) => [
+  ...models.filter((m) => !m.discontinued),
+  ...models.filter((m) => m.discontinued).map((m) => ({ ...m, name: `${m.name} (discontinued)` })),
+];
+
 // The sizes a reel model comes in, small to large.
 export const reelSizes = (product) => REELS.filter((r) => r.product === product);
 
 // A reel size as the Size menu shows it: every line weight it suits, then the maker's label when that
-// says something the weights don't, e.g. "5/6 wt (5+)", "5/6/7 wt (III)", "7/8 wt".
+// says something the weights don't, e.g. "4/5/6 wt (-5+)", "5/6/7 wt (III)", "7/8 wt".
 export function reelSizeLabel(size) {
   const [lo, hi] = size.weights;
   const weights = Array.from({ length: hi - lo + 1 }, (_, i) => lo + i).join('/');

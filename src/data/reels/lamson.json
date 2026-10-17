@@ -10,6 +10,30 @@
       "id": "day-break",
       "name": "Day Break",
       "hex": "#5b6270"
+    },
+    {
+      "id": "lamson-og",
+      "name": "OG",
+      "hex": "#6a582c",
+      "notes": "Olive-bronze. Hex sampled from Lamson's product photo (frame, mean of mid-tones)."
+    },
+    {
+      "id": "lamson-blackout",
+      "name": "Blackout",
+      "hex": "#363435",
+      "notes": "Matte black. Hex sampled from Lamson's product photo (frame, mean of mid-tones)."
+    },
+    {
+      "id": "lamson-battleship",
+      "name": "Battleship",
+      "hex": "#575455",
+      "notes": "Dark grey. Hex sampled from Lamson's product photo (frame, mean of mid-tones)."
+    },
+    {
+      "id": "lamson-ember",
+      "name": "Ember",
+      "hex": "#afa59d",
+      "notes": "Pale warm silver. Hex sampled from Lamson's product photo (frame, mean of mid-tones)."
     }
   ],
   "models": [
@@ -25,9 +49,9 @@
       "sizes": [
         {
           "id": "lamson-liquid-s-3",
-          "size": "3+",
+          "size": "-3+",
           "weights": [
-            3,
+            2,
             4
           ],
           "rim": 3.35,
@@ -41,9 +65,9 @@
         },
         {
           "id": "lamson-liquid-s-5",
-          "size": "5+",
+          "size": "-5+",
           "weights": [
-            5,
+            4,
             6
           ],
           "rim": 3.65,
@@ -57,9 +81,9 @@
         },
         {
           "id": "lamson-liquid-s-7",
-          "size": "7+",
+          "size": "-7+",
           "weights": [
-            7,
+            6,
             8
           ],
           "rim": 3.9,
@@ -73,9 +97,237 @@
         },
         {
           "id": "lamson-liquid-s-9",
-          "size": "9+",
+          "size": "-9+",
           "weights": [
-            9,
+            8,
+            10
+          ],
+          "rim": 4.45,
+          "spool": 4.21,
+          "width": 1.25,
+          "rated": {
+            "weight": 10,
+            "yards": 250,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "lamson-guru-s",
+      "name": "Lamson Guru S",
+      "design": "generic",
+      "colors": [
+        "lamson-og",
+        "lamson-blackout"
+      ],
+      "notes": "Rim, width, rod weights and rated capacity (max line + backing) from Lamson's Guru S spec table (lamsonflyfishing.com/products/guru-s). Spool is estimated as rim − 0.24″.",
+      "sizes": [
+        {
+          "id": "lamson-guru-s-3",
+          "size": "-3+",
+          "weights": [
+            2,
+            4
+          ],
+          "rim": 3.2,
+          "spool": 2.96,
+          "width": 0.9,
+          "rated": {
+            "weight": 4,
+            "yards": 60,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-guru-s-5",
+          "size": "-5+",
+          "weights": [
+            4,
+            6
+          ],
+          "rim": 3.55,
+          "spool": 3.31,
+          "width": 1.0,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-guru-s-7",
+          "size": "-7+",
+          "weights": [
+            6,
+            8
+          ],
+          "rim": 3.97,
+          "spool": 3.73,
+          "width": 1.13,
+          "rated": {
+            "weight": 8,
+            "yards": 180,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-guru-s-9",
+          "size": "-9+",
+          "weights": [
+            8,
+            10
+          ],
+          "rim": 4.11,
+          "spool": 3.87,
+          "width": 1.23,
+          "rated": {
+            "weight": 10,
+            "yards": 220,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "lamson-speedster-s",
+      "name": "Lamson Speedster S",
+      "design": "generic",
+      "colors": [
+        "lamson-battleship",
+        "lamson-ember"
+      ],
+      "notes": "Rim, width, rod weights and rated capacity (max line + backing) from Lamson's Speedster S spec table (lamsonflyfishing.com/products/speedster-s). Spool is estimated as rim − 0.24″.",
+      "sizes": [
+        {
+          "id": "lamson-speedster-s-3",
+          "size": "-3+",
+          "weights": [
+            2,
+            4
+          ],
+          "rim": 3.28,
+          "spool": 3.04,
+          "width": 0.9,
+          "rated": {
+            "weight": 4,
+            "yards": 50,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-speedster-s-5",
+          "size": "-5+",
+          "weights": [
+            4,
+            6
+          ],
+          "rim": 3.65,
+          "spool": 3.41,
+          "width": 1.0,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-speedster-s-7",
+          "size": "-7+",
+          "weights": [
+            6,
+            8
+          ],
+          "rim": 3.97,
+          "spool": 3.73,
+          "width": 1.12,
+          "rated": {
+            "weight": 8,
+            "yards": 180,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-speedster-s-9",
+          "size": "-9+",
+          "weights": [
+            8,
+            10
+          ],
+          "rim": 4.29,
+          "spool": 4.05,
+          "width": 1.25,
+          "rated": {
+            "weight": 10,
+            "yards": 220,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "lamson-remix-s",
+      "name": "Lamson Remix S",
+      "design": "generic",
+      "colors": [
+        "smoke",
+        "day-break"
+      ],
+      "notes": "Rim, width, rod weights and rated capacity (max line + backing) from Lamson's Remix S spec table (lamsonflyfishing.com/products/remix-s); machined frame on the Liquid S cast spool, so the numbers match Liquid S. Spool is estimated as rim − 0.24″.",
+      "sizes": [
+        {
+          "id": "lamson-remix-s-3",
+          "size": "-3+",
+          "weights": [
+            2,
+            4
+          ],
+          "rim": 3.35,
+          "spool": 3.11,
+          "width": 1.0,
+          "rated": {
+            "weight": 4,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-remix-s-5",
+          "size": "-5+",
+          "weights": [
+            4,
+            6
+          ],
+          "rim": 3.65,
+          "spool": 3.41,
+          "width": 1.0,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-remix-s-7",
+          "size": "-7+",
+          "weights": [
+            6,
+            8
+          ],
+          "rim": 3.9,
+          "spool": 3.66,
+          "width": 1.15,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-remix-s-9",
+          "size": "-9+",
+          "weights": [
+            8,
             10
           ],
           "rim": 4.45,
