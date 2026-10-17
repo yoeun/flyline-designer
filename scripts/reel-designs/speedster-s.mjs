@@ -3,8 +3,8 @@
 import { P, circle, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // Drag side: a wide bar tapering from the foot to the hub, a slim one down to 6 o'clock and two spokes a side,
-// leaving big open windows.
-const SPEEDSTER_SPOKES = [-12, 42, 138, -168];
+// leaving big open windows. With the two bars they make six spokes 60° apart, each on a bar of the ring behind.
+const SPEEDSTER_SPOKES = [-30, 30, 150, -150];
 // Knurled drag ring around a three-armed spinner.
 const speedsterKnob = () => {
   const arms = [0, 1, 2].map((k) => spoke(-60 + k * 120, 0, 40, 18, 12, 22)).join('');
