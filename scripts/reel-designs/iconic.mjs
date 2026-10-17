@@ -54,7 +54,7 @@ export const iconicDrag = ({ hub = 70, cap = 62, arms = ARMS, rib = { t: 0.45, s
     body: [
       ring(200, 178),
       ...hatchFoot(),
-      ...arms.map(([a0, a1, b]) => mirrorX(arm(a0, hub - 6, a1, 190, 36, 24, b))),
+      ...arms.map(([a0, a1, b]) => mirrorX(arm(a0, hub - 6, a1, 190, 36, 12, b))),
       // Each rib leaves an arm partway out and curves to the rim midway to the next arm.
       ...arms.map(([a0, a1, b], k) => {
         const next = arms[(k + 1) % arms.length][1] + (k === arms.length - 1 ? 360 : 0);
