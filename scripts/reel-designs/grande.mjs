@@ -1,14 +1,14 @@
 // Redington Grande.
-// Photos are angled; the straight-on layout is inferred. Drag side: a solid fan plate covers the top half (under the
-// foot), cut by a straight edge from the hub down to the rim at ~3 o'clock and a level edge from the hub out to
-// 9 o'clock; the lower half is open between ~12 tapered spokes. Red accent ring around the hub on both sides. Handle placement on the
+// Photos are angled; the straight-on layout is inferred. Drag side: a solid 90° wedge from the hub up to the rim
+// under the foot; the other 270° is open between tapered spokes. Red accent ring around the hub on both sides. Handle placement on the
 // spool is arbitrary (it turns); it sits opposite a round counterweight.
 import { P, arcPts, circle, f, foot, knob, knurl, rad, ring, roundPoly, spoke, svg } from './lib.mjs';
 
 const RED = '#b0243a';
-// Drag side spokes fill the open sector from 10° round to 172°.
-const DRAG_SPOKES = Array.from({ length: 12 }, (_, k) => 10 + k * 14.7);
-const plate = roundPoly([...arcPts(184, rad(172), rad(370), 30), [46, -48], [-40, 52]], 8);
+// The wedge spans 45° either side of straight up; spokes fill the rest, about 14° apart, clear of its edges.
+const WEDGE = 45;
+const DRAG_SPOKES = Array.from({ length: 19 }, (_, k) => -90 + WEDGE + 9 + (k * (360 - 2 * WEDGE - 18)) / 18);
+const plate = roundPoly([[0, 0], ...arcPts(184, rad(-90 - WEDGE), rad(-90 + WEDGE), 20)], 8);
 
 // Body-colored drag knob: knurled skirt and a raised cap with a dark logo button.
 const grandeKnob =
