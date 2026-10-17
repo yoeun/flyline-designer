@@ -16,6 +16,8 @@ export default defineConfig({
   },
   server: {
     watch: { ignored: [`${worktrees}**`] },
+    // The shares API from `npm run api`, so dev needs no VITE_API_URL.
+    proxy: { '/api': 'http://localhost:8787' },
   },
   test: {
     exclude: [...configDefaults.exclude, '.worktrees/**'],

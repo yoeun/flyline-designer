@@ -12,6 +12,7 @@ A design tool to help anglers put together the best looking fly fishing outfit f
 - **Color picker** laid out as a grid of common colors
 - **Rack** of saved setups with titles, styles and notes, and a full rack page filtered by rod weight and style
 - **Export** the preview as a PNG or SVG to share
+- **Share your rack** through a view-only link that follows your changes
 
 ## Tech stack
 
@@ -25,15 +26,24 @@ A design tool to help anglers put together the best looking fly fishing outfit f
 ```sh
 npm install
 npm run dev      # start the dev server
+npm run api      # start the shares API (for sharing a rack), alongside dev
 npm test         # run unit tests
 npm run build    # production build in dist/
 ```
+
+Sharing a rack needs the shares API. `npm run api` runs it on port 8787, keeping shares in memory, and the dev server sends `/api` to it.
 
 To try the rack page without saving setups by hand, open the app with `?demo=1` (for example `http://localhost:5173/?demo=1`). It shows a fixed test rack for that visit and never touches your saved one.
 
 ## Deploy
 
-The app is a static site on [Render](https://render.com/), set up by the Blueprint in [render.yaml](render.yaml). Every push to `main` runs the tests, builds, and publishes `dist/`. A failing test stops the deploy.
+The app runs on [Render](https://render.com/), set up by the Blueprint in [render.yaml](render.yaml):
+
+- `flyline-designer`: the app as a static site. Every push to `main` runs the tests, builds, and publishes `dist/`. A failing test stops the deploy.
+- `flyline-designer-api`: the shares API in `server/`, a Node web service.
+- `flyline-designer-db`: the Postgres database the API keeps shared racks in. It accepts connections only from Render services.
+
+The API, the database and their plans are covered under [Sharing a rack](#sharing-a-rack).
 
 To connect it (once):
 
@@ -46,6 +56,32 @@ The Blueprint also:
 - builds on Node 24 (`NODE_VERSION`). `engines` in `package.json` lists the versions Vite supports.
 - serves `index.html` for any path that isn't a file, so path routes work without a 404.
 - caches hashed files in `/assets/` for a year and has browsers recheck `index.html` on every load, so a deploy shows up on the next visit. A path route added later should get the same `no-cache` header as `/`.
+
+## Sharing a rack
+
+The Share button on the rack page publishes the rack to the shares API and gives a view-only link,
+`/r/<share id>`. The link opens the rack without menus or saving. Opening a setup from it starts a copy in
+the designer, saved to the viewer's own rack if they choose.
+
+- **Live.** While the rack is shared, each change is sent to the API a second later, so the link shows the
+  latest version when it is opened or reloaded.
+- **Owner token.** Sharing returns a random owner token, kept in this browser's `localStorage`
+  (`flyline-designer:share`). Updating, renewing (New link) and stopping the link all need it. The
+  server stores only its hash. Clearing site data or switching browsers loses it. The link still
+  works, but can't be updated or stopped from there.
+- **Share ids** are 128 random bits, unrelated to the rack or the owner token, so a link can't be guessed or
+  turned into edit access. New link swaps in a fresh id and the old link stops working.
+- **Limits.** A rack can have up to 500 setups in a 512 KB request. New links are limited to 30 an hour
+  per caller.
+
+The API is in `server/` (`app.js` has the routes). It runs on Postgres when `DATABASE_URL` is set, and
+in memory otherwise. `ALLOWED_ORIGINS` lists the site origins that may call it, and the site build
+reads the API address from `VITE_API_URL`. Both are set in `render.yaml`. Add a custom domain to
+`ALLOWED_ORIGINS` when there is one, and keep `VITE_API_URL` in step with the API's address on Render.
+
+The API and the database are on Render's free plans for now. The free API sleeps when idle, so the
+first share or view after a quiet spell can take a minute. Free databases expire and take every shared
+rack with them, so move the database to a paid plan before people rely on their links.
 
 ## Contributing
 
