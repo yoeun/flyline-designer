@@ -52,7 +52,7 @@ const SPOOL_SPOKES = hexSpokes({ hex: 40, reach: 128, ends: [0, 1, 2, 3, 4, 5].m
 export const spool = svg({
   under: accentFoot,
   body: [
-    ring(200, 125) + slots({ n: 16, rIn: 134, rOut: 184, bar: 11, corner: 6, slant: 36 }),
+    ring(200, 125) + slots({ n: 16, rIn: 134, rOut: 184, bar: 11, corner: 6, slant: 76 }),
     // The counterweight plate across the top of the slots.
     roundPoly([...arcPts(188, rad(-120), rad(-64), 10), ...arcPts(152, rad(-64), rad(-120), 10)], 8),
     ...SPOOL_SPOKES.map(({ corner, end }) => strut(corner, end, 16, 12)),
