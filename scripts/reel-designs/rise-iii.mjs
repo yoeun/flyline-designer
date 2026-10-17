@@ -2,7 +2,7 @@
 // Photos are angled; the straight-on layout is inferred. Drag side: a V of two bars from the rim at ~11 and ~1
 // o'clock meeting at 6, filled solid from the hub down; the spool's ring of rounded windows shows through the rest.
 // Body-colored knurled drag knob with five scalloped recesses and a silver cap. Spool side: ~24 rounded windows
-// round the rim, an open center with three spokes; handle and a counterweight pin sit opposite each other.
+// round the rim, an open center with six spokes; handle and a counterweight pin sit opposite each other.
 import { P, circle, f, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 const L = P(194, rad(-122)), R = P(194, rad(-58)), APEX = P(194, rad(92));
@@ -36,8 +36,8 @@ export const spool = svg({
   back: [foot(130, -244, 14, 30)],
   body: [
     ring(200, 112) + slots(WINDOWS),
-    // Three spokes 120° apart, swept slightly; the one at 183° runs level, out to 9 o'clock.
-    ...[0, 1, 2].map((k) => spoke(183 + k * 120, 24, 116, 24, 18, -12)),
+    // Six spokes 60° apart, two of them level (3 and 9 o'clock).
+    ...[0, 1, 2, 3, 4, 5].map((k) => spoke(k * 60, 24, 116, 18, 14)),
     circle(36),
     circle(22, ...P(150, rad(HANDLE))),
   ],
