@@ -93,7 +93,7 @@ export const hatchSpool = ({ inner = 132, bars = 12, barSweep = -30, barBend = -
     ring(200, 180),
     ring(inner, inner - 16),
     // The outer cage's bars lean counter-clockwise toward the rim, like the other reels.
-    ...Array.from({ length: bars }, (_, k) => arm(-75 + (k * 360) / bars + barSweep, inner - 8, -75 + (k * 360) / bars, 190, barWidth, 16, -barBend)),
+    ...Array.from({ length: bars }, (_, k) => arm(-75 + (k * 360) / bars + barSweep, inner - 8, -75 + (k * 360) / bars, 190, barWidth, 16, barBend)),
     ...center,
     circle(30, ...P(160, rad(handle))),
     circle(28, ...P(160, rad(handle + 180))),
