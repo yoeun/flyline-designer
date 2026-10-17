@@ -50,11 +50,11 @@ const mirrorX = (d) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x, 
 const ARM_BOW = 30;
 const ARMS = [0, 1, 2, 3, 4, 5].map((k) => [-130 + k * 60, -85 + k * 60, ARM_BOW]);
 // Behind the arms, the spool's outer cage shows in a much darker shade so it reads as a separate piece: a ring
-// where the backing starts (radius ~120 across the sizes) with curved bars leaning out to the rim, drawn like the
-// spool side's.
-const dragCage = (r = 120, bars = 12, sweep = -30, bend = -8) => [
+// where the backing starts (radius ~120 across the sizes) with curved bars out to the rim, set up like the main
+// arms (laid out clockwise, then mirrored): they lean hard counter-clockwise and curve clockwise.
+const dragCage = (r = 120, bars = 12, lean = 50, bow = 18) => [
   ring(r + 6, r - 6),
-  ...Array.from({ length: bars }, (_, k) => arm(-75 + (k * 360) / bars + sweep, r, -75 + (k * 360) / bars, 190, 16, 14, bend)),
+  ...Array.from({ length: bars }, (_, k) => mirrorX(arm(-75 + (k * 360) / bars, r, -75 + (k * 360) / bars + lean, 190, 16, 12, bow))),
 ];
 const shaded = (paths) => paths.map((d) => `<path d="${d}" fill="currentColor" fill-rule="evenodd"/><path d="${d}" fill="#000" fill-opacity=".45" fill-rule="evenodd"/>`).join('');
 
