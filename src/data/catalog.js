@@ -39,7 +39,8 @@ export const REEL_COLORS = [
   { id: 'red', name: 'Red', hex: '#8f2c27' },
   { id: 'blue', name: 'Blue', hex: '#2c4f7c' },
   // Maker finishes come from the reel files (see REEL_FILES).
-  ...REEL_FILES.flatMap((f) => f.finishes ?? []).map(({ id, name, hex }) => ({ id, name, hex })),
+  // A finish's `accent` colors the parts a design marks as accents (see scripts/reel-designs/lib.mjs).
+  ...REEL_FILES.flatMap((f) => f.finishes ?? []).map(({ id, name, hex, accent }) => ({ id, name, hex, ...(accent ? { accent } : {}) })),
 ];
 
 // Colors for reels without their own list.

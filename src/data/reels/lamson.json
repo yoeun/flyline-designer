@@ -33,7 +33,8 @@
       "id": "lamson-ember",
       "name": "Ember",
       "hex": "#afa59d",
-      "notes": "Pale warm silver. Hex sampled from Lamson's product photo (frame, mean of mid-tones)."
+      "notes": "Pale warm silver. Hex sampled from Lamson's product photo (frame, mean of mid-tones). The knob centers are orange on this finish (accent).",
+      "accent": "#e2581f"
     }
   ],
   "models": [

@@ -20,7 +20,8 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
   const arbor = layout.arborR * s;
   const spool = layout.spoolR * s;
   const outer = layout.outerR * s;
-  const reelHex = (findById(REEL_COLORS, setup.reel.color) ?? REEL_COLORS[2]).hex;
+  const finish = findById(REEL_COLORS, setup.reel.color) ?? REEL_COLORS[2];
+  const reelHex = finish.hex;
   const reelOpacity = mode === 'reel' ? 1 : mode === 'see-through' ? 0.32 : 0;
   const lineOnly = mode === 'line-only';
 
@@ -91,7 +92,7 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
       {showLine && !layout.fits && <circle r={spool} fill="none" stroke="#c0352b" strokeWidth="2.5" strokeDasharray="8 6" />}
 
       {reelOpacity > 0 && (
-        <g color={reelHex} opacity={reelOpacity} dangerouslySetInnerHTML={{ __html: frameMarkup(layout.reel.design, side, uid) }} />
+        <g color={reelHex} style={finish.accent ? { '--accent': finish.accent } : undefined} opacity={reelOpacity} dangerouslySetInnerHTML={{ __html: frameMarkup(layout.reel.design, side, uid) }} />
       )}
     </svg>
   );

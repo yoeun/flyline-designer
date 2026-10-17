@@ -486,6 +486,11 @@ describe('catalog', () => {
     expect(groups.flatMap(([, reels]) => reels.map((r) => r.id)).sort()).toEqual(REELS.map((r) => r.id).sort());
   });
 
+  it('keeps a finish accent from the reel files', () => {
+    expect(findById(REEL_COLORS, 'lamson-ember').accent).toBe('#e2581f');
+    expect(findById(REEL_COLORS, 'lamson-battleship').accent).toBeUndefined();
+  });
+
   it('defines each reel color once, across maker files', () => {
     expect(new Set(REEL_COLORS.map((c) => c.id)).size).toBe(REEL_COLORS.length);
   });

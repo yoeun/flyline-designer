@@ -8,7 +8,8 @@ the Model menu groups models by maker, A–Z, with Generic last.
 {
   "maker": "Lamson",                     // leave out for generic reels
   "finishes": [                          // maker colors not in REEL_COLORS' base palette
-    { "id": "smoke", "name": "Smoke", "hex": "#7f8184", "notes": "optional" }
+    { "id": "smoke", "name": "Smoke", "hex": "#7f8184", "notes": "optional" },
+    { "id": "lamson-ember", "name": "Ember", "hex": "#afa59d", "accent": "#e2581f" }  // accent: optional color for the parts a design marks as accents (ACCENT in scripts/reel-designs/lib.mjs); they take the finish color without one
   ],
   "models": [
     {

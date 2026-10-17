@@ -95,6 +95,10 @@ export function knurl(r, amp, teeth) {
   return 'M' + pts.map((p) => `${f(p[0])} ${f(p[1])}`).join('L') + 'Z';
 }
 
+// Fill for a part in the finish's accent color, where the finish has one (e.g. Lamson Ember's orange); otherwise the
+// reel color. ReelPreview sets --accent.
+export const ACCENT = 'style="fill:var(--accent, currentColor)"';
+
 export const SHEEN = `<linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".4"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient>`;
 export const SHEEN_RECT = `<rect x="-215" y="-250" width="430" height="470" fill="url(#sheen)" mask="url(#body-mask)"/>`;
 

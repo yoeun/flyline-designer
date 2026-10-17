@@ -1,14 +1,14 @@
 // Lamson Speedster S.
 // The photos are three-quarter views; the straight-on spoke angles, the 16-slot ring and the handle radius are inferred.
-import { P, circle, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // Drag side: a wide bar tapering from the foot to the hub, a slim one down to 6 o'clock and two spokes a side,
 // leaving big open windows. With the two bars they make six spokes 60° apart, each on a bar of the ring behind.
 const SPEEDSTER_SPOKES = [-30, 30, 150, -150];
-// Knurled drag ring around a three-armed spinner, with the Liquid S's orange center button.
+// Knurled drag ring around a three-armed spinner; the center button takes the finish's accent (orange on Ember).
 const speedsterKnob = () => {
   const arms = [0, 1, 2].map((k) => spoke(-60 + k * 120, 0, 40, 18, 12, 22)).join('');
-  return `<path d="${knurl(52, 1.6, 48)}" fill="#2e3134"/><circle r="42" fill="#3d4044"/><path d="${arms}" fill="#5a5e62"/><circle r="42" fill="url(#sheen)"/><circle r="15" fill="#e2581f"/><circle cx="-4" cy="4" r="2.6" fill="#7a2a0c"/><circle cx="4" cy="-4" r="2.6" fill="#7a2a0c"/>`;
+  return `<path d="${knurl(52, 1.6, 48)}" fill="#2e3134"/><circle r="42" fill="#3d4044"/><path d="${arms}" fill="#5a5e62"/><circle r="42" fill="url(#sheen)"/><circle r="15" ${ACCENT}/><circle r="15" fill="url(#sheen)"/><circle cx="-4" cy="4" r="2.6" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-4" r="2.6" fill="#000" fill-opacity=".45"/>`;
 };
 
 const SLOT_RING = ring(190, 128) + slots({ n: 18, rIn: 140, rOut: 182, bar: 13, corner: 7 });
@@ -24,7 +24,7 @@ export const drag = svg({
   details: speedsterKnob(),
 });
 
-// Spool side, like the Liquid S: six spokes, each tangent to a small hexagon at the hub, sweeping out counter-clockwise
+// Spool side, like the Liquid S, with the hub cap in the finish's accent: six spokes, each tangent to a small hexagon at the hub, sweeping out counter-clockwise
 // to the cage, where each lands on a bar of the 18-window ring (every third). The handle is on the upper-left spoke.
 const HEX = 38; // hexagon's inner radius: each spoke's line passes this far from the center
 const CAGE = 132; // where the spokes meet the window ring
@@ -51,5 +51,5 @@ export const spool = svg({
     roundPoly(SPOKE_LINES.map(({ from }) => from), 3),
     circle(30),
   ],
-  details: `${knob(...handle, 17)}<circle r="20" fill="#000" fill-opacity=".18"/>${holes}<circle r="4" fill="#d6d8d6"/>`,
+  details: `${knob(...handle, 17)}<circle r="24" ${ACCENT}/><circle r="24" fill="url(#sheen)"/><circle r="24" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>${holes}<circle r="4" fill="#d6d8d6"/>`,
 });
