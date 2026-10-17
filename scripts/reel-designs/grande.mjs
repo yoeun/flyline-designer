@@ -1,15 +1,16 @@
 // Redington Grande.
 // Photos are angled; the straight-on layout is inferred. Drag side: a solid wedge up to the rim under the foot, its
-// two edges tangent to the drag boss and 90° apart; the rest is open between tapered spokes. Red accent ring around the spool hub; the drag side is all frame color. Handle placement on the
+// two edges tangent to the drag boss and 120° apart; the rest is open between tapered spokes. Red accent ring around the spool hub; the drag side is all frame color. Handle placement on the
 // spool is arbitrary (it turns); it sits opposite a round counterweight.
 import { P, arcPts, circle, f, foot, knob, knurl, rad, ring, roundPoly, spoke, svg } from './lib.mjs';
 
 const RED = '#b0243a';
-// Each edge touches the boss (r 66) at 45° below level and runs up and out at 45° to the rim. Below it, seven
+// Each edge runs up and out to the rim at WEDGE degrees from straight up, just touching the boss (r 66). Below it, seven
 // spokes, lined up with the spool's 14: the ones in the lower half.
 const BOSS = 66;
+const WEDGE = rad(60);
 const edgeRim = (sx) => {
-  const t = [sx * BOSS * Math.SQRT1_2, BOSS * Math.SQRT1_2], d = [sx * Math.SQRT1_2, -Math.SQRT1_2];
+  const t = [sx * BOSS * Math.cos(WEDGE), BOSS * Math.sin(WEDGE)], d = [sx * Math.sin(WEDGE), -Math.cos(WEDGE)];
   const b = t[0] * d[0] + t[1] * d[1], c = BOSS * BOSS - 184 * 184;
   const k = -b + Math.sqrt(b * b - c);
   return { touch: t, rim: [t[0] + d[0] * k, t[1] + d[1] * k] };
