@@ -191,7 +191,7 @@
         "charcoal",
         "dark-pine"
       ],
-      "notes": "Clearwater Cast. Diameter and rated capacity (20 lb backing) from Orvis spec tables via retailers. Orvis doesn't publish spool width; widths are estimates.",
+      "notes": "Clearwater Cast. Diameter and rated capacity (20 lb backing) from Orvis spec tables via retailers. Orvis doesn't publish spool width; widths are estimates. The drag knob matches the frame: black on Black, light gray on Charcoal, khaki on Dark Pine (accents).",
       "sizes": [
         {
           "id": "orvis-clearwater-2",
@@ -241,7 +241,12 @@
             "pounds": 20
           }
         }
-      ]
+      ],
+      "accents": {
+        "black": "#2b2d30",
+        "charcoal": "#d6d8d5",
+        "dark-pine": "#b4a984"
+      }
     },
     {
       "id": "orvis-mirage",

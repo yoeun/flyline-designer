@@ -1,6 +1,6 @@
 // Orvis Clearwater (Cast). Traced from straight-on photos of both sides.
 // Both sides share a cage of tilted V's: pairs of bars that meet at an inner ring and open out to the rim.
-import { P, circle, foot, hexSpokes, knob, knurl, pad, rad, ring, screw, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, foot, hexSpokes, knob, knurl, pad, rad, ring, screw, strut, svg } from './lib.mjs';
 
 const V_COUNT = 12;
 const V_TILT = 6; // degrees the V's lean, clockwise at the rim
@@ -24,14 +24,17 @@ const BOSS = (() => {
 const KNOB = BOSS - 12;
 const INNER = [[24, -194], 46]; // right bar's foot end, and the angle from straight up where it meets the boss
 
-// A silver drag knob: a thick knurled rim around a recessed face, with a slotted center screw.
-const silverKnob = (r) => {
+// The drag knob, in the finish's accent (black, light gray or khaki to suit the frame): a thick knurled rim around a
+// recessed face, with a slotted center screw.
+const dragKnobWithRecess = (r) => {
   const face = r - 20;
   return (
-    `<path d="${knurl(r, 1.6, 64)}" fill="#c4c7c4"/><circle r="${r - 3}" fill="#d9dbd8"/><circle r="${r}" fill="url(#sheen)"/>` +
-    // The recess: a shade darker, with a shadow inside its upper-left edge and a highlight on the lower right.
-    `<circle r="${face}" fill="#cbcdca"/><circle r="${face}" fill="none" stroke="#000" stroke-opacity=".16" stroke-width="3"/>` +
-    `<circle cx="1.5" cy="1.5" r="${face - 2}" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/>` +
+    `<path d="${knurl(r, 1.6, 64)}" ${ACCENT}/><path d="${knurl(r, 1.6, 64)}" fill="#000" fill-opacity=".1"/>` +
+    `<circle r="${r - 3}" ${ACCENT}/><circle r="${r}" fill="url(#sheen)"/>` +
+    // The recess: a shade darker, with a shadow inside its edge and a faint highlight on the lower right.
+    `<circle r="${face}" ${ACCENT}/><circle r="${face}" fill="#000" fill-opacity=".06"/>` +
+    `<circle r="${face}" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="3"/>` +
+    `<circle cx="1.5" cy="1.5" r="${face - 2}" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="1.5"/>` +
     screw(0, 0, 13)
   );
 };
@@ -46,7 +49,7 @@ export const drag = svg({
     ...[-1, 1].map((sx) => strut([sx * INNER[0][0], INNER[0][1]], P(BOSS - 6, rad(-90 + sx * INNER[1])), 22, 28)),
     circle(BOSS),
   ],
-  details: silverKnob(KNOB),
+  details: dragKnobWithRecess(KNOB),
 });
 
 // Spool side: the same V cage around an inner ring, and six spokes tangent to a large hexagon at the hub

@@ -236,6 +236,9 @@ export const menuId = (presetId) => findById(LINE_PRESETS, presetId)?.product ??
 // Swatches for a line's zones: the base palette plus any maker colors the line already uses.
 export const lineSwatches = (line) => [...LINE_COLORS, ...MAKER_LINE_COLORS.filter((c) => line.zones.some((z) => z.color === c.id))];
 
+// The accent color for a reel in a finish: the model's own for that finish, else the finish's, else none.
+export const reelAccent = (reel, colorId) => reel?.accents?.[colorId] ?? findById(REEL_COLORS, colorId)?.accent ?? null;
+
 export const reelColors = (reel) => (reel?.colors ?? GENERIC_REEL_COLORS).map((id) => findById(REEL_COLORS, id));
 
 // The reel switched to another size, keeping its color when the new size comes in it.

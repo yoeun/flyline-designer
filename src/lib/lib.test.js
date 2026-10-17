@@ -20,6 +20,7 @@ import {
   nearestSize,
   productSizes,
   switchLine,
+  reelAccent,
   reelColors,
   reelMenu,
   reelSizeLabel,
@@ -489,6 +490,13 @@ describe('catalog', () => {
   it('keeps a finish accent from the reel files', () => {
     expect(findById(REEL_COLORS, 'lamson-ember').accent).toBe('#e2581f');
     expect(findById(REEL_COLORS, 'lamson-battleship').accent).toBeUndefined();
+  });
+
+  it('takes a model accent over the finish accent', () => {
+    const clearwater = findById(REELS, 'orvis-clearwater-3');
+    expect(reelAccent(clearwater, 'dark-pine')).toBe('#b4a984');
+    expect(reelAccent(findById(REELS, 'lamson-speedster-s-5'), 'lamson-ember')).toBe('#e2581f');
+    expect(reelAccent(findById(REELS, 'g56'), 'black')).toBeNull();
   });
 
   it('defines each reel color once, across maker files', () => {

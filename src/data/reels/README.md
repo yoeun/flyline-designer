@@ -18,6 +18,7 @@ the Model menu groups models by maker, A–Z, with Generic last.
       "design": "liquid-s",              // frame drawing in src/assets/reels; unknown designs draw as generic
       "colors": ["smoke", "day-break"],  // finish ids; leave out to offer the generic colors
       "discontinued": true,              // optional; listed last, labelled "(discontinued)"
+      "accents": { "black": "#2b2d30" }, // optional accent color per finish for this model, over the finish's own
       "notes": "Where the numbers came from and which are estimates.",
       "sizes": [                         // small to large
         {
