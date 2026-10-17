@@ -3,7 +3,7 @@
 // stem from the hub forking into two arms near the rim. On the frame side one spoke points down to 6 o'clock; on
 // the spool side the set is turned over, one spoke up to 12. The spool's gear teeth show inside the window ring; 22 teardrop windows on both sides.
 import { P, circle, knurl, pad, rad, ring, roundPoly, strut, svg } from './lib.mjs';
-import { frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
+import { arm, frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
 
 // n rounded teardrop windows, wIn wide at rIn and wOut wide at rOut, the first bar at -90°.
 const ovals = (n, rIn, rOut, wIn, wOut) =>
@@ -15,12 +15,9 @@ const ovals = (n, rIn, rOut, wIn, wOut) =>
 const RIM = ovals(22, 146, 190, 22, 36);
 const GEAR = knurl(134, 3.5, 44) + circle(124);
 
-// A spoke shaped like a Y: a stem from the hub out to the fork, then two arms spreading to the rim.
-const FORK_R = 112;
-const ySpoke = (a) => [
-  strut(P(20, rad(a)), P(FORK_R, rad(a)), 30, 26),
-  ...[-1, 1].map((sd) => strut(P(FORK_R, rad(a)), P(150, rad(a + sd * 14)), 20, 18)),
-];
+// A spoke shaped like a Y: two arms that leave the hub together along the spoke and curve smoothly apart to the
+// rim, so the stem and fork are one flowing shape.
+const ySpoke = (a) => [-1, 1].map((sd) => arm(P(18, rad(a)), P(118, rad(a)), P(150, rad(a + sd * 15)), 30, 16, 20));
 const spokes = (first) => [0, 1, 2].flatMap((k) => ySpoke(first + k * 120));
 
 export const drag = svg({
