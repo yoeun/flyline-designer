@@ -43,6 +43,7 @@ export function moveZoneBoundary(line, i, toFt) {
   const nextIsLast = i + 1 === line.zones.length - 1;
   const pair = ranges[i].length + ranges[i + 1].length;
   const max = nextIsLast ? totalLength(line) - ranges[i].start - MIN_LENGTH : pair - MIN_LENGTH;
+  if (max < MIN_LENGTH) return line;
   const length = clamp(snap(toFt - ranges[i].start), MIN_LENGTH, max);
   const zones = line.zones.map((z, j) => {
     if (j === i) return { ...z, length };

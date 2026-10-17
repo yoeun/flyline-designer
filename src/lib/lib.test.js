@@ -205,6 +205,14 @@ describe('line editing', () => {
     expect(back.taper.running).toBe(50);
   });
 
+  it('a zone boundary drag leaves the line alone when zones outrun the line', () => {
+    const l = line();
+    l.taper = { front: 4, body: 3, back: 2, running: 1 };
+    const moved = moveZoneBoundary(l, 1, 5);
+    expect(moved).toEqual(l);
+    expect(moved.zones.every((z) => z.length >= 0)).toBe(true);
+  });
+
   it('a taper boundary cannot squeeze a section below half a foot', () => {
     expect(moveTaperBoundary(line(), 1, -5).taper.front).toBe(0.5);
     const far = moveTaperBoundary(line(), 1, 100);
