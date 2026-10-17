@@ -9,8 +9,11 @@ import { ACCENT, P, TRIM, circle, f, foot, knob, ring, slots, spoke, svg } from 
 const BAND = { n: 12, rIn: 152, rOut: 188, bar: 12, corner: 8, off: -90 };
 const SPOKES = [0, 60, 120, 180, 240, 300];
 const EVO_FOOT = foot(136, -244, 14, 30);
-const RR = (stroke, opacity = 1) =>
-  `<text x="0" y="12" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="38" letter-spacing="-10" fill="none" stroke="${stroke}" stroke-opacity="${opacity}" stroke-width="1.8">RR</text>`;
+// The RR monogram sized to just touch a circle of radius r (proportions fitted on the Animas knob, r 64).
+const RR = (r, stroke, opacity = 1) => {
+  const k = r / 64;
+  return `<text x="${f(-17 * k)}" y="${f(33 * k)}" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="${f(96 * k)}" letter-spacing="${f(-31 * k)}" fill="none" stroke="${stroke}" stroke-opacity="${opacity}" stroke-width="${f(Math.max(1.2, 2.6 * k))}">RR</text>`;
+};
 
 // The spider: ring, spokes and cap, drawn over the frame in the accent with its own shading.
 const SPIDER = [ring(152, 138), ...SPOKES.map((a) => spoke(a, 40, 146, 16, 14)), circle(48)];
@@ -28,7 +31,7 @@ export const drag = svg({
     spiderLayer('fill="url(#sheen)"') +
     `<circle r="48" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="3"/>` +
     `<circle r="40" fill="#000" fill-opacity=".06"/>` +
-    RR('#000', 0.35),
+    RR(46, '#000', 0.35),
 });
 
 const handleAt = P(162, Math.PI);
@@ -43,7 +46,7 @@ export const spool = svg({
   ],
   details:
     `<circle r="30" fill="#000" fill-opacity=".25"/><circle r="27" fill="#6f7377"/><circle r="27" fill="url(#sheen)"/>` +
-    RR('#d8dbd6') +
+    RR(25, '#d8dbd6') +
     `<circle cx="${f(weightAt[0])}" cy="${f(weightAt[1])}" r="17" fill="#000" fill-opacity=".18"/><circle cx="${f(weightAt[0])}" cy="${f(weightAt[1])}" r="14" fill="#7c8084"/><circle cx="${f(weightAt[0])}" cy="${f(weightAt[1])}" r="14" fill="url(#sheen)"/>` +
     knob(...handleAt, 24),
 });
