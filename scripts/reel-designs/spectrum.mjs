@@ -53,9 +53,10 @@ export const rimHandle = (r, deg, size = 18) => knob(...P(r, rad(deg)), size);
 
 const RIM = { n: 20, rIn: 146, rOut: 186, bar: 18, corner: 10, off: -90 };
 
-// The window ring behind the five spokes is the spool's, so it's drawn recessed (darker); the rim lip is the frame's.
+// The window ring behind the five spokes is the spool's, so it's drawn in a much darker shade; the rim lip is the frame's.
+const SPOOL_CAGE = ring(188, 134) + slots(RIM);
 export const drag = svg({
-  back: [ring(188, 134) + slots(RIM)],
+  under: `<path d="${SPOOL_CAGE}" fill="currentColor" fill-rule="evenodd"/><path d="${SPOOL_CAGE}" fill="#000" fill-opacity=".45" fill-rule="evenodd"/>`,
   body: [
     ring(200, 188),
     sageFoot(),
