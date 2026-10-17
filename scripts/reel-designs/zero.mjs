@@ -38,4 +38,4 @@ export const zeroSides = (fingerIn) => ({
   }),
 });
 
-export const { drag, spool } = zeroSides(116);
+export const { drag, spool } = zeroSides(121);
