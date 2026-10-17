@@ -8,6 +8,7 @@ import { parseTheme, resolveTheme } from './theme.js';
 import {
   clampSelection,
   editorScale,
+  formatFeet,
   moveTaperBoundary,
   moveZoneBoundary,
   removeZone,
@@ -172,6 +173,12 @@ describe('line editing', () => {
   // Two-tone WF5F: taper 4 / 28.5 / 4.5 / 53 = 90 ft; zones chartreuse 20, green 17, orange rest.
   const line = () => structuredClone(DEFAULT_SETUP.line);
   const lengths = (l) => zoneRanges(l).map((z) => z.length);
+
+  it('formats feet with inches', () => {
+    expect(formatFeet(90)).toBe('90′');
+    expect(formatFeet(4.5)).toBe('4′6″');
+    expect(formatFeet(28.25)).toBe('28′3″');
+  });
 
   it('snaps to half feet', () => {
     expect(snap(6.2)).toBe(6);

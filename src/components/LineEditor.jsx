@@ -1,8 +1,7 @@
 import { useId, useRef } from 'react';
 import { hexOf, nameOf } from '../data/catalog.js';
 import { lineDiameters, totalLength, zoneRanges } from '../lib/geometry.js';
-import { STEP, TAPER_KEYS, TAPER_NAMES, editorScale, moveTaperBoundary, moveZoneBoundary, zoneName } from '../lib/lineEdit.js';
-import { formatFeet } from './LineDiagram.jsx';
+import { STEP, TAPER_KEYS, TAPER_NAMES, editorScale, formatFeet, moveTaperBoundary, moveZoneBoundary, zoneName } from '../lib/lineEdit.js';
 
 const W = 520;
 const LEFT = 26; // room for the backing stub

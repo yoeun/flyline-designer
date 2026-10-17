@@ -10,8 +10,7 @@ import {
   nameOf,
 } from '../data/catalog.js';
 import { totalLength, zoneRanges } from '../lib/geometry.js';
-import { MIN_LENGTH, TAPER_NAMES, removeZone, setTaperLength, setZoneLength, splitZone, zoneName } from '../lib/lineEdit.js';
-import { formatFeet } from './LineDiagram.jsx';
+import { MIN_LENGTH, TAPER_NAMES, formatFeet, removeZone, setTaperLength, setZoneLength, splitZone, zoneName } from '../lib/lineEdit.js';
 import LineEditor from './LineEditor.jsx';
 import Swatches from './Swatches.jsx';
 

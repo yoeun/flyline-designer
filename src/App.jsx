@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import Checks from './components/Checks.jsx';
-import LineDiagram from './components/LineDiagram.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
 import Rack from './components/Rack.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
@@ -132,9 +131,6 @@ export default function App() {
             </div>
             <div className="stage__reel">
               <ReelPreview setup={setup} mode={mode} background={STAGE[theme]} svgRef={svgRef} title={`${setup.name} preview`} />
-            </div>
-            <div className="stage__diagram">
-              <LineDiagram setup={setup} />
             </div>
           </div>
           <Checks setup={setup} />

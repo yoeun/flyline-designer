@@ -6,6 +6,13 @@ export const TAPER_KEYS = ['front', 'body', 'back', 'running'];
 export const TAPER_NAMES = { front: 'Front taper', body: 'Body', back: 'Back taper', running: 'Running line' };
 
 export const snap = (ft) => Math.round(ft / STEP) * STEP;
+
+export function formatFeet(ft) {
+  const whole = Math.floor(ft);
+  const inches = Math.round((ft - whole) * 12);
+  return inches ? `${whole}′${inches}″` : `${whole}′`;
+}
+
 const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
 
 export function zoneName(index, count) {

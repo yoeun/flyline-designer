@@ -257,30 +257,6 @@ select {
   height: auto;
 }
 
-.stage__diagram {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.line-diagram {
-  display: block;
-  width: 100%;
-  min-width: 560px;
-  height: auto;
-}
-
-.line-diagram__labels {
-  font: 600 16px var(--font-display);
-  letter-spacing: 0.5px;
-  fill: currentColor;
-}
-
-.line-diagram__lengths {
-  font: 15px var(--font-mono);
-  fill: currentColor;
-  opacity: 0.8;
-}
-
 /* Segmented controls */
 .segmented {
   display: inline-flex;
