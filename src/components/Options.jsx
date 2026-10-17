@@ -166,31 +166,39 @@ export function BackingOptions({ backing, onChange }) {
     <section className="options-group">
       <h2>Backing</h2>
       <div className="backing-row">
-        <div className="segmented" role="group" aria-label="Backing length">
-          {BACKING_LENGTHS.map((y) => (
-            <button key={y} type="button" aria-pressed={backing.yards === y} onClick={() => onChange({ ...backing, yards: y })}>
-              {y}
-            </button>
-          ))}
+        <div className="field">
+          <span>Length</span>
+          <div className="backing-controls">
+            <div className="segmented" role="group" aria-label="Backing length">
+              {BACKING_LENGTHS.map((y) => (
+                <button key={y} type="button" aria-pressed={backing.yards === y} onClick={() => onChange({ ...backing, yards: y })}>
+                  {y}
+                </button>
+              ))}
+            </div>
+            <label className="field inline">
+              <input
+                type="number"
+                min="0"
+                step="10"
+                className={`mono${custom ? ' is-custom' : ''}`}
+                aria-label="Backing length in yards"
+                value={backing.yards}
+                onChange={(e) => onChange({ ...backing, yards: numberOr(e.target.value, backing.yards) })}
+              />
+              <span>yd</span>
+            </label>
+          </div>
         </div>
-        <label className="field inline">
-          <input
-            type="number"
-            min="0"
-            step="10"
-            className={`mono${custom ? ' is-custom' : ''}`}
-            aria-label="Backing length in yards"
-            value={backing.yards}
-            onChange={(e) => onChange({ ...backing, yards: numberOr(e.target.value, backing.yards) })}
-          />
-          <span>yd</span>
-        </label>
-        <div className="segmented" role="group" aria-label="Backing strength">
-          {[20, 30].map((lb) => (
-            <button key={lb} type="button" aria-pressed={backing.pounds === lb} onClick={() => onChange({ ...backing, pounds: lb })}>
-              {lb} lb
-            </button>
-          ))}
+        <div className="field">
+          <span>Strength</span>
+          <div className="segmented" role="group" aria-label="Backing strength">
+            {[20, 30].map((lb) => (
+              <button key={lb} type="button" aria-pressed={backing.pounds === lb} onClick={() => onChange({ ...backing, pounds: lb })}>
+                {lb} lb
+              </button>
+            ))}
+          </div>
         </div>
       </div>
       <div className="field">
