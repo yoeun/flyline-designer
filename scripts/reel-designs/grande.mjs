@@ -6,7 +6,7 @@ import { P, arcPts, circle, f, foot, knob, knurl, rad, ring, roundPoly, spoke, s
 
 const RED = '#b0243a';
 // Each edge touches the boss (r 66) at 45° below level and runs up and out at 45° to the rim. Below it, seven
-// spokes 30° apart, the first and last level with the center.
+// spokes, lined up with the spool's 14: the ones in the lower half.
 const BOSS = 66;
 const edgeRim = (sx) => {
   const t = [sx * BOSS * Math.SQRT1_2, BOSS * Math.SQRT1_2], d = [sx * Math.SQRT1_2, -Math.SQRT1_2];
@@ -17,7 +17,8 @@ const edgeRim = (sx) => {
 const [LEFT, RIGHT] = [edgeRim(-1), edgeRim(1)];
 const RIM_ANGLE = (Math.atan2(RIGHT.rim[1], RIGHT.rim[0]) * 180) / Math.PI; // right edge's angle at the rim
 const plate = roundPoly([RIGHT.touch, LEFT.touch, LEFT.rim, ...arcPts(184, rad(-180 - RIM_ANGLE), rad(RIM_ANGLE), 20), RIGHT.rim], 8);
-const DRAG_SPOKES = Array.from({ length: 7 }, (_, k) => k * 30);
+const SPOOL_SPOKES = Array.from({ length: 14 }, (_, k) => -90 + (k * 360) / 14);
+const DRAG_SPOKES = SPOOL_SPOKES.filter((a) => a > 0 && a < 180);
 
 // Drag knob, all in the frame color: knurled skirt and a raised cap with a logo button.
 const grandeKnob =
@@ -42,7 +43,6 @@ export const drag = svg({
 // Spool side, all frame color but a thin red ring at the hub: 14 evenly spaced tapered spokes, a large knurled center cap and a
 // round counterweight opposite the handle.
 const HANDLE = 160;
-const SPOOL_SPOKES = Array.from({ length: 14 }, (_, k) => -90 + (k * 360) / 14);
 export const spool = svg({
   back: [foot(132, -244, 14, 30)],
   body: [
