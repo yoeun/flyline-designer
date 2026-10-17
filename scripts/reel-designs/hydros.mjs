@@ -1,5 +1,5 @@
 // Orvis Hydros.
-import { P, bars, circle, dragKnob, foot, knob, pad, rad, ring, screw, slots, spoke, svg } from './lib.mjs';
+import { P, circle, dragKnob, foot, knob, pad, rad, ring, screw, slots, spoke, strut, svg } from './lib.mjs';
 
 // The Hydros foot is dark whatever the reel color.
 const HYDROS_FOOT = `<path d="${foot(130, -244, 14, 30)}" fill="#3b3e41"/><path d="${foot(130, -244, 14, 30)}" fill="url(#sheen)"/>`;
@@ -7,10 +7,9 @@ export const drag = svg({
   under: HYDROS_FOOT,
   body: [
     ring(200, 104) + slots({ n: 14, rIn: 118, rOut: 178, bar: 17, corner: 9, off: -90 + 360 / 28 }),
-    ...bars([[-36, -192], [-36, 192]], 16),
-    ...bars([[36, -192], [36, 192]], 16),
-    ...bars([[-88, -178], [-70, 0], [-88, 178]], 18),
-    ...bars([[88, -178], [70, 0], [88, 178]], 18),
+    // Two straight bars, wide apart at the top and closer at the bottom.
+    strut([-68, -190], [-36, 192], 28, 22),
+    strut([68, -190], [36, 192], 28, 22),
   ],
   details: dragKnob(64),
 });
