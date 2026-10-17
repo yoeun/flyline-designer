@@ -1,7 +1,7 @@
 // Hatch Iconic (Large and Mid Arbor share this frame).
 // Drawn from Hatch's straight-on 5 Plus photos. The drag side's swirl is simplified to six curved arms from the hub
 // to the rim, over the spool's darker outer cage.
-import { P, circle, f, hexSpokes, knurl, rad, ring, roundPoly, strut, svg } from './lib.mjs';
+import { P, circle, f, knurl, rad, ring, roundPoly, strut, svg } from './lib.mjs';
 
 // A curved bar from point p0 to p2, bowed `bend` sideways at its middle, w0 wide at p0 and w1 at p2.
 const curvePt = (p0, p2, bend, t) => {
@@ -55,7 +55,7 @@ const ARMS = [0, 1, 2, 3, 4, 5].map((k) => [-130 + k * 60, -85 + k * 60, ARM_BOW
 // The spool side shows the same cage from the other face: `mirrored` false.
 const CAGE_R = 120;
 const outerCage = ({ mirrored = true, r = CAGE_R, bars = 12, lean = 50, bow = 18 } = {}) => [
-  ring(r + 6, r - 6),
+  ring(r + 8, r - 8),
   ...Array.from({ length: bars }, (_, k) => {
     const d = arm(-75 + (k * 360) / bars, r, -75 + (k * 360) / bars + lean, 190, 16, 12, bow);
     return mirrored ? mirrorX(d) : d;
@@ -80,20 +80,19 @@ export const silverKnob = (cx, cy, r) =>
 export const counterweight = (cx, cy, r) =>
   `<circle cx="${f(cx)}" cy="${f(cy)}" r="${r}" fill="#c9c6bd"/><circle cx="${f(cx)}" cy="${f(cy)}" r="${r}" fill="url(#sheen)"/><circle cx="${f(cx)}" cy="${f(cy)}" r="${r * 0.55}" fill="#1f2123"/>`;
 
-// `hex` (a radius) swaps the curved spokes and round hub for six spokes tangent to a hexagon hub of that inner
-// radius, sweeping counter-clockwise, like the Lamson spools.
-export const hatchSpool = ({ inner = 132, bars = 12, barSweep = -30, barBend = -8, spokes = 8, spokeSweep = 14, spokeBend = 0, barWidth = 18, counter = counterweight, hub = 66, cap = 52, handle = -50, hex = null } = {}) => {
-  const hexLines = hex && hexSpokes({ hex, reach: CAGE_R, ends: [0, 1, 2, 3, 4, 5].map((k) => -60 + k * 60), ccw: true, overshoot: 4 });
-  const center = hex
-    ? [...hexLines.map(({ corner, end }) => strut(corner, end, 22, 16)), roundPoly(hexLines.map(({ corner }) => corner), 4)]
+// `straight` (the Iconic) swaps the curved spokes for that many straight spokes from the center out to the outer
+// cage's base ring, and the inner ring of bars for the drag side's outer cage seen from this face.
+export const hatchSpool = ({ inner = 132, bars = 12, barSweep = -30, barBend = -8, spokes = 8, spokeSweep = 14, spokeBend = 0, barWidth = 18, counter = counterweight, hub = 66, cap = 52, handle = -50, straight = null } = {}) => {
+  const center = straight
+    ? [...Array.from({ length: straight }, (_, k) => strut([0, 0], P(CAGE_R, rad(-90 + (k * 360) / straight)), 20, 16)), circle(hub)]
     : [...Array.from({ length: spokes }, (_, k) => arm(-90 + (k * 360) / spokes - spokeSweep, hub - 6, -90 + (k * 360) / spokes, inner - 8, 22, 16, spokeBend)), circle(hub)];
   return svg({
   back: [...hatchFoot()],
   body: [
     ring(200, 180),
-    // With a hexagon hub (the Iconic) the outer cage is the drag side's, seen from this face; otherwise a ring of
-    // bars leaning counter-clockwise toward the rim.
-    ...(hex
+    // With straight spokes (the Iconic) the outer cage is the drag side's, seen from this face; otherwise a ring
+    // of bars leaning counter-clockwise toward the rim.
+    ...(straight
       ? outerCage({ mirrored: false })
       : [ring(inner, inner - 16), ...Array.from({ length: bars }, (_, k) => arm(-75 + (k * 360) / bars + barSweep, inner - 8, -75 + (k * 360) / bars, 190, barWidth, 16, barBend))]),
     ...center,
@@ -104,4 +103,4 @@ export const hatchSpool = ({ inner = 132, bars = 12, barSweep = -30, barBend = -
 });
 };
 
-export const spool = hatchSpool({ hex: 50, cap: 40 });
+export const spool = hatchSpool({ straight: 8, hub: 48, cap: 40 });
