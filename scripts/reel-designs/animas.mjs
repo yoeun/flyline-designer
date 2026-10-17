@@ -19,8 +19,9 @@ const animasKnob =
   `<circle r="64" fill="none" stroke="#7a4410" stroke-opacity=".7" stroke-width="2.5"/>` +
   `<text x="0" y="27" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="78" letter-spacing="-22" fill="none" stroke="#7a4410" stroke-width="2.6">RR</text>`;
 
-// The engraved logo plaque on the top stem.
-const plaque = roundPoly([[-34, -140], [34, -140], [24, -70], [-24, -70]], 8);
+// The engraved logo plaque: a thick plate bridging the inner bars of the two upper pairs (see pair below), part way out.
+const barAt = (deg, r) => P(r, rad(deg + ((r - 86) / (190 - 86)) * -2 * Math.sign(deg + 90)));
+const plaque = roundPoly([barAt(-111, 98), barAt(-111, 150), barAt(-69, 150), barAt(-69, 98)], 8);
 const plaqueArt =
   `<path d="${plaque}" fill="#000" fill-opacity=".08"/>` +
   `<path d="M-26 -126L-16 -133L-8 -127L2 -135L12 -127L20 -132L28 -126" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="1.6"/>` +
@@ -37,7 +38,7 @@ const pair = (a) =>
 
 export const drag = svg({
   back: [ring(186, 138) + slots(OUTER)],
-  body: [ring(200, 184), ANIMAS_FOOT, ...PAIRS.flatMap(pair), plaque, strut([0, -84], [0, -186], 64, 70), circle(84)],
+  body: [ring(200, 184), ANIMAS_FOOT, ...PAIRS.flatMap(pair), plaque, circle(84)],
   details: plaqueArt + animasKnob,
 });
 
