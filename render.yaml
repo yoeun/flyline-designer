@@ -1,5 +1,5 @@
-# Render Blueprint: the app as a Static Site, deployed on every push to main.
-# See the Deploy section of the README for connecting it.
+# Render Blueprint: the app as a Static Site, the shares API as a Node web service and its Postgres
+# database, all deployed on every push to main. See the Deploy section of the README for connecting it.
 services:
   - type: web
     runtime: static
@@ -13,8 +13,11 @@ services:
       # Vite 8 needs Node 20.19+ or 22.12+; match local dev.
       - key: NODE_VERSION
         value: "24"
+      # The shares API below. Render shows its real address on the service page; if it isn't this one, change it here.
+      - key: VITE_API_URL
+        value: https://flyline-designer-api.onrender.com
     routes:
-      # Any path without a file serves the app, so path routes added later (e.g. /r/<id>) won't 404.
+      # Any path without a file serves the app, so view links (/r/<id>) and later path routes load it.
       - type: rewrite
         source: /*
         destination: /index.html
@@ -30,3 +33,37 @@ services:
       - path: /index.html
         name: Cache-Control
         value: no-cache
+      - path: /r/*
+        name: Cache-Control
+        value: no-cache
+
+  - type: web
+    runtime: node
+    name: flyline-designer-api
+    # Free sleeps when idle, so the first call after a quiet spell waits for it to start.
+    plan: free
+    branch: main
+    autoDeployTrigger: commit
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: flyline-designer-db
+          property: connectionString
+      # The site origins that may call the API. Add the custom domain here when there is one.
+      - key: ALLOWED_ORIGINS
+        value: https://flyline-designer.onrender.com
+
+databases:
+  - name: flyline-designer-db
+    # Free databases expire after a while and take their shares with them: upgrade before real use.
+    plan: free
+    databaseName: flyline
+    user: flyline
+    # Only Render services can connect; nothing from the internet.
+    ipAllowList: []

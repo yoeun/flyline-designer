@@ -13,6 +13,7 @@ import Segmented from './components/Segmented.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
 import { Toaster } from './components/ui/sonner.jsx';
 import SetupTitle from './components/SetupTitle.jsx';
+import ShareDialog from './components/ShareDialog.jsx';
 import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, fitLineToReel, presetForLine, switchLine } from './data/catalog.js';
 import { DEMO_RACK } from './data/demoRack.js';
 import { exportPng, exportSvg } from './lib/export.js';
@@ -22,6 +23,7 @@ import { SECTION_KEYS, changedSections, displayName, isDirty, loadEntries } from
 import { resolveView } from './lib/rackView.js';
 import { SIDES } from './lib/reelFrames.js';
 import { queryToState, stateToQuery } from './lib/share.js';
+import { createShare, deleteShare, loadShare, rotateShare, storeShare, updateShare } from './lib/shareApi.js';
 import { STAGE, useTheme } from './lib/theme.js';
 
 const RACK_KEY = 'flyline-designer:rack';
@@ -40,6 +42,16 @@ function loadRack() {
 
 // Desktop gutter grows with the window; never under 16px.
 const GUTTER = 'px-[max(16px,2.5vw)]';
+
+// What to tell the owner when a sharing call fails.
+const shareFailed = (err) =>
+  toast(
+    err.status === 429
+      ? 'Too many new links right now. Try again later.'
+      : err.status === 0
+        ? 'Couldn’t reach the server. Check your connection and try again.'
+        : 'Something went wrong with sharing. Try again.',
+  );
 
 const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'flyline';
 
@@ -61,6 +73,14 @@ export default function App() {
   const [themeChoice, setThemeChoice, theme] = useTheme();
   const [rack, setRack] = useState(initial.rack);
   const [rackOpen, setRackOpen] = useState(false);
+  // This browser's view link to its rack ({ shareId, ownerToken }), if it has one.
+  const [share, setShare] = useState(loadShare);
+  const [shareOpen, setShareOpen] = useState(false);
+  const [shareBusy, setShareBusy] = useState(false);
+  const shareRef = useRef(share);
+  shareRef.current = share;
+  // The rack and link the server last took, so an unchanged rack isn't sent again.
+  const synced = useRef(null);
   // Which way the Details dialog is open (null when closed): 'edit', 'save' or 'save-as-new'.
   const [detailsMode, setDetailsMode] = useState(null);
   // The rack entry whose details are open in the dialog (from a rack card's menu), if any.
@@ -89,6 +109,67 @@ export default function App() {
       // Storage can be unavailable (private mode); the rack then lasts for this visit only.
     }
   }, [rack, demo]);
+
+  // A shared rack follows this one: a second after the rack changes, the server gets the new version.
+  // On load it is sent once too, catching up on changes that didn't reach it last visit.
+  useEffect(() => {
+    if (demo || !share || (synced.current?.rack === rack && synced.current?.shareId === share.shareId)) return;
+    const timer = setTimeout(() => {
+      updateShare(share, rack).then(
+        () => (synced.current = { rack, shareId: share.shareId }),
+        (err) => {
+          // A link renewed or stopped while this was out has moved on; its 404 is for the old id.
+          if (shareRef.current?.shareId !== share.shareId) return;
+          if (err.status !== 404) return toast('Couldn’t update your shared rack. It tries again when you next save.');
+          changeShare(null);
+          toast('Your rack is no longer shared. Share it again for a new link.');
+        },
+      );
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [rack, share, demo]);
+
+  const changeShare = (next) => {
+    storeShare(next);
+    setShare(next);
+  };
+
+  // Each call returns the share as it is afterwards; a 404 means the link is already gone.
+  const runShare = async (call) => {
+    setShareBusy(true);
+    try {
+      changeShare(await call());
+    } catch (err) {
+      if (err.status === 404) changeShare(null);
+      else shareFailed(err);
+    } finally {
+      setShareBusy(false);
+    }
+  };
+
+  const startSharing = () =>
+    runShare(async () => {
+      const next = await createShare(rack);
+      synced.current = { rack, shareId: next.shareId };
+      toast('Your rack is shared. Copy the link to send it.');
+      return next;
+    });
+
+  const newShareLink = () =>
+    runShare(async () => {
+      const { shareId } = await rotateShare(share);
+      synced.current = { rack, shareId };
+      toast('Made a new link. The old one no longer works.');
+      return { ...share, shareId };
+    });
+
+  const stopSharing = () =>
+    runShare(async () => {
+      await deleteShare(share);
+      setShareOpen(false);
+      toast('Stopped sharing your rack.');
+      return null;
+    });
 
   // Keep the URL in step with the design so a reload or a copied link restores it.
   useEffect(() => {
@@ -335,6 +416,13 @@ export default function App() {
           onLoad={loadEntry}
           onEditDetails={(entry) => setDetailsEntryId(entry.id)}
           onRemove={removeEntry}
+          actions={
+            !demo && (
+              <Button onClick={() => setShareOpen(true)} disabled={!share && rack.length === 0}>
+                {share ? 'Shared' : 'Share'}
+              </Button>
+            )
+          }
         />
       ) : (
         <main className={`flex flex-wrap items-start gap-7 pt-6 pb-10 wide:min-h-0 wide:flex-1 wide:flex-nowrap wide:items-stretch wide:pb-6 ${GUTTER}`}>
@@ -398,6 +486,7 @@ export default function App() {
           </section>
         </main>
       )}
+      <ShareDialog open={shareOpen} share={share} busy={shareBusy} onShare={startSharing} onRotate={newShareLink} onStop={stopSharing} onClose={() => setShareOpen(false)} />
       <DetailsDialog
         key={detailsEntryId ?? 'setup'}
         open={detailsMode !== null || detailsEntry !== undefined}

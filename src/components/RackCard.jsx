@@ -11,7 +11,8 @@ const STYLE_COLORS = { dry: 'bg-[#b7791f]', nymph: 'bg-[#2c7a7b]', streamer: 'bg
 
 // A saved setup. The reel drawing is the card: the band above it and the text below stay small.
 // size 'lg' (the rack page) makes the card wider and the line weight large enough to read at a glance.
-export default function RackCard({ setup, current = false, conflicts = [], currentStyle = 'outline', showNotes = false, size = 'sm', className, onLoad, onEditDetails, onRemove }) {
+// Without onRemove (a shared rack) the card has no actions menu. loadLabel names what a click does.
+export default function RackCard({ setup, current = false, conflicts = [], currentStyle = 'outline', showNotes = false, size = 'sm', className, loadLabel = 'Load', onLoad, onEditDetails, onRemove }) {
   const name = displayName(setup);
   const reelName = findById(REELS, setup.reel.model)?.name ?? 'Reel';
   const styles = STYLES.filter((s) => setup.styles?.includes(s.id));
@@ -75,24 +76,26 @@ export default function RackCard({ setup, current = false, conflicts = [], curre
               {s.letter}
             </span>
           ))}
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              className="flex size-8 cursor-pointer items-center justify-center rounded-full text-foreground hover:bg-border focus-visible:outline-2 focus-visible:outline-ring"
-              aria-label={`More actions for ${name}`}
-            >
-              <Icon name="more_horiz" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-auto">
-              <DropdownMenuItem onClick={() => onEditDetails(setup)}>Edit details</DropdownMenuItem>
-              <DropdownMenuItem onClick={remove}>Remove</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          {onRemove && (
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className="flex size-8 cursor-pointer items-center justify-center rounded-full text-foreground hover:bg-border focus-visible:outline-2 focus-visible:outline-ring"
+                aria-label={`More actions for ${name}`}
+              >
+                <Icon name="more_horiz" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-auto">
+                <DropdownMenuItem onClick={() => onEditDetails(setup)}>Edit details</DropdownMenuItem>
+                <DropdownMenuItem onClick={remove}>Remove</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
         </span>
       </div>
       <button
         type="button"
         onClick={() => onLoad(setup)}
-        title={`Load ${name}`}
+        title={`${loadLabel} ${name}`}
         className="flex min-w-0 cursor-pointer flex-col items-center gap-1.5 px-2 pt-2 pb-3 text-left focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring"
       >
         <ReelPreview setup={setup} mode="reel" side="drag" background="transparent" title={name} className="size-auto w-full" />
