@@ -1,5 +1,5 @@
 // Hatch Finatic Gen 2.
-// Spool side from angled photos (shot with the foot to the left), turned upright and read straight-on.
+// The spool side is the Iconic's.
 // No drag-side photo was found: the Finatic and Iconic frames are closely related, so the drag side reuses
 // the Iconic's swirl of arms with the Finatic's smaller drag cap — inferred, not checked against a photo.
 import { f } from './lib.mjs';
@@ -12,18 +12,6 @@ const hexCounterweight = (cx, cy, r) =>
 
 export const drag = iconicDrag({ hub: 64, cap: 54 });
 
-// Thirteen long tapered bars swept back between rim and inner ring; seven curved spokes around a smaller hub.
-export const spool = hatchSpool({
-  inner: 126,
-  bars: 13,
-  barSweep: -30,
-  barBend: -8,
-  barWidth: 24,
-  spokes: 7,
-  spokeSweep: 20,
-  spokeBend: 8,
-  hub: 50,
-  cap: 40,
-  handle: -55,
-  counter: hexCounterweight,
-});
+// The spool is the Iconic's: its outer cage, base ring and eight straight spokes, with the Finatic's own
+// counterweight.
+export const spool = hatchSpool({ straight: 8, hub: 48, cap: 40, counter: hexCounterweight });
