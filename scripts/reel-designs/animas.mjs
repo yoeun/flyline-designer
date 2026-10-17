@@ -16,8 +16,8 @@ const ANIMAS_FOOT = foot(140, -244, 14, 32);
 const animasKnob =
   `<path d="${knurl(80, 3, 22)}" fill="currentColor"/><path d="${knurl(80, 3, 22)}" fill="#000" fill-opacity=".18"/>` +
   `<circle r="72" fill="#c07a26"/><circle r="72" fill="url(#sheen)"/>` +
-  `<circle r="52" fill="none" stroke="#7a4410" stroke-opacity=".7" stroke-width="2.5"/>` +
-  `<text x="0" y="14" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="44" letter-spacing="-12" fill="none" stroke="#7a4410" stroke-width="2">RR</text>`;
+  `<circle r="64" fill="none" stroke="#7a4410" stroke-opacity=".7" stroke-width="2.5"/>` +
+  `<text x="0" y="27" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="78" letter-spacing="-22" fill="none" stroke="#7a4410" stroke-width="2.6">RR</text>`;
 
 // The engraved logo plaque on the top stem.
 const plaque = roundPoly([[-34, -140], [34, -140], [24, -70], [-24, -70]], 8);
