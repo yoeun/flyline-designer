@@ -43,7 +43,7 @@ export default function Checks({ setup }) {
       <div className={`check check--end${contrast.similar ? ' is-warn' : ''}`} title={contrastText}>
         <span className="check__text">
           <strong className="mono">ΔE {Math.round(contrast.value)}</strong>
-          <span>{contrast.similar ? 'Look alike' : 'Backing vs. line'}</span>
+          <span>{contrast.similar ? 'Look alike' : 'Contrast'}</span>
         </span>
         <svg className="check__icon" viewBox="0 0 24 24" aria-hidden="true">
           <path d={`M12 ${12 - R}A${R} ${R} 0 0 0 12 ${12 + R}Z`} fill={hexOf(contrast.backing)} />
@@ -51,7 +51,7 @@ export default function Checks({ setup }) {
           <circle className="check__ring" cx="12" cy="12" r={R} />
         </svg>
         <span className="visually-hidden">
-          Backing vs. running line, delta E {Math.round(contrast.value)}. {contrastText}
+          Contrast between backing and running line, delta E {Math.round(contrast.value)}. {contrastText}
         </span>
       </div>
     </div>
