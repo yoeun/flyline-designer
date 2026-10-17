@@ -4,6 +4,7 @@ import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
 import { decodeSetup, encodeSetup } from './share.js';
+import { parseTheme, resolveTheme } from './theme.js';
 
 const setup = (patch = {}) => ({ ...structuredClone(DEFAULT_SETUP), ...patch });
 
@@ -134,5 +135,23 @@ describe('share links', () => {
 
   it('rejects garbage', () => {
     expect(decodeSetup('not-a-setup')).toBeNull();
+  });
+});
+
+describe('theme', () => {
+  it('system follows the OS setting', () => {
+    expect(resolveTheme('system', true)).toBe('dark');
+    expect(resolveTheme('system', false)).toBe('light');
+  });
+
+  it('an explicit choice overrides the OS setting', () => {
+    expect(resolveTheme('light', true)).toBe('light');
+    expect(resolveTheme('dark', false)).toBe('dark');
+  });
+
+  it('unknown or missing stored values fall back to system', () => {
+    expect(parseTheme('dark')).toBe('dark');
+    expect(parseTheme(null)).toBe('system');
+    expect(parseTheme('sepia')).toBe('system');
   });
 });

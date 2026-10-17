@@ -4,12 +4,13 @@ import LineDiagram from './components/LineDiagram.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
 import Rack from './components/Rack.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
+import ThemeToggle from './components/ThemeToggle.jsx';
 import { DEFAULT_SETUP, LINE_PRESETS, findById } from './data/catalog.js';
 import { exportPng, exportSvg } from './lib/export.js';
 import { decodeSetup, encodeSetup } from './lib/share.js';
+import { STAGE, useTheme } from './lib/theme.js';
 
 const RACK_KEY = 'flyline-designer:rack';
-const STAGE = '#e9ebe6';
 const MODES = [
   ['reel', 'Reel'],
   ['see-through', 'See-through'],
@@ -34,6 +35,7 @@ const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^
 export default function App() {
   const [{ setup, presetId }, setState] = useState(initialSetup);
   const [mode, setMode] = useState('reel');
+  const [themeChoice, setThemeChoice, theme] = useTheme();
   const [rack, setRack] = useState(loadRack);
   const [rackOpen, setRackOpen] = useState(false);
   const [notice, setNotice] = useState('');
@@ -89,6 +91,7 @@ export default function App() {
           </label>
         </div>
         <div className="app-header__actions">
+          <ThemeToggle value={themeChoice} onChange={setThemeChoice} />
           <button type="button" className="button" onClick={saveToRack}>
             Save to rack
           </button>
@@ -110,7 +113,7 @@ export default function App() {
       <main className="layout">
         <section className="preview-column" aria-label="Preview">
           <div className="stage">
-            <div className="segmented segmented--dark" role="group" aria-label="Preview mode">
+            <div className="segmented" role="group" aria-label="Preview mode">
               {MODES.map(([id, label]) => (
                 <button key={id} type="button" aria-pressed={mode === id} onClick={() => setMode(id)}>
                   {label}
@@ -118,7 +121,7 @@ export default function App() {
               ))}
             </div>
             <div className="stage__reel">
-              <ReelPreview setup={setup} mode={mode} background={STAGE} svgRef={svgRef} title={`${setup.name} preview`} />
+              <ReelPreview setup={setup} mode={mode} background={STAGE[theme]} svgRef={svgRef} title={`${setup.name} preview`} />
             </div>
             <div className="stage__diagram">
               <LineDiagram setup={setup} />
