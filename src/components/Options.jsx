@@ -48,7 +48,7 @@ function SectionHeading({ title, changed, onReset, children }) {
         {children}
       </div>
       {changed && (
-        <Button variant="ghost" className="-my-1 h-8 gap-1 px-2 text-[14px] text-muted-foreground" onClick={onReset} aria-label={`Reset ${title.toLowerCase()}`}>
+        <Button variant="ghost" className="-my-1 h-8 gap-1 px-2 text-[14px] text-muted-foreground pointer-coarse:h-11" onClick={onReset} aria-label={`Reset ${title.toLowerCase()}`}>
           <Icon name="restart_alt" />
           Reset
         </Button>

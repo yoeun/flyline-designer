@@ -1,11 +1,11 @@
 import { Input as UiInput } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
-// shadcn's Input at the app's control size. text-[15px] on phones too, so iOS doesn't zoom in on focus.
+// shadcn's Input at the app's control size. 16px text on touch screens, since iOS zooms in on focus below that.
 export function Input({ className, ...props }) {
   return (
     <UiInput
-      className={cn('h-auto min-h-10 rounded-md bg-card px-2.5 py-2 text-[15px] md:text-[15px] dark:bg-card', className)}
+      className={cn('h-auto min-h-10 rounded-md bg-card px-2.5 py-2 text-[15px] md:text-[15px] pointer-coarse:min-h-11 pointer-coarse:text-[16px] dark:bg-card', className)}
       {...props}
     />
   );

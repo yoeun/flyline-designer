@@ -111,3 +111,16 @@ export function editorScale(line, width, minPx) {
   };
   return { x: toX, ft: toFt, edges };
 }
+
+// Half-widths of the drag handles in one row, each as wide as `want` (in drawing units) but never
+// past halfway to its neighbor, so a fat finger-sized handle can't cover the next one or a short
+// section between them. Never narrower than `min`.
+export function handleHalfWidths(xs, want, min = 10) {
+  const sorted = [...xs].sort((a, b) => a - b);
+  return xs.map((x) => {
+    const i = sorted.indexOf(x);
+    const gaps = [sorted[i] - sorted[i - 1], sorted[i + 1] - sorted[i]].filter((g) => g >= 0);
+    const room = gaps.length ? Math.min(...gaps) / 2 - 1 : want;
+    return Math.max(min, Math.min(want, room));
+  });
+}

@@ -13,7 +13,7 @@ export default function SetupTitle({ name, subtitle, isNew, detailsChanged, onOp
           onClick={onOpenDetails}
           aria-label="Edit title, styles and notes"
           title="Title, styles and notes"
-          className="relative flex-none cursor-pointer rounded-md p-1 text-stage-foreground/80 hover:bg-white/10 hover:text-stage-foreground"
+          className="relative flex-none cursor-pointer rounded-md p-1 pointer-coarse:grid pointer-coarse:size-11 pointer-coarse:place-items-center text-stage-foreground/80 hover:bg-white/10 hover:text-stage-foreground"
         >
           <Icon name="sticky_note_2" />
           {detailsChanged && <span className="absolute top-0.5 right-0.5 size-2 rounded-full bg-orange-500" aria-label="Changed" />}

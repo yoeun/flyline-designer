@@ -25,8 +25,8 @@ export default function Segmented({ label, options, value, onChange }) {
           aria-label={icons ? optionLabel : undefined}
           title={icons ? optionLabel : undefined}
           className={cn(
-            'h-auto min-h-[34px] cursor-pointer rounded-[7px] text-[14px] hover:bg-transparent aria-pressed:bg-card aria-pressed:shadow-[0_1px_2px_rgba(0,0,0,0.15)]',
-            icons ? 'grid w-[34px] min-w-0 place-items-center p-0 text-muted-foreground aria-pressed:text-foreground aria-pressed:[&_.icon]:[font-variation-settings:"FILL"_1]' : 'px-[11px] py-[5px]',
+            'h-auto min-h-[34px] pointer-coarse:min-h-11 cursor-pointer rounded-[7px] text-[14px] hover:bg-transparent aria-pressed:bg-card aria-pressed:shadow-[0_1px_2px_rgba(0,0,0,0.15)]',
+            icons ? 'grid w-[34px] min-w-0 pointer-coarse:w-11 place-items-center p-0 text-muted-foreground aria-pressed:text-foreground aria-pressed:[&_.icon]:[font-variation-settings:"FILL"_1]' : 'px-[11px] py-[5px]',
           )}
         >
           {icons ? icon : optionLabel}

@@ -13,7 +13,7 @@ export default function Select({ label, items, value, onChange, disabled = false
         <SelectTrigger
           aria-labelledby={id}
           className={cn(
-            'h-10 w-full cursor-pointer rounded-md data-[size=default]:h-10 bg-card px-2.5 py-2 text-[15px] hover:border-primary disabled:border-dashed disabled:bg-secondary disabled:text-muted-foreground disabled:opacity-70 dark:bg-card dark:hover:bg-card dark:disabled:bg-secondary',
+            'h-10 w-full cursor-pointer rounded-md data-[size=default]:h-10 pointer-coarse:data-[size=default]:h-11 bg-card px-2.5 py-2 text-[15px] hover:border-primary disabled:border-dashed disabled:bg-secondary disabled:text-muted-foreground disabled:opacity-70 dark:bg-card dark:hover:bg-card dark:disabled:bg-secondary',
             triggerClassName,
           )}
         >
@@ -21,7 +21,7 @@ export default function Select({ label, items, value, onChange, disabled = false
         </SelectTrigger>
         <SelectContent>
           {items.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem key={item.value} value={item.value} className="pointer-coarse:py-3">
               {item.label}
             </SelectItem>
           ))}

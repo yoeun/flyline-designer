@@ -32,7 +32,7 @@ export default function SearchableSelect({ label, grow = false, groups, value, o
           aria-labelledby={`${id}-label`}
           placeholder={placeholder}
           // Sized and colored like the native selects beside it. text-base on phones keeps iOS from zooming in on focus.
-          className="h-10 w-full rounded-[8px] bg-card hover:border-primary dark:bg-card [&_input]:text-ellipsis [&_input]:md:text-[15px]"
+          className="h-10 w-full rounded-[8px] bg-card hover:border-primary pointer-coarse:h-11 dark:bg-card [&_input]:text-ellipsis [&_input]:md:text-[15px] pointer-coarse:[&_input]:h-full pointer-coarse:[&_input]:text-[16px] pointer-coarse:[&_button]:size-9"
           ref={inputRef}
           onFocus={selectText}
         />

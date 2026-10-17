@@ -1,6 +1,6 @@
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
-export const CHIP = 'min-h-9 cursor-pointer rounded-full border border-input bg-card px-3.5 text-[14px] aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground';
+export const CHIP = 'min-h-9 pointer-coarse:min-h-11 pointer-coarse:px-4 cursor-pointer rounded-full border border-input bg-card px-3.5 text-[14px] aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground';
 
 // A pick-one row of chips; picking the chosen one again keeps it chosen.
 export default function Chips({ label, options, value, onChange }) {

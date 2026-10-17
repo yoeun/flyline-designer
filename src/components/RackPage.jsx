@@ -16,7 +16,8 @@ export default function RackPage({ setups, currentId, conflicts, onLoad, onEditD
   const { exact, near } = filterRack(setups, { weight, style });
 
   const grid = (list, label) => (
-    <ul className="flex flex-wrap gap-3" aria-label={label}>
+    // One card per row on phones, filling the width; side by side from sm up.
+    <ul className="flex flex-col gap-3 sm:flex-row sm:flex-wrap" aria-label={label}>
       {list.map((s) => (
         <li key={s.id} className="flex">
           <RackCard
