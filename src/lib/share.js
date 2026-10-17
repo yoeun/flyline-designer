@@ -5,6 +5,8 @@ import { STYLES, legacyTitle, normalizeEntry } from './rack.js';
 // are readable params; a line that matches no preset travels as base64url JSON in `l`.
 const SIDE_IDS = ['drag', 'spool'];
 const MODE_IDS = ['reel', 'see-through', 'line-only'];
+// Pages other than the designer; their URLs carry no setup.
+export const PAGES = ['rack', 'guide'];
 
 const toBase64Url = (value) => {
   const bytes = new TextEncoder().encode(JSON.stringify(value));
@@ -39,8 +41,8 @@ const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 export function stateToQuery({ setup, presetId, side, mode, editingId = null, page = 'designer', demo = false }) {
   const q = new URLSearchParams();
   if (demo) q.set('demo', '1');
-  if (page === 'rack') {
-    q.set('page', 'rack');
+  if (PAGES.includes(page)) {
+    q.set('page', page);
     return q.toString();
   }
   if (editingId) q.set('edit', editingId);
@@ -81,7 +83,7 @@ export function queryToState(search, hash = '') {
     // Old links carry `name` and no details; normalizing migrates them.
     const legacy = normalizeEntry(decodeSetup(hash.replace(/^#/, '')));
     if (legacy) return { ...base, setup: legacy, presetId: 'custom', ...meta, page: 'designer', hasSetup: true };
-    return { ...base, ...meta, page: q.get('page') === 'rack' ? 'rack' : null, hasSetup: false };
+    return { ...base, ...meta, page: PAGES.includes(q.get('page')) ? q.get('page') : null, hasSetup: false };
   }
 
   const { setup } = base;

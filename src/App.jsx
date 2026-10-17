@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import Button from './components/Button.jsx';
 import Checks from './components/Checks.jsx';
 import DetailsDialog from './components/DetailsDialog.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
 import PreviewModeToggle from './components/PreviewModeToggle.jsx';
+import Icon from './components/Icon.jsx';
 import Rack from './components/Rack.jsx';
 import RackPage from './components/RackPage.jsx';
 import Segmented from './components/Segmented.jsx';
@@ -24,6 +25,9 @@ import { queryToState, stateToQuery } from './lib/share.js';
 import { STAGE, useTheme } from './lib/theme.js';
 
 const RACK_KEY = 'flyline-designer:rack';
+
+// The guide and its maker data load on first visit, so the designer doesn't wait for them.
+const GuidePage = lazy(() => import('./components/GuidePage.jsx'));
 
 function loadRack() {
   try {
@@ -232,6 +236,22 @@ export default function App() {
     setPage('rack');
   };
 
+  const openGuide = () => {
+    setCameFromDesigner(page === 'designer');
+    setPage('guide');
+  };
+
+  // From the guide: a new setup on the current reel and backing, with the guide's line.
+  const tryLine = (id) => {
+    const preset = findById(LINE_PRESETS, id);
+    if (!preset || !discardOk()) return;
+    setLineSelection(null);
+    setState({ setup: { ...structuredClone(DEFAULT_SETUP), reel: setup.reel, backing: setup.backing, line: structuredClone(preset.line) }, presetId: id });
+    setEditingId(null);
+    setCameFromDesigner(false);
+    setPage('designer');
+  };
+
   const backToDesigner = () => {
     if (returning.current) return;
     if (cameFromDesigner) {
@@ -252,6 +272,12 @@ export default function App() {
         </div>
         <div className="flex flex-wrap gap-2">
           <ThemeToggle value={themeChoice} onChange={setThemeChoice} />
+          {page !== 'guide' && (
+            <Button onClick={openGuide} className="gap-1.5">
+              <Icon name="menu_book" />
+              Line guide
+            </Button>
+          )}
           {page === 'designer' && (
             <>
               <Button onClick={startNew}>New</Button>
@@ -276,7 +302,11 @@ export default function App() {
       </header>
       <Toaster theme={theme} position="bottom-center" duration={2500} />
 
-      {page === 'rack' ? (
+      {page === 'guide' ? (
+        <Suspense fallback={<p className={`pt-6 text-[14px] text-muted-foreground ${GUTTER}`}>Loading the line guide…</p>}>
+          <GuidePage onBack={backToDesigner} onTry={tryLine} />
+        </Suspense>
+      ) : page === 'rack' ? (
         <RackPage
           setups={rack}
           currentId={editingId}

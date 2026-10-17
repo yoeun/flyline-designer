@@ -1,0 +1,2516 @@
+{
+ "id": "orvis",
+ "maker": "Orvis",
+ "retrieved": "2026-10-16",
+ "sources": [
+  "https://www.orvis.com/fly-fishing/rods-reels-line/fly-line?srule=top-sellers&sz=300",
+  "https://www.orvis.com/fly-fishing/rods-reels-line/fly-line/freshwater-fly-fishing-lines",
+  "https://www.orvis.com/fly-fishing/rods-reels-line/fly-line/saltwater-fly-fishing-lines",
+  "https://www.orvis.com/product/<slug>/<item>.html (17 current product pages)",
+  "https://www.orvis.com/on/demandware.store/Sites-USOrvis-Site/en_US/Product-SizeChart?cid=<item>-taper-chart (taper charts, incl. discontinued items)",
+  "https://www.orvis.co.uk/products.json (colour names per variant)",
+  "https://web.archive.org/ (2023 snapshots of discontinued orvis.com product pages)"
+ ],
+ "explainer": [
+  "Orvis sells its own lines in three tiers. PRO ($98 smooth / $129 textured) is the top tier: 'advanced compound' multi-segment tapers, AST Plus slickness, and a three-color layout (8' stealth tip, 30' mark, rear taper/running line); most PRO tapers come in a micro-textured version that floats higher and shoots farther, and PRO Power Taper is built a half size heavy for fast rods. Hydros ($79, made in USA) is the mid tier: smooth AST-coated two-color lines with a color change at 30', each tuned to one job — Trout (all-round), Superfine (1-5 wt presentation), Double Taper, Tactical Nymph (Euro), Salmon/Steelhead (very long head), Bank Shot (short heavy heads, float or 7 ips sink tip) and Saltwater / Big Game.",
+  "Clearwater ($49) is the budget line: one half-size-heavy WF taper with a front loop only, aimed at beginners. Encounter appears on orvis.com only as a line bundled in Encounter rod outfits, not as a separate line (our reading of the site search). Orvis's own taper charts show what differs: PRO Trout has a long 25-29' multi-stage front taper into a 50' head, while Hydros Trout has a short ~5' front taper and a long belly (45-50' head); the saltwater lines differ by core (mono for tropical, multifilament for cool water).",
+  "Choosing: pick by the job first (trout, Euro nymph, bank streamer, salt); then pick PRO for the best coating/taper (textured if you want float and shoot, Power Taper for fast rods), Hydros for a cheaper US-made specialist, or Clearwater on a budget. Inference from 2023 archive snapshots: Orvis has since dropped the smooth versions of PRO Power Taper and the PRO saltwater lines, the PRO Ignitor, and several Hydros lines (Nymph, Warmwater, Cold Water/Tropic Intermediate, Bank Shot Intermediate); these are kept here as discontinued.",
+  "Orvis also resells Scientific Anglers lines, which are excluded."
+ ],
+ "omitted": [
+  "Mission Tips (Skagit sink tips, orvis.co.uk)",
+  "Encounter fly line (sold only inside Encounter rod outfits)",
+  "Scientific Anglers lines resold by Orvis (not Orvis-made)"
+ ],
+ "products": [
+  {
+   "id": "orvis-pro-trout-line-smooth",
+   "name": "PRO Trout Line—Smooth",
+   "series": "PRO",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 1,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 98,
+   "priceNote": null,
+   "primaryUse": "All-around trout (dries to nymph rigs)",
+   "secondaryUse": "Mending / delicate presentation",
+   "weightLabel": null,
+   "summary": "Orvis's flagship smooth trout line: 50' compound-taper head with a long rear taper for mending; the do-everything PRO trout choice.",
+   "url": "https://www.orvis.com/product/pro-trout-line%E2%80%94smooth/2S6C.html",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color: stealth tip, 30' mark, rear)"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color: stealth tip, 30' mark, rear)"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50.5,
+     "total": 90.5,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color: stealth tip, 30' mark, rear)"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 52,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color: stealth tip, 30' mark, rear)"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 52.5,
+     "total": 90.5,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color: stealth tip, 30' mark, rear)"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 54.5,
+     "total": 90.5,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color: stealth tip, 30' mark, rear)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-pro-trout-line-textured",
+   "name": "PRO Trout Line—Textured",
+   "series": "PRO",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 5,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 129,
+   "priceNote": null,
+   "primaryUse": "All-around trout",
+   "secondaryUse": "Higher floating, easier pickup",
+   "weightLabel": null,
+   "summary": "Same 50' compound taper as PRO Trout Smooth but with a micro-textured surface that floats higher and shoots farther; 3-6 wt only.",
+   "url": "https://www.orvis.com/product/pro-trout-line%E2%80%94textured/2SK2.html",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color)"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color)"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50.5,
+     "total": 90.5,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color)"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 52,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-pro-power-taper-line-textured",
+   "name": "PRO Power Taper Line—Textured",
+   "series": "PRO",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 6,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 129,
+   "priceNote": null,
+   "primaryUse": "Fast-action rods, heavier rigs (dry-dropper, nymphs, streamers)",
+   "secondaryUse": "Long drifts / mending",
+   "weightLabel": "Half-size heavier than industry standard",
+   "summary": "Half-size-heavy textured PRO trout line that loads fast rods deeper and turns over heavier rigs while keeping a 50' head for line control.",
+   "url": "https://www.orvis.com/product/pro-power-taper-line%E2%80%94textured/2SK3.html",
+   "sizes": [
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color)"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50.5,
+     "total": 90.5,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color)"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 90.5,
+     "grains30": 172.5,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color)"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 52,
+     "total": 90,
+     "grains30": 197,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color)"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 52,
+     "total": 90,
+     "grains30": 223,
+     "headGrains": null,
+     "colors": [
+      "Olive (3-color)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-pro-power-taper-line-smooth",
+   "name": "PRO Power Taper Line—Smooth",
+   "series": "PRO",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": null,
+   "priceNote": "$79.00 on archived orvis.com page, 2023-09-22 (possibly a markdown)",
+   "primaryUse": "Fast-action rods, heavier rigs",
+   "secondaryUse": "Long drifts / mending",
+   "weightLabel": "Half-size heavier than industry standard",
+   "summary": "Smooth-coated twin of the PRO Power Taper Textured (same half-size-heavy taper); product page now redirects, taper chart still served.",
+   "url": "https://web.archive.org/web/20230922104055/https://www.orvis.com/product/pro-power-taper-line%E2%80%94smooth/2SK4.html",
+   "sizes": [
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50.5,
+     "total": 90.5,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 90.5,
+     "grains30": 172.5,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 52,
+     "total": 90,
+     "grains30": 197,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 52,
+     "total": 90,
+     "grains30": 223,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "orvis-pro-depth-charge-3d-fly-line-smooth",
+   "name": "PRO Depth Charge 3D Fly Line—Smooth",
+   "series": "PRO",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 3,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 98,
+   "priceNote": null,
+   "primaryUse": "Swinging / stripping streamers deep",
+   "secondaryUse": "Deep stillwater",
+   "weightLabel": null,
+   "summary": "Triple-density full-sinking line (fast-sink 30' head, Type III mid-section, intermediate running line) that sinks without a hinge; sized by grain weight.",
+   "url": "https://www.orvis.com/product/pro-depth-charge-3d-fly-line%E2%80%94smooth/2S6M.html",
+   "sizes": [
+    {
+     "label": "150gr (5/6 wt)",
+     "weights": [
+      5
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 31,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 150,
+     "colors": [
+      "Mist Green/Dark Green/Dark Gray"
+     ]
+    },
+    {
+     "label": "200gr (6/7 wt)",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 31,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": [
+      "Yellow/Dark Green/Dark Gray"
+     ]
+    },
+    {
+     "label": "250gr (7/8 wt)",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 31,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 250,
+     "colors": [
+      "Orange/Dark Green/Dark Gray"
+     ]
+    },
+    {
+     "label": "300gr (8/9 wt)",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 31,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 300,
+     "colors": [
+      "Surf/Dark Green/Dark Gray"
+     ]
+    },
+    {
+     "label": "350gr (9/10 wt)",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Green/Dark Green/Dark Gray"
+     ]
+    },
+    {
+     "label": "450gr (11/12 wt)",
+     "weights": [
+      11
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 31,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 450,
+     "colors": [
+      "White/Dark Green/Dark Gray"
+     ]
+    },
+    {
+     "label": "550gr (12+ wt)",
+     "weights": [
+      12
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 550,
+     "colors": [
+      "Red/Dark Green/Dark Gray"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-pro-saltwater-tropic-fly-line-textured",
+   "name": "PRO Saltwater Tropic Fly Line—Textured",
+   "series": "PRO",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 7,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 129,
+   "priceNote": null,
+   "primaryUse": "Tropical flats (bonefish, permit, tarpon)",
+   "secondaryUse": "Distance in wind",
+   "weightLabel": null,
+   "summary": "Textured tropical line on a stiff monofilament core with a stout 43' head and convex compound front taper for hot-weather flats fishing.",
+   "url": "https://www.orvis.com/product/pro-saltwater-tropic-fly-line%E2%80%94textured/2SK6.html",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 241,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-pro-saltwater-tropic-fly-line-smooth",
+   "name": "PRO Saltwater Tropic Fly Line—Smooth",
+   "series": "PRO",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": null,
+   "priceNote": "$79.00 on archived orvis.com page, 2023-09-23 (possibly a markdown)",
+   "primaryUse": "Tropical flats",
+   "secondaryUse": "Distance in wind",
+   "weightLabel": null,
+   "summary": "Smooth-coated version of PRO Saltwater Tropic (same taper, mono core); no longer listed.",
+   "url": "https://web.archive.org/web/20230923044144/https://www.orvis.com/product/pro-saltwater-tropic-fly-line%E2%80%94smooth/2S6H.html",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 241,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "orvis-pro-saltwater-all-rounder-fly-line-textured",
+   "name": "PRO Saltwater All Rounder Fly Line—Textured",
+   "series": "PRO",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 14,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 129,
+   "priceNote": null,
+   "primaryUse": "All-round saltwater (cool to temperate)",
+   "secondaryUse": "Bass, pike, carp",
+   "weightLabel": null,
+   "summary": "Textured do-it-all saltwater line on a multifilament core with a dual-belly 40' head; cooler-water counterpart to PRO Tropic.",
+   "url": "https://www.orvis.com/product/pro-saltwater-all-rounder-fly-line%E2%80%94textured/2SK7.html",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 224,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": [
+      "Horizon"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-pro-saltwater-all-rounder-fly-line-smooth",
+   "name": "PRO Saltwater All Rounder Fly Line—Smooth",
+   "series": "PRO",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": null,
+   "priceNote": "$79.00 on archived orvis.com page, 2023-09-28 (possibly a markdown)",
+   "primaryUse": "All-round saltwater",
+   "secondaryUse": "Bass, pike, carp",
+   "weightLabel": null,
+   "summary": "Smooth-coated version of PRO Saltwater All Rounder (same dual-belly taper); no longer listed.",
+   "url": "https://web.archive.org/web/20230928140702/https://www.orvis.com/product/pro-saltwater-all-rounder-fly-line%E2%80%94smooth/2S6F.html",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 224,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "orvis-pro-ignitor-fly-line-textured",
+   "name": "PRO Ignitor Fly Line—Textured",
+   "series": "PRO",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": null,
+   "priceNote": "$99.00 on archived orvis.com page, 2023-10-02 (possibly a markdown)",
+   "primaryUse": "Quick shots on the flats, big flies",
+   "secondaryUse": "Wind",
+   "weightLabel": null,
+   "summary": "Fast-loading textured saltwater line with an extra-short front taper and heavy belly for minimal false casts; no longer listed.",
+   "url": "https://web.archive.org/web/20231002213517/https://www.orvis.com/product/pro-ignitor-fly-line%E2%80%94textured/2SK5.html",
+   "sizes": [
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 233,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 270,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 318,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 367,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 434,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-trout",
+   "name": "Hydros Trout",
+   "series": "Hydros",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 2,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 79,
+   "priceNote": null,
+   "primaryUse": "All-around trout",
+   "secondaryUse": "Nymph rigs and streamers",
+   "weightLabel": null,
+   "summary": "Hydros's most versatile trout line: smooth WF with a long ~45-50' head for loop stability and mending; mid-priced alternative to PRO Trout.",
+   "url": "https://www.orvis.com/product/hydros--trout/2ZJ1.html",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 45.5,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Peach"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46.5,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Peach"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 47.5,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Peach"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48.5,
+     "total": 90,
+     "grains30": 161,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Peach"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Peach"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50.5,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Peach"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-superfine",
+   "name": "Hydros Superfine",
+   "series": "Hydros",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 15,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 79,
+   "priceNote": null,
+   "primaryUse": "Delicate presentation, small streams / spring creeks",
+   "secondaryUse": "Short casts, light rods",
+   "weightLabel": null,
+   "summary": "Quick-loading presentation line with a short 31-38' head and low-impact colors for 1-5 wt rods and tight quarters.",
+   "url": "https://www.orvis.com/product/hydros--superfine/2ZJ2.html",
+   "sizes": [
+    {
+     "label": "WF1F",
+     "weights": [
+      1
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 31.5,
+     "total": 90,
+     "grains30": 60,
+     "headGrains": null,
+     "colors": [
+      "Dark Olive/Willow"
+     ]
+    },
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Dark Olive/Willow"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34.5,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Dark Olive/Willow"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Dark Olive/Willow"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37.5,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Dark Olive/Willow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-trout-double-taper",
+   "name": "Hydros Trout Double Taper",
+   "series": "Hydros",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 12,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 79,
+   "priceNote": null,
+   "primaryUse": "Delicate presentation, roll casting",
+   "secondaryUse": "Reversible for longer life",
+   "weightLabel": null,
+   "summary": "Classic double taper (3-5 wt) for presentation and mending that can be reversed to extend its life.",
+   "url": "https://www.orvis.com/product/hydros--trout-double-taper/2ZJ3.html",
+   "sizes": [
+    {
+     "label": "DT3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Moss"
+     ]
+    },
+    {
+     "label": "DT4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Moss"
+     ]
+    },
+    {
+     "label": "DT5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Moss"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-tactical-nymph",
+   "name": "Hydros Tactical Nymph",
+   "series": "Hydros",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 16,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 59,
+   "priceNote": null,
+   "primaryUse": "European / tight-line nymphing",
+   "secondaryUse": "Competition-legal",
+   "weightLabel": null,
+   "summary": "Ultra-thin, lightly tapered 80.5' line for Euro nymphing; one size fits 1-4 wt nymphing rods and meets competition rules.",
+   "url": "https://www.orvis.com/product/hydros--tactical-nymph/22B1.html",
+   "sizes": [
+    {
+     "label": "Tactical Nymph (1-4 wt)",
+     "weights": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80.5,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Willow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-nymph",
+   "name": "Hydros Nymph",
+   "series": "Hydros",
+   "category": "nymph",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": null,
+   "priceNote": "$59.00 on archived orvis.com page, 2023-10-01 (possibly a markdown)",
+   "primaryUse": "Indicator / heavy nymph rigs",
+   "secondaryUse": "Long-belly line management",
+   "weightLabel": null,
+   "summary": "Long-head (63-66') indicator-nymphing line with a powerful front to turn over multi-fly rigs; no longer listed.",
+   "url": "https://web.archive.org/web/20231001094100/https://www.orvis.com/product/hydros--nymph-line/2ZJ6.html",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 63,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Moss/Peach"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 64,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": [
+      "Moss/Peach"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 65,
+     "total": 90,
+     "grains30": 197,
+     "headGrains": null,
+     "colors": [
+      "Moss/Peach"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 66,
+     "total": 90,
+     "grains30": 223,
+     "headGrains": null,
+     "colors": [
+      "Moss/Peach"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-salmon-steelhead",
+   "name": "Hydros Salmon/Steelhead",
+   "series": "Hydros",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 9,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 79,
+   "priceNote": null,
+   "primaryUse": "Salmon & steelhead: indicator drifts, heavy flies",
+   "secondaryUse": "Long mends",
+   "weightLabel": null,
+   "summary": "Ultra-long 64-67' head for line management on long drifts while turning over heavy flies and multi-rigs; 7-10 wt.",
+   "url": "https://www.orvis.com/product/hydros--salmonsteelhead/21Z8.html",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 64,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Moss"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 65,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Moss"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 66,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Moss"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 67,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Moss"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-bank-shot-float",
+   "name": "Hydros Bank Shot Float",
+   "series": "Hydros",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 8,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 79,
+   "priceNote": null,
+   "primaryUse": "Bank-banging with big flies, quick shots",
+   "secondaryUse": "Roll casts, single-hand Spey",
+   "weightLabel": null,
+   "summary": "Short (23.5') heavy head that loads the rod immediately for one-cast deliveries of big flies; 5-11 wt.",
+   "url": "https://www.orvis.com/product/hydros--bank-shot-float/2ZKA.html",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Light Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 239,
+     "headGrains": null,
+     "colors": [
+      "Light Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 270,
+     "headGrains": null,
+     "colors": [
+      "Light Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 299,
+     "headGrains": null,
+     "colors": [
+      "Light Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 316,
+     "headGrains": null,
+     "colors": [
+      "Light Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Light Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 350,
+     "headGrains": null,
+     "colors": [
+      "Light Willow/Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-bank-shot-sink-tip",
+   "name": "Hydros Bank Shot Sink Tip",
+   "series": "Hydros",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 4,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 89,
+   "priceNote": null,
+   "primaryUse": "Streamers from a boat, quick shots",
+   "secondaryUse": "Roll casts, single-hand Spey",
+   "weightLabel": null,
+   "summary": "Bank Shot taper with a 10' fast-sink (7 ips) tip to get streamers down quickly; 5-11 wt.",
+   "url": "https://www.orvis.com/product/hydros--bank-shot-sink-tip/2ZKC.html",
+   "sizes": [
+    {
+     "label": "WF5F/S",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 7,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 195,
+     "headGrains": null,
+     "colors": [
+      "Black tip/Olive/Orange"
+     ]
+    },
+    {
+     "label": "WF6F/S",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 7,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 205,
+     "headGrains": null,
+     "colors": [
+      "Black tip/Olive/Orange"
+     ]
+    },
+    {
+     "label": "WF7F/S",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 7,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 230,
+     "headGrains": null,
+     "colors": [
+      "Black tip/Olive/Orange"
+     ]
+    },
+    {
+     "label": "WF8F/S",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 7,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 270,
+     "headGrains": null,
+     "colors": [
+      "Black tip/Olive/Orange"
+     ]
+    },
+    {
+     "label": "WF9F/S",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 7,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 315,
+     "headGrains": null,
+     "colors": [
+      "Black tip/Olive/Orange"
+     ]
+    },
+    {
+     "label": "WF10F/S",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 7,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 365,
+     "headGrains": null,
+     "colors": [
+      "Black tip/Olive/Orange"
+     ]
+    },
+    {
+     "label": "WF11F/S",
+     "weights": [
+      11
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 7,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 435,
+     "headGrains": null,
+     "colors": [
+      "Black tip/Olive/Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-bank-shot-intermediate",
+   "name": "Hydros Bank Shot Intermediate",
+   "series": "Hydros",
+   "category": "streamer",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": null,
+   "priceNote": "$59.00 on archived orvis.com page, 2023-09-24 (possibly a markdown)",
+   "primaryUse": "Shallow streamer fishing",
+   "secondaryUse": "Roll casts, single-hand Spey",
+   "weightLabel": null,
+   "summary": "Bank Shot taper with a 10' intermediate (1.5 ips) tip; no longer listed.",
+   "url": "https://web.archive.org/web/20230924202907/https://www.orvis.com/product/hydros--bank-shot-intermediate-sink-tip/2ZKB.html",
+   "sizes": [
+    {
+     "label": "WF5F/S",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Pale Green tip/Dark Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF6F/S",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 239,
+     "headGrains": null,
+     "colors": [
+      "Pale Green tip/Dark Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF7F/S",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 270,
+     "headGrains": null,
+     "colors": [
+      "Pale Green tip/Dark Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF8F/S",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 299,
+     "headGrains": null,
+     "colors": [
+      "Pale Green tip/Dark Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF9F/S",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 316,
+     "headGrains": null,
+     "colors": [
+      "Pale Green tip/Dark Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF10F/S",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Pale Green tip/Dark Willow/Orange"
+     ]
+    },
+    {
+     "label": "WF11F/S",
+     "weights": [
+      11
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 23.5,
+     "total": 90,
+     "grains30": 350,
+     "headGrains": null,
+     "colors": [
+      "Pale Green tip/Dark Willow/Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-warmwater",
+   "name": "Hydros Warmwater",
+   "series": "Hydros",
+   "category": "bass",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": null,
+   "priceNote": "$59.00 on archived orvis.com page, 2023-09-24 (possibly a markdown)",
+   "primaryUse": "Bass, panfish, carp: poppers and big flies",
+   "secondaryUse": "Wind-resistant flies",
+   "weightLabel": null,
+   "summary": "Powerful-front-taper warmwater line on a mono core for poppers, sliders and predator flies; no longer listed.",
+   "url": "https://web.archive.org/web/20230924202946/https://www.orvis.com/product/hydros--warmwater/2ZJ7.html",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Peach"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Peach"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 224,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Peach"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Light Olive/Peach"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-saltwater",
+   "name": "Hydros Saltwater",
+   "series": "Hydros",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 13,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 79,
+   "priceNote": null,
+   "primaryUse": "General saltwater (sand eels to Clousers)",
+   "secondaryUse": "Wind, cold to moderate water",
+   "weightLabel": null,
+   "summary": "Compound-taper saltwater line on a multifilament core with a delicate front and wind-cutting rear; 6-10 wt.",
+   "url": "https://www.orvis.com/product/hydros--saltwater/2ZJ4.html",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": [
+      "Horizon/Sand"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": [
+      "Horizon/Sand"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 224,
+     "headGrains": null,
+     "colors": [
+      "Horizon/Sand"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Horizon/Sand"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": [
+      "Horizon/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-saltwater-big-game",
+   "name": "Hydros Saltwater Big Game",
+   "series": "Hydros",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 11,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 79,
+   "priceNote": null,
+   "primaryUse": "Tarpon, big stripers, big flies",
+   "secondaryUse": "Quick shots",
+   "weightLabel": null,
+   "summary": "Heavy-duty mono-core taper for big flies and big fish, 8-12 wt (taper chart covers 9-12).",
+   "url": "https://www.orvis.com/product/hydros--saltwater-big-game/2ZJ5.html",
+   "sizes": [
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Horizon/Moss"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Horizon/Moss"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 90,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": [
+      "Horizon/Moss"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 90,
+     "grains30": 355,
+     "headGrains": null,
+     "colors": [
+      "Horizon/Moss"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 90,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": [
+      "Horizon/Moss"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-cold-water-intermediate",
+   "name": "Hydros Cold Water Intermediate",
+   "series": "Hydros",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": null,
+   "priceNote": "$49.00 on archived orvis.com page, 2023-09-24 (possibly a markdown)",
+   "primaryUse": "Surf / tidal currents below the waves",
+   "secondaryUse": "Stripers",
+   "weightLabel": null,
+   "summary": "1.5 ips intermediate with a camo finish for cool-water saltwater and rough surf; no longer listed.",
+   "url": "https://web.archive.org/web/20230924111850/https://www.orvis.com/product/hydros--cold-water-intermediate/2ZJ9.html",
+   "sizes": [
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": [
+      "Camo"
+     ]
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": [
+      "Camo"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 224,
+     "headGrains": null,
+     "colors": [
+      "Camo"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Camo"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": [
+      "Camo"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-hydros-tropic-intermediate",
+   "name": "Hydros Tropic Intermediate",
+   "series": "Hydros",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": null,
+   "priceNote": "$59.00 on archived orvis.com page, 2023-10-02 (possibly a markdown)",
+   "primaryUse": "Skinny-water flats, stealth",
+   "secondaryUse": "Getting flies down quickly",
+   "weightLabel": null,
+   "summary": "1.5 ips intermediate with a clear tip on a mono core for warm/tropical water; no longer listed.",
+   "url": "https://web.archive.org/web/20231002221233/https://www.orvis.com/product/hydros--tropic-intermediate/2ZJ8.html",
+   "sizes": [
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": [
+      "Clear/Blue"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 224,
+     "headGrains": null,
+     "colors": [
+      "Clear/Blue"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Clear/Blue"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": [
+      "Clear/Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "orvis-clearwater-fly-line",
+   "name": "Clearwater Fly Line",
+   "series": "Clearwater",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 10,
+   "rankSource": "orvis.com Fly Line category sorted by \"Top Sellers\", rank among Orvis-brand lines only (2026-10-16)",
+   "price": 49,
+   "priceNote": null,
+   "primaryUse": "Beginner / budget all-around",
+   "secondaryUse": "General freshwater",
+   "weightLabel": "Half-size heavy",
+   "summary": "Budget half-size-heavy WF line with a 40' head and single front loop, aimed at beginners; 3-9 wt.",
+   "url": "https://www.orvis.com/product/clearwater--fly-line/2ZKE.html",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": [
+      "Moss"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": [
+      "Moss"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Moss"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 172.5,
+     "headGrains": null,
+     "colors": [
+      "Moss"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 197,
+     "headGrains": null,
+     "colors": [
+      "Moss"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 223,
+     "headGrains": null,
+     "colors": [
+      "Moss"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Moss"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,4376 @@
+{
+ "id": "royal-wulff",
+ "maker": "Royal Wulff",
+ "retrieved": "2026-10-16",
+ "sources": [
+  "https://www.royalwulff.com/products.json?limit=250",
+  "https://www.royalwulff.com/products/<handle> (per-product tables in product descriptions)",
+  "https://www.royalwulff.com/collections/all?sort_by=best-selling (pages 1-3)",
+  "https://web.archive.org/web/20220509045116/https://www.royalwulff.com/products/triangle-taper-plus",
+  "https://web.archive.org/web/20230601160551/https://www.royalwulff.com/products/triangle-taper-long-steelhead"
+ ],
+ "explainer": [
+  "Almost every Royal Wulff line is a variation on Lee Wulff's Triangle Taper: a continuous taper that thickens all the way from the tip to the back of the head, so heavier line is always turning over lighter line. Royal Wulff says this gives delicate delivery, easy roll casts and shooting-head-like distance. Triangle Taper Classic is the original (36-40' taper, offered in four colors) and the brand's best seller.",
+  "Signature is Joan Wulff's refinement: a 32-36' front taper plus a short rear taper and a bicolor change behind the head, at standard weight. Signature Plus uses a similar taper built about a half size heavy for faster rods. An archived Triangle Taper Plus page shows the same table, so Signature Plus appears to be that line renamed (our inference). Signature Plus Textured adds a textured coating. Triangle Taper Short (27-29' head, with Bass and Nymph versions) and Ambush (very short 14-31' heads sold by grain weight, for roll casting, single-hand Spey and switch rods) are for tight spots and heavy flies.",
+  "Bamboo Special, Long Belly Classic and the Silk line have long bellies or soft heads that suit cane and glass rods. For salt, Bermuda Triangle lines have a braided-mono core for warm water (70°F and above), while Sea Wulff lines are for cold water (75°F and below); both use a 30' 'Triangle Taper Salt' head. Midstream is the budget series ($60-75), with simpler versions of the Classic and Bermuda tapers that have fewer loops and colors.",
+  "To choose: go with Classic or Signature for general trout fishing, Signature Plus for fast rods, Short or Ambush for close-range and heavy rigs, Bamboo Special or Long Belly for slow rods, and Bermuda or Sea Wulff by water temperature. Most floating lines carry Royal Wulff's J3 coating. The way buyers should choose is our own synthesis of the maker's descriptions."
+ ],
+ "omitted": [
+  "Long Spey Triangle Taper Floating",
+  "Long Spey Triangle Taper Intermediate",
+  "Long Spey Triangle Taper Sink Tip",
+  "Super Spey Triangle Taper Floating",
+  "Multi Tip Spey Triangle Taper",
+  "Tracer Shooting Line",
+  "Ambush Leaders (sinking/floating leader system)",
+  "Ambush Triangle Taper Head Floating",
+  "Sea Wulff Triangle Taper Shooting Head Sink 4"
+ ],
+ "products": [
+  {
+   "id": "royal-wulff-triangle-taper-signature",
+   "name": "Triangle Taper Signature",
+   "series": "Triangle Taper Signature",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 11,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "All-purpose trout",
+   "secondaryUse": "Roll casting, shooting",
+   "weightLabel": null,
+   "summary": "Joan Wulff's refinement of the Triangle Taper: 36-40' head with a bicolor change behind the head, true-to-weight; the standard-weight Signature.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-signature",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Orange"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Orange"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Orange"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Orange"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Orange"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Orange"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Orange"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-signature-plus",
+   "name": "Triangle Taper Signature Plus",
+   "series": "Triangle Taper Signature",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 3,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "All-purpose trout on faster rods",
+   "secondaryUse": "Roll casting, shooting",
+   "weightLabel": "Half-size heavier (maker: \"half sizes, Signature Plus, for faster action rods\")",
+   "summary": "Signature taper built about a half size heavy (e.g. 5 wt 150 gr @30') for faster-action rods; successor to the Triangle Taper Plus.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-signature-plus",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 90,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 175,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Willow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-signature-plus-textured",
+   "name": "Triangle Taper Signature Plus Textured",
+   "series": "Triangle Taper Signature",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 10,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 129.95,
+   "priceNote": null,
+   "primaryUse": "All-purpose trout, higher floating",
+   "secondaryUse": "Easier pickup, less guide friction",
+   "weightLabel": "Half-size heavier (Signature Plus)",
+   "summary": "Textured, three-color version of the Signature Plus for higher flotation and less friction; maker gives only taper length (37' for 3-5 wt, 42' for 6-7 wt).",
+   "url": "https://www.royalwulff.com/products/triangle-taper-signature-plus-textured",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Buckskin/Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Buckskin/Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Buckskin/Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Buckskin/Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Buckskin/Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Buckskin/Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Buckskin/Ivory/Willow"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Buckskin/Ivory/Willow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-classic-float",
+   "name": "Triangle Taper Classic Float",
+   "series": "Triangle Taper Classic",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 1,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": "list price; site shows $79.95/$99.95",
+   "primaryUse": "Dry flies, delicate presentation",
+   "secondaryUse": "Roll casting up to ~60'",
+   "weightLabel": null,
+   "summary": "Lee Wulff's original continuous-front-taper line (36-40' taper) that roll casts and shoots like a shooting head; Royal Wulff's best seller.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-classic-float",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Two Tone (Ivory/Yellow)",
+      "Ivory",
+      "Olive",
+      "Orange"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Two Tone (Ivory/Yellow)",
+      "Ivory",
+      "Olive",
+      "Orange"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Two Tone (Ivory/Yellow)",
+      "Ivory",
+      "Olive",
+      "Orange"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Two Tone (Ivory/Yellow)",
+      "Ivory",
+      "Olive",
+      "Orange"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Two Tone (Ivory/Yellow)",
+      "Ivory",
+      "Olive",
+      "Orange"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Two Tone (Ivory/Yellow)",
+      "Ivory",
+      "Olive",
+      "Orange"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Two Tone (Ivory/Yellow)",
+      "Ivory",
+      "Olive",
+      "Orange"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Two Tone (Ivory/Yellow)",
+      "Ivory",
+      "Olive",
+      "Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-classic-intermediate-mono-clear",
+   "name": "Triangle Taper Classic Intermediate Mono Clear",
+   "series": "Triangle Taper Classic",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 29,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Stealthy subsurface: emergers, nymphs, streamers",
+   "secondaryUse": "Clear stillwater",
+   "weightLabel": null,
+   "summary": "Clear monocore 1.5 ips intermediate built on the Classic triangle taper for stealth in clear water.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-classic-intermediate-mono-clear",
+   "sizes": [
+    {
+     "label": "WF4I",
+     "weights": [
+      4
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 36,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF5I",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 36,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-short",
+   "name": "Triangle Taper Short",
+   "series": "Triangle Taper Short",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 22,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 79.95,
+   "priceNote": null,
+   "primaryUse": "Close quarters, heavy/wind-resistant flies",
+   "secondaryUse": "Roll casting, single-hand Spey",
+   "weightLabel": null,
+   "summary": "Short 27-29' head version of the triangle taper that loads quickly for tight spots, bigger flies and single-hand Spey.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-short",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 90,
+     "colors": [
+      "Willow"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 110,
+     "colors": [
+      "Willow"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 150,
+     "colors": [
+      "Willow"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 175,
+     "colors": [
+      "Willow"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 195,
+     "colors": [
+      "Willow"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 225,
+     "colors": [
+      "Willow"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": [
+      "Willow"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 285,
+     "colors": [
+      "Willow"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 310,
+     "colors": [
+      "Willow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-short-bass",
+   "name": "Triangle Taper Short - Bass",
+   "series": "Triangle Taper Short",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 12,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 79.95,
+   "priceNote": "list price; site shows $55.97 (compare-at $79.95)",
+   "primaryUse": "Poppers and big streamers for bass",
+   "secondaryUse": "Quick redelivery",
+   "weightLabel": null,
+   "summary": "TT Short taper (29' head) packaged for bass bugs and wind-resistant flies; 6-10 wt.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-short-bass",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 195,
+     "colors": [
+      "Ivory",
+      "Olive"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 225,
+     "colors": [
+      "Ivory",
+      "Olive"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": [
+      "Ivory",
+      "Olive"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 285,
+     "colors": [
+      "Ivory",
+      "Olive"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 310,
+     "colors": [
+      "Ivory",
+      "Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-short-nymph",
+   "name": "Triangle Taper Short - Nymph",
+   "series": "Triangle Taper Short",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 19,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 79.95,
+   "priceNote": "list price; site shows $55.97 (compare-at $79.95)",
+   "primaryUse": "Indicator nymphing",
+   "secondaryUse": "Roll casting, mending",
+   "weightLabel": null,
+   "summary": "TT Short taper in high-visibility yellow for turning over indicators and nymph rigs.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-short-nymph",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 110,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 150,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 175,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 195,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 225,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": [
+      "Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-sink-tip-sink-4",
+   "name": "Triangle Taper Sink Tip - Sink 4",
+   "series": "Triangle Taper Sink Tip",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 28,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 109.95,
+   "priceNote": null,
+   "primaryUse": "Streamers and wets at depth",
+   "secondaryUse": "Easy-casting sink tip",
+   "weightLabel": null,
+   "summary": "Floating triangle taper with a 10-12' sink-4 (4 ips) tip; continuous taper reduces hinging.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-sink-tip-sink-3",
+   "sizes": [
+    {
+     "label": "WF4F/S",
+     "weights": [
+      4
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Grey/Ivory"
+     ]
+    },
+    {
+     "label": "WF5F/S",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Grey/Ivory"
+     ]
+    },
+    {
+     "label": "WF6F/S",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Grey/Ivory"
+     ]
+    },
+    {
+     "label": "WF7F/S",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Grey/Ivory"
+     ]
+    },
+    {
+     "label": "WF8F/S",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Grey/Ivory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-sink-tip-intermediate-clear",
+   "name": "Triangle Taper Sink Tip - Intermediate Clear",
+   "series": "Triangle Taper Sink Tip",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 30,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 109.95,
+   "priceNote": null,
+   "primaryUse": "Emergers, nymphs, midges in stillwater",
+   "secondaryUse": "Stealthy presentation",
+   "weightLabel": null,
+   "summary": "Floating triangle taper with a clear 10-12' intermediate (1.25-1.75 ips) monocore tip for stillwater stealth.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-sink-tip-intermediate-clear",
+   "sizes": [
+    {
+     "label": "WF5F/I",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear/Ivory"
+     ]
+    },
+    {
+     "label": "WF6F/I",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear/Ivory"
+     ]
+    },
+    {
+     "label": "WF7F/I",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear/Ivory"
+     ]
+    },
+    {
+     "label": "WF8F/I",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear/Ivory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-ambush-triangle-taper-floating",
+   "name": "Ambush Triangle Taper Floating",
+   "series": "Ambush",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 2,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Roll casting / single-hand Spey with heavy nymphs and indicators",
+   "secondaryUse": "Switch rods, tight back-cast room",
+   "weightLabel": null,
+   "summary": "Short 18-31' grain-rated head (175-650 gr) designed for loading with 10-20' out and roll-casting bead-heads and indicators; also lines switch rods.",
+   "url": "https://www.royalwulff.com/products/ambush-triangle-taper-floating",
+   "sizes": [
+    {
+     "label": "175gr (SH 3)",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 18,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 175,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "195gr (SH 4)",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 18,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 195,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "215gr (SH 5 / DH 2)",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 18,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 215,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "235gr (SH 6 / DH 2/3)",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 18,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 235,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "265gr (SH 7 / DH 3/4)",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 20,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "290gr (SH 8 / DH 4/5)",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 20,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 290,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "325gr (SH 8.5 / DH 4/5)",
+     "weights": [
+      8.5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 25,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 325,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "350gr (SH 9 / DH 5/6)",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "375gr (SH 9.5 / DH 5/6)",
+     "weights": [
+      9.5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 25,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "400gr (SH 10 / DH 6/7)",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "425gr (SH 10.5 / DH 6/7)",
+     "weights": [
+      10.5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 25,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "450gr (SH 11 / DH 7/8)",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 450,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "475gr (SH 11.5 / DH 7/8)",
+     "weights": [
+      11.5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 475,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "500gr (SH 12 / DH 8/9)",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 25,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "525gr (SH 12.5 / DH 8/9)",
+     "weights": [
+      12.5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 525,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "550gr (SH 13 / DH 9/10)",
+     "weights": [
+      13
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28.5,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 550,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "575gr (SH 13.5 / DH 9/10)",
+     "weights": [
+      13.5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 575,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "600gr (SH 14 / DH 10/11)",
+     "weights": [
+      14
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 600,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "625gr (SH 14.5 / DH 10/11)",
+     "weights": [
+      14.5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 31,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 625,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "650gr (SH 15 / DH 11/12)",
+     "weights": [
+      15
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 650,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-ambush-short-triangle-taper-floating",
+   "name": "Ambush Short Triangle Taper Floating",
+   "series": "Ambush",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 21,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Very tight quarters, small D-loops",
+   "secondaryUse": "Single-hand Spey",
+   "weightLabel": null,
+   "summary": "Even shorter 14-16' Ambush heads with thinner running line for the tightest casting situations.",
+   "url": "https://www.royalwulff.com/products/ambush-short-triangle-taper-floating",
+   "sizes": [
+    {
+     "label": "150gr (SH 3)",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 14,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 150,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "175gr (SH 4)",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 14,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 175,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "200gr (SH 5 / DH 2)",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 14.2,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "225gr (SH 6 / DH 2/3)",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 14.6,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 225,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "250gr (SH 7 / DH 3/4)",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 15,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 250,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "275gr (SH 8 / DH 4/5)",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 15.4,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 275,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "300gr (SH 9 / DH 5/6)",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 15.8,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 300,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    },
+    {
+     "label": "325gr (SH 10 / DH 6/7)",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 16.3,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 325,
+     "colors": [
+      "Chartreuse/Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-ambush-triangle-taper-hover",
+   "name": "Ambush Triangle Taper Hover",
+   "series": "Ambush",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 26,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Emergers, soft hackles, nymphs just under the film",
+   "secondaryUse": "Spooky trout and salmon",
+   "weightLabel": null,
+   "summary": "Ambush taper with a slow-sinking 1 ips hover head on a floating running line (the 'Neutralizer').",
+   "url": "https://www.royalwulff.com/products/ambush-triangle-taper-hover",
+   "sizes": [
+    {
+     "label": "195gr (SH 4)",
+     "weights": [
+      4
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": 18,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 195,
+     "colors": [
+      "Aqua/Lime Green"
+     ]
+    },
+    {
+     "label": "215gr (SH 5 / DH 2)",
+     "weights": [
+      5
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": 18,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 215,
+     "colors": [
+      "Aqua/Lime Green"
+     ]
+    },
+    {
+     "label": "235gr (SH 6 / DH 2/3)",
+     "weights": [
+      6
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": 18,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 235,
+     "colors": [
+      "Aqua/Lime Green"
+     ]
+    },
+    {
+     "label": "265gr (SH 7 / DH 3/4)",
+     "weights": [
+      7
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": 20,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Aqua/Lime Green"
+     ]
+    },
+    {
+     "label": "290gr (SH 8 / DH 4/5)",
+     "weights": [
+      8
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": 20,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 290,
+     "colors": [
+      "Aqua/Lime Green"
+     ]
+    },
+    {
+     "label": "350gr (SH 9 / DH 5/6)",
+     "weights": [
+      9
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": 24,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Aqua/Lime Green"
+     ]
+    },
+    {
+     "label": "400gr (SH 10 / DH 6/7)",
+     "weights": [
+      10
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": 24,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": [
+      "Aqua/Lime Green"
+     ]
+    },
+    {
+     "label": "450gr (SH 11 / DH 7/8)",
+     "weights": [
+      11
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": 24,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 450,
+     "colors": [
+      "Aqua/Lime Green"
+     ]
+    },
+    {
+     "label": "500gr (SH 12 / DH 8/9)",
+     "weights": [
+      12
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": 25,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": [
+      "Aqua/Lime Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-ambush-triangle-taper-intermediate",
+   "name": "Ambush Triangle Taper Intermediate",
+   "series": "Ambush",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 15,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Stealthy roll / Spey casting subsurface",
+   "secondaryUse": "Clear water",
+   "weightLabel": null,
+   "summary": "Ambush taper with a clear 1.5 ips intermediate head on a floating running line.",
+   "url": "https://www.royalwulff.com/products/ambush-triangle-taper-intermediate",
+   "sizes": [
+    {
+     "label": "195gr (SH 4)",
+     "weights": [
+      4
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 18,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 195,
+     "colors": [
+      "Clear/Chartreuse"
+     ]
+    },
+    {
+     "label": "215gr (SH 5 / DH 2)",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 18,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 215,
+     "colors": [
+      "Clear/Chartreuse"
+     ]
+    },
+    {
+     "label": "235gr (SH 6 / DH 2/3)",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 18,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 235,
+     "colors": [
+      "Clear/Chartreuse"
+     ]
+    },
+    {
+     "label": "265gr (SH 7 / DH 3/4)",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 20,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Clear/Chartreuse"
+     ]
+    },
+    {
+     "label": "290gr (SH 8 / DH 4/5)",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 20,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 290,
+     "colors": [
+      "Clear/Chartreuse"
+     ]
+    },
+    {
+     "label": "350gr (SH 9 / DH 5/6)",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 24,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Clear/Chartreuse"
+     ]
+    },
+    {
+     "label": "400gr (SH 10 / DH 6/7)",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 24,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": [
+      "Clear/Chartreuse"
+     ]
+    },
+    {
+     "label": "450gr (SH 11 / DH 7/8)",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 24,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 450,
+     "colors": [
+      "Clear/Chartreuse"
+     ]
+    },
+    {
+     "label": "500gr (SH 12 / DH 8/9)",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 25,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": [
+      "Clear/Chartreuse"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-bamboo-special-weight-forward",
+   "name": "Bamboo Special - Weight Forward",
+   "series": "Bamboo Special",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 5,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Bamboo and slower rods",
+   "secondaryUse": "Dry flies, long-belly mending",
+   "weightLabel": null,
+   "summary": "Lee Wulff long-belly WF (44-56' head, 100') in traditional colors, tuned for cane rod actions.",
+   "url": "https://www.royalwulff.com/products/long-belly-bamboo-special",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Brown/Ivory"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 100,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Brown/Ivory"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 100,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Brown/Ivory"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Brown/Ivory"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 52,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Brown/Ivory"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 54,
+     "total": 100,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": [
+      "Brown/Ivory"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 56,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Brown/Ivory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-bamboo-special-double-taper",
+   "name": "Bamboo Special - Double Taper",
+   "series": "Bamboo Special",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 20,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Bamboo and fiberglass rods, dry flies",
+   "secondaryUse": "Roll casting, short-range accuracy",
+   "weightLabel": null,
+   "summary": "Double-taper version of the Bamboo Special with a very long belly for delicate, accurate short casts on cane and glass.",
+   "url": "https://www.royalwulff.com/products/bamboo-special-double-taper",
+   "sizes": [
+    {
+     "label": "DT2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-long-belly-classic",
+   "name": "Long Belly Classic",
+   "series": "Long Belly",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 18,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 79.95,
+   "priceNote": null,
+   "primaryUse": "Roll casting and mending",
+   "secondaryUse": "Longer carries",
+   "weightLabel": null,
+   "summary": "Hybrid of double taper and WF: long 46-56' head with welded loop on a 100' line.",
+   "url": "https://www.royalwulff.com/products/long-belly-classic",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 100,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 100,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 52,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 54,
+     "total": 100,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 56,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-silk-short",
+   "name": "Triangle Taper Silk - Short",
+   "series": "Silk",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 33,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 249.95,
+   "priceNote": null,
+   "primaryUse": "Short bamboo rods (<8'), small streams",
+   "secondaryUse": "Casts under 30'",
+   "weightLabel": null,
+   "summary": "Silk line with a short 29' progressive head for short cane rods and small-stream fishing; the most expensive line in the range.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-silk-short",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": 90,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 29,
+     "total": 90,
+     "grains30": 175,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-midstream-tt-floating",
+   "name": "Midstream TT Floating",
+   "series": "Midstream",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 13,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 59.95,
+   "priceNote": null,
+   "primaryUse": "Budget all-round floating",
+   "secondaryUse": "Roll casting",
+   "weightLabel": null,
+   "summary": "Value-priced Triangle Taper Classic taper with a front loop only, single ivory color.",
+   "url": "https://www.royalwulff.com/products/copy-of-triangle-taper-classic-float",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Ivory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-midstream-tt-intermediate",
+   "name": "Midstream TT Intermediate",
+   "series": "Midstream",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 32,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 59.95,
+   "priceNote": null,
+   "primaryUse": "Stillwater / subsurface",
+   "secondaryUse": "Budget",
+   "weightLabel": null,
+   "summary": "Value-priced 1.5 ips intermediate on the Classic triangle taper.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-classic-intermediate",
+   "sizes": [
+    {
+     "label": "WF2I",
+     "weights": [
+      2
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 36,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF3I",
+     "weights": [
+      3
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 36,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF4I",
+     "weights": [
+      4
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 36,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF5I",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 36,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 40,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-midstream-tt-full-sink-3",
+   "name": "Midstream TT Full Sink 3",
+   "series": "Midstream",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 34,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 59.95,
+   "priceNote": null,
+   "primaryUse": "Deeper stillwater / streamers",
+   "secondaryUse": "Budget",
+   "weightLabel": null,
+   "summary": "Value-priced full-sinking (type 3) Classic triangle taper.",
+   "url": "https://www.royalwulff.com/products/triangle-taper-classic-full-sink",
+   "sizes": [
+    {
+     "label": "WF5S",
+     "weights": [
+      5
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": 3,
+     "head": 36,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6S",
+     "weights": [
+      6
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": 3,
+     "head": 40,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7S",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": 3,
+     "head": 40,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": 3,
+     "head": 40,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9S",
+     "weights": [
+      9
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": 3,
+     "head": 40,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-midstream-bermuda-blue-floating",
+   "name": "Midstream Bermuda Blue Floating",
+   "series": "Midstream",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 35,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 74.95,
+   "priceNote": null,
+   "primaryUse": "Budget tropical floating",
+   "secondaryUse": "Hot weather",
+   "weightLabel": null,
+   "summary": "Value-priced tropical line on the Bermuda braided-mono core with the Triangle Taper Salt (30' taper).",
+   "url": "https://www.royalwulff.com/products/midstream-bermuda-blue-floating",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 175,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 289,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 310,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 465,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-bermuda-triangle-taper-floating",
+   "name": "Bermuda Triangle Taper Floating",
+   "series": "Bermuda Triangle",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 4,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Tropical flats",
+   "secondaryUse": "Hot boat decks",
+   "weightLabel": null,
+   "summary": "Warm-water (70F+) line on a braided monofilament core with a 30' Triangle Taper Salt head; 105'.",
+   "url": "https://www.royalwulff.com/products/bermuda-triangle-taper-floating",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 175,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 289,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 310,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 465,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF13F",
+     "weights": [
+      13
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 525,
+     "headGrains": null,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-bermuda-triangle-taper-floating-textured",
+   "name": "Bermuda Triangle Taper Floating Textured",
+   "series": "Bermuda Triangle",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 14,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 129.95,
+   "priceNote": null,
+   "primaryUse": "Tropical flats",
+   "secondaryUse": "Higher floating, less friction",
+   "weightLabel": null,
+   "summary": "Textured version of the Bermuda Floating for higher flotation and easier pickups.",
+   "url": "https://www.royalwulff.com/products/bermuda-triangle-taper-textured",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 290,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 310,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 105,
+     "grains30": 465,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Tropic Blue/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-bermuda-triangle-taper-shorts-floating",
+   "name": "Bermuda Triangle Taper Shorts Floating",
+   "series": "Bermuda Triangle",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 6,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Windy days, quick shots",
+   "secondaryUse": "Big flies",
+   "weightLabel": null,
+   "summary": "Aggressive short-head (20-27') Bermuda line for fast, wind-cutting casts without being over-grained.",
+   "url": "https://www.royalwulff.com/products/bermuda-triangle-taper-shorts-floating",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 20,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 150,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 21,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 173,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 22,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 198,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 23,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 261,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 25,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 306,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 355,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 410,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-bermuda-triangle-taper-intermediate",
+   "name": "Bermuda Triangle Taper Intermediate",
+   "series": "Bermuda Triangle",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 7,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Stealthy flats / subsurface",
+   "secondaryUse": "Clear water",
+   "weightLabel": null,
+   "summary": "Clear monocore 1.75 ips intermediate in the Bermuda warm-water family.",
+   "url": "https://www.royalwulff.com/products/bermuda-triangle-taper-intermediate",
+   "sizes": [
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 290,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 310,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF11I",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF12I",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 465,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-bermuda-triangle-taper-lost-tip",
+   "name": "Bermuda Triangle Taper Lost Tip",
+   "series": "Bermuda Triangle",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 16,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 109.95,
+   "priceNote": null,
+   "primaryUse": "Flats with a clear tip",
+   "secondaryUse": "Stealth",
+   "weightLabel": null,
+   "summary": "Floating Bermuda line with a clear intermediate (1.75 ips) tip that disappears in the water.",
+   "url": "https://www.royalwulff.com/products/bermuda-triangle-taper-lost-tip",
+   "sizes": [
+    {
+     "label": "WF6F/S",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": [
+      "Clear/Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF7F/S",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Clear/Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF8F/S",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": [
+      "Clear/Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF9F/S",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 290,
+     "headGrains": null,
+     "colors": [
+      "Clear/Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF10F/S",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 310,
+     "headGrains": null,
+     "colors": [
+      "Clear/Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF11F/S",
+     "weights": [
+      11
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": [
+      "Clear/Tropic Blue"
+     ]
+    },
+    {
+     "label": "WF12F/S",
+     "weights": [
+      12
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 32,
+     "total": 105,
+     "grains30": 465,
+     "headGrains": null,
+     "colors": [
+      "Clear/Tropic Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-bermuda-triangle-taper-giants-floating",
+   "name": "Bermuda Triangle Taper GIANTS Floating",
+   "series": "Bermuda Triangle",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 27,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Tarpon, GTs, biggest fish",
+   "secondaryUse": "Big flies",
+   "weightLabel": null,
+   "summary": "Heavy 13-15 wt Bermuda line with a 55 lb braided-mono core and 30-33' head for the largest saltwater fish.",
+   "url": "https://www.royalwulff.com/products/bermuda-triangle-taper-giants-floating",
+   "sizes": [
+    {
+     "label": "WF13F",
+     "weights": [
+      13
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 475,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF14F",
+     "weights": [
+      14
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 33,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 565,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF15F",
+     "weights": [
+      15
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 650,
+     "colors": [
+      "Tropic Blue/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-sea-wulff-triangle-taper-float",
+   "name": "Sea Wulff Triangle Taper Float",
+   "series": "Sea Wulff",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 24,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 89.95,
+   "priceNote": null,
+   "primaryUse": "Cool-water salt (stripers, blues)",
+   "secondaryUse": "Surface flies",
+   "weightLabel": null,
+   "summary": "Coldwater (<75F) saltwater line with the 30' Triangle Taper Salt; 105'.",
+   "url": "https://www.royalwulff.com/products/sea-wulff-triangle-taper-float",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Mist Green"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 105,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": [
+      "Mist Green"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 105,
+     "grains30": 285,
+     "headGrains": null,
+     "colors": [
+      "Mist Green"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 105,
+     "grains30": 310,
+     "headGrains": null,
+     "colors": [
+      "Mist Green"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 105,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": [
+      "Mist Green"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 105,
+     "grains30": 465,
+     "headGrains": null,
+     "colors": [
+      "Mist Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-sea-wulff-triangle-taper-intermediate",
+   "name": "Sea Wulff Triangle Taper Intermediate",
+   "series": "Sea Wulff",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 23,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 89.95,
+   "priceNote": null,
+   "primaryUse": "Stripers in surf and current",
+   "secondaryUse": "Subsurface baitfish",
+   "weightLabel": null,
+   "summary": "1.75 ips aqua intermediate Sea Wulff for cool saltwater.",
+   "url": "https://www.royalwulff.com/products/sea-wulff-triangle-taper-intermediate",
+   "sizes": [
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 285,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 310,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF11I",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    },
+    {
+     "label": "WF12I",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 465,
+     "headGrains": null,
+     "colors": [
+      "Aqua"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-sea-wulff-triangle-taper-intermediate-monoclear",
+   "name": "Sea Wulff Triangle Taper Intermediate - Monoclear",
+   "series": "Sea Wulff",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 9,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 109.95,
+   "priceNote": null,
+   "primaryUse": "Clear-water flats and beaches",
+   "secondaryUse": "Crab/shrimp/baitfish flies",
+   "weightLabel": null,
+   "summary": "Clear monocore 1.75 ips intermediate originally designed for bonefish/tarpon, popular for New England stripers.",
+   "url": "https://www.royalwulff.com/products/sea-wulff-triangle-taper-intermediate-monoclear",
+   "sizes": [
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 285,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 310,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF11I",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF12I",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.75,
+     "head": 30,
+     "total": 105,
+     "grains30": 465,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-sea-wulff-triangle-taper-full-sink-4",
+   "name": "Sea Wulff Triangle Taper Full Sink 4",
+   "series": "Sea Wulff",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 31,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 69.95,
+   "priceNote": "list price; site shows $48.97 (compare-at $69.95)",
+   "primaryUse": "Deep saltwater",
+   "secondaryUse": "Rips and structure",
+   "weightLabel": null,
+   "summary": "Full-sinking 4 ips grey Sea Wulff; site sells 7-9 wt although its table lists 7-12.",
+   "url": "https://www.royalwulff.com/products/sea-wulff-triangle-taper-full-sink-4",
+   "sizes": [
+    {
+     "label": "WF7S",
+     "weights": [
+      7
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": 30,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Gray"
+     ]
+    },
+    {
+     "label": "WF8S",
+     "weights": [
+      8
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": 30,
+     "total": 105,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": [
+      "Gray"
+     ]
+    },
+    {
+     "label": "WF9S",
+     "weights": [
+      9
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": 30,
+     "total": 105,
+     "grains30": 285,
+     "headGrains": null,
+     "colors": [
+      "Gray"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-sea-wulff-triangle-taper-striper-fast-sink",
+   "name": "Sea Wulff Triangle Taper Striper Fast Sink",
+   "series": "Sea Wulff",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 17,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 109.95,
+   "priceNote": null,
+   "primaryUse": "Stripers below bait schools",
+   "secondaryUse": "Structure near bottom",
+   "weightLabel": null,
+   "summary": "6 ips 30' sinking head on an intermediate running line; grain-rated 200-400 gr for 6-10 wt.",
+   "url": "https://www.royalwulff.com/products/sea-wulff-triangle-taper-striper-fast-sink",
+   "sizes": [
+    {
+     "label": "6wt / 200gr",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": [
+      "Black/Blue"
+     ]
+    },
+    {
+     "label": "7wt / 250gr",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 250,
+     "colors": [
+      "Black/Blue"
+     ]
+    },
+    {
+     "label": "8wt / 300gr",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 300,
+     "colors": [
+      "Black/Blue"
+     ]
+    },
+    {
+     "label": "9wt / 350gr",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Black/Blue"
+     ]
+    },
+    {
+     "label": "10wt / 400gr",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": [
+      "Black/Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-triangle-taper-long-steelhead",
+   "name": "Triangle Taper Long - Steelhead",
+   "series": "Triangle Taper",
+   "category": "streamer",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": null,
+   "priceNote": "archived 2023-06-01 page: $63.71 sale / $84.95 regular, marked Unavailable",
+   "primaryUse": "Floating steelhead line",
+   "secondaryUse": "Long carries and mending",
+   "weightLabel": null,
+   "summary": "Long-head (50') floating steelhead line, 105' with 55' running line; shown as unavailable on the 2023 archive and no longer listed.",
+   "url": "https://web.archive.org/web/20230601160551/https://www.royalwulff.com/products/triangle-taper-long-steelhead",
+   "sizes": [
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 50,
+     "total": 105,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Ivory/Willow"
+     ]
+    }
+   ]
+  }
+ ]
+}

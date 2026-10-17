@@ -1,0 +1,8120 @@
+{
+ "id": "cortland",
+ "maker": "Cortland",
+ "retrieved": "2026-10-16",
+ "sources": [
+  "https://www.cortlandline.com/products.json (pages 1-2)",
+  "https://www.cortlandline.com/collections/<series>/products.json (series membership; warehouse = clearance/discontinued)",
+  "https://www.cortlandline.com/products/<handle> (Specs block: grain weights, head length, sink rate, line length; taper chart image)",
+  "https://www.cortlandline.com/collections/freshwater-fly-line?sort_by=best-selling",
+  "https://www.cortlandline.com/collections/saltwater-fly-line?sort_by=best-selling"
+ ],
+ "explainer": [
+  "Cortland (New York, USA) sorts its lines into numbered price tiers plus named series. The 333 series ($49.95) is the entry tier, and the 444 Classic series ($69.95) holds the heritage lines. The 444 Classic lines are 444 Peach (the 50-year all-rounder, 32 ft head), 444 Sylk (a softer 37 ft head line aimed at bamboo and glass rods) and 444 SL (a 41 ft head, 105 ft distance line), each with double-taper versions.",
+  "The wider 444 series ($69.95) adds Modern Trout (half size heavy, 48 ft head, for fast rods), Spring Creek, Big Shot, Hover, clear and camo intermediates, full sinkers and sink tips. The $99.95 premium series are split by job. Trout covers Finesse Trout II, Ultralight II, Indicator II, Trout Boss, Headwater and Trout Double Taper, and Streamer covers 26-40 ft heads with floating, intermediate and Type 3/6 tips.",
+  "Specialty covers bass, pike/musky, the grain-rated Compact heads, Ghost Tip clear tips and Salmon Steelhead. Tropic Plus covers hard-coated mono-core tropical lines, and Liquid Crystal is the premium clear and PE-coated tropical line. Cold Salt uses supple braided-core lines for cold-water stripers and redfish, and 50+ is big-game. Kelly Galloup signature streamer lines cost $129.95, Euro Nymph lines $59.95, and Fairplay is the $29.95 budget brand.",
+  "The Competition series (Fo-Tech 130 ft distance lines and Seek sinkers) now sells only in the clearance 'warehouse', so it is listed as discontinued. Cortland labels heaviness explicitly, for example 'true line size', 'half line size heavy' (Modern Trout, Guide, Tropic Redfish) and 'full line size heavy' (Trout Boss, Big Shot, Streamer, Bass, Indicator II). Buyers should match the heaviness label to rod speed (heavy for fast modern rods, true-to-size or Sylk for slower rods), then pick a series by water type."
+ ],
+ "omitted": [
+  "Compact Switch (two-hand Skagit)",
+  "Long Belly Spey (two-hand, discontinued)",
+  "Medium Belly Spey (two-hand, discontinued)",
+  "Running Line (level shooting line)",
+  "Sink Tip / Mini-Head kits / LC-13 Lead Core (line extensions)",
+  "DQ-size / DQ-colour clearance listings of current lines (Full Sinking Type 3, Tropic All Purpose, Guide, Euro Nymph Mono Core, Flats Taper Sky Blue, Tarpon Taper Aqua, Trout Boss Chartreuse/White)"
+ ],
+ "products": [
+  {
+   "id": "cortland-444-peach",
+   "name": "444 Peach",
+   "series": "444 Classic",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 1,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 1 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "All around freshwater fishing, Dry flies",
+   "secondaryUse": "Nymphing, Small streamers",
+   "weightLabel": null,
+   "summary": "The 50-year classic all-round floating trout line (32 ft head), supple and easy casting.",
+   "url": "https://www.cortlandline.com/products/444-classic",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Peach"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Peach"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Peach"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Peach"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Peach"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Peach"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Peach"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Peach"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-peach-dt",
+   "name": "444 Peach Double Taper",
+   "series": "444 Classic",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 2,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 2 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "All purpose freshwater fishing, Dry flies",
+   "secondaryUse": "Nymphing, Wet flies",
+   "weightLabel": "Within AFTMA standard (maker)",
+   "summary": "Double-taper version of the 444 Peach; Cortland says it sits well within AFTMA standards.",
+   "url": "https://www.cortlandline.com/products/444-peach-double-taper",
+   "sizes": [
+    {
+     "label": "DT2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-sylk",
+   "name": "444 Sylk",
+   "series": "444 Classic",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 6,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 6 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Bamboo rods, Fiberglass rods",
+   "secondaryUse": "Classic action rods, Dry flies",
+   "weightLabel": null,
+   "summary": "Classic-feel 37 ft head line aimed at bamboo, glass and slower rods.",
+   "url": "https://www.cortlandline.com/products/sylk",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-sylk-dt",
+   "name": "444 Sylk Double Taper",
+   "series": "444 Classic",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 5,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 5 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Bamboo rods, Fiberglass rods",
+   "secondaryUse": "Classic action rods, Dry flies",
+   "weightLabel": null,
+   "summary": "Double-taper Sylk for bamboo and fiberglass rods.",
+   "url": "https://www.cortlandline.com/products/444-sylk-double-taper",
+   "sizes": [
+    {
+     "label": "DT2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    },
+    {
+     "label": "DT3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    },
+    {
+     "label": "DT4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    },
+    {
+     "label": "DT5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    },
+    {
+     "label": "DT6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Mustard"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-sl",
+   "name": "444 SL",
+   "series": "444 Classic",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 7,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 7 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Distance casting, Long mends",
+   "secondaryUse": "Extended drifts, Larger rivers",
+   "weightLabel": null,
+   "summary": "Longer 41 ft head and 105 ft length for distance casting and long mends.",
+   "url": "https://www.cortlandline.com/products/444-sl",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 105,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Mint Green"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 105,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Mint Green"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 105,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Mint Green"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 105,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Mint Green"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 105,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Mint Green"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 105,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Mint Green"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 105,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Mint Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-modern-trout",
+   "name": "Modern Trout",
+   "series": "444",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 8,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 8 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Dry flies, Nymph rigs",
+   "secondaryUse": "Streamers, Mending at distance",
+   "weightLabel": "Half line size heavy",
+   "summary": "Half-size-heavy 48 ft head all-purpose trout line for modern fast rods (Moss Green or Orange).",
+   "url": "https://www.cortlandline.com/products/modern-trout-moss-green",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": [
+      "Moss Green",
+      "Orange"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": [
+      "Moss Green",
+      "Orange"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Moss Green",
+      "Orange"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 170,
+     "headGrains": null,
+     "colors": [
+      "Moss Green",
+      "Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-spring-creek",
+   "name": "Spring Creek",
+   "series": "444",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 10,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 10 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Small streams, Spring creeks",
+   "secondaryUse": "Clear water, Wary trout",
+   "weightLabel": null,
+   "summary": "Delicate 35 ft head line for small streams, spring creeks and wary trout.",
+   "url": "https://www.cortlandline.com/products/spring-creek",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 90,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Olive"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Olive"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Olive"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Olive"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-big-shot",
+   "name": "Big Shot",
+   "series": "444",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 9,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 9 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Large flies, Bulky streamers",
+   "secondaryUse": "Heavy tandem nymph rigs, Windy conditions",
+   "weightLabel": "Full line size heavy",
+   "summary": "Full-size-heavy line with a compact 26 ft head for big flies, heavy rigs and wind.",
+   "url": "https://www.cortlandline.com/products/big-shot",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Sky Blue"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Sky Blue"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Sky Blue"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Sky Blue"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Sky Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-clear-camo-intermediate",
+   "name": "Clear Camo Intermediate",
+   "series": "444",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 8,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 8 of 33",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Clear water and wary fish, Shallow subsurface fishing",
+   "secondaryUse": "Lakes and ponds, Long casts",
+   "weightLabel": null,
+   "summary": "1.5-2 ips camo-clear intermediate on a mono core for clear water.",
+   "url": "https://www.cortlandline.com/products/clear-camo-intermediate",
+   "sizes": [
+    {
+     "label": "WF4I",
+     "weights": [
+      4
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo"
+     ]
+    },
+    {
+     "label": "WF5I",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo"
+     ]
+    },
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo"
+     ]
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-clear-intermediate",
+   "name": "Clear Intermediate",
+   "series": "444",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 21,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 21 of 33",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Clear water, Pressured fish",
+   "secondaryUse": "Shallow subsurface retrieves, Long casts",
+   "weightLabel": null,
+   "summary": "1.5-2 ips clear intermediate on a mono core.",
+   "url": "https://www.cortlandline.com/products/444-clear-intermediate",
+   "sizes": [
+    {
+     "label": "WF4I",
+     "weights": [
+      4
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5I",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-intermediate",
+   "name": "444 Intermediate",
+   "series": "444",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 31,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 31 of 33",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Lakes, ponds and reservoirs",
+   "secondaryUse": "Subsurface presentations, Cooler conditions",
+   "weightLabel": null,
+   "summary": "Braided-core 1.5-2 ips full intermediate with the 444 32 ft head.",
+   "url": "https://www.cortlandline.com/products/intermediate",
+   "sizes": [
+    {
+     "label": "WF5I",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue"
+     ]
+    },
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue"
+     ]
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-hover",
+   "name": "Hover",
+   "series": "444",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 51,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 51 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Just-below-surface presentations, Controlled retrieve depth",
+   "secondaryUse": "Fishing beneath surface disturbance, Long shallow retrieves",
+   "weightLabel": null,
+   "summary": "Very slow-sinking 55 ft head line for fishing just under the surface.",
+   "url": "https://www.cortlandline.com/products/hover",
+   "sizes": [
+    {
+     "label": "WF5H",
+     "weights": [
+      5
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 55,
+     "total": 105,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Space Grey"
+     ]
+    },
+    {
+     "label": "WF6H",
+     "weights": [
+      6
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 55,
+     "total": 105,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Space Grey"
+     ]
+    },
+    {
+     "label": "WF7H",
+     "weights": [
+      7
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 55,
+     "total": 105,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Space Grey"
+     ]
+    },
+    {
+     "label": "WF8H",
+     "weights": [
+      8
+     ],
+     "density": "hover",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 55,
+     "total": 105,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Space Grey"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-full-sinking-type-3",
+   "name": "Full Sinking Type 3",
+   "series": "444",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 40,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 40 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Moderate depths, Mid-column presentations",
+   "secondaryUse": "Controlled retrieves, Lakes and rivers",
+   "weightLabel": null,
+   "summary": "3-4 ips full-sinking line for mid-depth lakes and rivers.",
+   "url": "https://www.cortlandline.com/products/full-sinking-type-3",
+   "sizes": [
+    {
+     "label": "WF4S",
+     "weights": [
+      4
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5S",
+     "weights": [
+      5
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6S",
+     "weights": [
+      6
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7S",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-full-sinking-type-6",
+   "name": "Full Sinking Type 6",
+   "series": "444",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 22,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 22 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Deep lakes, Deep water and lower water column",
+   "secondaryUse": "Fast depth changes, Heavy river applications",
+   "weightLabel": null,
+   "summary": "6-7 ips full-sinking line for deep water.",
+   "url": "https://www.cortlandline.com/products/full-sinking-type-6",
+   "sizes": [
+    {
+     "label": "WF5S",
+     "weights": [
+      5
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "WF6S",
+     "weights": [
+      6
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "WF7S",
+     "weights": [
+      7
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "WF8S",
+     "weights": [
+      8
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-sink-tip-type-3",
+   "name": "Sink Tip Type 3",
+   "series": "444",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 41,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 41 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Upper to middle water column, Controlled depth",
+   "secondaryUse": "Rivers and lakes, Wading and boat fishing",
+   "weightLabel": null,
+   "summary": "Floating line with a Type 3 (3-4 ips) sinking tip.",
+   "url": "https://www.cortlandline.com/products/sink-tip-type-3",
+   "sizes": [
+    {
+     "label": "WF4S/F",
+     "weights": [
+      4
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Brown / Peach"
+     ]
+    },
+    {
+     "label": "WF5S/F",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Brown / Peach"
+     ]
+    },
+    {
+     "label": "WF6S/F",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Brown / Peach"
+     ]
+    },
+    {
+     "label": "WF7S/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Brown / Peach"
+     ]
+    },
+    {
+     "label": "WF8S/F",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Brown / Peach"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-sink-tip-type-6",
+   "name": "Sink Tip Type 6",
+   "series": "444",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 46,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 46 of 53",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Deep presentations, Middle to lower water column",
+   "secondaryUse": "Fast depth changes, Rivers and lakes",
+   "weightLabel": null,
+   "summary": "Floating line with a Type 6 (6-7 ips) sinking tip.",
+   "url": "https://www.cortlandline.com/products/sink-tip-type-6",
+   "sizes": [
+    {
+     "label": "WF5S/F",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6S/F",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7S/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S/F",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9S/F",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10S/F",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-444-tropic-all-purpose",
+   "name": "Tropic All Purpose",
+   "series": "444",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 30,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 30 of 33",
+   "price": 69.95,
+   "priceNote": null,
+   "primaryUse": "Tropical Conditions, Saltwater Flats",
+   "secondaryUse": "Windy Conditions, Warmwater Species",
+   "weightLabel": null,
+   "summary": "Budget hard-coated, mono-core tropical floating line with a short 27 ft head.",
+   "url": "https://www.cortlandline.com/products/tropic-all-purpose",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Pineapple"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Pineapple"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Pineapple"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Pineapple"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-333-trout-all-purpose",
+   "name": "333 Trout All Purpose",
+   "series": "333",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 19,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 19 of 53",
+   "price": 49.95,
+   "priceNote": null,
+   "primaryUse": "Dry flies, nymphs",
+   "secondaryUse": "streamers, mending",
+   "weightLabel": null,
+   "summary": "Entry-level all-purpose floating trout line (42 ft head).",
+   "url": "https://www.cortlandline.com/products/trout-all-purpose",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-333-bass-panfish",
+   "name": "333 Bass Panfish",
+   "series": "333",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 31,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 31 of 53",
+   "price": 49.95,
+   "priceNote": null,
+   "primaryUse": "Bass, panfish",
+   "secondaryUse": "topwater flies, streamers",
+   "weightLabel": null,
+   "summary": "Entry-level short-head (27 ft) floating line for bass and panfish poppers.",
+   "url": "https://www.cortlandline.com/products/panfish",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-333-full-sinking-type-3",
+   "name": "333 Full Sinking Type 3",
+   "series": "333",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 24,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 24 of 33",
+   "price": 49.95,
+   "priceNote": null,
+   "primaryUse": "Moderate depths, Suspended fish",
+   "secondaryUse": "Deep lakes, Faster-moving rivers",
+   "weightLabel": null,
+   "summary": "Entry-level 3-4 ips full sinker.",
+   "url": "https://www.cortlandline.com/products/333-full-sinking-type-3",
+   "sizes": [
+    {
+     "label": "WF5S",
+     "weights": [
+      5
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6S",
+     "weights": [
+      6
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7S",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9S",
+     "weights": [
+      9
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-333-double-taper",
+   "name": "333 Double Taper",
+   "series": "333",
+   "category": "trout",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 49.95,
+   "priceNote": null,
+   "primaryUse": "Dry flies, nymphs",
+   "secondaryUse": "streamers, mending",
+   "weightLabel": null,
+   "summary": "Entry-level floating double taper.",
+   "url": "https://www.cortlandline.com/products/333-double-taper",
+   "sizes": [
+    {
+     "label": "DT3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-333-salmon",
+   "name": "333 Salmon",
+   "series": "333",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 52,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 52 of 53",
+   "price": 49.95,
+   "priceNote": null,
+   "primaryUse": "Salmon, steelhead",
+   "secondaryUse": "swinging, indicator nymphing",
+   "weightLabel": null,
+   "summary": "Entry-level single-hand floating line for salmon and steelhead.",
+   "url": "https://www.cortlandline.com/products/cortland-333-series-salmon",
+   "sizes": [
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-50-plus-cannon",
+   "name": "50+ Cannon",
+   "series": "50+",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 26,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 26 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Large flies, Windy conditions",
+   "secondaryUse": "Fast-action fly rods, Freshwater gamefish",
+   "weightLabel": null,
+   "summary": "Heavy 350-500 gr floating line with a 30 ft head for huge flies and big freshwater gamefish.",
+   "url": "https://www.cortlandline.com/products/50-cannon",
+   "sizes": [
+    {
+     "label": "WF10F 350 gr",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Seafoam / Peach"
+     ]
+    },
+    {
+     "label": "WF11F 400 gr",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": [
+      "Seafoam / Peach"
+     ]
+    },
+    {
+     "label": "WF12F 450 gr",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 450,
+     "colors": [
+      "Seafoam / Peach"
+     ]
+    },
+    {
+     "label": "WF12+F 500 gr",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": [
+      "Seafoam / Peach"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-50-plus-giant-trevally",
+   "name": "50+ Giant Trevally",
+   "series": "50+",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 25,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 25 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Giant trevally, Tropical saltwater",
+   "secondaryUse": "Large flies, Flats fishing",
+   "weightLabel": null,
+   "summary": "WF10-13 floating GT line with a 41 ft head.",
+   "url": "https://www.cortlandline.com/products/50-series-giant-trevally",
+   "sizes": [
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Light Blue / Yellow"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Light Blue / Yellow"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": [
+      "Light Blue / Yellow"
+     ]
+    },
+    {
+     "label": "WF13F",
+     "weights": [
+      13
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": null,
+     "colors": [
+      "Light Blue / Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-50-plus-heavy-sink",
+   "name": "50+ Heavy Sink",
+   "series": "50+",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 16,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 16 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Deep presentations, Large flies",
+   "secondaryUse": "Fast current, Freshwater gamefish",
+   "weightLabel": null,
+   "summary": "7-8 ips 30 ft sinking head on an intermediate running line, 350-700 gr.",
+   "url": "https://www.cortlandline.com/products/50-series-heavy-sink",
+   "sizes": [
+    {
+     "label": "WF10S/I 350 gr",
+     "weights": [
+      10
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Black / Deep Blue"
+     ]
+    },
+    {
+     "label": "WF11S/I 400 gr",
+     "weights": [
+      11
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": [
+      "Black / Deep Blue"
+     ]
+    },
+    {
+     "label": "WF12S/I 450 gr",
+     "weights": [
+      12
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 450,
+     "colors": [
+      "Black / Deep Blue"
+     ]
+    },
+    {
+     "label": "WF12+S/I 500 gr",
+     "weights": [
+      12
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": [
+      "Black / Deep Blue"
+     ]
+    },
+    {
+     "label": "WF13-15S/I 600 gr",
+     "weights": [
+      13
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 600,
+     "colors": [
+      "Black / Deep Blue"
+     ]
+    },
+    {
+     "label": "WF15+S/I 700 gr",
+     "weights": [
+      15
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 700,
+     "colors": [
+      "Black / Deep Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-50-plus-intermediate",
+   "name": "50+ Intermediate",
+   "series": "50+",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 17,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 17 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Subsurface presentations, Baitfish patterns",
+   "secondaryUse": "Flats, Gamefish",
+   "weightLabel": null,
+   "summary": "1.5-2 ips intermediate for big-game subsurface work, 350-600 gr.",
+   "url": "https://www.cortlandline.com/products/50-series-intermediate",
+   "sizes": [
+    {
+     "label": "WF10I 350 gr",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Deep Blue / Sky Blue"
+     ]
+    },
+    {
+     "label": "WF11I 400 gr",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": [
+      "Deep Blue / Sky Blue"
+     ]
+    },
+    {
+     "label": "WF12I 450 gr",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 450,
+     "colors": [
+      "Deep Blue / Sky Blue"
+     ]
+    },
+    {
+     "label": "WF12+I 500 gr",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": [
+      "Deep Blue / Sky Blue"
+     ]
+    },
+    {
+     "label": "WF13-15I 600 gr",
+     "weights": [
+      13
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 600,
+     "colors": [
+      "Deep Blue / Sky Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-50-plus-billfish",
+   "name": "50+ Billfish",
+   "series": "50+",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 33,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 33 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Billfish, Sailfish",
+   "secondaryUse": "Marlin, Prop-wash presentations",
+   "weightLabel": null,
+   "summary": "600 gr Type 6 sinking-head billfish line for prop-wash presentations.",
+   "url": "https://www.cortlandline.com/products/50-series-billfish",
+   "sizes": [
+    {
+     "label": "WF13/14/15S/F 600 gr",
+     "weights": [
+      13
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 600,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-cold-salt-striped-bass-float",
+   "name": "Striped Bass Float",
+   "series": "Cold Salt",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 19,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 19 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Quick Shots, Blitzing Fish",
+   "secondaryUse": "Topwater Presentations, Gurglers",
+   "weightLabel": null,
+   "summary": "Cold-water floating striper line with a 30 ft head for blitzes and topwater.",
+   "url": "https://www.cortlandline.com/products/striped-bass-float",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Light Blue"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Light Blue"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Light Blue"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 355,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Light Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-cold-salt-striped-bass-intermediate",
+   "name": "Striped Bass Intermediate",
+   "series": "Cold Salt",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 10,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 10 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Subsurface Presentations, Surf",
+   "secondaryUse": "Flats, Boat Fishing",
+   "weightLabel": null,
+   "summary": "1.5-2 ips cold-water intermediate for surf, flats and boats.",
+   "url": "https://www.cortlandline.com/products/striped-bass-intermediate",
+   "sizes": [
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 355,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-cold-salt-striped-bass-sink-8",
+   "name": "Striped Bass Sink 8",
+   "series": "Cold Salt",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 11,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 11 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Deep Presentations, Heavy Current",
+   "secondaryUse": "Deeper Water, Inlets",
+   "weightLabel": null,
+   "summary": "8-9 ips sinking head on an intermediate running line for current and depth.",
+   "url": "https://www.cortlandline.com/products/striped-bass-sink-8",
+   "sizes": [
+    {
+     "label": "WF8S/I",
+     "weights": [
+      8
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Black / Ice Blue"
+     ]
+    },
+    {
+     "label": "WF9S/I",
+     "weights": [
+      9
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": [
+      "Black / Ice Blue"
+     ]
+    },
+    {
+     "label": "WF10S/I",
+     "weights": [
+      10
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": 355,
+     "headGrains": null,
+     "colors": [
+      "Black / Ice Blue"
+     ]
+    },
+    {
+     "label": "WF11S/I",
+     "weights": [
+      11
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": [
+      "Black / Ice Blue"
+     ]
+    },
+    {
+     "label": "WF12S/I",
+     "weights": [
+      12
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": 475,
+     "headGrains": null,
+     "colors": [
+      "Black / Ice Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-cold-salt-striped-bass-blitz",
+   "name": "Striped Bass Blitz",
+   "series": "Cold Salt",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 20,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 20 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Striped bass, false albacore, bonito, bluefish",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Intermediate head (1.5-2 ips) with floating running line, built a line-and-a-half size heavy.",
+   "url": "https://www.cortlandline.com/products/striped-bass-blitz",
+   "sizes": [
+    {
+     "label": "WF7I/F",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue / Sky Blue"
+     ]
+    },
+    {
+     "label": "WF8I/F",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue / Sky Blue"
+     ]
+    },
+    {
+     "label": "WF9I/F",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue / Sky Blue"
+     ]
+    },
+    {
+     "label": "WF10I/F",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Ice Blue / Sky Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-cold-salt-redfish",
+   "name": "Cold Redfish",
+   "series": "Cold Salt",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 13,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 13 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Redfish in cold conditions",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Braided-core, cold-supple redfish line with a short aggressive taper, half size heavy.",
+   "url": "https://www.cortlandline.com/products/coldsaltredfish",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-cold-salt-clear-tip",
+   "name": "Cold Salt Clear Tip",
+   "series": "Cold Salt",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 28,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 28 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Shallow flats, fish feeding just under the surface",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Floating line with a 10 ft clear intermediate tip.",
+   "url": "https://www.cortlandline.com/products/cold-salt-clear-tip",
+   "sizes": [
+    {
+     "label": "WF7I/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear / Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-euro-nymph-braid-core",
+   "name": "Euro Nymph Braid Core",
+   "series": "Euro Nymph",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 39,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 39 of 53",
+   "price": 59.95,
+   "priceNote": null,
+   "primaryUse": "Cold-weather Euro nymphing, Tight-line presentations",
+   "secondaryUse": "Anglers who prefer a supple braided core, Hi-vis or stealth tracking",
+   "weightLabel": null,
+   "summary": ".022 level euro line on a supple braided core for cold weather.",
+   "url": "https://www.cortlandline.com/products/euro-nymph-braid-core",
+   "sizes": [
+    {
+     "label": ".022 level",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-euro-nymph-mono-core",
+   "name": "Euro Nymph Mono Core",
+   "series": "Euro Nymph",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 44,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 44 of 53",
+   "price": 59.95,
+   "priceNote": null,
+   "primaryUse": "Technical Euro nymphing, Tight-line presentations",
+   "secondaryUse": "Anglers who prefer mono-core handling, Hi-vis or stealth tracking",
+   "weightLabel": null,
+   "summary": ".017 or .022 level euro line on a stiffer mono core to reduce sag.",
+   "url": "https://www.cortlandline.com/products/cortland-euro-nymph-mono-core",
+   "sizes": [
+    {
+     "label": ".017 level",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse"
+     ]
+    },
+    {
+     "label": ".022 level",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-versatile-euro-nymph",
+   "name": "Versatile Euro Nymph",
+   "series": "Euro Nymph",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 48,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 48 of 53",
+   "price": 59.95,
+   "priceNote": null,
+   "primaryUse": "Anglers who switch between techniques, Mixed-method trout fishing",
+   "secondaryUse": "Travel or minimalist setups, One-line versatility",
+   "weightLabel": null,
+   "summary": ".022 double-taper hybrid for anglers who switch between euro and conventional methods.",
+   "url": "https://www.cortlandline.com/products/cortland-versatile-euro-nymph",
+   "sizes": [
+    {
+     "label": ".022 dt",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Sage Green / Chartreuse"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-galloup-top-shelf",
+   "name": "Top Shelf",
+   "series": "Kelly Galloup",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.95,
+   "priceNote": null,
+   "primaryUse": "Low-gradient rivers, Large streamer setups",
+   "secondaryUse": "Stillwater applications",
+   "weightLabel": null,
+   "summary": "Kelly Galloup floating streamer line with a 37 ft head for large streamer setups.",
+   "url": "https://www.cortlandline.com/products/top-shelf",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 100,
+     "grains30": 170,
+     "headGrains": null,
+     "colors": [
+      "Sage Green / Lime Green"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 100,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": [
+      "Sage Green / Lime Green"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Sage Green / Lime Green"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 100,
+     "grains30": 255,
+     "headGrains": null,
+     "colors": [
+      "Sage Green / Lime Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-galloup-rock-bottom",
+   "name": "Rock Bottom",
+   "series": "Kelly Galloup",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.95,
+   "priceNote": null,
+   "primaryUse": "Large rivers and stillwater, Maintaining depth on long retrieves",
+   "secondaryUse": "Oversized articulated streamers, Long-distance presentations",
+   "weightLabel": null,
+   "summary": "Galloup 40 ft Type 6 sinking head on an intermediate running line (200-300 gr).",
+   "url": "https://www.cortlandline.com/products/rock-bottom",
+   "sizes": [
+    {
+     "label": "WF6/7S/I 200 gr",
+     "weights": [
+      6
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": []
+    },
+    {
+     "label": "WF7/8S/I 250 gr",
+     "weights": [
+      7
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 250,
+     "colors": []
+    },
+    {
+     "label": "WF8/9S/I 300 gr",
+     "weights": [
+      8
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 300,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-galloup-dungeon-30",
+   "name": "Dungeon 30",
+   "series": "Kelly Galloup",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.95,
+   "priceNote": null,
+   "primaryUse": "Oversized articulated streamers, Fast water and heavy flows",
+   "secondaryUse": "Boat streamer fishing",
+   "weightLabel": null,
+   "summary": "Galloup 30 ft Type 6 sinking head (230-330 gr) for big articulated streamers from a boat.",
+   "url": "https://www.cortlandline.com/products/dungeon-30",
+   "sizes": [
+    {
+     "label": "WF6/7S/I 230 gr",
+     "weights": [
+      6
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 230,
+     "colors": []
+    },
+    {
+     "label": "WF7/8S/I 280 gr",
+     "weights": [
+      7
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": []
+    },
+    {
+     "label": "WF8/9S/I 330 gr",
+     "weights": [
+      8
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-liquid-crystal-flats-taper",
+   "name": "Liquid Crystal Flats Taper (Clear)",
+   "series": "Liquid Crystal",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 3,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 3 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Bonefish, permit, redfish on clear shallow flats",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Full-clear hard PE-coated floating flats line built true to line size.",
+   "url": "https://www.cortlandline.com/products/flats-taper-1",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-liquid-crystal-guide",
+   "name": "Liquid Crystal Guide",
+   "series": "Liquid Crystal",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 23,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 23 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Versatile tropical flats in extreme heat",
+   "secondaryUse": null,
+   "weightLabel": "Half line size heavy",
+   "summary": "Seafoam half-size-heavy tropical line; Cortland calls it its slickest, most versatile tropical floating line.",
+   "url": "https://www.cortlandline.com/products/guide",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Seafoam"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Seafoam"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Seafoam"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Seafoam"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Seafoam"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Seafoam"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-liquid-crystal-tarpon-taper",
+   "name": "Liquid Crystal Tarpon Taper (Clear)",
+   "series": "Liquid Crystal",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 1,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 1 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Tarpon",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Full-clear tournament tarpon line on a fused mono core.",
+   "url": "https://www.cortlandline.com/products/tarpon-taper-2",
+   "sizes": [
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF13F",
+     "weights": [
+      13
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-bass",
+   "name": "Bass",
+   "series": "Specialty",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 23,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 23 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Bass poppers and streamers",
+   "secondaryUse": null,
+   "weightLabel": "Full line size heavy",
+   "summary": "Short, powerful head built a full size heavy for bass bugs.",
+   "url": "https://www.cortlandline.com/products/bass-lily-green-hot-orange",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Lily Green / Hot Orange"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Lily Green / Hot Orange"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Lily Green / Hot Orange"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Lily Green / Hot Orange"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Lily Green / Hot Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-bass-intermediate",
+   "name": "Bass Intermediate",
+   "series": "Specialty",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 32,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 32 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Subsurface bass tactics",
+   "secondaryUse": null,
+   "weightLabel": "Full line size heavy",
+   "summary": "Bass line with a 26 ft intermediate tip, a full size heavy.",
+   "url": "https://www.cortlandline.com/products/bass-intermediate",
+   "sizes": [
+    {
+     "label": "WF5I/F",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo / Aqua Green"
+     ]
+    },
+    {
+     "label": "WF6I/F",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo / Aqua Green"
+     ]
+    },
+    {
+     "label": "WF7I/F",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo / Aqua Green"
+     ]
+    },
+    {
+     "label": "WF8I/F",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo / Aqua Green"
+     ]
+    },
+    {
+     "label": "WF9I/F",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear Camo / Aqua Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-pike-musky-float",
+   "name": "Pike Musky Float",
+   "series": "Specialty",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 35,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 35 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Pike, Musky",
+   "secondaryUse": "Large Streamers, Bulky Flies",
+   "weightLabel": null,
+   "summary": "26 ft head floating predator line for big bulky flies.",
+   "url": "https://www.cortlandline.com/products/pike-musky-float",
+   "sizes": [
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Olive / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Olive / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": [
+      "Olive / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": null,
+     "colors": [
+      "Olive / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 500,
+     "headGrains": null,
+     "colors": [
+      "Olive / Pale Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-pike-musky-intermediate",
+   "name": "Pike Musky Intermediate",
+   "series": "Specialty",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 28,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 28 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Large Streamers, Bulky Flies",
+   "secondaryUse": "Upper Water Column, Predator Fishing",
+   "weightLabel": null,
+   "summary": "Intermediate version of the Pike Musky taper.",
+   "url": "https://www.cortlandline.com/products/pike-musky-intermediate",
+   "sizes": [
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Olive / Dark Green"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Olive / Dark Green"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": [
+      "Olive / Dark Green"
+     ]
+    },
+    {
+     "label": "WF11I",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": null,
+     "colors": [
+      "Olive / Dark Green"
+     ]
+    },
+    {
+     "label": "WF12I",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 500,
+     "headGrains": null,
+     "colors": [
+      "Olive / Dark Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-pike-musky-sink-4",
+   "name": "Pike Musky Sink 4",
+   "series": "Specialty",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 29,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 29 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Pike, Musky",
+   "secondaryUse": "Large Streamers, Bulky Flies",
+   "weightLabel": null,
+   "summary": "4-5 ips 30 ft sinking head on an intermediate running line.",
+   "url": "https://www.cortlandline.com/products/pike-musky-sink-4",
+   "sizes": [
+    {
+     "label": "WF8S/I",
+     "weights": [
+      8
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Brown / Gray"
+     ]
+    },
+    {
+     "label": "WF9S/I",
+     "weights": [
+      9
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Brown / Gray"
+     ]
+    },
+    {
+     "label": "WF10S/I",
+     "weights": [
+      10
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": [
+      "Brown / Gray"
+     ]
+    },
+    {
+     "label": "WF11S/I",
+     "weights": [
+      11
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": null,
+     "colors": [
+      "Brown / Gray"
+     ]
+    },
+    {
+     "label": "WF12S/I",
+     "weights": [
+      12
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 500,
+     "headGrains": null,
+     "colors": [
+      "Brown / Gray"
+     ]
+    },
+    {
+     "label": "WF12+S/I",
+     "weights": [
+      12
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 600,
+     "headGrains": null,
+     "colors": [
+      "Brown / Gray"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-pike-musky-sink-8",
+   "name": "Pike Musky Sink 8",
+   "series": "Specialty",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 30,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 30 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Deep Water, Large Streamers",
+   "secondaryUse": "Bulky Flies, Drop Offs",
+   "weightLabel": null,
+   "summary": "8-8.5 ips 30 ft sinking head on an intermediate running line.",
+   "url": "https://www.cortlandline.com/products/pike-musky-sink-8",
+   "sizes": [
+    {
+     "label": "WF8S/I",
+     "weights": [
+      8
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF9S/I",
+     "weights": [
+      9
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF10S/I",
+     "weights": [
+      10
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF11S/I",
+     "weights": [
+      11
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF12S/I",
+     "weights": [
+      12
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 500,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF12+S/I",
+     "weights": [
+      12
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 600,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WFS/I 700 gr",
+     "weights": [],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 700,
+     "colors": [
+      "Black / Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-compact-intermediate",
+   "name": "Compact Intermediate",
+   "series": "Specialty",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 2,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 2 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Multi-species freshwater and saltwater subsurface",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Full-clear 26 ft intermediate head rated in grains; quick loading for many species.",
+   "url": "https://www.cortlandline.com/products/compact-intermediate",
+   "sizes": [
+    {
+     "label": "5/6 wt 200 gr",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": [
+      "Clear / Light Blue"
+     ]
+    },
+    {
+     "label": "6/7 wt 240 gr",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 240,
+     "colors": [
+      "Clear / Light Blue"
+     ]
+    },
+    {
+     "label": "7/8 wt 275 gr",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 275,
+     "colors": [
+      "Clear / Light Blue"
+     ]
+    },
+    {
+     "label": "8/9 wt 310 gr",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 310,
+     "colors": [
+      "Clear / Light Blue"
+     ]
+    },
+    {
+     "label": "9/10 wt 350 gr",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Clear / Light Blue"
+     ]
+    },
+    {
+     "label": "11/12 wt 425 gr",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Clear / Light Blue"
+     ]
+    },
+    {
+     "label": "12+ wt 500 gr",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": [
+      "Clear / Light Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-compact-sink-type-6",
+   "name": "Compact Sink Type 6",
+   "series": "Specialty",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 9,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 9 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Deep water for musky, stripers, trout, bass",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "28 ft Type 6 sinking head on an intermediate running line, rated in grains.",
+   "url": "https://www.cortlandline.com/products/compact-sink-type-6",
+   "sizes": [
+    {
+     "label": "5/6 wt 200 gr",
+     "weights": [
+      5
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": [
+      "Black / Electric Green"
+     ]
+    },
+    {
+     "label": "6/7 wt 240 gr",
+     "weights": [
+      6
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 240,
+     "colors": [
+      "Black / Electric Green"
+     ]
+    },
+    {
+     "label": "7/8 wt 275 gr",
+     "weights": [
+      7
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 275,
+     "colors": [
+      "Black / Electric Green"
+     ]
+    },
+    {
+     "label": "8/9 wt 310 gr",
+     "weights": [
+      8
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 310,
+     "colors": [
+      "Black / Electric Green"
+     ]
+    },
+    {
+     "label": "9/10 wt 350 gr",
+     "weights": [
+      9
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Black / Electric Green"
+     ]
+    },
+    {
+     "label": "11/12 wt 425 gr",
+     "weights": [
+      11
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Black / Electric Green"
+     ]
+    },
+    {
+     "label": "12+ wt 500 gr",
+     "weights": [
+      12
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": [
+      "Black / Electric Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-compact-sink-type-9",
+   "name": "Compact Sink Type 9",
+   "series": "Specialty",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 7,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 7 of 33",
+   "price": 109.95,
+   "priceNote": null,
+   "primaryUse": "Deepest water and strong current",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "28 ft Type 9 (8-9 ips) sinking head with a 12 ft step, rated in grains.",
+   "url": "https://www.cortlandline.com/products/compact-sink-type-9",
+   "sizes": [
+    {
+     "label": "5/6 wt 200 gr",
+     "weights": [
+      5
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": [
+      "Black / Light Blue"
+     ]
+    },
+    {
+     "label": "6/7 wt 240 gr",
+     "weights": [
+      6
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 240,
+     "colors": [
+      "Black / Light Blue"
+     ]
+    },
+    {
+     "label": "7/8 wt 275 gr",
+     "weights": [
+      7
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 275,
+     "colors": [
+      "Black / Light Blue"
+     ]
+    },
+    {
+     "label": "8/9 wt 310 gr",
+     "weights": [
+      8
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 310,
+     "colors": [
+      "Black / Light Blue"
+     ]
+    },
+    {
+     "label": "9/10 wt 350 gr",
+     "weights": [
+      9
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Black / Light Blue"
+     ]
+    },
+    {
+     "label": "11/12 wt 425 gr",
+     "weights": [
+      11
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Black / Light Blue"
+     ]
+    },
+    {
+     "label": "12+ wt 500 gr",
+     "weights": [
+      12
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 28,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": [
+      "Black / Light Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-salmon-steelhead",
+   "name": "Salmon Steelhead",
+   "series": "Specialty",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 11,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 11 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Single-hand salmon and steelhead (indicators, streamers, swinging)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Long-belly (65 ft head) line, a full size heavy, that roll casts and mends easily.",
+   "url": "https://www.cortlandline.com/products/salmon-steelhead-moss-green-fly-line",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 65,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Olive / White"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 65,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Olive / White"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 65,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Olive / White"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 65,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Olive / White"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 65,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Olive / White"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-ghost-tip-3",
+   "name": "Ghost Tip 3",
+   "series": "Specialty",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 32,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 32 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Near-surface presentations, Shallow water",
+   "secondaryUse": "Fishing over structure",
+   "weightLabel": "True to line size",
+   "summary": "True-to-size floating line with a 3 ft clear intermediate tip.",
+   "url": "https://www.cortlandline.com/products/ghost-tip-3",
+   "sizes": [
+    {
+     "label": "WF5I/F",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF6I/F",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF7I/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF8I/F",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-ghost-tip-5",
+   "name": "Ghost Tip 5",
+   "series": "Specialty",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 27,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 27 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Shallow water, Fishing over structure",
+   "secondaryUse": "Subsurface presentations",
+   "weightLabel": "True to line size",
+   "summary": "True-to-size floating line with a 5 ft clear intermediate tip.",
+   "url": "https://www.cortlandline.com/products/ghost-tip-5",
+   "sizes": [
+    {
+     "label": "WF5I/F",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF6I/F",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF7I/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF8I/F",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-specialty-ghost-tip-15",
+   "name": "Ghost Tip 15",
+   "series": "Specialty",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 18,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 18 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Upper to middle water column, Clear water",
+   "secondaryUse": "Fishing over structure",
+   "weightLabel": "True to line size",
+   "summary": "True-to-size floating line with a 15 ft clear intermediate tip.",
+   "url": "https://www.cortlandline.com/products/ghost-tip-15",
+   "sizes": [
+    {
+     "label": "WF5I/F",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF6I/F",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF7I/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF8I/F",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF9I/F",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    },
+    {
+     "label": "WF10I/F",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Clear / Mint Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-streamer",
+   "name": "Streamer",
+   "series": "Streamer",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 14,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 14 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Surface presentations, Mousing at night",
+   "secondaryUse": "Large and bulky streamer patterns, Rivers and lakes",
+   "weightLabel": "Full line size heavy",
+   "summary": "Full-size-heavy floating streamer line with a short 26 ft head.",
+   "url": "https://www.cortlandline.com/products/streamer",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Olive / Green"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Olive / Green"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Olive / Green"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Olive / Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-streamer-intermediate-tip",
+   "name": "Streamer Intermediate Tip",
+   "series": "Streamer",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 38,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 38 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Shallow subsurface presentations, Upper and middle water column",
+   "secondaryUse": "Unweighted and lightly weighted streamers, Slow cold-water retrieves",
+   "weightLabel": "Full line size heavy",
+   "summary": "Streamer taper with an intermediate (1.5-2 ips) tip.",
+   "url": "https://www.cortlandline.com/products/streamer-intermediate-tip",
+   "sizes": [
+    {
+     "label": "WF5I/F",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Space Grey / Moss Green"
+     ]
+    },
+    {
+     "label": "WF6I/F",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Space Grey / Moss Green"
+     ]
+    },
+    {
+     "label": "WF7I/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Space Grey / Moss Green"
+     ]
+    },
+    {
+     "label": "WF8I/F",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Space Grey / Moss Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-streamer-sink-tip-10-t3",
+   "name": "Streamer Sink Tip 10 T3",
+   "series": "Streamer",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 26,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 26 of 53",
+   "price": 89.95,
+   "priceNote": null,
+   "primaryUse": "Shallow creeks and rivers, Riffles and moderate current",
+   "secondaryUse": "Lake edges, Articulated and bulky streamers",
+   "weightLabel": "Full line size heavy",
+   "summary": "Streamer taper with a 10 ft Type 3 tip for shallower water.",
+   "url": "https://www.cortlandline.com/products/streamer-sink-tip-10-t3",
+   "sizes": [
+    {
+     "label": "WF5S/F",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF6S/F",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF7S/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF8S/F",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-streamer-sink-tip-10",
+   "name": "Streamer Sink Tip 10",
+   "series": "Streamer",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 16,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 16 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Middle to lower water column, Rivers and lakes",
+   "secondaryUse": "Heavy currents, Large weighted and unweighted streamers",
+   "weightLabel": "Full line size heavy",
+   "summary": "Streamer taper with a 10 ft Type 6 tip.",
+   "url": "https://www.cortlandline.com/products/streamer-sink-tip-10",
+   "sizes": [
+    {
+     "label": "WF5S/F",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF6S/F",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF7S/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    },
+    {
+     "label": "WF8S/F",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Black / Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-streamer-sink-tip-15",
+   "name": "Streamer Sink Tip 15",
+   "series": "Streamer",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 21,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 21 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Larger rivers, Deep pools and drop-offs",
+   "secondaryUse": "Fast and heavy currents, Large weighted and bulky streamers",
+   "weightLabel": "Full line size heavy",
+   "summary": "Streamer taper with a 15 ft Type 6 tip for bigger rivers.",
+   "url": "https://www.cortlandline.com/products/streamer-sink-tip-15",
+   "sizes": [
+    {
+     "label": "WF5S/F",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 31,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Black / Green"
+     ]
+    },
+    {
+     "label": "WF6S/F",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 31,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Black / Green"
+     ]
+    },
+    {
+     "label": "WF7S/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 31,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Black / Green"
+     ]
+    },
+    {
+     "label": "WF8S/F",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 31,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Black / Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-streamer-sink-tip-25",
+   "name": "Streamer Sink Tip 25",
+   "series": "Streamer",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 34,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 34 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Deep rivers and lakes, Heavy currents",
+   "secondaryUse": "Deep runs and drop-offs, Large weighted and bulky streamers",
+   "weightLabel": null,
+   "summary": "Grain-rated (240-300 gr) line with a 25 ft Type 6 tip.",
+   "url": "https://www.cortlandline.com/products/streamer-sink-tip-25",
+   "sizes": [
+    {
+     "label": "WF6/7S/F 240 gr",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 40,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 240,
+     "colors": [
+      "Black / Sage Green"
+     ]
+    },
+    {
+     "label": "WF7/8S/F 270 gr",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 40,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 270,
+     "colors": [
+      "Black / Sage Green"
+     ]
+    },
+    {
+     "label": "WF8/9S/F 300 gr",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": 6,
+     "head": 40,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 300,
+     "colors": [
+      "Black / Sage Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-backcountry",
+   "name": "Backcountry",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 29,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 29 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Backcountry, Mangroves",
+   "secondaryUse": "Flats, Tarpon",
+   "weightLabel": null,
+   "summary": "41 ft head tropical line for mangroves, backcountry and small tarpon.",
+   "url": "https://www.cortlandline.com/products/backcountry",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Seaweed / Sand"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Seaweed / Sand"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Seaweed / Sand"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Seaweed / Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-clear-intermediate",
+   "name": "Tropic Clear Intermediate",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 12,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 12 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Deeper channels, Heavy currents",
+   "secondaryUse": "Flats, Surf",
+   "weightLabel": null,
+   "summary": "Clear 1.5-2 ips tropical intermediate for channels, current and surf.",
+   "url": "https://www.cortlandline.com/products/clear-intermediate",
+   "sizes": [
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11I",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 355,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12I",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 415,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-ghost-tip",
+   "name": "Ghost Tip",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 6,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 6 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Subsurface presentations, Wary fish",
+   "secondaryUse": "Flats, Windy conditions",
+   "weightLabel": null,
+   "summary": "Tropical floating line with a clear intermediate tip for spooky fish.",
+   "url": "https://www.cortlandline.com/products/ghost-tip",
+   "sizes": [
+    {
+     "label": "WF7I/F",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Clear / Seafoam"
+     ]
+    },
+    {
+     "label": "WF8I/F",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Clear / Seafoam"
+     ]
+    },
+    {
+     "label": "WF9I/F",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Clear / Seafoam"
+     ]
+    },
+    {
+     "label": "WF10I/F",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Clear / Seafoam"
+     ]
+    },
+    {
+     "label": "WF11I/F",
+     "weights": [
+      11
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Clear / Seafoam"
+     ]
+    },
+    {
+     "label": "WF12I/F",
+     "weights": [
+      12
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": [
+      "Clear / Seafoam"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-tarpon",
+   "name": "Tarpon",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 14,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 14 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Tarpon, Flats",
+   "secondaryUse": "Quick shots, Weighted flies",
+   "weightLabel": null,
+   "summary": "WF10-12 tropical tarpon line with a 41 ft head.",
+   "url": "https://www.cortlandline.com/products/tarpon",
+   "sizes": [
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-redfish",
+   "name": "Tropic Redfish",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 4,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 4 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Redfish, Shorelines",
+   "secondaryUse": "Mangroves, Quick Shots",
+   "weightLabel": "Half line size heavy",
+   "summary": "Half-size-heavy 30 ft head line for quick shots at redfish.",
+   "url": "https://www.cortlandline.com/products/tropicplusredfish",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 170,
+     "headGrains": null,
+     "colors": [
+      "Seafoam Green / Tan"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": [
+      "Seafoam Green / Tan"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Seafoam Green / Tan"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Seafoam Green / Tan"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": [
+      "Seafoam Green / Tan"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-hi-vis-flip",
+   "name": "Hi-Vis Flip",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 15,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 15 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Stained Water, Off-Color Water",
+   "secondaryUse": "Mangroves, Quick Shots",
+   "weightLabel": null,
+   "summary": "Reversible hi-vis orange/white floating line for stained water.",
+   "url": "https://www.cortlandline.com/products/hi-vis-flip",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Hi-Vis Orange / White",
+      "White / Hi-Vis Orange"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Hi-Vis Orange / White",
+      "White / Hi-Vis Orange"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Hi-Vis Orange / White",
+      "White / Hi-Vis Orange"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Hi-Vis Orange / White",
+      "White / Hi-Vis Orange"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Hi-Vis Orange / White",
+      "White / Hi-Vis Orange"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Hi-Vis Orange / White",
+      "White / Hi-Vis Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-all-purpose",
+   "name": "All Purpose Taper",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 5,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 5 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Multispecies Saltwater, Flats",
+   "secondaryUse": "Mangroves, Windy Conditions",
+   "weightLabel": null,
+   "summary": "Do-everything tropical floating line with a 41 ft head.",
+   "url": "https://www.cortlandline.com/products/all-purpose-taper",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Sand / Blue"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Sand / Blue"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Sand / Blue"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Sand / Blue"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Sand / Blue"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Sand / Blue"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": [
+      "Sand / Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-all-purpose-xp",
+   "name": "All Purpose XP",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 22,
+   "rankSource": "cortlandline.com Saltwater Fly Line collection, sorted best-selling (2026-10-16), position 22 of 33",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Large Flies, Heavy Winds",
+   "secondaryUse": "Limited Back Casts, Fast Action Rods",
+   "weightLabel": null,
+   "summary": "Heavier, compact (26 ft head) version for big flies, wind and limited back casts.",
+   "url": "https://www.cortlandline.com/products/all-purpose-xp",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Aqua Blue / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Aqua Blue / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Aqua Blue / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Aqua Blue / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": [
+      "Aqua Blue / Pale Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-intermediate-xp",
+   "name": "Tropic Plus Intermediate XP",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Large flies, Deeper water",
+   "secondaryUse": "Boat fishing, Beach fishing",
+   "weightLabel": null,
+   "summary": "Compact 26 ft intermediate head for big flies from boat or beach.",
+   "url": "https://www.cortlandline.com/products/cortland-tropic-plus-intermediate-xp",
+   "sizes": [
+    {
+     "label": "WF7I/F",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": [
+      "Clear / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF8I/F",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": [
+      "Clear / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF9I/F",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": null,
+     "colors": [
+      "Clear / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF10I/F",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": null,
+     "colors": [
+      "Clear / Pale Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-bonefish",
+   "name": "Bonefish",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Bonefish, wading or from a boat",
+   "secondaryUse": null,
+   "weightLabel": "True to line size",
+   "summary": "True-to-size bonefish line with an aggressive front and elongated rear taper.",
+   "url": "https://www.cortlandline.com/products/bonefish",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 105,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 105,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 105,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 105,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-trout-indicator-ii",
+   "name": "Indicator II",
+   "series": "Trout",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 50,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 50 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Complex currents, Long drifts and drift tracking",
+   "secondaryUse": "Frequent mending, Roll casting",
+   "weightLabel": "Full line size heavy",
+   "summary": "Full-size-heavy 48 ft head with hi-vis tip for long drifts and mending.",
+   "url": "https://www.cortlandline.com/products/indicator-ii",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "White / Olive / White"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "White / Olive / White"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "White / Olive / White"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "White / Olive / White"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-trout-double-taper",
+   "name": "Trout Double Taper",
+   "series": "Trout",
+   "category": "trout",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Roll casting, Frequent mending",
+   "secondaryUse": "Close-range presentations, Classic double-taper feel",
+   "weightLabel": "True to line size",
+   "summary": "True-to-size double taper for roll casting and close-range presentations.",
+   "url": "https://www.cortlandline.com/products/trout-double-taper",
+   "sizes": [
+    {
+     "label": "DT2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Moss Green / Yellow"
+     ]
+    },
+    {
+     "label": "DT3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Moss Green / Yellow"
+     ]
+    },
+    {
+     "label": "DT4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Moss Green / Yellow"
+     ]
+    },
+    {
+     "label": "DT5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Moss Green / Yellow"
+     ]
+    },
+    {
+     "label": "DT6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Moss Green / Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-trout-ultralight-ii",
+   "name": "Ultralight II",
+   "series": "Trout",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 53,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 53 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Smart and pressured trout, Delicate presentations",
+   "secondaryUse": "Smaller flies, Technical water",
+   "weightLabel": "True to line size",
+   "summary": "Long front taper and thin diameter for delicate presentations to pressured trout.",
+   "url": "https://www.cortlandline.com/products/ultralight-ii",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 80,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Dark Green"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 80,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Dark Green"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 45,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Dark Green"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 45,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Dark Green"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 45,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Dark Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-trout-headwater",
+   "name": "Headwater",
+   "series": "Trout",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 42,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 42 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Small streams and spring creeks, Clear water and wary trout",
+   "secondaryUse": "Close-range presentations, Tight quarters",
+   "weightLabel": null,
+   "summary": "Short 80 ft, 32 ft head line in 1-4 wt for small streams.",
+   "url": "https://www.cortlandline.com/products/cortland-trout-headwater",
+   "sizes": [
+    {
+     "label": "WF1F",
+     "weights": [
+      1
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 80,
+     "grains30": 60,
+     "headGrains": null,
+     "colors": [
+      "Olive / Moss Green"
+     ]
+    },
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 80,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Olive / Moss Green"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 80,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Olive / Moss Green"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 32,
+     "total": 80,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Olive / Moss Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-trout-boss",
+   "name": "Trout Boss",
+   "series": "Trout",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 47,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 47 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Bigger flies and heavier rigs, Windy conditions",
+   "secondaryUse": "Fast-action rods, All-around trout fishing",
+   "weightLabel": "Full line size heavy",
+   "summary": "Full-size-heavy all-round trout line for fast rods (35 ft head).",
+   "url": "https://www.cortlandline.com/products/trout-boss-green-yellow",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Green / Yellow"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Green / Yellow"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Green / Yellow"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Green / Yellow"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Green / Yellow"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Green / Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-trout-finesse-trout-ii",
+   "name": "Finesse Trout II",
+   "series": "Trout",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 3,
+   "rankSource": "cortlandline.com Freshwater Fly Line collection, sorted best-selling (2026-10-16), position 3 of 53",
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Technical trout water, Soft presentations",
+   "secondaryUse": "Picky or pressured trout, Complex currents",
+   "weightLabel": null,
+   "summary": "43 ft head presentation line for technical water and picky trout.",
+   "url": "https://www.cortlandline.com/products/finesse-trout-ii",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 90,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 170,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-fairplay-floating",
+   "name": "Fairplay Floating",
+   "series": "Fairplay",
+   "category": "trout",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 29.95,
+   "priceNote": null,
+   "primaryUse": "Dry flies, nymphing",
+   "secondaryUse": "small streamers, trout",
+   "weightLabel": null,
+   "summary": "Budget 84 ft floating line from Cortland's Fairplay entry brand.",
+   "url": "https://www.cortlandline.com/products/fairplay-floating",
+   "sizes": [
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 84,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 84,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 84,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 84,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 84,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 84,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-fairplay-sinking-type-2",
+   "name": "Fairplay Sinking Type 2",
+   "series": "Fairplay",
+   "category": "lake",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 29.95,
+   "priceNote": null,
+   "primaryUse": "Streamers, nymphing",
+   "secondaryUse": "lakes, rivers",
+   "weightLabel": null,
+   "summary": "Budget 2 ips full sinker.",
+   "url": "https://www.cortlandline.com/products/fairplay-sinking-type-2",
+   "sizes": [
+    {
+     "label": "WF5S",
+     "weights": [
+      5
+     ],
+     "density": "sink2",
+     "densityLabel": null,
+     "sinkIps": 2,
+     "head": 36,
+     "total": 84,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6S",
+     "weights": [
+      6
+     ],
+     "density": "sink2",
+     "densityLabel": null,
+     "sinkIps": 2,
+     "head": 36,
+     "total": 84,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7S",
+     "weights": [
+      7
+     ],
+     "density": "sink2",
+     "densityLabel": null,
+     "sinkIps": 2,
+     "head": 36,
+     "total": 84,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S",
+     "weights": [
+      8
+     ],
+     "density": "sink2",
+     "densityLabel": null,
+     "sinkIps": 2,
+     "head": 36,
+     "total": 84,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-fairplay-saltwater-floating",
+   "name": "Fairplay Saltwater Floating",
+   "series": "Fairplay",
+   "category": "salt",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 32.95,
+   "priceNote": null,
+   "primaryUse": "Inshore saltwater, general-purpose saltwater fishing",
+   "secondaryUse": "redfish, speckled sea trout",
+   "weightLabel": null,
+   "summary": "Budget WF9/10 inshore floating line.",
+   "url": "https://www.cortlandline.com/products/fairplay-saltwater-floating-fly-line",
+   "sizes": [
+    {
+     "label": "WF9/10F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "cortland-competition-fo-tech-intermediate",
+   "name": "Fo-Tech Intermediate",
+   "series": "Competition",
+   "category": "lake",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 79.95,
+   "priceNote": null,
+   "primaryUse": "Long-distance stillwater just under the surface",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "130 ft extreme-distance 2-3 ips intermediate head with floating running line.",
+   "url": "https://www.cortlandline.com/products/copy-of-fo-tech-float",
+   "sizes": [
+    {
+     "label": "WF5/6I/F",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 130,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Smoke / Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-competition-fo-tech-type-3",
+   "name": "Fo-Tech Type 3",
+   "series": "Competition",
+   "category": "lake",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 79.95,
+   "priceNote": null,
+   "primaryUse": "Long-distance stillwater, mid depths",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "130 ft distance line, 3-4 ips head on intermediate running line.",
+   "url": "https://www.cortlandline.com/products/copy-of-fo-tech-intermediate",
+   "sizes": [
+    {
+     "label": "WF5/6S/I",
+     "weights": [
+      5
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 130,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Brown / Yellow"
+     ]
+    },
+    {
+     "label": "WF7/8S/I",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 130,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Brown / Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-competition-fo-tech-type-5",
+   "name": "Fo-Tech Type 5",
+   "series": "Competition",
+   "category": "lake",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 79.95,
+   "priceNote": null,
+   "primaryUse": "Long-distance stillwater, deeper",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "130 ft distance line, 5-6 ips density-compensated head.",
+   "url": "https://www.cortlandline.com/products/fotechtype5",
+   "sizes": [
+    {
+     "label": "WF5/6S/I",
+     "weights": [
+      5
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 130,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Gray / Yellow"
+     ]
+    },
+    {
+     "label": "WF6/7S/I",
+     "weights": [
+      6
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 130,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Gray / Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-competition-fo-tech-type-7",
+   "name": "Fo-Tech Type 7",
+   "series": "Competition",
+   "category": "lake",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 89.95,
+   "priceNote": null,
+   "primaryUse": "Long-distance stillwater, deep",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "130 ft distance line, 7-8 ips head.",
+   "url": "https://www.cortlandline.com/products/fotechtype7",
+   "sizes": [
+    {
+     "label": "WF5/6S/I",
+     "weights": [
+      5
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 130,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Black / Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-competition-slow-intermediate",
+   "name": "Slow Intermediate",
+   "series": "Competition",
+   "category": "lake",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 79.95,
+   "priceNote": null,
+   "primaryUse": "Just below the surface film",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "110 ft long-level-head 1 ips slow intermediate.",
+   "url": "https://www.cortlandline.com/products/copy-of-fo-tech-type-6",
+   "sizes": [
+    {
+     "label": "WF5/6S/I",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Green"
+     ]
+    },
+    {
+     "label": "WF6/7S/I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Green"
+     ]
+    },
+    {
+     "label": "WF7/8S/I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-competition-seek-type-3",
+   "name": "Seek Type 3",
+   "series": "Competition",
+   "category": "lake",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 79.95,
+   "priceNote": null,
+   "primaryUse": "Searching depths",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "110 ft line with a slow-sinking tip and faster-sinking belly (3-4 ips).",
+   "url": "https://www.cortlandline.com/products/seek-type-3",
+   "sizes": [
+    {
+     "label": "WF5/6S",
+     "weights": [
+      5
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "WF6/7S",
+     "weights": [
+      6
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "WF7/8S",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Brown"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-competition-seek-type-5",
+   "name": "Seek Type 5",
+   "series": "Competition",
+   "category": "lake",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 79.95,
+   "priceNote": null,
+   "primaryUse": "Searching depths",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "110 ft line with a slow tip and faster belly (5-6 ips).",
+   "url": "https://www.cortlandline.com/products/seek-type-5",
+   "sizes": [
+    {
+     "label": "WF5/6S",
+     "weights": [
+      5
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Gray"
+     ]
+    },
+    {
+     "label": "WF6/7S",
+     "weights": [
+      6
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Gray"
+     ]
+    },
+    {
+     "label": "WF7/8S",
+     "weights": [
+      7
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Gray"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-competition-seek-type-7",
+   "name": "Seek Type 7",
+   "series": "Competition",
+   "category": "lake",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 79.95,
+   "priceNote": null,
+   "primaryUse": "Searching depths, deep",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Fastest non-compensated Seek line (7-8 ips).",
+   "url": "https://www.cortlandline.com/products/seek-type-7",
+   "sizes": [
+    {
+     "label": "WF6/7S",
+     "weights": [
+      6
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "WF7/8S",
+     "weights": [
+      7
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 110,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-trout-ultralight",
+   "name": "Ultralight",
+   "series": "Trout",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Delicate dry-fly presentation",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Predecessor of Ultralight II: fine front taper with three color changes in the head.",
+   "url": "https://www.cortlandline.com/products/ultralight",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Dark Green / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Dark Green / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Dark Green / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Dark Green / Pale Yellow"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Aqua Green / Dark Green / Pale Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-trout-boss-dt",
+   "name": "Trout Boss Double Taper",
+   "series": "Trout",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Roll casting and mending",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Full-size-heavy double taper; largely replaced by the true-to-size Trout Double Taper (inference).",
+   "url": "https://www.cortlandline.com/products/troutbossdt",
+   "sizes": [
+    {
+     "label": "DT2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Moss Green / Yellow / Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-intermediate",
+   "name": "Tropic Intermediate",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Windy tropical flats",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Slow (1.5-2 ips) thin tropical intermediate, true to size.",
+   "url": "https://www.cortlandline.com/products/intermediate-1",
+   "sizes": [
+    {
+     "label": "WF11I",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Smoke"
+     ]
+    },
+    {
+     "label": "WF12I",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Smoke"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-tropic-plus-ghost-tip-9",
+   "name": "Ghost Tip 9",
+   "series": "Tropic Plus",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.95,
+   "priceNote": null,
+   "primaryUse": "Stealthy shallow saltwater",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Earlier Tropic Plus floating line with a 9 ft clear intermediate tip.",
+   "url": "https://www.cortlandline.com/products/ghost-tip-9",
+   "sizes": [
+    {
+     "label": "WF13I/F",
+     "weights": [
+      13
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear / Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-euro-nymph-mono-core-gecko",
+   "name": "Euro Nymph Mono Core (Gecko Green, earlier)",
+   "series": "Euro Nymph",
+   "category": "nymph",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 54.95,
+   "priceNote": null,
+   "primaryUse": "Euro / modern nymphing",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Earlier mono-core euro line in level and double-taper versions.",
+   "url": "https://www.cortlandline.com/products/euro-nymph-mono-core",
+   "sizes": [
+    {
+     "label": ".017 level",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Gecko Green"
+     ]
+    },
+    {
+     "label": ".017 dt",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Gecko Green"
+     ]
+    },
+    {
+     "label": ".022 dt",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Gecko Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cortland-euro-nymph-hi-vis-mono-core",
+   "name": "Hi-Vis Euro Nymph Mono Core",
+   "series": "Euro Nymph",
+   "category": "nymph",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 54.95,
+   "priceNote": null,
+   "primaryUse": "Euro nymphing with a visual reference",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Chartreuse .022 level mono-core euro line.",
+   "url": "https://www.cortlandline.com/products/hi-vis-euro-nymph-mono-core",
+   "sizes": [
+    {
+     "label": ".022 level",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 90,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse"
+     ]
+    }
+   ]
+  }
+ ]
+}

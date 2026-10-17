@@ -1,0 +1,9258 @@
+{
+ "id": "rio",
+ "maker": "RIO",
+ "retrieved": "2026-10-16",
+ "sources": [
+  "https://farbank.com/collections/rio-fly-lines"
+ ],
+ "explainer": [
+  "Most of RIO’s trout and saltwater tapers come in two versions, Elite and Premier, with the same taper. Elite lines add RIO’s low-stretch ConnectCore Plus core for sharper bite detection and hook sets, cost about $130 against about $100 for Premier, run 100 ft long in 7–8 wt, and come in fewer sizes. If you don’t need the extra sensitivity, the Premier version casts the same.",
+  "The Gold family is three trout tapers that trade finesse for power. At 5 wt, Gold has a 47 ft head and 146 gr in the first 30 ft (standard weight, built for dries and dry-droppers at medium to long range); Gold XP has a 42 ft head and 150 gr (½ size heavy, for dry-droppers and light indicators); Gold Max has a 37 ft head and 160 gr (a full size heavy, for heavy indicators, big dries and light streamers on fast rods).",
+  "Avid ($70–80) and Mainstream ($50) are RIO’s lower-priced lines. Ambassador Series lines are signature tapers designed with named guides and anglers. Spey, Skagit and Scandi lines and shooting lines are left out of this guide."
+ ],
+ "omitted": [
+  "Elite Skagit Max Launch",
+  "SlickShooter",
+  "Elite Skagit Max Power",
+  "GripShooter",
+  "Elite Metered Shooting Line",
+  "Elite Scandi Launch",
+  "Elite Switch Chucker",
+  "Premier Powerflex Ultra Shooting Line",
+  "Elite Gamechanger Body",
+  "Elite Skagit Pickpocket",
+  "Elite Switch Indicator",
+  "Elite Integrated Trout Spey",
+  "Elite Integrated Skagit Max Power",
+  "Elite Skagit Mini Max Power Shooting Head",
+  "Elite Trout Spey Shooting Head",
+  "InTouch Mid Head Spey",
+  "Elite Integrated Skagit Mini Max Power",
+  "Elite Scandi Body",
+  "InTouch Short Head Spey",
+  "Ambassador Series - Skagit Timberline",
+  "InTouch Long Head Spey",
+  "Elite Greased Line 40+",
+  "Elite Anadromous Advantage"
+ ],
+ "products": [
+  {
+   "id": "rio-premier-gold",
+   "name": "Premier Gold",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 1,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Small Dry / Dry Dropper",
+   "secondaryUse": "Big Dry / Light Indicator",
+   "weightLabel": "Standard Weight / Standard Power",
+   "summary": "RIO GOLD’s longer head and lighter weight, compared to its XP and MAX counterparts, make it our best all-around trout taper for carrying long, precise casts.",
+   "url": "https://farbank.com/products/rio-premier-rio-gold",
+   "sizes": [
+    {
+     "label": "2wt",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 44,
+     "total": 80,
+     "grains30": 86,
+     "headGrains": 210,
+     "colors": [
+      "Moss/Gold"
+     ]
+    },
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 45,
+     "total": 80,
+     "grains30": 106,
+     "headGrains": 158,
+     "colors": [
+      "Moss/Gold"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 126,
+     "headGrains": 175,
+     "colors": [
+      "Moss/Gold",
+      "Melon/Gray Dun",
+      "Orange"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 47,
+     "total": 90,
+     "grains30": 146,
+     "headGrains": 208,
+     "colors": [
+      "Moss/Gold",
+      "Melon/Gray Dun",
+      "Lumalux",
+      "Orange"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 168,
+     "headGrains": 234,
+     "colors": [
+      "Moss/Gold",
+      "Melon/Gray Dun",
+      "Lumalux",
+      "Orange"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": 90,
+     "grains30": 193,
+     "headGrains": 270,
+     "colors": [
+      "Moss/Gold"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 90,
+     "grains30": 218,
+     "headGrains": 310,
+     "colors": [
+      "Moss/Gold"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 90,
+     "grains30": 250,
+     "headGrains": 345,
+     "colors": [
+      "Moss/Gold"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-outbound-short",
+   "name": "Premier OutBound Short",
+   "series": "Premier",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 2,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Distance / Big Flies",
+   "secondaryUse": "Quick loading",
+   "weightLabel": null,
+   "summary": "Exceptionally powerful, easy casting line built for casting big flies, and for maximum distance, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-outbound-short",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": [
+      "Clear/Moss/Ivory"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 235,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 235,
+     "colors": [
+      "Clear/Moss/Ivory"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 235,
+     "colors": [
+      "Clear/Gray/Trans. Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/3 ips/5 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 235,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 235,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Clear/Moss/Ivory"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Clear/Gray/Trans. Green"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/3 ips/5 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Clear/Moss/Ivory"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Clear/Gray/Trans. Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/3 ips/5 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sink7",
+     "densityLabel": "7 ips",
+     "sinkIps": 7,
+     "head": 30,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Clear/Moss/Ivory"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Clear/Gray/Trans. Green"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/3 ips/5 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "sink7",
+     "densityLabel": "7 ips",
+     "sinkIps": 7,
+     "head": 30,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Clear/Moss/Ivory"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Clear/Gray/Trans. Green"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/3 ips/5 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "sink7",
+     "densityLabel": "7 ips",
+     "sinkIps": 7,
+     "head": 30,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 465,
+     "colors": [
+      "Clear/Gray/Trans. Green"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "sink7",
+     "densityLabel": "7 ips",
+     "sinkIps": 7,
+     "head": 30,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 465,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 510,
+     "colors": [
+      "Clear/Gray/Trans. Green"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "sink7",
+     "densityLabel": "7 ips",
+     "sinkIps": 7,
+     "head": 30,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 510,
+     "colors": [
+      "Black"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-gold",
+   "name": "Elite Gold",
+   "series": "Elite",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 3,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Small Dry / Dry Dropper",
+   "secondaryUse": "Big Dry / Light Indicator",
+   "weightLabel": "Standard Weight / Standard Power",
+   "summary": "The long head and relatively light weight of the classic RIO GOLD compared to its XP and MAX counterparts make it our best all-around trout taper for carrying long lengths of line and making precise casts.",
+   "url": "https://farbank.com/products/rio-elite-rio-gold",
+   "sizes": [
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 126,
+     "headGrains": 175,
+     "colors": [
+      "Moss/Gold/Gray"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 47,
+     "total": 90,
+     "grains30": 146,
+     "headGrains": 208,
+     "colors": [
+      "Moss/Gold/Gray"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 168,
+     "headGrains": 234,
+     "colors": [
+      "Moss/Gold/Gray"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": 100,
+     "grains30": 193,
+     "headGrains": 270,
+     "colors": [
+      "Moss/Gold/Gray"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 218,
+     "headGrains": 310,
+     "colors": [
+      "Moss/Gold/Gray"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-flats-pro",
+   "name": "Elite Flats Pro",
+   "series": "Elite",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 4,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Bonefish / Permit / Tarpon",
+   "secondaryUse": "Long casts, accurate presentations",
+   "weightLabel": null,
+   "summary": "The very best flats line on the market-perfect for bones, perms, and poons.",
+   "url": "https://farbank.com/products/rio-rio-elite-flats-pro",
+   "sizes": [
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 475,
+     "colors": [
+      "Aqua/Orange/Sand",
+      "Gray/Sand/Kelp"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 475,
+     "colors": [
+      "Clear/Aqua/Orange/Sand"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 475,
+     "colors": [
+      "Clear/Trans Orange/Trans Aqua"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": 545,
+     "colors": [
+      "Aqua/Orange/Sand",
+      "Gray/Sand/Kelp"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": 545,
+     "colors": [
+      "Clear/Aqua/Orange/Sand"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": 545,
+     "colors": [
+      "Clear/Trans Orange/Trans Aqua"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 430,
+     "headGrains": 590,
+     "colors": [
+      "Aqua/Orange/Sand",
+      "Gray/Sand/Kelp"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 430,
+     "headGrains": 590,
+     "colors": [
+      "Clear/Aqua/Orange/Sand"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 430,
+     "headGrains": 590,
+     "colors": [
+      "Clear/Trans Orange/Trans Aqua"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": 265,
+     "colors": [
+      "Aqua/Orange/Sand",
+      "Gray/Sand/Kelp"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 48,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": 265,
+     "colors": [
+      "Clear/Aqua/Orange/Sand"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": 305,
+     "colors": [
+      "Aqua/Orange/Sand",
+      "Gray/Sand/Kelp"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 49,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": 305,
+     "colors": [
+      "Clear/Aqua/Orange/Sand"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 335,
+     "colors": [
+      "Aqua/Orange/Sand",
+      "Gray/Sand/Kelp"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 49,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 335,
+     "colors": [
+      "Clear/Aqua/Orange/Sand"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 49,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 335,
+     "colors": [
+      "Clear/Trans Orange/Trans Aqua"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 400,
+     "colors": [
+      "Aqua/Orange/Sand",
+      "Gray/Sand/Kelp"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 400,
+     "colors": [
+      "Clear/Aqua/Orange/Sand"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 400,
+     "colors": [
+      "Clear/Trans Orange/Trans Aqua"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-predator",
+   "name": "Elite Predator",
+   "series": "Elite",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 5,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Heavy Streamers / Freshwater",
+   "secondaryUse": "Bass / Large Flies",
+   "weightLabel": null,
+   "summary": "Designed to cast large, and heavy flies with low-stretch, ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-elite-predator",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 173,
+     "headGrains": 208,
+     "colors": [
+      "Olive/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 173,
+     "headGrains": 208,
+     "colors": [
+      "Gray/Camo/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "multi",
+     "densityLabel": "Float/2 ips/3 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 173,
+     "headGrains": 208,
+     "colors": [
+      "Black/Gray/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 238,
+     "colors": [
+      "Olive/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 238,
+     "colors": [
+      "Gray/Camo/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "Float/2 ips/3 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 238,
+     "colors": [
+      "Black/Gray/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 238,
+     "colors": [
+      "Black/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 270,
+     "colors": [
+      "Olive/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 270,
+     "colors": [
+      "Gray/Camo/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Float/2 ips/3 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 270,
+     "colors": [
+      "Black/Gray/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 270,
+     "colors": [
+      "Black/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Olive/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Gray/Camo/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/2 ips/3 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Black/Gray/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Black/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Olive/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Gray/Camo/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Float/2 ips/3 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Black/Gray/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Black/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 390,
+     "headGrains": 410,
+     "colors": [
+      "Olive/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 390,
+     "headGrains": 410,
+     "colors": [
+      "Gray/Camo/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Float/2 ips/3 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 390,
+     "headGrains": 410,
+     "colors": [
+      "Black/Gray/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 390,
+     "headGrains": 410,
+     "colors": [
+      "Black/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": 475,
+     "colors": [
+      "Olive/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": 475,
+     "colors": [
+      "Gray/Camo/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "multi",
+     "densityLabel": "Float/2 ips/3 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": 475,
+     "colors": [
+      "Black/Gray/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": 475,
+     "colors": [
+      "Black/Yellow/Beige"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-tropical-outbound-short",
+   "name": "Elite Tropical OutBound Short",
+   "series": "Elite",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 6,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Distance / Big Flies",
+   "secondaryUse": "Wind, blind casting in the tropics",
+   "weightLabel": null,
+   "summary": "Ultra powerful, easy casting line built for exceptionally long casts --with low-stretch, ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-elite-tropical-outbound-short",
+   "sizes": [
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Dark Sand/Blue"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Clear/Dark Sand/Blue"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Clear/Gray/Trans Blue"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Black/Trans Blue"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 465,
+     "colors": [
+      "Dark Sand/Blue"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 465,
+     "colors": [
+      "Clear/Dark Sand/Blue"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 465,
+     "colors": [
+      "Clear/Gray/Trans Blue"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 465,
+     "colors": [
+      "Black/Trans Blue"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 510,
+     "colors": [
+      "Dark Sand/Blue"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 510,
+     "colors": [
+      "Clear/Dark Sand/Blue"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 510,
+     "colors": [
+      "Clear/Gray/Trans Blue"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 510,
+     "colors": [
+      "Black/Trans Blue"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Dark Sand/Blue"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Clear/Dark Sand/Blue"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Clear/Gray/Trans Blue"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Black/Trans Blue"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Dark Sand/Blue"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Clear/Dark Sand/Blue"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Clear/Gray/Trans Blue"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Black/Trans Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-streamertip",
+   "name": "Premier StreamerTip",
+   "series": "Premier",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 7,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Trout Streamers / Boat",
+   "secondaryUse": "Trout Streamers / Wade",
+   "weightLabel": null,
+   "summary": "The ultimate range of sink tip lines for throwing streamers, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-streamer-tip",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 185,
+     "colors": [
+      "Clear/Yellow/Pale Green"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/6 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 185,
+     "colors": [
+      "Black/Yellow/Pale Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 210,
+     "colors": [
+      "Clear/Yellow/Pale Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/6 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 210,
+     "colors": [
+      "Black/Yellow/Pale Green"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 240,
+     "colors": [
+      "Clear/Yellow/Pale Green"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/6 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 240,
+     "colors": [
+      "Black/Yellow/Pale Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/2 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": [
+      "Clear/Yellow/Pale Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/6 ips",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": [
+      "Black/Yellow/Pale Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-24ft-sink-tip",
+   "name": "Premier 24ft Sink Tip",
+   "series": "Premier",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 8,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Trout Streamers / River",
+   "secondaryUse": "Trout Streamers / Lake",
+   "weightLabel": null,
+   "summary": "A floating line with a 24 ft sinking tip for streamers in rivers and lakes.",
+   "url": "https://farbank.com/products/rio-premier-24ft-sink-tip",
+   "sizes": [
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S8",
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": [
+      "Black/Teal"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S4",
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 150,
+     "colors": [
+      "Black/Blue"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S5",
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": [
+      "Black/Yellow"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S6",
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 250,
+     "colors": [
+      "Black/Orange"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S7",
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 300,
+     "colors": [
+      "Black/White"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S8",
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Black/Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-gold-xp",
+   "name": "Elite Gold XP",
+   "series": "Elite",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 9,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Dry Dropper / Light Indicator",
+   "secondaryUse": "Small Dry / Big Dry / Light Streamer",
+   "weightLabel": "½ Size Heavy",
+   "summary": "With a mid-length head and half-size heavy design, GOLD XP is the most versatile taper in the GOLD lineup.",
+   "url": "https://farbank.com/products/rio-elite-gold-xp",
+   "sizes": [
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40,
+     "total": 80,
+     "grains30": 110,
+     "headGrains": 148,
+     "colors": [
+      "Moss/Electric Green/Gray"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": 173,
+     "colors": [
+      "Moss/Electric Green/Gray"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": 200,
+     "colors": [
+      "Moss/Electric Green/Gray"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": 235,
+     "colors": [
+      "Moss/Electric Green/Gray"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 272,
+     "colors": [
+      "Moss/Electric Green/Gray"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 45,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": 304,
+     "colors": [
+      "Moss/Electric Green/Gray"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-bonefish",
+   "name": "Elite Bonefish",
+   "series": "Elite",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 10,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Bonefish",
+   "secondaryUse": "Precise presentations to spooky fish",
+   "weightLabel": null,
+   "summary": "Designed with a long head and back taper for precise presentations to spooky bones.",
+   "url": "https://farbank.com/products/rio-rio-elite-bonefish",
+   "sizes": [
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 46.5,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": 245,
+     "colors": [
+      "Sand/Orange/Blue",
+      "Yellow/Black/Aqua"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48.5,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 288,
+     "colors": [
+      "Sand/Orange/Blue",
+      "Yellow/Black/Aqua"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": 327,
+     "colors": [
+      "Sand/Orange/Blue",
+      "Yellow/Black/Aqua"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 100,
+     "grains30": 260,
+     "headGrains": 369,
+     "colors": [
+      "Sand/Orange/Blue",
+      "Yellow/Black/Aqua"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-striper",
+   "name": "Premier Striper",
+   "series": "Premier",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 11,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Striped Bass",
+   "secondaryUse": "Big flies, surf and boat",
+   "weightLabel": null,
+   "summary": "A complete series of fly lines developed for the striper angler, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-striper",
+   "sizes": [
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 380,
+     "colors": [
+      "Blue/Yellow"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 380,
+     "colors": [
+      "Clear/Lumalux-Green"
+     ]
+    },
+    {
+     "label": "250gr | 7/8 Wt",
+     "weights": [
+      7,
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/6.5 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 250,
+     "headGrains": 275,
+     "colors": [
+      "Black/Gray"
+     ]
+    },
+    {
+     "label": "300gr | 8/9 Wt",
+     "weights": [
+      8,
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/7.2 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 300,
+     "headGrains": 325,
+     "colors": [
+      "Black/Salmon"
+     ]
+    },
+    {
+     "label": "350gr | 9/10 Wt",
+     "weights": [
+      9,
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/8.2 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 350,
+     "headGrains": 375,
+     "colors": [
+      "Black/Blue"
+     ]
+    },
+    {
+     "label": "400gr | 10/11 Wt",
+     "weights": [
+      10,
+      11
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/8.5 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 400,
+     "headGrains": 430,
+     "colors": [
+      "Black/Yellow"
+     ]
+    },
+    {
+     "label": "450gr | 11/12 Wt",
+     "weights": [
+      11,
+      12
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/9.0 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": 480,
+     "colors": [
+      "Black/Tan"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": [
+      "Blue/Yellow"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": [
+      "Clear/Lumalux-Green"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Blue/Yellow"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Clear/Lumalux-Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-creek",
+   "name": "Premier Creek",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 12,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Small Dry / Tight Shots",
+   "secondaryUse": "Small Nymphs / Soft Hackles",
+   "weightLabel": null,
+   "summary": "Designed for anglers fishing small creeks and streams with a taper design that loads at close range, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-rio-creek",
+   "sizes": [
+    {
+     "label": "0wt",
+     "weights": [
+      0
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 65,
+     "grains30": null,
+     "headGrains": 66,
+     "colors": [
+      "Green/Yellow"
+     ]
+    },
+    {
+     "label": "1wt",
+     "weights": [
+      1
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 65,
+     "grains30": null,
+     "headGrains": 80,
+     "colors": [
+      "Green/Yellow"
+     ]
+    },
+    {
+     "label": "2wt",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 65,
+     "grains30": null,
+     "headGrains": 100,
+     "colors": [
+      "Green/Yellow"
+     ]
+    },
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 75,
+     "grains30": null,
+     "headGrains": 120,
+     "colors": [
+      "Green/Yellow"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 75,
+     "grains30": null,
+     "headGrains": 140,
+     "colors": [
+      "Green/Yellow"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 160,
+     "colors": [
+      "Green/Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-technical-trout",
+   "name": "Elite Technical Trout",
+   "series": "Elite",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 13,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Small Dry / Technical Casts",
+   "secondaryUse": "Emergers / Small Nymphs",
+   "weightLabel": null,
+   "summary": "Specfically designed for delicate presentations of small flies to technical feeders at range, with low-stretch, ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-elite-technical-trout",
+   "sizes": [
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 45,
+     "total": 80,
+     "grains30": 102,
+     "headGrains": 150,
+     "colors": [
+      "Sky Blue/Peach/Gray"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": 90,
+     "grains30": 122,
+     "headGrains": 190,
+     "colors": [
+      "Sky Blue/Peach/Gray"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 52,
+     "total": 90,
+     "grains30": 142,
+     "headGrains": 230,
+     "colors": [
+      "Sky Blue/Peach/Gray"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 54,
+     "total": 90,
+     "grains30": 162,
+     "headGrains": 265,
+     "colors": [
+      "Sky Blue/Peach/Gray"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-xtreme-indicator",
+   "name": "Elite Xtreme Indicator",
+   "series": "Elite",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 14,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Heavy Indicator / Boat Nymphing",
+   "secondaryUse": "Streamers",
+   "weightLabel": null,
+   "summary": "An incredibly advanced nymphing line, ideal for fishing indicators out of a boat.",
+   "url": "https://farbank.com/products/rio-elite-xtreme-indicator",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": 203,
+     "colors": [
+      "Orange/Moss/Yellow"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 215,
+     "headGrains": 230,
+     "colors": [
+      "Orange/Moss/Yellow"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 260,
+     "colors": [
+      "Orange/Moss/Yellow"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 300,
+     "colors": [
+      "Orange/Moss/Yellow"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 355,
+     "colors": [
+      "Orange/Moss/Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-fathom",
+   "name": "Premier Fathom",
+   "series": "Premier",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 15,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Full Sink / Lakes and Rivers",
+   "secondaryUse": "Uniform sink, straight-line contact",
+   "weightLabel": null,
+   "summary": "A full-sinking line with a uniform sink for straight-line contact in lakes and rivers.",
+   "url": "https://farbank.com/products/rio-premier-fathom",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sink3",
+     "densityLabel": "3 ips",
+     "sinkIps": 3,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 172,
+     "colors": [
+      "Black/Blue"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sink5",
+     "densityLabel": "5 ips",
+     "sinkIps": 5,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 172,
+     "colors": [
+      "Black/Maroon"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sink6",
+     "densityLabel": "6 ips",
+     "sinkIps": 6,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 172,
+     "colors": [
+      "Black/Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sink3",
+     "densityLabel": "3 ips",
+     "sinkIps": 3,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 198,
+     "colors": [
+      "Black/Blue"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sink5",
+     "densityLabel": "5 ips",
+     "sinkIps": 5,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 198,
+     "colors": [
+      "Black/Maroon"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sink6",
+     "densityLabel": "6 ips",
+     "sinkIps": 6,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 198,
+     "colors": [
+      "Black/Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sink7",
+     "densityLabel": "7 ips",
+     "sinkIps": 7,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 198,
+     "colors": [
+      "Black/Gray"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": "3 ips",
+     "sinkIps": 3,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": [
+      "Black/Blue"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sink5",
+     "densityLabel": "5 ips",
+     "sinkIps": 5,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": [
+      "Black/Maroon"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sink6",
+     "densityLabel": "6 ips",
+     "sinkIps": 6,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": [
+      "Black/Green"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sink7",
+     "densityLabel": "7 ips",
+     "sinkIps": 7,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": [
+      "Black/Gray"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": "3 ips",
+     "sinkIps": 3,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": [
+      "Black/Blue"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sink5",
+     "densityLabel": "5 ips",
+     "sinkIps": 5,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": [
+      "Black/Maroon"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sink6",
+     "densityLabel": "6 ips",
+     "sinkIps": 6,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": [
+      "Black/Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sink7",
+     "densityLabel": "7 ips",
+     "sinkIps": 7,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": [
+      "Black/Gray"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-permit",
+   "name": "Elite Permit",
+   "series": "Elite",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 16,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Permit",
+   "secondaryUse": "Heavy crab flies, delicate landings",
+   "weightLabel": null,
+   "summary": "The very best permit line on the market with low-stretch, ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-rio-elite-permit",
+   "sizes": [
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 316,
+     "headGrains": 488,
+     "colors": [
+      "Sand/Orange/Aqua Blue",
+      "Dark Sand/Camo/Light Sand"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 46,
+     "total": 100,
+     "grains30": 230,
+     "headGrains": 333,
+     "colors": [
+      "Sand/Orange/Aqua Blue",
+      "Dark Sand/Camo/Light Sand"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48,
+     "total": 100,
+     "grains30": 270,
+     "headGrains": 402,
+     "colors": [
+      "Sand/Orange/Aqua Blue",
+      "Dark Sand/Camo/Light Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-leviathan",
+   "name": "Elite Leviathan",
+   "series": "Elite",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 17,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Giant Tropical Species / Deep",
+   "secondaryUse": "Heavy sinking head",
+   "weightLabel": null,
+   "summary": "Designed to target the largest of tropical species with low stretch, and ultra slick performance.",
+   "url": "https://farbank.com/products/rio-elite-leviathan",
+   "sizes": [
+    {
+     "label": "10/11wt",
+     "weights": [
+      10,
+      11
+     ],
+     "density": "multi",
+     "densityLabel": "1.5/7.7 ips",
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": [
+      "Black/Trans Tan"
+     ]
+    },
+    {
+     "label": "12/13wt",
+     "weights": [
+      12,
+      13
+     ],
+     "density": "multi",
+     "densityLabel": "1.5/8.5 ips",
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": [
+      "Black/Trans Green"
+     ]
+    },
+    {
+     "label": "14-16wt",
+     "weights": [
+      14,
+      15,
+      16
+     ],
+     "density": "multi",
+     "densityLabel": "1.5/9.7 ips",
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 600,
+     "colors": [
+      "Black/Trans Yellow"
+     ]
+    },
+    {
+     "label": "15wt+",
+     "weights": [
+      15
+     ],
+     "density": "multi",
+     "densityLabel": "1.5/10.0 ips",
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 750,
+     "colors": [
+      "Black/Trans Orange"
+     ]
+    },
+    {
+     "label": "7/8wt",
+     "weights": [
+      7,
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "1.5/5.5 ips",
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 250,
+     "colors": [
+      "Black/Trans Gray"
+     ]
+    },
+    {
+     "label": "8/9wt",
+     "weights": [
+      8,
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "1.5/6.7 ips",
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 300,
+     "colors": [
+      "Black/Trans Salmon"
+     ]
+    },
+    {
+     "label": "9/10wt",
+     "weights": [
+      9,
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "1.5/7.2 ips",
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Black/Trans Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-warmwater-predator",
+   "name": "Elite Warmwater Predator",
+   "series": "Elite",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 18,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Bass / Jungle / Bulky Flies",
+   "secondaryUse": "Multi-density versions",
+   "weightLabel": null,
+   "summary": "Designed to cast large, heavy, wind-resistant flies in warmwater and jungle applications.",
+   "url": "https://farbank.com/products/rio-elite-warmwater-predator",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 238,
+     "colors": [
+      "Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF6F/H/I",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 238,
+     "colors": [
+      "Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF6F/I/S3",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 238,
+     "colors": [
+      "Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF6F/S5/S7",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 238,
+     "colors": [
+      "Clear/Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 270,
+     "colors": [
+      "Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 390,
+     "headGrains": 410,
+     "colors": [
+      "Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF7F/H/I",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 270,
+     "colors": [
+      "Clear/Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF7F/I/S3",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 270,
+     "colors": [
+      "Clear/Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF8F/H/I",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Clear/Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF8F/I/S3",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Clear/Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF9F/H/I",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Clear/Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF9F/I/S3",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Clear/Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF10F/H/I",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 390,
+     "headGrains": 410,
+     "colors": [
+      "Clear/Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF10F/I/S3",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 390,
+     "headGrains": 410,
+     "colors": [
+      "Clear/Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF7F/S5/S7",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 270,
+     "colors": [
+      "Black/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF8F/S5/S7",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Black/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF9F/S5/S7",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Black/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF10F/S5/S",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 390,
+     "headGrains": 410,
+     "colors": [
+      "Black/Yellow/Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-gold-xp",
+   "name": "Premier Gold XP",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 19,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Dry Dropper / Light Indicator",
+   "secondaryUse": "Small Dry / Big Dry / Light Streamer",
+   "weightLabel": "½ Size Heavy",
+   "summary": "With a mid-length head and half-size heavy design, GOLD XP is the most versatile taper in the GOLD lineup.",
+   "url": "https://farbank.com/products/rio-premier-gold-xp",
+   "sizes": [
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40,
+     "total": 80,
+     "grains30": 110,
+     "headGrains": 148,
+     "colors": [
+      "Moss/Electric Green"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": 173,
+     "colors": [
+      "Moss/Electric Green"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 42,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": 200,
+     "colors": [
+      "Moss/Electric Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 43,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": 235,
+     "colors": [
+      "Moss/Electric Green"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 44,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": 272,
+     "colors": [
+      "Moss/Electric Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 45,
+     "total": 90,
+     "grains30": 225,
+     "headGrains": 304,
+     "colors": [
+      "Moss/Electric Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-single-handed-spey",
+   "name": "Elite Single-Handed Spey",
+   "series": "Elite",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 20,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Single-Hand Swing / Streamers / Soft Hackles",
+   "secondaryUse": "Dry Fly",
+   "weightLabel": null,
+   "summary": "A line for roll and single-handed Spey casts with streamers and soft hackles.",
+   "url": "https://farbank.com/products/rio-elite-single-handed-spey",
+   "sizes": [
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 80,
+     "grains30": 137,
+     "headGrains": 150,
+     "colors": [
+      "Peach/Camo"
+     ]
+    },
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 33,
+     "total": 80,
+     "grains30": 137,
+     "headGrains": 150,
+     "colors": [
+      "Gray/Glacial/Peach/Camo"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 161,
+     "headGrains": 175,
+     "colors": [
+      "Peach/Camo"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 161,
+     "headGrains": 175,
+     "colors": [
+      "Gray/Glacial/Peach/Camo"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": 200,
+     "colors": [
+      "Peach/Camo"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": 200,
+     "colors": [
+      "Gray/Glacial/Peach/Camo"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 213,
+     "headGrains": 230,
+     "colors": [
+      "Peach/Camo"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 213,
+     "headGrains": 230,
+     "colors": [
+      "Gray/Glacial/Peach/Camo"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 241,
+     "headGrains": 260,
+     "colors": [
+      "Peach/Camo"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 241,
+     "headGrains": 260,
+     "colors": [
+      "Gray/Glacial/Peach/Camo"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 279,
+     "headGrains": 300,
+     "colors": [
+      "Peach/Camo"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/1 ips/2 ips",
+     "sinkIps": null,
+     "head": 33,
+     "total": 90,
+     "grains30": 279,
+     "headGrains": 300,
+     "colors": [
+      "Gray/Glacial/Peach/Camo"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-indicator",
+   "name": "Elite Indicator",
+   "series": "Elite",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 21,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Heavy Indicator / Easy Mending",
+   "secondaryUse": "Streamers",
+   "weightLabel": null,
+   "summary": "Designed to turnover a wide range of indicators and fly sizes for long casts, efficient mends, and big dead drifts.",
+   "url": "https://farbank.com/products/rio-elite-indicator",
+   "sizes": [
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": 245,
+     "colors": [
+      "White/Red/Gray"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": 295,
+     "colors": [
+      "White/Red/Gray"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 52,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": 340,
+     "colors": [
+      "White/Red/Gray"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 54,
+     "total": 100,
+     "grains30": 235,
+     "headGrains": 400,
+     "colors": [
+      "White/Red/Gray"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 56,
+     "total": 100,
+     "grains30": 270,
+     "headGrains": 475,
+     "colors": [
+      "White/Red/Gray"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-mainstream-trout-wf",
+   "name": "Mainstream Trout WF",
+   "series": "Mainstream",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 22,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 49.99,
+   "priceNote": null,
+   "primaryUse": "Dry / Indicator",
+   "secondaryUse": "Light Streamer",
+   "weightLabel": null,
+   "summary": "Targeted to the overall needs of the average fly fisher.",
+   "url": "https://farbank.com/products/rio-mainstream-trout-wf",
+   "sizes": [
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 80,
+     "grains30": 120,
+     "headGrains": 141,
+     "colors": [
+      "Lemon Green"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 37,
+     "total": 80,
+     "grains30": 140,
+     "headGrains": 165,
+     "colors": [
+      "Lemon Green"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 38,
+     "total": 80,
+     "grains30": 160,
+     "headGrains": 195,
+     "colors": [
+      "Lemon Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 39,
+     "total": 80,
+     "grains30": 185,
+     "headGrains": 230,
+     "colors": [
+      "Lemon Green"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40,
+     "total": 80,
+     "grains30": 210,
+     "headGrains": 280,
+     "colors": [
+      "Lemon Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 41,
+     "total": 80,
+     "grains30": 240,
+     "headGrains": 310,
+     "colors": [
+      "Lemon Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-tarpon",
+   "name": "Elite Tarpon",
+   "series": "Elite",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 23,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Tarpon",
+   "secondaryUse": "Quick, accurate shots",
+   "weightLabel": null,
+   "summary": "The very best tarpon line on the market with low stretch, ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-rio-elite-tarpon",
+   "sizes": [
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 38,
+     "total": 100,
+     "grains30": 230,
+     "headGrains": 285,
+     "colors": [
+      "Seagrass/Orange/Sand"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 100,
+     "grains30": 270,
+     "headGrains": 330,
+     "colors": [
+      "Seagrass/Orange/Sand"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40.5,
+     "total": 100,
+     "grains30": 316,
+     "headGrains": 385,
+     "colors": [
+      "Seagrass/Orange/Sand"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40.5,
+     "total": 100,
+     "grains30": 367,
+     "headGrains": 430,
+     "colors": [
+      "Seagrass/Orange/Sand"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40.5,
+     "total": 100,
+     "grains30": 428,
+     "headGrains": 510,
+     "colors": [
+      "Seagrass/Orange/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-tarpon-clear-tip-floater",
+   "name": "Premier Tarpon Clear Tip Floater",
+   "series": "Premier",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 24,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Tarpon / Stealth",
+   "secondaryUse": "10 ft clear tip",
+   "weightLabel": null,
+   "summary": "A floating tarpon line with a 10 ft clear tip for stealthy presentations and shorter leaders.",
+   "url": "https://farbank.com/products/rio-premier-tarpon-clear-tip-floater",
+   "sizes": [
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40.5,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 385,
+     "colors": [
+      "Clear/Seafoam/Sand"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40.5,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 430,
+     "colors": [
+      "Clear/Seafoam/Sand"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40.5,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 510,
+     "colors": [
+      "Clear/Seafoam/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-flats-clear-floater",
+   "name": "Premier Flats Clear Floater",
+   "series": "Premier",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 25,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Flats / Stealth",
+   "secondaryUse": "Full clear or clear tip",
+   "weightLabel": null,
+   "summary": "The ultimate full clear and clear tip floating line for anglers making stealthy presentations to wary saltwater flats fish.",
+   "url": "https://farbank.com/products/rio-premier-flats-clear-fly-line",
+   "sizes": [
+    {
+     "label": "7",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": 305,
+     "colors": [
+      "Clear",
+      "Clear/Sand/Blue"
+     ]
+    },
+    {
+     "label": "8",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 335,
+     "colors": [
+      "Clear/Sand/Blue",
+      "Clear"
+     ]
+    },
+    {
+     "label": "9",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 400,
+     "colors": [
+      "Clear/Sand/Blue",
+      "Clear"
+     ]
+    },
+    {
+     "label": "10",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 475,
+     "colors": [
+      "Clear/Sand/Blue",
+      "Clear"
+     ]
+    },
+    {
+     "label": "11",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": 545,
+     "colors": [
+      "Clear",
+      "Clear/Sand/Blue"
+     ]
+    },
+    {
+     "label": "12",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 430,
+     "headGrains": 590,
+     "colors": [
+      "Clear",
+      "Clear/Sand/Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-bonefish-quickshooter",
+   "name": "Premier Bonefish Quickshooter",
+   "series": "Premier",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 26,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Bonefish / Wading",
+   "secondaryUse": "Short head, fast loading for new anglers",
+   "weightLabel": null,
+   "summary": "The perfect choice of line for novice bonefish anglers, and for anglers wading flats, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-bonefish-quickshooter",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 34.5,
+     "total": 90,
+     "grains30": 175,
+     "headGrains": 185,
+     "colors": [
+      "Aqua Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 34.5,
+     "total": 90,
+     "grains30": 200,
+     "headGrains": 210,
+     "colors": [
+      "Aqua Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35.5,
+     "total": 90,
+     "grains30": 215,
+     "headGrains": 240,
+     "colors": [
+      "Aqua Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35.5,
+     "total": 100,
+     "grains30": 260,
+     "headGrains": 290,
+     "colors": [
+      "Aqua Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35.5,
+     "total": 100,
+     "grains30": 300,
+     "headGrains": 330,
+     "colors": [
+      "Aqua Blue/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-fips-euro-nymph",
+   "name": "FIPS Euro Nymph",
+   "series": null,
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 27,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 59.99,
+   "priceNote": null,
+   "primaryUse": "Euro Nymphing / Tight Line Control",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": null,
+   "url": "https://farbank.com/products/rio-fips-euro-nymph",
+   "sizes": [
+    {
+     "label": "2-5 wt",
+     "weights": [
+      2,
+      3,
+      4,
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Orange / Sage / Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-outbound-short-shooting-head",
+   "name": "OutBound Short Shooting Head",
+   "series": null,
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 28,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 59.99,
+   "priceNote": null,
+   "primaryUse": "Distance / Big Flies",
+   "secondaryUse": "Shooting head; needs a running line",
+   "weightLabel": null,
+   "summary": "Powerful, easy casting shooting heads that make long distance casts simple.",
+   "url": "https://farbank.com/products/rio-outbound-short-shooting-head",
+   "sizes": [
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Moss"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "sink4",
+     "densityLabel": "3–4 ips",
+     "sinkIps": 4,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "sink7",
+     "densityLabel": "6–7 ips",
+     "sinkIps": 7,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Moss"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sink4",
+     "densityLabel": "3–4 ips",
+     "sinkIps": 4,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sink7",
+     "densityLabel": "6–7 ips",
+     "sinkIps": 7,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 265,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Moss"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sink4",
+     "densityLabel": "3–4 ips",
+     "sinkIps": 4,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sink7",
+     "densityLabel": "6–7 ips",
+     "sinkIps": 7,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Moss"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "sink4",
+     "densityLabel": "3–4 ips",
+     "sinkIps": 4,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "sink7",
+     "densityLabel": "6–7 ips",
+     "sinkIps": 7,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Black"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-gold-max",
+   "name": "Elite Gold Max",
+   "series": "Elite",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 29,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Heavy Indicator / Big Dry",
+   "secondaryUse": "Streamer / Dry Dropper / Light Indicator",
+   "weightLabel": "Rear Loaded / Full Size Heavy",
+   "summary": "At a full line-size heavy, GOLD MAX is RIO’s most powerful all-around taper for delivering plus-size rigs that get bites in fisheries not centered around long leaders and tiny drys.",
+   "url": "https://farbank.com/products/rio-elite-gold-max",
+   "sizes": [
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": 175,
+     "colors": [
+      "Mint/Green/Blaze Orange",
+      "Camo"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": 205,
+     "colors": [
+      "Mint/Green/Blaze Orange",
+      "Camo"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": 240,
+     "colors": [
+      "Mint/Green/Blaze Orange",
+      "Camo"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": 280,
+     "colors": [
+      "Mint/Green/Blaze Orange",
+      "Camo"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 330,
+     "colors": [
+      "Mint/Green/Blaze Orange",
+      "Camo"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 41,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 390,
+     "colors": [
+      "Mint/Green/Blaze Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-gt",
+   "name": "Elite GT",
+   "series": "Elite",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 30,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 149.99,
+   "priceNote": null,
+   "primaryUse": "Giant Trevally",
+   "secondaryUse": "Huge flies, heavy rods",
+   "weightLabel": null,
+   "summary": "The perfect line for chasing GT's with low-stretch, ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-rio-elite-gt",
+   "sizes": [
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 375,
+     "headGrains": 425,
+     "colors": [
+      "Blue/Orange/Sea Grass"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 415,
+     "headGrains": 465,
+     "colors": [
+      "Blue/Orange/Sea Grass"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 455,
+     "headGrains": 510,
+     "colors": [
+      "Blue/Orange/Sea Grass"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-technical-trout-wf",
+   "name": "Premier Technical Trout WF",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 31,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Small Dry / Technical Casts",
+   "secondaryUse": "Small Nymphs / Dry Dropper",
+   "weightLabel": null,
+   "summary": "Specfically designed for delicate presentations of small flies to technical feeders at range with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-technical-trout-wf",
+   "sizes": [
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 45,
+     "total": 80,
+     "grains30": 102,
+     "headGrains": 150,
+     "colors": [
+      "Sky Blue/Peach"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": 90,
+     "grains30": 122,
+     "headGrains": 190,
+     "colors": [
+      "Sky Blue/Peach"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 52,
+     "total": 90,
+     "grains30": 142,
+     "headGrains": 230,
+     "colors": [
+      "Sky Blue/Peach"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 54,
+     "total": 90,
+     "grains30": 162,
+     "headGrains": 265,
+     "colors": [
+      "Sky Blue/Peach"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-salmon-steelhead",
+   "name": "Elite Salmon/Steelhead",
+   "series": "Elite",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 32,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Single-Hand Swing / Streamers",
+   "secondaryUse": "Dry Fly",
+   "weightLabel": null,
+   "summary": "Specifically designed for the demands of the steelhead and salmon fly fisher.",
+   "url": "https://farbank.com/products/rio-elite-salmon-steelhead",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 52,
+     "total": 100,
+     "grains30": 160,
+     "headGrains": 275,
+     "colors": [
+      "Moss/Yellow"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 52,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": 310,
+     "colors": [
+      "Moss/Yellow"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 52,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": 355,
+     "colors": [
+      "Moss/Yellow"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 52,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 400,
+     "colors": [
+      "Moss/Yellow"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 52,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 450,
+     "colors": [
+      "Moss/Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-mainstream-trout-sink",
+   "name": "Mainstream Trout Sink",
+   "series": "Mainstream",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 33,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 49.99,
+   "priceNote": null,
+   "primaryUse": "Trout Streamers / River",
+   "secondaryUse": "Trout Streamers / Lake",
+   "weightLabel": null,
+   "summary": null,
+   "url": "https://farbank.com/products/rio-mainstream",
+   "sizes": [
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "sink4",
+     "densityLabel": "3–4 ips",
+     "sinkIps": 4,
+     "head": 38,
+     "total": 80,
+     "grains30": 133,
+     "headGrains": null,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "sink7",
+     "densityLabel": "6–7 ips",
+     "sinkIps": 7,
+     "head": 38,
+     "total": 80,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/3 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 80,
+     "grains30": 133,
+     "headGrains": null,
+     "colors": [
+      "Brown/Lemon Green"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 37,
+     "total": 80,
+     "grains30": 133,
+     "headGrains": 164,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sink4",
+     "densityLabel": "3–4 ips",
+     "sinkIps": 4,
+     "head": 38,
+     "total": 80,
+     "grains30": 155,
+     "headGrains": null,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sink7",
+     "densityLabel": "6–7 ips",
+     "sinkIps": 7,
+     "head": 38,
+     "total": 80,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/3 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 80,
+     "grains30": 155,
+     "headGrains": null,
+     "colors": [
+      "Brown/Lemon Green"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 38,
+     "total": 80,
+     "grains30": 155,
+     "headGrains": 185,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sink4",
+     "densityLabel": "3–4 ips",
+     "sinkIps": 4,
+     "head": 40,
+     "total": 80,
+     "grains30": 178,
+     "headGrains": null,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sink7",
+     "densityLabel": "6–7 ips",
+     "sinkIps": 7,
+     "head": 40,
+     "total": 80,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/3 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 80,
+     "grains30": 178,
+     "headGrains": null,
+     "colors": [
+      "Brown/Lemon Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 39,
+     "total": 80,
+     "grains30": 228,
+     "headGrains": 178,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sink4",
+     "densityLabel": "3–4 ips",
+     "sinkIps": 4,
+     "head": 42,
+     "total": 80,
+     "grains30": 204,
+     "headGrains": null,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sink7",
+     "densityLabel": "6–7 ips",
+     "sinkIps": 7,
+     "head": 42,
+     "total": 80,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/3 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 80,
+     "grains30": 204,
+     "headGrains": null,
+     "colors": [
+      "Brown/Lemon Green"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 40,
+     "total": 80,
+     "grains30": 204,
+     "headGrains": 280,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sink4",
+     "densityLabel": "3–4 ips",
+     "sinkIps": 4,
+     "head": 42,
+     "total": 80,
+     "grains30": 231,
+     "headGrains": null,
+     "colors": [
+      "Brown"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sink7",
+     "densityLabel": "6–7 ips",
+     "sinkIps": 7,
+     "head": 42,
+     "total": 80,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": [
+      "Black"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/3 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 80,
+     "grains30": 231,
+     "headGrains": null,
+     "colors": [
+      "Brown/Lemon Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 41,
+     "total": 80,
+     "grains30": 225,
+     "headGrains": 315,
+     "colors": [
+      "Clear"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-redfish",
+   "name": "Premier Redfish",
+   "series": "Premier",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 34,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Redfish",
+   "secondaryUse": "Quick shots, warm water",
+   "weightLabel": null,
+   "summary": "A floating line for quick shots at redfish in warm water.",
+   "url": "https://farbank.com/products/rio-premier-redfish",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": 240,
+     "colors": [
+      "Aqua Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 37,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 275,
+     "colors": [
+      "Aqua Blue/Sand"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 37,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 330,
+     "colors": [
+      "Aqua Blue/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-redfish-xp",
+   "name": "Premier Redfish XP",
+   "series": "Premier",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 35,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Redfish / Heavy Flies",
+   "secondaryUse": "Extra weight for wind",
+   "weightLabel": null,
+   "summary": "The Redfish line made heavier, for bigger flies and wind.",
+   "url": "https://farbank.com/products/rio-premier-redfish-xp",
+   "sizes": [
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": 430,
+     "colors": [
+      "Gray/Orange"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 320,
+     "colors": [
+      "Gray/Orange"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Gray/Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-bank-robber",
+   "name": "Premier Bank Robber",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 36,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Large Terrestrial Dry Flies / Foam",
+   "secondaryUse": "Dry Dropper / Nymphs",
+   "weightLabel": null,
+   "summary": "The ultimate fly line for presenting terrestrials and stoneflies close to bankside cover.",
+   "url": "https://farbank.com/products/rio-premier-bank-robber",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 45,
+     "total": 90,
+     "grains30": 177,
+     "headGrains": 265,
+     "colors": [
+      "Tan/Lt Green/Tan"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 45,
+     "total": 90,
+     "grains30": 203,
+     "headGrains": 305,
+     "colors": [
+      "Tan/Lt Green/Tan"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-technical-euro-nymph",
+   "name": "Premier Technical Euro Nymph",
+   "series": "Premier",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 37,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 74.99,
+   "priceNote": null,
+   "primaryUse": "Euro Nymphing / Line Sensitivity",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": null,
+   "url": "https://farbank.com/products/rio-technical-euro-nymph-line",
+   "sizes": [
+    {
+     "label": "2-5wt",
+     "weights": [
+      2,
+      3,
+      4,
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Yellow/Pink"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-technical-trout-dt",
+   "name": "Premier Technical Trout DT",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 38,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Small Dry / Technical Casts",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Specfically designed for delicate presentations of small flies to technical feeders at range with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-technical-trout-dt",
+   "sizes": [
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 80,
+     "total": 80,
+     "grains30": 100,
+     "headGrains": 280,
+     "colors": [
+      "Sky Blue/Peach"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 80,
+     "total": 80,
+     "grains30": 120,
+     "headGrains": 330,
+     "colors": [
+      "Sky Blue/Peach"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 90,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": 440,
+     "colors": [
+      "Sky Blue/Peach"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 90,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": 495,
+     "colors": [
+      "Sky Blue/Peach"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-smallmouth-bass",
+   "name": "Elite Smallmouth Bass",
+   "series": "Elite",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 39,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Smallmouth Bass",
+   "secondaryUse": "Precise casts with bass flies",
+   "weightLabel": null,
+   "summary": "Powerful front taper to easily cast typical bass flies.",
+   "url": "https://farbank.com/products/rio-elite-smallmouth-bass",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35.5,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": 200,
+     "colors": [
+      "Moss/Chartreuse/Beige"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 37,
+     "total": 100,
+     "grains30": 197,
+     "headGrains": 240,
+     "colors": [
+      "Moss/Chartreuse/Beige"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 38,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": 280,
+     "colors": [
+      "Moss/Chartreuse/Beige"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-gold-max",
+   "name": "Premier Gold Max",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 40,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Heavy Indicator / Big Dry",
+   "secondaryUse": "Streamer / Dry Dropper / Light Indicator",
+   "weightLabel": "Rear Loaded / Full Size Heavy",
+   "summary": "At a full line-size heavy, GOLD MAX is RIO’s most powerful all-around taper for delivering plus-size rigs that get bites in fisheries not centered around long leaders and tiny drys.",
+   "url": "https://farbank.com/products/rio-premier-gold-max",
+   "sizes": [
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": 175,
+     "colors": [
+      "Mint/Blaze Orange"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": 205,
+     "colors": [
+      "Mint/Blaze Orange"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": 240,
+     "colors": [
+      "Mint/Blaze Orange"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": 280,
+     "colors": [
+      "Mint/Blaze Orange"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 240,
+     "headGrains": 330,
+     "colors": [
+      "Mint/Blaze Orange"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 41,
+     "total": 90,
+     "grains30": 280,
+     "headGrains": 390,
+     "colors": [
+      "Mint/Blaze Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-coastal-quickshooter-xp",
+   "name": "Premier Coastal Quickshooter XP",
+   "series": "Premier",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 41,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Coastal Saltwater / Cool Water",
+   "secondaryUse": "Intermediate, short powerful head",
+   "weightLabel": null,
+   "summary": "Designed for the coastal saltwater angler fishing in cooler conditions.",
+   "url": "https://farbank.com/products/rio-premier-coastal-quickshooter-xp",
+   "sizes": [
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Clear/Purple"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 33,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Clear/Purple"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 33,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Clear/Purple"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-bonefish",
+   "name": "Premier Bonefish",
+   "series": "Premier",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 42,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Bonefish / Flats",
+   "secondaryUse": "Easy loading, good turnover",
+   "weightLabel": null,
+   "summary": "The perfect line for anglers targeting bonefish and other flats species, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-bonefish",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 46.5,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": 245,
+     "colors": [
+      "Sand/Blue"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48.5,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": 288,
+     "colors": [
+      "Sand/Blue"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": 327,
+     "colors": [
+      "Sand/Blue"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 100,
+     "grains30": 260,
+     "headGrains": 369,
+     "colors": [
+      "Sand/Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-lightline-double-taper",
+   "name": "Premier LightLine Double Taper",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 43,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Creeks / Soft Action Rods",
+   "secondaryUse": "Double taper for bamboo and glass",
+   "weightLabel": null,
+   "summary": "A double taper line designed for slower action rods - especially bamboo, glass and classic action graphite rods, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-lightline-dt",
+   "sizes": [
+    {
+     "label": "000wt",
+     "weights": [
+      0
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 70,
+     "total": 70,
+     "grains30": 40,
+     "headGrains": 100,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "00wt",
+     "weights": [
+      0
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 70,
+     "total": 70,
+     "grains30": 50,
+     "headGrains": 115,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "0wt",
+     "weights": [
+      0
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 70,
+     "total": 70,
+     "grains30": 58,
+     "headGrains": 150,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "1wt",
+     "weights": [
+      1
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 70,
+     "total": 70,
+     "grains30": 66,
+     "headGrains": 175,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "2wt",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 70,
+     "total": 70,
+     "grains30": 80,
+     "headGrains": 205,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 70,
+     "total": 70,
+     "grains30": 100,
+     "headGrains": 255,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 80,
+     "total": 80,
+     "grains30": 120,
+     "headGrains": 350,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 80,
+     "total": 80,
+     "grains30": 140,
+     "headGrains": 400,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-sub-surface-camolux",
+   "name": "Elite Sub-Surface - CamoLux",
+   "series": "Elite",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 44,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Lakes / Stealth",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": null,
+   "url": "https://farbank.com/products/rio-elite-camolux",
+   "sizes": [
+    {
+     "label": "WF4I",
+     "weights": [
+      4
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 160,
+     "colors": [
+      "Camo/Dark Green"
+     ]
+    },
+    {
+     "label": "WF5I",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 185,
+     "colors": [
+      "Camo/Dark Green"
+     ]
+    },
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 210,
+     "colors": [
+      "Camo/Dark Green"
+     ]
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 240,
+     "colors": [
+      "Camo/Dark Green"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": [
+      "Camo/Dark Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-aqualux",
+   "name": "Premier AquaLux",
+   "series": "Premier",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 45,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Lake / Leeches / Chironomids",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "An intermediate sinking line with a completely clear head—essential for all lake anglers, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-aqualux",
+   "sizes": [
+    {
+     "label": "WF4I",
+     "weights": [
+      4
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 160,
+     "colors": [
+      "Clear/Translucent Green"
+     ]
+    },
+    {
+     "label": "WF5I",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 185,
+     "colors": [
+      "Clear/Translucent Green"
+     ]
+    },
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 210,
+     "colors": [
+      "Clear/Translucent Green"
+     ]
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 240,
+     "colors": [
+      "Clear/Translucent Green"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": [
+      "Clear/Translucent Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-outbound-custom",
+   "name": "Premier OutBound Custom",
+   "series": "Premier",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 46,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Depth Control / Big Flies",
+   "secondaryUse": "Cut the tip to length",
+   "weightLabel": null,
+   "summary": "Adaptable fast-sinking line designed to cast big flies, and get easy distance, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-outbound-custom",
+   "sizes": [
+    {
+     "label": "8-10wt",
+     "weights": [
+      8,
+      9,
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/8 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 385,
+     "colors": [
+      "Black/Trans. Blue"
+     ]
+    },
+    {
+     "label": "10-12wt",
+     "weights": [
+      10,
+      11,
+      12
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/9 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": 420,
+     "headGrains": 490,
+     "colors": [
+      "Black/Trans. Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-avid-trout-gold",
+   "name": "Avid Trout Gold",
+   "series": "Avid",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 47,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 69.99,
+   "priceNote": null,
+   "primaryUse": "Small Dry / Dry Dropper",
+   "secondaryUse": "Big Dry / Light Indicator",
+   "weightLabel": null,
+   "summary": "Developed with tapers and technology that enhance the fly fishing experience, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rios-avid-trout-gold",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 45,
+     "total": 70,
+     "grains30": null,
+     "headGrains": 106,
+     "colors": [
+      "Gold"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 46,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 126,
+     "colors": [
+      "Gold"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 47,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 146,
+     "colors": [
+      "Gold"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 168,
+     "colors": [
+      "Gold"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": 80,
+     "grains30": 193,
+     "headGrains": 270,
+     "colors": [
+      "Gold"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-ambassador-series-lake-chucker",
+   "name": "Ambassador Series - Lake Chucker",
+   "series": "Ambassador",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 48,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Lake / Indicator",
+   "secondaryUse": "Lake Streamer",
+   "weightLabel": null,
+   "summary": "Switch style lake line with fully-integrated tip for effortless roll casts, maximized distance, and increased mending efficiency with big floating indicator rigs.",
+   "url": "https://farbank.com/products/rio-ambassador-series-pyramid-fly-co-fly",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 580,
+     "colors": [
+      "Gray/Orange/Green"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 630,
+     "colors": [
+      "Gray/Orange/Green"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 680,
+     "colors": [
+      "Gray/Orange/Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-cleansweep",
+   "name": "Premier CleanSweep",
+   "series": "Premier",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 49,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Sweep-Style Lake Fishing",
+   "secondaryUse": "Triple-density sinking",
+   "weightLabel": null,
+   "summary": "A complete series of sweep style sinking lines designed for easy distance, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-clean-sweep",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "multi",
+     "densityLabel": "1.5 ips/4 ips/2 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 172,
+     "colors": [
+      "Clear/Black/Light Aqua"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "1.5 ips/4 ips/2 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 198,
+     "colors": [
+      "Clear/Black/Light Aqua"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "1.5 ips/6 ips/4 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 198,
+     "colors": [
+      "Clear/Black/Dark Aqua"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "1.5 ips/4 ips/2 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": [
+      "Clear/Black/Light Aqua"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "1.5 ips/6 ips/4 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": [
+      "Clear/Black/Dark Aqua"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "1.5 ips/4 ips/2 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": [
+      "Clear/Black/Light Aqua"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "1.5 ips/6 ips/4 ips",
+     "sinkIps": null,
+     "head": 35,
+     "total": 105,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": [
+      "Clear/Black/Dark Aqua"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-stillwater-floater",
+   "name": "Elite Stillwater Floater",
+   "series": "Elite",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 50,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Lakes / Multi-Fly Rigs",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": null,
+   "url": "https://farbank.com/products/rio-elite-stillwater-floater",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": 280,
+     "colors": [
+      "Orange/Green/Yellow"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": 320,
+     "colors": [
+      "Orange/Green/Yellow"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 365,
+     "colors": [
+      "Orange/Green/Yellow"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50.5,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 420,
+     "colors": [
+      "Orange/Green/Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-mainstream-saltwater",
+   "name": "Mainstream Saltwater",
+   "series": "Mainstream",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 51,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 49.99,
+   "priceNote": null,
+   "primaryUse": "Saltwater / Value",
+   "secondaryUse": "Slightly heavy, easy casting",
+   "weightLabel": null,
+   "summary": "Targeted to the overall needs of the average fly fisher.",
+   "url": "https://farbank.com/products/rio-mainstream-saltwater",
+   "sizes": [
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 80,
+     "grains30": 305,
+     "headGrains": 354,
+     "colors": [
+      "Blue"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 37,
+     "total": 80,
+     "grains30": 355,
+     "headGrains": 416,
+     "colors": [
+      "Blue"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 38,
+     "total": 80,
+     "grains30": 415,
+     "headGrains": 532,
+     "colors": [
+      "Blue"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 80,
+     "grains30": 197,
+     "headGrains": 218,
+     "colors": [
+      "Blue"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 80,
+     "grains30": 225,
+     "headGrains": 244,
+     "colors": [
+      "Blue"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 80,
+     "grains30": 260,
+     "headGrains": 330,
+     "colors": [
+      "Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-euro-nymph-shorty",
+   "name": "Euro Nymph Shorty",
+   "series": null,
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 52,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 29.99,
+   "priceNote": null,
+   "primaryUse": "Euro Nymphing",
+   "secondaryUse": "Short section to convert a regular line",
+   "weightLabel": null,
+   "summary": "A short euro-nymphing section that converts a regular fly line for euro nymphing.",
+   "url": "https://farbank.com/products/rio-euro-nymph-shorty",
+   "sizes": [
+    {
+     "label": "2-5wt",
+     "weights": [
+      2,
+      3,
+      4,
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": null,
+     "total": 20,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Orange / Sage / Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-lightline",
+   "name": "Premier LightLine",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 53,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Creeks / Soft Action Rods",
+   "secondaryUse": "Bamboo and glass rods",
+   "weightLabel": null,
+   "summary": "Designed for slower action rods - especially bamboo, glass and classic action graphite rods, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-lightline",
+   "sizes": [
+    {
+     "label": "2wt",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40,
+     "total": 70,
+     "grains30": 80,
+     "headGrains": 125,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 41,
+     "total": 70,
+     "grains30": 100,
+     "headGrains": 145,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 41,
+     "total": 80,
+     "grains30": 120,
+     "headGrains": 175,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 42,
+     "total": 80,
+     "grains30": 140,
+     "headGrains": 205,
+     "colors": [
+      "Moss/Ivory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-ambassador-series-blitz",
+   "name": "Ambassador Series - Blitz",
+   "series": "Ambassador",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 54,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Big Flies / Fast Fish",
+   "secondaryUse": "Wind-cutting, few false casts",
+   "weightLabel": null,
+   "summary": "Deliver big flies quickly to powerful, fast-moving fish with wind-cutting efficiency and minimal false casts Unique 26-foot short head taper keeps false casts to a minimum.",
+   "url": "https://farbank.com/products/rio-ambassador-series-brian-sarah-fly-line",
+   "sizes": [
+    {
+     "label": "8WT",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "F/H/I",
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 310,
+     "colors": [
+      "Clear/Seafoam/Sand"
+     ]
+    },
+    {
+     "label": "9WT",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "F/H/I",
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Clear/Seafoam/Sand"
+     ]
+    },
+    {
+     "label": "10WT",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "F/H/I",
+     "sinkIps": null,
+     "head": 26,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": [
+      "Clear/Seafoam/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-tarpon-quickshooter",
+   "name": "Premier Tarpon Quickshooter",
+   "series": "Premier",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 55,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Tarpon",
+   "secondaryUse": "Short, powerful head for quick shots",
+   "weightLabel": null,
+   "summary": "A very easy casting, tropical fly line, designed for the tarpon angler, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-tarpon-quickshooter",
+   "sizes": [
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 375,
+     "colors": [
+      "Camo/Ivory"
+     ]
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 425,
+     "colors": [
+      "Camo/Ivory"
+     ]
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 465,
+     "colors": [
+      "Camo/Ivory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-ambassador-series-phil-rowley-lake",
+   "name": "Ambassador Series - Phil Rowley Lake",
+   "series": "Ambassador",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 56,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 109.99,
+   "priceNote": null,
+   "primaryUse": "Lake / Long Leaders",
+   "secondaryUse": "Integrated tippet ring",
+   "weightLabel": null,
+   "summary": "Phil Rowley’s lake lines with an integrated tippet ring, in floating, midge tip, hover and intermediate versions.",
+   "url": "https://farbank.com/products/rio-phil-rowley-fly-line",
+   "sizes": [
+    {
+     "label": "WF7",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 365,
+     "colors": [
+      "Orange/Green/Yellow"
+     ]
+    },
+    {
+     "label": "WF6",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 90,
+     "grains30": 210,
+     "headGrains": 320,
+     "colors": [
+      "Orange/Green/Yellow"
+     ]
+    },
+    {
+     "label": "WF6",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 100,
+     "grains30": 168,
+     "headGrains": 210,
+     "colors": [
+      "Clear/Translucent Green"
+     ]
+    },
+    {
+     "label": "WF7",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": "1.5–2 ips",
+     "sinkIps": 2,
+     "head": 30,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": 240,
+     "colors": [
+      "Clear/Translucent Green"
+     ]
+    },
+    {
+     "label": "WF6",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 168,
+     "headGrains": 220,
+     "colors": [
+      "Clear/Yellow/Beige",
+      "Clear/Melon/Beige"
+     ]
+    },
+    {
+     "label": "WF6",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.0 ips",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 168,
+     "headGrains": 220,
+     "colors": [
+      "Gray/Yellow/Beige",
+      "Gray/Melon/Beige"
+     ]
+    },
+    {
+     "label": "WF7",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 42,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": 260,
+     "colors": [
+      "Clear/Yellow/Beige",
+      "Clear/Melon/Beige"
+     ]
+    },
+    {
+     "label": "WF7",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.0 ips",
+     "sinkIps": null,
+     "head": 42,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": 260,
+     "colors": [
+      "Gray/Yellow/Beige",
+      "Gray/Melon/Beige"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-sub-surface-hover",
+   "name": "Elite Sub-Surface - Hover",
+   "series": "Elite",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 57,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Lake / Ultra-Slow Sink",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": null,
+   "url": "https://farbank.com/products/rio-elite-subsurface-hover",
+   "sizes": [
+    {
+     "label": "WF5S1",
+     "weights": [
+      5
+     ],
+     "density": "hover",
+     "densityLabel": "1.0 ips",
+     "sinkIps": 1,
+     "head": 30,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 185,
+     "colors": [
+      "Gray/Olive"
+     ]
+    },
+    {
+     "label": "WF6S1",
+     "weights": [
+      6
+     ],
+     "density": "hover",
+     "densityLabel": "1.0 ips",
+     "sinkIps": 1,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 210,
+     "colors": [
+      "Gray/Olive"
+     ]
+    },
+    {
+     "label": "WF7S1",
+     "weights": [
+      7
+     ],
+     "density": "hover",
+     "densityLabel": "1.0 ips",
+     "sinkIps": 1,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 240,
+     "colors": [
+      "Gray/Olive"
+     ]
+    },
+    {
+     "label": "WF8S1",
+     "weights": [
+      8
+     ],
+     "density": "hover",
+     "densityLabel": "1.0 ips",
+     "sinkIps": 1,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": [
+      "Gray/Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-avid-24ft-sink-tip",
+   "name": "Avid 24ft Sink Tip",
+   "series": "Avid",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 58,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 79.99,
+   "priceNote": null,
+   "primaryUse": "Trout Streamers / River",
+   "secondaryUse": "Trout Streamers / Lake",
+   "weightLabel": null,
+   "summary": null,
+   "url": "https://farbank.com/products/rio-avid-24ft-sink-tip",
+   "sizes": [
+    {
+     "label": "5/6wt",
+     "weights": [
+      5,
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S4",
+     "sinkIps": null,
+     "head": 24,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 150,
+     "colors": [
+      "Black/Gold"
+     ]
+    },
+    {
+     "label": "6/7wt",
+     "weights": [
+      6,
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S5",
+     "sinkIps": null,
+     "head": 24,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 200,
+     "colors": [
+      "Black/Gold"
+     ]
+    },
+    {
+     "label": "7/8wt",
+     "weights": [
+      7,
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S6",
+     "sinkIps": null,
+     "head": 24,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 250,
+     "colors": [
+      "Black/Gold"
+     ]
+    },
+    {
+     "label": "8/9wt",
+     "weights": [
+      8,
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S7",
+     "sinkIps": null,
+     "head": 24,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 300,
+     "colors": [
+      "Black/Gold"
+     ]
+    },
+    {
+     "label": "9/10wt",
+     "weights": [
+      9,
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": "F/S8",
+     "sinkIps": null,
+     "head": 24,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 350,
+     "colors": [
+      "Black/Gold"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-mainstream-bass",
+   "name": "Mainstream Bass",
+   "series": "Mainstream",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 59,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 49.99,
+   "priceNote": null,
+   "primaryUse": "Bass / Streamers / Poppers",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Targeted to the overall needs of the average fly fisher.",
+   "url": "https://farbank.com/products/rio-mainstream-bass",
+   "sizes": [
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 80,
+     "grains30": 305,
+     "headGrains": 355,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 80,
+     "grains30": 178,
+     "headGrains": 205,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 80,
+     "grains30": 197,
+     "headGrains": 217,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 80,
+     "grains30": 225,
+     "headGrains": 250,
+     "colors": [
+      "Yellow"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 35,
+     "total": 80,
+     "grains30": 260,
+     "headGrains": 293,
+     "colors": [
+      "Yellow"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-billfish-shooting-head",
+   "name": "Billfish Shooting Head",
+   "series": null,
+   "category": "salt",
+   "discontinued": false,
+   "rank": 60,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 79.99,
+   "priceNote": null,
+   "primaryUse": "Billfish",
+   "secondaryUse": "Fast-sinking shooting head",
+   "weightLabel": null,
+   "summary": "A fast sinking shooting head with ultra-strong core, designed for the largest tropical species.",
+   "url": "https://farbank.com/products/rio-billfish-shooting-head",
+   "sizes": [
+    {
+     "label": "550gr",
+     "weights": [],
+     "density": "sink8",
+     "densityLabel": "8–9 ips",
+     "sinkIps": 9,
+     "head": 31,
+     "total": 31,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Gray/Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-mainstream-trout-dt",
+   "name": "Mainstream Trout DT",
+   "series": "Mainstream",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 61,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 49.99,
+   "priceNote": null,
+   "primaryUse": "Small Dry / Soft Presentation",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Targeted to the overall needs of the average fly fisher.",
+   "url": "https://farbank.com/products/rio-mainstream-trout-dt",
+   "sizes": [
+    {
+     "label": "3wt",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 114,
+     "headGrains": null,
+     "colors": [
+      "Lemon Green"
+     ]
+    },
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 133,
+     "headGrains": null,
+     "colors": [
+      "Lemon Green"
+     ]
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 155,
+     "headGrains": null,
+     "colors": [
+      "Lemon Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 178,
+     "headGrains": null,
+     "colors": [
+      "Lemon Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-avid-saltwater",
+   "name": "Avid Saltwater",
+   "series": "Avid",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 62,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 69.99,
+   "priceNote": null,
+   "primaryUse": "Coastal Saltwater / Value",
+   "secondaryUse": "All-round coastal line",
+   "weightLabel": null,
+   "summary": "Targeted to the overall needs of the everyday saltwater angler in coastal saltwater fisheries.",
+   "url": "https://farbank.com/products/rio-avid-saltwater-fly-line",
+   "sizes": [
+    {
+     "label": "7",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 36,
+     "total": 80,
+     "grains30": 210,
+     "headGrains": 240,
+     "colors": [
+      "Light Seagrass"
+     ]
+    },
+    {
+     "label": "8",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 37,
+     "total": 80,
+     "grains30": 240,
+     "headGrains": 275,
+     "colors": [
+      "Light Seagrass"
+     ]
+    },
+    {
+     "label": "9",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 37,
+     "total": 80,
+     "grains30": 280,
+     "headGrains": 330,
+     "colors": [
+      "Light Seagrass"
+     ]
+    },
+    {
+     "label": "10",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 38,
+     "total": 80,
+     "grains30": 320,
+     "headGrains": 395,
+     "colors": [
+      "Light Seagrass"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-avid-trout-grand",
+   "name": "Avid Trout Grand",
+   "series": "Avid",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 63,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 69.99,
+   "priceNote": null,
+   "primaryUse": "Dry Dropper / Light Indicator",
+   "secondaryUse": "Small Dry / Big Dry / Light Streamer",
+   "weightLabel": null,
+   "summary": "Developed with tapers and technology that enhance the fly fishing experience, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-avid-trout-grand",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 37,
+     "total": 80,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Pale Green"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 39,
+     "total": 80,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Pale Green"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40,
+     "total": 80,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Pale Green"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 41,
+     "total": 80,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Pale Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-avid-bass",
+   "name": "Avid Bass",
+   "series": "Avid",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 64,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 69.99,
+   "priceNote": null,
+   "primaryUse": "Bass / Streamers / Poppers",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Short, aggressive front taper for powerful turnover.",
+   "url": "https://farbank.com/products/rio-avid-bass",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 80,
+     "grains30": 230,
+     "headGrains": 240,
+     "colors": [
+      "Green"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 80,
+     "grains30": 270,
+     "headGrains": 285,
+     "colors": [
+      "Green"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 33,
+     "total": 80,
+     "grains30": 330,
+     "headGrains": 345,
+     "colors": [
+      "Green"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-midge-tip",
+   "name": "Premier Midge Tip",
+   "series": "Premier",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 65,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Shallow Lake / Nymphs / Chironomids",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Specifically designed to be one of the top fish-catching lines in the world for lake anglers, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-midge-tip",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 146,
+     "colors": [
+      "Clear/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 168,
+     "colors": [
+      "Clear/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 42,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 185,
+     "colors": [
+      "Clear/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 210,
+     "colors": [
+      "Clear/Yellow/Beige"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-technical-euro-nymph-shorty",
+   "name": "Premier Technical Euro Nymph Shorty",
+   "series": "Premier",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 66,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 42.99,
+   "priceNote": null,
+   "primaryUse": "Euro Nymphing / Line Sensitivity",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": null,
+   "url": "https://farbank.com/products/rio-technical-euro-nymph-shorty",
+   "sizes": [
+    {
+     "label": "2-5wt",
+     "weights": [
+      2,
+      3,
+      4,
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Yellow/Pink"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-glacial-gold",
+   "name": "Premier Glacial Gold",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 67,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Cold Conditions / Small Dry / Dry Dropper",
+   "secondaryUse": "Big Dry / Light Indicator",
+   "weightLabel": null,
+   "summary": "A deep-winter trout line with PolarFlex technology that keeps it soft and pliable in the coldest conditions.",
+   "url": "https://farbank.com/products/rio-premier-glacial-gold",
+   "sizes": [
+    {
+     "label": "4wt",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 46,
+     "total": null,
+     "grains30": null,
+     "headGrains": 175,
+     "colors": []
+    },
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 47,
+     "total": null,
+     "grains30": null,
+     "headGrains": 208,
+     "colors": []
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48,
+     "total": null,
+     "grains30": null,
+     "headGrains": 234,
+     "colors": []
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49,
+     "total": null,
+     "grains30": null,
+     "headGrains": 270,
+     "colors": []
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": null,
+     "grains30": null,
+     "headGrains": 310,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "rio-mainstream-striper",
+   "name": "Mainstream Striper",
+   "series": "Mainstream",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 68,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 49.99,
+   "priceNote": null,
+   "primaryUse": "Striped Bass / Value",
+   "secondaryUse": "Intermediate",
+   "weightLabel": null,
+   "summary": "A complete lineup of fly lines developed for the striped bass angler.",
+   "url": "https://farbank.com/products/rio-mainstream-striper",
+   "sizes": [
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 210,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 240,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 380,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": [
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 30,
+     "total": 80,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": [
+      "Clear"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-midge-tip-long",
+   "name": "Premier Midge Tip Long",
+   "series": "Premier",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 69,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Shallow Lake / Nymphs / Chironomids",
+   "secondaryUse": "Slow Sink / Sub-Surface Presentation",
+   "weightLabel": null,
+   "summary": "Specifically designed to be one of the top fish-catching lines in the world for lake anglers, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-midge-tip-long",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 146,
+     "colors": [
+      "Clear/Melon/Beige"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 168,
+     "colors": [
+      "Clear/Melon/Beige"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 42,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 185,
+     "colors": [
+      "Clear/Melon/Beige"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.5 ips",
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 210,
+     "colors": [
+      "Clear/Melon/Beige"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-ambassador-series-flats-passport",
+   "name": "Ambassador Series - Flats Passport",
+   "series": "Ambassador",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 70,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Flats",
+   "secondaryUse": "Oliver White signature taper",
+   "weightLabel": null,
+   "summary": "Oliver White’s signature flats taper.",
+   "url": "https://farbank.com/products/rio-ambassador-series-flats-passport",
+   "sizes": [
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 58,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": 320,
+     "colors": [
+      "Sand/Purple/Orange"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 60,
+     "total": 100,
+     "grains30": 260,
+     "headGrains": 390,
+     "colors": [
+      "Sand/Purple/Orange"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 62,
+     "total": 100,
+     "grains30": 305,
+     "headGrains": 480,
+     "colors": [
+      "Sand/Purple/Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-avid-bonefish",
+   "name": "Avid Bonefish",
+   "series": "Avid",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 71,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 79.99,
+   "priceNote": null,
+   "primaryUse": "Bonefish / Value",
+   "secondaryUse": "Easy casting for typical bonefish flies",
+   "weightLabel": null,
+   "summary": "Specifically designed for the bonefish fly angler.",
+   "url": "https://farbank.com/products/rio-avid-bonefish",
+   "sizes": [
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48.5,
+     "total": 80,
+     "grains30": 198,
+     "headGrains": 288,
+     "colors": [
+      "Blue"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 80,
+     "grains30": 225,
+     "headGrains": 327,
+     "colors": [
+      "Blue"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 49.5,
+     "total": 80,
+     "grains30": 260,
+     "headGrains": 369,
+     "colors": [
+      "Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-dog-days-gold",
+   "name": "Premier Dog Days Gold",
+   "series": "Premier",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 72,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Hot Conditions / Small Dry / Dry Dropper",
+   "secondaryUse": "Big Dry / Light Indicator",
+   "weightLabel": null,
+   "summary": "The Gold taper with a coating made for hot conditions.",
+   "url": "https://farbank.com/products/rio-premier-dog-days-gold",
+   "sizes": [
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 126,
+     "colors": [
+      "Yellow/Bronze/Tan"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 47,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 146,
+     "colors": [
+      "Yellow/Bronze/Tan"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 48,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 168,
+     "colors": [
+      "Yellow/Bronze/Tan"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-ambassador-series-coastal-crabber",
+   "name": "Ambassador Series - Coastal Crabber",
+   "series": "Ambassador",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 73,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Permit / Crabs",
+   "secondaryUse": "Intermediate with sinking tip",
+   "weightLabel": null,
+   "summary": "Crabber was designed, tested, fussed-over, and perfected in conjunction with one of the most dedicated striper anglers on the planet: RIO Ambassador Joe Webster.",
+   "url": "https://farbank.com/products/rio-ambassador-series-joe-webster",
+   "sizes": [
+    {
+     "label": "8WT",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 110,
+     "grains30": 300,
+     "headGrains": 320,
+     "colors": [
+      "Black/Sand"
+     ]
+    },
+    {
+     "label": "9WT",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 110,
+     "grains30": 350,
+     "headGrains": 370,
+     "colors": [
+      "Black/Sand"
+     ]
+    },
+    {
+     "label": "10WT",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Intermediate/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 110,
+     "grains30": 400,
+     "headGrains": 420,
+     "colors": [
+      "Black/Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-midge-tip-long-hover",
+   "name": "Premier Midge Tip Long Hover",
+   "series": "Premier",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 74,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Shallow Lake / Nymphs / Chironomids",
+   "secondaryUse": "Slow Sink / Sub-Surface Presentation",
+   "weightLabel": null,
+   "summary": "Specifically designed to be one of the top fish-catching lines in the world for lake anglers, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-midge-tip-long-hover",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.0 ips",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 146,
+     "colors": [
+      "Gray/Melon/Beige"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.0 ips",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 168,
+     "colors": [
+      "Gray/Melon/Beige"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.0 ips",
+     "sinkIps": null,
+     "head": 42,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 185,
+     "colors": [
+      "Gray/Melon/Beige"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.0 ips",
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 210,
+     "colors": [
+      "Gray/Melon/Beige"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-premier-midge-tip-hover",
+   "name": "Premier Midge Tip Hover",
+   "series": "Premier",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 75,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Shallow Lake / Nymphs / Chironomids",
+   "secondaryUse": "Slow Sink / Sub-Surface Presentation",
+   "weightLabel": null,
+   "summary": "Specifically designed to be one of the top fish-catching lines in the world for lake anglers, with ultra-slick performance.",
+   "url": "https://farbank.com/products/rio-premier-midge-tip-hover",
+   "sizes": [
+    {
+     "label": "5wt",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.0 ips",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 146,
+     "colors": [
+      "Gray/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "6wt",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.0 ips",
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": null,
+     "headGrains": 168,
+     "colors": [
+      "Gray/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.0 ips",
+     "sinkIps": null,
+     "head": 42,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 185,
+     "colors": [
+      "Gray/Yellow/Beige"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/1.0 ips",
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 210,
+     "colors": [
+      "Gray/Yellow/Beige"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-musky-outbound",
+   "name": "Elite Musky OutBound",
+   "series": "Elite",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 76,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 99.99,
+   "priceNote": null,
+   "primaryUse": "Musky",
+   "secondaryUse": "Huge flies, intermediate with sink 5 tip",
+   "weightLabel": null,
+   "summary": "An intermediate line with a sink 5 tip for casting huge musky flies.",
+   "url": "https://farbank.com/products/rio-elite-musky-outbound",
+   "sizes": [
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "multi",
+     "densityLabel": "I/S5",
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 465,
+     "colors": [
+      "Black/Tannin"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "multi",
+     "densityLabel": "I/S5",
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 510,
+     "colors": [
+      "Black/Tannin"
+     ]
+    },
+    {
+     "label": "600gr",
+     "weights": [],
+     "density": "multi",
+     "densityLabel": "I/S5",
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 600,
+     "colors": [
+      "Black/Tannin"
+     ]
+    },
+    {
+     "label": "T-27",
+     "weights": [],
+     "density": "multi",
+     "densityLabel": "I/S5",
+     "sinkIps": null,
+     "head": 30,
+     "total": 105,
+     "grains30": 810,
+     "headGrains": 810,
+     "colors": [
+      "Black/Tannin"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-avid-tarpon",
+   "name": "Avid Tarpon",
+   "series": "Avid",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 77,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 69.99,
+   "priceNote": null,
+   "primaryUse": "Tarpon / Value",
+   "secondaryUse": "Easy casting for big tropical fish",
+   "weightLabel": null,
+   "summary": "Specifically designed for anglers targeting tarpon and other large tropical species.",
+   "url": "https://farbank.com/products/rio-avid-tarpon",
+   "sizes": [
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40,
+     "total": 80,
+     "grains30": 316,
+     "headGrains": 385,
+     "colors": [
+      "Sand"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40,
+     "total": 80,
+     "grains30": 367,
+     "headGrains": 430,
+     "colors": [
+      "Sand"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 40,
+     "total": 80,
+     "grains30": 428,
+     "headGrains": 510,
+     "colors": [
+      "Sand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rio-elite-predator-deep",
+   "name": "Elite Predator Deep",
+   "series": "Elite",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 78,
+   "rankSource": "RIO store best-seller order, single-hand lines",
+   "price": 129.99,
+   "priceNote": null,
+   "primaryUse": "Heavy Streamers / Deep",
+   "secondaryUse": "Float / S3 / S5 / S7 multi-density",
+   "weightLabel": null,
+   "summary": "The new Predator Deep F/S3/S5/S7 is the perfect line for delivering a big fly, sinking it into the strike zone, and keeping it there throughout the length of the retrieve.",
+   "url": "https://farbank.com/products/rio-elite-predator-deep",
+   "sizes": [
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Float/3ips/5ips/7ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 270,
+     "colors": [
+      "Black/Beige"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/3ips/5ips/7ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Black/Beige"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Float/3ips/5ips/7ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Black/Beige"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": "Float/3ips/5ips/7ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 390,
+     "headGrains": 410,
+     "colors": [
+      "Black/Beige"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "multi",
+     "densityLabel": "Float/3ips/5ips/7ips",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 450,
+     "headGrains": 475,
+     "colors": [
+      "Black/Beige"
+     ]
+    }
+   ]
+  }
+ ]
+}

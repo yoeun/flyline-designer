@@ -1,0 +1,8474 @@
+{
+ "id": "airflo",
+ "maker": "Airflo",
+ "retrieved": "2026-10-16",
+ "sources": [
+  "https://www.airflofishing.com/products.json (pages 1-2)",
+  "https://www.airflofishing.com/products/<handle> (spec tables in product descriptions; taper diagrams in product images)",
+  "https://www.airflofishing.com/collections/freshwater-fly-lines?sort_by=best-selling",
+  "https://www.airflofishing.com/collections/saltwater-fly-lines?sort_by=best-selling",
+  "https://www.airflofishing.com/collections/stillwater-fly-lines?sort_by=best-selling",
+  "https://www.airflofishing.com/collections/specialty-fly-lines?sort_by=best-selling",
+  "https://mayflyoutdoors.com/products.json (Airflo US distributor; USD prices)"
+ ],
+ "explainer": [
+  "Airflo (Wales, UK) makes PVC-free polyurethane lines, and its single-hand range is built from a small set of named tapers sold in several coating tiers. The current flagship tier is Superflo Max Ridge 2.0 (US $129.99-149.99). It pairs the raised-ridge Ridge 2.0 surface, which Airflo says cuts guide friction and tangles for more line speed, with the new 'Superflo Max Hybrid' coating for faster shooting and less memory.",
+  "Superflo Max Smooth (US $99.99) uses the same taper names with a smooth finish at a lower price. In both tiers the taper name tells you the job. Universal is the all-rounder (39 ft head on a WF5), Power is shorter and heavier for big flies and rigs on fast rods, and Tactical is the delicate presentation taper. Super Trout is a 70 ft long-belly line, Nymph Indicator is for indicator rigs, and Streamer Float / Streamer Max are for streamers.",
+  "Flats Universal, Tactical and Power, plus Redfish and GT, are the saltwater set. Ultra Supple versions use a cold-weather coating meant for fishing below about 50°F. Outside those tiers, Sixth Sense 2 is a stillwater family: long front tapers for teams of flies, with intermediates, Di3-Di8 sinkers and a 'Sweep' line. The 40+ lines (Extreme 36 ft head, Expert 44 ft, Booby Basher, Sniper) are integrated shooting-head distance lines for reservoirs and predators.",
+  "Cast (2025, about $60) is the budget series. Each generation replaces the last: the original smooth Superflo, then Superflo Ridge 2.0 (e.g. Superflo Ridge 2.0 Universal Taper), now Superflo Max. The older versions are marked discontinued here, and their published tapers and grain weights mostly carry over unchanged. Buyers should pick the taper for the job first, then choose Ridge or Smooth by budget.",
+  "That the tapers are identical across tiers is our inference from matching spec tables, not an Airflo claim. Prices are US list prices from Airflo's US distributor (Mayfly Outdoors); airflofishing.com itself prices in GBP."
+ ],
+ "omitted": [
+  "Superflo Max Smooth Rage Compact (two-hand head)",
+  "Superflo Max Smooth Scandi Compact (two-hand head)",
+  "Superflo Max Smooth F.I.S.T (Skagit head)",
+  "Superflo Max Smooth Skagit Float (Skagit head)",
+  "Superflo Max Smooth Scout (head)",
+  "Superflo Max Smooth Delta Spey (two-hand)",
+  "Superflo Max Smooth Rage Tri-Tip Kit (two-hand)",
+  "Rage Tri Integrated Kit (two-hand)",
+  "Skagit Scout (head, discontinued)",
+  "Skagit Driver (head, discontinued)",
+  "Superflo Max Ridge 2.0 Running Line",
+  "Superflo Max Ridge 2.0 Extreme Running Line",
+  "Ridge 2.0 Running Line",
+  "Ridge 2.0 Extreme Running Line",
+  "Impact Mono Running Line",
+  "Skagit Flo Sinking Tips",
+  "Skagit Flo Sinking Tips Set",
+  "Skagit T-Tip Custom",
+  "Stillwater - Intermediate (duplicate US listing of Delta Taper Clear Intermediate)",
+  "Sustain / FS listings (Airflo Certified Factory Seconds of lines already listed)"
+ ],
+ "products": [
+  {
+   "id": "airflo-smr-universal",
+   "name": "Superflo Max Ridge 2.0 Universal Taper",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 2,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 2 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-hybrid-universal-taper-fly-line)",
+   "primaryUse": "All-round trout: dries, nymphs, small streamers",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Airflo's do-everything trout taper (39 ft head on WF5) with the ridged Ridge 2.0 finish and Superflo Max Hybrid coating; successor to the Superflo Ridge 2.0 Universal.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-universal-taper-fly-line",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 82,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": [
+      "Lichen / Driftwood",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": [
+      "Lichen / Driftwood",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse / White",
+      "Lichen / Driftwood",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse / White",
+      "Lichen / Driftwood",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse / White",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse / White",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Moss / Chartreuse"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-power",
+   "name": "Superflo Max Ridge 2.0 Power Taper",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 15,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 15 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-hybrid-power-taper-fly-line)",
+   "primaryUse": "Big flies and heavy rigs on fast rods",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Shorter, heavier-headed sibling of the Universal that puts more grains up front to turn over big flies and indicator rigs on fast rods.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-power-taper-fly-line",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 82,
+     "grains30": 116,
+     "headGrains": null,
+     "colors": [
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 135,
+     "headGrains": null,
+     "colors": [
+      "Camo / Caddis",
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 155,
+     "headGrains": null,
+     "colors": [
+      "Camo / Caddis",
+      "Chartreuse / White",
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": [
+      "Camo / Caddis",
+      "Chartreuse / White",
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 205,
+     "headGrains": null,
+     "colors": [
+      "Camo / Caddis",
+      "Chartreuse / White",
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 234,
+     "headGrains": null,
+     "colors": [
+      "Camo / Caddis",
+      "Chartreuse / White",
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 272,
+     "headGrains": null,
+     "colors": [
+      "Sunburst  / Purple"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-tactical",
+   "name": "Superflo Max Ridge 2.0 Tactical Taper",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 12,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 12 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-hybrid-tactical-taper-fly-line)",
+   "primaryUse": "Delicate dry-fly presentation",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Delicate front taper and longer head for gentle presentations to picky trout; lighter at each size than the Universal.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-tactical-taper-fly-line",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 82,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 82,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-super-trout",
+   "name": "Superflo Max Ridge 2.0 Super Trout",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 13,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 13 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-hybrid-super-trout-fly-line)",
+   "primaryUse": "Long-range carry and mending",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Long-belly (about 70 ft head) trout line derived from a tournament taper, for aerial control and long mends at distance.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-super-trout-fly-line",
+   "sizes": [
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 70.7,
+     "total": 120,
+     "grains30": 120,
+     "headGrains": 270,
+     "colors": [
+      "Olive/Driftwood"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 70.7,
+     "total": 120,
+     "grains30": 140,
+     "headGrains": 299,
+     "colors": [
+      "Fire Orange",
+      "Olive/Driftwood"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 70.7,
+     "total": 120,
+     "grains30": 160,
+     "headGrains": 332,
+     "colors": [
+      "Fire Orange",
+      "Olive/Driftwood"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 70.7,
+     "total": 120,
+     "grains30": 185,
+     "headGrains": 355,
+     "colors": [
+      "Fire Orange",
+      "Olive/Driftwood"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-double-taper",
+   "name": "Superflo Max Ridge 2.0 Double Taper",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 17,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 17 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-hybrid-double-taper-fly-line)",
+   "primaryUse": "Traditional dry fly and roll casting",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Classic double taper with the Ridge 2.0 finish, for anglers who want DT feel and roll casting past the head.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-double-taper-fly-line",
+   "sizes": [
+    {
+     "label": "DT2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 84,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 104,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 124,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 145,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 165,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-double-double-taper",
+   "name": "Superflo Max Ridge 2.0 Double' Double Taper",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 16,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 16 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-hybrid-double-double-taper)",
+   "primaryUse": "Dry fly in cold or warm weather (reversible)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Reversible double taper: one end has the Ultra Supple cold-weather coating, the other the standard coating.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-double-double-taper-fly-line",
+   "sizes": [
+    {
+     "label": "DT2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 84,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 104,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 124,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 145,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-ultra-supple-universal",
+   "name": "Superflo Max Ridge 2.0 Ultra Supple Universal Taper",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 9,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 9 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-ultra-supple-universal-taper-fly-line)",
+   "primaryUse": "All-round trout in cold weather (below about 50°F)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Universal taper in a cold-weather coating that stays supple and memory-free below roughly 50°F (10°C).",
+   "url": "https://www.airflofishing.com/products/superflo-max-ridge-2-0-ultra-supple-universal-taper",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 82,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": [
+      "Pale Olive/Mint Green",
+      "Pale Yellow/White"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": [
+      "Pale Olive/Mint Green",
+      "Pale Yellow/White"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Pale Olive/Mint Green",
+      "Pale Yellow/White"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": [
+      "Pale Olive/Mint Green",
+      "Pale Yellow/White"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": [
+      "Pale Olive/Mint Green",
+      "Pale Yellow/White"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Pale Olive/Mint Green",
+      "Pale Yellow/White"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-ultra-supple-tailwater",
+   "name": "Superflo Max Ridge 2.0 Ultra Supple Tailwater Taper",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 10,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 10 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-ultra-supple-tailwater-taper-fly-line)",
+   "primaryUse": "Winter tailwater presentation",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Presentation taper with the low-temperature Ultra Supple coating for winter tailwaters.",
+   "url": "https://www.airflofishing.com/products/superflo-max-ridge-2-0-ultra-supple-tailwater-taper",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 82,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Pale Blue / White"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 82,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Pale Blue / White",
+      "Pale Tan / Pale Sunburst"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Pale Blue / White",
+      "Pale Tan / Pale Sunburst"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Pale Blue / White",
+      "Pale Tan / Pale Sunburst"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Pale Blue / White"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-ultra-supple-indicator",
+   "name": "Superflo Max Ridge 2.0 Ultra Supple Indicator Taper",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 11,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 11 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airfllo-usa-superflo-max-ridge-2-0-ultra-supple-indicator-taper-fly-line)",
+   "primaryUse": "Cold-weather indicator and stillwater nymphing",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Indicator/stillwater taper in Ultra Supple coating that stays straight on cold water.",
+   "url": "https://www.airflofishing.com/products/superflo-max-ridge-2-0-ultra-supple-indicator-taper",
+   "sizes": [
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51.5,
+     "total": 105,
+     "grains30": 132,
+     "headGrains": null,
+     "colors": [
+      "Pale Grey / Pale Orange"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51.5,
+     "total": 105,
+     "grains30": 154,
+     "headGrains": null,
+     "colors": [
+      "Hot Coral / White",
+      "Pale Grey / Pale Orange"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51.5,
+     "total": 105,
+     "grains30": 177,
+     "headGrains": null,
+     "colors": [
+      "Hot Coral / White",
+      "Pale Grey / Pale Orange"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51.5,
+     "total": 105,
+     "grains30": 201,
+     "headGrains": null,
+     "colors": [
+      "Hot Coral / White",
+      "Pale Grey / Pale Orange"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51.5,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Hot Coral / White",
+      "Pale Grey / Pale Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-streamer-max-short",
+   "name": "Superflo Max Ridge 2.0 Streamer Max Short",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 14,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 14 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-hybrid-streamer-max-short-fly-line)",
+   "primaryUse": "Sinking streamer fishing (bank-robbing)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Short fast-sinking head (22-27 ft) with an intermediate haul zone and floating running line, now offered in Sink 3, 5 and 7.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-streamer-max-short-fly-line",
+   "sizes": [
+    {
+     "label": "WF5S Sink 3",
+     "weights": [
+      5
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 22,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 184,
+     "colors": []
+    },
+    {
+     "label": "WF5S Sink 5",
+     "weights": [
+      5
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 22,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 184,
+     "colors": []
+    },
+    {
+     "label": "WF5S Sink 7",
+     "weights": [
+      5
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 22,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 184,
+     "colors": []
+    },
+    {
+     "label": "WF6S Sink 3",
+     "weights": [
+      6
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": []
+    },
+    {
+     "label": "WF6S Sink 5",
+     "weights": [
+      6
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": []
+    },
+    {
+     "label": "WF6S Sink 7",
+     "weights": [
+      6
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": []
+    },
+    {
+     "label": "WF7S Sink 3",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 264,
+     "colors": []
+    },
+    {
+     "label": "WF7S Sink 5",
+     "weights": [
+      7
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 264,
+     "colors": []
+    },
+    {
+     "label": "WF7S Sink 7",
+     "weights": [
+      7
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 264,
+     "colors": []
+    },
+    {
+     "label": "WF8S Sink 3",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 302,
+     "colors": []
+    },
+    {
+     "label": "WF8S Sink 5",
+     "weights": [
+      8
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 302,
+     "colors": []
+    },
+    {
+     "label": "WF8S Sink 7",
+     "weights": [
+      8
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 302,
+     "colors": []
+    },
+    {
+     "label": "WF9S Sink 3",
+     "weights": [
+      9
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 344,
+     "colors": []
+    },
+    {
+     "label": "WF9S Sink 5",
+     "weights": [
+      9
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 344,
+     "colors": []
+    },
+    {
+     "label": "WF9S Sink 7",
+     "weights": [
+      9
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 344,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-flats-universal",
+   "name": "Superflo Max Ridge 2.0 Flats Universal",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 3,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 3 of 16",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-flats-universal-floating-fly-line)",
+   "primaryUse": "All-round tropical flats",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Short-belly, long-rear-taper flats line; Airflo's most versatile saltwater taper.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-flats-universal-fly-line",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 275,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 326,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 375,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 440,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-flats-clear-universal",
+   "name": "Superflo Max Ridge 2.0 Flats Clear Universal",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 16,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 16 of 16",
+   "price": 149.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-flats-clear-universal-fly-line)",
+   "primaryUse": "Stealth on pressured flats",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Full-clear floating version of the Flats Universal taper.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-flats-clear-universal-fly-line",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 275,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 326,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 375,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 440,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-flats-universal-clear-tip",
+   "name": "Superflo Max Ridge 2.0 Flats Universal 9' Clear Tip",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 12,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 12 of 16",
+   "price": 149.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-flats-9-clear-tip-universal-fly-line)",
+   "primaryUse": "Flats with a stealthy clear tip",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Flats Universal taper with a 9 ft clear floating tip.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-flats-universal-9-clear-tip-fly-line",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 259,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 354,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 391,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-flats-tactical",
+   "name": "Superflo Max Ridge 2.0 Flats Tactical",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 14,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 14 of 16",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-flats-tactical-fly-line)",
+   "primaryUse": "Long, delicate shots in calm conditions",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Extended head and convex front taper for accuracy and delicacy at distance; 'the caster's line'.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-flats-tactical-fly-line",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 170,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 259,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 355,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-flats-tactical-clear-tip",
+   "name": "Superflo Max Ridge 2.0 Flats Tactical 12' Clear Tip",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 13,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 13 of 16",
+   "price": 149.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-flats-tactical-12-clear-tip-fly-line)",
+   "primaryUse": "Calm, bright flats with spooky fish",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Flats Tactical taper with a 12 ft clear floating tip.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-flats-tactical-12-clear-tip-fly-line",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 169,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 259,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 354,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 391,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-flats-master",
+   "name": "Superflo Max Ridge 2.0 Flats Master Sink Tip",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 4,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 4 of 16",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-flats-master-fly-line)",
+   "primaryUse": "Windy flats; getting flies down quickly",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Flats Universal taper with a 10 ft translucent intermediate tip.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-flats-master-sink-tip-fly-line",
+   "sizes": [
+    {
+     "label": "WF8F/I",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F/I",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 275,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F/I",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 326,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F/I",
+     "weights": [
+      11
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 375,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F/I",
+     "weights": [
+      12
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 440,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-flats-universal-int",
+   "name": "Superflo Max Ridge 2.0 Flats Universal Intermediate",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 2,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 2 of 16",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-flats-universal-intermediate-fly-line)",
+   "primaryUse": "Channels, wind, bigger flies",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Full intermediate version of the Flats Universal for dredging channels and cutting wind.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-flats-universal-intermediate-fly-line",
+   "sizes": [
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 44,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 44,
+     "total": 100,
+     "grains30": 275,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 44,
+     "total": 100,
+     "grains30": 326,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11I",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 44,
+     "total": 100,
+     "grains30": 375,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12I",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 44,
+     "total": 100,
+     "grains30": 440,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-flats-power",
+   "name": "Superflo Max Ridge 2.0 Flats Power",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 15,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 15 of 16",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-flats-power-fly-line)",
+   "primaryUse": "Big flies, wind, fast rods",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Shorter, punchier flats head for big flies and wind.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-flats-power-fly-line",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 220,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 250,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 295,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 346,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 400,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 464,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-redfish-power",
+   "name": "Superflo Max Ridge 2.0 Redfish Power",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 9,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 9 of 16",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-redfish-power-fly-line)",
+   "primaryUse": "Winter redfish, big flies",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Powerful taper with a supple coating for cold-weather redfish.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-redfish-power-fly-line",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 216,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 246,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 278,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 309,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-gulf-redfish",
+   "name": "Superflo Max Ridge 2.0 Gulf Redfish",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 10,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 10 of 16",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-gulf-redfish-fly-line)",
+   "primaryUse": "Redfish in marsh and grass flats",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "All-round inshore taper with enough head mass for big flies in wind.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-gulf-redfish-fly-line",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 190,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 214,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 285,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 335,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-smr-gt-gangsta",
+   "name": "Superflo Max Ridge 2.0 GT Gangsta",
+   "series": "Superflo Max Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 11,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 11 of 16",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-ridge-2-0-gt-gangsta-fly-line)",
+   "primaryUse": "Giant trevally",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "WF12 GT line with a 50 lb core and aggressive taper for huge flies.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-ridge-2-0-gt-gangsta-fly-line",
+   "sizes": [
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 110,
+     "grains30": 432,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-universal",
+   "name": "Superflo Max Smooth Universal Taper",
+   "series": "Superflo Max Smooth",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 18,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 18 of 20",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-smooth-hybrid-universal-taper-fly-line)",
+   "primaryUse": "All-round trout",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Smooth-coated (non-ridged) version of the Universal taper at a lower price.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-universal-taper-fly-line",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 82,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": [
+      "Lichen / Driftwood",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": [
+      "Lichen / Driftwood",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse / White",
+      "Lichen / Driftwood",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse / White",
+      "Lichen / Driftwood",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse / White",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse / White",
+      "Moss / Chartreuse"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Moss / Chartreuse"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-power",
+   "name": "Superflo Max Smooth Power Taper",
+   "series": "Superflo Max Smooth",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 7,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 7 of 20",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-smooth-hybrid-power-taper-fly-line)",
+   "primaryUse": "Big flies and rigs on fast rods",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Smooth-coated Power Taper with forward-biased mass for big flies.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-hybrid-power-taper-fly-line",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 82,
+     "grains30": 116,
+     "headGrains": null,
+     "colors": [
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 135,
+     "headGrains": null,
+     "colors": [
+      "Camo / Caddis",
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 155,
+     "headGrains": null,
+     "colors": [
+      "Camo / Caddis",
+      "Chartreuse / White",
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": [
+      "Camo / Caddis",
+      "Chartreuse / White",
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 205,
+     "headGrains": null,
+     "colors": [
+      "Camo / Caddis",
+      "Chartreuse / White",
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 234,
+     "headGrains": null,
+     "colors": [
+      "Camo / Caddis",
+      "Chartreuse / White",
+      "Sunburst  / Purple"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 272,
+     "headGrains": null,
+     "colors": [
+      "Sunburst  / Purple"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-tactical",
+   "name": "Superflo Max Smooth Tactical Taper",
+   "series": "Superflo Max Smooth",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 19,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 19 of 20",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-smooth-hybrid-tactical-taper-fly-line)",
+   "primaryUse": "Delicate dry-fly presentation",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Smooth-coated Tactical Taper for delicate presentations.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-tactical-taper-fly-line",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 82,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 82,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-nymph-indicator",
+   "name": "Superflo Max Smooth Nymph Indicator",
+   "series": "Superflo Max Smooth",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 8,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 8 of 20",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-max-smooth-hybrid-nymph-indicator-fly-line)",
+   "primaryUse": "Indicator nymphing",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Thick tip and aggressive front taper for heavy indicator rigs, long rear taper for mending.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-nymph-indicator-fly-line",
+   "sizes": [
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 134,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 190,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 220,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 259,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-streamer-float",
+   "name": "Superflo Max Smooth Streamer Float",
+   "series": "Superflo Max Smooth",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 20,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 20 of 20",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-smooth-hybrid-streamer-float-fly-line)",
+   "primaryUse": "Big flies on a floating line",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Short, thick front taper with extended body/rear taper for big streamers.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-hybrid-streamer-float-fly-line",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 90,
+     "grains30": 170,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 90,
+     "grains30": 199,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 90,
+     "grains30": 220,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-bomber",
+   "name": "Superflo Max Smooth Bomber",
+   "series": "Superflo Max Smooth",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 2,
+   "rankSource": "airflofishing.com Specialty Fly Lines collection, sorted best-selling (2026-10-16), position 2 of 2",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-smooth-hybrid-bomber-fly-line)",
+   "primaryUse": "Single-hand Atlantic salmon / steelhead (skating flies, long leaders)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Moderately aggressive front taper and long rear taper for big skated flies on long leaders.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-hybrid-bomber-fly-line",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 220,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 250,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 300,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-cast",
+   "name": "Superflo Max Smooth C.A.S.T",
+   "series": "Superflo Max Smooth",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 1,
+   "rankSource": "airflofishing.com Specialty Fly Lines collection, sorted best-selling (2026-10-16), position 1 of 2",
+   "price": 99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-smooth-hybrid-cast-fly-line)",
+   "primaryUse": "Single-hand Atlantic salmon in wind (Eastern Canada)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Canadian Atlantic Salmon Taper: moderate front, very long rear taper for wind and low clear water.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-hybrid-cast-fly-line",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 95,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 95,
+     "grains30": 230,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 95,
+     "grains30": 265,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-euro-nymph-olive",
+   "name": "Superflo Max Smooth Euro Nymph (Olive)",
+   "series": "Superflo Max Smooth",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 1,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 1 of 20",
+   "price": 54.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airlfo-usa-superflo-max-smooth-hybrid-euro-nymph-olive-fly-line)",
+   "primaryUse": "Euro / tight-line nymphing",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "0.55 mm FIPS-compliant euro line on low-stretch braid with a hi-viz orange or drab olive end.",
+   "url": "https://www.airflofishing.com/products/airlfo-uk-superflo-max-smooth-hybrid-euro-nymph-olive-fly-line",
+   "sizes": [
+    {
+     "label": "0.55 mm level",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 82,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-euro-nymph-clear",
+   "name": "Superflo Max Smooth Euro Nymph (Clear Mono Core)",
+   "series": "Superflo Max Smooth",
+   "category": "nymph",
+   "discontinued": false,
+   "rank": 6,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 6 of 20",
+   "price": 54.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-smooth-hybrid-euro-nymph-clear-mono-core)",
+   "primaryUse": "Euro nymphing for spooky wild trout",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "0.55 mm FIPS-compliant clear euro line on a 12 lb mono core.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-hybrid-euro-nymph-clear-mono-core",
+   "sizes": [
+    {
+     "label": "0.55 mm level",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 82,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-flats-universal",
+   "name": "Superflo Max Smooth Flats Universal",
+   "series": "Superflo Max Smooth",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 8,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 8 of 16",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-smooth-flats-universal-fly-line)",
+   "primaryUse": "All-round flats",
+   "secondaryUse": null,
+   "weightLabel": "+0.9 line size (maker, earlier Superflo version)",
+   "summary": "Smooth-coated Flats Universal; quick loading for short shots, long rear taper for range.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-flats-universal-fly-line",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 275,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 326,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 375,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 440,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-cold-salt-universal",
+   "name": "Superflo Max Smooth Cold Salt Universal",
+   "series": "Superflo Max Smooth",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 1,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 1 of 16",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-smooth-cold-salt-universal-fly-line)",
+   "primaryUse": "Cold-water inshore (stripers, etc.)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Floating inshore line that stays manageable on the coldest days; moderate taper.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-cold-salt-universal-fly-line",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 100,
+     "grains30": 191,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 100,
+     "grains30": 216,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 100,
+     "grains30": 255,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 100,
+     "grains30": 298,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sms-stillwater",
+   "name": "Superflo Max Smooth Stillwater Float",
+   "series": "Superflo Max Smooth",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 6,
+   "rankSource": "airflofishing.com Stillwater Fly Lines collection, sorted best-selling (2026-10-16), position 6 of 10",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-smooth-stillwater-float-fly-line)",
+   "primaryUse": "Long-range stillwater floating line",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Delta-style long-head floating line for distance with delicate presentation on lakes.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-max-smooth-stillwater-float-fly-line",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 230,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sixth-sense-2-sinking",
+   "name": "Sixth Sense 2 Sinking",
+   "series": "Sixth Sense 2",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 9,
+   "rankSource": "airflofishing.com Stillwater Fly Lines collection, sorted best-selling (2026-10-16), position 9 of 10",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-sixth-sense-2-sinking-fly-lines)",
+   "primaryUse": "Stillwater sinking lines (Di3-Di8)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Long-front-taper stillwater sinkers for teams of flies, sink rates up to 8 ips.",
+   "url": "https://www.airflofishing.com/products/airflo-usa-sixth-sense-2-sinking-fly-lines",
+   "sizes": [
+    {
+     "label": "WF5/6S Di3",
+     "weights": [
+      5
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 177,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5/6S Di5",
+     "weights": [
+      5
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 177,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6/7S Di3",
+     "weights": [
+      6
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 202,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6/7S Di5",
+     "weights": [
+      6
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 202,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6/7S Di7",
+     "weights": [
+      6
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 202,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6/7S Di8",
+     "weights": [
+      6
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 202,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7/8S Di3",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 230,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7/8S Di5",
+     "weights": [
+      7
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 230,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7/8S Di7",
+     "weights": [
+      7
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 230,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7/8S Di8",
+     "weights": [
+      7
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 230,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8/9S Di3",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 270,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8/9S Di5",
+     "weights": [
+      8
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 270,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8/9S Di7",
+     "weights": [
+      8
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 270,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8/9S Di8",
+     "weights": [
+      8
+     ],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 270,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sixth-sense-2-intermediate",
+   "name": "Sixth Sense 2 Intermediate",
+   "series": "Sixth Sense 2",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 10,
+   "rankSource": "airflofishing.com Stillwater Fly Lines collection, sorted best-selling (2026-10-16), position 10 of 10",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-sixth-sense-2-intermediate-fly-lines)",
+   "primaryUse": "Stillwater intermediate (slow/mid/fast)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Stillwater intermediates in three sink rates for fishing just under the surface.",
+   "url": "https://www.airflofishing.com/products/airflo-usa-sixth-sense-2-intermediate-fly-lines",
+   "sizes": [
+    {
+     "label": "WF5/6I Slow Intermediate",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 0.5,
+     "head": 46,
+     "total": 105,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6/7I Slow Intermediate",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 0.5,
+     "head": 46,
+     "total": 105,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7/8I Slow Intermediate",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 0.5,
+     "head": 46,
+     "total": 105,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8/9I Slow Intermediate",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 0.5,
+     "head": 46,
+     "total": 105,
+     "grains30": 231,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5/6I Mid Intermediate",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6/7I Mid Intermediate",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7/8I Mid Intermediate",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8/9I Mid Intermediate",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5/6I Fast Intermediate",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6/7I Fast Intermediate",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7/8I Fast Intermediate",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8/9I Fast Intermediate",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sixth-sense-2-sweep",
+   "name": "Sixth Sense 2 Sweep",
+   "series": "Sixth Sense 2",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 1,
+   "rankSource": "airflofishing.com Stillwater Fly Lines collection, sorted best-selling (2026-10-16), position 1 of 10",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-sixth-sense-2-sweep-fly-lines)",
+   "primaryUse": "Searching depths on stillwaters",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Sinks in a 'U' shaped path to cover a range of depths on each cast.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-sixth-sense-2-sweep-fly-lines",
+   "sizes": [
+    {
+     "label": "WF7S Di3",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 105,
+     "grains30": 324,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7S Di5",
+     "weights": [
+      7
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 105,
+     "grains30": 324,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7S Di7",
+     "weights": [
+      7
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 105,
+     "grains30": 324,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di3",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 105,
+     "grains30": 386,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di5",
+     "weights": [
+      8
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 105,
+     "grains30": 386,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di7",
+     "weights": [
+      8
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 105,
+     "grains30": 386,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-40-plus-extreme",
+   "name": "Superflo 40+ Extreme (Short Head)",
+   "series": "40+",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 4,
+   "rankSource": "airflofishing.com Stillwater Fly Lines collection, sorted best-selling (2026-10-16), position 4 of 10",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-40-extreme-short-head)",
+   "primaryUse": "Long-distance stillwater (boat or bank)",
+   "secondaryUse": "Single-hand/switch distance",
+   "weightLabel": null,
+   "summary": "Integrated shooting-head style line with a 36 ft head and ultra-thin running line for 40+ yard casts.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-40-extreme-short-head",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 245,
+     "colors": []
+    },
+    {
+     "label": "WF5I Fast Intermediate",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 245,
+     "colors": []
+    },
+    {
+     "label": "WF5S Di3",
+     "weights": [
+      5
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 245,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": []
+    },
+    {
+     "label": "WF6I Slow Intermediate",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": []
+    },
+    {
+     "label": "WF6I Fast Intermediate",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": []
+    },
+    {
+     "label": "WF6S Di3",
+     "weights": [
+      6
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": []
+    },
+    {
+     "label": "WF6S Di5",
+     "weights": [
+      6
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": []
+    },
+    {
+     "label": "WF6S Di7",
+     "weights": [
+      6
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 260,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 285,
+     "colors": []
+    },
+    {
+     "label": "WF7I Slow Intermediate",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 285,
+     "colors": []
+    },
+    {
+     "label": "WF7I Mid Intermediate",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 285,
+     "colors": []
+    },
+    {
+     "label": "WF7I Fast Intermediate",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 285,
+     "colors": []
+    },
+    {
+     "label": "WF7S Di3",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 285,
+     "colors": []
+    },
+    {
+     "label": "WF7S Di5",
+     "weights": [
+      7
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 285,
+     "colors": []
+    },
+    {
+     "label": "WF7S Di7",
+     "weights": [
+      7
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 285,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 324,
+     "colors": []
+    },
+    {
+     "label": "WF8I Slow Intermediate",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 324,
+     "colors": []
+    },
+    {
+     "label": "WF8I Mid Intermediate",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 324,
+     "colors": []
+    },
+    {
+     "label": "WF8I Fast Intermediate",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 324,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di3",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 324,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di5",
+     "weights": [
+      8
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 324,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di7",
+     "weights": [
+      8
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 123.5,
+     "grains30": null,
+     "headGrains": 324,
+     "colors": []
+    },
+    {
+     "label": "WF9S Di3",
+     "weights": [
+      9
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9S Di5",
+     "weights": [
+      9
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9S Di7",
+     "weights": [
+      9
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9I Fast Intermediate",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9I Slow Intermediate",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-40-plus-expert",
+   "name": "Superflo 40+ Expert (Long Head)",
+   "series": "40+",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 5,
+   "rankSource": "airflofishing.com Stillwater Fly Lines collection, sorted best-selling (2026-10-16), position 5 of 10",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-40-expert-long-head)",
+   "primaryUse": "Long-distance stillwater for proficient casters",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Longer (44 ft) head version of the 40+ for smoother, longer carry.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-40-expert-long-head",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 325,
+     "colors": []
+    },
+    {
+     "label": "WF7I Slow Intermediate",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 325,
+     "colors": []
+    },
+    {
+     "label": "WF7I Mid Intermediate",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 325,
+     "colors": []
+    },
+    {
+     "label": "WF7I Fast Intermediate",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 325,
+     "colors": []
+    },
+    {
+     "label": "WF7S Di3",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 325,
+     "colors": []
+    },
+    {
+     "label": "WF7S Di5",
+     "weights": [
+      7
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 325,
+     "colors": []
+    },
+    {
+     "label": "WF7S Di7",
+     "weights": [
+      7
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 325,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 365,
+     "colors": []
+    },
+    {
+     "label": "WF8I Slow Intermediate",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 365,
+     "colors": []
+    },
+    {
+     "label": "WF8I Mid Intermediate",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 365,
+     "colors": []
+    },
+    {
+     "label": "WF8I Fast Intermediate",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 365,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di3",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 365,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di5",
+     "weights": [
+      8
+     ],
+     "density": "sink5",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 365,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di7",
+     "weights": [
+      8
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 135.5,
+     "grains30": null,
+     "headGrains": 365,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-booby-basher-40-plus",
+   "name": "Booby Basher 40+",
+   "series": "40+",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 2,
+   "rankSource": "airflofishing.com Stillwater Fly Lines collection, sorted best-selling (2026-10-16), position 2 of 10",
+   "price": null,
+   "priceNote": "Not listed on US distributor site; airflofishing.com lists GBP 99.99",
+   "primaryUse": "Deep reservoir fishing (Di8)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Di8 tungsten-head 40+ line with a 55 ft head for fishing 30 ft or deeper.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-booby-basher-40plus",
+   "sizes": [
+    {
+     "label": "400 gr Di8",
+     "weights": [],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 55,
+     "total": 165,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-smooth-40-plus-sniper",
+   "name": "Superflo Smooth 40+ Sniper",
+   "series": "40+",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 3,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 3 of 20",
+   "price": null,
+   "priceNote": "Not listed on US distributor site; airflofishing.com lists GBP 99.99",
+   "primaryUse": "Pike and predators",
+   "secondaryUse": "Cold saltwater",
+   "weightLabel": null,
+   "summary": "Punchier, more compact 40+ for casting big predator flies at range; floating, intermediate, Di3 and Di7.",
+   "url": "https://www.airflofishing.com/products/superflo-smooth-40-sniper",
+   "sizes": [
+    {
+     "label": "WF10S Di3",
+     "weights": [
+      10
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10S Di7",
+     "weights": [
+      10
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di3",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S Di7",
+     "weights": [
+      8
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9S Di3",
+     "weights": [
+      9
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9S Di7",
+     "weights": [
+      9
+     ],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-sniper-4-season",
+   "name": "Superflo Ridge 2.0 Sniper 4 Season",
+   "series": "Superflo Ridge 2.0",
+   "category": "bass",
+   "discontinued": false,
+   "rank": 7,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 7 of 16",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-sniper-4-season-ridge-2-0)",
+   "primaryUse": "Pike/predators, freshwater and cold salt",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Big-fly predator line with a 34 ft head, wide-temperature coating and dual-density sinking options.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-sniper-4-season-ridge-2-0",
+   "sizes": [
+    {
+     "label": "WF6 Inter / Di3",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 239,
+     "colors": []
+    },
+    {
+     "label": "WF6 Di5/Di7",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 239,
+     "colors": []
+    },
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 239,
+     "colors": []
+    },
+    {
+     "label": "WF6F/S 6' Sink Tip",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 239,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 239,
+     "colors": []
+    },
+    {
+     "label": "WF7 Inter / Di3",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": []
+    },
+    {
+     "label": "WF7 Di5/Di7",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": []
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": []
+    },
+    {
+     "label": "WF7F/S 6' Sink Tip",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": []
+    },
+    {
+     "label": "WF8 Inter / Di3",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": []
+    },
+    {
+     "label": "WF8 Di5/Di7",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": []
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": []
+    },
+    {
+     "label": "WF8F/S 6' Sink Tip",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": []
+    },
+    {
+     "label": "WF9 Inter / Di3",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 374,
+     "colors": []
+    },
+    {
+     "label": "WF9 Di5/Di7",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 374,
+     "colors": []
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 374,
+     "colors": []
+    },
+    {
+     "label": "WF9F/S 6' Sink Tip",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 374,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 374,
+     "colors": []
+    },
+    {
+     "label": "WF10 Inter / Di3",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 424,
+     "colors": []
+    },
+    {
+     "label": "WF10 Di5/Di7",
+     "weights": [
+      10
+     ],
+     "density": "multi",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 424,
+     "colors": []
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 424,
+     "colors": []
+    },
+    {
+     "label": "WF10F/S 6' Sink Tip",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 424,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 34,
+     "total": 110,
+     "grains30": null,
+     "headGrains": 424,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-streamer-max-long",
+   "name": "Superflo Ridge 2.0 Streamer Max Long",
+   "series": "Superflo Ridge 2.0",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": 4,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 4 of 20",
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-streamer-max-long)",
+   "primaryUse": "Long-range sinking streamer (boat)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "40 ft fast-sinking head on an intermediate running line to keep flies deep all the way back to the boat.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-ridge-2-0-streamer-max-long",
+   "sizes": [
+    {
+     "label": "WF6/7S 200 gr",
+     "weights": [
+      6
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 100,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7/8S 250 gr",
+     "weights": [
+      7
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 100,
+     "grains30": 248,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8/9S 300 gr",
+     "weights": [
+      8
+     ],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 100,
+     "grains30": 299,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-shovel-head",
+   "name": "Superflo Ridge 2.0 Shovel Head",
+   "series": "Superflo Ridge 2.0",
+   "category": "streamer",
+   "discontinued": false,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-shovel-head)",
+   "primaryUse": "Deep, big-fly streamer fishing",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Double weight-forward 30 ft sinking head (280/330 gr) that loads quickly with big flies.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-ridge-2-0-shovel-head",
+   "sizes": [
+    {
+     "label": "280 gr",
+     "weights": [],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 280,
+     "colors": []
+    },
+    {
+     "label": "330 gr",
+     "weights": [],
+     "density": "sink6",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 30,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 330,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-ridge-depthfinder-big-game",
+   "name": "Ridge 2.0 Depthfinder Big Game",
+   "series": "Superflo Ridge 2.0",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 6,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 6 of 16",
+   "price": 149.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-ridge-2-0-depth-finder-big-game)",
+   "primaryUse": "Deep bluewater / big game",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "30 ft 300-700 gr sinking head on an intermediate running line with a 50 lb core.",
+   "url": "https://www.airflofishing.com/products/airflo-usa-ridge-2-0-depth-finder-big-game",
+   "sizes": [
+    {
+     "label": "300 gr Inter/Extra Fast Sink",
+     "weights": [],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": 7,
+     "head": 30,
+     "total": 150,
+     "grains30": null,
+     "headGrains": 300,
+     "colors": []
+    },
+    {
+     "label": "400 gr Inter/Extra Fast Sink",
+     "weights": [],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": 7.5,
+     "head": 30,
+     "total": 150,
+     "grains30": null,
+     "headGrains": 400,
+     "colors": []
+    },
+    {
+     "label": "500 gr Inter/Extra Fast Sink",
+     "weights": [],
+     "density": "sink7",
+     "densityLabel": null,
+     "sinkIps": 7.5,
+     "head": 30,
+     "total": 150,
+     "grains30": null,
+     "headGrains": 500,
+     "colors": []
+    },
+    {
+     "label": "700 gr Inter/Extra Fast Sink",
+     "weights": [],
+     "density": "sink8",
+     "densityLabel": null,
+     "sinkIps": 8,
+     "head": 30,
+     "total": 150,
+     "grains30": null,
+     "headGrains": 700,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-delta-taper-clear-intermediate",
+   "name": "Delta Taper Clear Intermediate",
+   "series": "Stillwater",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 3,
+   "rankSource": "airflofishing.com Stillwater Fly Lines collection, sorted best-selling (2026-10-16), position 3 of 10",
+   "price": null,
+   "priceNote": "Not listed on US distributor site; airflofishing.com lists GBP 99.99",
+   "primaryUse": "Clear-water stillwater and river intermediate",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Clear (or camo) 1.5 ips intermediate on a mono core for near-invisible presentations.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-stillwater-intermediate-fly-lines",
+   "sizes": [
+    {
+     "label": "WF5I Fast Intermediate",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 46,
+     "total": 105,
+     "grains30": 166,
+     "headGrains": null,
+     "colors": [
+      "Camouflage",
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF6I Fast Intermediate",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 46,
+     "total": 105,
+     "grains30": 193,
+     "headGrains": null,
+     "colors": [
+      "Camouflage",
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF7I Fast Intermediate",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 46,
+     "total": 105,
+     "grains30": 216,
+     "headGrains": null,
+     "colors": [
+      "Camouflage",
+      "Clear"
+     ]
+    },
+    {
+     "label": "WF8I Fast Intermediate",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 46,
+     "total": 105,
+     "grains30": 238,
+     "headGrains": null,
+     "colors": [
+      "Camouflage",
+      "Clear"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-sink-tips",
+   "name": "Superflo Sink Tips",
+   "series": "Superflo",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 8,
+   "rankSource": "airflofishing.com Stillwater Fly Lines collection, sorted best-selling (2026-10-16), position 8 of 10",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-sink-tip-fly-lines)",
+   "primaryUse": "Floating line with intermediate tips",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Floating lines with 3, 6 or 12 ft slow/mid/fast intermediate tips on a low-stretch Power Core.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-sink-tip-fly-lines",
+   "sizes": [
+    {
+     "label": "WF6F/I Fast Intermediate tip (3, 6 or 12 ft)",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 172,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F/I Slow Intermediate tip (3, 6 or 12 ft)",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 172,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F/I Mid Intermediate tip (3, 6 or 12 ft)",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 172,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F/I Fast Intermediate tip (3, 6 or 12 ft)",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F/I Slow Intermediate tip (3, 6 or 12 ft)",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F/I Mid Intermediate tip (3, 6 or 12 ft)",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F/I Fast Intermediate tip (3, 6 or 12 ft)",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 224,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F/I Slow Intermediate tip (3, 6 or 12 ft)",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 224,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F/I Mid Intermediate tip (3, 6 or 12 ft)",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 224,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-anchor-tip",
+   "name": "Superflo Anchor Tip",
+   "series": "Superflo",
+   "category": "lake",
+   "discontinued": false,
+   "rank": 7,
+   "rankSource": "airflofishing.com Stillwater Fly Lines collection, sorted best-selling (2026-10-16), position 7 of 10",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-anchor-tip-fly-lines)",
+   "primaryUse": "Static nymph/buzzer presentation in wind",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Floating line with a 3 ft mini tip (1.5 ips plus a short Di7 tip) to anchor flies in chop.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-anchor-tip-fly-lines",
+   "sizes": [
+    {
+     "label": "WF7F/I (3 ft anchor tip)",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F/I (3 ft anchor tip)",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 220,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F/I (3 ft anchor tip)",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-cold-salt-universal-int",
+   "name": "Superflo Cold Salt Universal Intermediate",
+   "series": "Superflo",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 5,
+   "rankSource": "airflofishing.com Saltwater Fly Lines collection, sorted best-selling (2026-10-16), position 5 of 16",
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-cold-salt-universal)",
+   "primaryUse": "Cold-water inshore, subsurface",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Intermediate inshore line that stays flexible in cold weather.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-cold-salt-universal",
+   "sizes": [
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 100,
+     "grains30": 191,
+     "headGrains": null,
+     "colors": [
+      "Translucent Grey"
+     ]
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 100,
+     "grains30": 216,
+     "headGrains": null,
+     "colors": [
+      "Translucent Grey"
+     ]
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 100,
+     "grains30": 255,
+     "headGrains": null,
+     "colors": [
+      "Translucent Grey"
+     ]
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 43,
+     "total": 100,
+     "grains30": 298,
+     "headGrains": null,
+     "colors": [
+      "Translucent Grey"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-cast",
+   "name": "Cast",
+   "series": "Cast",
+   "category": "trout",
+   "discontinued": false,
+   "rank": 5,
+   "rankSource": "airflofishing.com Freshwater Fly Lines collection, sorted best-selling (2026-10-16), position 5 of 20",
+   "price": 59.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-cast-fly-lines)",
+   "primaryUse": "Budget all-round line (float / intermediate / sink 3)",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "New-for-2025 value series with a forgiving, easy-loading front taper in three densities.",
+   "url": "https://www.airflofishing.com/products/airflo-usa-cast-fly-lines",
+   "sizes": [
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 128.1,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 132.7,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 168.2,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 192.9,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 219.1,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 250,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5I",
+     "weights": [
+      5
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 132.7,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6I",
+     "weights": [
+      6
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 168.2,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7I",
+     "weights": [
+      7
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 192.9,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": 1.5,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 219.1,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5S",
+     "weights": [
+      5
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": 3,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 132.7,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6S",
+     "weights": [
+      6
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": 3,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 168.2,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7S",
+     "weights": [
+      7
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": 3,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 192.9,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8S",
+     "weights": [
+      8
+     ],
+     "density": "sink3",
+     "densityLabel": null,
+     "sinkIps": 3,
+     "head": 37.07,
+     "total": 82,
+     "grains30": 219.1,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-universal",
+   "name": "Superflo Ridge 2.0 Universal Taper",
+   "series": "Superflo Ridge 2.0",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-universal-taper-fly-line)",
+   "primaryUse": "All-round trout",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Ridge 2.0 Universal (Fly Fisherman Gear Guide best new freshwater line 2025, per Airflo); replaced by the Superflo Max Ridge 2.0 version.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-ridge-2-0-universal",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 82,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": [
+      "Lichen/Driftwood",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": [
+      "Lichen/Driftwood",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/White",
+      "Lichen/Driftwood",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/White",
+      "Lichen/Driftwood",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/White",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/White",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Moss Olive/Chartreuse"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-power",
+   "name": "Superflo Ridge 2.0 Power Taper",
+   "series": "Superflo Ridge 2.0",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-power-taper)",
+   "primaryUse": "Big flies and heavy rigs",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Ridge 2.0 Power Taper.",
+   "url": "https://www.airflofishing.com/products/superflo-ridge-2-0-power-sale",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 82,
+     "grains30": 116,
+     "headGrains": null,
+     "colors": [
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 135,
+     "headGrains": null,
+     "colors": [
+      "Camo Green/Caddis",
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 155,
+     "headGrains": null,
+     "colors": [
+      "Camo Green/Caddis",
+      "Chartreuse/White",
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": [
+      "Camo Green/Caddis",
+      "Chartreuse/White",
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 205,
+     "headGrains": null,
+     "colors": [
+      "Camo Green/Caddis",
+      "Chartreuse/White",
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 234,
+     "headGrains": null,
+     "colors": [
+      "Camo Green/Caddis",
+      "Chartreuse/White",
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 272,
+     "headGrains": null,
+     "colors": [
+      "Sunburst/Purple"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-tactical",
+   "name": "Superflo Ridge 2.0 Tactical Taper",
+   "series": "Superflo Ridge 2.0",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-tactical-taper)",
+   "primaryUse": "Delicate presentation",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Ridge 2.0 Tactical Taper.",
+   "url": "https://www.airflofishing.com/products/superflo-ridge-2-0-tactical-sale",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 82,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 82,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-super-trout",
+   "name": "Superflo Ridge 2.0 Super Trout",
+   "series": "Superflo Ridge 2.0",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-super-trout-fly-line)",
+   "primaryUse": "Long-range carry and mending",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation long-belly Super Trout.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-ridge-2-0-super-trout-sale",
+   "sizes": [
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 70.7,
+     "total": 120,
+     "grains30": 120,
+     "headGrains": 270,
+     "colors": [
+      "Camo Olive/Driftwood"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 70.7,
+     "total": 120,
+     "grains30": 140,
+     "headGrains": 299,
+     "colors": [
+      "Camo Olive/Driftwood",
+      "Flo Orange"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 70.7,
+     "total": 120,
+     "grains30": 160,
+     "headGrains": 332,
+     "colors": [
+      "Camo Olive/Driftwood",
+      "Flo Orange"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 70.7,
+     "total": 120,
+     "grains30": 185,
+     "headGrains": 355,
+     "colors": [
+      "Camo Olive/Driftwood",
+      "Flo Orange"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-flats-universal",
+   "name": "Superflo Ridge 2.0 Flats Universal Taper",
+   "series": "Superflo Ridge 2.0",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-flats-universal-taper)",
+   "primaryUse": "All-round flats",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Flats Universal (floating and intermediate).",
+   "url": "https://www.airflofishing.com/products/superflo-ridge-2-0-flats-universal-taper-sale",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8I",
+     "weights": [
+      8
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 275,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9I",
+     "weights": [
+      9
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 275,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 326,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10I",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 326,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 375,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11I",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 375,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 440,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12I",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 440,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-flats-tactical",
+   "name": "Superflo Ridge 2.0 Flats Tactical Taper",
+   "series": "Superflo Ridge 2.0",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-flats-tactical-taper)",
+   "primaryUse": "Delicate long shots on flats",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Flats Tactical.",
+   "url": "https://www.airflofishing.com/products/superflo-ridge-2-0-flats-tactical-taper-sale",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 170,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 259,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 100,
+     "grains30": 355,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-flats-power",
+   "name": "Superflo Ridge 2.0 Flats Power Taper",
+   "series": "Superflo Ridge 2.0",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-flats-power-taper)",
+   "primaryUse": "Big flies and wind",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Flats Power.",
+   "url": "https://www.airflofishing.com/products/superflo-ridge-2-0-flats-power-taper-sale",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 220,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 250,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 295,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 346,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 400,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 100,
+     "grains30": 464,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-flats-tactical-clear-tip",
+   "name": "Superflo Ridge 2.0 Flats Tactical Taper 12' Clear Tip",
+   "series": "Superflo Ridge 2.0",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 149.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-flats-tactical-taper-12ft-clear-tip)",
+   "primaryUse": "Calm, bright flats",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Flats Tactical with 12 ft clear tip.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-ridge-2-0-flats-tactical-taper-12ft-clear-tip",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 169,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 259,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 354,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51,
+     "total": 105,
+     "grains30": 393,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-flats-universal-clear-tip",
+   "name": "Superflo Ridge 2.0 Flats Universal Taper 9' Clear Tip",
+   "series": "Superflo Ridge 2.0",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 149.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-flats-universal-ridge-2-0)",
+   "primaryUse": "Flats with a clear tip",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Flats Universal with 9 ft clear tip.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-flats-universal-ridge-2-0-sale",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 259,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 305,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 354,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 391,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-streamer-max-short",
+   "name": "Superflo Ridge 2.0 Streamer Max Short",
+   "series": "Superflo Ridge 2.0",
+   "category": "streamer",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-streamer-max-short)",
+   "primaryUse": "Sinking streamer fishing",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Streamer Max Short (single sink rate).",
+   "url": "https://www.airflofishing.com/products/airflo-usa-superflo-ridge-2-0-streamer-max-short-sale",
+   "sizes": [
+    {
+     "label": "WF5S",
+     "weights": [
+      5
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 22,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 184,
+     "colors": []
+    },
+    {
+     "label": "WF6S",
+     "weights": [
+      6
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 224,
+     "colors": []
+    },
+    {
+     "label": "WF7S",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 24,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 264,
+     "colors": []
+    },
+    {
+     "label": "WF8S",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 302,
+     "colors": []
+    },
+    {
+     "label": "WF9S",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 27,
+     "total": 100,
+     "grains30": null,
+     "headGrains": 344,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-gulf-redfish",
+   "name": "Superflo Ridge 2.0 Gulf Redfish",
+   "series": "Superflo Ridge 2.0",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-gulf-redfish)",
+   "primaryUse": "Redfish",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Gulf Redfish.",
+   "url": "https://www.airflofishing.com/products/superflo-ridge-2-0-gulf-redfish-sale",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 190,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 214,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 245,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 285,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 285,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-gt-gangsta",
+   "name": "Superflo Ridge 2.0 GT Gangsta",
+   "series": "Superflo Ridge 2.0",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-gt-gangsta)",
+   "primaryUse": "Giant trevally",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation GT Gangsta.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-ridge-2-0-gt-gangsta-sale",
+   "sizes": [
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 110,
+     "grains30": 432,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-ridge-superflo-max-redfish-power",
+   "name": "Ridge 2.0 Superflo Max Redfish Power",
+   "series": "Superflo Ridge 2.0",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-ridge2-0-redfish-winter)",
+   "primaryUse": "Winter redfish",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Earlier listing of the winter Redfish Power taper.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-ridge2-0-redfish-winter-sale",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 216,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 246,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 278,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38.5,
+     "total": 90,
+     "grains30": 309,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-ridge-ultra-supple-universal",
+   "name": "Ridge 2.0 Ultra Supple Universal",
+   "series": "Ridge 2.0 Ultra Supple",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-ridge2-0-ultra-supple-winter-universal)",
+   "primaryUse": "Cold-weather all-round trout",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation cold-weather Universal (below about 50°F).",
+   "url": "https://www.airflofishing.com/products/airflo-uk-ridge-2-0-ultra-supple-universal-sale",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 82,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-ridge-ultra-supple-tailwater",
+   "name": "Ridge 2.0 Ultra Supple Tailwater",
+   "series": "Ridge 2.0 Ultra Supple",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-ridge2-0-ultra-supple-winter-tailwater)",
+   "primaryUse": "Winter tailwaters",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation cold-weather Tailwater taper.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-ridge-2-0-ultra-supple-tailwater-sale",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 82,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 82,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-ridge-ultra-supple-indicator",
+   "name": "Ridge 2.0 Ultra Supple Indicator",
+   "series": "Ridge 2.0 Ultra Supple",
+   "category": "nymph",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-ridge2-0-ultra-supple-winter-indicator)",
+   "primaryUse": "Winter indicator / stillwater",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation cold-weather Indicator taper.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-ridge-2-0-ultra-supple-indicator-sale",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51.5,
+     "total": 105,
+     "grains30": 154,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51.5,
+     "total": 105,
+     "grains30": 177,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51.5,
+     "total": 105,
+     "grains30": 201,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 51.5,
+     "total": 105,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-ridge-double-taper",
+   "name": "Superflo Ridge 2.0 Double Taper",
+   "series": "Superflo Ridge 2.0",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 129.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-double-taper)",
+   "primaryUse": "Traditional dry fly",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Previous-generation Ridge 2.0 double taper (listed only on the US distributor site).",
+   "url": "https://mayflyoutdoors.com/products/airflo-usa-superflo-ridge-2-0-double-taper",
+   "sizes": [
+    {
+     "label": "DT2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 84,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 104,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 124,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 145,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "DT6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 80,
+     "grains30": 165,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-universal",
+   "name": "Superflo Universal Taper",
+   "series": "Superflo",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-univeral-taper-floatng-fly-lines-sale)",
+   "primaryUse": "All-round trout",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Original smooth-coated Superflo Universal.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-univeral-taper-floatng-fly-lines",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 82,
+     "grains30": 110,
+     "headGrains": null,
+     "colors": [
+      "Lichen/Driftwood",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 130,
+     "headGrains": null,
+     "colors": [
+      "Lichen/Driftwood",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 150,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/White",
+      "Lichen/Driftwood",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39,
+     "total": 90,
+     "grains30": 173,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/White",
+      "Lichen/Driftwood",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 198,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/White",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 225,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/White",
+      "Moss Olive/Chartreuse"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 90,
+     "grains30": 260,
+     "headGrains": null,
+     "colors": [
+      "Moss Olive/Chartreuse"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-power",
+   "name": "Superflo Power Taper",
+   "series": "Superflo",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-power-taper-floating-fly-lines-sale)",
+   "primaryUse": "Big flies, hucking junk",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Original smooth Superflo Power Taper.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-power-taper",
+   "sizes": [
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 35,
+     "total": 82,
+     "grains30": 116,
+     "headGrains": null,
+     "colors": [
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 36,
+     "total": 90,
+     "grains30": 135,
+     "headGrains": null,
+     "colors": [
+      "Camo Green/Caddis",
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 155,
+     "headGrains": null,
+     "colors": [
+      "Camo Green/Caddis",
+      "Chartreuse/White",
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 37,
+     "total": 90,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": [
+      "Camo Green/Caddis",
+      "Chartreuse/White",
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 205,
+     "headGrains": null,
+     "colors": [
+      "Camo Green/Caddis",
+      "Chartreuse/White",
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 234,
+     "headGrains": null,
+     "colors": [
+      "Camo Green/Caddis",
+      "Chartreuse/White",
+      "Sunburst/Purple"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 38,
+     "total": 90,
+     "grains30": 272,
+     "headGrains": null,
+     "colors": [
+      "Sunburst/Purple"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-tactical",
+   "name": "Superflo Tactical Taper",
+   "series": "Superflo",
+   "category": "trout",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-tactical-taper-floating-fly-lines-sale)",
+   "primaryUse": "Delicate presentation",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Original smooth Superflo Tactical Taper.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-tactical-taper-floating-fly-lines",
+   "sizes": [
+    {
+     "label": "WF2F",
+     "weights": [
+      2
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 82,
+     "grains30": 80,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    },
+    {
+     "label": "WF3F",
+     "weights": [
+      3
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 42,
+     "total": 82,
+     "grains30": 100,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    },
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 90,
+     "grains30": 120,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 140,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 180,
+     "headGrains": null,
+     "colors": [
+      "Bamboo/Watery Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-nymph-indicator",
+   "name": "Superflo Nymph Indicator",
+   "series": "Superflo",
+   "category": "nymph",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-nymph-indicator)",
+   "primaryUse": "Indicator nymphing",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Original smooth Superflo Nymph Indicator.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-nymph-indicator",
+   "sizes": [
+    {
+     "label": "WF4F",
+     "weights": [
+      4
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 134,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 160,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 190,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 220,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-bomber",
+   "name": "Superflo Bomber",
+   "series": "Superflo",
+   "category": "streamer",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-bomber-fly-lines)",
+   "primaryUse": "Single-hand salmon/steelhead, big flies",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Original Superflo Bomber.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-bomber-fly-lines",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 220,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 250,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 90,
+     "grains30": 300,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-cast",
+   "name": "Superflo C.A.S.T",
+   "series": "Superflo",
+   "category": "streamer",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-c-a-s-t-fly-lines)",
+   "primaryUse": "Single-hand Atlantic salmon",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Original Superflo C.A.S.T; superseded by the Superflo Max Smooth version (still listed at clearance price).",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-c-a-s-t-fly-lines",
+   "sizes": [
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 95,
+     "grains30": 200,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 95,
+     "grains30": 230,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 40,
+     "total": 95,
+     "grains30": 265,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-stillwater",
+   "name": "Superflo Stillwater",
+   "series": "Superflo",
+   "category": "lake",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-stillwater-floating-fly-lines)",
+   "primaryUse": "Long-range stillwater floating",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Original Delta-taper Superflo Stillwater floating line.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-stillwater-floating-fly-lines",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/Ivory",
+      "Lichen Green/Ivory"
+     ]
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/Ivory",
+      "Lichen Green/Ivory"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/Ivory",
+      "Lichen Green/Ivory"
+     ]
+    },
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/Ivory",
+      "Lichen Green/Ivory"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Chartreuse/Ivory",
+      "Lichen Green/Ivory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-flats-universal",
+   "name": "Superflo Flats Universal Taper",
+   "series": "Superflo",
+   "category": "salt",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-flats-universal-taper)",
+   "primaryUse": "All-round flats",
+   "secondaryUse": null,
+   "weightLabel": "+0.9 line size (maker)",
+   "summary": "Original smooth Superflo Flats Universal.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-superflo-flats-universal-taper",
+   "sizes": [
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 275,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 326,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF11F",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 375,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF12F",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 44,
+     "total": 100,
+     "grains30": 440,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-superflo-max-streamer-float",
+   "name": "Superflo Max Streamer Float",
+   "series": "Superflo",
+   "category": "streamer",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-superflo-max-streamer-float)",
+   "primaryUse": "Big flies on a floating line",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Earlier Streamer Float listing.",
+   "url": "https://www.airflofishing.com/products/superflo-uk-max-streamer-float",
+   "sizes": [
+    {
+     "label": "WF5F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 90,
+     "grains30": 170,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF6F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 90,
+     "grains30": 194,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 39.5,
+     "total": 90,
+     "grains30": 221,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-sixth-sense-2-floating",
+   "name": "Sixth Sense 2 Floating",
+   "series": "Sixth Sense 2",
+   "category": "lake",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 99.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-sixth-sense-2-floating-fly-lines)",
+   "primaryUse": "Stillwater floating, teams of flies",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Floating member of the Sixth Sense 2 stillwater family.",
+   "url": "https://www.airflofishing.com/products/airflo-uk-sixth-sense-2-floating-fly-lines",
+   "sizes": [
+    {
+     "label": "WF6/7F",
+     "weights": [
+      6
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 185,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF7/8F",
+     "weights": [
+      7
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 210,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF8/9F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": 46,
+     "total": 105,
+     "grains30": 231,
+     "headGrains": null,
+     "colors": []
+    },
+    {
+     "label": "WF5/6F",
+     "weights": [
+      5
+     ],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": null,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  },
+  {
+   "id": "airflo-euro-nymph",
+   "name": "Euro Nymph",
+   "series": "Superflo",
+   "category": "nymph",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 54.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/airflo-usa-sln-euro-nymph-0-60mm-fly-lines)",
+   "primaryUse": "Euro nymphing",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "Earlier 0.55 mm FIPS-compliant euro nymph line (braid or clear mono core).",
+   "url": "https://www.airflofishing.com/products/airflo-uk-sln-euro-nymph-0-60mm-fly-lines",
+   "sizes": [
+    {
+     "label": "0.55 mm level",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 82,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Clear",
+      "Olive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airflo-euro-nymph-short",
+   "name": "Euro Nymph Short (22 ft)",
+   "series": "Superflo",
+   "category": "nymph",
+   "discontinued": true,
+   "rank": null,
+   "rankSource": null,
+   "price": 29.99,
+   "priceNote": "USD list price from US distributor Mayfly Outdoors (https://mayflyoutdoors.com/products/euro-nymph-short-22ft)",
+   "primaryUse": "Convert a standard setup to euro nymphing",
+   "secondaryUse": null,
+   "weightLabel": null,
+   "summary": "22 ft section of 0.55 mm euro line that loops onto a conventional fly line.",
+   "url": "https://www.airflofishing.com/products/airflo-usa-euro-nymph-short-22ft",
+   "sizes": [
+    {
+     "label": "0.55 mm level, 22 ft",
+     "weights": [],
+     "density": "floating",
+     "densityLabel": null,
+     "sinkIps": null,
+     "head": null,
+     "total": 22,
+     "grains30": null,
+     "headGrains": null,
+     "colors": []
+    }
+   ]
+  }
+ ]
+}
