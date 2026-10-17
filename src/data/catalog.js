@@ -537,6 +537,19 @@ const sameZones = (a, b) => a.length === b.length && a.every((z, i) => z.length 
 // The maker colorway a line is in, if its preset comes in fixed colorways.
 export const lineColorway = (preset, line) => preset?.colorways?.find((cw) => sameZones(cw.zones, line.zones));
 
+const TAPER_KEYS = ['front', 'body', 'back', 'running'];
+
+// The preset a line matches unedited, in any of its colorways, or 'custom'. Saved setups keep
+// only the line, so this recovers which preset to show when one is loaded back.
+export function presetForLine(line) {
+  const matches = (preset) =>
+    preset.line.type === line.type &&
+    preset.line.weight === line.weight &&
+    TAPER_KEYS.every((k) => preset.line.taper[k] === line.taper[k]) &&
+    (sameZones(preset.line.zones, line.zones) || Boolean(lineColorway(preset, line)));
+  return LINE_PRESETS.find(matches)?.id ?? 'custom';
+}
+
 // Swatches for a line's zones: the base palette plus any maker colors the line already uses.
 export const lineSwatches = (line) => [...LINE_COLORS, ...MAKER_LINE_COLORS.filter((c) => line.zones.some((z) => z.color === c.id))];
 

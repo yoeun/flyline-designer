@@ -5,7 +5,7 @@ import PreviewModeToggle from './components/PreviewModeToggle.jsx';
 import Rack from './components/Rack.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
 import ThemeToggle from './components/ThemeToggle.jsx';
-import { DEFAULT_SETUP, LINE_PRESETS, findById } from './data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, findById, presetForLine } from './data/catalog.js';
 import { exportPng, exportSvg } from './lib/export.js';
 import { clampSelection } from './lib/lineEdit.js';
 import { hasUnsavedChanges } from './lib/rack.js';
@@ -154,7 +154,7 @@ export default function App() {
             onLoad={(s) => {
               const { id, ...rest } = structuredClone(s);
               setLineSelection(null);
-              setState({ setup: rest, presetId: 'custom' });
+              setState({ setup: rest, presetId: presetForLine(rest.line) });
             }}
             onRemove={(id) => setRack((r) => r.filter((s) => s.id !== id))}
           />
