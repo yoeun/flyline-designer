@@ -6,7 +6,7 @@ import { STEP, TAPER_KEYS, TAPER_NAMES, editorScale, formatFeet, moveTaperBounda
 const W = 520;
 const LEFT = 26; // room for the backing stub
 const SPAN = W - LEFT - 8;
-const MIN_PX = 28;
+const MIN_PX = 56; // wide enough for short taper labels; the editor is not to scale
 const RULE_Y = 34;
 const MID = 76;
 const MAX_HALF = 11;
