@@ -92,7 +92,15 @@ Rim, width and rated capacity come from retailer listings. Spool diameter is est
 |---|---|---|---|---|
 | Lamson Liquid S 5+ | 3.65″ | 3.41″ | 1.00″ | WF5 + 100 yd of 20 lb |
 | Lamson Liquid S 7+ | 3.9″ | 3.66″ | 1.15″ | WF7 + 200 yd of 20 lb |
+| Orvis Hydros II | 3.4″ | 3.16″ | 0.90″ (est.) | WF4 + 125 yd of 20 lb |
+| Orvis Hydros III | 3.7″ | 3.46″ | 1.00″ (est.) | WF6 + 125 yd of 20 lb |
+| Orvis Hydros IV | 4.0″ | 3.76″ | 1.10″ (est.) | WF8 + 200 yd of 20 lb |
+| Orvis Clearwater II | 3.4″ | 3.16″ | 1.05″ (est.) | WF4 + 125 yd of 20 lb |
+| Orvis Clearwater III | 3.7″ | 3.46″ | 1.15″ (est.) | WF6 + 125 yd of 20 lb |
+| Orvis Clearwater IV | 4.0″ | 3.76″ | 1.30″ (est.) | WF8 + 200 yd of 20 lb |
 | Redington Run 5/6 | 3.6″ | 3.36″ | 0.95″ (listings say 0.9–1.0″) | WF5 + 100 yd of 20 lb |
+
+Orvis doesn't publish spool width, so those widths are estimates.
 
 Each reel names a frame `design` (generic, Liquid S or Run), drawn once as SVG for the drag side and the spool side in `src/assets/reels`. The preview shows the drag side by default; a Drag/Spool toggle switches sides. The wound line shows through the frame's windows, shaded as fine wraps.
 

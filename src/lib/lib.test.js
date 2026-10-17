@@ -284,7 +284,7 @@ describe('catalog', () => {
 
   it('groups reels by maker, generic last', () => {
     const groups = makerGroups(REELS, 'Generic');
-    expect(groups.map(([label]) => label)).toEqual(['Lamson', 'Redington', 'Generic']);
+    expect(groups.map(([label]) => label)).toEqual(['Lamson', 'Orvis', 'Redington', 'Generic']);
     expect(groups.flatMap(([, reels]) => reels.map((r) => r.id)).sort()).toEqual(REELS.map((r) => r.id).sort());
   });
 });
