@@ -45,15 +45,9 @@ const mirrorX = (d) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x, 
 
 // The Iconic drag side: six curved arms swirl out from the hub, each gap split by a thinner rib. The arms are laid
 // out below sweeping clockwise and drawn mirrored, so they sweep counter-clockwise like the other reels.
-// [hub angle, rim angle, bow]
-const ARMS = [
-  [-130, -112, -14],
-  [-80, -58, 18],
-  [-14, -4, 16],
-  [42, 58, -14],
-  [128, 116, 14],
-  [182, 176, -10],
-];
+// [hub angle, rim angle, bow]: six arms 60° apart, each leaning and bowing the same way.
+const ARM_BOW = -16;
+const ARMS = [0, 1, 2, 3, 4, 5].map((k) => [-130 + k * 60, -108 + k * 60, ARM_BOW]);
 export const iconicDrag = ({ hub = 70, cap = 62, arms = ARMS, rib = { t: 0.45, shift: 0, bend: 10 } } = {}) =>
   svg({
     back: [ring(134, 120)],
