@@ -170,7 +170,7 @@ const makerLine = ({ id, maker, name, type, weight, taper: [front, body, back, r
 export const LINE_PRESETS = [
   {
     id: 'twotone-wf5f',
-    name: 'Generic WF5 Floating two-tone',
+    name: 'Generic WF5 Floating Two-Tone',
     line: {
       type: 'floating',
       weight: 5,
@@ -514,7 +514,7 @@ export const LINE_PRESETS = [
 
   {
     id: 'single-wf5f',
-    name: 'Generic WF5 Floating single-color',
+    name: 'Generic WF5 Floating Single-Color',
     line: {
       type: 'floating',
       weight: 5,
@@ -556,7 +556,7 @@ export const hexOf = (id) => (lineColor(id) ?? LINE_COLORS[0]).hex;
 export const nameOf = (id) => (lineColor(id) ?? { name: id }).name;
 
 export const DEFAULT_SETUP = {
-  name: 'Generic WF5 Floating two-tone',
+  name: 'Generic WF5 Floating Two-Tone',
   reel: { model: 'g56', color: 'silver' },
   line: structuredClone(LINE_PRESETS[0].line),
   backing: { yards: 100, pounds: 20, color: 'blue' },

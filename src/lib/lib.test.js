@@ -301,7 +301,7 @@ describe('theme', () => {
 });
 
 describe('line editing', () => {
-  // Generic WF5 Floating two-tone: taper 4 / 28.5 / 4.5 / 53 = 90 ft; zones chartreuse 20, green 17, orange rest.
+  // Generic WF5 Floating Two-Tone: taper 4 / 28.5 / 4.5 / 53 = 90 ft; zones chartreuse 20, green 17, orange rest.
   const line = () => structuredClone(DEFAULT_SETUP.line);
   const lengths = (l) => zoneRanges(l).map((z) => z.length);
 
