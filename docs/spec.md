@@ -94,22 +94,27 @@ Lamson figures come from Lamson's spec table (capacity with the largest line eac
 | Lamson Liquid S 5+ | 3.65″ | 3.41″ | 1.00″ | WF6 + 100 yd of 20 lb |
 | Lamson Liquid S 7+ | 3.9″ | 3.66″ | 1.15″ | WF8 + 200 yd of 20 lb |
 | Lamson Liquid S 9+ | 4.45″ | 4.21″ | 1.25″ | WF10 + 250 yd of 30 lb |
-| Orvis Hydros II | 3.4″ | 3.16″ | 0.90″ (est.) | WF4 + 125 yd of 20 lb |
-| Orvis Hydros III | 3.7″ | 3.46″ | 1.00″ (est.) | WF6 + 125 yd of 20 lb |
-| Orvis Hydros IV | 4.0″ | 3.76″ | 1.10″ (est.) | WF8 + 200 yd of 20 lb |
+| Orvis Hydros II (2026) | 3.4″ | 3.16″ | 0.85″ (est.) | WF4 + 125 yd of 20 lb (est.) |
+| Orvis Hydros III (2026) | 3.88″ | 3.62″ (measured) | 0.90″ (measured) | arbor 2.43″ (measured) |
+| Orvis Hydros IV (2026) | 4.25″ | 4.01″ | 1.00″ (est.) | WF8 + 200 yd of 20 lb (est.) |
+| Orvis Hydros II (2020–25) | 3.4″ | 3.16″ | 0.90″ (est.) | WF4 + 125 yd of 20 lb |
+| Orvis Hydros III (2020–25) | 3.7″ | 3.46″ | 1.00″ (est.) | WF6 + 125 yd of 20 lb |
+| Orvis Hydros IV (2020–25) | 4.0″ | 3.76″ | 1.10″ (est.) | WF8 + 200 yd of 20 lb |
 | Orvis Clearwater II | 3.4″ | 3.16″ | 1.05″ (est.) | WF4 + 125 yd of 20 lb |
 | Orvis Clearwater III | 3.7″ | 3.46″ | 1.15″ (est.) | WF6 + 125 yd of 20 lb |
 | Orvis Clearwater IV | 4.0″ | 3.76″ | 1.30″ (est.) | WF8 + 200 yd of 20 lb |
-| Redington Behemoth 4/5 | 3.4″ | 3.16″ | 0.95″ (est.) | WF4 + 75 yd of 20 lb |
+| Redington Behemoth 4/5 | 3.4″ | 3.16″ | 0.95″ (est.) | WF4 + 125 yd of 20 lb |
 | Redington Behemoth 5/6 | 3.6″ | 3.36″ | 1.00″ (est.) | WF5 + 125 yd of 20 lb |
 | Redington Behemoth 7/8 | 4.0″ | 3.76″ | 1.10″ (est.) | WF7 + 200 yd of 20 lb |
 | Redington Behemoth 9/10 | 4.4″ | 4.16″ | 1.20″ (est.) | WF9 + 200 yd of 30 lb |
 | Redington Behemoth 11/12 | 4.7″ | 4.46″ | 1.30″ (est.) | WF11 + 250 yd of 30 lb |
 | Redington Run 3/4 | 3.2″ | 2.96″ | 0.87″ (listings say 0.87–1.3″) | WF3 + 75 yd of 20 lb |
-| Redington Run 5/6 | 3.6″ | 3.36″ | 0.95″ (listings say 0.9–1.3″) | WF5 + 100 yd of 20 lb |
+| Redington Run 5/6 | 3.6″ | 3.36″ | 0.91″ (listings say 0.9–1.3″) | WF5 + 100 yd of 20 lb |
 | Redington Run 7/8 | 4.0″ | 3.76″ | 0.94″ (listings say 0.94–1.5″) | WF7 + 200 yd of 20 lb |
 
-Orvis and Redington (for the Behemoth) don't publish spool width, so those widths are estimates.
+Orvis and Redington (for the Behemoth) don't publish spool width, so those widths are estimates. The one exception is the 2026 Hydros III, which Trident Fly Fishing measured in its review (spool 3.62″, arbor 2.43″, width 0.9″); the other 2026 Hydros sizes scale from it. The Behemoth 4/5's 125 yd comes from Far Bank, Redington's parent; Trident lists 75 yd.
+
+Maker finish colors are sampled from the makers' studio product photos (lit faces, highlights and shadows dropped), since no maker publishes color values.
 
 Each reel names a frame `design` (generic, Liquid S or Run), drawn once as SVG for the drag side and the spool side in `src/assets/reels`. The preview shows the drag side by default; a Drag/Spool toggle switches sides. The wound line shows through the frame's windows, shaded as fine wraps.
 

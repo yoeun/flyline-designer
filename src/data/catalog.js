@@ -21,19 +21,20 @@ export const REEL_COLORS = [
   { id: 'forest', name: 'Forest green', hex: '#2f5a43' },
   { id: 'red', name: 'Red', hex: '#8f2c27' },
   { id: 'blue', name: 'Blue', hex: '#2c4f7c' },
-  // Maker finishes, offered only on the reels that come in them.
-  { id: 'smoke', name: 'Smoke', hex: '#56595e' },
-  { id: 'day-break', name: 'Day Break', hex: '#3a4458' },
-  { id: 'coffee', name: 'Coffee', hex: '#7a5b3c' },
-  { id: 'flats-blue', name: 'Flats Blue', hex: '#2f8fd0' },
-  { id: 'olive', name: 'Olive', hex: '#6c7132' },
-  { id: 'charcoal', name: 'Charcoal', hex: '#5d6064' },
-  { id: 'dark-pine', name: 'Dark Pine', hex: '#4c573b' },
-  { id: 'burgundy', name: 'Burgundy', hex: '#5b1f2b' },
-  { id: 'coyote', name: 'Coyote', hex: '#8b7457' },
-  { id: 'sand', name: 'Sand', hex: '#b9a98a' },
-  // Sold as "OD green" (olive drab).
-  { id: 'army-green', name: 'Army green', hex: '#5a6142' },
+  // Maker finishes, offered only on the reels that come in them. Sampled from the makers' studio photos (lit faces).
+  { id: 'smoke', name: 'Smoke', hex: '#7f8184' },
+  { id: 'day-break', name: 'Day Break', hex: '#5b6270' },
+  { id: 'coffee', name: 'Coffee', hex: '#786052' },
+  { id: 'flats-blue', name: 'Flats Blue', hex: '#62acd8' },
+  { id: 'olive', name: 'Olive', hex: '#746b48' },
+  { id: 'charcoal', name: 'Charcoal', hex: '#7f7d83' },
+  { id: 'dark-pine', name: 'Dark Pine', hex: '#565d44' },
+  { id: 'burgundy', name: 'Burgundy', hex: '#783f43' },
+  { id: 'coyote', name: 'Coyote', hex: '#85694f' },
+  // A silvery taupe; Redington's own image files call it Silver.
+  { id: 'sand', name: 'Sand', hex: '#a09891' },
+  // Sold as "O.D. Green" (olive drab).
+  { id: 'army-green', name: 'Army green', hex: '#5e5f48' },
 ];
 
 // Colors for reels without their own list.
@@ -129,17 +130,22 @@ export const REELS = [
   { id: 'lamson-liquid-s-5', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 5+', colors: LIQUID_S_COLORS, rim: 3.65, spool: 3.41, width: 1.0, rated: { weight: 6, yards: 100, pounds: 20 } },
   { id: 'lamson-liquid-s-7', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 7+', colors: LIQUID_S_COLORS, rim: 3.9, spool: 3.66, width: 1.15, rated: { weight: 8, yards: 200, pounds: 20 } },
   { id: 'lamson-liquid-s-9', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 9+', colors: LIQUID_S_COLORS, rim: 4.45, spool: 4.21, width: 1.25, rated: { weight: 10, yards: 250, pounds: 30 } },
-  // Diameter and rated capacity (20 lb backing) from Orvis spec tables via retailers. Orvis doesn't
-  // publish spool width; widths are estimates.
-  { id: 'orvis-hydros-2', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros II', colors: HYDROS_COLORS, rim: 3.4, spool: 3.16, width: 0.9, rated: { weight: 4, yards: 125, pounds: 20 } },
-  { id: 'orvis-hydros-3', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros III', colors: HYDROS_COLORS, rim: 3.7, spool: 3.46, width: 1.0, rated: { weight: 6, yards: 125, pounds: 20 } },
-  { id: 'orvis-hydros-4', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros IV', colors: HYDROS_COLORS, rim: 4.0, spool: 3.76, width: 1.1, rated: { weight: 8, yards: 200, pounds: 20 } },
+  // Hydros 2026: rim from Orvis. Trident measured the III (spool 3.62″, arbor 2.43″, width 0.9″);
+  // II and IV widths are scaled from it and their capacities borrowed from the previous Hydros, so both are estimates.
+  { id: 'orvis-hydros-2026-2', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros II (2026)', colors: HYDROS_COLORS, rim: 3.4, spool: 3.16, width: 0.85, rated: { weight: 4, yards: 125, pounds: 20 } },
+  { id: 'orvis-hydros-2026-3', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros III (2026)', colors: HYDROS_COLORS, rim: 3.88, spool: 3.62, arbor: 2.43, width: 0.9 },
+  { id: 'orvis-hydros-2026-4', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros IV (2026)', colors: HYDROS_COLORS, rim: 4.25, spool: 4.01, width: 1.0, rated: { weight: 8, yards: 200, pounds: 20 } },
+  // Previous Hydros (2020–25) and Clearwater Cast: diameter and rated capacity (20 lb backing) from Orvis
+  // spec tables via retailers. Orvis doesn't publish spool width; widths are estimates.
+  { id: 'orvis-hydros-2', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros II (2020–25)', colors: HYDROS_COLORS, rim: 3.4, spool: 3.16, width: 0.9, rated: { weight: 4, yards: 125, pounds: 20 } },
+  { id: 'orvis-hydros-3', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros III (2020–25)', colors: HYDROS_COLORS, rim: 3.7, spool: 3.46, width: 1.0, rated: { weight: 6, yards: 125, pounds: 20 } },
+  { id: 'orvis-hydros-4', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros IV (2020–25)', colors: HYDROS_COLORS, rim: 4.0, spool: 3.76, width: 1.1, rated: { weight: 8, yards: 200, pounds: 20 } },
   { id: 'orvis-clearwater-2', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater II', colors: CLEARWATER_COLORS, rim: 3.4, spool: 3.16, width: 1.05, rated: { weight: 4, yards: 125, pounds: 20 } },
   { id: 'orvis-clearwater-3', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater III', colors: CLEARWATER_COLORS, rim: 3.7, spool: 3.46, width: 1.15, rated: { weight: 6, yards: 125, pounds: 20 } },
   { id: 'orvis-clearwater-4', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater IV', colors: CLEARWATER_COLORS, rim: 4.0, spool: 3.76, width: 1.3, rated: { weight: 8, yards: 200, pounds: 20 } },
   // Diameter and rated capacity from retailer listings (one lists the 4/5 at 125 yd). Redington doesn't
   // publish spool width; widths are estimates.
-  { id: 'redington-behemoth-45', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 4/5', colors: BEHEMOTH_COLORS, rim: 3.4, spool: 3.16, width: 0.95, rated: { weight: 4, yards: 75, pounds: 20 } },
+  { id: 'redington-behemoth-45', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 4/5', colors: BEHEMOTH_COLORS, rim: 3.4, spool: 3.16, width: 0.95, rated: { weight: 4, yards: 125, pounds: 20 } },
   { id: 'redington-behemoth-56', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 5/6', colors: BEHEMOTH_COLORS, rim: 3.6, spool: 3.36, width: 1.0, rated: { weight: 5, yards: 125, pounds: 20 } },
   { id: 'redington-behemoth-78', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 7/8', colors: BEHEMOTH_COLORS, rim: 4.0, spool: 3.76, width: 1.1, rated: { weight: 7, yards: 200, pounds: 20 } },
   { id: 'redington-behemoth-910', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 9/10', colors: BEHEMOTH_COLORS, rim: 4.4, spool: 4.16, width: 1.2, rated: { weight: 9, yards: 200, pounds: 30 } },
@@ -147,7 +153,7 @@ export const REELS = [
   // Rim and rated capacity from retailer listings. Listed widths disagree (0.9–1.5″); these are the
   // inner spool widths from one EU retailer.
   { id: 'redington-run-34', maker: 'Redington', design: 'run', name: 'Redington Run 3/4', colors: RUN_COLORS, rim: 3.2, spool: 2.96, width: 0.87, rated: { weight: 3, yards: 75, pounds: 20 } },
-  { id: 'redington-run-56', maker: 'Redington', design: 'run', name: 'Redington Run 5/6', colors: RUN_COLORS, rim: 3.6, spool: 3.36, width: 0.95, rated: { weight: 5, yards: 100, pounds: 20 } },
+  { id: 'redington-run-56', maker: 'Redington', design: 'run', name: 'Redington Run 5/6', colors: RUN_COLORS, rim: 3.6, spool: 3.36, width: 0.91, rated: { weight: 5, yards: 100, pounds: 20 } },
   { id: 'redington-run-78', maker: 'Redington', design: 'run', name: 'Redington Run 7/8', colors: RUN_COLORS, rim: 4.0, spool: 3.76, width: 0.94, rated: { weight: 7, yards: 200, pounds: 20 } },
 ];
 
