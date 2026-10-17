@@ -46,10 +46,11 @@ export const REELS = [
   { id: 'g56', design: 'generic', name: 'Generic 5–6 wt', rim: 3.6, spool: 3.36, arbor: 1.95, width: 0.78 },
   { id: 'g78', design: 'generic', name: 'Generic 7–8 wt', rim: 4.0, spool: 3.74, arbor: 2.2, width: 0.95 },
   { id: 'g910', design: 'generic', name: 'Generic 9–10 wt', rim: 4.4, spool: 4.12, arbor: 2.4, width: 1.1 },
-  // Rim, width and rated capacity from retailer listings. Spool is estimated as rim − 0.24″.
-  { id: 'lamson-liquid-s-5', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 5+', rim: 3.65, spool: 3.41, width: 1.0, rated: { weight: 5, yards: 100, pounds: 20 } },
-  { id: 'lamson-liquid-s-7', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 7+', rim: 3.9, spool: 3.66, width: 1.15, rated: { weight: 7, yards: 200, pounds: 20 } },
-  // Listed widths range from 0.9″ to 1.0″.
+  // Rim, width and rated capacity (max line + backing) from Lamson's spec table. Spool is estimated as rim − 0.24″.
+  { id: 'lamson-liquid-s-3', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 3+', rim: 3.35, spool: 3.11, width: 1.0, rated: { weight: 4, yards: 100, pounds: 20 } },
+  { id: 'lamson-liquid-s-5', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 5+', rim: 3.65, spool: 3.41, width: 1.0, rated: { weight: 6, yards: 100, pounds: 20 } },
+  { id: 'lamson-liquid-s-7', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 7+', rim: 3.9, spool: 3.66, width: 1.15, rated: { weight: 8, yards: 200, pounds: 20 } },
+  { id: 'lamson-liquid-s-9', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 9+', rim: 4.45, spool: 4.21, width: 1.25, rated: { weight: 10, yards: 250, pounds: 30 } },
   // Diameter and rated capacity (20 lb backing) from Orvis spec tables via retailers. Orvis doesn't
   // publish spool width; widths are estimates.
   { id: 'orvis-hydros-2', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros II', rim: 3.4, spool: 3.16, width: 0.9, rated: { weight: 4, yards: 125, pounds: 20 } },
@@ -58,7 +59,11 @@ export const REELS = [
   { id: 'orvis-clearwater-2', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater II', rim: 3.4, spool: 3.16, width: 1.05, rated: { weight: 4, yards: 125, pounds: 20 } },
   { id: 'orvis-clearwater-3', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater III', rim: 3.7, spool: 3.46, width: 1.15, rated: { weight: 6, yards: 125, pounds: 20 } },
   { id: 'orvis-clearwater-4', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater IV', rim: 4.0, spool: 3.76, width: 1.3, rated: { weight: 8, yards: 200, pounds: 20 } },
+  // Rim and rated capacity from retailer listings. Listed widths disagree (0.9–1.5″); these are the
+  // inner spool widths from one EU retailer.
+  { id: 'redington-run-34', maker: 'Redington', design: 'run', name: 'Redington Run 3/4', rim: 3.2, spool: 2.96, width: 0.87, rated: { weight: 3, yards: 75, pounds: 20 } },
   { id: 'redington-run-56', maker: 'Redington', design: 'run', name: 'Redington Run 5/6', rim: 3.6, spool: 3.36, width: 0.95, rated: { weight: 5, yards: 100, pounds: 20 } },
+  { id: 'redington-run-78', maker: 'Redington', design: 'run', name: 'Redington Run 7/8', rim: 4.0, spool: 3.76, width: 0.94, rated: { weight: 7, yards: 200, pounds: 20 } },
 ];
 
 export const BACKING_DIAMETER = { 20: 0.021, 30: 0.025 };

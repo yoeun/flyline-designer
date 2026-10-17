@@ -86,19 +86,23 @@ Backing diameter: 20 lb = 0.021 in, 30 lb = 0.025 in.
 
 ### Real reels
 
-Rim, width and rated capacity come from retailer listings. Spool diameter is estimated as rim − 0.24″, and the arbor is solved from the rated capacity.
+Lamson figures come from Lamson's spec table (capacity with the largest line each size takes); the rest come from retailer listings. Spool diameter is estimated as rim − 0.24″, and the arbor is solved from the rated capacity.
 
 | Model | Rim | Spool (est.) | Width | Rated capacity |
 |---|---|---|---|---|
-| Lamson Liquid S 5+ | 3.65″ | 3.41″ | 1.00″ | WF5 + 100 yd of 20 lb |
-| Lamson Liquid S 7+ | 3.9″ | 3.66″ | 1.15″ | WF7 + 200 yd of 20 lb |
+| Lamson Liquid S 3+ | 3.35″ | 3.11″ | 1.00″ | WF4 + 100 yd of 20 lb |
+| Lamson Liquid S 5+ | 3.65″ | 3.41″ | 1.00″ | WF6 + 100 yd of 20 lb |
+| Lamson Liquid S 7+ | 3.9″ | 3.66″ | 1.15″ | WF8 + 200 yd of 20 lb |
+| Lamson Liquid S 9+ | 4.45″ | 4.21″ | 1.25″ | WF10 + 250 yd of 30 lb |
 | Orvis Hydros II | 3.4″ | 3.16″ | 0.90″ (est.) | WF4 + 125 yd of 20 lb |
 | Orvis Hydros III | 3.7″ | 3.46″ | 1.00″ (est.) | WF6 + 125 yd of 20 lb |
 | Orvis Hydros IV | 4.0″ | 3.76″ | 1.10″ (est.) | WF8 + 200 yd of 20 lb |
 | Orvis Clearwater II | 3.4″ | 3.16″ | 1.05″ (est.) | WF4 + 125 yd of 20 lb |
 | Orvis Clearwater III | 3.7″ | 3.46″ | 1.15″ (est.) | WF6 + 125 yd of 20 lb |
 | Orvis Clearwater IV | 4.0″ | 3.76″ | 1.30″ (est.) | WF8 + 200 yd of 20 lb |
-| Redington Run 5/6 | 3.6″ | 3.36″ | 0.95″ (listings say 0.9–1.0″) | WF5 + 100 yd of 20 lb |
+| Redington Run 3/4 | 3.2″ | 2.96″ | 0.87″ (listings say 0.87–1.3″) | WF3 + 75 yd of 20 lb |
+| Redington Run 5/6 | 3.6″ | 3.36″ | 0.95″ (listings say 0.9–1.3″) | WF5 + 100 yd of 20 lb |
+| Redington Run 7/8 | 4.0″ | 3.76″ | 0.94″ (listings say 0.94–1.5″) | WF7 + 200 yd of 20 lb |
 
 Orvis doesn't publish spool width, so those widths are estimates.
 
