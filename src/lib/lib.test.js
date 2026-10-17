@@ -3,6 +3,7 @@ import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetGroups } from '../d
 import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
+import { FRAMES, SIDES, frameMarkup } from './reelFrames.js';
 import { decodeSetup, encodeSetup } from './share.js';
 import { parseTheme, resolveTheme } from './theme.js';
 import {
@@ -279,5 +280,24 @@ describe('catalog', () => {
     const groups = presetGroups(LINE_PRESETS);
     expect(groups.map(([label]) => label)).toEqual(['Airflo', 'RIO', 'Generic & examples']);
     expect(groups.flatMap(([, presets]) => presets.map((p) => p.id)).sort()).toEqual(LINE_PRESETS.map((p) => p.id).sort());
+  });
+});
+
+describe('reel frames', () => {
+  it.each(REELS.map((r) => [r.id, r]))('%s has a drawing for each side', (_, reel) => {
+    for (const [side] of SIDES) expect(FRAMES[reel.design]?.[side]).toContain('<svg');
+  });
+
+  it('inlines a frame without its outer svg and with page-unique ids', () => {
+    const markup = frameMarkup('run', 'drag', 'r1');
+    expect(markup).not.toMatch(/<\/?svg/);
+    expect(markup).toContain('id="sheen-r1"');
+    expect(markup).toContain('url(#sheen-r1)');
+    expect(markup).toContain('href="#body-r1"');
+    expect(markup).not.toMatch(/(id="|url\(#|href="#)(sheen|body|back|body-mask)"/);
+  });
+
+  it('falls back to the generic frame for an unknown design', () => {
+    expect(frameMarkup('nope', 'spool', 'x')).toBe(frameMarkup('generic', 'spool', 'x'));
   });
 });

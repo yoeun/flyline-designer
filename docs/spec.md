@@ -94,7 +94,7 @@ Rim, width and rated capacity come from retailer listings. Spool diameter is est
 | Lamson Liquid S 7+ | 3.9″ | 3.66″ | 1.15″ | WF7 + 200 yd of 20 lb |
 | Redington Run 5/6 | 3.6″ | 3.36″ | 0.95″ (listings say 0.9–1.0″) | WF5 + 100 yd of 20 lb |
 
-The generic reel face has 8 ports and a metallic sheen.
+Each reel names a frame `design` (generic, Liquid S or Run), drawn once as SVG for the drag side and the spool side in `src/assets/reels`. The preview shows the drag side by default; a Drag/Spool toggle switches sides. The wound line shows through the frame's windows, shaded as fine wraps.
 
 ### Generic lines (v1)
 

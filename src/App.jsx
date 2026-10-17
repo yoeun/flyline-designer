@@ -8,6 +8,7 @@ import ThemeToggle from './components/ThemeToggle.jsx';
 import { DEFAULT_SETUP, LINE_PRESETS, findById } from './data/catalog.js';
 import { exportPng, exportSvg } from './lib/export.js';
 import { clampSelection } from './lib/lineEdit.js';
+import { SIDES } from './lib/reelFrames.js';
 import { decodeSetup, encodeSetup } from './lib/share.js';
 import { STAGE, useTheme } from './lib/theme.js';
 
@@ -31,6 +32,7 @@ const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^
 export default function App() {
   const [{ setup, presetId }, setState] = useState(initialSetup);
   const [mode, setMode] = useState('reel');
+  const [side, setSide] = useState('drag');
   const [lineSelection, setLineSelection] = useState(null);
   const [themeChoice, setThemeChoice, theme] = useTheme();
   const [rack, setRack] = useState(loadRack);
@@ -117,9 +119,18 @@ export default function App() {
       <main className="layout">
         <section className="preview-column" aria-label="Preview">
           <div className="stage">
-            <PreviewModeToggle value={mode} onChange={setMode} />
+            <div className="stage__controls">
+              <div className="segmented" role="group" aria-label="Reel side">
+                {SIDES.map(([id, label]) => (
+                  <button key={id} type="button" aria-pressed={side === id} onClick={() => setSide(id)}>
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <PreviewModeToggle value={mode} onChange={setMode} />
+            </div>
             <div className="stage__reel">
-              <ReelPreview setup={setup} mode={mode} background={STAGE[theme]} svgRef={svgRef} title={`${setup.name} preview`} />
+              <ReelPreview setup={setup} mode={mode} side={side} background={STAGE[theme]} svgRef={svgRef} title={`${setup.name} preview`} />
             </div>
             <Checks setup={setup} />
           </div>
