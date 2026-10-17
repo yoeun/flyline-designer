@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import {
   BACKING_COLORS,
   BACKING_LENGTHS,
@@ -59,6 +60,7 @@ function LengthField({ label, value, onChange }) {
 }
 
 function LineSelection({ line, selection, onChange, onSelect }) {
+  if (!selection) return <p className="hint">Click part of the line to edit it.</p>;
   if (selection.kind === 'taper') {
     const { key } = selection;
     return (
@@ -113,6 +115,25 @@ function LineSelection({ line, selection, onChange, onSelect }) {
 export function FlyLineOptions({ line, backingColor, presetId, onChange, onPreset, selection, onSelect }) {
   const type = findById(LINE_TYPES, line.type);
   const locked = presetId !== 'custom';
+  const editRef = useRef(null);
+  const selected = selection !== null;
+
+  // Clicking anywhere outside the editor and its panel, or pressing Escape, clears the selection.
+  useEffect(() => {
+    if (!selected) return undefined;
+    const onPointerDown = (e) => {
+      if (!editRef.current?.contains(e.target)) onSelect(null);
+    };
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') onSelect(null);
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [selected, onSelect]);
 
   return (
     <section className="options-group">
@@ -150,8 +171,10 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
           </select>
         </label>
       </div>
-      <LineEditor line={line} selection={selection} onSelect={onSelect} onChange={onChange} backingColor={backingColor} />
-      <LineSelection line={line} selection={selection} onChange={onChange} onSelect={onSelect} />
+      <div ref={editRef} className="line-edit">
+        <LineEditor line={line} selection={selection} onSelect={onSelect} onChange={onChange} backingColor={backingColor} />
+        <LineSelection line={line} selection={selection} onChange={onChange} onSelect={onSelect} />
+      </div>
       <p className="hint">
         {type?.name} · {line.weight} wt · <span className="mono">{formatFeet(totalLength(line))}</span> total
         {locked && ' · choose Custom to change type or weight'}

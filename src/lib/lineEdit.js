@@ -21,10 +21,12 @@ export function zoneName(index, count) {
   return index === count - 1 ? 'Rest' : `Zone ${index + 1}`;
 }
 
+// null means nothing is selected.
 export function clampSelection(selection, line) {
-  if (selection?.kind === 'taper' && TAPER_KEYS.includes(selection.key)) return selection;
-  const index = selection?.kind === 'zone' ? Math.min(selection.index, line.zones.length - 1) : 0;
-  return index === selection?.index ? selection : { kind: 'zone', index };
+  if (selection?.kind === 'taper') return TAPER_KEYS.includes(selection.key) ? selection : null;
+  if (selection?.kind !== 'zone') return null;
+  const index = Math.min(selection.index, line.zones.length - 1);
+  return index === selection.index ? selection : { kind: 'zone', index };
 }
 
 // Boundary k sits between TAPER_KEYS[k - 1] and TAPER_KEYS[k]; toFt is its new distance from the tip.

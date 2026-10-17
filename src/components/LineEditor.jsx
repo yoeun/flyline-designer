@@ -71,6 +71,12 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
 
   const isTaper = (key) => selection?.kind === 'taper' && selection.key === key;
   const isZone = (i) => selection?.kind === 'zone' && selection.index === i;
+  // With a zone selected, the rest of the line fades back instead of drawing a box around it.
+  const dim = (i) => selection?.kind === 'zone' && selection.index !== i;
+  const select = (sel) => (e) => {
+    e.stopPropagation();
+    onSelect(sel);
+  };
   const onActivate = (sel) => (e) => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     e.preventDefault();
@@ -113,6 +119,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}
       onPointerCancel={endDrag}
+      onClick={() => onSelect(null)}
     >
       <defs>
         <clipPath id={clip}>
@@ -137,7 +144,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
             aria-pressed={on}
             aria-label={`${TAPER_NAMES[e.key]}, ${formatFeet(t[e.key])}`}
             className={`line-editor__span${on ? ' is-selected' : ''}`}
-            onClick={() => onSelect(sel)}
+            onClick={select(sel)}
             onKeyDown={onActivate(sel)}
           >
             <rect x={LEFT + e.x1} y="6" width={e.x0 - e.x1} height="46" rx="4" fill="transparent" />
@@ -155,7 +162,15 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
       <rect x={LEFT - 20} y={MID - 2} width="20" height="4" fill={hexOf(backingColor)} />
       <g clipPath={`url(#${clip})`}>
         {zones.map((z) => (
-          <rect key={z.index} x={x(z.end)} y={MID - 14} width={Math.max(0, x(z.start) - x(z.end))} height="28" fill={hexOf(z.color)} />
+          <rect
+            key={z.index}
+            className={dim(z.index) ? 'is-dim' : undefined}
+            x={x(z.end)}
+            y={MID - 14}
+            width={Math.max(0, x(z.start) - x(z.end))}
+            height="28"
+            fill={hexOf(z.color)}
+          />
         ))}
       </g>
       <polygon className="line-editor__outline" points={outline} />
@@ -170,12 +185,11 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
             tabIndex={0}
             aria-pressed={on}
             aria-label={`${zoneName(z.index, zones.length)}, ${nameOf(z.color)}, ${formatFeet(z.length)}`}
-            className={`line-editor__zone${on ? ' is-selected' : ''}`}
-            onClick={() => onSelect(sel)}
+            className={`line-editor__zone${on ? ' is-selected' : ''}${dim(z.index) ? ' is-dim' : ''}`}
+            onClick={select(sel)}
             onKeyDown={onActivate(sel)}
           >
             <rect x={x(z.end)} y={MID - 18} width={width} height="52" rx="4" fill="transparent" />
-            {on && <rect className="line-editor__ring" x={x(z.end) - 2} y={MID - 16} width={width + 4} height="32" rx="6" />}
             <text className="line-editor__len" x={x(z.end) + width / 2} y={MID + 30} textAnchor="middle">
               {zoneLabel(z, zones.length)}
             </text>
@@ -196,6 +210,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
           aria-valuetext={`${formatFeet(h.ft)} from the tip`}
           className={`line-editor__handle${h.on ? ' is-on' : ''}`}
           onPointerDown={onPointerDown(h)}
+          onClick={(e) => e.stopPropagation()}
           onKeyDown={onHandleKey(h)}
         >
           <rect x={x(h.ft) - 10} y={h.y1 - 3} width="20" height={h.y2 - h.y1 + 6} rx="4" fill="transparent" />

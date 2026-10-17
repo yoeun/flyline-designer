@@ -12,7 +12,6 @@ import { decodeSetup, encodeSetup } from './lib/share.js';
 import { STAGE, useTheme } from './lib/theme.js';
 
 const RACK_KEY = 'flyline-designer:rack';
-const TIP = { kind: 'zone', index: 0 };
 
 function loadRack() {
   try {
@@ -32,7 +31,7 @@ const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^
 export default function App() {
   const [{ setup, presetId }, setState] = useState(initialSetup);
   const [mode, setMode] = useState('reel');
-  const [lineSelection, setLineSelection] = useState(TIP);
+  const [lineSelection, setLineSelection] = useState(null);
   const [themeChoice, setThemeChoice, theme] = useTheme();
   const [rack, setRack] = useState(loadRack);
   const [rackOpen, setRackOpen] = useState(false);
@@ -58,7 +57,7 @@ export default function App() {
   const selection = clampSelection(lineSelection, setup.line);
 
   const applyPreset = (id) => {
-    setLineSelection(TIP);
+    setLineSelection(null);
     if (id === 'custom') {
       setState({ setup, presetId: 'custom' });
       return;
@@ -130,7 +129,7 @@ export default function App() {
             onToggle={() => setRackOpen((o) => !o)}
             onLoad={(s) => {
               const { id, ...rest } = structuredClone(s);
-              setLineSelection(TIP);
+              setLineSelection(null);
               setState({ setup: rest, presetId: 'custom' });
             }}
             onRemove={(id) => setRack((r) => r.filter((s) => s.id !== id))}

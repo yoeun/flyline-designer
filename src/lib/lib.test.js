@@ -191,7 +191,8 @@ describe('line editing', () => {
   });
 
   it('keeps a selection that fits the line', () => {
-    expect(clampSelection(null, line())).toEqual({ kind: 'zone', index: 0 });
+    expect(clampSelection(null, line())).toBe(null);
+    expect(clampSelection({ kind: 'taper', key: 'nope' }, line())).toBe(null);
     expect(clampSelection({ kind: 'zone', index: 7 }, line())).toEqual({ kind: 'zone', index: 2 });
     expect(clampSelection({ kind: 'taper', key: 'body' }, line())).toEqual({ kind: 'taper', key: 'body' });
   });

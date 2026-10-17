@@ -614,10 +614,14 @@ select {
   stroke-opacity: 0.25;
 }
 
-.line-editor__ring {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 2;
+.line-editor .is-dim {
+  opacity: 0.3;
+}
+
+.line-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .line-editor__handle {
