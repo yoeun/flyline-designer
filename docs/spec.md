@@ -100,11 +100,16 @@ Lamson figures come from Lamson's spec table (capacity with the largest line eac
 | Orvis Clearwater II | 3.4″ | 3.16″ | 1.05″ (est.) | WF4 + 125 yd of 20 lb |
 | Orvis Clearwater III | 3.7″ | 3.46″ | 1.15″ (est.) | WF6 + 125 yd of 20 lb |
 | Orvis Clearwater IV | 4.0″ | 3.76″ | 1.30″ (est.) | WF8 + 200 yd of 20 lb |
+| Redington Behemoth 4/5 | 3.4″ | 3.16″ | 0.95″ (est.) | WF4 + 75 yd of 20 lb |
+| Redington Behemoth 5/6 | 3.6″ | 3.36″ | 1.00″ (est.) | WF5 + 125 yd of 20 lb |
+| Redington Behemoth 7/8 | 4.0″ | 3.76″ | 1.10″ (est.) | WF7 + 200 yd of 20 lb |
+| Redington Behemoth 9/10 | 4.4″ | 4.16″ | 1.20″ (est.) | WF9 + 200 yd of 30 lb |
+| Redington Behemoth 11/12 | 4.7″ | 4.46″ | 1.30″ (est.) | WF11 + 250 yd of 30 lb |
 | Redington Run 3/4 | 3.2″ | 2.96″ | 0.87″ (listings say 0.87–1.3″) | WF3 + 75 yd of 20 lb |
 | Redington Run 5/6 | 3.6″ | 3.36″ | 0.95″ (listings say 0.9–1.3″) | WF5 + 100 yd of 20 lb |
 | Redington Run 7/8 | 4.0″ | 3.76″ | 0.94″ (listings say 0.94–1.5″) | WF7 + 200 yd of 20 lb |
 
-Orvis doesn't publish spool width, so those widths are estimates.
+Orvis and Redington (for the Behemoth) don't publish spool width, so those widths are estimates.
 
 Each reel names a frame `design` (generic, Liquid S or Run), drawn once as SVG for the drag side and the spool side in `src/assets/reels`. The preview shows the drag side by default; a Drag/Spool toggle switches sides. The wound line shows through the frame's windows, shaded as fine wraps.
 

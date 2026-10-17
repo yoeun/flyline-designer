@@ -1,5 +1,7 @@
 // Frame drawings per reel design and side. Each SVG uses the preview's coordinates
 // (centered, rim radius 200) and paints its metal in currentColor.
+import behemothDrag from '../assets/reels/behemoth-drag.svg?raw';
+import behemothSpool from '../assets/reels/behemoth-spool.svg?raw';
 import clearwaterDrag from '../assets/reels/clearwater-drag.svg?raw';
 import clearwaterSpool from '../assets/reels/clearwater-spool.svg?raw';
 import genericDrag from '../assets/reels/generic-drag.svg?raw';
@@ -17,6 +19,7 @@ export const FRAMES = {
   hydros: { drag: hydrosDrag, spool: hydrosSpool },
   clearwater: { drag: clearwaterDrag, spool: clearwaterSpool },
   run: { drag: runDrag, spool: runSpool },
+  behemoth: { drag: behemothDrag, spool: behemothSpool },
 };
 
 export const SIDES = [

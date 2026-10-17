@@ -59,6 +59,13 @@ export const REELS = [
   { id: 'orvis-clearwater-2', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater II', rim: 3.4, spool: 3.16, width: 1.05, rated: { weight: 4, yards: 125, pounds: 20 } },
   { id: 'orvis-clearwater-3', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater III', rim: 3.7, spool: 3.46, width: 1.15, rated: { weight: 6, yards: 125, pounds: 20 } },
   { id: 'orvis-clearwater-4', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater IV', rim: 4.0, spool: 3.76, width: 1.3, rated: { weight: 8, yards: 200, pounds: 20 } },
+  // Diameter and rated capacity from retailer listings (one lists the 4/5 at 125 yd). Redington doesn't
+  // publish spool width; widths are estimates.
+  { id: 'redington-behemoth-45', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 4/5', rim: 3.4, spool: 3.16, width: 0.95, rated: { weight: 4, yards: 75, pounds: 20 } },
+  { id: 'redington-behemoth-56', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 5/6', rim: 3.6, spool: 3.36, width: 1.0, rated: { weight: 5, yards: 125, pounds: 20 } },
+  { id: 'redington-behemoth-78', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 7/8', rim: 4.0, spool: 3.76, width: 1.1, rated: { weight: 7, yards: 200, pounds: 20 } },
+  { id: 'redington-behemoth-910', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 9/10', rim: 4.4, spool: 4.16, width: 1.2, rated: { weight: 9, yards: 200, pounds: 30 } },
+  { id: 'redington-behemoth-1112', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 11/12', rim: 4.7, spool: 4.46, width: 1.3, rated: { weight: 11, yards: 250, pounds: 30 } },
   // Rim and rated capacity from retailer listings. Listed widths disagree (0.9–1.5″); these are the
   // inner spool widths from one EU retailer.
   { id: 'redington-run-34', maker: 'Redington', design: 'run', name: 'Redington Run 3/4', rim: 3.2, spool: 2.96, width: 0.87, rated: { weight: 3, yards: 75, pounds: 20 } },
