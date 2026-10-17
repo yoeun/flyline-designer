@@ -57,12 +57,12 @@ export const drag = svg({
     `<circle cy="48" r="24" fill="url(#sheen)"/><circle cy="48" r="24" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/><circle cx="0" cy="62" r="1.8" fill="#f2f2ee"/>`,
 });
 
-// Spool side: the spokes turned over; handle near the rim on the upper spoke's right tip, a small knob opposite.
+// Spool side: the spokes turned over; handle near the rim at 12 o'clock on the upper spoke, a small knob at 6.
 export const spool = svg({
   back: [sageFoot()],
-  body: [ring(200, 140) + RIM, pad(169, -75, 30, 40), pad(169, 105, 26, 36), ...spokes(-90), web([-90, 30, 150])],
+  body: [ring(200, 140) + RIM, pad(169, -90, 30, 40), pad(169, 90, 26, 36), ...spokes(-90), web([-90, 30, 150])],
   details:
     logo(0, 0, 26) +
-    rimHandle(169, -75, 18) +
-    `<circle cx="${P(169, rad(105))[0].toFixed(1)}" cy="${P(169, rad(105))[1].toFixed(1)}" r="12" fill="#2b2e31"/>`,
+    rimHandle(169, -90, 18) +
+    `<circle cx="${P(169, rad(90))[0].toFixed(1)}" cy="${P(169, rad(90))[1].toFixed(1)}" r="12" fill="#2b2e31"/>`,
 });
