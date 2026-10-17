@@ -14,8 +14,14 @@ const vCage = (inner) =>
 
 // Drag side: two long straight bars from the bottom of the rim, close together, up to the top, wider apart (like the
 // 2020–25 Hydros), passing either side of the knob's boss; and an inner pair from the foot down onto the top of the boss.
-const BOSS = 86;
 const OUTER = [[36, 194], [80, -176]]; // right bar, bottom to top; the left mirrors it
+const OUTER_W = [24, 28]; // its width at the bottom and the top
+// The boss reaches the outer bars' outer edges where they pass it, and the knob sits inset from its edge.
+const BOSS = (() => {
+  const [[x0, y0], [x1, y1]] = OUTER;
+  return Math.abs(x0 * y1 - x1 * y0) / Math.hypot(x1 - x0, y1 - y0) + (OUTER_W[0] + OUTER_W[1]) / 4;
+})();
+const KNOB = BOSS - 12;
 const INNER = [[24, -194], 46]; // right bar's foot end, and the angle from straight up where it meets the boss
 
 // A silver drag knob with a knurled rim and a slotted center screw.
@@ -28,11 +34,11 @@ export const drag = svg({
     ring(132, 122),
     ...vCage(127),
     foot(124, -244, 14, 30),
-    ...[-1, 1].map((sx) => strut([sx * OUTER[0][0], OUTER[0][1]], [sx * OUTER[1][0], OUTER[1][1]], 24, 28)),
+    ...[-1, 1].map((sx) => strut([sx * OUTER[0][0], OUTER[0][1]], [sx * OUTER[1][0], OUTER[1][1]], ...OUTER_W)),
     ...[-1, 1].map((sx) => strut([sx * INNER[0][0], INNER[0][1]], P(BOSS - 6, rad(-90 + sx * INNER[1])), 22, 28)),
     circle(BOSS),
   ],
-  details: silverKnob(74),
+  details: silverKnob(KNOB),
 });
 
 // Spool side: the same V cage around an inner ring, and six spokes tangent to a large hexagon at the hub
