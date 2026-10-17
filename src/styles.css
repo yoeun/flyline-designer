@@ -656,6 +656,13 @@ select {
   stroke-linecap: round;
 }
 
+.line-editor__tick line.is-on,
+.line-editor__handle.is-on line {
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
 .line-editor__handle:hover > rect {
   fill: var(--accent-soft);
 }

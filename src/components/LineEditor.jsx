@@ -43,9 +43,14 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
     ...[...stations].reverse().map(([f, dia]) => `${x(f).toFixed(1)},${(MID + half(dia)).toFixed(1)}`),
   ].join(' ');
 
+  // A selected taper section is bounded by boundaries k and k + 1 (0 and 4 are the outer ticks).
+  const selK = selection?.kind === 'taper' ? TAPER_KEYS.indexOf(selection.key) : -1;
+  const edgeOn = (k) => selK >= 0 && (k === selK || k === selK + 1);
+
   const handles = [
     ...[1, 2, 3].map((k) => ({
       id: `taper-${k}`,
+      on: edgeOn(k),
       move: (l, ft) => moveTaperBoundary(l, k, ft),
       ft: scale.edges[k].fromFt,
       label: `Boundary between ${TAPER_NAMES[TAPER_KEYS[k - 1]].toLowerCase()} and ${TAPER_NAMES[TAPER_KEYS[k]].toLowerCase()}`,
@@ -72,6 +77,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
 
   // The scale is frozen for the whole drag so min widths don't shift under the pointer.
   const onPointerDown = (h) => (e) => {
+    if (e.button !== 0 || !e.isPrimary) return;
     e.currentTarget.setPointerCapture(e.pointerId);
     drag.current = { id: h.id, scale };
   };
@@ -111,8 +117,8 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
 
       <line className="line-editor__rule" x1={x(total)} x2={x(0)} y1={RULE_Y} y2={RULE_Y} />
       <g className="line-editor__tick">
-        <line x1={x(total)} x2={x(total)} y1={RULE_Y - 6} y2={RULE_Y + 6} />
-        <line x1={x(0)} x2={x(0)} y1={RULE_Y - 6} y2={RULE_Y + 6} />
+        <line className={edgeOn(4) ? 'is-on' : undefined} x1={x(total)} x2={x(total)} y1={RULE_Y - 6} y2={RULE_Y + 6} />
+        <line className={edgeOn(0) ? 'is-on' : undefined} x1={x(0)} x2={x(0)} y1={RULE_Y - 6} y2={RULE_Y + 6} />
       </g>
       {scale.edges.map((e) => {
         const sel = { kind: 'taper', key: e.key };
@@ -183,7 +189,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
           aria-valuemax={total}
           aria-valuenow={h.ft}
           aria-valuetext={`${formatFeet(h.ft)} from the tip`}
-          className="line-editor__handle"
+          className={`line-editor__handle${h.on ? ' is-on' : ''}`}
           onPointerDown={onPointerDown(h)}
           onKeyDown={onHandleKey(h)}
         >

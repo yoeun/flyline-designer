@@ -14,6 +14,7 @@ import { MIN_LENGTH, TAPER_NAMES, removeZone, setTaperLength, setZoneLength, spl
 import { formatFeet } from './LineDiagram.jsx';
 import LineEditor from './LineEditor.jsx';
 import Swatches from './Swatches.jsx';
+
 const numberOr = (value, fallback) => {
   const n = parseFloat(value);
   return Number.isFinite(n) && n >= 0 ? n : fallback;
