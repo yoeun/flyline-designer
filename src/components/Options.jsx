@@ -33,12 +33,14 @@ const GROUP = 'flex flex-col gap-3.5 px-5.5 py-5';
 const HEADING = 'font-heading text-[20px] leading-[normal] font-bold tracking-[0.06em] uppercase';
 
 // A section's title, with an orange dot and a Reset button once it differs from the saved setup.
-function SectionHeading({ title, changed, onReset }) {
+// `children` sit beside the title, for a link that belongs to the section.
+function SectionHeading({ title, changed, onReset, children }) {
   return (
     <div className="flex items-center justify-between gap-2.5">
       <div className="flex items-center gap-2">
         <h2 className={HEADING}>{title}</h2>
         {changed && <span className="size-2 rounded-full bg-orange-500" role="img" aria-label="Changed" />}
+        {children}
       </div>
       {changed && (
         <Button variant="ghost" className="-my-1 h-8 gap-1 px-2 text-[14px] text-muted-foreground" onClick={onReset} aria-label={`Reset ${title.toLowerCase()}`}>
@@ -163,7 +165,7 @@ function LineSelection({ line, selection, onChange, onSelect, colorLocked }) {
   );
 }
 
-export function FlyLineOptions({ line, backingColor, presetId, onChange, onPreset, onColorway, selection, onSelect, changed, onReset }) {
+export function FlyLineOptions({ line, backingColor, presetId, onChange, onPreset, onColorway, selection, onSelect, changed, onReset, onOpenGuide }) {
   const locked = presetId !== 'custom';
   const preset = findById(LINE_PRESETS, presetId);
   const colorway = lineColorway(preset, line);
@@ -191,7 +193,12 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
 
   return (
     <section className={GROUP}>
-      <SectionHeading title="Fly line" changed={changed} onReset={onReset} />
+      <SectionHeading title="Fly line" changed={changed} onReset={onReset}>
+        <Button variant="link" className="ml-1.5 gap-1 py-0" onClick={onOpenGuide}>
+          <Icon name="menu_book" />
+          Line guide
+        </Button>
+      </SectionHeading>
       <div className="flex flex-wrap gap-2.5">
         <SearchableSelect label="Preset" grow groups={PRESET_GROUPS} value={menuId(presetId)} onChange={onPreset} placeholder="Search lines" />
         <Select label="Type" grow items={TYPE_ITEMS} value={line.type} disabled={locked} onChange={(type) => onChange({ ...line, type })} />

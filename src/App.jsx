@@ -5,7 +5,6 @@ import Checks from './components/Checks.jsx';
 import DetailsDialog from './components/DetailsDialog.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
 import PreviewModeToggle from './components/PreviewModeToggle.jsx';
-import Icon from './components/Icon.jsx';
 import Rack from './components/Rack.jsx';
 import RackPage from './components/RackPage.jsx';
 import Segmented from './components/Segmented.jsx';
@@ -272,12 +271,6 @@ export default function App() {
         </div>
         <div className="flex flex-wrap gap-2">
           <ThemeToggle value={themeChoice} onChange={setThemeChoice} />
-          {page !== 'guide' && (
-            <Button onClick={openGuide} className="gap-1.5">
-              <Icon name="menu_book" />
-              Line guide
-            </Button>
-          )}
           {page === 'designer' && (
             <>
               <Button onClick={startNew}>New</Button>
@@ -373,6 +366,7 @@ export default function App() {
               onSelect={setLineSelection}
               changed={changed?.line ?? false}
               onReset={() => resetSection('line')}
+              onOpenGuide={openGuide}
             />
             <BackingOptions backing={setup.backing} onChange={(backing) => update({ backing })} changed={changed?.backing ?? false} onReset={() => resetSection('backing')} />
           </section>
