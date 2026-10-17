@@ -72,7 +72,7 @@ const TAPER_HINTS = {
 
 function LengthField({ label, value, onChange }) {
   return (
-    <label className="field inline">
+    <label className="field field--inline">
       <input type="number" min="0.5" step="0.5" className="mono" aria-label={label} value={value} onChange={(e) => onChange(numberOr(e.target.value, value))} />
       <span>ft</span>
     </label>
@@ -250,7 +250,7 @@ export function BackingOptions({ backing, onChange }) {
                 </button>
               ))}
             </div>
-            <label className="field inline">
+            <label className="field field--inline">
               <input
                 type="number"
                 min="0"

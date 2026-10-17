@@ -1,0 +1,63 @@
+/* Layer order: the hand-written styles.css sits above Tailwind's reset and below utilities, so utility classes on shadcn components win. */
+@layer theme, base, legacy, components, utilities;
+
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import './styles.css' layer(legacy);
+
+/* Match useTheme: data-theme wins when set, otherwise follow the OS. */
+@custom-variant dark {
+  &:where([data-theme='dark'], [data-theme='dark'] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme='light']), :root:not([data-theme='light']) *) {
+      @slot;
+    }
+  }
+}
+
+/*
+ * shadcn's color names, mapped straight to the app's palette in styles.css, so both themes
+ * follow the existing toggle. Mapped here instead of as shadcn's --accent and --muted
+ * variables because styles.css already uses those names: the app's --accent green is
+ * shadcn's "primary", and shadcn's "accent" is a subtle hover fill.
+ */
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-display);
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-card: var(--panel);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--panel);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--panel);
+  --color-secondary: var(--panel-2);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--panel-2);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--accent-soft);
+  --color-accent-foreground: var(--ink);
+  --color-destructive: var(--bad);
+  --color-border: var(--line);
+  --color-input: var(--line-strong);
+  --color-ring: var(--accent);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Raw names some shadcn components read directly. --accent and --muted are left to styles.css. */
+:root {
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --secondary: var(--panel-2);
+  --radius: 0.625rem;
+}
