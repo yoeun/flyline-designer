@@ -39,7 +39,7 @@ const fan = (sy) => {
 
 export const drag = svg({
   under: accentFoot,
-  back: [ring(184, 128) + slots({ n: 16, rIn: 136, rOut: 178, bar: 9, corner: 5, slant: 40 })],
+  back: [ring(184, 128) + slots({ n: 16, rIn: 136, rOut: 178, bar: 9, corner: 5, slant: -40 })],
   body: [ring(200, 180), ...fan(-1), ...fan(1), circle(BOSS)],
   details:
     `<circle r="60" ${ACCENT}/><circle r="60" fill="url(#sheen)"/>` +
