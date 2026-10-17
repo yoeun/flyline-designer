@@ -45,8 +45,9 @@ export const spool = svg({
     circle(40),
   ],
   details:
-    `<circle r="30" fill="#000" fill-opacity=".25"/><circle r="27" fill="#6f7377"/><circle r="27" fill="url(#sheen)"/>` +
-    RR(25, '#d8dbd6') +
+    // The center cap matches the drag side's spider.
+    `<circle r="30" fill="#000" fill-opacity=".25"/><circle r="27" ${ACCENT}/><circle r="27" fill="url(#sheen)"/>` +
+    RR(25, '#000', 0.35) +
     `<circle cx="${f(weightAt[0])}" cy="${f(weightAt[1])}" r="17" fill="#000" fill-opacity=".18"/><circle cx="${f(weightAt[0])}" cy="${f(weightAt[1])}" r="14" fill="#7c8084"/><circle cx="${f(weightAt[0])}" cy="${f(weightAt[1])}" r="14" fill="url(#sheen)"/>` +
     knob(...handleAt, 24),
 });
