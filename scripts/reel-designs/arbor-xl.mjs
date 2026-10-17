@@ -20,7 +20,7 @@ export const drag = svg({
     ...[-130, -50, 170, 10, 90].map((a) => spoke(a, 60, 190, 24, 20)),
     circle(80),
   ],
-  details: frameScrew(0, -150, 8) + dial(78, 58, { ribs: 18, badge: 16, dots: 20 }),
+  details: frameScrew(0, -150, 8) + dial(78, 58, { ribs: 18, badge: 16, badgeFill: 'currentColor', dots: 20 }),
 });
 
 export const spool = svg({
