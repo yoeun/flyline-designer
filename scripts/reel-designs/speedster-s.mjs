@@ -24,18 +24,20 @@ export const drag = svg({
   details: speedsterKnob(),
 });
 
-// Spool side, like the Liquid S: six spokes, each tangent to a small hexagon at the hub, sweeping out clockwise
+// Spool side, like the Liquid S: six spokes, each tangent to a small hexagon at the hub, sweeping out counter-clockwise
 // to the cage, where each lands on a bar of the 18-window ring (every third). The handle is on the upper-left spoke.
 const HEX = 38; // hexagon's inner radius: each spoke's line passes this far from the center
 const CAGE = 132; // where the spokes meet the window ring
 const REACH = Math.sqrt(CAGE * CAGE - HEX * HEX);
 const SWEEP = (Math.atan2(REACH, HEX) * 180) / Math.PI; // outer end, degrees clockwise of the tangent point
 const SPOKE_ENDS = [0, 1, 2, 3, 4, 5].map((k) => -75 + k * 60);
+// Drawn clockwise, then mirrored top to bottom.
+const flip = ([x, y]) => [x, -y];
 // A spoke: from its hexagon corner (behind the tangent point) into the cage ring.
 const spokeLine = (end) => {
   const t = rad(end - SWEEP), [tx, ty] = P(HEX, t), d = [-Math.sin(t), Math.cos(t)];
   const at = (u) => [tx + d[0] * u, ty + d[1] * u];
-  return { from: at(-HEX * Math.tan(rad(30))), cage: at(REACH + 4) };
+  return { from: flip(at(-HEX * Math.tan(rad(30)))), cage: flip(at(REACH + 4)) };
 };
 const SPOKE_LINES = SPOKE_ENDS.map(spokeLine);
 const handle = SPOKE_LINES[4].cage;
@@ -43,7 +45,7 @@ const holes = [0, 1, 2, 3, 4, 5].map((k) => `<circle cx="${P(13, rad(k * 60)).ma
 export const spool = svg({
   back: [foot(128, -244, 14, 34)],
   body: [
-    ring(200, 128) + slots({ n: 18, rIn: 140, rOut: 186, bar: 14, corner: 7, off: SPOKE_ENDS[0] }),
+    ring(200, 128) + slots({ n: 18, rIn: 140, rOut: 186, bar: 14, corner: 7, off: -SPOKE_ENDS[0] }),
     ...SPOKE_LINES.map(({ from, cage }) => strut(from, cage, 22, 16)),
     roundPoly(SPOKE_LINES.map(({ from }) => from), 3),
     circle(30),
