@@ -1,4 +1,5 @@
-import { makerProduct, zones } from './product.js';
+import * as LINEUP from 'lineups:airflo';
+import { lineupSize, makerProduct, overriding, zones } from './product.js';
 
 // Sampled from Airflo's swatches and taper diagrams. Superflo Max Ridge 2.0 has its own entries
 // (sampled from its diagrams) because its tapers match Ridge 2.0's exactly: shared colors would make
@@ -28,6 +29,9 @@ export const COLORS = [
 
 const half = (ft) => Math.round(ft * 2) / 2;
 
+// The front, body and back of a lineup size's published taper.
+const split = ({ taper: { front, body, back } }) => [front, body, back];
+
 // Airflo's diagrams give the split for one example size (named on the diagram); other sizes scale
 // its front and back taper to their own head from Airflo's spec table, to the nearest half foot,
 // and are marked estimated.
@@ -38,22 +42,40 @@ const scaled = ([front, body, back], head) => {
   return [f, head - f - b, b];
 };
 
-// Universal Taper, shared by Ridge 2.0 and Superflo Max Ridge 2.0. WF5 diagram: front 8, belly and
-// rear belly 19, rear taper 12 (39 ft head), then a 12 ft haul zone drawn here as running line.
-// Heads per size from Airflo's table; the head color runs to the end of the rear taper.
-const UNIVERSAL = [8, 19, 12];
-const universal = (sizes, colorways) =>
-  sizes.map(([weight, head, total]) => ({
-    id: `wf${weight}f`,
-    label: `WF${weight}F`,
-    type: 'floating',
-    weight,
-    taper: [...scaled(UNIVERSAL, head), total - head],
-    estimated: weight !== 5,
-    colorways: colorways
-      .filter(({ weights: [lo, hi] }) => weight >= lo && weight <= hi)
-      .map(({ id, name, head: headColor, running }) => ({ id, name, zones: zones([head, headColor], [0, running]) })),
-  }));
+// Universal Taper, shared by Ridge 2.0 and Superflo Max Ridge 2.0. The split is the WF5 diagram's
+// front taper, belly and rear belly, and rear taper; the 12 ft haul zone behind it is drawn as
+// running line. Heads per size from Airflo's table (sizes without one are left out); the head color
+// runs to the end of the rear taper.
+const MAX_RIDGE_UNIVERSAL = LINEUP['airflo-smr-universal'];
+const UNIVERSAL = split(lineupSize(MAX_RIDGE_UNIVERSAL, 'WF5F'));
+const universal = (product, colorways) =>
+  product.sizes
+    .filter((size) => size.head !== null)
+    .map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: [...scaled(UNIVERSAL, size.head), size.total - size.head],
+      estimated: !size.taper,
+      lineup: size,
+      colorways: colorways
+        .filter(({ weights: [lo, hi] }) => size.weight >= lo && size.weight <= hi)
+        .map(({ id, name, head: headColor, running }) => ({ id, name, zones: zones([size.head, headColor], [0, running]) })),
+    }));
+
+const STREAMER_MAX_COLORWAYS = {
+  3: { name: 'Black/Green/Chartreuse', bellyColor: 'airflo-green', running: 'airflo-chartreuse' },
+  5: { name: 'Black/Red/Orange', bellyColor: 'airflo-red', running: 'airflo-orange' },
+  7: { name: 'Black/Blue/Chartreuse', bellyColor: 'airflo-blue', running: 'airflo-green-chartreuse' },
+};
+
+// Sixth Sense 2 Sinking and Delta Taper Clear Intermediate have a 46 ft head in every size, so the
+// diagram's split applies to all of them.
+const SIXTH_SENSE = LINEUP['airflo-sixth-sense-2-sinking'];
+const SIXTH_SENSE_SPLIT = split(lineupSize(SIXTH_SENSE, 'WF6/7S Di3'));
+const DELTA = LINEUP['airflo-delta-taper-clear-intermediate'];
+const DELTA_SPLIT = split(lineupSize(DELTA, 'WF5I Fast Intermediate'));
 
 export const PRODUCTS = [
   makerProduct({
@@ -61,14 +83,7 @@ export const PRODUCTS = [
     maker: 'Airflo',
     name: 'Airflo Superflo Max Ridge 2.0 Universal Taper',
     sizes: universal(
-      [
-        [3, 37, 82],
-        [4, 38, 90],
-        [5, 39, 90],
-        [6, 39, 90],
-        [7, 40, 90],
-        [8, 40, 90],
-      ],
+      MAX_RIDGE_UNIVERSAL,
       [
         { id: 'moss-chartreuse', name: 'Moss/Chartreuse', weights: [3, 8], head: 'airflo-max-moss', running: 'airflo-max-chartreuse' },
         { id: 'chartreuse-white', name: 'Chartreuse/White', weights: [5, 8], head: 'airflo-max-head-chartreuse', running: 'airflo-white' },
@@ -83,15 +98,7 @@ export const PRODUCTS = [
     name: 'Airflo Superflo Ridge 2.0 Universal Taper',
     discontinued: true,
     sizes: universal(
-      [
-        [3, 37, 82],
-        [4, 38, 90],
-        [5, 39, 90],
-        [6, 39, 90],
-        [7, 40, 90],
-        [8, 40, 90],
-        [9, 40, 90],
-      ],
+      LINEUP['airflo-superflo-ridge-universal'],
       [
         { id: 'moss-chartreuse', name: 'Moss/Chartreuse', weights: [3, 9], head: 'airflo-moss', running: 'airflo-ut-chartreuse' },
         { id: 'chartreuse-white', name: 'Chartreuse/White', weights: [5, 8], head: 'airflo-ut-chartreuse', running: 'airflo-white' },
@@ -106,69 +113,64 @@ export const PRODUCTS = [
     id: 'airflo-streamer-max-short',
     maker: 'Airflo',
     name: 'Airflo Superflo Max Ridge 2.0 Streamer Max Short',
-    sizes: [
-      [5, 22],
-      [6, 24],
-      [7, 24],
-      [8, 27],
-      [9, 27],
-    ].flatMap(([weight, head]) => {
+    sizes: LINEUP['airflo-smr-streamer-max-short'].sizes.map((size) => {
+      const { weight, head } = size;
+      const rate = Number(size.density.replace('sink', ''));
       const s = head / 27;
       const front = half(4 * s);
       const back = half(7 * s);
       const tip = half(17.5 * s);
       const belly = half(5.5 * s);
-      return [
-        { rate: 3, name: 'Black/Green/Chartreuse', bellyColor: 'airflo-green', running: 'airflo-chartreuse' },
-        { rate: 5, name: 'Black/Red/Orange', bellyColor: 'airflo-red', running: 'airflo-orange' },
-        { rate: 7, name: 'Black/Blue/Chartreuse', bellyColor: 'airflo-blue', running: 'airflo-green-chartreuse' },
-      ].map(({ rate, name, bellyColor, running }) => ({
+      const { name, bellyColor, running } = STREAMER_MAX_COLORWAYS[rate];
+      return {
         id: `wf${weight}-s${rate}`,
         label: `WF${weight} Sink ${rate}`,
         type: 'sinktip',
         weight,
-        taper: [front, head - front - back, back, 100 - head],
+        taper: [front, head - front - back, back, size.total - head],
         estimated: true,
+        lineup: size,
         colorways: [{ id: 'standard', name, zones: zones([tip, 'airflo-black'], [belly, bellyColor], [0, running]) }],
-      }));
+      };
     }),
   }),
   // Di3, Di5 and Di7 sink at 3, 5 and 7 ips; all black with orange hang markers. Sold in split
-  // ratings (#5/6 … #8/9) and drawn at the heavier weight, since every size runs heavy for its lower
-  // number. Same 46 ft head in every size; split from the #6/7 diagram. Di8 is also sold but would
+  // ratings (#5/6 … #8/9) and drawn at the heavier weight (the lineup lists the lower), since every
+  // size runs heavy for its lower number. Split from the #6/7 diagram. Di8 is also sold but would
   // draw the same as Di7, so it's left out.
   makerProduct({
     id: 'airflo-sixth-sense',
     maker: 'Airflo',
     name: 'Airflo Sixth Sense 2 Sinking',
-    sizes: [
-      [6, [3, 5]],
-      [7, [3, 5, 7]],
-      [8, [3, 5, 7]],
-      [9, [3, 5, 7]],
-    ].flatMap(([weight, rates]) =>
-      rates.map((rate) => ({
-        id: `wf${weight}-di${rate}`,
-        label: `WF${weight - 1}/${weight} Di${rate}`,
-        type: `sink${rate}`,
-        weight,
-        taper: [20, 16, 10, 59],
-        colorways: [{ id: 'black', name: 'Black', zones: zones([0, 'airflo-sinking-black']) }],
-      })),
-    ),
+    sizes: SIXTH_SENSE.sizes
+      .filter((size) => size.density !== 'sink8')
+      .map((size) => {
+        const rate = Number(size.density.replace('sink', ''));
+        const weight = size.weight + 1;
+        return {
+          id: `wf${weight}-di${rate}`,
+          label: `WF${weight - 1}/${weight} Di${rate}`,
+          type: size.density,
+          weight,
+          taper: [...SIXTH_SENSE_SPLIT, size.total - size.head],
+          lineup: overriding(size, { weight }),
+          colorways: [{ id: 'black', name: 'Black', zones: zones([0, 'airflo-sinking-black']) }],
+        };
+      }),
   }),
-  // 1.5 ips on a clear mono core; sold in the UK as Delta Taper Clear Intermediate. Same 46 ft head
-  // in every size; split from the WF5 diagram. Clear or camo over the whole line.
+  // 1.5 ips on a clear mono core; sold in the UK as Delta Taper Clear Intermediate. Split from the
+  // WF5 diagram. Clear or camo over the whole line.
   makerProduct({
     id: 'airflo-stillwater-intermediate',
     maker: 'Airflo',
     name: 'Airflo Stillwater Intermediate',
-    sizes: [5, 6, 7, 8].map((weight) => ({
-      id: `wf${weight}`,
-      label: `WF${weight}I`,
+    sizes: DELTA.sizes.map((size) => ({
+      id: `wf${size.weight}`,
+      label: `WF${size.weight}I`,
       type: 'intermediate',
-      weight,
-      taper: [20, 16, 10, 59],
+      weight: size.weight,
+      taper: [...DELTA_SPLIT, size.total - size.head],
+      lineup: size,
       colorways: [
         { id: 'clear', name: 'Clear', zones: zones([0, 'airflo-clear']) },
         { id: 'camo', name: 'Camouflage', zones: zones([0, 'airflo-camo']) },

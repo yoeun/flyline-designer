@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "reels": "node scripts/gen-reel-frames.mjs"
+    "reels": "node scripts/gen-reel-frames.mjs",
+    "guide": "node scripts/gen-line-guide.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

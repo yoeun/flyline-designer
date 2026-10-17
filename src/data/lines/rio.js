@@ -1,4 +1,5 @@
-import { makerProduct, zones } from './product.js';
+import * as LINEUP from 'lineups:rio';
+import { lineupSize, makerProduct, overriding, zones } from './product.js';
 
 // Matched by eye to product photos. Clear sections get a pale blue-grey that reads as clear.
 export const COLORS = [
@@ -58,7 +59,8 @@ const sum = (ft) => ft.reduce((a, b) => a + b, 0);
 // nearest half foot, and are marked estimated. The color change is at the end of the head;
 // Melon/Gray Dun is only made in WF4–6.
 const GOLD_SPLIT = [5.5, 22.5, 19];
-const goldSize = (weight, head, total) => {
+const goldSize = (size) => {
+  const { weight, head, total } = size;
   const scale = head / GOLD_SPLIT.reduce((a, b) => a + b);
   const front = half(GOLD_SPLIT[0] * scale);
   const back = half(GOLD_SPLIT[2] * scale);
@@ -71,16 +73,17 @@ const goldSize = (weight, head, total) => {
     weight,
     taper: [front, head - front - back, back, total - head],
     estimated: weight !== 5,
+    lineup: size,
     colorways,
   };
 };
 
-// The rest of the RIO lines come from the same two sources: head and total length per size from
-// RIO's spec table, and the split of the head from the example size on RIO's taper diagram. A taper
-// is that diagram's [front, body, back] in feet and the weight it was drawn for (none when it is
-// borrowed from another line). A colorway lists [length, color] tip first at the diagram's head
-// length; the last color runs to the end of the line. Each size scales both to its own head, to
-// the nearest half foot, and is marked estimated unless it is the diagram's example.
+// The rest of the RIO lines come from the same two sources: weight, head and total length per size
+// from RIO's spec table (the lineup), and the split of the head from the example size on RIO's
+// taper diagram. A taper is that diagram's [front, body, back] in feet and the weight it was drawn
+// for (none when it is borrowed from another line). A colorway lists [length, color] tip first at
+// the diagram's head length; the last color runs to the end of the line. Each size scales both to
+// its own head, to the nearest half foot, and is marked estimated unless it is the diagram's example.
 const colorway = (id, name, ...pairs) => ({ id, name, pairs });
 
 const scaleZones = (pairs, at) => {
@@ -98,7 +101,9 @@ const scaleZones = (pairs, at) => {
   );
 };
 
-const sized = ({ taper: { split, example }, colorways }, { id, label, type, weight, head, total }) => {
+// A menu size `{ id, label, type }` drawn from a lineup size.
+const sized = ({ taper: { split, example }, colorways }, { id, label, type }, size) => {
+  const { weight, head, total } = size;
   const at = (ft) => half((ft * head) / sum(split));
   const front = at(split[0]);
   const back = at(split[2]);
@@ -109,33 +114,42 @@ const sized = ({ taper: { split, example }, colorways }, { id, label, type, weig
     weight,
     taper: [front, head - front - back, back, total - head],
     estimated: weight !== example,
+    lineup: size,
     colorways: (typeof colorways === 'function' ? colorways(weight) : colorways).map(({ id: cwId, name, pairs }) => ({ id: cwId, name, zones: scaleZones(pairs, at) })),
   };
 };
 
-// A line sold in several densities: `sizes` is the spec table as [weight, head, total] rows, and
-// each density says which weights it is made in (all of them by default). Sizes are listed by
-// weight, densities in the order given.
+// A line sold in several densities: `sizes` are its lineup sizes, and each density draws the ones
+// RIO lists with its `sink` (the lineup's density label). Sizes are listed by weight, densities in
+// the order given.
 const rio = ({ id, name, sizes, densities }) =>
   makerProduct({
     id,
     maker: 'RIO',
     name,
     sizes: densities
-      .flatMap((d) =>
-        sizes
-          .filter(([weight]) => !d.weights || d.weights.includes(weight))
-          .map(([weight, head, total]) => sized(d, { id: d.id(weight), label: d.label(weight), type: d.type, weight, head, total: d.total ?? total })),
-      )
+      .flatMap((d) => sizes.filter((size) => size.densityLabel === d.sink).map((size) => sized(d, { id: d.id(size.weight), label: d.label(size.weight), type: d.type }, size)))
       .sort((a, b) => a.weight - b.weight),
   });
 
-const range = (from, to) => Array.from({ length: to - from + 1 }, (_, i) => from + i);
-const float = (taper, ...colorways) => ({ id: (w) => `wf${w}f`, label: (w) => `WF${w}F`, type: 'floating', taper, colorways });
-const intermediate = (taper, ...colorways) => ({ id: (w) => `wf${w}i`, label: (w) => `WF${w}I`, type: 'intermediate', taper, colorways });
+const float = (taper, ...colorways) => ({ sink: 'Floating', id: (w) => `wf${w}f`, label: (w) => `WF${w}F`, type: 'floating', taper, colorways });
+const intermediate = (taper, ...colorways) => ({ sink: 'Intermediate', id: (w) => `wf${w}i`, label: (w) => `WF${w}I`, type: 'intermediate', taper, colorways });
 const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+// RIO's sink rates (as the lineup labels them) for the densities named in our size labels.
+const TIP_SINKS = {
+  'F/H/I': 'Float/1 ips/2 ips',
+  'F/I/S3': 'Float/2 ips/3 ips',
+  'F/S5/S7': 'Float/5 ips/7 ips',
+  'Int/3/5': 'Intermediate/3 ips/5 ips',
+  'Int/5/7': 'Intermediate/5 ips/7 ips',
+  'F/I 6 ft': 'Float/6 ft intermediate tip',
+  'F/I 15 ft': 'Float/15 ft intermediate tip',
+  'F/I': 'Float/2 ips',
+  'F/S6': 'Float/6 ips',
+};
 // A floating or intermediate line with a sinking or multi-density head, e.g. "WF8 F/H/I".
 const tip = (densities, taper, ...colorways) => ({
+  sink: TIP_SINKS[densities],
   id: (w) => `wf${w}-${slug(densities)}`,
   label: (w) => `WF${w} ${densities}`,
   type: 'sinktip',
@@ -151,15 +165,15 @@ const OUTBOUND = { split: [6, 19, 5], example: 8 };
 const outboundShort = rio({
   id: 'rio-premier-outbound-short',
   name: 'RIO Premier OutBound Short',
-  sizes: range(5, 12).map((w) => [w, 30, 100]),
+  sizes: LINEUP['rio-premier-outbound-short'].sizes,
   densities: [
-    { ...float(OUTBOUND, colorway('moss-ivory', 'Moss/Ivory', [30, 'rio-moss'], [0, 'rio-ivory'])), weights: range(5, 10) },
-    { ...tip('F/H/I', { split: OUTBOUND.split }, colorway('clear-moss-ivory', 'Clear/Moss/Ivory', [15, 'rio-clear'], [15, 'rio-moss'], [0, 'rio-ivory'])), weights: range(5, 10) },
-    { ...intermediate({ split: OUTBOUND.split }, colorway('clear-gray-trans-green', 'Clear/Gray/Trans. Green', [15, 'rio-clear'], [15, 'rio-grey'], [0, 'rio-light-teal'])), weights: range(6, 12) },
-    { ...tip('Int/3/5', { split: OUTBOUND.split }, colorway('black-trans-green', 'Black/Trans Green', [30, 'rio-black'], [0, 'rio-light-teal'])), weights: range(6, 10) },
-    { ...tip('Int/5/7', { split: OUTBOUND.split }, colorway('black-trans-green', 'Black/Trans Green', [30, 'rio-black'], [0, 'rio-light-teal'])), weights: range(6, 10) },
+    float(OUTBOUND, colorway('moss-ivory', 'Moss/Ivory', [30, 'rio-moss'], [0, 'rio-ivory'])),
+    tip('F/H/I', { split: OUTBOUND.split }, colorway('clear-moss-ivory', 'Clear/Moss/Ivory', [15, 'rio-clear'], [15, 'rio-moss'], [0, 'rio-ivory'])),
+    intermediate({ split: OUTBOUND.split }, colorway('clear-gray-trans-green', 'Clear/Gray/Trans. Green', [15, 'rio-clear'], [15, 'rio-grey'], [0, 'rio-light-teal'])),
+    tip('Int/3/5', { split: OUTBOUND.split }, colorway('black-trans-green', 'Black/Trans Green', [30, 'rio-black'], [0, 'rio-light-teal'])),
+    tip('Int/5/7', { split: OUTBOUND.split }, colorway('black-trans-green', 'Black/Trans Green', [30, 'rio-black'], [0, 'rio-light-teal'])),
     // Full 7 ips sinking line, 110 ft, black end to end.
-    { id: (w) => `wf${w}s7`, label: (w) => `WF${w} Sink 7`, type: 'sink7', taper: { split: OUTBOUND.split }, colorways: [colorway('black', 'Black', [0, 'rio-black'])], weights: range(8, 12), total: 110 },
+    { sink: '7 ips', id: (w) => `wf${w}s7`, label: (w) => `WF${w} Sink 7`, type: 'sink7', taper: { split: OUTBOUND.split }, colorways: [colorway('black', 'Black', [0, 'rio-black'])] },
   ],
 });
 
@@ -168,13 +182,7 @@ const outboundShort = rio({
 const eliteGold = rio({
   id: 'rio-elite-gold',
   name: 'RIO Elite Gold',
-  sizes: [
-    [4, 46, 90],
-    [5, 47, 90],
-    [6, 48, 90],
-    [7, 49, 100],
-    [8, 50, 100],
-  ],
+  sizes: LINEUP['rio-elite-gold'].sizes,
   densities: [float({ split: GOLD_SPLIT, example: 5 }, colorway('moss-gold-gray', 'Moss/Gold/Gray', [20, 'rio-moss'], [20.5, 'rio-yellow'], [0, 'rio-light-gray']))],
 });
 
@@ -184,15 +192,7 @@ const FLATS = { split: [6, 20, 24], example: 10 };
 const flatsPro = rio({
   id: 'rio-elite-flats-pro',
   name: 'RIO Elite Flats Pro',
-  sizes: [
-    [6, 48, 100],
-    [7, 49, 100],
-    [8, 49, 100],
-    [9, 50, 100],
-    [10, 50, 100],
-    [11, 50, 100],
-    [12, 50, 100],
-  ],
+  sizes: LINEUP['rio-elite-flats-pro'].sizes,
   densities: [
     float(
       FLATS,
@@ -200,8 +200,8 @@ const flatsPro = rio({
       colorway('gray-light-sand-kelp', 'Gray/Light Sand/Kelp', [20, 'rio-grey'], [18, 'rio-light-sand'], [0, 'rio-kelp']),
     ),
     tip('F/I 6 ft', FLATS, colorway('clear-aqua-orange-light-sand', 'Clear/Aqua/Orange/Light Sand', [6, 'rio-clear'], [14, 'rio-aqua'], [18, 'rio-orange'], [0, 'rio-light-sand'])),
-    { ...tip('F/I 15 ft', FLATS, colorway('clear-aqua-orange-light-sand', 'Clear/Aqua/Orange/Light Sand', [15, 'rio-clear'], [4, 'rio-aqua'], [19, 'rio-orange'], [0, 'rio-light-sand'])), weights: range(7, 12) },
-    { ...intermediate(FLATS, colorway('clear-trans-orange-trans-aqua', 'Clear/Trans Orange/Trans Aqua', [15, 'rio-clear'], [23, 'rio-trans-orange'], [0, 'rio-light-teal'])), weights: range(8, 12) },
+    tip('F/I 15 ft', FLATS, colorway('clear-aqua-orange-light-sand', 'Clear/Aqua/Orange/Light Sand', [15, 'rio-clear'], [4, 'rio-aqua'], [19, 'rio-orange'], [0, 'rio-light-sand'])),
+    intermediate(FLATS, colorway('clear-trans-orange-trans-aqua', 'Clear/Trans Orange/Trans Aqua', [15, 'rio-clear'], [23, 'rio-trans-orange'], [0, 'rio-light-teal'])),
   ],
 });
 
@@ -210,30 +210,21 @@ const flatsPro = rio({
 // RIO draws no F/I/S3, so it borrows the 3D split. Heads are yellow from 20 ft to the end of the head.
 const PREDATOR_FLOAT = { split: [16, 15, 3], example: 8 };
 const PREDATOR_3D = { split: [10, 21, 3], example: 8 };
-const PREDATOR_SIZES = [
-  [5, 36, 100],
-  [6, 36, 100],
-  [7, 34, 100],
-  [8, 34, 100],
-  [9, 34, 100],
-  [10, 32, 100],
-  [11, 32, 100],
-];
 const elitePredator = rio({
   id: 'rio-elite-predator',
   name: 'RIO Elite Predator',
-  sizes: PREDATOR_SIZES,
+  sizes: LINEUP['rio-elite-predator'].sizes,
   densities: [
     float(PREDATOR_FLOAT, colorway('olive-yellow-beige', 'Olive/Yellow/Beige', [20, 'rio-olive'], [14, 'rio-pale-yellow'], [0, 'rio-beige'])),
     tip('F/H/I', PREDATOR_3D, colorway('gray-camo-yellow-beige', 'Gray/Camo/Yellow/Beige', [10, 'rio-light-gray'], [10, 'rio-camo'], [14, 'rio-pale-yellow'], [0, 'rio-beige'])),
     tip('F/I/S3', { split: PREDATOR_3D.split }, colorway('black-gray-yellow-beige', 'Black/Gray/Yellow/Beige', [10, 'rio-black'], [10, 'rio-grey'], [14, 'rio-pale-yellow'], [0, 'rio-beige'])),
-    { ...tip('F/S5/S7', { split: PREDATOR_3D.split }, colorway('black-yellow-beige', 'Black/Yellow/Beige', [20, 'rio-black'], [14, 'rio-pale-yellow'], [0, 'rio-beige'])), weights: range(6, 11) },
+    tip('F/S5/S7', { split: PREDATOR_3D.split }, colorway('black-yellow-beige', 'Black/Yellow/Beige', [20, 'rio-black'], [14, 'rio-pale-yellow'], [0, 'rio-beige'])),
   ],
 });
 const warmwaterPredator = rio({
   id: 'rio-elite-warmwater-predator',
   name: 'RIO Elite Warmwater Predator',
-  sizes: PREDATOR_SIZES.filter(([w]) => w >= 6 && w <= 10),
+  sizes: LINEUP['rio-elite-warmwater-predator'].sizes,
   densities: [
     float(PREDATOR_FLOAT, colorway('sand-yellow-blue', 'Sand/Yellow/Blue', [20, 'rio-light-sand'], [14, 'rio-pale-yellow'], [0, 'rio-pale-blue'])),
     tip('F/H/I', PREDATOR_3D, colorway('clear-sand-yellow-blue', 'Clear/Sand/Yellow/Blue', [10, 'rio-clear'], [10, 'rio-light-sand'], [14, 'rio-pale-yellow'], [0, 'rio-pale-blue'])),
@@ -248,7 +239,7 @@ const TROPICAL = { split: [6, 19, 5], example: 8 };
 const tropicalOutbound = rio({
   id: 'rio-elite-tropical-outbound-short',
   name: 'RIO Elite Tropical OutBound Short',
-  sizes: range(8, 12).map((w) => [w, 30, 100]),
+  sizes: LINEUP['rio-elite-tropical-outbound-short'].sizes,
   densities: [
     float(TROPICAL, colorway('dark-sand-blue', 'Dark Sand/Blue', [30, 'rio-dark-sand'], [0, 'rio-blue'])),
     tip('F/H/I', { split: TROPICAL.split }, colorway('clear-dark-sand-blue', 'Clear/Dark Sand/Blue', [15, 'rio-clear'], [15, 'rio-dark-sand'], [0, 'rio-blue'])),
@@ -263,7 +254,7 @@ const STREAMER_TIP = { split: [6, 20, 4], example: 7 };
 const streamerTip = rio({
   id: 'rio-premier-streamertip',
   name: 'RIO Premier StreamerTip',
-  sizes: range(5, 8).map((w) => [w, 30, 100]),
+  sizes: LINEUP['rio-premier-streamertip'].sizes,
   densities: [
     tip('F/I', STREAMER_TIP, colorway('clear-yellow-pale-green', 'Clear/Yellow/Pale Green', [10, 'rio-clear'], [20, 'rio-yellow'], [0, 'rio-mint'])),
     tip('F/S6', { split: STREAMER_TIP.split }, colorway('black-yellow-pale-green', 'Black/Yellow/Pale Green', [10, 'rio-black'], [20, 'rio-yellow'], [0, 'rio-mint'])),
@@ -271,10 +262,11 @@ const streamerTip = rio({
 });
 
 // Premier 24ft Sink Tip. RIO's 150 gr (WF5) diagram: 24 ft black sinking tip, 6 ft body, 4 ft back
-// taper on 66 ft of running line; the tip's own taper is about 3.5 ft as drawn. RIO's table lists
-// only the 24 ft tip, so the other sizes keep the 34 ft head. Each sink rate has its own running
-// line color.
+// taper on 66 ft of running line; the tip's own taper is about 3.5 ft as drawn. RIO's table gives
+// only the 24 ft tip as the head, so every size overrides it with the diagram's 34 ft head. Each
+// sink rate has its own running line color.
 const SINK_TIP = { split: [3.5, 26.5, 4], example: 5 };
+const SINK_TIP_LINEUP = LINEUP['rio-premier-24ft-sink-tip'];
 const sinkTip24 = makerProduct({
   id: 'rio-premier-24ft-sink-tip',
   maker: 'RIO',
@@ -289,7 +281,8 @@ const sinkTip24 = makerProduct({
   ].map(([weight, densities, id, name, running]) =>
     sized(
       { taper: SINK_TIP, colorways: [colorway(id, name, [24, 'rio-black'], [0, running])] },
-      { id: `wf${weight}-${slug(densities)}`, label: `WF${weight} ${densities}`, type: 'sinktip', weight, head: 34, total: 100 },
+      { id: `wf${weight}-${slug(densities)}`, label: `WF${weight} ${densities}`, type: 'sinktip' },
+      overriding(lineupSize(SINK_TIP_LINEUP, `${weight}wt`), { head: 34 }),
     ),
   ),
 });
@@ -298,24 +291,16 @@ const sinkTip24 = makerProduct({
 // moss to 19 ft then Electric Green to the end of the head; Premier is a moss head on an Electric
 // Green running line.
 const GOLD_XP = { split: [5.5, 21.5, 15], example: 5 };
-const GOLD_XP_HEADS = [
-  [3, 40],
-  [4, 41],
-  [5, 42],
-  [6, 43],
-  [7, 44],
-  [8, 45],
-];
 const eliteGoldXp = rio({
   id: 'rio-elite-gold-xp',
   name: 'RIO Elite Gold XP',
-  sizes: GOLD_XP_HEADS.map(([w, head]) => [w, head, w === 3 ? 80 : w >= 7 ? 100 : 90]),
+  sizes: LINEUP['rio-elite-gold-xp'].sizes,
   densities: [float(GOLD_XP, colorway('moss-electric-green-gray', 'Moss/Electric Green/Gray', [19, 'rio-moss'], [23, 'rio-electric-green'], [0, 'rio-light-gray']))],
 });
 const premierGoldXp = rio({
   id: 'rio-premier-gold-xp',
   name: 'RIO Premier Gold XP',
-  sizes: GOLD_XP_HEADS.map(([w, head]) => [w, head, w === 3 ? 80 : 90]),
+  sizes: LINEUP['rio-premier-gold-xp'].sizes,
   densities: [float(GOLD_XP, colorway('moss-electric-green', 'Moss/Electric Green', [42, 'rio-moss'], [0, 'rio-electric-green']))],
 });
 
@@ -324,12 +309,7 @@ const premierGoldXp = rio({
 const eliteBonefish = rio({
   id: 'rio-elite-bonefish',
   name: 'RIO Elite Bonefish',
-  sizes: [
-    [6, 46.5, 90],
-    [7, 48.5, 100],
-    [8, 49.5, 100],
-    [9, 49.5, 100],
-  ],
+  sizes: LINEUP['rio-elite-bonefish'].sizes,
   densities: [
     float(
       { split: [6.5, 31, 12], example: 8 },
@@ -341,23 +321,28 @@ const eliteBonefish = rio({
 
 // Premier Striper. RIO's WF9F and WF9I diagram: front 3+13, body 11, back 3, then a 12 ft handling
 // section on the running line. The sinking lines are sold by grain weight (rated for two rod
-// weights; listed at the lower) with a 35 ft black head on an intermediate running line; RIO draws
-// no diagram for them, so they scale the floating split.
+// weights; drawn at the lower, which the lineup leaves out) with a 35 ft black head on an
+// intermediate running line; RIO draws no diagram for them, so they scale the floating split.
 const STRIPER = { split: [16, 11, 3], example: 9 };
+const STRIPER_LINEUP = LINEUP['rio-premier-striper'];
 const striperSink = (grains, weight, ips, id, name, running) =>
   sized(
     { taper: { split: STRIPER.split }, colorways: [colorway(id, name, [30, 'rio-black'], [0, running])] },
-    { id: `${grains}gr`, label: `${grains}gr Int/${ips}`, type: 'sinktip', weight, head: 35, total: 100 },
+    { id: `${grains}gr`, label: `${grains}gr Int/${ips}`, type: 'sinktip' },
+    overriding(lineupSize(STRIPER_LINEUP, `${grains}gr | ${weight}/${weight + 1} Wt`), { weight }),
   );
+const striperSizes = (sink) => STRIPER_LINEUP.sizes.filter((size) => size.densityLabel === sink);
 const premierStriper = makerProduct({
   id: 'rio-premier-striper',
   maker: 'RIO',
   name: 'RIO Premier Striper',
   sizes: [
-    ...[8, 9, 10].flatMap((weight) => [
-      sized({ taper: STRIPER, colorways: [colorway('blue-yellow', 'Blue/Yellow', [30, 'rio-blue'], [0, 'rio-pale-yellow'])] }, { id: `wf${weight}f`, label: `WF${weight}F`, type: 'floating', weight, head: 30, total: 100 }),
-      sized({ taper: STRIPER, colorways: [colorway('clear-lumalux-green', 'Clear/Lumalux Green', [30, 'rio-clear'], [0, 'rio-lumalux-green'])] }, { id: `wf${weight}i`, label: `WF${weight}I`, type: 'intermediate', weight, head: 30, total: 100 }),
-    ]),
+    ...striperSizes('Floating').map((size) =>
+      sized({ taper: STRIPER, colorways: [colorway('blue-yellow', 'Blue/Yellow', [30, 'rio-blue'], [0, 'rio-pale-yellow'])] }, { id: `wf${size.weight}f`, label: `WF${size.weight}F`, type: 'floating' }, size),
+    ),
+    ...striperSizes('Intermediate').map((size) =>
+      sized({ taper: STRIPER, colorways: [colorway('clear-lumalux-green', 'Clear/Lumalux Green', [30, 'rio-clear'], [0, 'rio-lumalux-green'])] }, { id: `wf${size.weight}i`, label: `WF${size.weight}I`, type: 'intermediate' }, size),
+    ),
     striperSink(250, 7, '6.5', 'black-gray', 'Black/Gray', 'rio-grey'),
     striperSink(300, 8, '7.2', 'black-salmon', 'Black/Salmon', 'rio-salmon'),
     striperSink(350, 9, '8.2', 'black-blue', 'Black/Blue', 'rio-blue'),
@@ -370,53 +355,34 @@ const premierStriper = makerProduct({
 const premierCreek = rio({
   id: 'rio-premier-creek',
   name: 'RIO Premier Creek',
-  sizes: [
-    [0, 30, 65],
-    [1, 30, 65],
-    [2, 30, 65],
-    [3, 30, 75],
-    [4, 30, 75],
-    [5, 30, 80],
-  ],
+  sizes: LINEUP['rio-premier-creek'].sizes,
   densities: [float({ split: [6, 10, 14], example: 3 }, colorway('green-yellow', 'Green/Yellow', [30, 'rio-dark-green'], [0, 'rio-lemon-green']))],
 });
 
 // Elite and Premier Technical Trout. RIO's WF5F diagrams: front 10, body 10+7, back 13+12. Elite is
 // Sky Blue to 20 ft and Peach to 46 ft on a gray running line; Premier is Sky Blue to 46 ft.
 const TECH_TROUT = { split: [10, 17, 25], example: 5 };
-const TECH_TROUT_HEADS = [
-  [3, 45, 80],
-  [4, 49, 90],
-  [5, 52, 90],
-  [6, 54, 90],
-];
 const eliteTechnicalTrout = rio({
   id: 'rio-elite-technical-trout',
   name: 'RIO Elite Technical Trout',
-  sizes: TECH_TROUT_HEADS,
+  sizes: LINEUP['rio-elite-technical-trout'].sizes,
   densities: [float(TECH_TROUT, colorway('sky-blue-peach-gray', 'Sky Blue/Peach/Gray', [20, 'rio-sky-blue'], [26, 'rio-peach'], [0, 'rio-light-gray']))],
 });
 const premierTechnicalTrout = rio({
   id: 'rio-premier-technical-trout-wf',
   name: 'RIO Premier Technical Trout WF',
-  sizes: TECH_TROUT_HEADS,
+  sizes: LINEUP['rio-premier-technical-trout-wf'].sizes,
   densities: [float(TECH_TROUT, colorway('sky-blue-peach', 'Sky Blue/Peach', [46, 'rio-sky-blue'], [0, 'rio-peach']))],
 });
 
 // Elite Xtreme Indicator. RIO's WF6F diagram: front 3+2+4, body 24, back 15+1 on 51 ft of running
 // line. RIO's table gives a 33 ft head for every size, which is the front and body without the
-// back taper, so every size has the diagram's 49 ft head. Totals follow the table (it says 90 ft
-// for WF6F; the diagram says 100). A 3 ft orange tip, moss to 33 ft.
+// back taper, so every size overrides it with the diagram's 49 ft head. Totals follow the table (it
+// says 90 ft for WF6F; the diagram says 100). A 3 ft orange tip, moss to 33 ft.
 const xtremeIndicator = rio({
   id: 'rio-elite-xtreme-indicator',
   name: 'RIO Elite Xtreme Indicator',
-  sizes: [
-    [5, 49, 90],
-    [6, 49, 90],
-    [7, 49, 100],
-    [8, 49, 100],
-    [9, 49, 100],
-  ],
+  sizes: LINEUP['rio-elite-xtreme-indicator'].sizes.map((size) => overriding(size, { head: 49 })),
   densities: [float({ split: [9, 24, 16], example: 6 }, colorway('orange-moss-yellow', 'Orange/Moss/Yellow', [3, 'rio-orange'], [30, 'rio-moss'], [0, 'rio-pale-yellow']))],
 });
 
@@ -428,7 +394,7 @@ const SPEY = { split: [18, 12, 3], example: 5 };
 const singleHandSpey = rio({
   id: 'rio-elite-single-handed-spey',
   name: 'RIO Elite Single-Handed Spey',
-  sizes: range(3, 8).map((w) => [w, 33, w === 3 ? 80 : 90]),
+  sizes: LINEUP['rio-elite-single-handed-spey'].sizes,
   densities: [
     float({ split: SPEY.split }, colorway('peach-camo', 'Peach/Camo', [33, 'rio-peach'], [0, 'rio-camo'])),
     tip('F/H/I', SPEY, colorway('gray-glacial-peach-camo', 'Gray/Glacial/Peach/Camo', [10, 'rio-light-gray'], [10, 'rio-glacial'], [13, 'rio-peach'], [0, 'rio-camo'])),
@@ -439,13 +405,7 @@ const singleHandSpey = rio({
 const eliteIndicator = rio({
   id: 'rio-elite-indicator',
   name: 'RIO Elite Indicator',
-  sizes: [
-    [4, 48, 90],
-    [5, 50, 90],
-    [6, 52, 90],
-    [7, 54, 100],
-    [8, 56, 100],
-  ],
+  sizes: LINEUP['rio-elite-indicator'].sizes,
   densities: [float({ split: [6, 30, 16], example: 6 }, colorway('white-red-gray', 'White/Red/Gray', [19, 'rio-white'], [23.5, 'rio-red'], [0, 'rio-light-gray']))],
 });
 
@@ -453,7 +413,7 @@ const eliteIndicator = rio({
 const mainstreamTrout = rio({
   id: 'rio-mainstream-trout-wf',
   name: 'RIO Mainstream Trout WF',
-  sizes: range(3, 8).map((w) => [w, 33 + w, 80]),
+  sizes: LINEUP['rio-mainstream-trout-wf'].sizes,
   densities: [float({ split: GOLD_XP.split }, colorway('lemon-green', 'Lemon Green', [0, 'rio-lemon-green']))],
 });
 
@@ -461,11 +421,10 @@ const mainstreamTrout = rio({
 // running line. Elite is Mint to 18.5 ft then Green to the end of the head; its Camo colorway
 // (camo head, khaki running line) is made in WF4–8 only. Premier is a Mint head.
 const GOLD_MAX = { split: [4, 28.5, 4.5], example: 5 };
-const GOLD_MAX_HEADS = range(4, 9).map((w) => [w, 32 + w]);
 const eliteGoldMax = rio({
   id: 'rio-elite-gold-max',
   name: 'RIO Elite Gold Max',
-  sizes: GOLD_MAX_HEADS.map(([w, head]) => [w, head, w >= 7 ? 100 : 90]),
+  sizes: LINEUP['rio-elite-gold-max'].sizes,
   densities: [
     {
       ...float(GOLD_MAX),
@@ -479,7 +438,7 @@ const eliteGoldMax = rio({
 const premierGoldMax = rio({
   id: 'rio-premier-gold-max',
   name: 'RIO Premier Gold Max',
-  sizes: GOLD_MAX_HEADS.map(([w, head]) => [w, head, 90]),
+  sizes: LINEUP['rio-premier-gold-max'].sizes,
   densities: [float(GOLD_MAX, colorway('mint-blaze-orange', 'Mint/Blaze Orange', [37, 'rio-mint'], [0, 'rio-blaze-orange']))],
 });
 
@@ -489,6 +448,7 @@ const premierGoldMax = rio({
 // so it draws as Type 5.
 const FATHOM = { split: [6, 21, 8], example: 7 };
 const fathomRate = (rate, type, id, name, running) => ({
+  sink: `${rate} ips`,
   id: (w) => `wf${w}s${rate}`,
   label: (w) => `WF${w} Sink ${rate}`,
   type,
@@ -498,12 +458,12 @@ const fathomRate = (rate, type, id, name, running) => ({
 const fathom = rio({
   id: 'rio-premier-fathom',
   name: 'RIO Premier Fathom',
-  sizes: range(5, 8).map((w) => [w, 35, 105]),
+  sizes: LINEUP['rio-premier-fathom'].sizes,
   densities: [
     fathomRate(3, 'sink3', 'black-blue', 'Black/Blue', 'rio-deep-blue'),
     fathomRate(5, 'sink5', 'black-maroon', 'Black/Maroon', 'rio-maroon'),
     fathomRate(6, 'sink5', 'black-green', 'Black/Green', 'rio-sage'),
-    { ...fathomRate(7, 'sink7', 'black-grey', 'Black/Grey', 'rio-grey'), weights: range(6, 8) },
+    fathomRate(7, 'sink7', 'black-grey', 'Black/Grey', 'rio-grey'),
   ],
 });
 
@@ -512,14 +472,8 @@ const fathom = rio({
 const aquaLux = rio({
   id: 'rio-premier-aqualux',
   name: 'RIO Premier AquaLux',
-  sizes: [
-    [4, 30, 90],
-    [5, 30, 90],
-    [6, 30, 100],
-    [7, 30, 100],
-    [8, 30, 100],
-  ],
-  densities: [intermediate({ split: [6, 22, 2], example: 6 }, colorway('clear-light-teal', 'Clear/Light Teal', [30, 'rio-clear'], [0, 'rio-light-teal']))],
+  sizes: LINEUP['rio-premier-aqualux'].sizes,
+  densities: [{ ...intermediate({ split: [6, 22, 2], example: 6 }, colorway('clear-light-teal', 'Clear/Light Teal', [30, 'rio-clear'], [0, 'rio-light-teal'])), sink: '1.5–2 ips' }],
 });
 
 export const PRODUCTS = [
@@ -527,16 +481,7 @@ export const PRODUCTS = [
     id: 'rio-premier-gold',
     maker: 'RIO',
     name: 'RIO Premier Gold',
-    sizes: [
-      [2, 44, 80],
-      [3, 45, 80],
-      [4, 46, 90],
-      [5, 47, 90],
-      [6, 48, 90],
-      [7, 49, 90],
-      [8, 50, 90],
-      [9, 50, 90],
-    ].map(([weight, head, total]) => goldSize(weight, head, total)),
+    sizes: LINEUP['rio-premier-gold'].sizes.map(goldSize),
   }),
   outboundShort,
   eliteGold,
@@ -562,8 +507,9 @@ export const PRODUCTS = [
   premierTechnicalTrout,
   aquaLux,
   // Euro nymph lines are level (about 0.022″), much thinner than a WF head of any weight, so they're
-  // drawn as running line behind a token taper. RIO sells one size for 2–5 wt rods; it comes with a
-  // 14 ft pink mono leader.
+  // drawn as running line behind a token taper. RIO sells one size for 2–5 wt rods, drawn as a 3 wt;
+  // it comes with a 14 ft pink mono leader. RIO's table has no lengths for it, so all three numbers
+  // are ours.
   makerProduct({
     id: 'rio-technical-euro-nymph',
     maker: 'RIO',
@@ -575,6 +521,7 @@ export const PRODUCTS = [
         type: 'floating',
         weight: 3,
         taper: [0.5, 0.5, 0.5, 92.5],
+        lineup: overriding(lineupSize(LINEUP['rio-premier-technical-euro-nymph'], '2-5wt'), { weight: 3, head: 1.5, total: 94 }),
         colorways: [{ id: 'pink-yellow', name: 'Pink/Yellow', zones: zones([14, 'rio-pink'], [0, 'rio-yellow']) }],
       },
     ],

@@ -1,4 +1,5 @@
-import { makerProduct, zones } from './product.js';
+import * as LINEUP from 'lineups:cortland';
+import { makerProduct, publishedTaper, zones } from './product.js';
 
 // Matched by eye to product photos and Cortland's taper charts.
 export const COLORS = [
@@ -10,19 +11,18 @@ export const COLORS = [
   { id: 'cortland-mustard', name: 'Mustard', hex: '#f6c73b' },
 ];
 
-// Cortland draws one taper chart per line with the head length on it but no size. Every size below
-// has that head, so the chart's split applies to all of them.
-const sizes = (weights, { label = (w) => `WF${w}F`, id = (w) => `wf${w}f`, ...size }) =>
-  weights.map((weight) => ({ ...size, id: id(weight), label: label(weight), weight }));
+// Cortland draws one taper chart per line with the head length on it but no size. Every size of a
+// line has that head, so the lineup gives each size the chart's split.
+const sizes = (product, { label = (size) => size.label, id = (w) => `wf${w}f`, ...rest }) =>
+  product.sizes.map((size) => ({ ...rest, id: id(size.weight), label: label(size), weight: size.weight, taper: publishedTaper(size), lineup: size }));
 
 export const PRODUCTS = [
   makerProduct({
     id: 'cortland-444-peach',
     maker: 'Cortland',
     name: 'Cortland 444 Peach',
-    sizes: sizes([2, 3, 4, 5, 6, 7, 8, 9], {
+    sizes: sizes(LINEUP['cortland-444-peach'], {
       type: 'floating',
-      taper: [8, 20, 4, 58],
       colorways: [{ id: 'peach', name: 'Peach', zones: zones([0, 'cortland-peach']) }],
     }),
   }),
@@ -31,9 +31,8 @@ export const PRODUCTS = [
     id: 'cortland-444-sylk',
     maker: 'Cortland',
     name: 'Cortland 444 Sylk',
-    sizes: sizes([2, 3, 4, 5, 6, 7, 8], {
+    sizes: sizes(LINEUP['cortland-444-sylk'], {
       type: 'floating',
-      taper: [10, 24, 3, 53],
       colorways: [{ id: 'mustard', name: 'Mustard', zones: zones([0, 'cortland-mustard']) }],
     }),
   }),
@@ -42,11 +41,9 @@ export const PRODUCTS = [
     id: 'cortland-444-clear-camo',
     maker: 'Cortland',
     name: 'Cortland 444 Clear Camo',
-    sizes: sizes([4, 5, 6, 7, 8, 9, 10], {
-      label: (w) => `WF${w}I`,
+    sizes: sizes(LINEUP['cortland-444-clear-camo-intermediate'], {
       id: (w) => `wf${w}i`,
       type: 'intermediate',
-      taper: [6, 7, 28, 49],
       colorways: [{ id: 'clear-camo', name: 'Clear Camo', zones: zones([0, 'cortland-clear-camo']) }],
     }),
   }),
@@ -56,18 +53,16 @@ export const PRODUCTS = [
     maker: 'Cortland',
     name: 'Cortland 444 Full Sinking',
     sizes: [
-      ...sizes([4, 5, 6, 7, 8], {
-        label: (w) => `WF${w}S Type 3`,
+      ...sizes(LINEUP['cortland-444-full-sinking-type-3'], {
+        label: (size) => `${size.label} Type 3`,
         id: (w) => `wf${w}s3`,
         type: 'sink3',
-        taper: [6, 20, 6, 58],
         colorways: [{ id: 'dark-brown', name: 'Dark Brown', zones: zones([0, 'cortland-dark-brown']) }],
       }),
-      ...sizes([5, 6, 7, 8], {
-        label: (w) => `WF${w}S Type 6`,
+      ...sizes(LINEUP['cortland-444-full-sinking-type-6'], {
+        label: (size) => `${size.label} Type 6`,
         id: (w) => `wf${w}s6`,
         type: 'sink7',
-        taper: [6, 20, 6, 58],
         colorways: [{ id: 'black', name: 'Black', zones: zones([0, 'cortland-black']) }],
       }),
     ],
@@ -78,11 +73,9 @@ export const PRODUCTS = [
     id: 'cortland-streamer-sink-tip-15',
     maker: 'Cortland',
     name: 'Cortland Streamer Sink Tip 15',
-    sizes: sizes([5, 6, 7, 8], {
-      label: (w) => `WF${w}S/F`,
+    sizes: sizes(LINEUP['cortland-streamer-sink-tip-15'], {
       id: (w) => `wf${w}`,
       type: 'sinktip',
-      taper: [15, 6, 10, 69],
       colorways: [{ id: 'black-green', name: 'Black/Green', zones: zones([15, 'cortland-black'], [0, 'cortland-green']) }],
     }),
   }),

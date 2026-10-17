@@ -867,153 +867,6 @@
    "url": "https://farbank.com/products/rio-rio-elite-flats-pro",
    "sizes": [
     {
-     "label": "10wt",
-     "weights": [
-      10
-     ],
-     "density": "floating",
-     "densityLabel": "Floating",
-     "sinkIps": null,
-     "head": 50,
-     "total": 100,
-     "grains30": 330,
-     "headGrains": 475,
-     "colors": [
-      "Aqua/Orange/Sand",
-      "Gray/Sand/Kelp"
-     ]
-    },
-    {
-     "label": "10wt",
-     "weights": [
-      10
-     ],
-     "density": "sinktip",
-     "densityLabel": "Float/1.5 ips",
-     "sinkIps": null,
-     "head": 50,
-     "total": 100,
-     "grains30": 330,
-     "headGrains": 475,
-     "colors": [
-      "Clear/Aqua/Orange/Sand"
-     ]
-    },
-    {
-     "label": "10wt",
-     "weights": [
-      10
-     ],
-     "density": "intermediate",
-     "densityLabel": "Intermediate",
-     "sinkIps": null,
-     "head": 50,
-     "total": 100,
-     "grains30": 330,
-     "headGrains": 475,
-     "colors": [
-      "Clear/Trans Orange/Trans Aqua"
-     ]
-    },
-    {
-     "label": "11wt",
-     "weights": [
-      11
-     ],
-     "density": "floating",
-     "densityLabel": "Floating",
-     "sinkIps": null,
-     "head": 50,
-     "total": 100,
-     "grains30": 380,
-     "headGrains": 545,
-     "colors": [
-      "Aqua/Orange/Sand",
-      "Gray/Sand/Kelp"
-     ]
-    },
-    {
-     "label": "11wt",
-     "weights": [
-      11
-     ],
-     "density": "sinktip",
-     "densityLabel": "Float/1.5 ips",
-     "sinkIps": null,
-     "head": 50,
-     "total": 100,
-     "grains30": 380,
-     "headGrains": 545,
-     "colors": [
-      "Clear/Aqua/Orange/Sand"
-     ]
-    },
-    {
-     "label": "11wt",
-     "weights": [
-      11
-     ],
-     "density": "intermediate",
-     "densityLabel": "Intermediate",
-     "sinkIps": null,
-     "head": 50,
-     "total": 100,
-     "grains30": 380,
-     "headGrains": 545,
-     "colors": [
-      "Clear/Trans Orange/Trans Aqua"
-     ]
-    },
-    {
-     "label": "12wt",
-     "weights": [
-      12
-     ],
-     "density": "floating",
-     "densityLabel": "Floating",
-     "sinkIps": null,
-     "head": 50,
-     "total": 100,
-     "grains30": 430,
-     "headGrains": 590,
-     "colors": [
-      "Aqua/Orange/Sand",
-      "Gray/Sand/Kelp"
-     ]
-    },
-    {
-     "label": "12wt",
-     "weights": [
-      12
-     ],
-     "density": "sinktip",
-     "densityLabel": "Float/1.5 ips",
-     "sinkIps": null,
-     "head": 50,
-     "total": 100,
-     "grains30": 430,
-     "headGrains": 590,
-     "colors": [
-      "Clear/Aqua/Orange/Sand"
-     ]
-    },
-    {
-     "label": "12wt",
-     "weights": [
-      12
-     ],
-     "density": "intermediate",
-     "densityLabel": "Intermediate",
-     "sinkIps": null,
-     "head": 50,
-     "total": 100,
-     "grains30": 430,
-     "headGrains": 590,
-     "colors": [
-      "Clear/Trans Orange/Trans Aqua"
-     ]
-    },
-    {
      "label": "6wt",
      "weights": [
       6
@@ -1026,8 +879,8 @@
      "grains30": 185,
      "headGrains": 265,
      "colors": [
-      "Aqua/Orange/Sand",
-      "Gray/Sand/Kelp"
+      "Aqua/Orange/Light Sand",
+      "Gray/Light Sand/Kelp"
      ]
     },
     {
@@ -1036,14 +889,14 @@
       6
      ],
      "density": "sinktip",
-     "densityLabel": "Float/1.5 ips",
+     "densityLabel": "Float/6 ft intermediate tip",
      "sinkIps": null,
      "head": 48,
      "total": 100,
      "grains30": 185,
      "headGrains": 265,
      "colors": [
-      "Clear/Aqua/Orange/Sand"
+      "Clear/Aqua/Orange/Light Sand"
      ]
     },
     {
@@ -1059,8 +912,8 @@
      "grains30": 210,
      "headGrains": 305,
      "colors": [
-      "Aqua/Orange/Sand",
-      "Gray/Sand/Kelp"
+      "Aqua/Orange/Light Sand",
+      "Gray/Light Sand/Kelp"
      ]
     },
     {
@@ -1069,14 +922,30 @@
       7
      ],
      "density": "sinktip",
-     "densityLabel": "Float/1.5 ips",
+     "densityLabel": "Float/6 ft intermediate tip",
      "sinkIps": null,
      "head": 49,
      "total": 100,
      "grains30": 210,
      "headGrains": 305,
      "colors": [
-      "Clear/Aqua/Orange/Sand"
+      "Clear/Aqua/Orange/Light Sand"
+     ]
+    },
+    {
+     "label": "7wt",
+     "weights": [
+      7
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/15 ft intermediate tip",
+     "sinkIps": null,
+     "head": 49,
+     "total": 100,
+     "grains30": 210,
+     "headGrains": 305,
+     "colors": [
+      "Clear/Aqua/Orange/Light Sand"
      ]
     },
     {
@@ -1092,8 +961,8 @@
      "grains30": 240,
      "headGrains": 335,
      "colors": [
-      "Aqua/Orange/Sand",
-      "Gray/Sand/Kelp"
+      "Aqua/Orange/Light Sand",
+      "Gray/Light Sand/Kelp"
      ]
     },
     {
@@ -1102,14 +971,30 @@
       8
      ],
      "density": "sinktip",
-     "densityLabel": "Float/1.5 ips",
+     "densityLabel": "Float/6 ft intermediate tip",
      "sinkIps": null,
      "head": 49,
      "total": 100,
      "grains30": 240,
      "headGrains": 335,
      "colors": [
-      "Clear/Aqua/Orange/Sand"
+      "Clear/Aqua/Orange/Light Sand"
+     ]
+    },
+    {
+     "label": "8wt",
+     "weights": [
+      8
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/15 ft intermediate tip",
+     "sinkIps": null,
+     "head": 49,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 335,
+     "colors": [
+      "Clear/Aqua/Orange/Light Sand"
      ]
     },
     {
@@ -1141,8 +1026,8 @@
      "grains30": 280,
      "headGrains": 400,
      "colors": [
-      "Aqua/Orange/Sand",
-      "Gray/Sand/Kelp"
+      "Aqua/Orange/Light Sand",
+      "Gray/Light Sand/Kelp"
      ]
     },
     {
@@ -1151,14 +1036,30 @@
       9
      ],
      "density": "sinktip",
-     "densityLabel": "Float/1.5 ips",
+     "densityLabel": "Float/6 ft intermediate tip",
      "sinkIps": null,
      "head": 50,
      "total": 100,
      "grains30": 280,
      "headGrains": 400,
      "colors": [
-      "Clear/Aqua/Orange/Sand"
+      "Clear/Aqua/Orange/Light Sand"
+     ]
+    },
+    {
+     "label": "9wt",
+     "weights": [
+      9
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/15 ft intermediate tip",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 400,
+     "colors": [
+      "Clear/Aqua/Orange/Light Sand"
      ]
     },
     {
@@ -1173,6 +1074,201 @@
      "total": 100,
      "grains30": 280,
      "headGrains": 400,
+     "colors": [
+      "Clear/Trans Orange/Trans Aqua"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 475,
+     "colors": [
+      "Aqua/Orange/Light Sand",
+      "Gray/Light Sand/Kelp"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/6 ft intermediate tip",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 475,
+     "colors": [
+      "Clear/Aqua/Orange/Light Sand"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/15 ft intermediate tip",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 475,
+     "colors": [
+      "Clear/Aqua/Orange/Light Sand"
+     ]
+    },
+    {
+     "label": "10wt",
+     "weights": [
+      10
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 475,
+     "colors": [
+      "Clear/Trans Orange/Trans Aqua"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": 545,
+     "colors": [
+      "Aqua/Orange/Light Sand",
+      "Gray/Light Sand/Kelp"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/6 ft intermediate tip",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": 545,
+     "colors": [
+      "Clear/Aqua/Orange/Light Sand"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/15 ft intermediate tip",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": 545,
+     "colors": [
+      "Clear/Aqua/Orange/Light Sand"
+     ]
+    },
+    {
+     "label": "11wt",
+     "weights": [
+      11
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 380,
+     "headGrains": 545,
+     "colors": [
+      "Clear/Trans Orange/Trans Aqua"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 430,
+     "headGrains": 590,
+     "colors": [
+      "Aqua/Orange/Light Sand",
+      "Gray/Light Sand/Kelp"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/6 ft intermediate tip",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 430,
+     "headGrains": 590,
+     "colors": [
+      "Clear/Aqua/Orange/Light Sand"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "sinktip",
+     "densityLabel": "Float/15 ft intermediate tip",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 430,
+     "headGrains": 590,
+     "colors": [
+      "Clear/Aqua/Orange/Light Sand"
+     ]
+    },
+    {
+     "label": "12wt",
+     "weights": [
+      12
+     ],
+     "density": "intermediate",
+     "densityLabel": "Intermediate",
+     "sinkIps": null,
+     "head": 50,
+     "total": 100,
+     "grains30": 430,
+     "headGrains": 590,
      "colors": [
       "Clear/Trans Orange/Trans Aqua"
      ]
@@ -3421,38 +3517,6 @@
      "weights": [
       6
      ],
-     "density": "floating",
-     "densityLabel": "Floating",
-     "sinkIps": null,
-     "head": 36,
-     "total": 100,
-     "grains30": 198,
-     "headGrains": 238,
-     "colors": [
-      "Sand/Yellow/Blue"
-     ]
-    },
-    {
-     "label": "WF6F/I/S3",
-     "weights": [
-      6
-     ],
-     "density": "floating",
-     "densityLabel": "Floating",
-     "sinkIps": null,
-     "head": 36,
-     "total": 100,
-     "grains30": 198,
-     "headGrains": 238,
-     "colors": [
-      "Sand/Yellow/Blue"
-     ]
-    },
-    {
-     "label": "WF6F/S5/S7",
-     "weights": [
-      6
-     ],
      "density": "multi",
      "densityLabel": "Float/1 ips/2 ips",
      "sinkIps": null,
@@ -3462,6 +3526,38 @@
      "headGrains": 238,
      "colors": [
       "Clear/Sand/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF6F/I/S3",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "Float/2 ips/3 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 238,
+     "colors": [
+      "Black/Gray/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF6F/S5/S7",
+     "weights": [
+      6
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 36,
+     "total": 100,
+     "grains30": 198,
+     "headGrains": 238,
+     "colors": [
+      "Black/Yellow/Blue"
      ]
     },
     {
@@ -3476,54 +3572,6 @@
      "total": 100,
      "grains30": 240,
      "headGrains": 270,
-     "colors": [
-      "Sand/Yellow/Blue"
-     ]
-    },
-    {
-     "label": "WF8F",
-     "weights": [
-      8
-     ],
-     "density": "floating",
-     "densityLabel": "Floating",
-     "sinkIps": null,
-     "head": 34,
-     "total": 100,
-     "grains30": 280,
-     "headGrains": 316,
-     "colors": [
-      "Sand/Yellow/Blue"
-     ]
-    },
-    {
-     "label": "WF9F",
-     "weights": [
-      9
-     ],
-     "density": "floating",
-     "densityLabel": "Floating",
-     "sinkIps": null,
-     "head": 34,
-     "total": 100,
-     "grains30": 330,
-     "headGrains": 370,
-     "colors": [
-      "Sand/Yellow/Blue"
-     ]
-    },
-    {
-     "label": "WF10F",
-     "weights": [
-      10
-     ],
-     "density": "floating",
-     "densityLabel": "Floating",
-     "sinkIps": null,
-     "head": 32,
-     "total": 100,
-     "grains30": 390,
-     "headGrains": 410,
      "colors": [
       "Sand/Yellow/Blue"
      ]
@@ -3550,14 +3598,46 @@
       7
      ],
      "density": "multi",
-     "densityLabel": "Float/1 ips/2 ips",
+     "densityLabel": "Float/2 ips/3 ips",
      "sinkIps": null,
      "head": 34,
      "total": 100,
      "grains30": 240,
      "headGrains": 270,
      "colors": [
-      "Clear/Sand/Yellow/Blue"
+      "Black/Gray/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF7F/S5/S7",
+     "weights": [
+      7
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 240,
+     "headGrains": 270,
+     "colors": [
+      "Black/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF8F",
+     "weights": [
+      8
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Sand/Yellow/Blue"
      ]
     },
     {
@@ -3582,14 +3662,46 @@
       8
      ],
      "density": "multi",
-     "densityLabel": "Float/1 ips/2 ips",
+     "densityLabel": "Float/2 ips/3 ips",
      "sinkIps": null,
      "head": 34,
      "total": 100,
      "grains30": 280,
      "headGrains": 316,
      "colors": [
-      "Clear/Sand/Yellow/Blue"
+      "Black/Gray/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF8F/S5/S7",
+     "weights": [
+      8
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 280,
+     "headGrains": 316,
+     "colors": [
+      "Black/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF9F",
+     "weights": [
+      9
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Sand/Yellow/Blue"
      ]
     },
     {
@@ -3614,14 +3726,46 @@
       9
      ],
      "density": "multi",
-     "densityLabel": "Float/1 ips/2 ips",
+     "densityLabel": "Float/2 ips/3 ips",
      "sinkIps": null,
      "head": 34,
      "total": 100,
      "grains30": 330,
      "headGrains": 370,
      "colors": [
-      "Clear/Sand/Yellow/Blue"
+      "Black/Gray/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF9F/S5/S7",
+     "weights": [
+      9
+     ],
+     "density": "multi",
+     "densityLabel": "Float/5 ips/7 ips",
+     "sinkIps": null,
+     "head": 34,
+     "total": 100,
+     "grains30": 330,
+     "headGrains": 370,
+     "colors": [
+      "Black/Yellow/Blue"
+     ]
+    },
+    {
+     "label": "WF10F",
+     "weights": [
+      10
+     ],
+     "density": "floating",
+     "densityLabel": "Floating",
+     "sinkIps": null,
+     "head": 32,
+     "total": 100,
+     "grains30": 390,
+     "headGrains": 410,
+     "colors": [
+      "Sand/Yellow/Blue"
      ]
     },
     {
@@ -3646,66 +3790,18 @@
       10
      ],
      "density": "multi",
-     "densityLabel": "Float/1 ips/2 ips",
+     "densityLabel": "Float/2 ips/3 ips",
      "sinkIps": null,
      "head": 32,
      "total": 100,
      "grains30": 390,
      "headGrains": 410,
      "colors": [
-      "Clear/Sand/Yellow/Blue"
+      "Black/Gray/Yellow/Blue"
      ]
     },
     {
-     "label": "WF7F/S5/S7",
-     "weights": [
-      7
-     ],
-     "density": "multi",
-     "densityLabel": "Float/5 ips/7 ips",
-     "sinkIps": null,
-     "head": 34,
-     "total": 100,
-     "grains30": 240,
-     "headGrains": 270,
-     "colors": [
-      "Black/Yellow/Blue"
-     ]
-    },
-    {
-     "label": "WF8F/S5/S7",
-     "weights": [
-      8
-     ],
-     "density": "multi",
-     "densityLabel": "Float/5 ips/7 ips",
-     "sinkIps": null,
-     "head": 34,
-     "total": 100,
-     "grains30": 280,
-     "headGrains": 316,
-     "colors": [
-      "Black/Yellow/Blue"
-     ]
-    },
-    {
-     "label": "WF9F/S5/S7",
-     "weights": [
-      9
-     ],
-     "density": "multi",
-     "densityLabel": "Float/5 ips/7 ips",
-     "sinkIps": null,
-     "head": 34,
-     "total": 100,
-     "grains30": 330,
-     "headGrains": 370,
-     "colors": [
-      "Black/Yellow/Blue"
-     ]
-    },
-    {
-     "label": "WF10F/S5/S",
+     "label": "WF10F/S5/S7",
      "weights": [
       10
      ],
@@ -9178,7 +9274,7 @@
       7
      ],
      "density": "multi",
-     "densityLabel": "Float/3ips/5ips/7ips",
+     "densityLabel": "Float/3 ips/5 ips/7 ips",
      "sinkIps": null,
      "head": 34,
      "total": 100,
@@ -9194,7 +9290,7 @@
       8
      ],
      "density": "multi",
-     "densityLabel": "Float/3ips/5ips/7ips",
+     "densityLabel": "Float/3 ips/5 ips/7 ips",
      "sinkIps": null,
      "head": 34,
      "total": 100,
@@ -9210,7 +9306,7 @@
       9
      ],
      "density": "multi",
-     "densityLabel": "Float/3ips/5ips/7ips",
+     "densityLabel": "Float/3 ips/5 ips/7 ips",
      "sinkIps": null,
      "head": 34,
      "total": 100,
@@ -9226,7 +9322,7 @@
       10
      ],
      "density": "multi",
-     "densityLabel": "Float/3ips/5ips/7ips",
+     "densityLabel": "Float/3 ips/5 ips/7 ips",
      "sinkIps": null,
      "head": 32,
      "total": 100,
@@ -9242,7 +9338,7 @@
       11
      ],
      "density": "multi",
-     "densityLabel": "Float/3ips/5ips/7ips",
+     "densityLabel": "Float/3 ips/5 ips/7 ips",
      "sinkIps": null,
      "head": 32,
      "total": 100,

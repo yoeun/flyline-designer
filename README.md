@@ -44,6 +44,32 @@ See [docs/spec.md](docs/spec.md) for the full v1 spec. In short:
 - Fly line taper (thickness) and color zones are separate, so two-tone heads and color changes partway through the body are supported.
 - Backing colors are shown in one row, and the app warns when backing looks too similar to the running line or to another reel's backing.
 
+## Maker lines
+
+Each maker's lines start as research in `data/lineups/<maker>.json`: every single-hand line the
+maker sells, with per-size weight, density, head and total length, grain weights, colors and
+(where the maker publishes one) the taper split. The schema is in
+[data/lineups/SCHEMA.md](data/lineups/SCHEMA.md). That folder is outside `src`, so it isn't bundled
+whole; the line guide and the line menu are both built from it.
+
+To add a maker or refresh one:
+
+1. **Research.** Write or update `data/lineups/<maker>.json` from the maker's own pages, following
+   SCHEMA.md. Record only numbers you read from a source and leave the rest `null`; put anything
+   odd about the numbers in `data_notes`.
+2. **Regenerate the guide.** Run `npm run guide`. It rewrites `src/data/guide/<maker>.json` for
+   every lineup file. Look over the diff before committing.
+3. **Add menu lines.** In `src/data/lines/<maker>.js`, import the lineup with
+   `import * as LINEUP from 'lineups:<maker>'` and build each product's sizes from
+   `LINEUP['<product id>'].sizes`, which carry each size's weight, head and total length. The file
+   adds only what the research doesn't have: the taper split (or the size whose diagram it comes
+   from), colorways and colors, labels and the line type. Pass each size's lineup entry as `lineup`
+   to `makerProduct`. Where a size knowingly departs from the maker's table, use
+   `overriding(size, { head: 49 })` and say why in a comment. A new maker file also goes in `MAKERS`
+   in `src/data/catalog.js`.
+4. **Test.** `npm test` checks every menu size against its lineup entry (weight, head and total),
+   apart from the numbers it overrides.
+
 ## Status
 
 v1: generic reels and example fly lines. Real reel and line presets will be added by hand.

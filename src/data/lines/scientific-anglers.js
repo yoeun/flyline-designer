@@ -1,4 +1,5 @@
-import { makerProduct, zones } from './product.js';
+import * as LINEUP from 'lineups:scientific-anglers';
+import { lineupSize, makerProduct, overriding, zones } from './product.js';
 
 // Sampled from SA's swatches and taper diagrams.
 export const COLORS = [
@@ -55,18 +56,24 @@ const scaled = ([front, body, back], head) => {
   return [f, head - f - b, b];
 };
 
-// A floating WF size: `sizes` are [weight, head, total]; `ref` is the weight the diagram is drawn for;
-// `colorways(head, [front, body, back], weight)` returns that size's colorways.
+// A line with the same head in every size: the diagram's [front, body, back] applies to all of
+// them, and the running line makes up each size's total.
+const sameHead = (split, size) => [...split, size.total - size.head];
+
+// A lineup product's floating WF sizes: `ref` is the weight the diagram is drawn for;
+// `colorways(head, [front, body, back], weight)` returns a size's colorways.
 const floating = (split, ref, sizes, colorways) =>
-  sizes.map(([weight, head, total]) => {
+  sizes.map((size) => {
+    const { weight, head, total } = size;
     const taper = scaled(split, head);
     return {
       id: `wf${weight}f`,
-      label: `WF${weight}F`,
+      label: size.label,
       type: 'floating',
       weight,
       taper: [...taper, total - head],
       estimated: weight !== ref,
+      lineup: size,
       colorways: colorways(head, taper, weight),
     };
   });
@@ -74,26 +81,23 @@ const floating = (split, ref, sizes, colorways) =>
 // Amplitude, Mastery and Frequency share tapers: MPX is the same line in each, only the coating
 // and colors differ. WF5 diagram: front 6.5, bellies 25, rear 4.5 on a 36 ft head.
 const MPX = [6.5, 25, 4.5];
-const MPX_SIZES = [
-  [3, 32, 90],
-  [4, 34, 90],
-  [5, 36, 90],
-  [6, 38, 90],
-  [7, 40, 90],
-  [8, 42, 90],
-];
 
 // Trout Expert and the Amplitude Smooth Trout it replaced share a diagram (WF5, 69 ft head):
 // two front tapers (13 ft), two bellies (30.5) and a 25.5 ft rear taper.
 const TROUT_EXPERT = [13, 30.5, 25.5];
-const TROUT_EXPERT_SIZES = [
-  [2, 65, 90],
-  [3, 65, 90],
-  [4, 67, 90],
-  [5, 69, 90],
-  [6, 71, 90],
-  [7, 73, 90],
-];
+const TROUT_EXPERT_LINEUP = LINEUP['sa-amplitude-smooth-trout-expert'];
+
+// Frequency Full Sink's densities: Sink 6 draws as Type 5.
+const FULL_SINK_RATES = {
+  sink3: { rate: 3, type: 'sink3', colorway: { id: 'dark-green', name: 'Dark Green', color: 'sa-dark-green' } },
+  sink6: { rate: 6, type: 'sink5', colorway: { id: 'dark-gray', name: 'Dark Gray', color: 'sa-dark-gray' } },
+};
+
+// The Sonar Titan head, shared by the Full Intermediate and 3D: 33.5 ft in every size.
+const TITAN = [5.5, 24.5, 3.5];
+const TITAN_3D = LINEUP['sa-sonar-titan-3d-triple-density'];
+const SINK_25_COLD = LINEUP['sa-sonar-sink-25-cold'];
+const EURO_MONO = lineupSize(LINEUP['sa-mastery-competition-nymph'], 'Level 0-5wt (.022")');
 
 export const PRODUCTS = [
   // Half-size heavy. Head and total per size from SA's table; the WF6 split was measured off the
@@ -106,14 +110,7 @@ export const PRODUCTS = [
     sizes: floating(
       [6.5, 24, 19.5],
       6,
-      [
-        [3, 47, 90],
-        [4, 48, 90],
-        [5, 49, 90],
-        [6, 50, 90],
-        [7, 51, 90],
-        [8, 52, 90],
-      ],
+      LINEUP['sa-amplitude-smooth-infinity'].sizes,
       (head, [front], weight) => {
         const camo = half((10 * head) / 50);
         return [
@@ -130,7 +127,7 @@ export const PRODUCTS = [
     id: 'sa-amplitude-smooth-mpx',
     maker: 'Scientific Anglers',
     name: 'SA Amplitude Smooth MPX',
-    sizes: floating(MPX, 5, MPX_SIZES, (head, [front]) => [
+    sizes: floating(MPX, 5, LINEUP['sa-amplitude-smooth-mpx'].sizes, (head, [front]) => [
       { id: 'optic-moss-buckskin', name: 'Optic Green/Moss/Buckskin', zones: zones([front, 'sa-buckskin'], [head - front, 'sa-moss'], [0, 'sa-optic-green']) },
     ]),
   }),
@@ -139,7 +136,7 @@ export const PRODUCTS = [
     id: 'sa-mastery-mpx',
     maker: 'Scientific Anglers',
     name: 'SA Mastery MPX',
-    sizes: floating(MPX, 5, MPX_SIZES, (head) => [
+    sizes: floating(MPX, 5, LINEUP['sa-mastery-mpx'].sizes, (head) => [
       { id: 'amber-willow', name: 'Amber/Willow', zones: zones([head, 'sa-willow'], [0, 'sa-amber']) },
       { id: 'buckskin-optic', name: 'Buckskin/Optic Green', zones: zones([head, 'sa-optic-green'], [0, 'sa-buckskin']) },
     ]),
@@ -153,14 +150,7 @@ export const PRODUCTS = [
     sizes: floating(
       [6, 22, 22.5],
       5,
-      [
-        [3, 49.5, 90],
-        [4, 49.5, 90],
-        [5, 50.5, 90],
-        [6, 51, 90],
-        [7, 52, 90],
-        [8, 53, 90],
-      ],
+      LINEUP['sa-amplitude-smooth-trout-gp'].sizes,
       (head, [front]) => [
         { id: 'butter-sage-willow', name: 'Butter/Sage/Willow', zones: zones([front, 'sa-willow'], [head - front, 'sa-sage'], [0, 'sa-butter']) },
       ],
@@ -172,7 +162,7 @@ export const PRODUCTS = [
     id: 'sa-amplitude-smooth-trout-expert',
     maker: 'Scientific Anglers',
     name: 'SA Amplitude Smooth Trout Expert',
-    sizes: floating(TROUT_EXPERT, 5, TROUT_EXPERT_SIZES, (head, [front, body]) => {
+    sizes: floating(TROUT_EXPERT, 5, TROUT_EXPERT_LINEUP.sizes, (head, [front, body]) => {
       const tip = half((6.5 * head) / 69);
       return [
         { id: 'leather-sage-buckskin', name: 'Leather/Sage Green/Buckskin', zones: zones([tip, 'sa-buckskin'], [front + body - tip, 'sa-sage'], [0, 'sa-leather']) },
@@ -189,13 +179,7 @@ export const PRODUCTS = [
     sizes: floating(
       [11.5, 9.5, 3],
       5,
-      [
-        [2, 21.5, 90],
-        [3, 22, 90],
-        [4, 23, 90],
-        [5, 24, 90],
-        [6, 25, 90],
-      ],
+      LINEUP['sa-amplitude-smooth-creek-trout'].sizes,
       (head) => {
         const tip = half((6 * head) / 24);
         return [{ id: 'moss-leather-willow', name: 'Moss/Leather/Willow', zones: zones([tip, 'sa-willow'], [head - tip, 'sa-leather'], [0, 'sa-sonar-moss']) }];
@@ -203,28 +187,38 @@ export const PRODUCTS = [
     ),
   }),
   // Replaced by Trout GP and Trout Expert. SA's old diagram is the Trout Expert taper (69 ft head at
-  // WF5; one retailer lists 68). Only WF5's head is known, so the other sizes borrow Trout Expert's
-  // heads and are marked estimated. Blue heron front tapers, bamboo bellies, celestial blue rear.
+  // WF5; one retailer lists 68). Only that WF5 head is known, so every size borrows Trout Expert's
+  // head and total length, and the sizes other than WF5 are marked estimated. Blue heron front
+  // tapers, bamboo bellies, celestial blue rear.
   makerProduct({
     id: 'sa-amplitude-smooth-trout',
     maker: 'Scientific Anglers',
     name: 'SA Amplitude Smooth Trout',
     discontinued: true,
-    sizes: floating(TROUT_EXPERT, 5, TROUT_EXPERT_SIZES, (head, [front, body]) => [
-      { id: 'celestial-bamboo-heron', name: 'Celestial Blue/Bamboo/Blue Heron', zones: zones([front, 'sa-blue-heron'], [body, 'sa-bamboo'], [0, 'sa-celestial-blue']) },
-    ]),
+    sizes: floating(
+      TROUT_EXPERT,
+      5,
+      LINEUP['sa-amplitude-smooth-trout'].sizes.map((size) => {
+        const { head, total } = lineupSize(TROUT_EXPERT_LINEUP, size.label);
+        return overriding(size, { head, total });
+      }),
+      (head, [front, body]) => [
+        { id: 'celestial-bamboo-heron', name: 'Celestial Blue/Bamboo/Blue Heron', zones: zones([front, 'sa-blue-heron'], [body, 'sa-bamboo'], [0, 'sa-celestial-blue']) },
+      ],
+    ),
   }),
   // Two sizes heavy. Every size has a 43 ft head; the diagram's split applies to all of them.
   makerProduct({
     id: 'sa-amplitude-bass-bug',
     maker: 'Scientific Anglers',
     name: 'SA Amplitude Textured Bass Bug',
-    sizes: [6, 7, 8].map((weight) => ({
-      id: `wf${weight}f`,
-      label: `WF${weight}F`,
+    sizes: LINEUP['sa-amplitude-bass-bug'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
       type: 'floating',
-      weight,
-      taper: [5, 28, 10, 47],
+      weight: size.weight,
+      taper: sameHead([5, 28, 10], size),
+      lineup: size,
       colorways: [{ id: 'camo-shad-frog', name: 'Camo/Shad Blue/Frog Green', zones: zones([12.5, 'sa-bass-camo'], [30.5, 'sa-shad-blue'], [0, 'sa-frog-green']) }],
     })),
   }),
@@ -234,12 +228,13 @@ export const PRODUCTS = [
     id: 'sa-sonar-stillwater-clear-camo',
     maker: 'Scientific Anglers',
     name: 'SA Sonar Stillwater Clear Camo',
-    sizes: [5, 6, 7, 8].map((weight) => ({
-      id: `wf${weight}i`,
-      label: `WF${weight}I`,
+    sizes: LINEUP['sa-sonar-stillwater-clear-camo-intermediate'].sizes.map((size) => ({
+      id: `wf${size.weight}i`,
+      label: size.label,
       type: 'intermediate',
-      weight,
-      taper: [22.5, 13, 9.5, 55],
+      weight: size.weight,
+      taper: sameHead([22.5, 13, 9.5], size),
+      lineup: size,
       colorways: [{ id: 'clear-camo', name: 'Clear Camo', zones: zones([0, 'sa-clear-camo']) }],
     })),
   }),
@@ -249,37 +244,33 @@ export const PRODUCTS = [
     id: 'sa-frequency-full-sink',
     maker: 'Scientific Anglers',
     name: 'SA Frequency Full Sink',
-    sizes: [
-      [5, 34],
-      [6, 36],
-      [7, 36],
-      [8, 38],
-    ].flatMap(([weight, head]) =>
-      [
-        { rate: 3, type: 'sink3', colorway: { id: 'dark-green', name: 'Dark Green', color: 'sa-dark-green' } },
-        { rate: 6, type: 'sink5', colorway: { id: 'dark-gray', name: 'Dark Gray', color: 'sa-dark-gray' } },
-      ].map(({ rate, type, colorway: { id, name, color } }) => ({
+    sizes: LINEUP['sa-frequency-full-sink'].sizes.map((size) => {
+      const { weight, head } = size;
+      const { rate, type, colorway } = FULL_SINK_RATES[size.density];
+      return {
         id: `wf${weight}s${rate}`,
-        label: `WF${weight}S Sink ${rate}`,
+        label: size.label,
         type,
         weight,
-        taper: [4, head - 6, 2, 85 - head],
+        taper: [4, head - 6, 2, size.total - head],
         estimated: true,
-        colorways: [{ id, name, zones: zones([0, color]) }],
-      })),
-    ),
+        lineup: size,
+        colorways: [{ id: colorway.id, name: colorway.name, zones: zones([0, colorway.color]) }],
+      };
+    }),
   }),
   // 10 ft Sink 3 tip plus a 1 ft transition, then a floating belly. Same 45 ft head in every size.
   makerProduct({
     id: 'sa-frequency-sink-tip',
     maker: 'Scientific Anglers',
     name: 'SA Frequency Sink Tip',
-    sizes: [5, 6, 7, 8].map((weight) => ({
-      id: `wf${weight}`,
-      label: `WF${weight}F/S3`,
+    sizes: LINEUP['sa-frequency-sink-tip'].sizes.map((size) => ({
+      id: `wf${size.weight}`,
+      label: size.label,
       type: 'sinktip',
-      weight,
-      taper: [11, 30, 4, 40],
+      weight: size.weight,
+      taper: sameHead([11, 30, 4], size),
+      lineup: size,
       colorways: [{ id: 'green-optic-yellow', name: 'Green/Optic Yellow', zones: zones([10, 'sa-dark-green'], [0, 'sa-optic-yellow']) }],
     })),
   }),
@@ -288,12 +279,13 @@ export const PRODUCTS = [
     id: 'sa-sonar-titan-intermediate',
     maker: 'Scientific Anglers',
     name: 'SA Sonar Titan Full Intermediate',
-    sizes: [6, 7, 8, 9, 10, 11, 12].map((weight) => ({
-      id: `wf${weight}i`,
-      label: `WF${weight}I`,
+    sizes: LINEUP['sa-sonar-titan-full-intermediate'].sizes.map((size) => ({
+      id: `wf${size.weight}i`,
+      label: size.label,
       type: 'intermediate',
-      weight,
-      taper: [5.5, 24.5, 3.5, 71.5],
+      weight: size.weight,
+      taper: sameHead(TITAN, size),
+      lineup: size,
       colorways: [{ id: 'pale-green-blue', name: 'Pale Green/Blue', zones: zones([33.5, 'sa-pale-green'], [0, 'sa-titan-blue']) }],
     })),
   }),
@@ -304,25 +296,28 @@ export const PRODUCTS = [
     id: 'sa-sonar-titan-3d',
     maker: 'Scientific Anglers',
     name: 'SA Sonar Titan 3D Triple Density',
-    sizes: [6, 7, 8, 9, 10, 11, 12].flatMap((weight) =>
+    sizes: [...new Set(TITAN_3D.sizes.map((size) => size.weight))].flatMap((weight) =>
       [
-        { id: 'i23', densities: 'I/2/3', weights: [6, 10], name: 'Pale Green/Blue/Dark Green', colors: ['sa-sonar-dark-green', 'sa-titan-blue', 'sa-pale-green'] },
-        { id: 'i35', densities: 'I/3/5', weights: [6, 10], name: 'Pale Green/Olive/Charcoal', colors: ['sa-charcoal', 'sa-olive', 'sa-pale-green'] },
-        { id: '357', densities: '3/5/7', weights: [8, 12], name: 'Olive/Charcoal/Black', colors: ['sa-black', 'sa-charcoal', 'sa-olive'] },
+        { id: 'i23', densities: 'I/2/3', name: 'Pale Green/Blue/Dark Green', colors: ['sa-sonar-dark-green', 'sa-titan-blue', 'sa-pale-green'] },
+        { id: 'i35', densities: 'I/3/5', name: 'Pale Green/Olive/Charcoal', colors: ['sa-charcoal', 'sa-olive', 'sa-pale-green'] },
+        { id: '357', densities: '3/5/7', name: 'Olive/Charcoal/Black', colors: ['sa-black', 'sa-charcoal', 'sa-olive'] },
       ]
-        .filter(({ weights: [lo, hi] }) => weight >= lo && weight <= hi)
-        .map(({ id, densities, name, colors: [head, handling, running] }) => ({
+        .map((set) => ({ ...set, size: TITAN_3D.sizes.find((size) => size.label === `WF${weight}S Sink ${set.densities}`) }))
+        .filter(({ size }) => size)
+        .map(({ id, name, colors: [head, handling, running], size }) => ({
           id: `wf${weight}-${id}`,
-          label: `WF${weight}S Sink ${densities}`,
+          label: size.label,
           type: 'sinktip',
           weight,
-          taper: [5.5, 24.5, 3.5, 71.5],
+          taper: sameHead(TITAN, size),
+          lineup: size,
           colorways: [{ id, name, zones: zones([33.5, head], [20.5, handling], [0, running]) }],
         })),
     ),
   }),
-  // Grain-rated: the rod weight for each is our estimate. Every size has a 25 ft sinking head, then
-  // a floating handling line; the split inside the head is estimated. Sink 6 is about 6 ips.
+  // Grain-rated: the rod weight for each is our estimate (the lineup has none). Every size has a
+  // 25 ft sinking head, then a floating handling line; the split inside the head is estimated. Sink 6
+  // is about 6 ips.
   makerProduct({
     id: 'sa-sonar-sink-25-cold',
     maker: 'Scientific Anglers',
@@ -337,19 +332,23 @@ export const PRODUCTS = [
       [
         { rate: 3, name: 'Dark Green/Ivory', head: 'sa-sonar-dark-green', running: 'sa-ivory' },
         { rate: 6, name: 'Charcoal/Moss', head: 'sa-charcoal', running: 'sa-sonar-moss' },
-      ].map(({ rate, name, head, running }) => ({
-        id: `${grains}-s${rate}`,
-        label: `${grains} gr Sink ${rate}`,
-        type: 'sinktip',
-        weight,
-        taper: [2, 22, 1, 80],
-        estimated: true,
-        colorways: [{ id: 'standard', name, zones: zones([25, head], [0, running]) }],
-      })),
+      ].map(({ rate, name, head, running }) => {
+        const size = lineupSize(SINK_25_COLD, `${grains}gr F/S${rate}`);
+        return {
+          id: `${grains}-s${rate}`,
+          label: `${grains} gr Sink ${rate}`,
+          type: 'sinktip',
+          weight,
+          taper: sameHead([2, 22, 1], size),
+          estimated: true,
+          lineup: overriding(size, { weight }),
+          colorways: [{ id: 'standard', name, zones: zones([25, head], [0, running]) }],
+        };
+      }),
     ),
   }),
-  // Level euro line (0.022″) on a mono core, drawn like RIO's (see rio.js). One size for 0–5 wt
-  // rods. Formerly Mastery Competition Nymph.
+  // Level euro line (0.022″) on a mono core, drawn like RIO's (see rio.js): a token 1.5 ft head on
+  // SA's 80 ft total. One size for 0–5 wt rods, drawn as a 3 wt. Formerly Mastery Competition Nymph.
   makerProduct({
     id: 'sa-mastery-euro-tactical-nymph-mono',
     maker: 'Scientific Anglers',
@@ -360,7 +359,8 @@ export const PRODUCTS = [
         label: 'Level 0–5 wt',
         type: 'floating',
         weight: 3,
-        taper: [0.5, 0.5, 0.5, 78.5],
+        taper: [0.5, 0.5, 0.5, EURO_MONO.total - 1.5],
+        lineup: overriding(EURO_MONO, { weight: 3, head: 1.5 }),
         colorways: [{ id: 'bamboo', name: 'Bamboo', zones: zones([0, 'sa-bamboo']) }],
       },
     ],

@@ -1,4 +1,5 @@
-import { makerProduct, zones } from './product.js';
+import * as LINEUP from 'lineups:royal-wulff';
+import { makerProduct, publishedTaper, zones } from './product.js';
 
 // Matched by eye to product photos.
 export const COLORS = [
@@ -16,21 +17,19 @@ export const PRODUCTS = [
     id: 'royal-wulff-triangle-taper-classic',
     maker: 'Royal Wulff',
     name: 'Royal Wulff Triangle Taper Classic',
-    sizes: [2, 3, 4, 5, 6, 7, 8, 9].map((weight) => {
-      const head = weight <= 5 ? 36 : 40;
-      return {
-        id: `wf${weight}f`,
-        label: `WF${weight}F`,
-        type: 'floating',
-        weight,
-        taper: [head, 0, 0, 90 - head],
-        colorways: [
-          { id: 'two-tone', name: 'Two Tone (Ivory/Yellow)', zones: zones([head, 'rw-ivory'], [0, 'rw-yellow']) },
-          { id: 'ivory', name: 'Ivory', zones: zones([0, 'rw-ivory']) },
-          { id: 'olive', name: 'Olive', zones: zones([0, 'rw-olive']) },
-          { id: 'orange', name: 'Orange', zones: zones([0, 'rw-orange']) },
-        ],
-      };
-    }),
+    sizes: LINEUP['royal-wulff-triangle-taper-classic-float'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [
+        { id: 'two-tone', name: 'Two Tone (Ivory/Yellow)', zones: zones([size.head, 'rw-ivory'], [0, 'rw-yellow']) },
+        { id: 'ivory', name: 'Ivory', zones: zones([0, 'rw-ivory']) },
+        { id: 'olive', name: 'Olive', zones: zones([0, 'rw-olive']) },
+        { id: 'orange', name: 'Orange', zones: zones([0, 'rw-orange']) },
+      ],
+    })),
   }),
 ];
