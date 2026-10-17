@@ -4,7 +4,7 @@
 // the spool's outer cage of windows shows through, recessed. Spool side: eight Y's whose stems run in to the hub
 // and whose arms carry on as the outer cage's sixteen bars; wood-wrapped handle at 9 o'clock, counterweight at 3.
 // Both from Ross's straight-on product photos; the spool's dark drag housing behind the spokes is left out.
-import { P, circle, f, foot, knurl, pad, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, f, foot, knurl, pad, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // The spool: eight Y's 45° apart, stems at 12, 3, 6 and 9 o'clock; each Y's arms carry on as bars of the outer cage.
 const N = 8;
@@ -13,12 +13,12 @@ const OUTER = { n: 2 * N, rIn: 148, rOut: 188, bar: 13, corner: 8, off: -90 + FO
 
 const ANIMAS_FOOT = foot(140, -244, 14, 32);
 
-// Copper drag knob in a scalloped collar, with the RR monogram engraved.
+// Drag knob in the finish's accent (copper, gold or silver), in a scalloped collar, with the RR monogram engraved.
 const animasKnob =
   `<path d="${knurl(80, 3, 22)}" fill="currentColor"/><path d="${knurl(80, 3, 22)}" fill="#000" fill-opacity=".18"/>` +
-  `<circle r="72" fill="#c07a26"/><circle r="72" fill="url(#sheen)"/>` +
-  `<circle r="64" fill="none" stroke="#7a4410" stroke-opacity=".7" stroke-width="2.5"/>` +
-  `<text x="-17" y="33" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="96" letter-spacing="-31" fill="none" stroke="#7a4410" stroke-width="2.6">RR</text>`;
+  `<circle r="72" ${ACCENT}/><circle r="72" fill="url(#sheen)"/>` +
+  `<circle r="64" fill="none" stroke="#000" stroke-opacity=".3" stroke-width="2.5"/>` +
+  `<text x="-17" y="33" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="96" letter-spacing="-31" fill="none" stroke="#000" stroke-opacity=".38" stroke-width="2.6">RR</text>`;
 
 // The engraved logo plaque: a thick plate bridging the inner bars of the two upper pairs (see pair below), from the
 // center out.

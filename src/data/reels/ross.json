@@ -31,7 +31,7 @@
         "ross-matte-olive",
         "ross-matte-blue"
       ],
-      "notes": "Width, diameter, line weights and capacity from Ross's own Animas spec table (rossreels.com, now served at mayflyoutdoors.com/products/ross-reels-animas; matches Feather-Craft and Fly Fish SD). Rated capacity is the heavier listed line: 4/5 WF5+50, 5/6 WF6+75, 7/8 WF8+160 (lighter: WF4+70, WF5+100, WF7+180). Ross rates capacity on 20 lb backing (legacy.rossreels.com/product-help). Spool is estimated as rim − 0.24″. Trident lists larger capacities (e.g. 4/5 WF5+130, 7/8 WF8+225) that disagree with Ross; Ross's figures are used. Colors: Matte Black (shared black), Platinum, Matte Olive, Matte Blue; finish hexes sampled from Ross's product photos. Fly-shop exclusive finishes (Mardi Gras, Matte Chocolate, Merlot, Crimson, etc.) are left out.",
+      "notes": "Width, diameter, line weights and capacity from Ross's own Animas spec table (rossreels.com, now served at mayflyoutdoors.com/products/ross-reels-animas; matches Feather-Craft and Fly Fish SD). Rated capacity is the heavier listed line: 4/5 WF5+50, 5/6 WF6+75, 7/8 WF8+160 (lighter: WF4+70, WF5+100, WF7+180). Ross rates capacity on 20 lb backing (legacy.rossreels.com/product-help). Spool is estimated as rim − 0.24″. Trident lists larger capacities (e.g. 4/5 WF5+130, 7/8 WF8+225) that disagree with Ross; Ross's figures are used. Colors: Matte Black (shared black), Platinum, Matte Olive, Matte Blue; finish hexes sampled from Ross's product photos. Fly-shop exclusive finishes (Mardi Gras, Matte Chocolate, Merlot, Crimson, etc.) are left out. The drag knob varies by finish (accents): gold on Black and Matte Olive, copper on Platinum, silver on Matte Blue. The handle is wood on every finish.",
       "sizes": [
         {
           "id": "ross-animas-45",
@@ -81,7 +81,13 @@
             "pounds": 20
           }
         }
-      ]
+      ],
+      "accents": {
+        "black": "#c98a2c",
+        "ross-platinum": "#c07a26",
+        "ross-matte-olive": "#c9922f",
+        "ross-matte-blue": "#c9ccc8"
+      }
     },
     {
       "id": "ross-evolution-r",
