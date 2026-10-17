@@ -31,8 +31,9 @@ const CAGE = 132; // where the spokes meet the window ring
 const REACH = Math.sqrt(CAGE * CAGE - HEX * HEX);
 const SWEEP = (Math.atan2(REACH, HEX) * 180) / Math.PI; // outer end, degrees clockwise of the tangent point
 const SPOKE_ENDS = [0, 1, 2, 3, 4, 5].map((k) => -75 + k * 60);
-// Drawn clockwise, then mirrored top to bottom.
-const flip = ([x, y]) => [x, -y];
+// Drawn clockwise, then mirrored top to bottom and turned one cage bar (20°) counter-clockwise.
+const TURN = rad(-20);
+const flip = ([x, y]) => [x * Math.cos(TURN) + y * Math.sin(TURN), x * Math.sin(TURN) - y * Math.cos(TURN)];
 // A spoke: from its hexagon corner (behind the tangent point) into the cage ring.
 const spokeLine = (end) => {
   const t = rad(end - SWEEP), [tx, ty] = P(HEX, t), d = [-Math.sin(t), Math.cos(t)];
