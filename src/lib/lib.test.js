@@ -510,11 +510,11 @@ describe('catalog', () => {
     expect(findById(REELS, 'g56').name).toBe('Generic 5–6 wt');
   });
 
-  it('labels a size with the line weights it suits', () => {
-    expect(reelSizeLabel(findById(REELS, 'lamson-liquid-s-5'))).toBe('5+ · 5–6 wt');
-    expect(reelSizeLabel(findById(REELS, 'orvis-hydros-3'))).toBe('III · 5–7 wt');
+  it('labels a size by its weights first, then the maker label when it differs', () => {
+    expect(reelSizeLabel(findById(REELS, 'lamson-liquid-s-7'))).toBe('7/8 wt (7+)');
+    expect(reelSizeLabel(findById(REELS, 'orvis-hydros-3'))).toBe('5/6/7 wt (III)');
     expect(reelSizeLabel(findById(REELS, 'redington-behemoth-78'))).toBe('7/8 wt');
-    expect(reelSizeLabel(findById(REELS, 'g34'))).toBe('3–4 wt');
+    expect(reelSizeLabel(findById(REELS, 'g34'))).toBe('3/4 wt');
   });
 
   it('switches model to the size that suits the line weight', () => {

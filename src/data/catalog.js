@@ -246,12 +246,13 @@ export function withReelModel(reel, model) {
 // The sizes a reel model comes in, small to large.
 export const reelSizes = (product) => REELS.filter((r) => r.product === product);
 
-// A reel size as the Size menu shows it: the maker's label and the line weights it suits.
+// A reel size as the Size menu shows it: every line weight it suits, then the maker's label when that
+// says something the weights don't, e.g. "5/6 wt (5+)", "5/6/7 wt (III)", "7/8 wt".
 export function reelSizeLabel(size) {
   const [lo, hi] = size.weights;
-  if (size.size.endsWith('wt')) return size.size;
-  if (size.size === `${lo}/${hi}`) return `${size.size} wt`;
-  return `${size.size} · ${lo}–${hi} wt`;
+  const weights = Array.from({ length: hi - lo + 1 }, (_, i) => lo + i).join('/');
+  const label = size.size.replace(/\s*wt$/, '').replace('–', '/');
+  return label === weights ? `${weights} wt` : `${weights} wt (${size.size})`;
 }
 
 // The reel switched to another model: the first size that suits the line weight, otherwise the one
