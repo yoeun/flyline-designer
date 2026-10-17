@@ -4,6 +4,7 @@ import Button from './components/Button.jsx';
 import Checks from './components/Checks.jsx';
 import DetailsDialog from './components/DetailsDialog.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
+import Icon from './components/Icon.jsx';
 import PreviewModeToggle from './components/PreviewModeToggle.jsx';
 import Rack from './components/Rack.jsx';
 import RackPage from './components/RackPage.jsx';
@@ -285,9 +286,13 @@ export default function App() {
                   Save as new
                 </Button>
               )}
-              <Button onClick={() => exportSvg(svgRef.current, slug(displayName(setup)))}>Export SVG</Button>
-              <Button variant="primary" onClick={() => exportPng(svgRef.current, slug(displayName(setup)))}>
-                Export PNG
+              <Button className="gap-1.5" onClick={() => exportSvg(svgRef.current, slug(displayName(setup)))} aria-label="Download SVG">
+                <Icon name="download" />
+                SVG
+              </Button>
+              <Button variant="primary" className="gap-1.5" onClick={() => exportPng(svgRef.current, slug(displayName(setup)))} aria-label="Download PNG">
+                <Icon name="download" />
+                PNG
               </Button>
             </>
           )}
