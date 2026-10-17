@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetGroups } from '../data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, REELS, REEL_COLORS, findById, makerGroups, reelColors, withReelModel } from '../data/catalog.js';
 import { rackConflicts, backingContrast } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
+import { FRAMES, SIDES, frameMarkup } from './reelFrames.js';
 import { decodeSetup, encodeSetup } from './share.js';
 import { parseTheme, resolveTheme } from './theme.js';
 import {
@@ -276,8 +277,44 @@ describe('line editing', () => {
 
 describe('catalog', () => {
   it('groups line presets by maker, generic last, keeping every preset once', () => {
-    const groups = presetGroups(LINE_PRESETS);
+    const groups = makerGroups(LINE_PRESETS, 'Generic & examples');
     expect(groups.map(([label]) => label)).toEqual(['Airflo', 'RIO', 'Generic & examples']);
     expect(groups.flatMap(([, presets]) => presets.map((p) => p.id)).sort()).toEqual(LINE_PRESETS.map((p) => p.id).sort());
+  });
+
+  it.each(REELS.map((r) => [r.id, r]))('%s offers only known colors', (_, reel) => {
+    for (const c of reelColors(reel)) expect(REEL_COLORS).toContain(c);
+  });
+
+  it('keeps the reel color when the new model comes in it, otherwise takes its first', () => {
+    const reel = { model: 'redington-behemoth-56', color: 'gunmetal' };
+    expect(withReelModel(reel, 'redington-behemoth-78').color).toBe('gunmetal');
+    expect(withReelModel(reel, 'redington-run-56').color).toBe('black');
+    expect(withReelModel({ model: 'g56', color: 'silver' }, 'lamson-liquid-s-5').color).toBe('smoke');
+  });
+
+  it('groups reels by maker, generic last', () => {
+    const groups = makerGroups(REELS, 'Generic');
+    expect(groups.map(([label]) => label)).toEqual(['Lamson', 'Orvis', 'Redington', 'Generic']);
+    expect(groups.flatMap(([, reels]) => reels.map((r) => r.id)).sort()).toEqual(REELS.map((r) => r.id).sort());
+  });
+});
+
+describe('reel frames', () => {
+  it.each(REELS.map((r) => [r.id, r]))('%s has a drawing for each side', (_, reel) => {
+    for (const [side] of SIDES) expect(FRAMES[reel.design]?.[side]).toContain('<svg');
+  });
+
+  it('inlines a frame without its outer svg and with page-unique ids', () => {
+    const markup = frameMarkup('run', 'drag', 'r1');
+    expect(markup).not.toMatch(/<\/?svg/);
+    expect(markup).toContain('id="sheen-r1"');
+    expect(markup).toContain('url(#sheen-r1)');
+    expect(markup).toContain('href="#body-r1"');
+    expect(markup).not.toMatch(/(id="|url\(#|href="#)(sheen|body|back|body-mask)"/);
+  });
+
+  it('falls back to the generic frame for an unknown design', () => {
+    expect(frameMarkup('nope', 'spool', 'x')).toBe(frameMarkup('generic', 'spool', 'x'));
   });
 });

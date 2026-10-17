@@ -243,8 +243,12 @@ select {
   gap: 8px;
 }
 
-.stage .segmented {
-  align-self: flex-end;
+.stage__controls {
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .stage__reel {

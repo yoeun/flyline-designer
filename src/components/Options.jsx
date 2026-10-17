@@ -8,8 +8,10 @@ import {
   REEL_COLORS,
   REELS,
   findById,
+  makerGroups,
   nameOf,
-  presetGroups,
+  reelColors,
+  withReelModel,
 } from '../data/catalog.js';
 import { totalLength, zoneRanges } from '../lib/geometry.js';
 import { MIN_LENGTH, TAPER_NAMES, formatFeet, removeZone, setTaperLength, setZoneLength, splitZone, zoneName } from '../lib/lineEdit.js';
@@ -40,17 +42,21 @@ export function ReelOptions({ reel, onChange }) {
       <h2>Reel</h2>
       <label className="field">
         <span>Model</span>
-        <Select value={reel.model} onChange={(e) => onChange({ ...reel, model: e.target.value })}>
-          {REELS.map((r) => (
-            <option key={r.id} value={r.id}>
-              {r.name} · {r.rim} in
-            </option>
+        <Select value={reel.model} onChange={(e) => onChange(withReelModel(reel, e.target.value))}>
+          {makerGroups(REELS, 'Generic').map(([label, reels]) => (
+            <optgroup key={label} label={label}>
+              {reels.map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.name} · {r.rim} in
+                </option>
+              ))}
+            </optgroup>
           ))}
         </Select>
       </label>
       <div className="field">
         <span>Color · {color?.name}</span>
-        <Swatches colors={REEL_COLORS} value={reel.color} onChange={(c) => onChange({ ...reel, color: c })} label="Reel color" size={34} />
+        <Swatches colors={reelColors(findById(REELS, reel.model))} value={reel.color} onChange={(c) => onChange({ ...reel, color: c })} label="Reel color" size={34} />
       </div>
     </section>
   );
@@ -155,7 +161,7 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
         <label className="field field--grow">
           <span>Preset</span>
           <Select value={presetId} onChange={(e) => onPreset(e.target.value)}>
-            {presetGroups(LINE_PRESETS).map(([label, presets]) => (
+            {makerGroups(LINE_PRESETS, 'Generic & examples').map(([label, presets]) => (
               <optgroup key={label} label={label}>
                 {presets.map((p) => (
                   <option key={p.id} value={p.id}>
