@@ -52,16 +52,21 @@ const ARMS = [0, 1, 2, 3, 4, 5].map((k) => [-130 + k * 60, -85 + k * 60, ARM_BOW
 // Behind the arms, the spool's outer cage shows in a much darker shade so it reads as a separate piece: a ring
 // where the backing starts (radius ~120 across the sizes) with curved bars out to the rim, set up like the main
 // arms (laid out clockwise, then mirrored): they lean hard counter-clockwise and curve clockwise.
-const dragCage = (r = 120, bars = 12, lean = 50, bow = 18) => [
+// The spool side shows the same cage from the other face: `mirrored` false.
+const CAGE_R = 120;
+const outerCage = ({ mirrored = true, r = CAGE_R, bars = 12, lean = 50, bow = 18 } = {}) => [
   ring(r + 6, r - 6),
-  ...Array.from({ length: bars }, (_, k) => mirrorX(arm(-75 + (k * 360) / bars, r, -75 + (k * 360) / bars + lean, 190, 16, 12, bow))),
+  ...Array.from({ length: bars }, (_, k) => {
+    const d = arm(-75 + (k * 360) / bars, r, -75 + (k * 360) / bars + lean, 190, 16, 12, bow);
+    return mirrored ? mirrorX(d) : d;
+  }),
 ];
 const shaded = (paths) => paths.map((d) => `<path d="${d}" fill="currentColor" fill-rule="evenodd"/><path d="${d}" fill="#000" fill-opacity=".45" fill-rule="evenodd"/>`).join('');
 
 // The arms start at `armIn`, well inside the hub, so they run deep toward the center under the cap.
 export const iconicDrag = ({ hub = 56, cap = 50, armIn = 30, arms = ARMS } = {}) =>
   svg({
-    under: shaded(dragCage()),
+    under: shaded(outerCage()),
     body: [ring(200, 184), ...hatchFoot(), ...arms.map(([a0, a1, b]) => mirrorX(arm(a0, armIn, a1, 190, 36, 12, b))), circle(hub)],
     details: hatchCap(cap),
   });
@@ -78,7 +83,7 @@ export const counterweight = (cx, cy, r) =>
 // `hex` (a radius) swaps the curved spokes and round hub for six spokes tangent to a hexagon hub of that inner
 // radius, sweeping counter-clockwise, like the Lamson spools.
 export const hatchSpool = ({ inner = 132, bars = 12, barSweep = -30, barBend = -8, spokes = 8, spokeSweep = 14, spokeBend = 0, barWidth = 18, counter = counterweight, hub = 66, cap = 52, handle = -50, hex = null } = {}) => {
-  const hexLines = hex && hexSpokes({ hex, reach: inner - 8, ends: [0, 1, 2, 3, 4, 5].map((k) => -60 + k * 60), ccw: true, overshoot: 4 });
+  const hexLines = hex && hexSpokes({ hex, reach: CAGE_R, ends: [0, 1, 2, 3, 4, 5].map((k) => -60 + k * 60), ccw: true, overshoot: 4 });
   const center = hex
     ? [...hexLines.map(({ corner, end }) => strut(corner, end, 22, 16)), roundPoly(hexLines.map(({ corner }) => corner), 4)]
     : [...Array.from({ length: spokes }, (_, k) => arm(-90 + (k * 360) / spokes - spokeSweep, hub - 6, -90 + (k * 360) / spokes, inner - 8, 22, 16, spokeBend)), circle(hub)];
@@ -86,9 +91,11 @@ export const hatchSpool = ({ inner = 132, bars = 12, barSweep = -30, barBend = -
   back: [...hatchFoot()],
   body: [
     ring(200, 180),
-    ring(inner, inner - 16),
-    // The outer cage's bars lean counter-clockwise toward the rim, like the other reels.
-    ...Array.from({ length: bars }, (_, k) => arm(-75 + (k * 360) / bars + barSweep, inner - 8, -75 + (k * 360) / bars, 190, barWidth, 16, barBend)),
+    // With a hexagon hub (the Iconic) the outer cage is the drag side's, seen from this face; otherwise a ring of
+    // bars leaning counter-clockwise toward the rim.
+    ...(hex
+      ? outerCage({ mirrored: false })
+      : [ring(inner, inner - 16), ...Array.from({ length: bars }, (_, k) => arm(-75 + (k * 360) / bars + barSweep, inner - 8, -75 + (k * 360) / bars, 190, barWidth, 16, barBend))]),
     ...center,
     circle(30, ...P(160, rad(handle))),
     circle(28, ...P(160, rad(handle + 180))),
