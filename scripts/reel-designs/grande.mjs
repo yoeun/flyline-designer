@@ -23,10 +23,10 @@ const DRAG_SPOKES = SPOOL_SPOKES.filter((a) => a > 0 && a < 180);
 
 // Drag knob, all in the frame color: knurled skirt and a raised cap with a logo button.
 const grandeKnob =
-  `<path d="${knurl(48, 1.5, 60)}" fill="currentColor"/><path d="${knurl(48, 1.5, 60)}" fill="#000" fill-opacity=".35"/>` +
-  `<circle r="40" fill="currentColor"/><circle r="40" fill="url(#sheen)"/>` +
-  `<circle r="40" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>` +
-  `<circle r="16" fill="currentColor"/><circle r="16" fill="url(#sheen)"/><circle r="16" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>`;
+  `<path d="${knurl(56, 1.5, 64)}" fill="currentColor"/><path d="${knurl(56, 1.5, 64)}" fill="#000" fill-opacity=".35"/>` +
+  `<circle r="47" fill="currentColor"/><circle r="47" fill="url(#sheen)"/>` +
+  `<circle r="47" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>` +
+  `<circle r="19" fill="currentColor"/><circle r="19" fill="url(#sheen)"/><circle r="19" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>`;
 
 export const drag = svg({
   back: [ring(190, 178)],
@@ -57,9 +57,9 @@ export const spool = svg({
   ],
   details:
     // A knurled frame-colored center cap over the spokes' inner ends.
-    `<path d="${knurl(34, 1.2, 48)}" fill="currentColor"/><path d="${knurl(34, 1.2, 48)}" fill="#000" fill-opacity=".25"/>` +
-    `<circle r="28" fill="currentColor"/><circle r="28" fill="url(#sheen)"/><circle r="28" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
-    `<circle r="12" fill="currentColor"/><circle r="12" fill="#000" fill-opacity=".15"/>` +
+    `<path d="${knurl(42, 1.2, 56)}" fill="currentColor"/><path d="${knurl(42, 1.2, 56)}" fill="#000" fill-opacity=".25"/>` +
+    `<circle r="35" fill="currentColor"/><circle r="35" fill="url(#sheen)"/><circle r="35" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
+    `<circle r="14" fill="currentColor"/><circle r="14" fill="#000" fill-opacity=".15"/>` +
     `<circle cx="${f(P(150, rad(HANDLE - 180))[0])}" cy="${f(P(150, rad(HANDLE - 180))[1])}" r="18" fill="currentColor"/>` +
     `<circle cx="${f(P(150, rad(HANDLE - 180))[0])}" cy="${f(P(150, rad(HANDLE - 180))[1])}" r="18" fill="#000" fill-opacity=".15"/>` +
     knob(...P(150, rad(HANDLE)), 18),
