@@ -39,7 +39,8 @@ export const drag = svg({
   details: '<circle r="183" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="3"/>' + grandeKnob,
 });
 
-// Spool side: ~22 tapered spokes all round, a red hub ring and a dark knurled center nut.
+// Spool side, all frame color but a thin red ring at the hub: ~22 tapered spokes, a large knurled center cap and a
+// round counterweight opposite the handle.
 const HANDLE = 160;
 const SPOOL_SPOKES = Array.from({ length: 22 }, (_, k) => -90 + (k * 360) / 22);
 export const spool = svg({
@@ -53,12 +54,12 @@ export const spool = svg({
     circle(24, ...P(150, rad(HANDLE - 180))),
   ],
   details:
+    // The red hub ring shows only as a thin band around a large frame-colored cap.
     `<circle r="50" fill="${RED}"/><circle r="50" fill="url(#sheen)"/>` +
-    Array.from({ length: 22 }, (_, i) => {
-      const t = rad(-90 + ((i + 0.5) * 360) / 22), [x, y] = P(42, t);
-      return `<circle cx="${f(x)}" cy="${f(y)}" r="3" fill="#000" fill-opacity=".35"/>`;
-    }).join('') +
-    `<path d="${knurl(32, 1.2, 48)}" fill="#1d1f22"/><circle r="26" fill="#2b2e31"/><circle r="12" fill="#c9ccc8"/><circle r="12" fill="url(#sheen)"/>` +
-    `<circle cx="${f(P(150, rad(HANDLE - 180))[0])}" cy="${f(P(150, rad(HANDLE - 180))[1])}" r="18" fill="#1d1f22"/>` +
+    `<path d="${knurl(45, 1.2, 60)}" fill="currentColor"/><path d="${knurl(45, 1.2, 60)}" fill="#000" fill-opacity=".25"/>` +
+    `<circle r="38" fill="currentColor"/><circle r="38" fill="url(#sheen)"/><circle r="38" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
+    `<circle r="12" fill="currentColor"/><circle r="12" fill="#000" fill-opacity=".15"/>` +
+    `<circle cx="${f(P(150, rad(HANDLE - 180))[0])}" cy="${f(P(150, rad(HANDLE - 180))[1])}" r="18" fill="currentColor"/>` +
+    `<circle cx="${f(P(150, rad(HANDLE - 180))[0])}" cy="${f(P(150, rad(HANDLE - 180))[1])}" r="18" fill="#000" fill-opacity=".15"/>` +
     knob(...P(150, rad(HANDLE)), 18),
 });
