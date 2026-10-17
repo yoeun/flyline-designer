@@ -33,7 +33,8 @@ function zoneLabel(z, count) {
 
 // Dimension line for the taper on top, the fly line colored by zone below. Tip on the right.
 // With `zonesLocked` (a maker colorway) the color boundaries can't be dragged.
-export default function LineEditor({ line, selection, onSelect, onChange, backingColor, zonesLocked = false }) {
+// readOnly draws the line without selection or handles, for showing a setup that can't be edited.
+export default function LineEditor({ line, selection = null, onSelect, onChange, backingColor, zonesLocked = false, readOnly = false }) {
   const clip = `editor-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   const svgRef = useRef(null);
   const drag = useRef(null);
@@ -61,7 +62,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
   const selK = selection?.kind === 'taper' ? TAPER_KEYS.indexOf(selection.key) : -1;
   const edgeOn = (k) => selK >= 0 && (k === selK || k === selK + 1);
 
-  const handles = [
+  const handles = readOnly ? [] : [
     ...[1, 2, 3].map((k) => ({
       id: `taper-${k}`,
       on: edgeOn(k),
@@ -94,6 +95,11 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
     e.preventDefault();
     onSelect(sel);
   };
+  // What makes a taper section or zone a button; a read-only line just labels it.
+  const part = (sel, on, label) =>
+    readOnly
+      ? { 'aria-label': label }
+      : { role: 'button', tabIndex: 0, 'aria-pressed': on, 'aria-label': label, className: PART, onClick: select(sel), onKeyDown: onActivate(sel) };
 
   // The scale is frozen for the whole drag so min widths don't shift under the pointer.
   const onPointerDown = (h) => (e) => {
@@ -127,11 +133,8 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
       viewBox={`0 0 ${W} 150`}
       className="block h-auto w-full select-none"
       role="group"
-      aria-label="Fly line editor"
-      onPointerMove={onPointerMove}
-      onPointerUp={endDrag}
-      onPointerCancel={endDrag}
-      onClick={() => onSelect(null)}
+      aria-label={readOnly ? 'Fly line' : 'Fly line editor'}
+      {...(!readOnly && { onPointerMove, onPointerUp: endDrag, onPointerCancel: endDrag, onClick: () => onSelect(null) })}
     >
       <defs>
         <clipPath id={clip}>
@@ -149,16 +152,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
         const on = isTaper(e.key);
         const mid = LEFT + (e.x0 + e.x1) / 2;
         return (
-          <g
-            key={e.key}
-            role="button"
-            tabIndex={0}
-            aria-pressed={on}
-            aria-label={`${TAPER_NAMES[e.key]}, ${formatFeet(t[e.key])}`}
-            className={PART}
-            onClick={select(sel)}
-            onKeyDown={onActivate(sel)}
-          >
+          <g key={e.key} {...part(sel, on, `${TAPER_NAMES[e.key]}, ${formatFeet(t[e.key])}`)}>
             <rect x={LEFT + e.x1} y="6" width={e.x0 - e.x1} height="46" rx="4" fill="transparent" />
             {on && <line className={RULE_ON} strokeLinecap="round" x1={LEFT + e.x1} x2={LEFT + e.x0} y1={RULE_Y} y2={RULE_Y} />}
             <text className={cn(NAME, on && SELECTED_TEXT)} x={mid} y={RULE_Y - 11} textAnchor="middle">
@@ -191,16 +185,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
         const on = isZone(z.index);
         const width = Math.max(0, x(z.start) - x(z.end));
         return (
-          <g
-            key={z.index}
-            role="button"
-            tabIndex={0}
-            aria-pressed={on}
-            aria-label={`${zoneName(z.index, zones.length)}, ${nameOf(z.color)}, ${formatFeet(z.length)}`}
-            className={cn(PART, dim(z.index) && 'opacity-30')}
-            onClick={select(sel)}
-            onKeyDown={onActivate(sel)}
-          >
+          <g key={z.index} {...part(sel, on, `${zoneName(z.index, zones.length)}, ${nameOf(z.color)}, ${formatFeet(z.length)}`)} className={cn(!readOnly && PART, dim(z.index) && 'opacity-30')}>
             <rect x={x(z.end)} y={MID - 18} width={width} height="52" rx="4" fill="transparent" />
             <text className={cn(LEN, on && SELECTED_TEXT)} x={x(z.end) + width / 2} y={MID + 30} textAnchor="middle">
               {zoneLabel(z, zones.length)}
