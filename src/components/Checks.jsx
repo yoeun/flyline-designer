@@ -4,14 +4,7 @@ import { spoolLayout } from '../lib/geometry.js';
 
 const R = 10;
 
-// Pie slice from 12 o'clock, clockwise; a full circle once fill reaches 100%.
-function pie(fraction) {
-  if (fraction >= 1) return <circle cx="12" cy="12" r={R} />;
-  const a = 2 * Math.PI * Math.max(0, fraction);
-  const x = 12 + R * Math.sin(a);
-  const y = 12 - R * Math.cos(a);
-  return <path d={`M12 12V${12 - R}A${R} ${R} 0 ${a > Math.PI ? 1 : 0} 1 ${x.toFixed(2)} ${y.toFixed(2)}Z`} />;
-}
+const RING = 8.5;
 
 // Compact readouts that sit at the bottom of the preview stage. The full sentence is the tooltip
 // and is read out to screen readers.
@@ -31,8 +24,17 @@ export default function Checks({ setup }) {
     <div className="checks" role="status">
       <div className={`check${layout.fits ? '' : ' is-bad'}`} title={fillText}>
         <svg className="check__icon" viewBox="0 0 24 24" aria-hidden="true">
-          <g className="check__fill">{pie(layout.fill)}</g>
-          <circle className="check__ring" cx="12" cy="12" r={R} />
+          <circle className="check__track" cx="12" cy="12" r={RING} />
+          {/* Starts at 12 o'clock and runs clockwise; pathLength makes the dash a percentage. */}
+          <circle
+            className="check__progress"
+            cx="12"
+            cy="12"
+            r={RING}
+            pathLength="100"
+            strokeDasharray={pct < 100 ? `${pct} 100` : undefined}
+            transform="rotate(-90 12 12)"
+          />
         </svg>
         <span className="check__text">
           <strong className="mono">{pct}%</strong>

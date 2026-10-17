@@ -326,8 +326,19 @@ select {
   stroke-width: 1.5;
 }
 
-.check__fill {
-  fill: var(--accent);
+.check__track,
+.check__progress {
+  fill: none;
+  stroke-width: 4;
+}
+
+.check__track {
+  stroke: currentColor;
+  opacity: 0.18;
+}
+
+.check__progress {
+  stroke: var(--accent);
 }
 
 .check__text {
@@ -349,8 +360,8 @@ select {
   font-size: 12px;
 }
 
-.check.is-bad .check__fill {
-  fill: var(--bad);
+.check.is-bad .check__progress {
+  stroke: var(--bad);
 }
 
 .check.is-bad .check__ring,
