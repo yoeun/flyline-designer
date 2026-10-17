@@ -201,7 +201,7 @@
         "black",
         "sage-platinum"
       ],
-      "notes": "Original machined Spectrum (2017), no longer on Far Bank. Rim, width and rated capacity from Mudhole's and Orlando Outfitters' spec tables (Jay's agrees on rims); Rudi Heger gives 8.2–11.1 cm rims and 3.2–3.8 cm widths. Mudhole also lists Copper and Lime finishes, left out here. Spool diameters are estimates (rim − 0.24). Drawn from a copy of the Spectrum C design (nearly the same reel), its dial in the other finish's color (accents).",
+      "notes": "Original machined Spectrum (2017), no longer on Far Bank. Rim, width and rated capacity from Mudhole's and Orlando Outfitters' spec tables (Jay's agrees on rims); Rudi Heger gives 8.2–11.1 cm rims and 3.2–3.8 cm widths. Mudhole also lists Copper and Lime finishes, left out here. Spool diameters are estimates (rim − 0.24). Drawn from a copy of the Spectrum C design (nearly the same reel), but its dial is the frame color.",
       "sizes": [
         {
           "id": "sage-spectrum-34",
@@ -267,11 +267,7 @@
             "pounds": 30
           }
         }
-      ],
-      "accents": {
-        "black": "#7e7b7f",
-        "sage-platinum": "#222426"
-      }
+      ]
     },
     {
       "id": "sage-arbor-xl",

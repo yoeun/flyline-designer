@@ -1,7 +1,7 @@
 // Sage Spectrum (original, 2017). Started as a copy of spectrum-c.mjs: the reels are nearly the same, so the two
 // are kept apart to differ where they do.
 // Drag side from Far Bank's photo: 18 deep windows, five wide straight spokes (two up, one each side, one
-// down) and a flat numbered dial with a logo badge, in the finish's accent: grey on Black, black on Grey. Spool side: three straight spokes 120° apart, the handle in line with the top one and
+// down) and a flat numbered dial with a logo badge, in the frame color (the Spectrum C's takes the other finish's). Spool side: three straight spokes 120° apart, the handle in line with the top one and
 // a small knob opposite at 6 o'clock.
 import { ACCENT, P, circle, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
 import { frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
