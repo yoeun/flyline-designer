@@ -7,13 +7,16 @@ import { stateToQuery } from '../lib/share.js';
 import { useTheme } from '../lib/theme.js';
 import Button from './Button.jsx';
 import RackPage from './RackPage.jsx';
+import SetupDrawer from './SetupDrawer.jsx';
 
 const GUTTER = 'px-[max(16px,2.5vw)]';
 
-// Someone's rack from a view link (/r/<id>), view-only. Opening a setup starts a copy in the designer,
-// which the viewer can save to their own rack; nothing here writes to the shared one.
+// Someone's rack from a view link (/r/<id>), view-only. A card opens its details in a drawer, from which
+// the viewer can start a copy in the designer to save to their own rack; nothing here writes to the shared one.
 export default function SharedRackPage({ shareId }) {
-  useTheme();
+  const [, , theme] = useTheme();
+  // The setup whose details are open in the drawer.
+  const [selected, setSelected] = useState(null);
   // null while loading, then { rack } or { error: 'missing' | 'failed' }.
   const [state, setState] = useState(null);
 
@@ -49,7 +52,8 @@ export default function SharedRackPage({ shareId }) {
           ? message('This link doesn’t work any more. The owner may have stopped sharing it or made a new link.')
           : state.error
             ? message('Couldn’t load this rack. Try again in a minute.')
-            : <RackPage setups={state.rack} conflicts={rackConflicts(state.rack)} onLoad={openCopy} readOnly title="Shared rack" />}
+            : <RackPage setups={state.rack} conflicts={rackConflicts(state.rack)} onLoad={setSelected} readOnly title="Shared rack" />}
+      <SetupDrawer setup={selected} theme={theme} onOpenCopy={openCopy} onClose={() => setSelected(null)} />
     </div>
   );
 }

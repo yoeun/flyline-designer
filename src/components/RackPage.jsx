@@ -26,7 +26,7 @@ export default function RackPage({ setups, currentId, conflicts, onLoad, onEditD
             currentStyle="label"
             showNotes
             size="lg"
-            loadLabel={readOnly ? 'Open a copy of' : 'Load'}
+            loadLabel={readOnly ? 'View' : 'Load'}
             onLoad={onLoad}
             onEditDetails={readOnly ? undefined : onEditDetails}
             onRemove={readOnly ? undefined : onRemove}
