@@ -48,3 +48,6 @@ Thumbs.db
 
 # Git worktrees
 .worktrees/
+
+# Brainstorming specs and plans (kept local)
+docs/superpowers/

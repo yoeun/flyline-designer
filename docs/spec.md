@@ -19,7 +19,7 @@ Backing color is the only signal. Line types map to color families:
 | Sinking | Hot | yellow (Type 3), orange (Type 5), red (Type 7) |
 | Sink tip | Hot | any hot shade |
 
-The app suggests a family. It never forces one.
+The app suggests a family. It never forces one. This family mapping is a draft and is not yet shown in the app.
 
 ## Layout
 
@@ -27,21 +27,20 @@ Two columns. They stack on narrow screens.
 
 - **Left, preview**
   - Reel preview with a mode switch: **Reel** (default), **See-through**, **Line only**.
-  - Straight line diagram showing the fly line's taper and color zones, with a backing stub.
   - Checks: spool fill and backing vs. running line contrast.
   - **Rack strip**, collapsed by default: saved setups and the color conflicts between them.
 - **Right, options** (stacked sections)
   - **Reel**: model dropdown (generic models in v1), color presets in one row.
-  - **Fly line**: line dropdown and a one-line summary (type, weight, length, color bar). Line type, weight, taper lengths (front taper, body, back taper, running line) and color zones sit in a **Line details** section, collapsed by default.
-  - **Backing**: length (100 / 150 / 200 / 250 yd or custom), strength (20 / 30 lb), and a color grid grouped by family, with the row for the current line type highlighted.
-- **Header**: Save to rack, Copy share link, Export PNG, Export SVG.
+  - **Fly line**: Preset, Type and Weight in one row (Type and Weight unlock with the **Custom** preset). Below it, a line editor: a dimension line for the taper sections (front taper, body, back taper, running line) above the line drawn in its color zones. Click a section or zone to edit it underneath (length; zones also get color, Split and Remove). Drag or arrow-key a boundary to resize; dragging keeps the total length.
+  - **Backing**: length (100 / 150 / 200 / 250 yd or custom), strength (20 / 30 lb), and colors in one row in gradient order (red, orange, yellow, chartreuse, green, blue, purple, white, black).
+- **Header**: Save to rack, Copy share link, Export PNG, Export SVG, and a System / Light / Dark theme switch.
 
 ## Fly line model
 
 Taper and color are independent:
 
 - **Taper sections** set thickness: front taper, body, back taper, running line. Their lengths add up to the total line length.
-- **Color zones** are an ordered list, starting at the tip: `{ length, color }`. The last zone takes up whatever line is left. Zones can be added and removed, and they are edited one at a time in tabs.
+- **Color zones** are an ordered list, starting at the tip: `{ length, color }`. The last zone takes up whatever line is left. Zones are split and removed in the line editor.
 
 Line diameter by weight (inches, floating). Intermediate lines are multiplied by 0.9 and sinking lines by 0.82. A sink tip has a sinking head (× 0.82) on a floating running line (× 1):
 
@@ -132,7 +131,7 @@ Similarity is measured as CIE76 ΔE in Lab color space.
 ## Palettes
 
 - **Fly line:** black, white, smoke, chartreuse, green, yellow, orange, red, blue, purple.
-- **Backing:** black, white, chartreuse, green, yellow, orange, red, blue, purple, arranged in family rows.
+- **Backing:** black, white, chartreuse, green, yellow, orange, red, blue, purple, shown in one row in gradient order.
 - **Reel:** black, gunmetal, silver, champagne, forest green, red, blue.
 
 ## Sharing and saving

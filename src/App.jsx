@@ -1,20 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import Checks from './components/Checks.jsx';
-import LineDiagram from './components/LineDiagram.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
+import PreviewModeToggle from './components/PreviewModeToggle.jsx';
 import Rack from './components/Rack.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
+import ThemeToggle from './components/ThemeToggle.jsx';
 import { DEFAULT_SETUP, LINE_PRESETS, findById } from './data/catalog.js';
 import { exportPng, exportSvg } from './lib/export.js';
+import { clampSelection } from './lib/lineEdit.js';
 import { decodeSetup, encodeSetup } from './lib/share.js';
+import { STAGE, useTheme } from './lib/theme.js';
 
 const RACK_KEY = 'flyline-designer:rack';
-const STAGE = '#e9ebe6';
-const MODES = [
-  ['reel', 'Reel'],
-  ['see-through', 'See-through'],
-  ['line-only', 'Line only'],
-];
 
 function loadRack() {
   try {
@@ -34,6 +31,8 @@ const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^
 export default function App() {
   const [{ setup, presetId }, setState] = useState(initialSetup);
   const [mode, setMode] = useState('reel');
+  const [lineSelection, setLineSelection] = useState(null);
+  const [themeChoice, setThemeChoice, theme] = useTheme();
   const [rack, setRack] = useState(loadRack);
   const [rackOpen, setRackOpen] = useState(false);
   const [notice, setNotice] = useState('');
@@ -55,7 +54,14 @@ export default function App() {
 
   const update = (patch, nextPreset = presetId) => setState({ setup: { ...setup, ...patch }, presetId: nextPreset });
 
+  const selection = clampSelection(lineSelection, setup.line);
+
   const applyPreset = (id) => {
+    setLineSelection(null);
+    if (id === 'custom') {
+      setState({ setup, presetId: 'custom' });
+      return;
+    }
     const preset = findById(LINE_PRESETS, id);
     if (!preset) return;
     setState({ setup: { ...setup, name: preset.name.replace(' (example)', ''), line: structuredClone(preset.line) }, presetId: id });
@@ -89,6 +95,7 @@ export default function App() {
           </label>
         </div>
         <div className="app-header__actions">
+          <ThemeToggle value={themeChoice} onChange={setThemeChoice} />
           <button type="button" className="button" onClick={saveToRack}>
             Save to rack
           </button>
@@ -110,27 +117,19 @@ export default function App() {
       <main className="layout">
         <section className="preview-column" aria-label="Preview">
           <div className="stage">
-            <div className="segmented segmented--dark" role="group" aria-label="Preview mode">
-              {MODES.map(([id, label]) => (
-                <button key={id} type="button" aria-pressed={mode === id} onClick={() => setMode(id)}>
-                  {label}
-                </button>
-              ))}
-            </div>
+            <PreviewModeToggle value={mode} onChange={setMode} />
             <div className="stage__reel">
-              <ReelPreview setup={setup} mode={mode} background={STAGE} svgRef={svgRef} title={`${setup.name} preview`} />
+              <ReelPreview setup={setup} mode={mode} background={STAGE[theme]} svgRef={svgRef} title={`${setup.name} preview`} />
             </div>
-            <div className="stage__diagram">
-              <LineDiagram setup={setup} />
-            </div>
+            <Checks setup={setup} />
           </div>
-          <Checks setup={setup} />
           <Rack
             setups={rack}
             open={rackOpen}
             onToggle={() => setRackOpen((o) => !o)}
             onLoad={(s) => {
               const { id, ...rest } = structuredClone(s);
+              setLineSelection(null);
               setState({ setup: rest, presetId: 'custom' });
             }}
             onRemove={(id) => setRack((r) => r.filter((s) => s.id !== id))}
@@ -139,8 +138,16 @@ export default function App() {
 
         <section className="options-column" aria-label="Options">
           <ReelOptions reel={setup.reel} onChange={(reel) => update({ reel })} />
-          <FlyLineOptions line={setup.line} presetId={presetId} onPreset={applyPreset} onChange={(line) => update({ line }, 'custom')} />
-          <BackingOptions backing={setup.backing} lineType={setup.line.type} onChange={(backing) => update({ backing })} />
+          <FlyLineOptions
+            line={setup.line}
+            backingColor={setup.backing.color}
+            presetId={presetId}
+            onPreset={applyPreset}
+            onChange={(line) => update({ line }, 'custom')}
+            selection={selection}
+            onSelect={setLineSelection}
+          />
+          <BackingOptions backing={setup.backing} onChange={(backing) => update({ backing })} />
         </section>
       </main>
     </div>

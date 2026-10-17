@@ -45,7 +45,7 @@ export default function Rack({ setups, open, onToggle, onLoad, onRemove }) {
           {conflicts.length > 0 && (
             <ul className="conflicts">
               {conflicts.map((c) => (
-                <li key={c.title} className="check is-warn">
+                <li key={c.title} className="conflict">
                   <strong>{c.title}</strong>
                   <p>{c.detail}</p>
                 </li>
