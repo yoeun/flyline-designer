@@ -5,6 +5,18 @@ import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
 import { decodeSetup, encodeSetup } from './share.js';
 import { parseTheme, resolveTheme } from './theme.js';
+import {
+  clampSelection,
+  editorScale,
+  moveTaperBoundary,
+  moveZoneBoundary,
+  removeZone,
+  setTaperLength,
+  setZoneLength,
+  snap,
+  splitZone,
+  zoneName,
+} from './lineEdit.js';
 
 const setup = (patch = {}) => ({ ...structuredClone(DEFAULT_SETUP), ...patch });
 
@@ -153,5 +165,95 @@ describe('theme', () => {
     expect(parseTheme('dark')).toBe('dark');
     expect(parseTheme(null)).toBe('system');
     expect(parseTheme('sepia')).toBe('system');
+  });
+});
+
+describe('line editing', () => {
+  // Two-tone WF5F: taper 4 / 28.5 / 4.5 / 53 = 90 ft; zones chartreuse 20, green 17, orange rest.
+  const line = () => structuredClone(DEFAULT_SETUP.line);
+  const lengths = (l) => zoneRanges(l).map((z) => z.length);
+
+  it('snaps to half feet', () => {
+    expect(snap(6.2)).toBe(6);
+    expect(snap(6.3)).toBe(6.5);
+  });
+
+  it('names zones from the tip back', () => {
+    expect([0, 1, 2].map((i) => zoneName(i, 3))).toEqual(['Tip', 'Zone 2', 'Rest']);
+    expect(zoneName(0, 1)).toBe('Whole line');
+  });
+
+  it('keeps a selection that fits the line', () => {
+    expect(clampSelection(null, line())).toEqual({ kind: 'zone', index: 0 });
+    expect(clampSelection({ kind: 'zone', index: 7 }, line())).toEqual({ kind: 'zone', index: 2 });
+    expect(clampSelection({ kind: 'taper', key: 'body' }, line())).toEqual({ kind: 'taper', key: 'body' });
+  });
+
+  it('dragging a taper boundary trades length between neighbors', () => {
+    const l = moveTaperBoundary(line(), 1, 6.2);
+    expect(l.taper).toEqual({ front: 6, body: 26.5, back: 4.5, running: 53 });
+    expect(totalLength(l)).toBe(90);
+    const back = moveTaperBoundary(line(), 3, 40);
+    expect(back.taper.back).toBe(7.5);
+    expect(back.taper.running).toBe(50);
+  });
+
+  it('a taper boundary cannot squeeze a section below half a foot', () => {
+    expect(moveTaperBoundary(line(), 1, -5).taper.front).toBe(0.5);
+    const far = moveTaperBoundary(line(), 1, 100);
+    expect(far.taper.body).toBe(0.5);
+    expect(far.taper.front).toBe(32);
+  });
+
+  it('dragging a zone boundary trades length with the next zone', () => {
+    expect(lengths(moveZoneBoundary(line(), 0, 25))).toEqual([25, 12, 53]);
+    expect(lengths(moveZoneBoundary(line(), 0, 0))).toEqual([0.5, 36.5, 53]);
+  });
+
+  it('the zone before the rest changes alone; the rest takes what is left', () => {
+    expect(lengths(moveZoneBoundary(line(), 1, 50))).toEqual([20, 30, 40]);
+    expect(lengths(moveZoneBoundary(line(), 1, 500))).toEqual([20, 69.5, 0.5]);
+  });
+
+  it('typing a length changes only that piece', () => {
+    const l = setTaperLength(line(), 'body', 30);
+    expect(l.taper.body).toBe(30);
+    expect(totalLength(l)).toBe(91.5);
+    expect(setTaperLength(line(), 'front', -3).taper.front).toBe(0.5);
+    expect(lengths(setZoneLength(line(), 0, 25))).toEqual([25, 17, 48]);
+    expect(setZoneLength(line(), 2, 10)).toEqual(line());
+  });
+
+  it('split cuts a zone in half and keeps its color', () => {
+    const tip = splitZone(line(), 0);
+    expect(lengths(tip)).toEqual([10, 10, 17, 53]);
+    expect(tip.zones.map((z) => z.color)).toEqual(['chartreuse', 'chartreuse', 'green', 'orange']);
+    expect(lengths(splitZone(line(), 2))).toEqual([20, 17, 26.5, 26.5]);
+  });
+
+  it('remove gives the zone to the next one toward the rest', () => {
+    const tip = removeZone(line(), 0);
+    expect(lengths(tip)).toEqual([37, 53]);
+    expect(tip.zones[0].color).toBe('green');
+    const rest = removeZone(line(), 2);
+    expect(lengths(rest)).toEqual([20, 70]);
+    expect(rest.zones.at(-1).color).toBe('green');
+    const single = { ...line(), zones: [{ length: 0, color: 'green' }] };
+    expect(removeZone(single, 0)).toEqual(single);
+  });
+
+  it('editor scale keeps short tapers clickable and still spans the width', () => {
+    const s = editorScale(line(), 480, 28);
+    expect(s.edges[0].x0).toBe(480);
+    expect(s.edges[3].x1).toBeCloseTo(0, 6);
+    expect(s.edges[0].x0 - s.edges[0].x1).toBe(28); // front taper is 21 px at true scale
+    for (const ft of [0, 2, 4, 20, 37, 60, 90]) expect(s.ft(s.x(ft))).toBeCloseTo(ft, 6);
+  });
+
+  it('editor scale is proportional when every section is wide enough', () => {
+    const even = { ...line(), taper: { front: 30, body: 30, back: 30, running: 30 } };
+    const s = editorScale(even, 400, 28);
+    expect(s.x(30)).toBe(300);
+    expect(s.x(120)).toBe(0);
   });
 });
