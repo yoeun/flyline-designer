@@ -9,6 +9,11 @@ import * as scientificAnglers from './lines/scientific-anglers.js';
 // Each exports COLORS and PRODUCTS, and LEGACY_IDS if any of its old preset ids changed.
 const MAKERS = [rio, scientificAnglers, airflo, cortland, orvis, royalWulff];
 
+// Reel files in file-name order: generic first, then makers A–Z.
+const REEL_FILES = Object.entries(import.meta.glob('./reels/*.json', { eager: true, import: 'default' }))
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, file]) => file);
+
 // Old preset ids (from saved share links) mapped to the size that replaced them.
 export const LEGACY_PRESET_IDS = Object.assign({}, ...MAKERS.map((m) => m.LEGACY_IDS));
 
@@ -33,31 +38,12 @@ export const REEL_COLORS = [
   { id: 'forest', name: 'Forest green', hex: '#2f5a43' },
   { id: 'red', name: 'Red', hex: '#8f2c27' },
   { id: 'blue', name: 'Blue', hex: '#2c4f7c' },
-  // Maker finishes, offered only on the reels that come in them. Sampled from the makers' studio photos (lit faces).
-  { id: 'smoke', name: 'Smoke', hex: '#7f8184' },
-  { id: 'day-break', name: 'Day Break', hex: '#5b6270' },
-  { id: 'coffee', name: 'Coffee', hex: '#786052' },
-  { id: 'flats-blue', name: 'Flats Blue', hex: '#62acd8' },
-  { id: 'olive', name: 'Olive', hex: '#746b48' },
-  { id: 'charcoal', name: 'Charcoal', hex: '#7f7d83' },
-  { id: 'dark-pine', name: 'Dark Pine', hex: '#565d44' },
-  { id: 'burgundy', name: 'Burgundy', hex: '#783f43' },
-  { id: 'coyote', name: 'Coyote', hex: '#85694f' },
-  // A silvery taupe; Redington's own image files call it Silver.
-  { id: 'sand', name: 'Sand', hex: '#a09891' },
-  // Sold as "O.D. Green" (olive drab).
-  { id: 'army-green', name: 'Army green', hex: '#5e5f48' },
+  // Maker finishes come from the reel files (see REEL_FILES).
+  ...REEL_FILES.flatMap((f) => f.finishes ?? []).map(({ id, name, hex }) => ({ id, name, hex })),
 ];
 
 // Colors for reels without their own list.
 const GENERIC_REEL_COLORS = ['black', 'gunmetal', 'silver', 'champagne', 'forest', 'red', 'blue'];
-
-// Finishes per reel line, from maker and retailer listings.
-const LIQUID_S_COLORS = ['smoke', 'day-break'];
-const HYDROS_COLORS = ['black', 'silver', 'coffee', 'flats-blue', 'olive'];
-const CLEARWATER_COLORS = ['black', 'charcoal', 'dark-pine'];
-const RUN_COLORS = ['black', 'burgundy', 'coyote', 'sand'];
-const BEHEMOTH_COLORS = ['black', 'gunmetal', 'army-green'];
 
 // Colors as makers name them, offered only on lines that use them (see lineSwatches).
 export const MAKER_LINE_COLORS = MAKERS.flatMap((m) => m.COLORS);
@@ -77,46 +63,13 @@ export const LINE_TYPES = [
   { id: 'sinktip', name: 'Sink tip', family: 'hot', diameterFactor: 0.82, runningDiameterFactor: 1, suggested: null },
 ];
 
-// Diameters in inches. `design` picks the frame drawing in src/assets/reels; `colors` lists the
-// finishes a reel is sold in (generic reels offer GENERIC_REEL_COLORS). A reel can leave out `arbor` and give its rated capacity instead,
-// e.g. rated: { weight: 5, yards: 100, pounds: 20 } for "WF5F + 100 yd of 20 lb";
-// the arbor is then solved so that load exactly fills the spool (see reelArbor).
-export const REELS = [
-  { id: 'g34', design: 'generic', name: 'Generic 3–4 wt', rim: 3.2, spool: 2.98, arbor: 1.65, width: 0.68 },
-  { id: 'g56', design: 'generic', name: 'Generic 5–6 wt', rim: 3.6, spool: 3.36, arbor: 1.95, width: 0.78 },
-  { id: 'g78', design: 'generic', name: 'Generic 7–8 wt', rim: 4.0, spool: 3.74, arbor: 2.2, width: 0.95 },
-  { id: 'g910', design: 'generic', name: 'Generic 9–10 wt', rim: 4.4, spool: 4.12, arbor: 2.4, width: 1.1 },
-  // Rim, width and rated capacity (max line + backing) from Lamson's spec table. Spool is estimated as rim − 0.24″.
-  { id: 'lamson-liquid-s-3', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 3+', colors: LIQUID_S_COLORS, rim: 3.35, spool: 3.11, width: 1.0, rated: { weight: 4, yards: 100, pounds: 20 } },
-  { id: 'lamson-liquid-s-5', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 5+', colors: LIQUID_S_COLORS, rim: 3.65, spool: 3.41, width: 1.0, rated: { weight: 6, yards: 100, pounds: 20 } },
-  { id: 'lamson-liquid-s-7', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 7+', colors: LIQUID_S_COLORS, rim: 3.9, spool: 3.66, width: 1.15, rated: { weight: 8, yards: 200, pounds: 20 } },
-  { id: 'lamson-liquid-s-9', maker: 'Lamson', design: 'liquid-s', name: 'Lamson Liquid S 9+', colors: LIQUID_S_COLORS, rim: 4.45, spool: 4.21, width: 1.25, rated: { weight: 10, yards: 250, pounds: 30 } },
-  // Hydros 2026: rim from Orvis. Trident measured the III (spool 3.62″, arbor 2.43″, width 0.9″);
-  // II and IV widths are scaled from it and their capacities borrowed from the previous Hydros, so both are estimates.
-  { id: 'orvis-hydros-2026-2', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros II (2026)', colors: HYDROS_COLORS, rim: 3.4, spool: 3.16, width: 0.85, rated: { weight: 4, yards: 125, pounds: 20 } },
-  { id: 'orvis-hydros-2026-3', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros III (2026)', colors: HYDROS_COLORS, rim: 3.88, spool: 3.62, arbor: 2.43, width: 0.9 },
-  { id: 'orvis-hydros-2026-4', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros IV (2026)', colors: HYDROS_COLORS, rim: 4.25, spool: 4.01, width: 1.0, rated: { weight: 8, yards: 200, pounds: 20 } },
-  // Previous Hydros (2020–25) and Clearwater Cast: diameter and rated capacity (20 lb backing) from Orvis
-  // spec tables via retailers. Orvis doesn't publish spool width; widths are estimates.
-  { id: 'orvis-hydros-2', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros II (2020–25)', colors: HYDROS_COLORS, rim: 3.4, spool: 3.16, width: 0.9, rated: { weight: 4, yards: 125, pounds: 20 } },
-  { id: 'orvis-hydros-3', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros III (2020–25)', colors: HYDROS_COLORS, rim: 3.7, spool: 3.46, width: 1.0, rated: { weight: 6, yards: 125, pounds: 20 } },
-  { id: 'orvis-hydros-4', maker: 'Orvis', design: 'hydros', name: 'Orvis Hydros IV (2020–25)', colors: HYDROS_COLORS, rim: 4.0, spool: 3.76, width: 1.1, rated: { weight: 8, yards: 200, pounds: 20 } },
-  { id: 'orvis-clearwater-2', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater II', colors: CLEARWATER_COLORS, rim: 3.4, spool: 3.16, width: 1.05, rated: { weight: 4, yards: 125, pounds: 20 } },
-  { id: 'orvis-clearwater-3', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater III', colors: CLEARWATER_COLORS, rim: 3.7, spool: 3.46, width: 1.15, rated: { weight: 6, yards: 125, pounds: 20 } },
-  { id: 'orvis-clearwater-4', maker: 'Orvis', design: 'clearwater', name: 'Orvis Clearwater IV', colors: CLEARWATER_COLORS, rim: 4.0, spool: 3.76, width: 1.3, rated: { weight: 8, yards: 200, pounds: 20 } },
-  // Diameter and rated capacity from retailer listings (one lists the 4/5 at 125 yd). Redington doesn't
-  // publish spool width; widths are estimates.
-  { id: 'redington-behemoth-45', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 4/5', colors: BEHEMOTH_COLORS, rim: 3.4, spool: 3.16, width: 0.95, rated: { weight: 4, yards: 125, pounds: 20 } },
-  { id: 'redington-behemoth-56', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 5/6', colors: BEHEMOTH_COLORS, rim: 3.6, spool: 3.36, width: 1.0, rated: { weight: 5, yards: 125, pounds: 20 } },
-  { id: 'redington-behemoth-78', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 7/8', colors: BEHEMOTH_COLORS, rim: 4.0, spool: 3.76, width: 1.1, rated: { weight: 7, yards: 200, pounds: 20 } },
-  { id: 'redington-behemoth-910', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 9/10', colors: BEHEMOTH_COLORS, rim: 4.4, spool: 4.16, width: 1.2, rated: { weight: 9, yards: 200, pounds: 30 } },
-  { id: 'redington-behemoth-1112', maker: 'Redington', design: 'behemoth', name: 'Redington Behemoth 11/12', colors: BEHEMOTH_COLORS, rim: 4.7, spool: 4.46, width: 1.3, rated: { weight: 11, yards: 250, pounds: 30 } },
-  // Rim and rated capacity from retailer listings. Listed widths disagree (0.9–1.5″); these are the
-  // inner spool widths from one EU retailer.
-  { id: 'redington-run-34', maker: 'Redington', design: 'run', name: 'Redington Run 3/4', colors: RUN_COLORS, rim: 3.2, spool: 2.96, width: 0.87, rated: { weight: 3, yards: 75, pounds: 20 } },
-  { id: 'redington-run-56', maker: 'Redington', design: 'run', name: 'Redington Run 5/6', colors: RUN_COLORS, rim: 3.6, spool: 3.36, width: 0.91, rated: { weight: 5, yards: 100, pounds: 20 } },
-  { id: 'redington-run-78', maker: 'Redington', design: 'run', name: 'Redington Run 7/8', colors: RUN_COLORS, rim: 4.0, spool: 3.76, width: 0.94, rated: { weight: 7, yards: 200, pounds: 20 } },
-];
+// Reel models, one JSON file per maker in src/data/reels (see its README). Adding a reel is a data change.
+export const REEL_MODELS = REEL_FILES.flatMap((f) => f.models.map((m) => ({ ...m, maker: f.maker })));
+
+// Every reel size, carrying its model's shared fields. A setup's reel.model is one of these ids.
+export const REELS = REEL_MODELS.flatMap(({ id: product, name: productName, sizes, notes, ...model }) =>
+  sizes.map((size) => ({ ...model, product, productName, name: `${productName} ${size.size}`, ...size })),
+);
 
 export const BACKING_DIAMETER = { 20: 0.021, 30: 0.025 };
 export const BACKING_LENGTHS = [100, 150, 200, 250];
@@ -284,10 +237,33 @@ export const lineSwatches = (line) => [...LINE_COLORS, ...MAKER_LINE_COLORS.filt
 
 export const reelColors = (reel) => (reel?.colors ?? GENERIC_REEL_COLORS).map((id) => findById(REEL_COLORS, id));
 
-// The reel switched to another model, keeping its color when the new model comes in it.
+// The reel switched to another size, keeping its color when the new size comes in it.
 export function withReelModel(reel, model) {
   const ids = reelColors(findById(REELS, model)).map((c) => c.id);
   return { ...reel, model, color: ids.includes(reel.color) ? reel.color : ids[0] };
+}
+
+// The sizes a reel model comes in, small to large.
+export const reelSizes = (product) => REELS.filter((r) => r.product === product);
+
+// A reel size as the Size menu shows it: every line weight it suits, then the maker's label when that
+// says something the weights don't, e.g. "5/6 wt (5+)", "5/6/7 wt (III)", "7/8 wt".
+export function reelSizeLabel(size) {
+  const [lo, hi] = size.weights;
+  const weights = Array.from({ length: hi - lo + 1 }, (_, i) => lo + i).join('/');
+  const label = size.size.replace(/\s*wt$/, '').replace('–', '/');
+  return label === weights ? `${weights} wt` : `${weights} wt (${size.size})`;
+}
+
+// The reel switched to another model: the first size that suits the line weight, otherwise the one
+// nearest the current reel's rim (ties go smaller). Keeps the color when the new model comes in it.
+export function switchReelModel(reel, product, weight) {
+  const sizes = reelSizes(product);
+  if (!sizes.length) return reel;
+  const rim = findById(REELS, reel.model)?.rim ?? 0;
+  const nearest = sizes.reduce((best, s) => (Math.abs(s.rim - rim) < Math.abs(best.rim - rim) ? s : best));
+  const fits = sizes.find((s) => s.weights[0] <= weight && weight <= s.weights[1]);
+  return withReelModel(reel, (fits ?? nearest).id);
 }
 
 // Items for a grouped menu, as [label, items]: makers A–Z, then everything without one under `other`.

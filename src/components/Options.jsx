@@ -5,6 +5,7 @@ import {
   LINE_PRESETS,
   LINE_TYPES,
   REEL_COLORS,
+  REEL_MODELS,
   REELS,
   findById,
   lineColorway,
@@ -15,6 +16,9 @@ import {
   nameOf,
   productSizes,
   reelColors,
+  reelSizeLabel,
+  reelSizes,
+  switchReelModel,
   withReelModel,
 } from '../data/catalog.js';
 import { zoneRanges } from '../lib/geometry.js';
@@ -57,7 +61,8 @@ const MONO = 'font-mono tabular-nums';
 
 // Maker-grouped options for the searchable Model and Preset menus. The catalog is static, so build them once.
 const toGroups = (groups, label) => groups.map(([maker, items]) => ({ label: maker, items: items.map((item) => ({ value: item.id, label: label(item) })) }));
-const REEL_GROUPS = toGroups(makerGroups(REELS, 'Generic'), (r) => r.name);
+// One entry per reel model; its sizes are picked under Size.
+const REEL_GROUPS = toGroups(makerGroups(REEL_MODELS, 'Generic'), (m) => m.name);
 // One entry per maker product; its sizes are picked under Weight. Generic lines sort by weight;
 // maker lines keep the catalog's product order.
 const byWeight = (a, b) => a.line.weight - b.line.weight || a.name.localeCompare(b.name);
@@ -73,14 +78,20 @@ const numberOr = (value, fallback) => {
   return Number.isFinite(n) && n >= 0 ? n : fallback;
 };
 
-export function ReelOptions({ reel, onChange, changed, onReset }) {
+// `weight` is the line's, so a new model lands on a size that suits it.
+export function ReelOptions({ reel, weight, onChange, changed, onReset }) {
   const color = findById(REEL_COLORS, reel.color);
+  const size = findById(REELS, reel.model);
+  const sizes = reelSizes(size?.product);
   return (
     <section className={GROUP}>
       <SectionHeading title="Reel" changed={changed} onReset={onReset} />
-      <SearchableSelect label="Model" groups={REEL_GROUPS} value={reel.model} onChange={(id) => onChange(withReelModel(reel, id))} placeholder="Search reels" />
+      <div className="flex flex-wrap gap-2.5">
+        <SearchableSelect label="Model" grow groups={REEL_GROUPS} value={size?.product} onChange={(id) => onChange(switchReelModel(reel, id, weight))} placeholder="Search reels" />
+        <Select key={size?.product} label="Size" items={sizes.map((s) => ({ value: s.id, label: reelSizeLabel(s) }))} value={reel.model} disabled={sizes.length < 2} onChange={(id) => onChange(withReelModel(reel, id))} triggerClassName="w-auto min-w-[110px]" />
+      </div>
       <Field label={`Color · ${color?.name}`}>
-        <Swatches colors={reelColors(findById(REELS, reel.model))} value={reel.color} onChange={(c) => onChange({ ...reel, color: c })} label="Reel color" size={34} />
+        <Swatches colors={reelColors(size)} value={reel.color} onChange={(c) => onChange({ ...reel, color: c })} label="Reel color" size={34} />
       </Field>
     </section>
   );

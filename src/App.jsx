@@ -356,7 +356,7 @@ export default function App() {
           </section>
 
           <section className="min-w-0 flex-[1_1_380px] divide-y divide-border rounded-panel border border-border bg-card wide:overflow-y-auto" aria-label="Options">
-            <ReelOptions reel={setup.reel} onChange={(reel) => update({ reel })} changed={changed?.reel ?? false} onReset={() => resetSection('reel')} />
+            <ReelOptions reel={setup.reel} weight={setup.line.weight} onChange={(reel) => update({ reel })} changed={changed?.reel ?? false} onReset={() => resetSection('reel')} />
             <FlyLineOptions
               line={setup.line}
               backingColor={setup.backing.color}

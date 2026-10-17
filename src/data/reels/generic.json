@@ -1,0 +1,63 @@
+{
+  "models": [
+    {
+      "id": "generic",
+      "name": "Generic",
+      "design": "generic",
+      "sizes": [
+        {
+          "id": "g34",
+          "size": "3–4 wt",
+          "name": "Generic 3–4 wt",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 3.2,
+          "spool": 2.98,
+          "arbor": 1.65,
+          "width": 0.68
+        },
+        {
+          "id": "g56",
+          "size": "5–6 wt",
+          "name": "Generic 5–6 wt",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.6,
+          "spool": 3.36,
+          "arbor": 1.95,
+          "width": 0.78
+        },
+        {
+          "id": "g78",
+          "size": "7–8 wt",
+          "name": "Generic 7–8 wt",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 4.0,
+          "spool": 3.74,
+          "arbor": 2.2,
+          "width": 0.95
+        },
+        {
+          "id": "g910",
+          "size": "9–10 wt",
+          "name": "Generic 9–10 wt",
+          "weights": [
+            9,
+            10
+          ],
+          "rim": 4.4,
+          "spool": 4.12,
+          "arbor": 2.4,
+          "width": 1.1
+        }
+      ]
+    }
+  ]
+}
