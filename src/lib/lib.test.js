@@ -301,7 +301,7 @@ describe('theme', () => {
 });
 
 describe('line editing', () => {
-  // Two-tone WF5F: taper 4 / 28.5 / 4.5 / 53 = 90 ft; zones chartreuse 20, green 17, orange rest.
+  // Generic WF5 Floating Two-Tone: taper 4 / 28.5 / 4.5 / 53 = 90 ft; zones chartreuse 20, green 17, orange rest.
   const line = () => structuredClone(DEFAULT_SETUP.line);
   const lengths = (l) => zoneRanges(l).map((z) => z.length);
 
@@ -407,8 +407,8 @@ describe('line editing', () => {
 
 describe('catalog', () => {
   it('groups line presets by maker, generic last, keeping every preset once', () => {
-    const groups = makerGroups(LINE_PRESETS, 'Generic & examples');
-    expect(groups.map(([label]) => label)).toEqual(['Airflo', 'Cortland', 'RIO', 'Scientific Anglers', 'Generic & examples']);
+    const groups = makerGroups(LINE_PRESETS, 'Generic');
+    expect(groups.map(([label]) => label)).toEqual(['Airflo', 'Cortland', 'RIO', 'Scientific Anglers', 'Generic']);
     expect(groups.flatMap(([, presets]) => presets.map((p) => p.id)).sort()).toEqual(LINE_PRESETS.map((p) => p.id).sort());
   });
 

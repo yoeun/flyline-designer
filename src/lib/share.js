@@ -33,7 +33,6 @@ export function decodeSetup(text) {
   return setup;
 }
 
-const presetName = (preset) => preset.name.replace(' (example)', '');
 const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 export function stateToQuery({ setup, presetId, side, mode }) {
@@ -52,7 +51,7 @@ export function stateToQuery({ setup, presetId, side, mode }) {
   } else {
     q.set('l', toBase64Url(setup.line));
   }
-  if (!preset || setup.name !== presetName(preset)) q.set('name', setup.name);
+  if (!preset || setup.name !== preset.name) q.set('name', setup.name);
 
   q.set('backing', setup.backing.color);
   q.set('yards', setup.backing.yards);
@@ -88,7 +87,7 @@ export function queryToState(search, hash = '') {
   } else if (preset) {
     const colorway = preset.colorways?.find((cw) => cw.id === q.get('colorway'));
     setup.line = { ...structuredClone(preset.line), zones: structuredClone(colorway?.zones ?? preset.line.zones) };
-    setup.name = presetName(preset);
+    setup.name = preset.name;
     presetId = preset.id;
   }
   if (q.get('name')) setup.name = q.get('name');

@@ -535,7 +535,8 @@ select {
   font-size: 14px;
 }
 
-.field > span {
+.field > span,
+.field > label {
   color: var(--muted);
 }
 
