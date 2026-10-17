@@ -5,8 +5,8 @@
 import { P, arcPts, circle, f, foot, knob, knurl, rad, ring, roundPoly, spoke, svg } from './lib.mjs';
 
 const RED = '#b0243a';
-// Each edge touches the boss (r 66) at 45° below level and runs up and out at 45° to the rim. Spokes fill the
-// rest, about 14° apart, clear of the edges.
+// Each edge touches the boss (r 66) at 45° below level and runs up and out at 45° to the rim. Below it, seven
+// spokes 30° apart, the first and last level with the center.
 const BOSS = 66;
 const edgeRim = (sx) => {
   const t = [sx * BOSS * Math.SQRT1_2, BOSS * Math.SQRT1_2], d = [sx * Math.SQRT1_2, -Math.SQRT1_2];
@@ -17,8 +17,7 @@ const edgeRim = (sx) => {
 const [LEFT, RIGHT] = [edgeRim(-1), edgeRim(1)];
 const RIM_ANGLE = (Math.atan2(RIGHT.rim[1], RIGHT.rim[0]) * 180) / Math.PI; // right edge's angle at the rim
 const plate = roundPoly([RIGHT.touch, LEFT.touch, LEFT.rim, ...arcPts(184, rad(-180 - RIM_ANGLE), rad(RIM_ANGLE), 20), RIGHT.rim], 8);
-const OPEN = 180 - 2 * RIM_ANGLE - 18; // the open sector (360° less the wedge), less a margin at each edge
-const DRAG_SPOKES = Array.from({ length: 18 }, (_, k) => RIM_ANGLE + 9 + (k * OPEN) / 17);
+const DRAG_SPOKES = Array.from({ length: 7 }, (_, k) => k * 30);
 
 // Body-colored drag knob: knurled skirt and a raised cap with a dark logo button.
 const grandeKnob =
