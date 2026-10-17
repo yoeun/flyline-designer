@@ -26,6 +26,11 @@ npm test         # run unit tests
 npm run build    # production build in dist/
 ```
 
+## Contributing
+
+- PRs are squash merged, and the PR title becomes the commit on `main`.
+- PR titles follow [Conventional Commits](https://www.conventionalcommits.org/): `type(scope): subject`, for example `feat(editor): split color zones` or `fix: keep backing labels aligned`. A check on each PR enforces this.
+
 ## How it works
 
 See [docs/spec.md](docs/spec.md) for the full v1 spec. In short:
