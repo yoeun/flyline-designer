@@ -40,6 +40,8 @@ export const spool = svg({
     // Three V's 120° apart: each pair of arms leaves the hub together and spreads to the window ring.
     ...[-90, 30, 150].flatMap((a) => [-1, 1].map((side) => strut(P(26, rad(a)), P(118, rad(a + side * 13)), 16, 14))),
     circle(36),
+    // A wide spoke from the hub out to the handle, behind it.
+    spoke(HANDLE, 26, 160, 26, 34),
     circle(22, ...P(150, rad(HANDLE))),
   ],
   details:
