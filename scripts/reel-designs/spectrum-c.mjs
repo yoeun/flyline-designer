@@ -1,19 +1,18 @@
 // Sage Spectrum C.
 // Drag side from Far Bank's photo: 18 deep windows, five wide straight spokes (two up, one each side, one
-// down) and a flat numbered dial with a logo badge. The dial is black on grey reels and grey on black ones;
-// it is drawn dark here. Spool side: three straight spokes 120° apart, the handle in line with the top one and
+// down) and a flat numbered dial with a logo badge, in the finish's accent: silver on Black, dark grey on Grey. Spool side: three straight spokes 120° apart, the handle in line with the top one and
 // a small knob opposite at 6 o'clock.
-import { P, circle, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
+import { ACCENT, P, circle, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
 import { frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
 
 const RIM = { n: 18, rIn: 110, rOut: 178, bar: 18, corner: 9, off: -90 };
 
-// A flat dark dial with tick dots round its edge and a ringed logo badge.
+// A flat dial in the accent, with tick dots round its edge and a ringed logo badge.
 const DIAL =
-  `<circle r="80" fill="#2c2e31"/><circle r="80" fill="url(#sheen)"/><circle r="64" fill="none" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>` +
+  `<circle r="80" ${ACCENT}/><circle r="80" fill="url(#sheen)"/><circle r="64" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
   Array.from({ length: 24 }, (_, i) => {
     const [x, y] = P(73, rad(-90 + i * 15));
-    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${i % 2 ? 1.3 : 2}" fill="#d8d8d4" fill-opacity=".8"/>`;
+    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${i % 2 ? 1.5 : 2.2}" fill="#e4e4e0" stroke="#1b1d1f" stroke-opacity=".6" stroke-width="1"/>`;
   }).join('') +
   `<circle r="22" fill="#c9ccc8"/><circle r="19" fill="#1b1d1f"/>${logo(0, 0, 22)}`;
 

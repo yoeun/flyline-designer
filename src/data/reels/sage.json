@@ -60,7 +60,7 @@
         "sage-flint",
         "sage-stealth"
       ],
-      "notes": "Current (2021) Click. Rim and capacity from Trident (3.13/3.44/3.75 in; 75/100/100 yd) and Far Bank's listing; Rudi Heger (EU distributor) gives 7.9/8.7/9.5 cm rims, 3.0/3.2/3.3 cm spool widths (used as width), and backing of WF1 + 50 yd/20 lb, WF5 + 100 yd/20 lb, WF6 + 100 yd/30 lb. Rated: 0/1/2 uses Trident's 75 yd with an assumed WF2/20 lb (Heger says WF1 + 50 yd: conflict); 3/4/5 and 4/5/6 follow Heger. Spool diameters are estimates (rim \u2212 0.24).",
+      "notes": "Current (2021) Click. Rim and capacity from Trident (3.13/3.44/3.75 in; 75/100/100 yd) and Far Bank's listing; Rudi Heger (EU distributor) gives 7.9/8.7/9.5 cm rims, 3.0/3.2/3.3 cm spool widths (used as width), and backing of WF1 + 50 yd/20 lb, WF5 + 100 yd/20 lb, WF6 + 100 yd/30 lb. Rated: 0/1/2 uses Trident's 75 yd with an assumed WF2/20 lb (Heger says WF1 + 50 yd: conflict); 3/4/5 and 4/5/6 follow Heger. Spool diameters are estimates (rim − 0.24).",
       "sizes": [
         {
           "id": "sage-click-012",
@@ -120,7 +120,7 @@
         "black",
         "sage-grey"
       ],
-      "notes": "The Spectrum still sold by Far Bank (die-cast, 2018). The machined Spectrum, Spectrum LT and Spectrum Max are no longer listed; the original Spectrum is added separately as discontinued, LT and Max are left out. Rim and rated capacity from Trident and Jans; width from The Fly Stop and Mudhole (1 5/16, 1 5/16, 1 3/8 in); 9/10 width (1 1/2 in) from Compleat Angler only. Spool diameters are estimates (rim \u2212 0.24).",
+      "notes": "The Spectrum still sold by Far Bank (die-cast, 2018). The machined Spectrum, Spectrum LT and Spectrum Max are no longer listed; the original Spectrum is added separately as discontinued, LT and Max are left out. Rim and rated capacity from Trident and Jans; width from The Fly Stop and Mudhole (1 5/16, 1 5/16, 1 3/8 in); 9/10 width (1 1/2 in) from Compleat Angler only. Spool diameters are estimates (rim − 0.24). The drag dial contrasts with the frame (accents): silver on Black, dark grey on Grey.",
       "sizes": [
         {
           "id": "sage-spectrum-c-34",
@@ -186,7 +186,11 @@
             "pounds": 30
           }
         }
-      ]
+      ],
+      "accents": {
+        "black": "#c9ccc8",
+        "sage-grey": "#2c2e31"
+      }
     },
     {
       "id": "sage-spectrum",
@@ -197,7 +201,7 @@
         "black",
         "sage-platinum"
       ],
-      "notes": "Original machined Spectrum (2017), no longer on Far Bank. Rim, width and rated capacity from Mudhole's and Orlando Outfitters' spec tables (Jay's agrees on rims); Rudi Heger gives 8.2\u201311.1 cm rims and 3.2\u20133.8 cm widths. Mudhole also lists Copper and Lime finishes, left out here. Spool diameters are estimates (rim \u2212 0.24).",
+      "notes": "Original machined Spectrum (2017), no longer on Far Bank. Rim, width and rated capacity from Mudhole's and Orlando Outfitters' spec tables (Jay's agrees on rims); Rudi Heger gives 8.2–11.1 cm rims and 3.2–3.8 cm widths. Mudhole also lists Copper and Lime finishes, left out here. Spool diameters are estimates (rim − 0.24).",
       "sizes": [
         {
           "id": "sage-spectrum-34",
@@ -274,7 +278,7 @@
         "sage-frost",
         "sage-tempest-blue"
       ],
-      "notes": "Two sizes only. Rim, width and rated capacity from Trident and Duranglers (4 1/8 and 4 1/2 in; 1 1/8 and 1 1/4 in; WF6 + 100 yd/20 lb, WF8 + 200 yd/20 lb). Trident's 'arbor diameter' repeats the rim, so it is ignored and the arbor is solved from the rating. Spool diameters are estimates (rim \u2212 0.24).",
+      "notes": "Two sizes only. Rim, width and rated capacity from Trident and Duranglers (4 1/8 and 4 1/2 in; 1 1/8 and 1 1/4 in; WF6 + 100 yd/20 lb, WF8 + 200 yd/20 lb). Trident's 'arbor diameter' repeats the rim, so it is ignored and the arbor is solved from the rating. Spool diameters are estimates (rim − 0.24).",
       "sizes": [
         {
           "id": "sage-arbor-xl-456",
