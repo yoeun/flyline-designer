@@ -2,14 +2,7 @@ import * as React from "react"
 import { Select as SelectPrimitive } from "@base-ui/react/select"
 import { cn } from "cn"
 
-// Material Symbols ligatures, like the rest of the app, instead of shadcn's default lucide icons.
-function Icon({ name, className }) {
-  return (
-    <span className={cn("icon pointer-events-none", className)} aria-hidden="true">
-      {name}
-    </span>
-  )
-}
+import Icon from "@/components/Icon"
 
 const Select = SelectPrimitive.Root
 

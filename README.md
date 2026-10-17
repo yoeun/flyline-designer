@@ -10,6 +10,7 @@ A design tool to help anglers put together the best looking fly fishing outfit f
 - **Fly line selection** with a choice of line color
 - **Clickable line editor** for taper lengths and color zones
 - **Color picker** laid out as a grid of common colors
+- **Rack** of saved setups with titles, styles and notes, and a full rack page filtered by rod weight and style
 - **Export** the preview as a PNG or SVG to share
 
 ## Tech stack
@@ -27,6 +28,8 @@ npm run dev      # start the dev server
 npm test         # run unit tests
 npm run build    # production build in dist/
 ```
+
+To try the rack page without saving setups by hand, open the app with `?demo=1` (for example `http://localhost:5173/?demo=1`). It shows a fixed test rack for that visit and never touches your saved one.
 
 ## Contributing
 

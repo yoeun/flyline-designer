@@ -4,6 +4,7 @@ import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 import { cn } from "cn"
 
+import Icon from "@/components/Icon"
 import { Button } from "@/components/ui/button"
 import {
   InputGroup,
@@ -11,15 +12,6 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group"
-
-// Material Symbols ligatures, like the rest of the app, instead of shadcn's default lucide icons.
-function Icon({ name, className }) {
-  return (
-    <span className={cn("icon pointer-events-none", className)} aria-hidden="true">
-      {name}
-    </span>
-  )
-}
 
 const Combobox = ComboboxPrimitive.Root
 

@@ -14,10 +14,11 @@ import {
   reelColors,
   withReelModel,
 } from '../data/catalog.js';
-import { totalLength, zoneRanges } from '../lib/geometry.js';
+import { zoneRanges } from '../lib/geometry.js';
 import { MIN_LENGTH, TAPER_NAMES, formatFeet, removeZone, setTaperLength, setZoneLength, splitZone, zoneName } from '../lib/lineEdit.js';
 import Button from './Button.jsx';
 import Field from './Field.jsx';
+import Icon from './Icon.jsx';
 import { NumberInput } from './Input.jsx';
 import LineEditor from './LineEditor.jsx';
 import SearchableSelect from './SearchableSelect.jsx';
@@ -27,6 +28,25 @@ import Swatches from './Swatches.jsx';
 
 const GROUP = 'flex flex-col gap-3.5 px-5.5 py-5';
 const HEADING = 'font-heading text-[20px] leading-[normal] font-bold tracking-[0.06em] uppercase';
+
+// A section's title, with an orange dot and a Reset button once it differs from the saved setup.
+function SectionHeading({ title, changed, onReset }) {
+  return (
+    <div className="flex items-center justify-between gap-2.5">
+      <div className="flex items-center gap-2">
+        <h2 className={HEADING}>{title}</h2>
+        {changed && <span className="size-2 rounded-full bg-orange-500" role="img" aria-label="Changed" />}
+      </div>
+      {changed && (
+        <Button variant="ghost" className="-my-1 h-8 gap-1 px-2 text-[14px] text-muted-foreground" onClick={onReset} aria-label={`Reset ${title.toLowerCase()}`}>
+          <Icon name="restart_alt" />
+          Reset
+        </Button>
+      )}
+    </div>
+  );
+}
+
 const HINT = 'text-[13px] text-muted-foreground';
 const MONO = 'font-mono tabular-nums';
 
@@ -47,11 +67,11 @@ const numberOr = (value, fallback) => {
   return Number.isFinite(n) && n >= 0 ? n : fallback;
 };
 
-export function ReelOptions({ reel, onChange }) {
+export function ReelOptions({ reel, onChange, changed, onReset }) {
   const color = findById(REEL_COLORS, reel.color);
   return (
     <section className={GROUP}>
-      <h2 className={HEADING}>Reel</h2>
+      <SectionHeading title="Reel" changed={changed} onReset={onReset} />
       <SearchableSelect label="Model" groups={REEL_GROUPS} value={reel.model} onChange={(id) => onChange(withReelModel(reel, id))} placeholder="Search reels" />
       <Field label={`Color · ${color?.name}`}>
         <Swatches colors={reelColors(findById(REELS, reel.model))} value={reel.color} onChange={(c) => onChange({ ...reel, color: c })} label="Reel color" size={34} />
@@ -75,7 +95,7 @@ const SELECTION = 'flex flex-col gap-3 rounded-lg bg-secondary p-3';
 const SELECTION_HEAD = 'flex flex-wrap items-center gap-2.5 text-[14px]';
 
 function LineSelection({ line, selection, onChange, onSelect, colorLocked }) {
-  if (!selection) return <p className={HINT}>Click part of the line to edit it.</p>;
+  if (!selection) return null;
   if (selection.kind === 'taper') {
     const { key } = selection;
     return (
@@ -139,8 +159,7 @@ function LineSelection({ line, selection, onChange, onSelect, colorLocked }) {
   );
 }
 
-export function FlyLineOptions({ line, backingColor, presetId, onChange, onPreset, onColorway, selection, onSelect }) {
-  const type = findById(LINE_TYPES, line.type);
+export function FlyLineOptions({ line, backingColor, presetId, onChange, onPreset, onColorway, selection, onSelect, changed, onReset }) {
   const locked = presetId !== 'custom';
   const preset = findById(LINE_PRESETS, presetId);
   const colorway = lineColorway(preset, line);
@@ -166,7 +185,7 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
 
   return (
     <section className={GROUP}>
-      <h2 className={HEADING}>Fly line</h2>
+      <SectionHeading title="Fly line" changed={changed} onReset={onReset} />
       <div className="flex flex-wrap gap-2.5">
         <SearchableSelect label="Preset" grow groups={PRESET_GROUPS} value={presetId} onChange={onPreset} placeholder="Search lines" />
         <Select label="Type" grow items={TYPE_ITEMS} value={line.type} disabled={locked} onChange={(type) => onChange({ ...line, type })} />
@@ -185,18 +204,15 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
         <LineEditor line={line} selection={selection} onSelect={onSelect} onChange={onChange} backingColor={backingColor} zonesLocked={Boolean(colorway)} />
         <LineSelection line={line} selection={selection} onChange={onChange} onSelect={onSelect} colorLocked={Boolean(colorway)} />
       </div>
-      <p className={HINT}>
-        {type?.name} · {line.weight} wt · <span className={MONO}>{formatFeet(totalLength(line))}</span> total
-        {locked && ' · choose Custom to change type or weight'}
-      </p>
+      {locked && <p className={HINT}>Choose Custom to change type or weight.</p>}
     </section>
   );
 }
 
-export function BackingOptions({ backing, onChange }) {
+export function BackingOptions({ backing, onChange, changed, onReset }) {
   return (
     <section className={GROUP}>
-      <h2 className={HEADING}>Backing</h2>
+      <SectionHeading title="Backing" changed={changed} onReset={onReset} />
       <div className="flex flex-wrap items-start gap-x-4 gap-y-2.5">
         <Field label="Length">
           <div className="flex flex-wrap items-center gap-2.5">

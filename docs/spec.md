@@ -28,12 +28,23 @@ Two columns. They stack on narrow screens.
 - **Left, preview**
   - Reel preview with a mode switch: **Reel** (default), **See-through**, **Line only**.
   - Checks: spool fill and backing vs. running line contrast.
-  - **Rack strip**, collapsed by default: saved setups and the color conflicts between them.
+  - **Rack strip**, collapsed by default: saved setups, with a count of the color conflicts between them. **Expand** opens the rack page.
 - **Right, options** (stacked sections)
   - **Reel**: model dropdown (generic models in v1), color presets in one row.
   - **Fly line**: Preset, Type and Weight in one row (Type and Weight unlock with the **Custom** preset). Below it, a line editor: a dimension line for the taper sections (front taper, body, back taper, running line) above the line drawn in its color zones. Click a section or zone to edit it underneath (length; zones also get color, Split and Remove). Drag or arrow-key a boundary to resize; dragging keeps the total length.
   - **Backing**: length (100 / 150 / 200 / 250 yd or custom), strength (20 / 30 lb), and colors in one row in gradient order (red, orange, yellow, chartreuse, green, blue, purple, white, black).
-- **Header**: Save to rack, Copy share link, Export PNG, Export SVG, and a System / Light / Dark theme switch.
+- **Header**: New, Reset, Save, Save as new (when editing a saved setup), Export PNG, Export SVG, and a System / Light / Dark theme switch.
+
+## Rack
+
+Saved setups carry a title (optional, falls back to the line preset name, or "Custom <type> <wt> wt"), styles (Dry, Nymph, Streamer, any number) and free-text notes. **Weight** always means the line weight.
+
+- **Cards:** the reel drawing, a band with the line weight and style letters, the name and reel model, and a menu with Edit details and Remove (Remove asks first). A warning icon beside the weight marks a setup with a color conflict; hover or tap it for the explanation.
+- **Editing in place:** clicking a card loads it in the designer (asking first if there are unsaved changes). Save then updates that setup right away (no form; a toast confirms); Save as new opens the details form and keeps the current setup while adding a copy. A new setup's Save opens the details form. Section dots and per-section reset show what changed from the saved version.
+- **Details:** title, styles and notes are edited in one dialog, from the designer (Save on a new setup, Save as new, or the title's edit control) or from a card's menu.
+- **Rack page:** Your rack, with the setup count, **New** top right, and **← Back to designer** when you arrived via Expand (it returns to your unsaved work). Two pick-one filters: **Rod weight** (All plus the weights in the rack) and **Style** (All, Dry, Nymph, Streamer). With a weight picked, setups at that weight come first, then **Also fits a N wt** for lines one weight either side. Within a group, setups sort by reel model. Cards show notes clamped to three lines. The setup loaded in the designer shows a small Editing label instead of an outline.
+- **Pages:** `?page=rack` is the rack page; browser Back and Forward move between pages. A URL with a setup opens the designer. With no params the app opens the rack page if the rack has setups, else the designer.
+- **Demo:** `?demo=1` uses a fixed test rack for that visit only. Nothing is written to `localStorage`, and your own rack returns without the param.
 
 ## Fly line model
 
@@ -158,9 +169,9 @@ Similarity is measured as CIE76 ΔE in Lab color space.
 
 ## Sharing and saving
 
-- **Share link:** the full setup is encoded in the URL hash.
+- **Address bar:** the setup is written as readable query params (reel, color, line, backing, title, styles, notes; a custom line travels as one encoded param), so a copied URL restores the design. Old hash links still load.
 - **Export:** PNG (2× scale) and SVG of the reel preview.
-- **Rack:** saved setups are kept in `localStorage`.
+- **Rack:** saved setups are kept in `localStorage`. The address bar also marks which rack entry is being edited (`edit`).
 
 ## Out of scope for v1
 

@@ -1,4 +1,5 @@
-import { BACKING_COLORS, BACKING_DIAMETER, BACKING_LENGTHS, DEFAULT_SETUP, LINE_PRESETS, REELS, findById, lineColorway, reelColors } from '../data/catalog.js';
+import { BACKING_COLORS, BACKING_DIAMETER, DEFAULT_SETUP, LINE_PRESETS, REELS, findById, lineColorway, reelColors } from '../data/catalog.js';
+import { STYLES, legacyTitle, normalizeEntry } from './rack.js';
 
 // The whole design lives in the URL query so a reload or a shared link restores it. Catalog picks
 // are readable params; a line that matches no preset travels as base64url JSON in `l`.
@@ -35,8 +36,14 @@ export function decodeSetup(text) {
 
 const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
-export function stateToQuery({ setup, presetId, side, mode }) {
+export function stateToQuery({ setup, presetId, side, mode, editingId = null, page = 'designer', demo = false }) {
   const q = new URLSearchParams();
+  if (demo) q.set('demo', '1');
+  if (page === 'rack') {
+    q.set('page', 'rack');
+    return q.toString();
+  }
+  if (editingId) q.set('edit', editingId);
   q.set('reel', setup.reel.model);
   q.set('color', setup.reel.color);
   if (side !== 'drag') q.set('side', side);
@@ -51,7 +58,10 @@ export function stateToQuery({ setup, presetId, side, mode }) {
   } else {
     q.set('l', toBase64Url(setup.line));
   }
-  if (!preset || setup.name !== preset.name) q.set('name', setup.name);
+  if (setup.title?.trim()) q.set('title', setup.title);
+  const styles = STYLES.filter((s) => setup.styles?.includes(s.id)).map((s) => s.id);
+  if (styles.length) q.set('styles', styles.join(','));
+  if (setup.notes?.trim()) q.set('notes', setup.notes);
 
   q.set('backing', setup.backing.color);
   q.set('yards', setup.backing.yards);
@@ -66,9 +76,12 @@ const validLine = (line) =>
 export function queryToState(search, hash = '') {
   const base = { setup: structuredClone(DEFAULT_SETUP), presetId: LINE_PRESETS[0].id, side: 'drag', mode: 'reel' };
   const q = new URLSearchParams(search);
+  const meta = { editingId: q.get('edit') || null, demo: q.get('demo') === '1' };
   if (!q.has('reel') && !q.has('line') && !q.has('l')) {
-    const legacy = decodeSetup(hash.replace(/^#/, ''));
-    return legacy ? { ...base, setup: legacy, presetId: 'custom' } : base;
+    // Old links carry `name` and no details; normalizing migrates them.
+    const legacy = normalizeEntry(decodeSetup(hash.replace(/^#/, '')));
+    if (legacy) return { ...base, setup: legacy, presetId: 'custom', ...meta, page: 'designer', hasSetup: true };
+    return { ...base, ...meta, page: q.get('page') === 'rack' ? 'rack' : null, hasSetup: false };
   }
 
   const { setup } = base;
@@ -87,14 +100,16 @@ export function queryToState(search, hash = '') {
   } else if (preset) {
     const colorway = preset.colorways?.find((cw) => cw.id === q.get('colorway'));
     setup.line = { ...structuredClone(preset.line), zones: structuredClone(colorway?.zones ?? preset.line.zones) };
-    setup.name = preset.name;
     presetId = preset.id;
   }
-  if (q.get('name')) setup.name = q.get('name');
+  if (q.has('title')) setup.title = q.get('title');
+  else if (q.has('name')) setup.title = legacyTitle(q.get('name'), setup.line);
+  setup.styles = STYLES.filter((s) => (q.get('styles') ?? '').split(',').includes(s.id)).map((s) => s.id);
+  setup.notes = q.get('notes') ?? '';
 
   const yards = Number(q.get('yards')), pounds = Number(q.get('lb'));
   setup.backing = {
-    yards: BACKING_LENGTHS.includes(yards) ? yards : setup.backing.yards,
+    yards: Number.isFinite(yards) && yards > 0 && yards <= 1000 ? yards : setup.backing.yards,
     pounds: pounds in BACKING_DIAMETER ? pounds : setup.backing.pounds,
     color: BACKING_COLORS.some((c) => c.id === q.get('backing')) ? q.get('backing') : setup.backing.color,
   };
@@ -104,5 +119,8 @@ export function queryToState(search, hash = '') {
     presetId,
     side: SIDE_IDS.includes(q.get('side')) ? q.get('side') : 'drag',
     mode: MODE_IDS.includes(q.get('view')) ? q.get('view') : 'reel',
+    ...meta,
+    page: 'designer',
+    hasSetup: true,
   };
 }

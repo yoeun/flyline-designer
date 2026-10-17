@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { DEMO_RACK } from '../data/demoRack.js';
 import {
   DEFAULT_SETUP,
   LINE_COLORS,
@@ -15,7 +16,7 @@ import {
   reelColors,
   withReelModel,
 } from '../data/catalog.js';
-import { rackConflicts, backingContrast } from './checks.js';
+import { rackConflicts, backingContrast, conflictsFor } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
 import { FRAMES, SIDES, frameMarkup } from './reelFrames.js';
@@ -34,7 +35,8 @@ import {
   splitZone,
   zoneName,
 } from './lineEdit.js';
-import { hasUnsavedChanges } from './rack.js';
+import { STYLES, changedSections, displayName, isDirty, loadEntries, normalizeEntry } from './rack.js';
+import { filterRack, landingPage, rackWeights, resolveView } from './rackView.js';
 
 const setup = (patch = {}) => ({ ...structuredClone(DEFAULT_SETUP), ...patch });
 
@@ -228,7 +230,10 @@ describe('share links', () => {
 
 describe('url state', () => {
   const state = (over = {}) => ({ setup: structuredClone(DEFAULT_SETUP), presetId: LINE_PRESETS[0].id, side: 'drag', mode: 'reel', ...over });
-  const roundTrip = (s) => queryToState(stateToQuery(s));
+  const roundTrip = (s) => {
+    const { editingId, page, demo, hasSetup, ...rest } = queryToState(stateToQuery(s));
+    return rest;
+  };
 
   it('round-trips the default design', () => {
     expect(roundTrip(state())).toEqual(state());
@@ -241,13 +246,14 @@ describe('url state', () => {
     expect(q.get('side')).toBe('spool');
     expect(q.get('view')).toBe('see-through');
     expect(q.has('l')).toBe(false);
-    expect(q.has('name')).toBe(false);
+    expect(q.has('title')).toBe(false);
+    expect(q.has('styles')).toBe(false);
+    expect(q.has('notes')).toBe(false);
   });
 
   it('round-trips a preset in a non-default colorway', () => {
     const preset = LINE_PRESETS.find((p) => p.colorways?.length > 1);
     const s = state({ presetId: preset.id });
-    s.setup.name = preset.name;
     s.setup.line = { ...structuredClone(preset.line), zones: structuredClone(preset.colorways[1].zones) };
     expect(new URLSearchParams(stateToQuery(s)).get('colorway')).toBe(preset.colorways[1].id);
     expect(roundTrip(s)).toEqual(s);
@@ -255,21 +261,21 @@ describe('url state', () => {
 
   it('round-trips a custom line, reel, name and backing', () => {
     const s = state({ presetId: 'custom', side: 'spool', mode: 'line-only' });
-    s.setup.name = 'My trout line';
+    s.setup.title = 'My trout line';
     s.setup.reel = { model: 'lamson-liquid-s-5', color: 'day-break' };
     s.setup.line.zones[0] = { length: 12, color: 'red' };
     s.setup.backing = { yards: 150, pounds: 30, color: 'white' };
     expect(roundTrip(s)).toEqual(s);
   });
 
-  it('keeps an edited name on a preset line', () => {
+  it('keeps a title on a preset line', () => {
     const s = state();
-    s.setup.name = 'Renamed';
+    s.setup.title = 'Renamed';
     expect(roundTrip(s)).toEqual(s);
   });
 
   it('falls back to defaults for unknown values', () => {
-    const r = queryToState('reel=nope&line=nope&side=up&view=x&yards=7&lb=1&backing=plaid&l=garbage');
+    const { editingId, page, demo, hasSetup, ...r } = queryToState('reel=nope&line=nope&side=up&view=x&yards=-7&lb=1&backing=plaid&l=garbage');
     expect(r).toEqual(state());
   });
 
@@ -278,9 +284,44 @@ describe('url state', () => {
   });
 
   it('still loads old hash links', () => {
-    const s = structuredClone(DEFAULT_SETUP);
-    s.name = 'Old link';
-    expect(queryToState('', `#${encodeSetup(s)}`)).toEqual(state({ setup: s, presetId: 'custom' }));
+    const { title, styles, notes, ...rest } = structuredClone(DEFAULT_SETUP);
+    const loaded = queryToState('', `#${encodeSetup({ ...rest, name: 'Old link' })}`);
+    expect(loaded.setup).toEqual({ ...rest, title: 'Old link', styles: [], notes: '' });
+    expect(loaded.setup).not.toHaveProperty('name');
+    expect(loaded.presetId).toBe('custom');
+  });
+});
+
+describe('url state: details, edit marker, pages', () => {
+  const setup = (over = {}) => ({ ...structuredClone(DEFAULT_SETUP), ...over });
+  const args = (over = {}) => ({ setup: setup(), presetId: LINE_PRESETS[0].id, side: 'drag', mode: 'reel', ...over });
+
+  it('round-trips title, styles and notes', () => {
+    const s = setup({ title: 'Spring creek', styles: ['nymph', 'dry'], notes: 'Line one\nLine two & more' });
+    const back = queryToState(`?${stateToQuery({ setup: s, presetId: 'custom', side: 'drag', mode: 'reel' })}`).setup;
+    expect(back).toMatchObject({ title: 'Spring creek', styles: ['dry', 'nymph'], notes: 'Line one\nLine two & more' });
+  });
+  it('keeps the editing marker in the app url', () => {
+    const a = args({ editingId: 'abc', demo: true });
+    expect(queryToState(`?${stateToQuery(a)}`)).toMatchObject({ editingId: 'abc', demo: true, page: 'designer' });
+  });
+  it('rack page url has no setup params', () => {
+    const q = new URLSearchParams(stateToQuery(args({ page: 'rack' })));
+    expect(q.get('page')).toBe('rack');
+    expect(q.has('reel')).toBe(false);
+    expect(queryToState(`?${q}`)).toMatchObject({ page: 'rack', hasSetup: false });
+  });
+  it('no params leaves the page to landing', () => {
+    expect(queryToState('')).toMatchObject({ page: null, hasSetup: false, editingId: null, demo: false });
+    expect(queryToState('?demo=1')).toMatchObject({ page: null, demo: true });
+  });
+  it('an old name param becomes the title', () => {
+    const custom = setup({ line: { ...structuredClone(DEFAULT_SETUP.line), zones: [{ length: 90, color: 'red' }] } });
+    const q = new URLSearchParams(stateToQuery({ setup: custom, presetId: 'custom', side: 'drag', mode: 'reel' }));
+    q.set('name', 'Creek');
+    expect(queryToState(`?${q}`).setup.title).toBe('Creek');
+    q.set('name', 'Generic WF5 Floating Two-Tone');
+    expect(queryToState(`?${q}`).setup.title).toBe('');
   });
 });
 
@@ -451,24 +492,51 @@ describe('reel frames', () => {
   });
 });
 
-describe('rack', () => {
-  const custom = { ...structuredClone(DEFAULT_SETUP), name: 'Bonefish' };
-
-  it('treats the default setup as nothing to lose', () => {
-    expect(hasUnsavedChanges(structuredClone(DEFAULT_SETUP), [])).toBe(false);
+describe('setup records', () => {
+  it('default setup has empty details and no name', () => {
+    expect(DEFAULT_SETUP).toMatchObject({ title: '', styles: [], notes: '' });
+    expect(DEFAULT_SETUP).not.toHaveProperty('name');
   });
-
-  it('flags a changed setup that is not in the rack', () => {
-    expect(hasUnsavedChanges(custom, [])).toBe(true);
+  it('old entries get empty styles and notes', () => {
+    const old = { id: 'a', name: 'My creek setup', reel: DEFAULT_SETUP.reel, line: DEFAULT_SETUP.line, backing: DEFAULT_SETUP.backing };
+    expect(normalizeEntry(old)).toMatchObject({ id: 'a', title: 'My creek setup', styles: [], notes: '' });
+    expect(normalizeEntry(old)).not.toHaveProperty('name');
   });
-
-  it('treats a setup saved to the rack as safe, whatever its rack id', () => {
-    expect(hasUnsavedChanges(custom, [{ ...structuredClone(custom), id: 'abc' }])).toBe(false);
+  it('an old name that is just the preset or default name is dropped', () => {
+    const preset = LINE_PRESETS.find((p) => p.id === 'rio-premier-gold-wf5f');
+    const old = { id: 'a', name: preset.name, reel: DEFAULT_SETUP.reel, line: structuredClone(preset.line), backing: DEFAULT_SETUP.backing };
+    expect(normalizeEntry(old).title).toBe('');
+    expect(normalizeEntry({ ...old, name: 'Generic WF5 Floating Two-Tone' }).title).toBe('');
   });
+  it('unknown styles are dropped', () => {
+    expect(normalizeEntry({ ...setup(), id: 'a', styles: ['dry', 'bass'] }).styles).toEqual(['dry']);
+  });
+  it('drops unusable entries and survives garbage', () => {
+    expect(loadEntries('nope')).toEqual([]);
+    expect(loadEntries([{ id: 'x' }, { ...setup(), id: 'ok' }]).map((s) => s.id)).toEqual(['ok']);
+  });
+  it('display name: title, then preset name, then a custom description', () => {
+    const preset = LINE_PRESETS.find((p) => p.id === 'rio-premier-gold-wf5f');
+    expect(displayName(setup({ title: '  Spring creek ' }))).toBe('Spring creek');
+    expect(displayName(setup({ line: structuredClone(preset.line) }))).toBe(preset.name);
+    expect(displayName(setup({ line: { ...structuredClone(DEFAULT_SETUP.line), zones: [{ length: 90, color: 'red' }] } }))).toBe('Custom Floating 5 wt');
+  });
+});
 
-  it('flags edits made after saving', () => {
-    const saved = { ...structuredClone(custom), id: 'abc' };
-    expect(hasUnsavedChanges({ ...custom, backing: { ...custom.backing, yards: 250 } }, [saved])).toBe(true);
+describe('change tracking', () => {
+  const base = { ...setup(), id: 'a', styles: ['dry', 'nymph'] };
+  it('nothing changed', () => {
+    expect(isDirty(structuredClone(base), base)).toBe(false);
+  });
+  it('flags only the section that changed', () => {
+    expect(changedSections({ ...base, backing: { ...base.backing, color: 'red' } }, base)).toEqual({ reel: false, line: false, backing: true, details: false });
+  });
+  it('details: notes, title and styles; style order and title whitespace do not count', () => {
+    expect(changedSections({ ...base, notes: 'x' }, base).details).toBe(true);
+    expect(changedSections({ ...base, styles: ['nymph', 'dry'], title: ' ' }, base).details).toBe(false);
+  });
+  it('ignores the rack id', () => {
+    expect(isDirty({ ...base, id: 'other' }, base)).toBe(false);
   });
 });
 
@@ -488,5 +556,149 @@ describe('presetForLine', () => {
     line.taper.front += 1;
     expect(presetForLine(line)).toBe('custom');
     expect(presetForLine({ ...structuredClone(LINE_PRESETS[0].line), weight: 9 })).toBe('custom');
+  });
+});
+
+describe('rack view', () => {
+  const at = (weight, model, styles = []) => ({ ...setup({ styles }), id: `${model}-${weight}-${styles}`, reel: { model, color: 'smoke' }, line: { ...structuredClone(DEFAULT_SETUP.line), weight } });
+  const rack = [at(6, 'lamson-liquid-s-5', ['dry']), at(5, 'orvis-hydros-3'), at(5, 'lamson-liquid-s-5', ['nymph']), at(4, 'lamson-liquid-s-3', ['dry']), at(8, 'lamson-liquid-s-7')];
+  it('lists the weights present', () => expect(rackWeights(rack)).toEqual([4, 5, 6, 8]));
+  it('exact weight first, then one weight either side', () => {
+    const { exact, near } = filterRack(rack, { weight: 5, style: null });
+    expect(exact.map((s) => s.line.weight)).toEqual([5, 5]);
+    expect(near.map((s) => s.line.weight).sort()).toEqual([4, 6]);
+  });
+  it('sorts identical reels together, in catalog order', () => {
+    expect(filterRack(rack, { weight: 5, style: null }).exact.map((s) => s.reel.model)).toEqual(['lamson-liquid-s-5', 'orvis-hydros-3']);
+  });
+  it('style narrows both groups', () => {
+    const { exact, near } = filterRack(rack, { weight: 5, style: 'dry' });
+    expect(exact).toEqual([]);
+    expect(near.map((s) => s.line.weight).sort()).toEqual([4, 6]);
+  });
+  it('all weights: everything in one group', () => {
+    expect(filterRack(rack, { weight: null, style: null })).toMatchObject({ near: [] });
+    expect(filterRack(rack, { weight: null, style: null }).exact).toHaveLength(5);
+  });
+  it('landing', () => {
+    expect(landingPage({ page: null, hasSetup: false }, 3)).toBe('rack');
+    expect(landingPage({ page: null, hasSetup: false }, 0)).toBe('designer');
+    expect(landingPage({ page: 'designer', hasSetup: true }, 3)).toBe('designer');
+    expect(landingPage({ page: 'rack', hasSetup: false }, 0)).toBe('rack');
+  });
+});
+
+describe('resolveView', () => {
+  const entry = { ...setup({ title: 'Trout' }), id: 'abc' };
+  const rack = [entry];
+  it('honors an edit marker for an entry in the rack', () => {
+    const view = resolveView(queryToState(`?edit=abc&${stateToQuery({ setup: entry, presetId: 'custom', side: 'drag', mode: 'reel' })}`), rack);
+    expect(view).toMatchObject({ editingId: 'abc', page: 'designer' });
+    expect(view.setup.title).toBe('Trout');
+  });
+  it('drops a marker for an entry not in the rack', () => {
+    expect(resolveView(queryToState('?edit=gone&reel=generic'), rack)).toMatchObject({ editingId: null, page: 'designer' });
+    expect(resolveView(queryToState('?edit=gone'), rack)).toMatchObject({ editingId: null, page: 'rack' });
+  });
+  it('a marker alone loads the entry on the designer', () => {
+    const view = resolveView(queryToState('?edit=abc'), rack);
+    expect(view).toMatchObject({ editingId: 'abc', page: 'designer', presetId: presetForLine(entry.line) });
+    expect(view.setup).not.toHaveProperty('id');
+    expect(view.setup.title).toBe('Trout');
+  });
+  it('lands like landingPage otherwise', () => {
+    expect(resolveView(queryToState('?demo=1'), rack).page).toBe('rack');
+    expect(resolveView(queryToState(''), []).page).toBe('designer');
+    expect(resolveView(queryToState('?page=rack'), []).page).toBe('rack');
+  });
+});
+
+describe('demo rack', () => {
+  it('every entry survives the URL round trip unchanged', () => {
+    const entries = loadEntries(DEMO_RACK);
+    for (const s of entries) {
+      const { id, ...rest } = s;
+      const q = stateToQuery({ setup: rest, presetId: presetForLine(s.line), side: 'drag', mode: 'reel', editingId: id });
+      const view = resolveView(queryToState(`?${q}`), entries);
+      expect(view.editingId, id).toBe(id);
+      expect(changedSections(view.setup, s), id).toEqual({ reel: false, line: false, backing: false, details: false });
+    }
+  });
+  it('keeps custom backing lengths and ignores nonsense', () => {
+    const s = setup({ backing: { ...DEFAULT_SETUP.backing, yards: 125 } });
+    const q = stateToQuery({ setup: s, presetId: 'custom', side: 'drag', mode: 'reel' });
+    expect(queryToState(`?${q}`).setup.backing.yards).toBe(125);
+    expect(queryToState(`?${q.replace('yards=125', 'yards=-5')}`).setup.backing.yards).toBe(DEFAULT_SETUP.backing.yards);
+  });
+  it('tells identical-named setups apart in conflict titles', () => {
+    const a = { ...setup({ title: 'Trout' }), id: 'a', line: { ...setup().line, type: 'floating' }, backing: { ...setup().backing, color: 'orange' } };
+    const b = { ...a, id: 'b', line: { ...a.line, type: 'sinking' } };
+    const pair = rackConflicts([a, b]).filter((c) => c.ids.length === 2);
+    expect(pair).toHaveLength(1);
+    expect(pair[0].title).toMatch(/\(.*backing\).*\(.*backing\)/);
+  });
+  it('words conflicts per card, naming the other setup', () => {
+    const a = { ...setup({ title: 'Trout' }), id: 'a', line: { ...setup().line, type: 'floating' }, backing: { ...setup().backing, color: 'orange' } };
+    const b = { ...setup({ title: 'Bass' }), id: 'b', line: { ...a.line, type: 'sinking' }, backing: { ...a.backing } };
+    const all = rackConflicts([a, b]).filter((c) => c.ids.length === 2);
+    expect(all).toHaveLength(1);
+    expect(conflictsFor('a', all, [a, b]).some((c) => c.text.includes(displayName(b)))).toBe(true);
+    expect(conflictsFor('b', all, [a, b]).some((c) => c.text.includes(displayName(a)))).toBe(true);
+    expect(conflictsFor('zzz', all, [a, b])).toEqual([]);
+  });
+  it('shows a one-setup conflict detail as is', () => {
+    const s = { ...setup(), id: 's', backing: { ...setup().backing, color: 'white' } };
+    s.line = { ...s.line, zones: s.line.zones.map((z) => ({ ...z, color: 'white' })) };
+    const one = rackConflicts([s]).filter((c) => c.ids.length === 1);
+    expect(one).toHaveLength(1);
+    expect(conflictsFor('s', one, [s])).toEqual([{ text: one[0].detail }]);
+  });
+  it('trims whitespace-only notes in change tracking', () => {
+    expect(changedSections(setup({ notes: '  ' }), setup()).details).toBe(false);
+  });
+
+  const rack = loadEntries(DEMO_RACK);
+  it('every entry loads', () => expect(rack).toHaveLength(DEMO_RACK.length));
+  it('nine Liquid S: three each of 3+, 5+, 7+ on 3, 5, 7 wt lines', () => {
+    const ls = rack.filter((s) => s.reel.model.startsWith('lamson-liquid-s'));
+    expect(ls).toHaveLength(9);
+    for (const [model, wt] of [['lamson-liquid-s-3', 3], ['lamson-liquid-s-5', 5], ['lamson-liquid-s-7', 7]]) {
+      expect(ls.filter((s) => s.reel.model === model && s.line.weight === wt)).toHaveLength(3);
+    }
+    expect(new Set(ls.map((s) => s.reel.color))).toEqual(new Set(['smoke', 'day-break']));
+  });
+  it('one of every other reel family, and only the 7/8 Behemoth', () => {
+    const models = rack.map((s) => s.reel.model);
+    for (const family of [/^g\d+$/, /^orvis-hydros-2026-\d$/, /^orvis-hydros-\d$/, /^orvis-clearwater-/, /^redington-run-/]) {
+      expect(models.filter((m) => family.test(m))).toHaveLength(1);
+    }
+    expect(models.filter((m) => m.startsWith('redington-behemoth'))).toEqual(['redington-behemoth-78']);
+  });
+  it('covers every style, a multi-style and a no-style entry', () => {
+    for (const { id } of STYLES) expect(rack.some((s) => s.styles.includes(id))).toBe(true);
+    expect(rack.some((s) => s.styles.length > 1)).toBe(true);
+    expect(rack.some((s) => s.styles.length === 0)).toBe(true);
+  });
+  it('has a custom title, a long note and an old-format entry', () => {
+    expect(rack.some((s) => s.title)).toBe(true);
+    expect(rack.some((s) => s.notes.length > 300)).toBe(true);
+    expect(DEMO_RACK.some((s) => 'name' in s && !('styles' in s))).toBe(true);
+  });
+  it('uses real presets, except exactly one line titled Custom', () => {
+    const custom = rack.filter((s) => presetForLine(s.line) === 'custom');
+    expect(custom).toHaveLength(1);
+    expect(custom[0].title).toBe('Custom');
+  });
+  it('every entry fits its spool', () => {
+    for (const s of rack) expect(spoolLayout(s).fits, s.id).toBe(true);
+  });
+  it('migrates the old-format name to a title', () => {
+    const old = DEMO_RACK.find((s) => 'name' in s && !('styles' in s));
+    expect(rack.find((s) => s.id === old.id).title).toBe(old.name);
+  });
+  it('shows both kinds of rack conflict', () => {
+    const conflicts = rackConflicts(rack);
+    expect(conflicts.some((c) => c.ids.length === 1)).toBe(true);
+    expect(conflicts.some((c) => c.ids.length === 2)).toBe(true);
   });
 });

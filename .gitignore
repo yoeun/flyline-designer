@@ -51,3 +51,6 @@ Thumbs.db
 
 # Brainstorming specs and plans (kept local)
 docs/superpowers/
+
+# Brainstorm mockups and SDD scratch
+.superpowers/

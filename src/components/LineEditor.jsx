@@ -10,6 +10,7 @@ const SPAN = W - LEFT - 8;
 const MIN_PX = 56; // wide enough for short taper labels; the editor is not to scale
 const RULE_Y = 34;
 const MID = 76;
+const TOTAL_Y = 124; // total dimension rule, below the zone lengths
 const MAX_HALF = 11;
 const sameLengths = (a, b) =>
   TAPER_KEYS.every((k) => a.taper[k] === b.taper[k]) && a.zones.every((z, i) => z.length === b.zones[i].length);
@@ -123,7 +124,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
   return (
     <svg
       ref={svgRef}
-      viewBox={`0 0 ${W} 114`}
+      viewBox={`0 0 ${W} 150`}
       className="block h-auto w-full select-none"
       role="group"
       aria-label="Fly line editor"
@@ -207,6 +208,17 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
           </g>
         );
       })}
+
+      <g aria-hidden="true">
+        <line className={RULE} x1={x(total)} x2={x(0)} y1={TOTAL_Y} y2={TOTAL_Y} />
+        <g strokeLinecap="round">
+          <line className={RULE} x1={x(total)} x2={x(total)} y1={TOTAL_Y - 6} y2={TOTAL_Y + 6} />
+          <line className={RULE} x1={x(0)} x2={x(0)} y1={TOTAL_Y - 6} y2={TOTAL_Y + 6} />
+        </g>
+        <text className={LEN} x={(x(total) + x(0)) / 2} y={TOTAL_Y + 17} textAnchor="middle">
+          {formatFeet(total)} total
+        </text>
+      </g>
 
       {handles.map((h) => (
         <g
