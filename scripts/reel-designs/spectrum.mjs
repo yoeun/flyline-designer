@@ -34,11 +34,11 @@ export const frameScrew = (cx, cy, r) =>
 
 // A black numbered dial ring from rKnob to rRing with tick dots, around a ribbed knob in the reel color
 // (drawn in the body) and a black logo badge.
-export const dial = (rRing, rKnob, { ribs = 14, ring: ringFill = '#1e2022', badge = 18, badgeFill = '#1b1d1f', dots = 20 } = {}) =>
+export const dial = (rRing, rKnob, { ribs = 14, ring: ringFill = '#1e2022', badge = 18, badgeFill = '#1b1d1f', dots = 20, dotFill = '#e6e6e2' } = {}) =>
   `<path d="${ring(rRing, rKnob)}" fill="${ringFill}" fill-rule="evenodd"/>` +
   Array.from({ length: dots }, (_, i) => {
     const [x, y] = P((rRing + rKnob) / 2, rad(-90 + (i * 360) / dots));
-    return `<circle cx="${f(x)}" cy="${f(y)}" r="${i ? 1.6 : 2.4}" fill="#e6e6e2"/>`;
+    return `<circle cx="${f(x)}" cy="${f(y)}" r="${i ? 1.6 : 2.4}" fill="${dotFill}"/>`;
   }).join('') +
   (ribs
     ? `<path d="${Array.from({ length: ribs }, (_, i) => {
