@@ -1,0 +1,93 @@
+{
+  "maker": "Lamson",
+  "finishes": [
+    {
+      "id": "smoke",
+      "name": "Smoke",
+      "hex": "#7f8184"
+    },
+    {
+      "id": "day-break",
+      "name": "Day Break",
+      "hex": "#5b6270"
+    }
+  ],
+  "models": [
+    {
+      "id": "lamson-liquid-s",
+      "name": "Lamson Liquid S",
+      "design": "liquid-s",
+      "colors": [
+        "smoke",
+        "day-break"
+      ],
+      "notes": "Rim, width and rated capacity (max line + backing) from Lamson's spec table. Spool is estimated as rim − 0.24″.",
+      "sizes": [
+        {
+          "id": "lamson-liquid-s-3",
+          "size": "3+",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 3.35,
+          "spool": 3.11,
+          "width": 1.0,
+          "rated": {
+            "weight": 4,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-liquid-s-5",
+          "size": "5+",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.65,
+          "spool": 3.41,
+          "width": 1.0,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-liquid-s-7",
+          "size": "7+",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 3.9,
+          "spool": 3.66,
+          "width": 1.15,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "lamson-liquid-s-9",
+          "size": "9+",
+          "weights": [
+            9,
+            10
+          ],
+          "rim": 4.45,
+          "spool": 4.21,
+          "width": 1.25,
+          "rated": {
+            "weight": 10,
+            "yards": 250,
+            "pounds": 30
+          }
+        }
+      ]
+    }
+  ]
+}

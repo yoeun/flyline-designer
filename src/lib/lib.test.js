@@ -9,6 +9,7 @@ import {
   MAKER_LINE_COLORS,
   REELS,
   REEL_COLORS,
+  REEL_MODELS,
   findById,
   lineColorway,
   lineMenu,
@@ -20,6 +21,9 @@ import {
   productSizes,
   switchLine,
   reelColors,
+  reelSizeLabel,
+  reelSizes,
+  switchReelModel,
   withReelModel,
 } from '../data/catalog.js';
 import { makerProduct, zones } from '../data/lines/product.js';
@@ -478,6 +482,56 @@ describe('catalog', () => {
     const groups = makerGroups(REELS, 'Generic');
     expect(groups.map(([label]) => label)).toEqual(['Lamson', 'Orvis', 'Redington', 'Generic']);
     expect(groups.flatMap(([, reels]) => reels.map((r) => r.id)).sort()).toEqual(REELS.map((r) => r.id).sort());
+  });
+
+  it('defines each reel color once, across maker files', () => {
+    expect(new Set(REEL_COLORS.map((c) => c.id)).size).toBe(REEL_COLORS.length);
+  });
+
+  it('gives every reel size a unique id and sizes each model small to large', () => {
+    expect(new Set(REELS.map((r) => r.id)).size).toBe(REELS.length);
+    expect(new Set(REEL_MODELS.map((m) => m.id)).size).toBe(REEL_MODELS.length);
+    for (const m of REEL_MODELS) {
+      const rims = reelSizes(m.id).map((s) => s.rim);
+      expect(rims).toEqual([...rims].sort((a, b) => a - b));
+    }
+  });
+
+  it.each(REELS.map((r) => [r.id, r]))('%s has a size label, weights and diameters', (_, reel) => {
+    expect(reel.size).toBeTruthy();
+    expect(reel.weights[0]).toBeLessThanOrEqual(reel.weights[1]);
+    expect(reel.rim).toBeGreaterThan(reel.spool);
+    expect(reel.width).toBeGreaterThan(0);
+  });
+
+  it('names a size after its model unless it gives its own name', () => {
+    expect(findById(REELS, 'lamson-liquid-s-5').name).toBe('Lamson Liquid S 5+');
+    expect(findById(REELS, 'orvis-hydros-2026-3').name).toBe('Orvis Hydros III (2026)');
+    expect(findById(REELS, 'g56').name).toBe('Generic 5–6 wt');
+  });
+
+  it('labels a size with the line weights it suits', () => {
+    expect(reelSizeLabel(findById(REELS, 'lamson-liquid-s-5'))).toBe('5+ · 5–6 wt');
+    expect(reelSizeLabel(findById(REELS, 'orvis-hydros-3'))).toBe('III · 5–7 wt');
+    expect(reelSizeLabel(findById(REELS, 'redington-behemoth-78'))).toBe('7/8 wt');
+    expect(reelSizeLabel(findById(REELS, 'g34'))).toBe('3–4 wt');
+  });
+
+  it('switches model to the size that suits the line weight', () => {
+    expect(switchReelModel({ model: 'g56', color: 'silver' }, 'lamson-liquid-s', 8)).toEqual({ model: 'lamson-liquid-s-7', color: 'smoke' });
+    expect(switchReelModel({ model: 'g34', color: 'black' }, 'redington-behemoth', 5).model).toBe('redington-behemoth-45');
+  });
+
+  it('switches model to the nearest size when none suits the line weight', () => {
+    // Run tops out at 7/8; a 9 wt on a 4.4" reel lands on the largest.
+    expect(switchReelModel({ model: 'g910', color: 'black' }, 'redington-run', 9).model).toBe('redington-run-78');
+    // Liquid S 3+ (3.35") is nearest a 3.2" reel for a 2 wt.
+    expect(switchReelModel({ model: 'g34', color: 'black' }, 'lamson-liquid-s', 2).model).toBe('lamson-liquid-s-3');
+  });
+
+  it('leaves the reel alone for an unknown model', () => {
+    const reel = { model: 'g56', color: 'silver' };
+    expect(switchReelModel(reel, 'nope', 5)).toBe(reel);
   });
 });
 

@@ -1,0 +1,221 @@
+{
+  "maker": "Orvis",
+  "finishes": [
+    {
+      "id": "coffee",
+      "name": "Coffee",
+      "hex": "#786052"
+    },
+    {
+      "id": "flats-blue",
+      "name": "Flats Blue",
+      "hex": "#62acd8"
+    },
+    {
+      "id": "olive",
+      "name": "Olive",
+      "hex": "#746b48"
+    },
+    {
+      "id": "charcoal",
+      "name": "Charcoal",
+      "hex": "#7f7d83"
+    },
+    {
+      "id": "dark-pine",
+      "name": "Dark Pine",
+      "hex": "#565d44"
+    }
+  ],
+  "models": [
+    {
+      "id": "orvis-hydros-2026",
+      "name": "Orvis Hydros (2026)",
+      "design": "hydros",
+      "colors": [
+        "black",
+        "silver",
+        "coffee",
+        "flats-blue",
+        "olive"
+      ],
+      "notes": "Rim from Orvis. Trident measured the III (spool 3.62″, arbor 2.43″, width 0.9″); II and IV widths are scaled from it and their capacities borrowed from the previous Hydros, so both are estimates.",
+      "sizes": [
+        {
+          "id": "orvis-hydros-2026-2",
+          "size": "II",
+          "name": "Orvis Hydros II (2026)",
+          "weights": [
+            3,
+            5
+          ],
+          "rim": 3.4,
+          "spool": 3.16,
+          "width": 0.85,
+          "rated": {
+            "weight": 4,
+            "yards": 125,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "orvis-hydros-2026-3",
+          "size": "III",
+          "name": "Orvis Hydros III (2026)",
+          "weights": [
+            5,
+            7
+          ],
+          "rim": 3.88,
+          "spool": 3.62,
+          "arbor": 2.43,
+          "width": 0.9
+        },
+        {
+          "id": "orvis-hydros-2026-4",
+          "size": "IV",
+          "name": "Orvis Hydros IV (2026)",
+          "weights": [
+            7,
+            9
+          ],
+          "rim": 4.25,
+          "spool": 4.01,
+          "width": 1.0,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "orvis-hydros",
+      "name": "Orvis Hydros (2020–25)",
+      "design": "hydros",
+      "colors": [
+        "black",
+        "silver",
+        "coffee",
+        "flats-blue",
+        "olive"
+      ],
+      "notes": "Diameter and rated capacity (20 lb backing) from Orvis spec tables via retailers. Orvis doesn't publish spool width; widths are estimates.",
+      "sizes": [
+        {
+          "id": "orvis-hydros-2",
+          "size": "II",
+          "name": "Orvis Hydros II (2020–25)",
+          "weights": [
+            3,
+            5
+          ],
+          "rim": 3.4,
+          "spool": 3.16,
+          "width": 0.9,
+          "rated": {
+            "weight": 4,
+            "yards": 125,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "orvis-hydros-3",
+          "size": "III",
+          "name": "Orvis Hydros III (2020–25)",
+          "weights": [
+            5,
+            7
+          ],
+          "rim": 3.7,
+          "spool": 3.46,
+          "width": 1.0,
+          "rated": {
+            "weight": 6,
+            "yards": 125,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "orvis-hydros-4",
+          "size": "IV",
+          "name": "Orvis Hydros IV (2020–25)",
+          "weights": [
+            7,
+            9
+          ],
+          "rim": 4.0,
+          "spool": 3.76,
+          "width": 1.1,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "orvis-clearwater",
+      "name": "Orvis Clearwater",
+      "design": "clearwater",
+      "colors": [
+        "black",
+        "charcoal",
+        "dark-pine"
+      ],
+      "notes": "Clearwater Cast. Diameter and rated capacity (20 lb backing) from Orvis spec tables via retailers. Orvis doesn't publish spool width; widths are estimates.",
+      "sizes": [
+        {
+          "id": "orvis-clearwater-2",
+          "size": "II",
+          "weights": [
+            3,
+            5
+          ],
+          "rim": 3.4,
+          "spool": 3.16,
+          "width": 1.05,
+          "rated": {
+            "weight": 4,
+            "yards": 125,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "orvis-clearwater-3",
+          "size": "III",
+          "weights": [
+            5,
+            7
+          ],
+          "rim": 3.7,
+          "spool": 3.46,
+          "width": 1.15,
+          "rated": {
+            "weight": 6,
+            "yards": 125,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "orvis-clearwater-4",
+          "size": "IV",
+          "weights": [
+            7,
+            9
+          ],
+          "rim": 4.0,
+          "spool": 3.76,
+          "width": 1.3,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        }
+      ]
+    }
+  ]
+}
