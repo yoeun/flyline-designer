@@ -1,14 +1,15 @@
 // Ross Animas.
 // Drag side: five pairs of bars from the knob to the rim, evenly spaced with one pair straight down; each pair
 // spreads slightly toward the rim. A logo plaque sits at the top, between the two upper pairs. Behind this main cage,
-// the spool's outer cage of windows shows through, recessed. Spool side: an outer cage of fourteen bars
-// paired into Y's, each pair's stem running in to the hub; wood-wrapped handle at 9 o'clock, counterweight at 3.
+// the spool's outer cage of windows shows through, recessed. Spool side: eight Y's whose stems run in to the hub
+// and whose arms carry on as the outer cage's sixteen bars; wood-wrapped handle at 9 o'clock, counterweight at 3.
 // Both from Ross's straight-on product photos; the spool's dark drag housing behind the spokes is left out.
 import { P, circle, f, foot, knurl, pad, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
-const N = 7;
+// The spool: eight Y's 45° apart, stems at 12, 3, 6 and 9 o'clock; each Y's arms carry on as bars of the outer cage.
+const N = 8;
 const FORK = 360 / N / 4; // each arm of a Y sits this many degrees off its stem
-const OUTER = { n: 2 * N, rIn: 148, rOut: 188, bar: 15, corner: 8, off: -90 + FORK };
+const OUTER = { n: 2 * N, rIn: 148, rOut: 188, bar: 13, corner: 8, off: -90 + FORK };
 
 const ANIMAS_FOOT = foot(140, -244, 14, 32);
 
@@ -43,9 +44,14 @@ export const drag = svg({
   details: plaqueArt + animasKnob,
 });
 
-// Spool face: the outer cage's fourteen bars pair up, and from the middle of each pair a single stem runs in to the
-// hub, so each pair and its stem make a Y. Seven stems, one straight down.
-const STEMS = Array.from({ length: N }, (_, k) => 90 + (k * 360) / N);
+// Spool face: each stem runs from the hub to a fork about a third of the way out; its two arms spread to the cage
+// ring, landing on the cage's bars.
+const STEMS = Array.from({ length: N }, (_, k) => -90 + (k * 360) / N);
+const FORK_R = 96;
+const ys = STEMS.flatMap((a) => [
+  strut(P(26, rad(a)), P(FORK_R, rad(a)), 18, 17),
+  ...[-1, 1].map((sd) => strut(P(FORK_R, rad(a)), P(140, rad(a + sd * FORK)), 16, 15)),
+]);
 const handleAt = P(166, Math.PI);
 const weightAt = P(166, 0);
 
@@ -53,7 +59,7 @@ export const spool = svg({
   back: [ANIMAS_FOOT],
   body: [
     ring(200, 134) + slots({ ...OUTER, rIn: 146 }),
-    ...STEMS.map((a) => spoke(a, 26, 140, 16, 14)),
+    ...ys,
     pad(164, 180, 58, 48),
     pad(164, 0, 54, 44),
     circle(34),
