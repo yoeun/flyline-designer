@@ -3,7 +3,7 @@
 // down) and a flat numbered dial with a logo badge, in the finish's accent: grey on Black, black on Grey. Spool side: three straight spokes 120° apart, the handle in line with the top one and
 // a small knob opposite at 6 o'clock.
 import { ACCENT, P, circle, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
-import { frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
+import { frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
 
 const RIM = { n: 18, rIn: 110, rOut: 178, bar: 18, corner: 9, off: -90 };
 

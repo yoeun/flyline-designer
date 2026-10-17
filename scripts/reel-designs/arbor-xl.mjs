@@ -4,7 +4,7 @@
 // color. Spool side: three straight spokes 120° apart around the knurled spool-release cap, the handle in line
 // with the top one and a small knob opposite at 6 o'clock.
 import { P, circle, knurl, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
-import { dial, frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
+import { dial, frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
 
 const RIM = { n: 20, rIn: 122, rOut: 184, bar: 13, corner: 8, off: -90 };
 

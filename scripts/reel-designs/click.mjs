@@ -3,7 +3,7 @@
 // two curving up to about 10 and 2 o'clock and one down to 6 o'clock carrying the click button; in photos the
 // spool's own spokes show through between them. Spool side: three Y spokes 120° apart, one up to 12. The spool's gear teeth show inside the window ring; 22 teardrop windows on both sides.
 import { P, circle, knurl, pad, rad, ring, roundPoly, strut, svg } from './lib.mjs';
-import { arm, frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
+import { arm, frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
 
 // n rounded teardrop windows, wIn wide at rIn and wOut wide at rOut, the first bar at -90°.
 const ovals = (n, rIn, rOut, wIn, wOut) =>
