@@ -5,9 +5,10 @@ import PreviewModeToggle from './components/PreviewModeToggle.jsx';
 import Rack from './components/Rack.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
 import ThemeToggle from './components/ThemeToggle.jsx';
-import { LINE_PRESETS, findById } from './data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, findById } from './data/catalog.js';
 import { exportPng, exportSvg } from './lib/export.js';
 import { clampSelection } from './lib/lineEdit.js';
+import { hasUnsavedChanges } from './lib/rack.js';
 import { SIDES } from './lib/reelFrames.js';
 import { queryToState, stateToQuery } from './lib/share.js';
 import { STAGE, useTheme } from './lib/theme.js';
@@ -71,6 +72,14 @@ export default function App() {
     setState({ setup: { ...setup, name: preset.name, line: structuredClone(preset.line) }, presetId: id });
   };
 
+  // Back to the default reel, line and backing, to design the next setup. The preview view stays as is.
+  const startNew = () => {
+    if (hasUnsavedChanges(setup, rack) && !window.confirm(`Discard “${setup.name}”? It isn't saved to your rack.`)) return;
+    setLineSelection(null);
+    setState({ setup: structuredClone(DEFAULT_SETUP), presetId: LINE_PRESETS[0].id });
+    setNotice('Started a new setup.');
+  };
+
   const saveToRack = () => {
     setRack((r) => [...r, { ...structuredClone(setup), id: crypto.randomUUID() }]);
     setRackOpen(true);
@@ -99,6 +108,9 @@ export default function App() {
         </div>
         <div className="app-header__actions">
           <ThemeToggle value={themeChoice} onChange={setThemeChoice} />
+          <button type="button" className="button" onClick={startNew}>
+            New setup
+          </button>
           <button type="button" className="button" onClick={saveToRack}>
             Save to rack
           </button>

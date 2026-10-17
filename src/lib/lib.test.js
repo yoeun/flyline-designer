@@ -33,6 +33,7 @@ import {
   splitZone,
   zoneName,
 } from './lineEdit.js';
+import { hasUnsavedChanges } from './rack.js';
 
 const setup = (patch = {}) => ({ ...structuredClone(DEFAULT_SETUP), ...patch });
 
@@ -446,5 +447,26 @@ describe('reel frames', () => {
 
   it('falls back to the generic frame for an unknown design', () => {
     expect(frameMarkup('nope', 'spool', 'x')).toBe(frameMarkup('generic', 'spool', 'x'));
+  });
+});
+
+describe('rack', () => {
+  const custom = { ...structuredClone(DEFAULT_SETUP), name: 'Bonefish' };
+
+  it('treats the default setup as nothing to lose', () => {
+    expect(hasUnsavedChanges(structuredClone(DEFAULT_SETUP), [])).toBe(false);
+  });
+
+  it('flags a changed setup that is not in the rack', () => {
+    expect(hasUnsavedChanges(custom, [])).toBe(true);
+  });
+
+  it('treats a setup saved to the rack as safe, whatever its rack id', () => {
+    expect(hasUnsavedChanges(custom, [{ ...structuredClone(custom), id: 'abc' }])).toBe(false);
+  });
+
+  it('flags edits made after saving', () => {
+    const saved = { ...structuredClone(custom), id: 'abc' };
+    expect(hasUnsavedChanges({ ...custom, backing: { ...custom.backing, yards: 250 } }, [saved])).toBe(true);
   });
 });
