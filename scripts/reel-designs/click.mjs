@@ -1,7 +1,8 @@
 // Sage Click.
-// A click-and-pawl reel, so the frame side has no drag knob. Both sides have three spokes 120° apart, each a Y: a
-// stem from the hub forking into two arms near the rim. On the frame side one spoke points down to 6 o'clock; on
-// the spool side the set is turned over, one spoke up to 12. The spool's gear teeth show inside the window ring; 22 teardrop windows on both sides.
+// A click-and-pawl reel, so the frame side has no drag knob. Frame side (from a straight-on photo): two thick
+// spokes curving up to about 10 and 2 o'clock and two thin ones down to about 8 and 4, each forking into a Y near
+// the window ring, and a straight post down to 6 o'clock carrying the click button. Spool side: three Y spokes
+// 120° apart, one up to 12. The spool's gear teeth show inside the window ring; 22 teardrop windows on both sides.
 import { P, circle, knurl, pad, rad, ring, roundPoly, strut, svg } from './lib.mjs';
 import { arm, frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
 
@@ -20,9 +21,24 @@ const GEAR = knurl(134, 3.5, 44) + circle(124);
 const ySpoke = (a) => [-1, 1].map((sd) => arm(P(18, rad(a)), P(118, rad(a)), P(150, rad(a + sd * 15)), 30, 16, 20));
 const spokes = (first) => [0, 1, 2].flatMap((k) => ySpoke(first + k * 120));
 
+// A frame spoke: a Y like ySpoke, its own width and fork.
+const frameY = (a, w0, w1, spread) => [-1, 1].map((sd) => arm(P(18, rad(a)), P(112, rad(a)), P(150, rad(a + sd * spread)), w0, w1, 20));
+
 export const drag = svg({
   back: [GEAR],
-  body: [ring(200, 140) + RIM, sageFoot(), pad(166, -90, 34, 40), pad(166, 90, 34, 40), ...spokes(90), circle(34), circle(24, 0, 48)],
+  body: [
+    ring(200, 140) + RIM,
+    sageFoot(),
+    pad(166, -90, 34, 40),
+    pad(166, 90, 34, 40),
+    ...frameY(-140, 44, 20, 14),
+    ...frameY(-40, 44, 20, 14),
+    ...frameY(146, 20, 12, 12),
+    ...frameY(34, 20, 12, 12),
+    strut([0, 0], [0, 156], 34, 40),
+    circle(34),
+    circle(24, 0, 48),
+  ],
   details:
     frameScrew(0, -166, 8) +
     frameScrew(0, 166, 8) +
