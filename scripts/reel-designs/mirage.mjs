@@ -16,7 +16,8 @@ const lobes = (r) =>
 
 // Drag side: six spokes fanning from one point on the right rim rather than from the center. Spoke 1 runs to the
 // foot; spoke 2 just touches the top of the knob's boss (about 25° up) and runs on to the left rim; spoke 3 runs from
-// the center out to the left rim, parallel to spoke 2. Spokes 4–6 mirror them top to bottom.
+// where spoke 2 touches the boss to a point on the left rim opposite the origin, where it meets its mirror image.
+// Spokes 4–6 mirror them top to bottom.
 const ORIGIN = [188, 0];
 const BOSS = 74;
 // Where a line from p along d meets radius r, going forward.
@@ -28,10 +29,11 @@ const toRim = (p, d, r = 190) => {
 const TANGENT = Math.asin(BOSS / Math.hypot(...ORIGIN));
 const fan = (sy) => {
   const d = [-Math.cos(TANGENT), sy * Math.sin(TANGENT)];
+  const touch = [ORIGIN[0] + d[0] * Math.sqrt(ORIGIN[0] ** 2 - BOSS ** 2), d[1] * Math.sqrt(ORIGIN[0] ** 2 - BOSS ** 2)];
   return [
     strut(ORIGIN, [0, sy * 186], 24, 20),
     strut(ORIGIN, toRim(ORIGIN, d), 24, 20),
-    strut([0, 0], toRim([0, 0], d), 22, 20),
+    strut(touch, [-ORIGIN[0], 0], 22, 20),
   ];
 };
 
