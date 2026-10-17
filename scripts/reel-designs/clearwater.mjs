@@ -24,9 +24,17 @@ const BOSS = (() => {
 const KNOB = BOSS - 12;
 const INNER = [[24, -194], 46]; // right bar's foot end, and the angle from straight up where it meets the boss
 
-// A silver drag knob with a knurled rim and a slotted center screw.
-const silverKnob = (r) =>
-  `<path d="${knurl(r, 1.6, 64)}" fill="#c4c7c4"/><circle r="${r - 9}" fill="#d9dbd8"/><circle r="${r}" fill="url(#sheen)"/>${screw(0, 0, 13)}`;
+// A silver drag knob: a thick knurled rim around a recessed face, with a slotted center screw.
+const silverKnob = (r) => {
+  const face = r - 20;
+  return (
+    `<path d="${knurl(r, 1.6, 64)}" fill="#c4c7c4"/><circle r="${r - 3}" fill="#d9dbd8"/><circle r="${r}" fill="url(#sheen)"/>` +
+    // The recess: a shade darker, with a shadow inside its upper-left edge and a highlight on the lower right.
+    `<circle r="${face}" fill="#cbcdca"/><circle r="${face}" fill="none" stroke="#000" stroke-opacity=".16" stroke-width="3"/>` +
+    `<circle cx="1.5" cy="1.5" r="${face - 2}" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/>` +
+    screw(0, 0, 13)
+  );
+};
 
 export const drag = svg({
   body: [
