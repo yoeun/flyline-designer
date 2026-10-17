@@ -31,7 +31,8 @@ export const drag = svg({
   details: riseKnob,
 });
 
-const HANDLE = 135;
+// The handle sits in the mouth of the V pointing to 8 o'clock; the counterweight is opposite.
+const HANDLE = 150;
 export const spool = svg({
   back: [foot(130, -244, 14, 30)],
   body: [
