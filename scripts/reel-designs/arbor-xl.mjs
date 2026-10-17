@@ -1,8 +1,8 @@
 // Sage Arbor XL.
 // Drag side from Far Bank's photo: about 22 windows (drawn as 20 so the spokes land on bars), five thin
 // spokes (two up, one each side, one down) and a black numbered dial ring around a ribbed knob in the reel
-// color. The spool side is only shown angled: its three thin spokes, the knurled spool-release cap, the
-// handle at about 1 o'clock and the small knob opposite are inferred straight-on.
+// color. Spool side: three straight spokes 120° apart around the knurled spool-release cap, the handle in line
+// with the top one and a small knob opposite at 6 o'clock.
 import { P, circle, knurl, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
 import { dial, frameScrew, logo, rimHandle, sageFoot } from './spectrum.mjs';
 
@@ -23,14 +23,14 @@ export const spool = svg({
   back: [sageFoot()],
   body: [
     ring(200, 112) + slots({ ...RIM, rIn: 124 }),
-    pad(162, -72, 30, 44),
-    pad(162, 108, 26, 40),
-    ...[-84, 36, 156].map((a) => spoke(a, 44, 116, 20, 13, 20)),
+    pad(162, -90, 30, 44),
+    pad(162, 90, 26, 40),
+    ...[-90, 30, 150].map((a) => spoke(a, 44, 116, 20, 16)),
     circle(56),
   ],
   details:
     `<circle r="44" fill="#000" fill-opacity=".18"/><path d="${knurl(34, 1.6, 30)}" fill="#33363b"/><path d="${knurl(34, 1.6, 30)}" fill="url(#sheen)"/><circle r="22" fill="#26282b"/>` +
     logo(0, 0, 22) +
-    rimHandle(162, -72, 18) +
-    `<circle cx="${P(162, rad(108))[0].toFixed(1)}" cy="${P(162, rad(108))[1].toFixed(1)}" r="12" fill="#2b2e31"/>`,
+    rimHandle(162, -90, 18) +
+    `<circle cx="${P(162, rad(90))[0].toFixed(1)}" cy="${P(162, rad(90))[1].toFixed(1)}" r="12" fill="#2b2e31"/>`,
 });
