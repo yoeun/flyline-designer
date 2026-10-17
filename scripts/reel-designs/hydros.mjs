@@ -21,7 +21,7 @@ export const drag = svg({
 // read as double spokes 120° apart, each pair as wide as the hub.
 const HUB = 38;
 const ARC_R = 108; // where the arcs meet the ring
-const ARC_W = 12;
+const ARC_W = 18;
 const arcBand = (mid) => {
   const m = rad(mid), u = [Math.cos(m), Math.sin(m)];
   // The ends sit where a straight pair as wide as the hub would meet the ring, either side of the spokes at mid ± 60°.
