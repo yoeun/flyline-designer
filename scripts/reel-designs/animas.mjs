@@ -1,8 +1,8 @@
 // Ross Animas.
 // Drag side: five pairs of bars from the knob to the rim, evenly spaced with one pair straight down; each pair
 // spreads slightly toward the rim. A logo plaque sits at the top, between the two upper pairs. Behind this main cage,
-// the spool's outer cage of windows shows through, recessed. Spool side: fourteen thin spokes from a
-// small hub to the same mid ring and on to the rim; wood-wrapped handle at 9 o'clock, counterweight at 3.
+// the spool's outer cage of windows shows through, recessed. Spool side: an outer cage of fourteen bars
+// paired into Y's, each pair's stem running in to the hub; wood-wrapped handle at 9 o'clock, counterweight at 3.
 // Both from Ross's straight-on product photos; the spool's dark drag housing behind the spokes is left out.
 import { P, circle, f, foot, knurl, pad, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
@@ -43,8 +43,9 @@ export const drag = svg({
   details: plaqueArt + animasKnob,
 });
 
-// Spool face: fourteen thin spokes, paired so they meet near the hub.
-const SPOKES = Array.from({ length: 2 * N }, (_, k) => -90 + FORK + (k * 360) / (2 * N));
+// Spool face: the outer cage's fourteen bars pair up, and from the middle of each pair a single stem runs in to the
+// hub, so each pair and its stem make a Y. Seven stems, one straight down.
+const STEMS = Array.from({ length: N }, (_, k) => 90 + (k * 360) / N);
 const handleAt = P(166, Math.PI);
 const weightAt = P(166, 0);
 
@@ -52,7 +53,7 @@ export const spool = svg({
   back: [ANIMAS_FOOT],
   body: [
     ring(200, 134) + slots({ ...OUTER, rIn: 146 }),
-    ...SPOKES.map((a, k) => spoke(a, 26, 140, 10, 14, k % 2 ? 10 : -10)),
+    ...STEMS.map((a) => spoke(a, 26, 140, 16, 14)),
     pad(164, 180, 58, 48),
     pad(164, 0, 54, 44),
     circle(34),
