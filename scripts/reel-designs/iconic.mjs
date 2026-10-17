@@ -49,17 +49,18 @@ const mirrorX = (d) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x, 
 // clockwise.
 const ARM_BOW = 30;
 const ARMS = [0, 1, 2, 3, 4, 5].map((k) => [-130 + k * 60, -108 + k * 60, ARM_BOW]);
-export const iconicDrag = ({ hub = 70, cap = 62, arms = ARMS, rib = { t: 0.45, shift: 0, bend: 10 } } = {}) =>
+// The arms start at `armIn`, well inside the hub, so they run deep toward the center under the cap.
+export const iconicDrag = ({ hub = 56, cap = 50, armIn = 30, arms = ARMS, rib = { t: 0.45, shift: 0, bend: 10 } } = {}) =>
   svg({
     back: [ring(134, 120)],
     body: [
       ring(200, 178),
       ...hatchFoot(),
-      ...arms.map(([a0, a1, b]) => mirrorX(arm(a0, hub - 6, a1, 190, 36, 12, b))),
+      ...arms.map(([a0, a1, b]) => mirrorX(arm(a0, armIn, a1, 190, 36, 12, b))),
       // Each rib leaves an arm partway out and curves to the rim midway to the next arm.
       ...arms.map(([a0, a1, b], k) => {
         const next = arms[(k + 1) % arms.length][1] + (k === arms.length - 1 ? 360 : 0);
-        return mirrorX(curve(armAt(a0, hub - 6, a1, 190, b, rib.t), P(190, rad((a1 + next) / 2 + rib.shift)), 20, 16, rib.bend));
+        return mirrorX(curve(armAt(a0, armIn, a1, 190, b, rib.t), P(190, rad((a1 + next) / 2 + rib.shift)), 20, 16, rib.bend));
       }),
       circle(hub),
     ],
