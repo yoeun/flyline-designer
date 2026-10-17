@@ -244,7 +244,7 @@
     {
       "id": "orvis-mirage",
       "name": "Orvis Mirage",
-      "design": "generic",
+      "design": "mirage",
       "colors": [
         "orvis-blackout",
         "orvis-silver-dragonfly"
@@ -336,7 +336,7 @@
     {
       "id": "orvis-battenkill-disc",
       "name": "Orvis Battenkill Disc",
-      "design": "generic",
+      "design": "battenkill-disc",
       "colors": [
         "black",
         "orvis-copper",

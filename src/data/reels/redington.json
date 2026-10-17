@@ -207,7 +207,7 @@
     {
       "id": "redington-grande",
       "name": "Redington Grande",
-      "design": "generic",
+      "design": "grande",
       "colors": [
         "black",
         "champagne",
@@ -284,7 +284,7 @@
     {
       "id": "redington-zero",
       "name": "Redington Zero",
-      "design": "generic",
+      "design": "zero",
       "colors": [
         "black",
         "redington-wolf-grey",
@@ -330,7 +330,7 @@
     {
       "id": "redington-rise-iii",
       "name": "Redington Rise III",
-      "design": "generic",
+      "design": "rise-iii",
       "discontinued": true,
       "colors": [
         "black",

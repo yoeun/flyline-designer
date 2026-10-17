@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PHOTOS from 'reel-photos';
-import { BACKING_COLORS, LINE_COLORS, REEL_MODELS, makerGroups, reelColors, reelSizeLabel, reelSizes } from '../data/catalog.js';
+import { BACKING_COLORS, LINE_COLORS, REELS, REEL_MODELS, makerGroups, reelColors, reelSizeLabel, reelSizes } from '../data/catalog.js';
 import { PREVIEW_COLORS, capacityText, photosByModel, previewSetup } from '../lib/reelsPage.js';
 import Field from './Field.jsx';
 import ReelPreview from './ReelPreview.jsx';
@@ -12,6 +12,11 @@ import Swatches from './Swatches.jsx';
 const PX_PER_INCH = 34;
 // ReelPreview's rim spans 400 of its 430 units across.
 const previewWidth = (rim) => Math.round((rim * PX_PER_INCH * 430) / 400);
+// Every drawing sits in a box of one size, big enough for the largest reel plus padding, so the
+// sizes line up in a grid; the reel inside keeps its scale.
+const BOX_PAD = 20;
+const BOX = previewWidth(Math.max(...REELS.map((r) => r.rim))) + 2 * BOX_PAD;
+const BOX_H = Math.round(((BOX - 2 * BOX_PAD) * 470) / 430) + 2 * BOX_PAD;
 
 const heading = 'font-heading text-[15px] font-bold tracking-[0.06em] uppercase';
 const PHOTOS_BY_MODEL = photosByModel(REEL_MODELS, PHOTOS);
@@ -32,9 +37,11 @@ function SizeBlock({ size, color, view }) {
   return (
     <li className="flex flex-col gap-1.5">
       <p className="text-[14px] font-semibold">{reelSizeLabel(size)}</p>
-      <div className="flex items-end gap-1.5">
+      <div className="flex flex-wrap gap-1.5">
         {['drag', 'spool'].map((side) => (
-          <ReelPreview key={side} setup={setup} side={side} showLine={showLine} size={width} className="w-auto rounded-md" title={`${size.name}, ${side} side`} />
+          <div key={side} className="flex items-center justify-center rounded-md bg-stage" style={{ width: BOX, height: BOX_H }}>
+            <ReelPreview setup={setup} side={side} showLine={showLine} size={width} background="none" className="w-auto" title={`${size.name}, ${side} side`} />
+          </div>
         ))}
       </div>
       <p className="font-mono text-[12px] text-muted-foreground tabular-nums">
@@ -68,7 +75,7 @@ function ModelCard({ model, view }) {
         </div>
         <Swatches colors={colors} value={color} onChange={setColor} label={`${model.name} color`} size={24} />
       </div>
-      <ul className="flex flex-wrap items-end gap-x-6 gap-y-4">
+      <ul className="grid gap-x-6 gap-y-5" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(min(100%, ${2 * BOX + 6}px), ${2 * BOX + 6}px))` }}>
         {reelSizes(model.id).map((size) => (
           <SizeBlock key={size.id} size={size} color={color} view={view} />
         ))}

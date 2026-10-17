@@ -116,7 +116,7 @@
     {
       "id": "lamson-guru-s",
       "name": "Lamson Guru S",
-      "design": "generic",
+      "design": "guru-s",
       "colors": [
         "lamson-og",
         "lamson-blackout"
@@ -192,7 +192,7 @@
     {
       "id": "lamson-speedster-s",
       "name": "Lamson Speedster S",
-      "design": "generic",
+      "design": "speedster-s",
       "colors": [
         "lamson-battleship",
         "lamson-ember"
@@ -268,12 +268,12 @@
     {
       "id": "lamson-remix-s",
       "name": "Lamson Remix S",
-      "design": "generic",
+      "design": "liquid-s",
       "colors": [
         "smoke",
         "day-break"
       ],
-      "notes": "Rim, width, rod weights and rated capacity (max line + backing) from Lamson's Remix S spec table (lamsonflyfishing.com/products/remix-s); machined frame on the Liquid S cast spool, so the numbers match Liquid S. Spool is estimated as rim − 0.24″.",
+      "notes": "Rim, width, rod weights and rated capacity (max line + backing) from Lamson's Remix S spec table (lamsonflyfishing.com/products/remix-s); machined frame on the Liquid S cast spool, so the numbers match Liquid S. Spool is estimated as rim − 0.24″. Drawn with the Liquid S design: the same reel in machined aluminium.",
       "sizes": [
         {
           "id": "lamson-remix-s-3",

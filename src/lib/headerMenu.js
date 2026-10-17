@@ -1,9 +1,10 @@
 // The header's page menu, in display order. Every page is listed, the current one highlighted.
+// An icon is a Material Symbols name, or 'reel' for the app's own reel icon.
 export const NAV_PAGES = [
   { id: 'designer', label: 'Designer', icon: 'design_services' },
   { id: 'rack', label: 'Rack', icon: 'shelves' },
   { id: 'guide', label: 'Line guide', icon: 'menu_book' },
-  { id: 'reels', label: 'Reels', icon: 'album' },
+  { id: 'reels', label: 'Reels', icon: 'reel' },
 ];
 
 // The header's download menu, in display order. Each item names the pages it shows on; the menu draws a

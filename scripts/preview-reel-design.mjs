@@ -39,5 +39,6 @@ const html = `<!doctype html><meta charset="utf-8"><style>body{margin:0;padding:
 const dir = mkdtempSync(join(tmpdir(), 'reel-preview-'));
 const page = join(dir, 'page.html');
 writeFileSync(page, html);
-execFileSync(CHROME, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files', `--window-size=${width},${H + 70}`, `--screenshot=${out}`, pathToFileURL(page).href], { stdio: 'ignore' });
+// Its own profile, so several previews can run at once.
+execFileSync(CHROME, ['--headless=new', `--user-data-dir=${join(dir, 'profile')}`, '--no-first-run', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files', `--window-size=${width},${H + 70}`, `--screenshot=${out}`, pathToFileURL(page).href], { stdio: 'ignore' });
 console.log(out);

@@ -24,7 +24,7 @@
     {
       "id": "ross-animas",
       "name": "Ross Animas",
-      "design": "generic",
+      "design": "animas",
       "colors": [
         "black",
         "ross-platinum",
@@ -86,7 +86,7 @@
     {
       "id": "ross-evolution-r",
       "name": "Ross Evolution R",
-      "design": "generic",
+      "design": "evolution-r",
       "colors": [
         "black",
         "ross-platinum",

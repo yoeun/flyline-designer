@@ -36,7 +36,7 @@
     {
       "id": "hatch-iconic",
       "name": "Hatch Iconic",
-      "design": "generic",
+      "design": "iconic",
       "colors": [
         "black",
         "hatch-gray-black",
@@ -146,7 +146,7 @@
     {
       "id": "hatch-iconic-mid-arbor",
       "name": "Hatch Iconic Mid Arbor",
-      "design": "generic",
+      "design": "iconic",
       "colors": [
         "black",
         "hatch-gray-black",
@@ -224,7 +224,7 @@
     {
       "id": "hatch-finatic-gen-2",
       "name": "Hatch Finatic Gen 2",
-      "design": "generic",
+      "design": "finatic",
       "discontinued": true,
       "colors": [
         "black",

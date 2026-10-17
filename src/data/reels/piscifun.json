@@ -12,7 +12,7 @@
     {
       "id": "piscifun-sword-ii",
       "name": "Piscifun Sword II",
-      "design": "generic",
+      "design": "sword-ii",
       "colors": [
         "black",
         "piscifun-green"

@@ -54,7 +54,7 @@
     {
       "id": "sage-click",
       "name": "Sage Click",
-      "design": "generic",
+      "design": "click",
       "colors": [
         "sage-bronze",
         "sage-flint",
@@ -115,7 +115,7 @@
     {
       "id": "sage-spectrum-c",
       "name": "Sage Spectrum C",
-      "design": "generic",
+      "design": "spectrum-c",
       "colors": [
         "black",
         "sage-grey"
@@ -191,7 +191,7 @@
     {
       "id": "sage-spectrum",
       "name": "Sage Spectrum",
-      "design": "generic",
+      "design": "spectrum",
       "discontinued": true,
       "colors": [
         "black",
@@ -268,7 +268,7 @@
     {
       "id": "sage-arbor-xl",
       "name": "Sage Arbor XL",
-      "design": "generic",
+      "design": "arbor-xl",
       "colors": [
         "sage-slate",
         "sage-frost",
