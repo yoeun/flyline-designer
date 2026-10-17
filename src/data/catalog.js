@@ -25,12 +25,8 @@ export const REEL_COLORS = [
 
 const lineColor = (id) => LINE_COLORS.find((c) => c.id === id);
 
-// Backing colors grouped by the line-type family they signal.
-export const BACKING_FAMILIES = [
-  { id: 'cool', name: 'Cool', use: 'Floating', colors: ['blue', 'purple'].map(lineColor) },
-  { id: 'neutral', name: 'Neutral', use: 'Intermediate', colors: ['white', 'green', 'chartreuse', 'black'].map(lineColor) },
-  { id: 'hot', name: 'Hot', use: 'Sinking 3 · 5 · 7 · sink tip', colors: ['yellow', 'orange', 'red'].map(lineColor) },
-];
+// Backing colors in gradient order.
+export const BACKING_COLORS = ['red', 'orange', 'yellow', 'chartreuse', 'green', 'blue', 'purple', 'white', 'black'].map(lineColor);
 
 export const LINE_TYPES = [
   { id: 'floating', name: 'Floating', family: 'cool', diameterFactor: 1, suggested: null },

@@ -158,7 +158,7 @@ export default function App() {
             selection={selection}
             onSelect={setLineSelection}
           />
-          <BackingOptions backing={setup.backing} lineType={setup.line.type} onChange={(backing) => update({ backing })} />
+          <BackingOptions backing={setup.backing} onChange={(backing) => update({ backing })} />
         </section>
       </main>
     </div>

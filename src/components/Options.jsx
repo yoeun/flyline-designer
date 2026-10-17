@@ -1,5 +1,5 @@
 import {
-  BACKING_FAMILIES,
+  BACKING_COLORS,
   BACKING_LENGTHS,
   LINE_COLORS,
   LINE_PRESETS,
@@ -160,8 +160,7 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
   );
 }
 
-export function BackingOptions({ backing, lineType, onChange }) {
-  const type = findById(LINE_TYPES, lineType);
+export function BackingOptions({ backing, onChange }) {
   const custom = !BACKING_LENGTHS.includes(backing.yards);
   return (
     <section className="options-group">
@@ -194,20 +193,8 @@ export function BackingOptions({ backing, lineType, onChange }) {
           ))}
         </div>
       </div>
-      <div className="families">
-        {BACKING_FAMILIES.map((f) => (
-          <div key={f.id} className={`family${type?.family === f.id ? ' is-suggested' : ''}`}>
-            <div className="family__label">
-              <strong>{f.name}</strong>
-              <span>{f.use}</span>
-            </div>
-            <Swatches colors={f.colors} value={backing.color} onChange={(c) => onChange({ ...backing, color: c })} label={`${f.name} backing colors`} marked={type?.suggested} />
-          </div>
-        ))}
-      </div>
-      <p className="hint">
-        Highlighted row matches the line type ({type?.name}). Selected: {nameOf(backing.color)}.
-      </p>
+      <Swatches colors={BACKING_COLORS} value={backing.color} onChange={(c) => onChange({ ...backing, color: c })} label="Backing color" />
+      <p className="hint">Selected: {nameOf(backing.color)}.</p>
     </section>
   );
 }
