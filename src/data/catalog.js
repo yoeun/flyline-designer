@@ -1,4 +1,16 @@
-// Palettes, reel models, line types and presets. Real products get added here by hand later.
+// Palettes, reel models, line types and presets. Maker lines live in src/data/lines, one file per maker.
+import * as airflo from './lines/airflo.js';
+import * as cortland from './lines/cortland.js';
+import * as orvis from './lines/orvis.js';
+import * as rio from './lines/rio.js';
+import * as royalWulff from './lines/royal-wulff.js';
+import * as scientificAnglers from './lines/scientific-anglers.js';
+
+// Each exports COLORS and PRODUCTS, and LEGACY_IDS if any of its old preset ids changed.
+const MAKERS = [rio, scientificAnglers, airflo, cortland, orvis, royalWulff];
+
+// Old preset ids (from saved share links) mapped to the size that replaced them.
+export const LEGACY_PRESET_IDS = Object.assign({}, ...MAKERS.map((m) => m.LEGACY_IDS));
 
 export const LINE_COLORS = [
   { id: 'black', name: 'Black', hex: '#1e2022' },
@@ -47,59 +59,8 @@ const CLEARWATER_COLORS = ['black', 'charcoal', 'dark-pine'];
 const RUN_COLORS = ['black', 'burgundy', 'coyote', 'sand'];
 const BEHEMOTH_COLORS = ['black', 'gunmetal', 'army-green'];
 
-// Colors as makers name them, offered only on lines that use them (see lineSwatches). SA and
-// Airflo hexes are sampled from the makers' swatches and taper diagrams; RIO and Cortland are
-// matched by eye to product photos. Clear sections get a pale blue-grey that reads as clear.
-export const MAKER_LINE_COLORS = [
-  { id: 'rio-moss', name: 'Moss', hex: '#6e6b3c' },
-  { id: 'rio-gold', name: 'Gold', hex: '#d8b54a' },
-  { id: 'rio-melon', name: 'Melon', hex: '#f3a47a' },
-  { id: 'rio-gray-dun', name: 'Gray Dun', hex: '#a8a39a' },
-  { id: 'rio-yellow', name: 'Yellow', hex: '#e9df3f' },
-  { id: 'rio-pink', name: 'Pink', hex: '#f4a3be' },
-  { id: 'rio-clear', name: 'Clear', hex: '#d3dee3' },
-  { id: 'rio-light-teal', name: 'Light Teal', hex: '#8fc9be' },
-  { id: 'rio-black', name: 'Black', hex: '#1e1e20' },
-  { id: 'rio-maroon', name: 'Maroon', hex: '#6e2233' },
-  { id: 'rio-grey', name: 'Grey', hex: '#7a7d80' },
-  { id: 'sa-buckskin', name: 'Buckskin', hex: '#fad773' },
-  { id: 'sa-mist-green', name: 'Mist Green', hex: '#abd691' },
-  { id: 'sa-optic-green', name: 'Optic Green', hex: '#90c865' },
-  { id: 'sa-creamsicle', name: 'Creamsicle', hex: '#ffe500' },
-  { id: 'sa-satin-orange', name: 'Satin Orange', hex: '#f15522' },
-  { id: 'sa-camo', name: 'Camo', hex: '#7f6d2d' },
-  { id: 'sa-bamboo', name: 'Bamboo', hex: '#c3ab2f' },
-  { id: 'sa-bass-camo', name: 'Camo', hex: '#73905a' },
-  { id: 'sa-shad-blue', name: 'Shad Blue', hex: '#a3bdb2' },
-  { id: 'sa-frog-green', name: 'Frog Green', hex: '#6a813b' },
-  { id: 'sa-clear-camo', name: 'Clear Camo', hex: '#8a7b5e' },
-  { id: 'sa-dark-green', name: 'Dark Green', hex: '#014935' },
-  { id: 'sa-dark-gray', name: 'Dark Gray', hex: '#5f6062' },
-  { id: 'sa-optic-yellow', name: 'Optic Yellow', hex: '#faf041' },
-  { id: 'sa-pale-green', name: 'Pale Green', hex: '#d9e8a3' },
-  { id: 'sa-titan-blue', name: 'Blue', hex: '#a2c6e6' },
-  { id: 'sa-sonar-dark-green', name: 'Dark Green', hex: '#68843a' },
-  { id: 'sa-ivory', name: 'Ivory', hex: '#d8d9db' },
-  { id: 'sa-charcoal', name: 'Charcoal', hex: '#5f6062' },
-  { id: 'sa-sonar-moss', name: 'Moss', hex: '#b2be36' },
-  { id: 'airflo-black', name: 'Black', hex: '#2c2830' },
-  { id: 'airflo-blue', name: 'Blue', hex: '#597fac' },
-  { id: 'airflo-green-chartreuse', name: 'Chartreuse', hex: '#6ca635' },
-  { id: 'airflo-red', name: 'Red', hex: '#cb5934' },
-  { id: 'airflo-orange', name: 'Orange', hex: '#dd8625' },
-  { id: 'airflo-green', name: 'Green', hex: '#68a049' },
-  { id: 'airflo-chartreuse', name: 'Chartreuse', hex: '#c3c621' },
-  { id: 'airflo-moss', name: 'Moss', hex: '#887857' },
-  { id: 'airflo-ut-chartreuse', name: 'Chartreuse', hex: '#99b551' },
-  { id: 'airflo-white', name: 'White', hex: '#f0f0f0' },
-  { id: 'airflo-sinking-black', name: 'Black', hex: '#121518' },
-  { id: 'airflo-clear', name: 'Clear', hex: '#dde3e8' },
-  { id: 'cortland-peach', name: 'Peach', hex: '#f7c89c' },
-  { id: 'cortland-clear-camo', name: 'Clear Camo', hex: '#6e6a5c' },
-  { id: 'cortland-dark-brown', name: 'Dark Brown', hex: '#37261e' },
-  { id: 'cortland-black', name: 'Black', hex: '#222222' },
-  { id: 'cortland-green', name: 'Green', hex: '#89a64c' },
-];
+// Colors as makers name them, offered only on lines that use them (see lineSwatches).
+export const MAKER_LINE_COLORS = MAKERS.flatMap((m) => m.COLORS);
 
 const lineColor = (id) => LINE_COLORS.find((c) => c.id === id) ?? MAKER_LINE_COLORS.find((c) => c.id === id);
 
@@ -159,18 +120,6 @@ export const REELS = [
 
 export const BACKING_DIAMETER = { 20: 0.021, 30: 0.025 };
 export const BACKING_LENGTHS = [100, 150, 200, 250];
-
-// Zones from [length, color] pairs, tip first; the last runs to the end of the line.
-const zones = (...pairs) => pairs.map(([length, color]) => ({ length, color }));
-
-// A real line comes in fixed maker colorways; its zones start as the first one.
-const makerLine = ({ id, maker, name, type, weight, taper: [front, body, back, running], colorways }) => ({
-  id,
-  maker,
-  name,
-  colorways,
-  line: { type, weight, taper: { front, body, back, running }, zones: colorways[0].zones },
-});
 
 // Taper lengths in feet; zones run from the tip back, the last one takes the rest.
 export const LINE_PRESETS = [
@@ -251,272 +200,11 @@ export const LINE_PRESETS = [
       ],
     },
   },
-  // Real lines. Head and total length from maker specs unless noted; taper splits are read off the
-  // maker's taper diagram where one exists and estimated otherwise. Zones follow each colorway tip
-  // to running line. Haul zones count as running line.
-
-  // RIO. Taper from RIO's Gold taper as listed for Elite Gold; the color change is at the end of the head.
-  makerLine({
-    id: 'rio-premier-gold-wf5f',
-    maker: 'RIO',
-    name: 'RIO Premier Gold WF5F',
-    type: 'floating',
-    weight: 5,
-    taper: [5.5, 22.5, 19, 43],
-    colorways: [
-      { id: 'moss-gold', name: 'Moss/Gold', zones: zones([47, 'rio-moss'], [0, 'rio-gold']) },
-      { id: 'melon-gray-dun', name: 'Melon/Gray Dun', zones: zones([47, 'rio-melon'], [0, 'rio-gray-dun']) },
-    ],
-  }),
-  // Taper split estimated; Melon/Gray Dun is only made in WF4–6.
-  makerLine({
-    id: 'rio-premier-gold-wf8f',
-    maker: 'RIO',
-    name: 'RIO Premier Gold WF8F',
-    type: 'floating',
-    weight: 8,
-    taper: [6, 24, 20, 40],
-    colorways: [{ id: 'moss-gold', name: 'Moss/Gold', zones: zones([50, 'rio-moss'], [0, 'rio-gold']) }],
-  }),
-  // 1.5–2 ips. Taper from a retailer's copy of RIO's diagram. The whole head is clear.
-  makerLine({
-    id: 'rio-premier-aqualux-wf8i',
-    maker: 'RIO',
-    name: 'RIO Premier Aqualux II WF8I',
-    type: 'intermediate',
-    weight: 8,
-    taper: [4, 22, 4, 70],
-    colorways: [{ id: 'clear-light-teal', name: 'Clear/Light Teal', zones: zones([30, 'rio-clear'], [0, 'rio-light-teal']) }],
-  }),
-  // 35 ft head from one retailer; taper split estimated. Black head on a running line colored by
-  // sink rate.
-  makerLine({
-    id: 'rio-premier-fathom-wf8s5',
-    maker: 'RIO',
-    name: 'RIO Premier Fathom WF8 Sink 5',
-    type: 'sink5',
-    weight: 8,
-    taper: [6, 22, 7, 70],
-    colorways: [{ id: 'black-maroon', name: 'Black/Maroon', zones: zones([35, 'rio-black'], [0, 'rio-maroon']) }],
-  }),
-  makerLine({
-    id: 'rio-premier-fathom-wf8s7',
-    maker: 'RIO',
-    name: 'RIO Premier Fathom WF8 Sink 7',
-    type: 'sink7',
-    weight: 8,
-    taper: [6, 22, 7, 70],
-    colorways: [{ id: 'black-grey', name: 'Black/Grey', zones: zones([35, 'rio-black'], [0, 'rio-grey']) }],
-  }),
-  // Euro nymph lines are level (about 0.022″), much thinner than a WF head of any weight, so they're
-  // drawn as running line behind a token taper. RIO's comes with a 14 ft pink mono leader.
-  makerLine({
-    id: 'rio-technical-euro-nymph',
-    maker: 'RIO',
-    name: 'RIO Premier Technical Euro Nymph',
-    type: 'floating',
-    weight: 3,
-    taper: [0.5, 0.5, 0.5, 92.5],
-    colorways: [{ id: 'pink-yellow', name: 'Pink/Yellow', zones: zones([14, 'rio-pink'], [0, 'rio-yellow']) }],
-  }),
-
-  // Scientific Anglers. SA's diagrams have no numbers; splits are measured off them to about ±0.5 ft.
-  // The diagram shows the Orange and Camo colorways; Optic is assumed to share the Orange split.
-  makerLine({
-    id: 'sa-amplitude-smooth-infinity-wf6f',
-    maker: 'Scientific Anglers',
-    name: 'SA Amplitude Smooth Infinity WF6F',
-    type: 'floating',
-    weight: 6,
-    taper: [6.5, 24, 19.5, 40],
-    colorways: [
-      { id: 'optic', name: 'Optic', zones: zones([6.5, 'sa-buckskin'], [43.5, 'sa-mist-green'], [0, 'sa-optic-green']) },
-      { id: 'orange', name: 'Orange', zones: zones([6.5, 'sa-creamsicle'], [43.5, 'sa-satin-orange'], [0, 'sa-optic-green']) },
-      { id: 'camo', name: 'Camo', zones: zones([10, 'sa-camo'], [40, 'sa-buckskin'], [0, 'sa-bamboo']) },
-    ],
-  }),
-  makerLine({
-    id: 'sa-amplitude-bass-bug-wf8f',
-    maker: 'Scientific Anglers',
-    name: 'SA Amplitude Bass Bug WF8F',
-    type: 'floating',
-    weight: 8,
-    taper: [5, 28, 10, 47],
-    colorways: [{ id: 'camo-shad-frog', name: 'Camo/Shad Blue/Frog Green', zones: zones([12.5, 'sa-bass-camo'], [30.5, 'sa-shad-blue'], [0, 'sa-frog-green']) }],
-  }),
-  // 2 ips. Long three-part front taper; one color over the whole line.
-  makerLine({
-    id: 'sa-sonar-stillwater-clear-camo-wf6i',
-    maker: 'Scientific Anglers',
-    name: 'SA Sonar Stillwater Clear Camo WF6I',
-    type: 'intermediate',
-    weight: 6,
-    taper: [22.5, 13, 9.5, 55],
-    colorways: [{ id: 'clear-camo', name: 'Clear Camo', zones: zones([0, 'sa-clear-camo']) }],
-  }),
-  // 2.5–4 ips. The diagram is drawn for a 40 ft head; the 36 ft WF6 split is scaled from it.
-  makerLine({
-    id: 'sa-frequency-full-sink-wf6s3',
-    maker: 'Scientific Anglers',
-    name: 'SA Frequency Full Sink WF6 Type III',
-    type: 'sink3',
-    weight: 6,
-    taper: [4, 30, 2, 49],
-    colorways: [{ id: 'dark-green', name: 'Dark Green', zones: zones([0, 'sa-dark-green']) }],
-  }),
-  // 5–6 ips. Same lengths as the Type III.
-  makerLine({
-    id: 'sa-frequency-full-sink-wf6s6',
-    maker: 'Scientific Anglers',
-    name: 'SA Frequency Full Sink WF6 Type VI',
-    type: 'sink5',
-    weight: 6,
-    taper: [4, 30, 2, 49],
-    colorways: [{ id: 'dark-gray', name: 'Dark Gray', zones: zones([0, 'sa-dark-gray']) }],
-  }),
-  // 10 ft Type III tip plus a 1 ft transition, then a floating belly.
-  makerLine({
-    id: 'sa-frequency-sink-tip-wf6',
-    maker: 'Scientific Anglers',
-    name: 'SA Frequency Sink Tip WF6 Type III',
-    type: 'sinktip',
-    weight: 6,
-    taper: [11, 30, 4, 40],
-    colorways: [{ id: 'green-optic-yellow', name: 'Green/Optic Yellow', zones: zones([10, 'sa-dark-green'], [0, 'sa-optic-yellow']) }],
-  }),
-  // 1.25 ips.
-  makerLine({
-    id: 'sa-sonar-titan-intermediate-wf8i',
-    maker: 'Scientific Anglers',
-    name: 'SA Sonar Titan Full Intermediate WF8I',
-    type: 'intermediate',
-    weight: 8,
-    taper: [5.5, 24.5, 3.5, 71.5],
-    colorways: [{ id: 'pale-green-blue', name: 'Pale Green/Blue', zones: zones([33.5, 'sa-pale-green'], [0, 'sa-titan-blue']) }],
-  }),
-  // Grain-rated; 250 gr suits an 8 wt (estimate). Every size has a 25 ft sinking head, then a
-  // floating handling line; the split inside the head is estimated. Sink 6 is about 6 ips.
-  ...[
-    { rate: 3, name: 'Dark Green/Ivory', head: 'sa-sonar-dark-green', running: 'sa-ivory' },
-    { rate: 6, name: 'Charcoal/Moss', head: 'sa-charcoal', running: 'sa-sonar-moss' },
-  ].map(({ rate, name, head, running }) =>
-    makerLine({
-      id: `sa-sonar-sink-25-cold-250-s${rate}`,
-      maker: 'Scientific Anglers',
-      name: `SA Sonar Sink 25 Cold 250 gr Sink ${rate}`,
-      type: 'sinktip',
-      weight: 8,
-      taper: [2, 22, 1, 80],
-      colorways: [{ id: 'standard', name, zones: zones([25, head], [0, running]) }],
-    }),
-  ),
-  // Level euro line; see the RIO one above.
-  makerLine({
-    id: 'sa-mastery-competition-nymph',
-    maker: 'Scientific Anglers',
-    name: 'SA Mastery Competition Nymph',
-    type: 'floating',
-    weight: 3,
-    taper: [0.5, 0.5, 0.5, 78.5],
-    colorways: [{ id: 'bamboo', name: 'Bamboo', zones: zones([0, 'sa-bamboo']) }],
-  }),
-
-  // Airflo. Splits from Airflo's own taper diagrams.
-  makerLine({
-    id: 'airflo-ridge-universal-taper-wf5f',
-    maker: 'Airflo',
-    name: 'Airflo Superflo Ridge 2.0 Universal Taper WF5F',
-    type: 'floating',
-    weight: 5,
-    taper: [8, 19, 12, 51],
-    colorways: [
-      { id: 'moss-chartreuse', name: 'Moss/Chartreuse', zones: zones([39, 'airflo-moss'], [0, 'airflo-ut-chartreuse']) },
-      { id: 'chartreuse-white', name: 'Chartreuse/White', zones: zones([39, 'airflo-ut-chartreuse'], [0, 'airflo-white']) },
-    ],
-  }),
-  // Head and total from Airflo's spec table; taper split estimated. Color sections scaled from the
-  // WF5 diagram: sinking black tip, intermediate belly, then the running line color. Each sink
-  // rate has its own colorway.
-  ...[
-    { rate: 3, name: 'Black/Green/Chartreuse', belly: 'airflo-green', running: 'airflo-chartreuse' },
-    { rate: 5, name: 'Black/Red/Orange', belly: 'airflo-red', running: 'airflo-orange' },
-    { rate: 7, name: 'Black/Blue/Chartreuse', belly: 'airflo-blue', running: 'airflo-green-chartreuse' },
-  ].map(({ rate, name, belly, running }) =>
-    makerLine({
-      id: `airflo-streamer-max-short-wf8-s${rate}`,
-      maker: 'Airflo',
-      name: `Airflo Streamer Max Short WF8 Sink ${rate}`,
-      type: 'sinktip',
-      weight: 8,
-      taper: [4, 16, 7, 73],
-      colorways: [{ id: 'standard', name, zones: zones([17.5, 'airflo-black'], [5.5, belly], [0, running]) }],
-    }),
-  ),
-  // Sold as #6/7 in Di3, Di5 and Di7 (3, 5 and 7 ips), all black with orange hang markers.
-  ...[3, 5, 7].map((rate) =>
-    makerLine({
-      id: `airflo-sixth-sense-wf7-di${rate}`,
-      maker: 'Airflo',
-      name: `Airflo Sixth Sense 2 WF7 Di${rate}`,
-      type: `sink${rate}`,
-      weight: 7,
-      taper: [20, 16, 10, 59],
-      colorways: [{ id: 'black', name: 'Black', zones: zones([0, 'airflo-sinking-black']) }],
-    }),
-  ),
-  // 1.5 ips, clear on a clear mono core.
-  makerLine({
-    id: 'airflo-stillwater-intermediate-wf6',
-    maker: 'Airflo',
-    name: 'Airflo Stillwater Intermediate WF6 Clear',
-    type: 'intermediate',
-    weight: 6,
-    taper: [20, 16, 10, 59],
-    colorways: [{ id: 'clear', name: 'Clear', zones: zones([0, 'airflo-clear']) }],
-  }),
-
-  // Cortland publishes few numbers; lengths here are from retailers.
-  makerLine({
-    id: 'cortland-444-peach-wf5f',
-    maker: 'Cortland',
-    name: 'Cortland 444 Peach WF5F',
-    type: 'floating',
-    weight: 5,
-    taper: [8, 20, 4, 58],
-    colorways: [{ id: 'peach', name: 'Peach', zones: zones([0, 'cortland-peach']) }],
-  }),
-  // Retailers disagree on the head (41 or 32 ft); taper split estimated from Cortland's description
-  // ("short front taper and body, extended back taper").
-  makerLine({
-    id: 'cortland-444-clear-camo-wf7i',
-    maker: 'Cortland',
-    name: 'Cortland 444 Clear Camo WF7I',
-    type: 'intermediate',
-    weight: 7,
-    taper: [8, 20, 13, 49],
-    colorways: [{ id: 'clear-camo', name: 'Clear Camo', zones: zones([0, 'cortland-clear-camo']) }],
-  }),
-  // 3–4 ips. Head and running line from Cortland's page; taper split assumed to match the 444 floating.
-  makerLine({
-    id: 'cortland-444-full-sink-wf6s3',
-    maker: 'Cortland',
-    name: 'Cortland 444 Full Sinking WF6 Type 3',
-    type: 'sink3',
-    weight: 6,
-    taper: [8, 20, 4, 58],
-    colorways: [{ id: 'dark-brown', name: 'Dark Brown', zones: zones([0, 'cortland-dark-brown']) }],
-  }),
-  // Type 6 (5–6 ips) 15 ft tip. Tip and body lengths published; rear taper is the rest of the
-  // 31 ft head (one retailer table lists 26 ft).
-  makerLine({
-    id: 'cortland-streamer-sink-tip-15-wf7',
-    maker: 'Cortland',
-    name: 'Cortland Streamer Sink Tip 15 WF7',
-    type: 'sinktip',
-    weight: 7,
-    taper: [15, 6, 10, 69],
-    colorways: [{ id: 'black-green', name: 'Black/Green', zones: zones([15, 'cortland-black'], [0, 'cortland-green']) }],
-  }),
+  // Real lines, one preset per size of each maker product (see src/data/lines). Head and total
+  // length from maker specs unless noted; taper splits are read off the maker's taper diagram where
+  // one exists and estimated otherwise. Zones follow each colorway tip to running line. Haul zones
+  // count as running line.
+  ...MAKERS.flatMap((m) => m.PRODUCTS.flat()),
 
   {
     id: 'single-wf5f',
@@ -549,6 +237,47 @@ export function presetForLine(line) {
     (sameZones(preset.line.zones, line.zones) || Boolean(lineColorway(preset, line)));
   return LINE_PRESETS.find(matches)?.id ?? 'custom';
 }
+
+// The sizes a maker product comes in, in catalog order; none for anything else.
+export const productSizes = (product) => LINE_PRESETS.filter((p) => p.product === product);
+
+// The first size at a weight, otherwise the one nearest it (ties go lighter).
+export const nearestSize = (sizes, weight) =>
+  sizes.reduce((best, s) => {
+    const d = Math.abs(s.line.weight - weight), bestD = Math.abs(best.line.weight - weight);
+    return d < bestD || (d === bestD && s.line.weight < best.line.weight) ? s : best;
+  });
+
+// The preset and a copy of its line for an id picked from the Preset menu (a product or a generic
+// preset) or the Weight menu (a size), or null if nothing has that id. A product lands on its size
+// at the line's current weight, or the nearest; a maker line keeps its colorway when the new size
+// comes in it.
+export function switchLine(id, line, fromPresetId) {
+  const sizes = productSizes(id);
+  const preset = sizes.length ? nearestSize(sizes, line.weight) : findById(LINE_PRESETS, id);
+  if (!preset) return null;
+  const keep = lineColorway(findById(LINE_PRESETS, fromPresetId), line);
+  const colorway = preset.colorways?.find((cw) => cw.id === keep?.id);
+  return { presetId: preset.id, line: structuredClone({ ...preset.line, zones: colorway?.zones ?? preset.line.zones }) };
+}
+
+// Preset menu entries: one per maker product (named without a size) and one per generic preset.
+// Discontinued products say so and go last, so they come after the current ones once grouped by maker.
+export function lineMenu(presets) {
+  const seen = new Set();
+  const entries = [];
+  for (const p of presets) {
+    if (!p.product) entries.push(p);
+    else if (!seen.has(p.product)) {
+      seen.add(p.product);
+      entries.push({ ...p, id: p.product, name: p.discontinued ? `${p.productName} (discontinued)` : p.productName });
+    }
+  }
+  return [...entries.filter((e) => !e.discontinued), ...entries.filter((e) => e.discontinued)];
+}
+
+// The Preset menu entry showing for a preset id: its product, or the preset itself.
+export const menuId = (presetId) => findById(LINE_PRESETS, presetId)?.product ?? presetId;
 
 // Swatches for a line's zones: the base palette plus any maker colors the line already uses.
 export const lineSwatches = (line) => [...LINE_COLORS, ...MAKER_LINE_COLORS.filter((c) => line.zones.some((z) => z.color === c.id))];

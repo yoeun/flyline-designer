@@ -21,9 +21,9 @@ Spare spool lives in the truck: same line, same backing color, so it never gets 
 
 export const DEMO_RACK = [
   // Liquid S 3+ on 3 wt
-  { id: 'demo-1', title: '', styles: ['nymph'], notes: '', reel: { model: 'lamson-liquid-s-3', color: 'smoke' }, line: line('rio-technical-euro-nymph'), backing: backing(100, 'orange') },
-  { id: 'demo-2', title: '', styles: ['nymph'], notes: 'Competition rig.', reel: { model: 'lamson-liquid-s-3', color: 'day-break' }, line: line('sa-mastery-competition-nymph'), backing: backing(100, 'red') },
-  { id: 'demo-3', title: '', styles: ['dry', 'nymph'], notes: '', reel: { model: 'lamson-liquid-s-3', color: 'smoke' }, line: line('rio-technical-euro-nymph'), backing: backing(100, 'blue') },
+  { id: 'demo-1', title: '', styles: ['nymph'], notes: '', reel: { model: 'lamson-liquid-s-3', color: 'smoke' }, line: line('rio-technical-euro-nymph-2-5'), backing: backing(100, 'orange') },
+  { id: 'demo-2', title: '', styles: ['nymph'], notes: 'Competition rig.', reel: { model: 'lamson-liquid-s-3', color: 'day-break' }, line: line('sa-mastery-competition-nymph-level'), backing: backing(100, 'red') },
+  { id: 'demo-3', title: '', styles: ['dry', 'nymph'], notes: '', reel: { model: 'lamson-liquid-s-3', color: 'smoke' }, line: line('rio-technical-euro-nymph-2-5'), backing: backing(100, 'blue') },
   // Liquid S 5+ on 5 wt
   { id: 'demo-4', title: '', styles: ['dry'], notes: '', reel: { model: 'lamson-liquid-s-5', color: 'smoke' }, line: line('twotone-wf5f'), backing: backing(100, 'red') },
   { id: 'demo-5', title: '', styles: ['dry'], notes: LONG_NOTE, reel: { model: 'lamson-liquid-s-5', color: 'day-break' }, line: line('generic-wf5f'), backing: backing(100, 'red') },
@@ -38,6 +38,6 @@ export const DEMO_RACK = [
   { id: 'demo-12', title: '', styles: ['streamer'], notes: '', reel: { model: 'orvis-hydros-4', color: 'olive' }, line: line('wf8-sink5'), backing: backing(150, 'purple') },
   { id: 'demo-13', title: '', styles: ['streamer'], notes: '', reel: { model: 'orvis-clearwater-4', color: 'dark-pine' }, line: line('generic-wf8-sinktip'), backing: backing(150, 'orange') },
   // Old format: a name instead of title, no styles or notes
-  { id: 'demo-14', name: 'Brook trout', reel: { model: 'redington-run-34', color: 'sand' }, line: line('rio-technical-euro-nymph'), backing: backing(50, 'green') },
+  { id: 'demo-14', name: 'Brook trout', reel: { model: 'redington-run-34', color: 'sand' }, line: line('rio-technical-euro-nymph-2-5'), backing: backing(50, 'green') },
   { id: 'demo-15', title: '', styles: ['dry'], notes: '', reel: { model: 'redington-behemoth-78', color: 'army-green' }, line: line('rio-premier-gold-wf8f'), backing: backing(150, 'blue') },
 ];

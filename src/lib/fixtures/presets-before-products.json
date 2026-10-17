@@ -1,0 +1,1271 @@
+[
+ {
+  "id": "twotone-wf5f",
+  "line": {
+   "type": "floating",
+   "weight": 5,
+   "taper": {
+    "front": 4,
+    "body": 28.5,
+    "back": 4.5,
+    "running": 53
+   },
+   "zones": [
+    {
+     "length": 20,
+     "color": "chartreuse"
+    },
+    {
+     "length": 17,
+     "color": "green"
+    },
+    {
+     "length": 0,
+     "color": "orange"
+    }
+   ]
+  }
+ },
+ {
+  "id": "wf6i",
+  "line": {
+   "type": "intermediate",
+   "weight": 6,
+   "taper": {
+    "front": 6,
+    "body": 30,
+    "back": 6,
+    "running": 48
+   },
+   "zones": [
+    {
+     "length": 42,
+     "color": "smoke"
+    },
+    {
+     "length": 0,
+     "color": "blue"
+    }
+   ]
+  }
+ },
+ {
+  "id": "wf8-sink5",
+  "line": {
+   "type": "sink5",
+   "weight": 8,
+   "taper": {
+    "front": 6,
+    "body": 24,
+    "back": 4,
+    "running": 66
+   },
+   "zones": [
+    {
+     "length": 34,
+     "color": "black"
+    },
+    {
+     "length": 0,
+     "color": "chartreuse"
+    }
+   ]
+  }
+ },
+ {
+  "id": "generic-wf5f",
+  "line": {
+   "type": "floating",
+   "weight": 5,
+   "taper": {
+    "front": 5.5,
+    "body": 30,
+    "back": 11.5,
+    "running": 43
+   },
+   "zones": [
+    {
+     "length": 47,
+     "color": "green"
+    },
+    {
+     "length": 0,
+     "color": "yellow"
+    }
+   ]
+  }
+ },
+ {
+  "id": "generic-wf7i",
+  "line": {
+   "type": "intermediate",
+   "weight": 7,
+   "taper": {
+    "front": 6,
+    "body": 26,
+    "back": 8,
+    "running": 50
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "smoke"
+    }
+   ]
+  }
+ },
+ {
+  "id": "generic-wf8-sinktip",
+  "line": {
+   "type": "sinktip",
+   "weight": 8,
+   "taper": {
+    "front": 4,
+    "body": 16,
+    "back": 7,
+    "running": 73
+   },
+   "zones": [
+    {
+     "length": 18,
+     "color": "black"
+    },
+    {
+     "length": 9,
+     "color": "blue"
+    },
+    {
+     "length": 0,
+     "color": "chartreuse"
+    }
+   ]
+  }
+ },
+ {
+  "id": "rio-premier-gold-wf5f",
+  "line": {
+   "type": "floating",
+   "weight": 5,
+   "taper": {
+    "front": 5.5,
+    "body": 22.5,
+    "back": 19,
+    "running": 43
+   },
+   "zones": [
+    {
+     "length": 47,
+     "color": "rio-moss"
+    },
+    {
+     "length": 0,
+     "color": "rio-gold"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "moss-gold",
+    "name": "Moss/Gold",
+    "zones": [
+     {
+      "length": 47,
+      "color": "rio-moss"
+     },
+     {
+      "length": 0,
+      "color": "rio-gold"
+     }
+    ]
+   },
+   {
+    "id": "melon-gray-dun",
+    "name": "Melon/Gray Dun",
+    "zones": [
+     {
+      "length": 47,
+      "color": "rio-melon"
+     },
+     {
+      "length": 0,
+      "color": "rio-gray-dun"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rio-premier-gold-wf8f",
+  "line": {
+   "type": "floating",
+   "weight": 8,
+   "taper": {
+    "front": 6,
+    "body": 24,
+    "back": 20,
+    "running": 40
+   },
+   "zones": [
+    {
+     "length": 50,
+     "color": "rio-moss"
+    },
+    {
+     "length": 0,
+     "color": "rio-gold"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "moss-gold",
+    "name": "Moss/Gold",
+    "zones": [
+     {
+      "length": 50,
+      "color": "rio-moss"
+     },
+     {
+      "length": 0,
+      "color": "rio-gold"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rio-premier-aqualux-wf8i",
+  "line": {
+   "type": "intermediate",
+   "weight": 8,
+   "taper": {
+    "front": 4,
+    "body": 22,
+    "back": 4,
+    "running": 70
+   },
+   "zones": [
+    {
+     "length": 30,
+     "color": "rio-clear"
+    },
+    {
+     "length": 0,
+     "color": "rio-light-teal"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "clear-light-teal",
+    "name": "Clear/Light Teal",
+    "zones": [
+     {
+      "length": 30,
+      "color": "rio-clear"
+     },
+     {
+      "length": 0,
+      "color": "rio-light-teal"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rio-premier-fathom-wf8s5",
+  "line": {
+   "type": "sink5",
+   "weight": 8,
+   "taper": {
+    "front": 6,
+    "body": 22,
+    "back": 7,
+    "running": 70
+   },
+   "zones": [
+    {
+     "length": 35,
+     "color": "rio-black"
+    },
+    {
+     "length": 0,
+     "color": "rio-maroon"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "black-maroon",
+    "name": "Black/Maroon",
+    "zones": [
+     {
+      "length": 35,
+      "color": "rio-black"
+     },
+     {
+      "length": 0,
+      "color": "rio-maroon"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rio-premier-fathom-wf8s7",
+  "line": {
+   "type": "sink7",
+   "weight": 8,
+   "taper": {
+    "front": 6,
+    "body": 22,
+    "back": 7,
+    "running": 70
+   },
+   "zones": [
+    {
+     "length": 35,
+     "color": "rio-black"
+    },
+    {
+     "length": 0,
+     "color": "rio-grey"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "black-grey",
+    "name": "Black/Grey",
+    "zones": [
+     {
+      "length": 35,
+      "color": "rio-black"
+     },
+     {
+      "length": 0,
+      "color": "rio-grey"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rio-technical-euro-nymph",
+  "line": {
+   "type": "floating",
+   "weight": 3,
+   "taper": {
+    "front": 0.5,
+    "body": 0.5,
+    "back": 0.5,
+    "running": 92.5
+   },
+   "zones": [
+    {
+     "length": 14,
+     "color": "rio-pink"
+    },
+    {
+     "length": 0,
+     "color": "rio-yellow"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "pink-yellow",
+    "name": "Pink/Yellow",
+    "zones": [
+     {
+      "length": 14,
+      "color": "rio-pink"
+     },
+     {
+      "length": 0,
+      "color": "rio-yellow"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sa-amplitude-smooth-infinity-wf6f",
+  "line": {
+   "type": "floating",
+   "weight": 6,
+   "taper": {
+    "front": 6.5,
+    "body": 24,
+    "back": 19.5,
+    "running": 40
+   },
+   "zones": [
+    {
+     "length": 6.5,
+     "color": "sa-buckskin"
+    },
+    {
+     "length": 43.5,
+     "color": "sa-mist-green"
+    },
+    {
+     "length": 0,
+     "color": "sa-optic-green"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "optic",
+    "name": "Optic",
+    "zones": [
+     {
+      "length": 6.5,
+      "color": "sa-buckskin"
+     },
+     {
+      "length": 43.5,
+      "color": "sa-mist-green"
+     },
+     {
+      "length": 0,
+      "color": "sa-optic-green"
+     }
+    ]
+   },
+   {
+    "id": "orange",
+    "name": "Orange",
+    "zones": [
+     {
+      "length": 6.5,
+      "color": "sa-creamsicle"
+     },
+     {
+      "length": 43.5,
+      "color": "sa-satin-orange"
+     },
+     {
+      "length": 0,
+      "color": "sa-optic-green"
+     }
+    ]
+   },
+   {
+    "id": "camo",
+    "name": "Camo",
+    "zones": [
+     {
+      "length": 10,
+      "color": "sa-camo"
+     },
+     {
+      "length": 40,
+      "color": "sa-buckskin"
+     },
+     {
+      "length": 0,
+      "color": "sa-bamboo"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sa-amplitude-bass-bug-wf8f",
+  "line": {
+   "type": "floating",
+   "weight": 8,
+   "taper": {
+    "front": 5,
+    "body": 28,
+    "back": 10,
+    "running": 47
+   },
+   "zones": [
+    {
+     "length": 12.5,
+     "color": "sa-bass-camo"
+    },
+    {
+     "length": 30.5,
+     "color": "sa-shad-blue"
+    },
+    {
+     "length": 0,
+     "color": "sa-frog-green"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "camo-shad-frog",
+    "name": "Camo/Shad Blue/Frog Green",
+    "zones": [
+     {
+      "length": 12.5,
+      "color": "sa-bass-camo"
+     },
+     {
+      "length": 30.5,
+      "color": "sa-shad-blue"
+     },
+     {
+      "length": 0,
+      "color": "sa-frog-green"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sa-sonar-stillwater-clear-camo-wf6i",
+  "line": {
+   "type": "intermediate",
+   "weight": 6,
+   "taper": {
+    "front": 22.5,
+    "body": 13,
+    "back": 9.5,
+    "running": 55
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "sa-clear-camo"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "clear-camo",
+    "name": "Clear Camo",
+    "zones": [
+     {
+      "length": 0,
+      "color": "sa-clear-camo"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sa-frequency-full-sink-wf6s3",
+  "line": {
+   "type": "sink3",
+   "weight": 6,
+   "taper": {
+    "front": 4,
+    "body": 30,
+    "back": 2,
+    "running": 49
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "sa-dark-green"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "dark-green",
+    "name": "Dark Green",
+    "zones": [
+     {
+      "length": 0,
+      "color": "sa-dark-green"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sa-frequency-full-sink-wf6s6",
+  "line": {
+   "type": "sink5",
+   "weight": 6,
+   "taper": {
+    "front": 4,
+    "body": 30,
+    "back": 2,
+    "running": 49
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "sa-dark-gray"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "dark-gray",
+    "name": "Dark Gray",
+    "zones": [
+     {
+      "length": 0,
+      "color": "sa-dark-gray"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sa-frequency-sink-tip-wf6",
+  "line": {
+   "type": "sinktip",
+   "weight": 6,
+   "taper": {
+    "front": 11,
+    "body": 30,
+    "back": 4,
+    "running": 40
+   },
+   "zones": [
+    {
+     "length": 10,
+     "color": "sa-dark-green"
+    },
+    {
+     "length": 0,
+     "color": "sa-optic-yellow"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "green-optic-yellow",
+    "name": "Green/Optic Yellow",
+    "zones": [
+     {
+      "length": 10,
+      "color": "sa-dark-green"
+     },
+     {
+      "length": 0,
+      "color": "sa-optic-yellow"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sa-sonar-titan-intermediate-wf8i",
+  "line": {
+   "type": "intermediate",
+   "weight": 8,
+   "taper": {
+    "front": 5.5,
+    "body": 24.5,
+    "back": 3.5,
+    "running": 71.5
+   },
+   "zones": [
+    {
+     "length": 33.5,
+     "color": "sa-pale-green"
+    },
+    {
+     "length": 0,
+     "color": "sa-titan-blue"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "pale-green-blue",
+    "name": "Pale Green/Blue",
+    "zones": [
+     {
+      "length": 33.5,
+      "color": "sa-pale-green"
+     },
+     {
+      "length": 0,
+      "color": "sa-titan-blue"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sa-sonar-sink-25-cold-250-s3",
+  "line": {
+   "type": "sinktip",
+   "weight": 8,
+   "taper": {
+    "front": 2,
+    "body": 22,
+    "back": 1,
+    "running": 80
+   },
+   "zones": [
+    {
+     "length": 25,
+     "color": "sa-sonar-dark-green"
+    },
+    {
+     "length": 0,
+     "color": "sa-ivory"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "standard",
+    "name": "Dark Green/Ivory",
+    "zones": [
+     {
+      "length": 25,
+      "color": "sa-sonar-dark-green"
+     },
+     {
+      "length": 0,
+      "color": "sa-ivory"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sa-sonar-sink-25-cold-250-s6",
+  "line": {
+   "type": "sinktip",
+   "weight": 8,
+   "taper": {
+    "front": 2,
+    "body": 22,
+    "back": 1,
+    "running": 80
+   },
+   "zones": [
+    {
+     "length": 25,
+     "color": "sa-charcoal"
+    },
+    {
+     "length": 0,
+     "color": "sa-sonar-moss"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "standard",
+    "name": "Charcoal/Moss",
+    "zones": [
+     {
+      "length": 25,
+      "color": "sa-charcoal"
+     },
+     {
+      "length": 0,
+      "color": "sa-sonar-moss"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sa-mastery-competition-nymph",
+  "line": {
+   "type": "floating",
+   "weight": 3,
+   "taper": {
+    "front": 0.5,
+    "body": 0.5,
+    "back": 0.5,
+    "running": 78.5
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "sa-bamboo"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "bamboo",
+    "name": "Bamboo",
+    "zones": [
+     {
+      "length": 0,
+      "color": "sa-bamboo"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "airflo-ridge-universal-taper-wf5f",
+  "line": {
+   "type": "floating",
+   "weight": 5,
+   "taper": {
+    "front": 8,
+    "body": 19,
+    "back": 12,
+    "running": 51
+   },
+   "zones": [
+    {
+     "length": 39,
+     "color": "airflo-moss"
+    },
+    {
+     "length": 0,
+     "color": "airflo-ut-chartreuse"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "moss-chartreuse",
+    "name": "Moss/Chartreuse",
+    "zones": [
+     {
+      "length": 39,
+      "color": "airflo-moss"
+     },
+     {
+      "length": 0,
+      "color": "airflo-ut-chartreuse"
+     }
+    ]
+   },
+   {
+    "id": "chartreuse-white",
+    "name": "Chartreuse/White",
+    "zones": [
+     {
+      "length": 39,
+      "color": "airflo-ut-chartreuse"
+     },
+     {
+      "length": 0,
+      "color": "airflo-white"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "airflo-streamer-max-short-wf8-s3",
+  "line": {
+   "type": "sinktip",
+   "weight": 8,
+   "taper": {
+    "front": 4,
+    "body": 16,
+    "back": 7,
+    "running": 73
+   },
+   "zones": [
+    {
+     "length": 17.5,
+     "color": "airflo-black"
+    },
+    {
+     "length": 5.5,
+     "color": "airflo-green"
+    },
+    {
+     "length": 0,
+     "color": "airflo-chartreuse"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "standard",
+    "name": "Black/Green/Chartreuse",
+    "zones": [
+     {
+      "length": 17.5,
+      "color": "airflo-black"
+     },
+     {
+      "length": 5.5,
+      "color": "airflo-green"
+     },
+     {
+      "length": 0,
+      "color": "airflo-chartreuse"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "airflo-streamer-max-short-wf8-s5",
+  "line": {
+   "type": "sinktip",
+   "weight": 8,
+   "taper": {
+    "front": 4,
+    "body": 16,
+    "back": 7,
+    "running": 73
+   },
+   "zones": [
+    {
+     "length": 17.5,
+     "color": "airflo-black"
+    },
+    {
+     "length": 5.5,
+     "color": "airflo-red"
+    },
+    {
+     "length": 0,
+     "color": "airflo-orange"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "standard",
+    "name": "Black/Red/Orange",
+    "zones": [
+     {
+      "length": 17.5,
+      "color": "airflo-black"
+     },
+     {
+      "length": 5.5,
+      "color": "airflo-red"
+     },
+     {
+      "length": 0,
+      "color": "airflo-orange"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "airflo-streamer-max-short-wf8-s7",
+  "line": {
+   "type": "sinktip",
+   "weight": 8,
+   "taper": {
+    "front": 4,
+    "body": 16,
+    "back": 7,
+    "running": 73
+   },
+   "zones": [
+    {
+     "length": 17.5,
+     "color": "airflo-black"
+    },
+    {
+     "length": 5.5,
+     "color": "airflo-blue"
+    },
+    {
+     "length": 0,
+     "color": "airflo-green-chartreuse"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "standard",
+    "name": "Black/Blue/Chartreuse",
+    "zones": [
+     {
+      "length": 17.5,
+      "color": "airflo-black"
+     },
+     {
+      "length": 5.5,
+      "color": "airflo-blue"
+     },
+     {
+      "length": 0,
+      "color": "airflo-green-chartreuse"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "airflo-sixth-sense-wf7-di3",
+  "line": {
+   "type": "sink3",
+   "weight": 7,
+   "taper": {
+    "front": 20,
+    "body": 16,
+    "back": 10,
+    "running": 59
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "airflo-sinking-black"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "black",
+    "name": "Black",
+    "zones": [
+     {
+      "length": 0,
+      "color": "airflo-sinking-black"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "airflo-sixth-sense-wf7-di5",
+  "line": {
+   "type": "sink5",
+   "weight": 7,
+   "taper": {
+    "front": 20,
+    "body": 16,
+    "back": 10,
+    "running": 59
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "airflo-sinking-black"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "black",
+    "name": "Black",
+    "zones": [
+     {
+      "length": 0,
+      "color": "airflo-sinking-black"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "airflo-sixth-sense-wf7-di7",
+  "line": {
+   "type": "sink7",
+   "weight": 7,
+   "taper": {
+    "front": 20,
+    "body": 16,
+    "back": 10,
+    "running": 59
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "airflo-sinking-black"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "black",
+    "name": "Black",
+    "zones": [
+     {
+      "length": 0,
+      "color": "airflo-sinking-black"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "airflo-stillwater-intermediate-wf6",
+  "line": {
+   "type": "intermediate",
+   "weight": 6,
+   "taper": {
+    "front": 20,
+    "body": 16,
+    "back": 10,
+    "running": 59
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "airflo-clear"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "clear",
+    "name": "Clear",
+    "zones": [
+     {
+      "length": 0,
+      "color": "airflo-clear"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "cortland-444-peach-wf5f",
+  "line": {
+   "type": "floating",
+   "weight": 5,
+   "taper": {
+    "front": 8,
+    "body": 20,
+    "back": 4,
+    "running": 58
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "cortland-peach"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "peach",
+    "name": "Peach",
+    "zones": [
+     {
+      "length": 0,
+      "color": "cortland-peach"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "cortland-444-clear-camo-wf7i",
+  "line": {
+   "type": "intermediate",
+   "weight": 7,
+   "taper": {
+    "front": 8,
+    "body": 20,
+    "back": 13,
+    "running": 49
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "cortland-clear-camo"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "clear-camo",
+    "name": "Clear Camo",
+    "zones": [
+     {
+      "length": 0,
+      "color": "cortland-clear-camo"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "cortland-444-full-sink-wf6s3",
+  "line": {
+   "type": "sink3",
+   "weight": 6,
+   "taper": {
+    "front": 8,
+    "body": 20,
+    "back": 4,
+    "running": 58
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "cortland-dark-brown"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "dark-brown",
+    "name": "Dark Brown",
+    "zones": [
+     {
+      "length": 0,
+      "color": "cortland-dark-brown"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "cortland-streamer-sink-tip-15-wf7",
+  "line": {
+   "type": "sinktip",
+   "weight": 7,
+   "taper": {
+    "front": 15,
+    "body": 6,
+    "back": 10,
+    "running": 69
+   },
+   "zones": [
+    {
+     "length": 15,
+     "color": "cortland-black"
+    },
+    {
+     "length": 0,
+     "color": "cortland-green"
+    }
+   ]
+  },
+  "colorways": [
+   {
+    "id": "black-green",
+    "name": "Black/Green",
+    "zones": [
+     {
+      "length": 15,
+      "color": "cortland-black"
+     },
+     {
+      "length": 0,
+      "color": "cortland-green"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "single-wf5f",
+  "line": {
+   "type": "floating",
+   "weight": 5,
+   "taper": {
+    "front": 5,
+    "body": 30,
+    "back": 5,
+    "running": 50
+   },
+   "zones": [
+    {
+     "length": 0,
+     "color": "yellow"
+    }
+   ]
+  }
+ }
+]

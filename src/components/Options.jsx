@@ -8,9 +8,12 @@ import {
   REELS,
   findById,
   lineColorway,
+  lineMenu,
   lineSwatches,
   makerGroups,
+  menuId,
   nameOf,
+  productSizes,
   reelColors,
   withReelModel,
 } from '../data/catalog.js';
@@ -53,9 +56,10 @@ const MONO = 'font-mono tabular-nums';
 // Maker-grouped options for the searchable Model and Preset menus. The catalog is static, so build them once.
 const toGroups = (groups, label) => groups.map(([maker, items]) => ({ label: maker, items: items.map((item) => ({ value: item.id, label: label(item) })) }));
 const REEL_GROUPS = toGroups(makerGroups(REELS, 'Generic'), (r) => r.name);
-// Generic lines sort by weight; maker lines keep the catalog's product order.
+// One entry per maker product; its sizes are picked under Weight. Generic lines sort by weight;
+// maker lines keep the catalog's product order.
 const byWeight = (a, b) => a.line.weight - b.line.weight || a.name.localeCompare(b.name);
-const presetGroups = makerGroups(LINE_PRESETS, 'Generic').map(([maker, presets]) => [maker, maker === 'Generic' ? [...presets].sort(byWeight) : presets]);
+const presetGroups = makerGroups(lineMenu(LINE_PRESETS), 'Generic').map(([maker, presets]) => [maker, maker === 'Generic' ? [...presets].sort(byWeight) : presets]);
 const PRESET_GROUPS = [...toGroups(presetGroups, (p) => p.name), { label: null, items: [{ value: 'custom', label: 'Custom' }] }];
 
 const STRENGTHS = [20, 30].map((lb) => [lb, `${lb} lb`]);
@@ -163,6 +167,8 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
   const locked = presetId !== 'custom';
   const preset = findById(LINE_PRESETS, presetId);
   const colorway = lineColorway(preset, line);
+  // A maker line's weights are the sizes its product is sold in; picking one switches preset.
+  const sizes = preset?.product ? productSizes(preset.product) : null;
   const editRef = useRef(null);
   const selected = selection !== null;
 
@@ -187,24 +193,34 @@ export function FlyLineOptions({ line, backingColor, presetId, onChange, onPrese
     <section className={GROUP}>
       <SectionHeading title="Fly line" changed={changed} onReset={onReset} />
       <div className="flex flex-wrap gap-2.5">
-        <SearchableSelect label="Preset" grow groups={PRESET_GROUPS} value={presetId} onChange={onPreset} placeholder="Search lines" />
+        <SearchableSelect label="Preset" grow groups={PRESET_GROUPS} value={menuId(presetId)} onChange={onPreset} placeholder="Search lines" />
         <Select label="Type" grow items={TYPE_ITEMS} value={line.type} disabled={locked} onChange={(type) => onChange({ ...line, type })} />
-        <Select label="Weight" items={WEIGHT_ITEMS} value={line.weight} disabled={locked} onChange={(weight) => onChange({ ...line, weight })} triggerClassName="w-[85px]" />
+        {sizes ? (
+          <Select key={preset.product} label="Weight" items={sizes.map((s) => ({ value: s.id, label: s.sizeLabel }))} value={presetId} disabled={sizes.length < 2} onChange={onPreset} triggerClassName="w-auto min-w-[85px]" />
+        ) : (
+          <Select label="Weight" items={WEIGHT_ITEMS} value={line.weight} disabled={locked} onChange={(weight) => onChange({ ...line, weight })} triggerClassName="w-[85px]" />
+        )}
       </div>
+      {/* Keyed so a new preset's selects start fresh: kept mounted, the select reports the old value back. */}
       {preset?.colorways && (
         <Select
+          key={preset.id}
           label="Colorway"
           items={preset.colorways.map((cw) => ({ value: cw.id, label: cw.name }))}
           value={colorway?.id ?? null}
           disabled={preset.colorways.length < 2}
-          onChange={(id) => onColorway(findById(preset.colorways, id))}
+          onChange={(id) => {
+            const cw = findById(preset.colorways, id);
+            if (cw) onColorway(cw);
+          }}
         />
       )}
       <div ref={editRef} className="flex flex-col gap-3.5">
         <LineEditor line={line} selection={selection} onSelect={onSelect} onChange={onChange} backingColor={backingColor} zonesLocked={Boolean(colorway)} />
         <LineSelection line={line} selection={selection} onChange={onChange} onSelect={onSelect} colorLocked={Boolean(colorway)} />
       </div>
-      {locked && <p className={HINT}>Choose Custom to change type or weight.</p>}
+      {preset?.estimated && <p className={HINT}>Taper split estimated from the maker's published head length.</p>}
+      {locked && <p className={HINT}>{sizes ? 'Choose Custom to change type, taper or colors.' : 'Choose Custom to change type or weight.'}</p>}
     </section>
   );
 }

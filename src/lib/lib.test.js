@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { DEMO_RACK } from '../data/demoRack.js';
 import {
   DEFAULT_SETUP,
+  LEGACY_PRESET_IDS,
   LINE_COLORS,
   LINE_PRESETS,
   LINE_TYPES,
@@ -10,12 +11,19 @@ import {
   REEL_COLORS,
   findById,
   lineColorway,
+  lineMenu,
   lineSwatches,
+  menuId,
   presetForLine,
   makerGroups,
+  nearestSize,
+  productSizes,
+  switchLine,
   reelColors,
   withReelModel,
 } from '../data/catalog.js';
+import { makerProduct, zones } from '../data/lines/product.js';
+import BEFORE_PRODUCTS from './fixtures/presets-before-products.json';
 import { rackConflicts, backingContrast, conflictsFor } from './checks.js';
 import { deltaE } from './color.js';
 import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
@@ -136,7 +144,7 @@ describe('real line presets', () => {
     ['rio-premier-gold-wf5f', 47, 90],
     ['rio-premier-gold-wf8f', 50, 90],
     ['rio-premier-aqualux-wf8i', 30, 100],
-    ['rio-technical-euro-nymph', 1.5, 94],
+    ['rio-technical-euro-nymph-2-5', 1.5, 94],
     ['rio-premier-fathom-wf8s7', 35, 105],
     ['sa-amplitude-smooth-infinity-wf6f', 50, 90],
     ['sa-amplitude-bass-bug-wf8f', 43, 90],
@@ -145,7 +153,7 @@ describe('real line presets', () => {
     ['sa-frequency-sink-tip-wf6', 45, 85],
     ['sa-sonar-titan-intermediate-wf8i', 33.5, 105],
     ['sa-sonar-sink-25-cold-250-s6', 25, 105],
-    ['sa-mastery-competition-nymph', 1.5, 80],
+    ['sa-mastery-competition-nymph-level', 1.5, 80],
     ['airflo-ridge-universal-taper-wf5f', 39, 90],
     ['airflo-streamer-max-short-wf8-s7', 27, 100],
     ['airflo-sixth-sense-wf7-di5', 46, 105],
@@ -700,5 +708,177 @@ describe('demo rack', () => {
     const conflicts = rackConflicts(rack);
     expect(conflicts.some((c) => c.ids.length === 1)).toBe(true);
     expect(conflicts.some((c) => c.ids.length === 2)).toBe(true);
+  });
+});
+
+describe('maker products', () => {
+  const gold = (id) => findById(LINE_PRESETS, `rio-premier-gold-${id}`);
+
+  it('makerProduct expands a product into one preset per size', () => {
+    const colorways = [{ id: 'red', name: 'Red', zones: zones([0, 'red']) }];
+    const presets = makerProduct({
+      id: 'acme-trout',
+      maker: 'Acme',
+      name: 'Acme Trout',
+      sizes: [
+        { id: 'wf4f', label: 'WF4F', type: 'floating', weight: 4, taper: [5, 20, 10, 55], colorways },
+        { id: 'wf5f', label: 'WF5F', type: 'floating', weight: 5, taper: [6, 20, 10, 54], estimated: true, colorways },
+      ],
+    });
+    expect(presets).toEqual([
+      {
+        id: 'acme-trout-wf4f',
+        product: 'acme-trout',
+        maker: 'Acme',
+        name: 'Acme Trout WF4F',
+        productName: 'Acme Trout',
+        sizeLabel: 'WF4F',
+        discontinued: false,
+        estimated: false,
+        colorways,
+        line: { type: 'floating', weight: 4, taper: { front: 5, body: 20, back: 10, running: 55 }, zones: colorways[0].zones },
+      },
+      expect.objectContaining({ id: 'acme-trout-wf5f', name: 'Acme Trout WF5F', estimated: true, line: expect.objectContaining({ weight: 5 }) }),
+    ]);
+    expect(makerProduct({ id: 'x', maker: 'Acme', name: 'X', discontinued: true, sizes: [{ id: 'a', label: 'A', type: 'floating', weight: 5, taper: [1, 1, 1, 1], colorways }] })[0].discontinued).toBe(true);
+  });
+
+  it('every preset from before products still loads the same line, by its id or a legacy mapping', () => {
+    for (const { id, line, colorways } of BEFORE_PRODUCTS) {
+      const preset = findById(LINE_PRESETS, LEGACY_PRESET_IDS[id] ?? id);
+      expect(preset, id).toBeDefined();
+      expect(preset.line, id).toEqual(line);
+      expect(preset.colorways, id).toEqual(colorways);
+    }
+  });
+
+  it('legacy ids point at presets and are not presets themselves', () => {
+    for (const [old, id] of Object.entries(LEGACY_PRESET_IDS)) {
+      expect(findById(LINE_PRESETS, old)).toBeUndefined();
+      expect(findById(LINE_PRESETS, id)).toBeDefined();
+    }
+  });
+
+  it('an old share link with a legacy id loads the new preset', () => {
+    const [old, id] = Object.entries(LEGACY_PRESET_IDS)[0];
+    expect(queryToState(`?line=${old}`)).toMatchObject({ presetId: id, setup: { line: findById(LINE_PRESETS, id).line } });
+    expect(queryToState('?line=rio-premier-gold-wf8f').presetId).toBe('rio-premier-gold-wf8f');
+  });
+
+  it('ids are unique and product ids never collide with preset ids', () => {
+    const ids = LINE_PRESETS.map((p) => p.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const p of LINE_PRESETS.filter((x) => x.product)) expect(ids).not.toContain(p.product);
+  });
+
+  it('merges per-weight entries into one product', () => {
+    expect(productSizes('rio-premier-gold').map((p) => p.sizeLabel)).toEqual(['WF2F', 'WF3F', 'WF4F', 'WF5F', 'WF6F', 'WF7F', 'WF8F', 'WF9F']);
+    expect(productSizes('rio-premier-fathom').map((p) => p.id)).toEqual(['rio-premier-fathom-wf8s5', 'rio-premier-fathom-wf8s7']);
+    expect(productSizes('airflo-streamer-max-short')).toHaveLength(3);
+    expect(productSizes('airflo-sixth-sense').map((p) => p.sizeLabel)).toEqual(['WF7 Di3', 'WF7 Di5', 'WF7 Di7']);
+    expect(productSizes('generic-wf5f')).toEqual([]);
+  });
+
+  it.each([
+    ['wf2f', 2, 44, 80],
+    ['wf3f', 3, 45, 80],
+    ['wf4f', 4, 46, 90],
+    ['wf5f', 5, 47, 90],
+    ['wf6f', 6, 48, 90],
+    ['wf7f', 7, 49, 90],
+    ['wf8f', 8, 50, 90],
+    ['wf9f', 9, 50, 90],
+  ])('Premier Gold %s is a %i wt with RIO\'s %i ft head on a %i ft line', (size, weight, head, length) => {
+    const { line } = gold(size);
+    expect(line.weight).toBe(weight);
+    expect(line.taper.front + line.taper.body + line.taper.back).toBe(head);
+    expect(totalLength(line)).toBe(length);
+    expect(gold(size).estimated).toBe(size !== 'wf5f');
+    expect(line.zones).toEqual(zones([head, 'rio-moss'], [0, 'rio-gold']));
+  });
+
+  it('Premier Gold comes in Melon/Gray Dun only in WF4–6', () => {
+    const melon = productSizes('rio-premier-gold').filter((p) => p.colorways.some((cw) => cw.id === 'melon-gray-dun'));
+    expect(melon.map((p) => p.sizeLabel)).toEqual(['WF4F', 'WF5F', 'WF6F']);
+    expect(gold('wf4f').colorways[1].zones).toEqual(zones([46, 'rio-melon'], [0, 'rio-gray-dun']));
+  });
+
+  it('the nearest size takes the first at the weight, else the closest, ties lighter', () => {
+    const sizes = [
+      { id: 'a4', line: { weight: 4 } },
+      { id: 'b6', line: { weight: 6 } },
+      { id: 'c6', line: { weight: 6 } },
+      { id: 'd8', line: { weight: 8 } },
+    ];
+    expect(nearestSize(sizes, 6).id).toBe('b6');
+    expect(nearestSize(sizes, 5).id).toBe('a4');
+    expect(nearestSize(sizes, 7).id).toBe('b6');
+    expect(nearestSize(sizes, 12).id).toBe('d8');
+    expect(nearestSize(sizes, 1).id).toBe('a4');
+  });
+
+  it('switching product keeps the weight, or lands on the nearest', () => {
+    const line = findById(LINE_PRESETS, 'generic-wf7i').line;
+    expect(switchLine('rio-premier-gold', line, 'generic-wf7i').presetId).toBe('rio-premier-gold-wf7f');
+    expect(switchLine('rio-premier-fathom', line, 'generic-wf7i').presetId).toBe('rio-premier-fathom-wf8s5');
+    const two = gold('wf2f').line;
+    expect(switchLine('cortland-444-peach', two, 'rio-premier-gold-wf2f')).toMatchObject({ presetId: 'cortland-444-peach-wf5f', line: findById(LINE_PRESETS, 'cortland-444-peach-wf5f').line });
+  });
+
+  it('switching to a generic preset or a size loads its line', () => {
+    const { line } = gold('wf5f');
+    expect(switchLine('generic-wf5f', line, 'rio-premier-gold-wf5f')).toEqual({ presetId: 'generic-wf5f', line: findById(LINE_PRESETS, 'generic-wf5f').line });
+    expect(switchLine('rio-premier-gold-wf8f', line, 'rio-premier-gold-wf5f')).toEqual({ presetId: 'rio-premier-gold-wf8f', line: gold('wf8f').line });
+    expect(switchLine('nope', line, 'rio-premier-gold-wf5f')).toBeNull();
+  });
+
+  it('switching size keeps the colorway when the new size comes in it', () => {
+    const melon = { ...structuredClone(gold('wf5f').line), zones: gold('wf5f').colorways[1].zones };
+    const six = switchLine('rio-premier-gold-wf6f', melon, 'rio-premier-gold-wf5f');
+    expect(lineColorway(gold('wf6f'), six.line).id).toBe('melon-gray-dun');
+    const eight = switchLine('rio-premier-gold-wf8f', melon, 'rio-premier-gold-wf5f');
+    expect(lineColorway(gold('wf8f'), eight.line).id).toBe('moss-gold');
+    // Through the product too: picking Premier Gold again at 5 wt keeps Melon.
+    expect(lineColorway(gold('wf5f'), switchLine('rio-premier-gold', melon, 'rio-premier-gold-wf5f').line).id).toBe('melon-gray-dun');
+  });
+
+  it('switched lines are copies, not the catalog\'s own objects', () => {
+    const { line } = switchLine('rio-premier-gold-wf8f', gold('wf5f').line, 'rio-premier-gold-wf5f');
+    expect(line).not.toBe(gold('wf8f').line);
+    expect(line.zones).not.toBe(gold('wf8f').line.zones);
+  });
+
+  it('the menu has one entry per product, discontinued ones last within their maker', () => {
+    const menu = lineMenu(LINE_PRESETS);
+    const ids = menu.map((m) => m.id);
+    expect(ids.filter((id) => id === 'rio-premier-gold')).toHaveLength(1);
+    expect(ids).not.toContain('rio-premier-gold-wf5f');
+    expect(ids).toContain('generic-wf5f');
+    expect(menu.find((m) => m.id === 'rio-premier-gold')).toMatchObject({ maker: 'RIO', name: 'RIO Premier Gold' });
+
+    const colorways = [{ id: 'red', name: 'Red', zones: zones([0, 'red']) }];
+    const size = { id: 'wf5f', label: 'WF5F', type: 'floating', weight: 5, taper: [1, 1, 1, 1], colorways };
+    const fake = [
+      ...makerProduct({ id: 'acme-old', maker: 'Acme', name: 'Acme Old', discontinued: true, sizes: [size] }),
+      ...makerProduct({ id: 'acme-new', maker: 'Acme', name: 'Acme New', sizes: [size] }),
+    ];
+    expect(lineMenu(fake).map((m) => [m.id, m.name])).toEqual([
+      ['acme-new', 'Acme New'],
+      ['acme-old', 'Acme Old (discontinued)'],
+    ]);
+  });
+
+  it('the menu entry for a preset is its product, or the preset itself', () => {
+    expect(menuId('rio-premier-gold-wf8f')).toBe('rio-premier-gold');
+    expect(menuId('generic-wf5f')).toBe('generic-wf5f');
+    expect(menuId('custom')).toBe('custom');
+  });
+
+  it('a saved line still finds its size', () => {
+    for (const id of ['rio-premier-gold-wf3f', 'rio-premier-gold-wf8f', 'airflo-sixth-sense-wf7-di7', 'sa-sonar-sink-25-cold-250-s6']) {
+      expect(presetForLine(structuredClone(findById(LINE_PRESETS, id).line))).toBe(id);
+    }
+    const melon = { ...structuredClone(gold('wf6f').line), zones: structuredClone(gold('wf6f').colorways[1].zones) };
+    expect(presetForLine(melon)).toBe('rio-premier-gold-wf6f');
   });
 });

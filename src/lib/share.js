@@ -1,4 +1,4 @@
-import { BACKING_COLORS, BACKING_DIAMETER, DEFAULT_SETUP, LINE_PRESETS, REELS, findById, lineColorway, reelColors } from '../data/catalog.js';
+import { BACKING_COLORS, BACKING_DIAMETER, DEFAULT_SETUP, LEGACY_PRESET_IDS, LINE_PRESETS, REELS, findById, lineColorway, reelColors } from '../data/catalog.js';
 import { STYLES, legacyTitle, normalizeEntry } from './rack.js';
 
 // The whole design lives in the URL query so a reload or a shared link restores it. Catalog picks
@@ -93,7 +93,8 @@ export function queryToState(search, hash = '') {
 
   let presetId = base.presetId;
   const custom = q.has('l') ? fromBase64Url(q.get('l')) : null;
-  const preset = findById(LINE_PRESETS, q.get('line'));
+  // Lines whose id changed when sizes were grouped into products load as the size that replaced them.
+  const preset = findById(LINE_PRESETS, LEGACY_PRESET_IDS[q.get('line')] ?? q.get('line'));
   if (validLine(custom)) {
     setup.line = custom;
     presetId = 'custom';

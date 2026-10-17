@@ -12,7 +12,7 @@ import ReelPreview from './components/ReelPreview.jsx';
 import { Toaster } from './components/ui/sonner.jsx';
 import SetupTitle from './components/SetupTitle.jsx';
 import ThemeToggle from './components/ThemeToggle.jsx';
-import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetForLine } from './data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetForLine, switchLine } from './data/catalog.js';
 import { DEMO_RACK } from './data/demoRack.js';
 import { exportPng, exportSvg } from './lib/export.js';
 import { rackConflicts } from './lib/checks.js';
@@ -123,15 +123,15 @@ export default function App() {
 
   const selection = clampSelection(lineSelection, setup.line);
 
+  // id is a product or generic preset from the Preset menu, a size from the Weight menu, or 'custom'.
   const applyPreset = (id) => {
     setLineSelection(null);
     if (id === 'custom') {
       setState({ setup, presetId: 'custom' });
       return;
     }
-    const preset = findById(LINE_PRESETS, id);
-    if (!preset) return;
-    setState({ setup: { ...setup, line: structuredClone(preset.line) }, presetId: id });
+    const next = switchLine(id, setup.line, presetId);
+    if (next) setState({ setup: { ...setup, line: next.line }, presetId: next.presetId });
   };
 
   const discardOk = () => !dirty || window.confirm(`Discard your changes to “${displayName(setup)}”? They aren't saved to your rack.`);
