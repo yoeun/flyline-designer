@@ -1,6 +1,6 @@
 // Lamson Speedster S.
 // The photos are three-quarter views; the straight-on spoke angles, the 16-slot ring and the handle radius are inferred.
-import { ACCENT, P, circle, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, foot, hexSpokes, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // Drag side: a wide bar tapering from the foot to the hub, a slim one down to 6 o'clock and two spokes a side,
 // leaving big open windows. With the two bars they make six spokes 60° apart, each on a bar of the ring behind.
@@ -27,28 +27,16 @@ export const drag = svg({
 // Spool side, like the Liquid S, with the hub cap in the finish's accent: six spokes, each tangent to a small hexagon at the hub, sweeping out counter-clockwise
 // to the cage, where each lands on a bar of the 18-window ring (every third). The handle is on the upper-left spoke.
 const HEX = 38; // hexagon's inner radius: each spoke's line passes this far from the center
-const CAGE = 132; // where the spokes meet the window ring
-const REACH = Math.sqrt(CAGE * CAGE - HEX * HEX);
-const SWEEP = (Math.atan2(REACH, HEX) * 180) / Math.PI; // outer end, degrees clockwise of the tangent point
-const SPOKE_ENDS = [0, 1, 2, 3, 4, 5].map((k) => -75 + k * 60);
-// Drawn clockwise, then mirrored top to bottom and turned one cage bar (20°) counter-clockwise.
-const TURN = rad(-20);
-const flip = ([x, y]) => [x * Math.cos(TURN) + y * Math.sin(TURN), x * Math.sin(TURN) - y * Math.cos(TURN)];
-// A spoke: from its hexagon corner (behind the tangent point) into the cage ring.
-const spokeLine = (end) => {
-  const t = rad(end - SWEEP), [tx, ty] = P(HEX, t), d = [-Math.sin(t), Math.cos(t)];
-  const at = (u) => [tx + d[0] * u, ty + d[1] * u];
-  return { from: flip(at(-HEX * Math.tan(rad(30)))), cage: flip(at(REACH + 4)) };
-};
-const SPOKE_LINES = SPOKE_ENDS.map(spokeLine);
-const handle = SPOKE_LINES[4].cage;
+const SPOKE_ENDS = [0, 1, 2, 3, 4, 5].map((k) => 55 - k * 60);
+const SPOKE_LINES = hexSpokes({ hex: HEX, reach: 132, ends: SPOKE_ENDS, ccw: true, overshoot: 4 });
+const handle = SPOKE_LINES[4].end;
 const holes = [0, 1, 2, 3, 4, 5].map((k) => `<circle cx="${P(13, rad(k * 60)).map((v) => v.toFixed(1)).join('" cy="')}" r="3" fill="#2a2c2e"/>`).join('');
 export const spool = svg({
   back: [foot(128, -244, 14, 34)],
   body: [
-    ring(200, 128) + slots({ n: 18, rIn: 140, rOut: 186, bar: 14, corner: 7, off: -SPOKE_ENDS[0] }),
-    ...SPOKE_LINES.map(({ from, cage }) => strut(from, cage, 22, 16)),
-    roundPoly(SPOKE_LINES.map(({ from }) => from), 3),
+    ring(200, 128) + slots({ n: 18, rIn: 140, rOut: 186, bar: 14, corner: 7, off: SPOKE_ENDS[0] }),
+    ...SPOKE_LINES.map(({ corner, end }) => strut(corner, end, 22, 16)),
+    roundPoly(SPOKE_LINES.map(({ corner }) => corner), 3),
     circle(30),
   ],
   details: `${knob(...handle, 17)}<circle r="24" ${ACCENT}/><circle r="24" fill="url(#sheen)"/><circle r="24" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>${holes}<circle r="4" fill="#d6d8d6"/>`,

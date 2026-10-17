@@ -138,3 +138,17 @@ export const pad = (r, deg, w, h) => {
 // A bar through polyline points, w wide.
 export const bars = (pts, w) => pts.slice(1).map((p, i) => strut(pts[i], p, w)).concat(pts.slice(1, -1).map(([x, y]) => circle(w / 2, x, y)));
 
+
+// Spokes each tangent to a hexagon at the hub, like Lamson's Liquid S spool: { corner, end } per spoke, from its
+// hexagon corner out to radius `reach`, where it ends at `ends` degrees. They sweep clockwise outward, or
+// counter-clockwise with ccw. `hex` is the hexagon's inner radius; `overshoot` runs each spoke a little past `reach`.
+export function hexSpokes({ hex, reach, ends, ccw = false, overshoot = 0 }) {
+  const along = Math.sqrt(reach * reach - hex * hex);
+  const sweep = (Math.atan2(along, hex) * 180) / Math.PI;
+  return ends.map((end) => {
+    const t = rad(ccw ? end + sweep : end - sweep);
+    const [tx, ty] = P(hex, t), d = ccw ? [Math.sin(t), -Math.cos(t)] : [-Math.sin(t), Math.cos(t)];
+    const at = (u) => [tx + d[0] * u, ty + d[1] * u];
+    return { corner: at(-hex * Math.tan(rad(30))), end: at(along + overshoot) };
+  });
+}
