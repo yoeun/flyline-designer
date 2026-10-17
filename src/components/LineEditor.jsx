@@ -1,4 +1,5 @@
 import { useId, useRef } from 'react';
+import { cn } from '@/lib/utils';
 import { hexOf, nameOf } from '../data/catalog.js';
 import { lineDiameters, totalLength, zoneRanges } from '../lib/geometry.js';
 import { STEP, TAPER_KEYS, TAPER_NAMES, editorScale, formatFeet, moveTaperBoundary, moveZoneBoundary, zoneName } from '../lib/lineEdit.js';
@@ -14,6 +15,15 @@ const sameLengths = (a, b) =>
   TAPER_KEYS.every((k) => a.taper[k] === b.taper[k]) && a.zones.every((z, i) => z.length === b.zones[i].length);
 
 const SHORT = { front: 'FRONT', body: 'BODY', back: 'BACK', running: 'RUNNING LINE' };
+
+// Labels grow on phones, where the whole editor is drawn smaller.
+const NAME = 'fill-muted-foreground font-sans text-[8px] font-semibold tracking-[0.08em] max-[480px]:text-[12px]';
+const LEN = 'fill-muted-foreground font-mono text-[8.5px] max-[480px]:text-[12.5px]';
+const SELECTED_TEXT = 'fill-foreground font-semibold';
+// Clickable parts: a transparent hit box (the first rect) that outlines on keyboard focus.
+const PART = 'cursor-pointer outline-none [&:focus-visible>rect:first-child]:stroke-primary [&:focus-visible>rect:first-child]:stroke-2';
+const RULE = 'stroke-muted-foreground stroke-1';
+const RULE_ON = 'stroke-foreground stroke-3';
 
 function zoneLabel(z, count) {
   if (z.index === count - 1) return `rest · ${nameOf(z.color).toLowerCase()}`;
@@ -114,7 +124,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
     <svg
       ref={svgRef}
       viewBox={`0 0 ${W} 114`}
-      className="line-editor"
+      className="block h-auto w-full select-none"
       role="group"
       aria-label="Fly line editor"
       onPointerMove={onPointerMove}
@@ -128,10 +138,10 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
         </clipPath>
       </defs>
 
-      <line className="line-editor__rule" x1={x(total)} x2={x(0)} y1={RULE_Y} y2={RULE_Y} />
-      <g className="line-editor__tick">
-        <line className={edgeOn(4) ? 'is-on' : undefined} x1={x(total)} x2={x(total)} y1={RULE_Y - 6} y2={RULE_Y + 6} />
-        <line className={edgeOn(0) ? 'is-on' : undefined} x1={x(0)} x2={x(0)} y1={RULE_Y - 6} y2={RULE_Y + 6} />
+      <line className={RULE} x1={x(total)} x2={x(0)} y1={RULE_Y} y2={RULE_Y} />
+      <g strokeLinecap="round">
+        <line className={edgeOn(4) ? RULE_ON : RULE} x1={x(total)} x2={x(total)} y1={RULE_Y - 6} y2={RULE_Y + 6} />
+        <line className={edgeOn(0) ? RULE_ON : RULE} x1={x(0)} x2={x(0)} y1={RULE_Y - 6} y2={RULE_Y + 6} />
       </g>
       {scale.edges.map((e) => {
         const sel = { kind: 'taper', key: e.key };
@@ -144,16 +154,16 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
             tabIndex={0}
             aria-pressed={on}
             aria-label={`${TAPER_NAMES[e.key]}, ${formatFeet(t[e.key])}`}
-            className={`line-editor__span${on ? ' is-selected' : ''}`}
+            className={PART}
             onClick={select(sel)}
             onKeyDown={onActivate(sel)}
           >
             <rect x={LEFT + e.x1} y="6" width={e.x0 - e.x1} height="46" rx="4" fill="transparent" />
-            {on && <line className="line-editor__rule-on" x1={LEFT + e.x1} x2={LEFT + e.x0} y1={RULE_Y} y2={RULE_Y} />}
-            <text className="line-editor__name" x={mid} y={RULE_Y - 11} textAnchor="middle">
+            {on && <line className={RULE_ON} strokeLinecap="round" x1={LEFT + e.x1} x2={LEFT + e.x0} y1={RULE_Y} y2={RULE_Y} />}
+            <text className={cn(NAME, on && SELECTED_TEXT)} x={mid} y={RULE_Y - 11} textAnchor="middle">
               {SHORT[e.key]}
             </text>
-            <text className="line-editor__len" x={mid} y={RULE_Y + 17} textAnchor="middle">
+            <text className={cn(LEN, on && SELECTED_TEXT)} x={mid} y={RULE_Y + 17} textAnchor="middle">
               {formatFeet(t[e.key])}
             </text>
           </g>
@@ -165,7 +175,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
         {zones.map((z) => (
           <rect
             key={z.index}
-            className={dim(z.index) ? 'is-dim' : undefined}
+            className={dim(z.index) ? 'opacity-30' : undefined}
             x={x(z.end)}
             y={MID - 14}
             width={Math.max(0, x(z.start) - x(z.end))}
@@ -174,7 +184,7 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
           />
         ))}
       </g>
-      <polygon className="line-editor__outline" points={outline} />
+      <polygon className="fill-none stroke-foreground [stroke-opacity:0.25]" points={outline} />
       {zones.map((z) => {
         const sel = { kind: 'zone', index: z.index };
         const on = isZone(z.index);
@@ -186,12 +196,12 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
             tabIndex={0}
             aria-pressed={on}
             aria-label={`${zoneName(z.index, zones.length)}, ${nameOf(z.color)}, ${formatFeet(z.length)}`}
-            className={`line-editor__zone${on ? ' is-selected' : ''}${dim(z.index) ? ' is-dim' : ''}`}
+            className={cn(PART, dim(z.index) && 'opacity-30')}
             onClick={select(sel)}
             onKeyDown={onActivate(sel)}
           >
             <rect x={x(z.end)} y={MID - 18} width={width} height="52" rx="4" fill="transparent" />
-            <text className="line-editor__len" x={x(z.end) + width / 2} y={MID + 30} textAnchor="middle">
+            <text className={cn(LEN, on && SELECTED_TEXT)} x={x(z.end) + width / 2} y={MID + 30} textAnchor="middle">
               {zoneLabel(z, zones.length)}
             </text>
           </g>
@@ -209,13 +219,13 @@ export default function LineEditor({ line, selection, onSelect, onChange, backin
           aria-valuemax={total}
           aria-valuenow={h.ft}
           aria-valuetext={`${formatFeet(h.ft)} from the tip`}
-          className={`line-editor__handle${h.on ? ' is-on' : ''}`}
+          className="cursor-ew-resize touch-none outline-none [&:focus-visible>rect]:stroke-primary [&:focus-visible>rect]:stroke-2 [&:hover>rect]:fill-accent"
           onPointerDown={onPointerDown(h)}
           onClick={(e) => e.stopPropagation()}
           onKeyDown={onHandleKey(h)}
         >
           <rect x={x(h.ft) - 10} y={h.y1 - 3} width="20" height={h.y2 - h.y1 + 6} rx="4" fill="transparent" />
-          <line x1={x(h.ft)} x2={x(h.ft)} y1={h.y1} y2={h.y2} />
+          <line className={cn('stroke-foreground', h.on ? 'stroke-3' : 'stroke-2')} strokeLinecap="round" x1={x(h.ft)} x2={x(h.ft)} y1={h.y1} y2={h.y2} />
         </g>
       ))}
     </svg>

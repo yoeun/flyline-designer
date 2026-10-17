@@ -29,7 +29,7 @@ const MODES = [
 const OPTIONS = MODES.map(([id, label, icon]) => [
   id,
   label,
-  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeLinecap="round" aria-hidden="true">
+  <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeLinecap="round" aria-hidden="true">
     {icon}
   </svg>,
 ]);
