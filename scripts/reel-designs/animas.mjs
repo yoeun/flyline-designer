@@ -27,7 +27,13 @@ const plaqueArt =
   `<path d="M-14 -100C-4 -106 4 -96 14 -102M-12 -88C-2 -94 6 -84 16 -90" fill="none" stroke="#000" stroke-opacity=".22" stroke-width="1.6"/>`;
 
 const PAIRS = [0, 1, 2, 3, 4].map((k) => 90 + k * 72);
-const pair = (a) => [-1, 1].map((s) => strut(P(86, rad(a + s * 15)), P(190, rad(a + s * 13)), 18, 16));
+// Each bar runs straight from under the knob out to the rim.
+const pair = (a) =>
+  [-1, 1].map((s) => {
+    const p0 = P(86, rad(a + s * 15)), p1 = P(190, rad(a + s * 13));
+    const len = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]), back = 50 / len;
+    return strut([p0[0] - (p1[0] - p0[0]) * back, p0[1] - (p1[1] - p0[1]) * back], p1, 18, 16);
+  });
 
 export const drag = svg({
   back: [ring(186, 138) + slots(OUTER)],
