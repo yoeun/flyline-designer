@@ -549,8 +549,11 @@ describe('change tracking', () => {
 });
 
 describe('presetForLine', () => {
+  // RIO's OutBound Short Int/3/5 and Int/5/7 have the same taper and colors, so they can't be told apart.
+  const lookalikes = new Set([6, 7, 8, 9, 10].map((w) => `rio-premier-outbound-short-wf${w}-int-5-7`));
   it('finds the preset a line was loaded from', () => {
-    for (const preset of LINE_PRESETS) expect(presetForLine(structuredClone(preset.line))).toBe(preset.id);
+    for (const preset of LINE_PRESETS.filter((p) => !lookalikes.has(p.id))) expect(presetForLine(structuredClone(preset.line))).toBe(preset.id);
+    for (const id of lookalikes) expect(presetForLine(structuredClone(findById(LINE_PRESETS, id).line))).toBe(id.replace('int-5-7', 'int-3-5'));
   });
 
   it('finds a maker line in any of its colorways', () => {
@@ -773,7 +776,12 @@ describe('maker products', () => {
 
   it('merges per-weight entries into one product', () => {
     expect(productSizes('rio-premier-gold').map((p) => p.sizeLabel)).toEqual(['WF2F', 'WF3F', 'WF4F', 'WF5F', 'WF6F', 'WF7F', 'WF8F', 'WF9F']);
-    expect(productSizes('rio-premier-fathom').map((p) => p.id)).toEqual(['rio-premier-fathom-wf8s5', 'rio-premier-fathom-wf8s7']);
+    expect(productSizes('rio-premier-fathom').map((p) => p.sizeLabel)).toEqual([
+      'WF5 Sink 3', 'WF5 Sink 5', 'WF5 Sink 6',
+      'WF6 Sink 3', 'WF6 Sink 5', 'WF6 Sink 6', 'WF6 Sink 7',
+      'WF7 Sink 3', 'WF7 Sink 5', 'WF7 Sink 6', 'WF7 Sink 7',
+      'WF8 Sink 3', 'WF8 Sink 5', 'WF8 Sink 6', 'WF8 Sink 7',
+    ]);
     expect(productSizes('airflo-streamer-max-short')).toHaveLength(3);
     expect(productSizes('airflo-sixth-sense').map((p) => p.sizeLabel)).toEqual(['WF7 Di3', 'WF7 Di5', 'WF7 Di7']);
     expect(productSizes('generic-wf5f')).toEqual([]);
@@ -820,7 +828,8 @@ describe('maker products', () => {
   it('switching product keeps the weight, or lands on the nearest', () => {
     const line = findById(LINE_PRESETS, 'generic-wf7i').line;
     expect(switchLine('rio-premier-gold', line, 'generic-wf7i').presetId).toBe('rio-premier-gold-wf7f');
-    expect(switchLine('rio-premier-fathom', line, 'generic-wf7i').presetId).toBe('rio-premier-fathom-wf8s5');
+    expect(switchLine('rio-premier-fathom', line, 'generic-wf7i').presetId).toBe('rio-premier-fathom-wf7s3');
+    expect(switchLine('rio-elite-flats-pro', line, 'generic-wf7i').presetId).toBe('rio-elite-flats-pro-wf7f');
     const two = gold('wf2f').line;
     expect(switchLine('cortland-444-peach', two, 'rio-premier-gold-wf2f')).toMatchObject({ presetId: 'cortland-444-peach-wf5f', line: findById(LINE_PRESETS, 'cortland-444-peach-wf5f').line });
   });
@@ -880,5 +889,135 @@ describe('maker products', () => {
     }
     const melon = { ...structuredClone(gold('wf6f').line), zones: structuredClone(gold('wf6f').colorways[1].zones) };
     expect(presetForLine(melon)).toBe('rio-premier-gold-wf6f');
+  });
+});
+
+describe('RIO lines', () => {
+  // RIO's spec table per product: weight → [head, total] in feet.
+  const table = (rows) => Object.fromEntries(rows.map(([w, head, total]) => [w, [head, total]]));
+  const SPECS = {
+    'rio-premier-gold': table([[2, 44, 80], [3, 45, 80], [4, 46, 90], [5, 47, 90], [6, 48, 90], [7, 49, 90], [8, 50, 90], [9, 50, 90]]),
+    'rio-premier-outbound-short': table([5, 6, 7, 8, 9, 10, 11, 12].map((w) => [w, 30, 100])),
+    'rio-elite-gold': table([[4, 46, 90], [5, 47, 90], [6, 48, 90], [7, 49, 100], [8, 50, 100]]),
+    'rio-elite-flats-pro': table([[6, 48, 100], [7, 49, 100], [8, 49, 100], [9, 50, 100], [10, 50, 100], [11, 50, 100], [12, 50, 100]]),
+    'rio-elite-predator': table([[5, 36, 100], [6, 36, 100], [7, 34, 100], [8, 34, 100], [9, 34, 100], [10, 32, 100], [11, 32, 100]]),
+    'rio-elite-tropical-outbound-short': table([8, 9, 10, 11, 12].map((w) => [w, 30, 100])),
+    'rio-premier-streamertip': table([5, 6, 7, 8].map((w) => [w, 30, 100])),
+    // RIO lists the 24 ft tip; its diagram puts the head at 34 ft.
+    'rio-premier-24ft-sink-tip': table([5, 6, 7, 8, 9, 10].map((w) => [w, 34, 100])),
+    'rio-elite-gold-xp': table([[3, 40, 80], [4, 41, 90], [5, 42, 90], [6, 43, 90], [7, 44, 100], [8, 45, 100]]),
+    'rio-elite-bonefish': table([[6, 46.5, 90], [7, 48.5, 100], [8, 49.5, 100], [9, 49.5, 100]]),
+    // Floating and intermediate WF8–10 have a 30 ft head; the grain-weight sinking lines (listed at
+    // the lower of their two rod weights, 7–11) have 35 ft. Checked by size below.
+    'rio-premier-striper': table([[8, 30, 100], [9, 30, 100], [10, 30, 100]]),
+    'rio-premier-creek': table([[0, 30, 65], [1, 30, 65], [2, 30, 65], [3, 30, 75], [4, 30, 75], [5, 30, 80]]),
+    'rio-elite-technical-trout': table([[3, 45, 80], [4, 49, 90], [5, 52, 90], [6, 54, 90]]),
+    // RIO's 33 ft leaves out the 16 ft back taper drawn on its diagram.
+    'rio-elite-xtreme-indicator': table([[5, 49, 90], [6, 49, 90], [7, 49, 100], [8, 49, 100], [9, 49, 100]]),
+    'rio-premier-fathom': table([5, 6, 7, 8].map((w) => [w, 35, 105])),
+    'rio-elite-warmwater-predator': table([[6, 36, 100], [7, 34, 100], [8, 34, 100], [9, 34, 100], [10, 32, 100]]),
+    'rio-premier-gold-xp': table([[3, 40, 80], [4, 41, 90], [5, 42, 90], [6, 43, 90], [7, 44, 90], [8, 45, 90]]),
+    'rio-elite-single-handed-spey': table([[3, 33, 80], ...[4, 5, 6, 7, 8].map((w) => [w, 33, 90])]),
+    'rio-elite-indicator': table([[4, 48, 90], [5, 50, 90], [6, 52, 90], [7, 54, 100], [8, 56, 100]]),
+    'rio-mainstream-trout-wf': table([[3, 36, 80], [4, 37, 80], [5, 38, 80], [6, 39, 80], [7, 40, 80], [8, 41, 80]]),
+    'rio-elite-gold-max': table([[4, 36, 90], [5, 37, 90], [6, 38, 90], [7, 39, 100], [8, 40, 100], [9, 41, 100]]),
+    'rio-premier-gold-max': table([[4, 36, 90], [5, 37, 90], [6, 38, 90], [7, 39, 90], [8, 40, 90], [9, 41, 90]]),
+    'rio-premier-technical-trout-wf': table([[3, 45, 80], [4, 49, 90], [5, 52, 90], [6, 54, 90]]),
+    'rio-premier-aqualux': table([[4, 30, 90], [5, 30, 90], [6, 30, 100], [7, 30, 100], [8, 30, 100]]),
+  };
+  const rio = LINE_PRESETS.filter((p) => p.maker === 'RIO');
+  const head = ({ taper }) => taper.front + taper.body + taper.back;
+  const spec = (p) => {
+    if (/-wf\d+s7$/.test(p.id) && p.product === 'rio-premier-outbound-short') return [30, 110];
+    if (p.product === 'rio-premier-striper' && /gr$/.test(p.id)) return [35, 100];
+    return SPECS[p.product]?.[p.line.weight];
+  };
+
+  it('has a spec for every product except the Euro nymph line', () => {
+    const products = new Set(rio.map((p) => p.product));
+    products.delete('rio-technical-euro-nymph');
+    expect([...products].sort()).toEqual(Object.keys(SPECS).sort());
+  });
+
+  it.each(rio.filter((p) => p.product !== 'rio-technical-euro-nymph').map((p) => [p.id, p]))('%s has RIO\'s head and total length', (_, p) => {
+    const [h, total] = spec(p);
+    expect(head(p.line)).toBe(h);
+    expect(totalLength(p.line)).toBe(total);
+    for (const k of ['front', 'body', 'back', 'running']) expect(p.line.taper[k]).toBeGreaterThan(0);
+  });
+
+  it('ids are unique kebab-case', () => {
+    const ids = rio.map((p) => p.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const id of ids) expect(id).toMatch(/^rio(-[a-z0-9]+)+$/);
+    for (const p of rio) expect(new Set(p.colorways.map((cw) => cw.id)).size).toBe(p.colorways.length);
+  });
+
+  it('every zone color is a known color', () => {
+    const known = new Set([...LINE_COLORS, ...MAKER_LINE_COLORS].map((c) => c.id));
+    for (const p of rio) for (const cw of p.colorways) for (const z of cw.zones) expect(known.has(z.color), `${p.id} ${z.color}`).toBe(true);
+  });
+
+  it('only sizes drawn on a RIO diagram are exact', () => {
+    const exact = rio.filter((p) => !p.estimated && p.product !== 'rio-technical-euro-nymph').map((p) => p.id);
+    expect(exact).toEqual([
+      'rio-premier-gold-wf5f',
+      'rio-premier-outbound-short-wf8f',
+      'rio-elite-gold-wf5f',
+      'rio-elite-flats-pro-wf10f',
+      'rio-elite-flats-pro-wf10-f-i-6-ft',
+      'rio-elite-flats-pro-wf10-f-i-15-ft',
+      'rio-elite-flats-pro-wf10i',
+      'rio-elite-predator-wf8f',
+      'rio-elite-predator-wf8-f-h-i',
+      'rio-elite-tropical-outbound-short-wf8f',
+      'rio-premier-streamertip-wf7-f-i',
+      'rio-premier-24ft-sink-tip-wf5-f-s4',
+      'rio-elite-gold-xp-wf5f',
+      'rio-elite-bonefish-wf8f',
+      'rio-premier-striper-wf9f',
+      'rio-premier-striper-wf9i',
+      'rio-premier-creek-wf3f',
+      'rio-elite-technical-trout-wf5f',
+      'rio-elite-xtreme-indicator-wf6f',
+      'rio-premier-fathom-wf7s6',
+      'rio-elite-warmwater-predator-wf8f',
+      'rio-elite-warmwater-predator-wf8-f-h-i',
+      'rio-elite-warmwater-predator-wf8-f-s5-s7',
+      'rio-premier-gold-xp-wf5f',
+      'rio-elite-single-handed-spey-wf5-f-h-i',
+      'rio-elite-indicator-wf6f',
+      'rio-elite-gold-max-wf5f',
+      'rio-premier-gold-max-wf5f',
+      'rio-premier-technical-trout-wf-wf5f',
+      'rio-premier-aqualux-wf6i',
+      'rio-premier-aqualux-wf8i',
+    ]);
+  });
+
+  it.each([
+    ['rio-premier-outbound-short-wf8f', [6, 19, 5, 70]],
+    ['rio-elite-flats-pro-wf10f', [6, 20, 24, 50]],
+    ['rio-elite-predator-wf8f', [16, 15, 3, 66]],
+    ['rio-elite-bonefish-wf8f', [6.5, 31, 12, 50.5]],
+    ['rio-premier-fathom-wf7s6', [6, 21, 8, 70]],
+    ['rio-premier-aqualux-wf6i', [6, 22, 2, 70]],
+  ])('%s has the taper on RIO\'s diagram', (id, [front, body, back, running]) => {
+    expect(findById(LINE_PRESETS, id).line.taper).toEqual({ front, body, back, running });
+  });
+
+  it('Fathom draws each sink rate as the nearest sinking type and colors its running line by rate', () => {
+    const types = productSizes('rio-premier-fathom').filter((p) => p.line.weight === 7).map((p) => [p.sizeLabel, p.line.type, p.line.zones.at(-1).color]);
+    expect(types).toEqual([
+      ['WF7 Sink 3', 'sink3', 'rio-deep-blue'],
+      ['WF7 Sink 5', 'sink5', 'rio-maroon'],
+      ['WF7 Sink 6', 'sink5', 'rio-sage'],
+      ['WF7 Sink 7', 'sink7', 'rio-grey'],
+    ]);
+  });
+
+  it('colorways made only in some weights are listed only on those sizes', () => {
+    const camo = productSizes('rio-elite-gold-max').filter((p) => p.colorways.some((cw) => cw.id === 'camo'));
+    expect(camo.map((p) => p.sizeLabel)).toEqual(['WF4F', 'WF5F', 'WF6F', 'WF7F', 'WF8F']);
   });
 });
