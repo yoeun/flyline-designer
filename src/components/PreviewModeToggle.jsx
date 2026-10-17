@@ -1,3 +1,5 @@
+import Segmented from './Segmented.jsx';
+
 // Custom icons: Material Symbols has nothing for these reel-specific modes.
 const SPOKES = [0, 60, 120, 180, 240, 300].map((deg) => (deg * Math.PI) / 180);
 
@@ -24,16 +26,14 @@ const MODES = [
   ['line-only', 'Line only', <circle cx="12" cy="12" r="6.5" strokeWidth="4" />],
 ];
 
+const OPTIONS = MODES.map(([id, label, icon]) => [
+  id,
+  label,
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeLinecap="round" aria-hidden="true">
+    {icon}
+  </svg>,
+]);
+
 export default function PreviewModeToggle({ value, onChange }) {
-  return (
-    <div className="segmented segmented--icons" role="group" aria-label="Preview mode">
-      {MODES.map(([id, label, icon]) => (
-        <button key={id} type="button" aria-pressed={value === id} aria-label={label} title={label} onClick={() => onChange(id)}>
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeLinecap="round" aria-hidden="true">
-            {icon}
-          </svg>
-        </button>
-      ))}
-    </div>
-  );
+  return <Segmented label="Preview mode" options={OPTIONS} value={value} onChange={onChange} />;
 }
