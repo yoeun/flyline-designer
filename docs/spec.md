@@ -134,7 +134,7 @@ Lamson rates each size one line weight either side of its number, hence labels l
 
 Maker finish colors are sampled from the makers' studio product photos (lit faces, highlights and shadows dropped), since no maker publishes color values.
 
-Each reel names a frame `design` (generic, Liquid S or Run), drawn once as SVG for the drag side and the spool side in `src/assets/reels`. The preview shows the drag side by default; a Drag/Spool toggle switches sides. The wound line shows through the frame's windows, shaded as fine wraps.
+Each reel names a frame `design` (a size can name its own), drawn as SVG for the drag side and the spool side in `src/assets/reels` by `scripts/gen-reel-frames.mjs` from one module per design in `scripts/reel-designs` (`npm run reels`; `npm run reel-preview` renders a design beside the maker's photos). A finish can color a design's accent parts, and a model can set its own `accents` and `trims` per finish. The preview shows the drag side by default; a Drag/Spool toggle switches sides. The wound line shows through the frame's windows, shaded as fine wraps.
 
 ### Generic lines (v1)
 
