@@ -2178,7 +2178,9 @@
      "total": 90,
      "grains30": 100,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Mango"
+     ]
     },
     {
      "label": "DT4F",
@@ -2192,7 +2194,9 @@
      "total": 90,
      "grains30": 120,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Mango"
+     ]
     },
     {
      "label": "DT5F",
@@ -2206,7 +2210,9 @@
      "total": 90,
      "grains30": 140,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Mango"
+     ]
     },
     {
      "label": "DT6F",
@@ -2220,7 +2226,9 @@
      "total": 90,
      "grains30": 160,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Mango"
+     ]
     }
    ]
   },

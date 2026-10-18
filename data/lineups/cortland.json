@@ -4492,7 +4492,7 @@
             "running": 0
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": ["Mango"],
           "taper_segments": [
             {
               "name": "TAPER",
@@ -4524,7 +4524,7 @@
             "running": 0
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": ["Mango"],
           "taper_segments": [
             {
               "name": "TAPER",
@@ -4556,7 +4556,7 @@
             "running": 0
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": ["Mango"],
           "taper_segments": [
             {
               "name": "TAPER",
@@ -4588,7 +4588,7 @@
             "running": 0
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": ["Mango"],
           "taper_segments": [
             {
               "name": "TAPER",

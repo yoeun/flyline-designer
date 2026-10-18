@@ -40,8 +40,9 @@ export const COLORS = [
   { id: 'cortland-cold-salt-light-blue', name: 'Cold Salt Light Blue', hex: '#17aadd' },
   { id: 'cortland-aqua-blue', name: 'Aqua Blue', hex: '#7aced9' },
   { id: 'cortland-pale-yellow', name: 'Pale Yellow', hex: '#f1d07f' },
-  // The 50+ Giant Trevally's yellow is far brighter than the 333 Trout All Purpose's.
-  { id: 'cortland-giant-trevally-yellow', name: 'Giant Trevally Yellow', hex: '#f9ed25' },
+  // Far brighter than the 333 Trout All Purpose's yellow. Shared by the 50+ Giant Trevally, Trout Boss and
+  // Trout Double Taper; the id keeps its first line's name so saved setups still find it.
+  { id: 'cortland-giant-trevally-yellow', name: 'Bright Yellow', hex: '#f9ed25' },
   { id: 'cortland-pineapple', name: 'Pineapple', hex: '#eee04c' },
   // The Striped Bass Blitz's blues are both darker than the Striped Bass Intermediate's and Float's.
   { id: 'cortland-striped-bass-blitz-ice-blue', name: 'Striped Bass Blitz Ice Blue', hex: '#0a80c8' },
@@ -53,7 +54,11 @@ export const COLORS = [
   // Cortland's moss greens and olives differ from chart to chart.
   { id: 'cortland-streamer-intermediate-tip-moss-green', name: 'Streamer Intermediate Tip Moss Green', hex: '#9ba66c' },
   { id: 'cortland-headwater-olive', name: 'Headwater Olive', hex: '#4c5538' },
-  { id: 'cortland-headwater-moss-green', name: 'Headwater Moss Green', hex: '#bac78f' },
+  // Far paler than the Modern Trout's moss green. Shared by the Headwater and Trout Double Taper.
+  { id: 'cortland-headwater-moss-green', name: 'Pale Moss Green', hex: '#bac78f' },
+  // The Pike Musky Float's pale yellow is far brighter than the Tropic Plus All Purpose XP's.
+  { id: 'cortland-pike-musky-float-pale-yellow', name: 'Pike Musky Float Pale Yellow', hex: '#f8ec80' },
+  { id: 'cortland-333-double-taper-mango', name: 'Mango', hex: '#f99d3a' },
 ];
 
 // Cortland draws one taper chart per line with the head length on it but no size. Every size of a
@@ -582,6 +587,113 @@ export const PRODUCTS = [
     sizes: sizes(LINEUP['cortland-trout-headwater'], {
       type: 'floating',
       colorways: [{ id: 'olive-moss-green', name: 'Olive/Moss Green', zones: zones([17, 'cortland-headwater-olive'], [0, 'cortland-headwater-moss-green']) }],
+    }),
+  }),
+  // Braided core 1.5–2 ips full intermediate on the 444 Peach's 32 ft head.
+  makerProduct({
+    id: 'cortland-444-intermediate',
+    maker: 'Cortland',
+    name: 'Cortland 444 Intermediate',
+    sizes: sizes(LINEUP['cortland-444-intermediate'], {
+      id: (w) => `wf${w}i`,
+      type: 'intermediate',
+      colorways: [{ id: 'ice-blue', name: 'Ice Blue', zones: zones([0, 'cortland-ice-blue']) }],
+    }),
+  }),
+  // Full floating, with a short 26 ft head for big bulky flies; the chart's 13 ft step down to the
+  // running line, pale yellow like the running line, is drawn here as running line.
+  makerProduct({
+    id: 'cortland-specialty-pike-musky-float',
+    maker: 'Cortland',
+    name: 'Cortland Pike Musky Float',
+    sizes: sizes(LINEUP['cortland-specialty-pike-musky-float'], {
+      type: 'floating',
+      colorways: [{ id: 'olive-pale-yellow', name: 'Olive/Pale Yellow', zones: zones([26, 'cortland-pike-olive'], [0, 'cortland-pike-musky-float-pale-yellow']) }],
+    }),
+  }),
+  // The 444 Intermediate's 32 ft head with a Type 3 tip (3–4 ips) on a floating peach body and running
+  // line. The description gives the tip as 10 ft; the chart, not to scale, draws the brown over the
+  // 8 ft front taper.
+  makerProduct({
+    id: 'cortland-444-sink-tip-type-3',
+    maker: 'Cortland',
+    name: 'Cortland 444 Sink Tip Type 3',
+    sizes: sizes(LINEUP['cortland-444-sink-tip-type-3'], {
+      id: (w) => `wf${w}`,
+      type: 'sinktip',
+      colorways: [{ id: 'brown-peach', name: 'Brown/Peach', zones: zones([10, 'cortland-brown'], [0, 'cortland-peach']) }],
+    }),
+  }),
+  // Full size heavy, for fast rods. 20 ft body and a 9 ft back taper in a 35 ft head.
+  makerProduct({
+    id: 'cortland-trout-boss',
+    maker: 'Cortland',
+    name: 'Cortland Trout Boss',
+    sizes: sizes(LINEUP['cortland-trout-boss'], {
+      type: 'floating',
+      colorways: [{ id: 'green-yellow', name: 'Green/Yellow', zones: zones([35, 'cortland-green'], [0, 'cortland-giant-trevally-yellow']) }],
+    }),
+  }),
+  // Sold on the 333 Trout All Purpose's chart, so its sizes draw exactly like that line's WF8–10.
+  makerProduct({
+    id: 'cortland-333-salmon',
+    maker: 'Cortland',
+    name: 'Cortland 333 Salmon',
+    sizes: sizes(LINEUP['cortland-333-salmon'], {
+      type: 'floating',
+      colorways: [{ id: 'yellow', name: 'Yellow', zones: zones([0, 'cortland-yellow']) }],
+    }),
+  }),
+  // 8 ft tapers at both ends of a 74 ft body, like the 444 Peach double taper, in what the page calls
+  // mango.
+  makerProduct({
+    id: 'cortland-333-double-taper',
+    maker: 'Cortland',
+    name: 'Cortland 333 Double Taper',
+    sizes: sizes(LINEUP['cortland-333-double-taper'], {
+      id: (w) => `dt${w}f`,
+      lineup: doubleTaper,
+      type: 'floating',
+      colorways: [{ id: 'mango', name: 'Mango', zones: zones([0, 'cortland-333-double-taper-mango']) }],
+    }),
+  }),
+  // Overweighted. A clear 26 ft intermediate head on a pale yellow running line, sold as I/F, so it's
+  // drawn as a sink tip; the chart's 10 ft step down to the running line is drawn here as running line.
+  makerProduct({
+    id: 'cortland-tropic-plus-intermediate-xp',
+    maker: 'Cortland',
+    name: 'Cortland Tropic Plus Intermediate XP',
+    sizes: sizes(LINEUP['cortland-tropic-plus-intermediate-xp'], {
+      id: (w) => `wf${w}i`,
+      type: 'sinktip',
+      colorways: [{ id: 'clear-pale-yellow', name: 'Clear/Pale Yellow', zones: zones([26, 'cortland-clear'], [0, 'cortland-pale-yellow']) }],
+    }),
+  }),
+  // True to size, with 6 ft tapers at both ends: a 68 ft body on the 80 ft DT2–3 and a 78 ft body on the
+  // 90 ft DT4–6. Moss green at both ends with a yellow middle. The chart gives no lengths for the color
+  // changes; read off where they sit along the body, each green end is about 23 ft of the 80 ft line
+  // and 26 ft of the 90 ft one, which are estimates.
+  makerProduct({
+    id: 'cortland-trout-double-taper',
+    maker: 'Cortland',
+    name: 'Cortland Trout Double Taper',
+    sizes: [80, 90].flatMap((total) => {
+      const end = total === 80 ? 23 : 26;
+      return sizes(
+        { ...LINEUP['cortland-trout-double-taper'], sizes: LINEUP['cortland-trout-double-taper'].sizes.filter((size) => size.total === total) },
+        {
+          id: (w) => `dt${w}f`,
+          lineup: doubleTaper,
+          type: 'floating',
+          colorways: [
+            {
+              id: 'moss-green-yellow',
+              name: 'Moss Green/Yellow',
+              zones: zones([end, 'cortland-headwater-moss-green'], [total - 2 * end, 'cortland-giant-trevally-yellow'], [0, 'cortland-headwater-moss-green']),
+            },
+          ],
+        },
+      );
     }),
   }),
 ];
