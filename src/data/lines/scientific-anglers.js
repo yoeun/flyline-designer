@@ -99,6 +99,13 @@ export const COLORS = [
   { id: 'sa-sonar-striper-blue', name: 'Striper Blue', hex: '#4b8dca' },
   { id: 'sa-sonar-striper-storm-grey', name: 'Storm Grey', hex: '#9eb1ad' },
   { id: 'sa-sonar-stillwater-hover-blue-spruce', name: 'Blue Spruce', hex: '#5e7875' },
+  { id: 'sa-wet-cel-full-sink-brown', name: 'Brown', hex: '#886d50' },
+  { id: 'sa-wet-cel-full-sink-charcoal', name: 'Wet Cel Full Sink Charcoal', hex: '#8b8b8d' },
+  { id: 'sa-sonar-musky-gen-2-yellow', name: 'Musky Yellow', hex: '#fef200' },
+  { id: 'sa-sonar-striper-yellow', name: 'Striper Yellow', hex: '#eddb00' },
+  { id: 'sa-sonar-trout-express-pale-yellow', name: 'Trout Express Pale Yellow', hex: '#d1e38f' },
+  { id: 'sa-sonar-trout-express-light-blue', name: 'Trout Express Light Blue', hex: '#8db7e1' },
+  { id: 'sa-sonar-trout-express-charcoal', name: 'Trout Express Charcoal', hex: '#78797d' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -220,6 +227,14 @@ const SALTWATER_INTERMEDIATE = [4.5, 23, 10];
 const FULL_SINK_RATES = {
   sink3: { rate: 3, type: 'sink3', colorway: { id: 'dark-green', name: 'Dark Green', color: 'sa-dark-green' } },
   sink6: { rate: 6, type: 'sink5', colorway: { id: 'dark-gray', name: 'Dark Gray', color: 'sa-dark-gray' } },
+};
+
+// Wet Cel Full Sink's densities, each a color of its own.
+const WET_CEL_FULL_SINK = {
+  intermediate: { type: 'intermediate', colorway: { id: 'clear', name: 'Clear', color: 'sa-clear' } },
+  sink2: { type: 'sink3', colorway: { id: 'brown', name: 'Brown', color: 'sa-wet-cel-full-sink-brown' } },
+  sink4: { type: 'sink3', colorway: { id: 'charcoal', name: 'Charcoal', color: 'sa-wet-cel-full-sink-charcoal' } },
+  sink6: { type: 'sink5', colorway: { id: 'black', name: 'Black', color: 'sa-titan-black' } },
 };
 
 // The Sonar Titan head, shared by the Full Intermediate and 3D: 33.5 ft in every size.
@@ -355,6 +370,22 @@ const SONAR_STILLWATER_FLOAT = [22.5, 12.5, 10];
 // Frequency Intermediate's diagram: front taper 4, belly 33.5, rear taper 2.5 on a 40 ft head, longer
 // than any size SA lists (34–38 ft). Every size scales it and is marked estimated.
 const FREQUENCY_INTERMEDIATE = [4, 33.5, 2.5];
+
+// Sonar Musky Gen 2's diagram draws an all but level 25 ft head, SA's length for every size: front and
+// rear tapers of about half a foot each round a 24 ft belly. The 14 ft handling line behind the head is
+// drawn here as running line.
+const SONAR_MUSKY = [0.5, 24, 0.5];
+
+// Sonar Titan Pelagic's diagram: front taper 3, belly 15, rear taper 4.5. Its head measures 22.5 ft
+// against the 23 ft SA lists for both sizes; the split is scaled to 23.
+const TITAN_PELAGIC = scaled([3, 15, 4.5], 23);
+
+// Sonar Trout Express's diagram: an 11 ft level sink tip, a front taper and the SD blend up to the belly
+// (19 ft together, drawn as the front taper), a 3.5 ft belly and a 7.5 ft rear taper. Its 30 ft head is
+// the 240 gr's; the other sizes scale it. The 20 ft handling line behind the head is drawn here as
+// running line. The Sink 5 tip's length per size is from SA's table.
+const TROUT_EXPRESS = [19, 3.5, 7.5];
+const TROUT_EXPRESS_TIP_LENGTH = { 165: 13.5, 185: 13.5, 210: 14.5, 240: 16, 275: 17 };
 
 export const PRODUCTS = [
   // Half-size heavy. Head and total per size from SA's table; the WF6 split was measured off the
@@ -1424,27 +1455,26 @@ export const PRODUCTS = [
     })),
   }),
   // Full sinkers on the Air Cel taper: the diagram measures front 4.5, belly 31.5, rear 3.5, within half
-  // a foot of the Air Cel split, on the same 40 ft head in every size. Only the Intermediate (1.25 ips,
-  // clear) and Sink 6 (black, drawn as Type 5 like the Frequency Full Sink's) are drawn; Sink 2 and
-  // Sink 4 have no line type yet. SA's Black swatch is the Titan's.
+  // a foot of the Air Cel split, on the same 40 ft head in every size. Intermediate (1.25 ips) in clear;
+  // Sink 2 in brown and Sink 4 in charcoal, both drawn as Type 3; Sink 6 in black, drawn as Type 5 like
+  // the Frequency Full Sink's. Sink 4 and Sink 6 sit halfway between the menu's types and take the slower.
+  // SA's Black swatch is the Titan's; its Brown and Charcoal are sampled from this diagram's swatches.
   makerProduct({
     id: 'sa-wetcel',
     maker: 'Scientific Anglers',
     name: 'SA Wet Cel Full Sink',
-    sizes: LINEUP['sa-wetcel'].sizes
-      .filter((size) => size.density === 'intermediate' || size.density === 'sink6')
-      .map((size) => {
-        const sink6 = size.density === 'sink6';
-        return {
-          id: sink6 ? `wf${size.weight}s6` : `wf${size.weight}i`,
-          label: size.label,
-          type: sink6 ? 'sink5' : 'intermediate',
-          weight: size.weight,
-          taper: sameHead(AIR_CEL, size),
-          lineup: size,
-          colorways: [sink6 ? { id: 'black', name: 'Black', zones: zones([0, 'sa-titan-black']) } : { id: 'clear', name: 'Clear', zones: zones([0, 'sa-clear']) }],
-        };
-      }),
+    sizes: LINEUP['sa-wetcel'].sizes.map((size) => {
+      const { type, colorway } = WET_CEL_FULL_SINK[size.density];
+      return {
+        id: size.density === 'intermediate' ? `wf${size.weight}i` : `wf${size.weight}s${size.density.slice(4)}`,
+        label: size.label,
+        type,
+        weight: size.weight,
+        taper: sameHead(AIR_CEL, size),
+        lineup: size,
+        colorways: [{ id: colorway.id, name: colorway.name, zones: zones([0, colorway.color]) }],
+      };
+    }),
   }),
   // Quarter-size heavy: the Amplitude Smooth Trout GP taper in Mastery. Its own WF5 diagram (50.5 ft
   // head) measures the same split. Sage head, butter running line; SA's swatches are the Smooth Trout
@@ -1883,6 +1913,152 @@ export const PRODUCTS = [
       taper: sameHead(SONAR_STILLWATER_INTERMEDIATE, size),
       lineup: size,
       colorways: [{ id: 'surf-blue-spruce', name: 'Surf/Blue Spruce', zones: zones([45, 'sa-sonar-stillwater-hover-blue-spruce'], [0, 'sa-surf']) }],
+    })),
+  }),
+  // Grain-rated, a Sink 5 head on an intermediate running line, so drawn as a sink head on an
+  // intermediate running line. Each size's rod weight is the low end of SA's range; the 450 and 500 gr
+  // are both for 11–13 wt rods, so they draw alike. A charcoal head on a yellow running line; SA's
+  // Charcoal swatch is the one already here.
+  makerProduct({
+    id: 'sa-sonar-musky-gen-2',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Musky Gen 2',
+    sizes: LINEUP['sa-sonar-musky-gen-2'].sizes.map((size) => {
+      const grains = size.label.match(/^(\d+)gr/)[1];
+      return {
+        id: `${grains}gr`,
+        label: `${grains} gr Sink 5`,
+        type: 'sinkhead-int',
+        weight: size.weight,
+        taper: sameHead(SONAR_MUSKY, size),
+        lineup: size,
+        colorways: [{ id: 'yellow-charcoal', name: 'Yellow/Charcoal', zones: zones([25, 'sa-charcoal'], [0, 'sa-sonar-musky-gen-2-yellow']) }],
+      };
+    }),
+  }),
+  // Two sizes heavy, full sinking: an intermediate running line behind a Sink 5 rear head and a Sink 7
+  // front, so drawn as a sink head on an intermediate running line. Its own diagram measures front taper
+  // 5, two bellies with a rear taper between them 22.5 (drawn as the body) and a 3 ft rear taper on a
+  // 30.5 ft head: the Amplitude Smooth Striper's, which it shares scaled to the 30 ft SA lists for every
+  // size. Black to the middle of the SD blend between the bellies (about 13.5 ft), charcoal to the end of
+  // the head, yellow running line. SA's Black swatch is the Titan's and its Charcoal the one already here.
+  makerProduct({
+    id: 'sa-sonar-striper-i-5-7',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Striper I/5/7',
+    sizes: LINEUP['sa-sonar-striper-i-5-7'].sizes.map((size) => ({
+      id: `wf${size.weight}-i57`,
+      label: size.label,
+      type: 'sinkhead-int',
+      weight: size.weight,
+      taper: sameHead(STRIPER, size),
+      lineup: size,
+      colorways: [
+        { id: 'yellow-charcoal-black', name: 'Yellow/Charcoal/Black', zones: zones([13.5, 'sa-titan-black'], [16.5, 'sa-charcoal'], [0, 'sa-sonar-striper-yellow']) },
+      ],
+    })),
+  }),
+  // A Sink 6 (6+ ips) head on an intermediate running line and a 65 lb Tropi-Core, so drawn as a sink
+  // head on an intermediate running line. Same 23 ft head in both sizes; the 700 gr (13–15 wt) is over
+  // the menu's heaviest line and left out. A black head on a surf running line; SA's swatches are the
+  // Titan's Black and the Surf already here.
+  makerProduct({
+    id: 'sa-sonar-titan-pelagic',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Titan Pelagic',
+    sizes: [lineupSize(LINEUP['sa-sonar-titan-pelagic'], '500gr F/Sink 6')].map((size) => ({
+      id: '500gr',
+      label: '500 gr Sink 6',
+      type: 'sinkhead-int',
+      weight: size.weight,
+      taper: sameHead(TITAN_PELAGIC, size),
+      lineup: size,
+      colorways: [{ id: 'surf-black', name: 'Surf/Black', zones: zones([23, 'sa-titan-black'], [0, 'sa-surf']) }],
+    })),
+  }),
+  // Grain-rated: a floating running line, an intermediate belly and a Sink 5 tip, drawn as a sink tip.
+  // Charcoal tip, light blue to the end of the belly (where the diagram's colors change), then pale
+  // yellow.
+  makerProduct({
+    id: 'sa-sonar-trout-express',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Trout Express',
+    sizes: LINEUP['sa-sonar-trout-express'].sizes.map((size) => {
+      const grains = Number(size.label.match(/^(\d+)gr/)[1]);
+      const [front, body, back] = scaled(TROUT_EXPRESS, size.head);
+      const tip = TROUT_EXPRESS_TIP_LENGTH[grains];
+      return {
+        id: `${grains}gr`,
+        label: `${grains} gr Sink 5`,
+        type: 'sinktip',
+        weight: size.weight,
+        taper: [front, body, back, size.total - size.head],
+        estimated: grains !== 240,
+        lineup: size,
+        colorways: [
+          {
+            id: 'pale-yellow-light-blue-charcoal',
+            name: 'Pale Yellow/Light Blue/Charcoal',
+            zones: zones([tip, 'sa-sonar-trout-express-charcoal'], [front + body - tip, 'sa-sonar-trout-express-light-blue'], [0, 'sa-sonar-trout-express-pale-yellow']),
+          },
+        ],
+      };
+    }),
+  }),
+  // Two sizes heavy, in three density pairs, each a running line behind a faster head. SA's text makes
+  // Sink 1/3's running line an intermediate (1.25 ips) behind a Sink 3 head, so it's drawn as a sink head
+  // on an intermediate running line; Sink 3/5 and Sink 5/7 sink all the way and are drawn as their heads'
+  // Type 5 and Type 7. Each pair's own diagram measures SONAR_STILLWATER_FLOAT on the same 45 ft head in
+  // every size, the 10 ft SD blend into the running line as the rear taper. The head's color fades into
+  // the running line's in the middle of the blend, about 39.5 ft from the tip on each diagram. SA's Dark
+  // Green swatch is the Titan's, its Light Gray the Stillwater Intermediate's, its Charcoal and Black the
+  // ones already here.
+  makerProduct({
+    id: 'sa-sonar-stillwater-seamless-density',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Stillwater Seamless Density',
+    sizes: [...new Set(LINEUP['sa-sonar-stillwater-seamless-density'].sizes.map((size) => size.weight))].flatMap((weight) =>
+      [
+        { id: 's13', densities: '1/3', type: 'sinkhead-int', colorway: { id: 'light-gray-dark-green', name: 'Light Gray/Dark Green' }, head: 'sa-titan-dark-green', running: 'sa-sonar-stillwater-intermediate-light-gray' },
+        { id: 's35', densities: '3/5', type: 'sink5', colorway: { id: 'dark-green-charcoal', name: 'Dark Green/Charcoal' }, head: 'sa-charcoal', running: 'sa-titan-dark-green' },
+        { id: 's57', densities: '5/7', type: 'sink7', colorway: { id: 'charcoal-black', name: 'Charcoal/Black' }, head: 'sa-black', running: 'sa-charcoal' },
+      ].map(({ id, densities, type, colorway, head, running }) => {
+        const size = lineupSize(LINEUP['sa-sonar-stillwater-seamless-density'], `WF${weight}S Sink ${densities}`);
+        return {
+          id: `wf${weight}-${id}`,
+          label: size.label,
+          type,
+          weight,
+          taper: sameHead(SONAR_STILLWATER_FLOAT, size),
+          lineup: size,
+          colorways: [{ ...colorway, zones: zones([39.5, head], [0, running]) }],
+        };
+      }),
+    ),
+  }),
+  // Two sizes heavy: Sink 3 tip and running line round a Sink 5 belly, so it sinks in a U. Drawn as Type
+  // 5, the head's main density. Its own diagram measures SONAR_STILLWATER_FLOAT on the same 45 ft head in
+  // every size, like the Seamless Density. Dark green to the middle of the front color fade (about 9 ft),
+  // charcoal to the middle of the SD blend (about 37.5 ft), dark green running line. SA's swatches are the
+  // Seamless Density's.
+  makerProduct({
+    id: 'sa-sonar-stillwater-seamless-density-parabolic',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Stillwater Seamless Density Parabolic',
+    sizes: LINEUP['sa-sonar-stillwater-seamless-density-parabolic'].sizes.map((size) => ({
+      id: `wf${size.weight}-s353`,
+      label: size.label,
+      type: 'sink5',
+      weight: size.weight,
+      taper: sameHead(SONAR_STILLWATER_FLOAT, size),
+      lineup: size,
+      colorways: [
+        {
+          id: 'dark-green-charcoal-dark-green',
+          name: 'Dark Green/Charcoal/Dark Green',
+          zones: zones([9, 'sa-titan-dark-green'], [28.5, 'sa-charcoal'], [0, 'sa-titan-dark-green']),
+        },
+      ],
     })),
   }),
 ];
