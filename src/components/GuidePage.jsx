@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { LINE_PRESETS, nearestSize } from '../data/catalog.js';
 import { CATEGORIES, chartPoints, densityName, filterProducts, formatRange, groupBySeries, heaviness, linkProducts, makerSeries, productFacts } from '../lib/guide.js';
 import Chips, { CHIP } from './Chips.jsx';
+import FilterSheet from './FilterSheet.jsx';
 import Icon from './Icon.jsx';
 import { Input } from './Input.jsx';
 import Select from './Select.jsx';
@@ -219,38 +220,70 @@ export default function GuidePage({ onTry }) {
   const chosen = makers.find((m) => m.id === maker) ?? null;
   const showChart = chartData.length > 1 && (!category || category === 'trout');
 
+  // The filters, shown inline from sm up and in the Filter sheet on phones.
+  const makerChips = makers.length > 1 && <Chips label="Maker" value={maker} onChange={setMaker} options={[{ value: null, label: 'All' }, ...makers.map((m) => ({ value: m.id, label: m.maker }))]} />;
+  const seriesChips = chosen && makerSeries(chosen).length > 1 && (
+    <Chips label="Series" value={series} onChange={setSeries} options={[{ value: null, label: 'All' }, ...makerSeries(chosen).map((s) => ({ value: s, label: s }))]} />
+  );
+  const useChips = <Chips label="Use" value={category} onChange={setCategory} options={[{ value: null, label: 'All' }, ...CATEGORIES.map((c) => ({ value: c.id, label: c.name }))]} />;
+  const weightSelect = (
+    <Select
+      label="Rod weight"
+      value={weight === null ? 'any' : String(weight)}
+      onChange={(v) => setWeight(v === 'any' ? null : Number(v))}
+      items={[{ value: 'any', label: 'Any' }, ...weights.map((w) => ({ value: String(w), label: `${w} wt` }))]}
+    />
+  );
+  const searchField = (
+    <label className="flex min-w-0 flex-[1_1_220px] flex-col gap-1.5 text-[14px]">
+      <span className="text-muted-foreground">Search</span>
+      <Input type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Name, use or series" />
+    </label>
+  );
+  const discontinuedToggle = (
+    <Toggle pressed={discontinued} onPressedChange={setDiscontinued} className={cn(CHIP, 'h-auto min-h-10 max-w-full gap-1.5 self-start whitespace-normal hover:bg-card')}>
+      <Icon name={discontinued ? 'check_box' : 'check_box_outline_blank'} />
+      Show discontinued
+    </Toggle>
+  );
+  // What the Filter button names once a filter is on; search stays out, it's always in view.
+  const active = [chosen?.maker, series, CATEGORIES.find((c) => c.id === category)?.name, weight !== null && `${weight} wt`, discontinued && 'Discontinued'].filter(Boolean).join(' · ');
+  const clearFilters = () => {
+    setMaker(null);
+    setSeries(null);
+    setCategory(null);
+    setWeight(null);
+    setDiscontinued(false);
+  };
+
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Line guide">
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Line guide</h2>
-        <span className="text-[14px] text-muted-foreground">
-          {count} {count === 1 ? 'line' : 'lines'}
-        </span>
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Line guide</h2>
+          <span className="text-[14px] text-muted-foreground">
+            {count} {count === 1 ? 'line' : 'lines'}
+          </span>
+        </div>
+        <FilterSheet active={active} onClear={clearFilters} doneLabel={`Show ${count} ${count === 1 ? 'line' : 'lines'}`}>
+          {makerChips}
+          {seriesChips}
+          {useChips}
+          <div className="w-40">{weightSelect}</div>
+          {discontinuedToggle}
+        </FilterSheet>
       </div>
 
-      <div className="flex flex-col gap-2.5">
-        {makers.length > 1 && <Chips label="Maker" value={maker} onChange={setMaker} options={[{ value: null, label: 'All' }, ...makers.map((m) => ({ value: m.id, label: m.maker }))]} />}
-        {chosen && makerSeries(chosen).length > 1 && (
-          <Chips label="Series" value={series} onChange={setSeries} options={[{ value: null, label: 'All' }, ...makerSeries(chosen).map((s) => ({ value: s, label: s }))]} />
-        )}
-        <Chips label="Use" value={category} onChange={setCategory} options={[{ value: null, label: 'All' }, ...CATEGORIES.map((c) => ({ value: c.id, label: c.name }))]} />
+      {/* Phones keep only the search here; the other filters are in the Filter sheet. */}
+      <div className="sm:hidden">{searchField}</div>
+      <div className="hidden flex-col gap-2.5 sm:flex">
+        {makerChips}
+        {seriesChips}
+        {useChips}
         <div className="flex flex-wrap items-end gap-3">
-          <div className="w-32">
-            <Select
-              label="Rod weight"
-              value={weight === null ? 'any' : String(weight)}
-              onChange={(v) => setWeight(v === 'any' ? null : Number(v))}
-              items={[{ value: 'any', label: 'Any' }, ...weights.map((w) => ({ value: String(w), label: `${w} wt` }))]}
-            />
-          </div>
-          <label className="flex min-w-0 flex-[1_1_220px] flex-col gap-1.5 text-[14px]">
-            <span className="text-muted-foreground">Search</span>
-            <Input type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Name, use or series" />
-          </label>
-          <Toggle pressed={discontinued} onPressedChange={setDiscontinued} className={cn(CHIP, 'h-auto min-h-10 max-w-full gap-1.5 whitespace-normal hover:bg-card')}>
-            <Icon name={discontinued ? 'check_box' : 'check_box_outline_blank'} />
-            Show discontinued
-          </Toggle>
+          <div className="w-32">{weightSelect}</div>
+          {searchField}
+          {discontinuedToggle}
         </div>
       </div>
 

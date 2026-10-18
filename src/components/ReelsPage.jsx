@@ -6,6 +6,7 @@ import Field from './Field.jsx';
 import ReelPreview from './ReelPreview.jsx';
 import Segmented from './Segmented.jsx';
 import Swatches from './Swatches.jsx';
+import FilterSheet from './FilterSheet.jsx';
 
 // Every reel model on one page, each size drawn from both sides, to check the drawings and data at a
 // glance. Drawings share one scale, so a bigger reel draws bigger. In dev, the maker photos sit beside them.
@@ -101,7 +102,7 @@ function ViewControls({ view, onChange }) {
   const setColor = (key) => (id) => onChange({ ...view, colors: { ...view.colors, [key]: id } });
   const shown = view.line === 'shown';
   return (
-    <div className="sticky top-0 z-10 -mx-[max(16px,2.5vw)] flex flex-wrap items-end gap-x-6 gap-y-3 border-b border-border bg-background/95 px-[max(16px,2.5vw)] py-3 backdrop-blur">
+    <>
       <Segmented label="Line" options={LINE_OPTIONS} value={view.line} onChange={(line) => onChange({ ...view, line })} />
       {shown && (
         <>
@@ -116,22 +117,35 @@ function ViewControls({ view, onChange }) {
           </Field>
         </>
       )}
-    </div>
+    </>
   );
 }
 
+const DEFAULT_VIEW = { line: 'shown', colors: PREVIEW_COLORS };
+
 export default function ReelsPage() {
-  const [view, setView] = useState({ line: 'shown', colors: PREVIEW_COLORS });
+  const [view, setView] = useState(DEFAULT_VIEW);
+  // What the View button says once the view differs from the default.
+  const active = view.line !== 'shown' ? 'Line hidden' : view.colors !== PREVIEW_COLORS ? 'Custom colors' : '';
   const count = REEL_MODELS.reduce((n, m) => n + reelSizes(m.id).length, 0);
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Reels">
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Reels</h2>
-        <p className="text-[14px] text-muted-foreground">
-          {REEL_MODELS.length} models, {count} sizes, drawn to scale
-        </p>
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Reels</h2>
+          <p className="text-[14px] text-muted-foreground">
+            {REEL_MODELS.length} models, {count} sizes, drawn to scale
+          </p>
+        </div>
+        {/* On phones the line and colors open in a sheet instead of a bar over the reels. */}
+        <FilterSheet title="View" icon="tune" active={active} onClear={() => setView(DEFAULT_VIEW)} clearLabel="Reset">
+          <ViewControls view={view} onChange={setView} />
+        </FilterSheet>
       </div>
-      <ViewControls view={view} onChange={setView} />
+      {/* From sm up the controls stay in a bar under the fixed header while the reels scroll. */}
+      <div className="sticky top-(--header-h) z-10 -mx-[max(16px,2.5vw)] hidden flex-wrap items-end gap-x-6 gap-y-3 border-b border-border bg-background/95 px-[max(16px,2.5vw)] py-3 backdrop-blur sm:flex">
+        <ViewControls view={view} onChange={setView} />
+      </div>
       <nav aria-label="Makers" className="flex flex-wrap gap-x-4 gap-y-1 text-[14px]">
         {GROUPS.map(([maker]) => (
           <a key={maker} href={`#reels-${maker}`} className="text-primary underline-offset-2 hover:underline pointer-coarse:inline-flex pointer-coarse:min-h-11 pointer-coarse:items-center">
@@ -140,7 +154,7 @@ export default function ReelsPage() {
         ))}
       </nav>
       {GROUPS.map(([maker, models]) => (
-        <section key={maker} id={`reels-${maker}`} className="flex flex-col gap-3" aria-label={maker}>
+        <section key={maker} id={`reels-${maker}`} className="flex scroll-mt-[calc(var(--header-h)+1rem)] flex-col gap-3 sm:scroll-mt-[calc(var(--header-h)+9rem)]" aria-label={maker}>
           <h3 className={heading}>{maker}</h3>
           <ul className="flex flex-col gap-3">
             {models.map((m) => (
