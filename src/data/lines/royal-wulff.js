@@ -14,6 +14,11 @@ export const COLORS = [
   { id: 'rw-clear', name: 'Clear', hex: '#c2d6d4' },
   { id: 'rw-aqua', name: 'Aqua', hex: '#2fa88a' },
   { id: 'rw-mist-green', name: 'Mist Green', hex: '#a6e6cb' },
+  // Nearly black in the Midstream Full Sink 3 photo, with a faint green cast.
+  { id: 'rw-dark-green', name: 'Dark Green', hex: '#1f2b26' },
+  // The Midstream Bermuda Blue page has no photo; matched to the Tropic Blue in Royal Wulff's
+  // Bermuda Triangle Taper Floating photo, a pale powder blue.
+  { id: 'rw-tropic-blue', name: 'Tropic Blue', hex: '#b6c9e2' },
 ];
 
 export const PRODUCTS = [
@@ -158,6 +163,55 @@ export const PRODUCTS = [
       colorways: [{ id: 'ivory', name: 'Ivory', zones: zones([0, 'rw-ivory']) }],
     })),
   }),
+  // The Midstream TT Floating's taper as an aqua 1.5 ips intermediate: Royal Wulff's table gives the
+  // taper and running line lengths, and the whole head is one front taper.
+  makerProduct({
+    id: 'royal-wulff-midstream-tt-intermediate',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Midstream TT Intermediate',
+    sizes: LINEUP['royal-wulff-midstream-tt-intermediate'].sizes.map((size) => ({
+      id: `wf${size.weight}i`,
+      label: size.label,
+      type: 'intermediate',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [{ id: 'aqua', name: 'Aqua', zones: zones([0, 'rw-aqua']) }],
+    })),
+  }),
+  // The same taper as a 3 ips full sinker in dark green: taper and running line lengths from Royal
+  // Wulff's table, with the whole head one front taper.
+  makerProduct({
+    id: 'royal-wulff-midstream-tt-full-sink-3',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Midstream TT Full Sink 3',
+    sizes: LINEUP['royal-wulff-midstream-tt-full-sink-3'].sizes.map((size) => ({
+      id: `wf${size.weight}s`,
+      label: size.label,
+      type: 'sink3',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [{ id: 'dark-green', name: 'Dark Green', zones: zones([0, 'rw-dark-green']) }],
+    })),
+  }),
+  // The Midstream Bermuda Blue is the floating Bermuda line in one color, Tropic Blue: a 30 ft front
+  // taper and 2 ft rear taper from Royal Wulff's table, then a handling line that counts as running
+  // line. Being one color, it has none of the two-tone Bermuda lines' doubt over the head's color.
+  makerProduct({
+    id: 'royal-wulff-midstream-bermuda-blue-floating',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Midstream Bermuda Blue Floating',
+    sizes: LINEUP['royal-wulff-midstream-bermuda-blue-floating'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [{ id: 'tropic-blue', name: 'Tropic Blue', zones: zones([0, 'rw-tropic-blue']) }],
+    })),
+  }),
   // The Triangle Taper Short: a 27 ft front taper and 2 ft rear taper (23 ft and 4 ft on the 2 and 3
   // weights), then a handling line and the running line. Taper lengths from Royal Wulff's table; the
   // handling line counts as running line. All willow.
@@ -213,8 +267,8 @@ export const PRODUCTS = [
     })),
   }),
   // The warm-water Bermuda line as a clear 1.75 ips intermediate: a 30 ft front taper and 2 ft rear
-  // taper from Royal Wulff's table, then a handling line that counts as running line. The floating
-  // Bermuda lines aren't here: sources disagree on whether their head is the sand or the blue.
+  // taper from Royal Wulff's table, then a handling line that counts as running line. The two-tone
+  // floating Bermuda lines aren't here: sources disagree on whether their head is the sand or the blue.
   makerProduct({
     id: 'royal-wulff-bermuda-triangle-taper-intermediate',
     maker: 'Royal Wulff',
