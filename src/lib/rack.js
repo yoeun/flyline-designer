@@ -45,6 +45,12 @@ export function displayName(setup) {
   return `Custom ${findById(LINE_TYPES, setup.line.type)?.name ?? setup.line.type} ${setup.line.weight} wt`;
 }
 
+// A rack entry as a new, unsaved setup titled after it, e.g. "RIO Gold WF5F (copy)".
+export function copyOf(entry) {
+  const { id, ...rest } = structuredClone(entry);
+  return { ...rest, title: `${displayName(entry)} (copy)` };
+}
+
 const normalizedDetails = (s) => ({ title: (s.title ?? '').trim(), styles: [...(s.styles ?? [])].sort(), notes: (s.notes ?? '').trim() });
 
 // Which sections of a setup differ from the baseline (the rack id doesn't count).

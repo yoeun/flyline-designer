@@ -20,7 +20,7 @@ import { DEMO_RACK } from './data/demoRack.js';
 import { exportPng, exportSvg } from './lib/export.js';
 import { rackConflicts } from './lib/checks.js';
 import { clampSelection } from './lib/lineEdit.js';
-import { SECTION_KEYS, changedSections, displayName, isDirty, loadEntries } from './lib/rack.js';
+import { SECTION_KEYS, changedSections, copyOf, displayName, isDirty, loadEntries } from './lib/rack.js';
 import { resolveView } from './lib/rackView.js';
 import { SIDES } from './lib/reelFrames.js';
 import { queryToState, stateToQuery } from './lib/share.js';
@@ -250,6 +250,18 @@ export default function App() {
     setPage('designer');
   };
 
+  // A copy of a rack entry as a new setup in the designer; it joins the rack when saved.
+  const duplicateEntry = (entry) => {
+    if (!discardOk()) return;
+    const copy = copyOf(entry);
+    setLineSelection(null);
+    setState({ setup: copy, presetId: presetForLine(copy.line) });
+    setEditingId(null);
+    setCameFromDesigner(false);
+    setPage('designer');
+    toast(`Started “${copy.title}”.`);
+  };
+
   // Back to the default reel, line and backing, to design the next setup. The preview view stays as is.
   const startNew = () => {
     if (!discardOk()) return;
@@ -428,6 +440,7 @@ export default function App() {
           onFilterChange={setRackFilter}
           onLoad={loadEntry}
           onEditDetails={(entry) => setDetailsEntryId(entry.id)}
+          onDuplicate={duplicateEntry}
           onRemove={removeEntry}
           actions={
             !demo && (
@@ -477,6 +490,7 @@ export default function App() {
               currentId={editingId}
               onLoad={loadEntry}
               onEditDetails={(entry) => setDetailsEntryId(entry.id)}
+              onDuplicate={duplicateEntry}
               onRemove={removeEntry}
               onExpand={openRack}
             />

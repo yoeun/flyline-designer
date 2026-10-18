@@ -8,7 +8,7 @@ import RackFilter, { NO_FILTER, isFiltered, rackFilter } from './RackFilter.jsx'
 
 // Side by side, the rack takes at most 45% of the column and its list scrolls inside it.
 // The search and filter are shared with the rack page; a weight filter shows that weight, then one either side.
-export default function Rack({ setups, currentId, open, onToggle, filter: picked, onFilterChange, onLoad, onEditDetails, onRemove, onExpand }) {
+export default function Rack({ setups, currentId, open, onToggle, filter: picked, onFilterChange, onLoad, onEditDetails, onDuplicate, onRemove, onExpand }) {
   const conflicts = rackConflicts(setups);
   const weights = rackWeights(setups);
   const filter = rackFilter(picked, weights);
@@ -70,7 +70,7 @@ export default function Rack({ setups, currentId, open, onToggle, filter: picked
           <ul ref={listRef} className="-mx-1 flex gap-3 overflow-x-auto px-1 pt-1 pb-2" aria-label="Saved setups">
             {shown.map((s) => (
               <li key={s.id} className="flex">
-                <RackCard setup={s} current={s.id === currentId} conflicts={conflictsFor(s.id, conflicts, setups)} onLoad={onLoad} onEditDetails={onEditDetails} onRemove={onRemove} />
+                <RackCard setup={s} current={s.id === currentId} conflicts={conflictsFor(s.id, conflicts, setups)} onLoad={onLoad} onEditDetails={onEditDetails} onDuplicate={onDuplicate} onRemove={onRemove} />
               </li>
             ))}
           </ul>
