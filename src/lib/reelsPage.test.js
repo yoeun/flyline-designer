@@ -73,13 +73,9 @@ describe('scrollToFit', () => {
   it('scrolls down to a card cut off at the bottom', () => {
     expect(scrollToFit({ top: 500, bottom: 900 }, 150, 800)).toBe(112);
   });
-  it('lines up the top of a card taller than the band when its bottom is cut off', () => {
+  it('lines up the top of a card taller than the band', () => {
     expect(scrollToFit({ top: 300, bottom: 1200 }, 150, 800)).toBe(138);
-  });
-  it('brings up the bottom of a card taller than the band only as far as it fills the band', () => {
-    expect(scrollToFit({ top: -400, bottom: 500 }, 150, 800)).toBe(-288);
-  });
-  it('leaves a card taller than the band that already fills it', () => {
-    expect(scrollToFit({ top: 100, bottom: 1200 }, 150, 800)).toBe(0);
+    expect(scrollToFit({ top: -400, bottom: 500 }, 150, 800)).toBe(-562);
+    expect(scrollToFit({ top: 100, bottom: 1200 }, 150, 800)).toBe(-62);
   });
 });
