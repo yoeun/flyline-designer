@@ -53,6 +53,9 @@ export const COLORS = [
   { id: 'airflo-fire-orange', name: 'Fire Orange', hex: '#ca5645' },
   { id: 'airflo-st-olive', name: 'Olive', hex: '#988254' },
   { id: 'airflo-st-driftwood', name: 'Driftwood', hex: '#cbcadc' },
+  // Superflo Max Ridge 2.0 Double' Double Taper, sampled from its taper diagram.
+  { id: 'airflo-ddt-lichen-green', name: 'Lichen Green', hex: '#918649' },
+  { id: 'airflo-ddt-tan', name: 'Tan', hex: '#a68365' },
 ];
 
 const half = (ft) => Math.round(ft * 2) / 2;
@@ -108,6 +111,33 @@ const TAILWATER = LINEUP['airflo-smr-ultra-supple-tailwater'];
 // and rear belly (5 + 11.5 + 3 ft); and rear taper, then a 12 ft haul zone.
 const SMOOTH_POWER = LINEUP['airflo-sms-power'];
 
+// Power Taper colorways, shared by Superflo Max Smooth and Superflo Max Ridge 2.0: Airflo's Ridge 2.0
+// diagrams show the Smooth ones' split and colors, and the two tables match, so the Ridge 2.0 sizes
+// draw exactly like the Smooth ones.
+const POWER_COLORWAYS = [
+  { id: 'sunburst-purple', name: 'Sunburst/Purple', weights: [3, 9], head: 'airflo-sunburst', running: 'airflo-purple' },
+  { id: 'camo-caddis', name: 'Camo/Caddis', weights: [4, 8], head: 'airflo-camo-green', running: 'airflo-caddis' },
+  { id: 'chartreuse-white', name: 'Chartreuse/White', weights: [5, 8], head: 'airflo-pt-chartreuse', running: 'airflo-white' },
+];
+const RIDGE_POWER = LINEUP['airflo-smr-power'];
+
+// Universal Taper colorways, shared by Superflo Max Ridge 2.0 and Superflo Max Smooth: Airflo's
+// Smooth page shows the Ridge 2.0 diagrams, and the two tables match, so the Smooth sizes draw
+// exactly like the Ridge 2.0 ones.
+const MAX_UNIVERSAL_COLORWAYS = [
+  { id: 'moss-chartreuse', name: 'Moss/Chartreuse', weights: [3, 8], head: 'airflo-max-moss', running: 'airflo-max-chartreuse' },
+  { id: 'chartreuse-white', name: 'Chartreuse/White', weights: [5, 8], head: 'airflo-max-head-chartreuse', running: 'airflo-white' },
+  { id: 'lichen-driftwood', name: 'Lichen/Driftwood', weights: [3, 6], head: 'airflo-max-lichen', running: 'airflo-max-driftwood' },
+];
+
+// Superflo Max Ridge 2.0 Double' Double Taper, a reversible double taper sold 80 ft long in every
+// size. The DT5 diagram's front taper, belly and rear taper (8/66/6 ft) apply to all of them; a
+// double taper is all head, so the lineup leaves its head empty and the menu draws all of it as
+// head. Lichen Green (the 8 ft taper's Ultra Supple end) blends into Tan (the 6 ft taper's
+// standard end) from about 38 to 55 ft on the diagram, so the color changes at 46 ft.
+const DOUBLE_DOUBLE = LINEUP['airflo-smr-double-double-taper'];
+const DOUBLE_DOUBLE_SPLIT = split(lineupSize(DOUBLE_DOUBLE, 'DT5F'));
+
 const STREAMER_MAX_COLORWAYS = {
   3: { name: 'Black/Green/Chartreuse', bellyColor: 'airflo-green', running: 'airflo-chartreuse' },
   5: { name: 'Black/Red/Orange', bellyColor: 'airflo-red', running: 'airflo-orange' },
@@ -158,14 +188,13 @@ export const PRODUCTS = [
     id: 'airflo-superflo-max-ridge-universal',
     maker: 'Airflo',
     name: 'Airflo Superflo Max Ridge 2.0 Universal Taper',
-    sizes: universal(
-      MAX_RIDGE_UNIVERSAL,
-      [
-        { id: 'moss-chartreuse', name: 'Moss/Chartreuse', weights: [3, 8], head: 'airflo-max-moss', running: 'airflo-max-chartreuse' },
-        { id: 'chartreuse-white', name: 'Chartreuse/White', weights: [5, 8], head: 'airflo-max-head-chartreuse', running: 'airflo-white' },
-        { id: 'lichen-driftwood', name: 'Lichen/Driftwood', weights: [3, 6], head: 'airflo-max-lichen', running: 'airflo-max-driftwood' },
-      ],
-    ),
+    sizes: universal(MAX_RIDGE_UNIVERSAL, MAX_UNIVERSAL_COLORWAYS),
+  }),
+  makerProduct({
+    id: 'airflo-superflo-max-smooth-universal',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Max Smooth Universal Taper',
+    sizes: universal(LINEUP['airflo-sms-universal'], MAX_UNIVERSAL_COLORWAYS),
   }),
   makerProduct({
     id: 'airflo-superflo-max-ridge-ultra-supple-universal',
@@ -197,11 +226,28 @@ export const PRODUCTS = [
     id: 'airflo-superflo-max-smooth-power',
     maker: 'Airflo',
     name: 'Airflo Superflo Max Smooth Power Taper',
-    sizes: floating(SMOOTH_POWER, split(lineupSize(SMOOTH_POWER, 'WF5F')), [
-      { id: 'sunburst-purple', name: 'Sunburst/Purple', weights: [3, 9], head: 'airflo-sunburst', running: 'airflo-purple' },
-      { id: 'camo-caddis', name: 'Camo/Caddis', weights: [4, 8], head: 'airflo-camo-green', running: 'airflo-caddis' },
-      { id: 'chartreuse-white', name: 'Chartreuse/White', weights: [5, 8], head: 'airflo-pt-chartreuse', running: 'airflo-white' },
-    ]),
+    sizes: floating(SMOOTH_POWER, split(lineupSize(SMOOTH_POWER, 'WF5F')), POWER_COLORWAYS),
+  }),
+  makerProduct({
+    id: 'airflo-superflo-max-ridge-power',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Max Ridge 2.0 Power Taper',
+    sizes: floating(RIDGE_POWER, split(lineupSize(RIDGE_POWER, 'WF5F')), POWER_COLORWAYS),
+  }),
+  makerProduct({
+    id: 'airflo-superflo-max-ridge-double-double-taper',
+    maker: 'Airflo',
+    name: "Airflo Superflo Max Ridge 2.0 Double' Double Taper",
+    sizes: DOUBLE_DOUBLE.sizes.map((size) => ({
+      id: `dt${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: [...DOUBLE_DOUBLE_SPLIT, 0],
+      estimated: !size.taper,
+      lineup: overriding(size, { head: size.total }),
+      colorways: [{ id: 'lichen-green-tan', name: 'Lichen Green/Tan', zones: zones([46, 'airflo-ddt-lichen-green'], [0, 'airflo-ddt-tan']) }],
+    })),
   }),
   makerProduct({
     id: 'airflo-superflo-max-ridge-ultra-supple-indicator',
