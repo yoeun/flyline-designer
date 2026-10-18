@@ -5,7 +5,7 @@ import { PREVIEW_COLORS, capacityText, photosByModel, previewSetup } from '../li
 import { SIDES } from '../lib/reelFrames.js';
 import { cn } from '@/lib/utils';
 import Button from './Button.jsx';
-import { CARD_LIFT, CARD_OUTLINE } from './cardHover.js';
+import { CARD_GROW, CARD_OUTLINE } from './cardHover.js';
 import { CHIP } from './Chips.jsx';
 import FlippingReelPreview from './FlippingReelPreview.jsx';
 import Icon from './Icon.jsx';
@@ -52,7 +52,7 @@ function ModelCard({ model, view, onNewSetup }) {
   ].filter(Boolean);
   const photos = PHOTOS_BY_MODEL[model.id] ?? [];
   return (
-    <li className={cn('flex min-w-0 flex-col gap-3 rounded-card border border-border bg-card p-4', CARD_LIFT, CARD_OUTLINE)}>
+    <li className={cn('flex min-w-0 flex-col gap-3 rounded-card border border-border bg-card p-4', CARD_GROW, CARD_OUTLINE)}>
       <div className="flex flex-col gap-0.5">
         <div className="flex items-start justify-between gap-2">
           <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
