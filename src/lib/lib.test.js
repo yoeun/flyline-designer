@@ -703,6 +703,7 @@ describe('change tracking', () => {
 // coating's tapers and colors.
 // SA's Magnitude Smooth Tarpon Clear Float and Textured Infinity Clear Float are the earlier-listed
 // other coating's tapers and colors.
+// Cortland's 50+ Heavy Sink, Pike Musky Sink 4 and Pike Musky Sink 8 each sell two sizes at 12 wt on one chart.
 const LOOKALIKES = new Map([
   ...[6, 7, 8, 9, 10].map((w) => [`rio-premier-outbound-short-wf${w}-int-5-7`, `rio-premier-outbound-short-wf${w}-int-3-5`]),
   ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-amplitude-textured-mpx-wf${w}f`, `sa-amplitude-smooth-mpx-wf${w}f`]),
@@ -731,6 +732,9 @@ const LOOKALIKES = new Map([
   ...[4, 5, 6].map((w) => [`sa-magnitude-textured-trout-expert-clear-tip-float-wf${w}f`, `sa-magnitude-smooth-trout-expert-clear-tip-float-wf${w}f`]),
   ...[10, 11, 12].map((w) => [`sa-magnitude-smooth-tarpon-clear-tip-wf${w}f`, `sa-magnitude-textured-tarpon-clear-float-wf${w}f`]),
   ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-magnitude-textured-infinity-clear-float-wf${w}f`, `sa-magnitude-smooth-infinity-clear-float-wf${w}f`]),
+  ['cortland-50-plus-heavy-sink-500gr', 'cortland-50-plus-heavy-sink-450gr'],
+  ['cortland-specialty-pike-musky-sink-4-wf12s4-plus', 'cortland-specialty-pike-musky-sink-4-wf12s4'],
+  ['cortland-specialty-pike-musky-sink-8-wf12s8-plus', 'cortland-specialty-pike-musky-sink-8-wf12s8'],
 ]);
 
 describe('presetForLine', () => {

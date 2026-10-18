@@ -70,6 +70,14 @@ export const COLORS = [
   { id: 'cortland-sink-tip-type-6-mint-green', name: 'Sink Tip Type 6 Mint Green', hex: '#98cc9b' },
   { id: 'cortland-fairplay-blue-green', name: 'Fairplay Blue Green', hex: '#98d096' },
   { id: 'cortland-compact-sink-type-6-electric-green', name: 'Compact Sink Type 6 Electric Green', hex: '#05834c' },
+  // Darker than the Striped Bass Blitz's ice blue.
+  { id: 'cortland-50-plus-heavy-sink-deep-blue', name: '50+ Heavy Sink Deep Blue', hex: '#1b80c4' },
+  // Far darker than the 333 Full Sinking Type 3's brown.
+  { id: 'cortland-pike-musky-sink-4-brown', name: 'Pike Musky Sink 4 Brown', hex: '#422a12' },
+  { id: 'cortland-pike-musky-sink-4-gray', name: 'Pike Musky Sink 4 Gray', hex: '#868b8e' },
+  // Far yellower than the Modern Trout's orange.
+  { id: 'cortland-rock-bottom-orange', name: 'Rock Bottom Orange', hex: '#f79128' },
+  { id: 'cortland-dungeon-30-green', name: 'Dungeon 30 Green', hex: '#54b96a' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). The 444 Full Sinking was one
@@ -820,6 +828,133 @@ export const PRODUCTS = [
       id: (w) => `wf${w}s6`,
       type: 'sinkhead-int',
       colorways: [{ id: 'black-electric-green', name: 'Black/Electric Green', zones: zones([28, 'cortland-black'], [0, 'cortland-compact-sink-type-6-electric-green']) }],
+    }),
+  }),
+  // The Compact Sink Type 6's chart and split with a Type 9 head (8–9 ips), drawn on an intermediate
+  // running line like it. A black 28 ft head on a light blue running line; the chart's 12 ft step down
+  // to the running line, light blue like the running line, is drawn here as running line.
+  makerProduct({
+    id: 'cortland-compact-sink-type-9',
+    maker: 'Cortland',
+    name: 'Cortland Compact Sink Type 9',
+    sizes: sizes(LINEUP['cortland-specialty-compact-sink-type-9'], {
+      id: (w) => `wf${w}s9`,
+      type: 'sinkhead-int',
+      colorways: [{ id: 'black-light-blue', name: 'Black/Light Blue', zones: zones([28, 'cortland-black'], [0, 'cortland-light-blue']) }],
+    }),
+  }),
+  // On a 50 lb braided core, sold by grain weight, with two sizes at 12 wt, so its sizes go by grains.
+  // A black 30 ft Type 8 head (7–8 ips) on a deep blue intermediate running line; the chart's 15 ft
+  // step down to the running line, blue like the running line, is drawn here as running line. The
+  // WF13–15 and WF15+ are above the menu's 12 wt.
+  makerProduct({
+    id: 'cortland-50-plus-heavy-sink',
+    maker: 'Cortland',
+    name: 'Cortland 50+ Heavy Sink',
+    sizes: sizes(upTo12(LINEUP['cortland-50-plus-heavy-sink']), {
+      type: 'sinkhead-int',
+      colorways: [{ id: 'black-deep-blue', name: 'Black/Deep Blue', zones: zones([30, 'cortland-black'], [0, 'cortland-50-plus-heavy-sink-deep-blue']) }],
+    }).map((size) => ({ ...size, id: `${size.lineup.label.match(/(\d+) gr$/)[1]}gr` })),
+  }),
+  // A black 28 ft Type 8 head (8–9 ips) on an ice blue intermediate running line, for current and
+  // depth; the chart's 12 ft step down to the running line, ice blue like the running line, is drawn
+  // here as running line.
+  makerProduct({
+    id: 'cortland-cold-salt-striped-bass-sink-8',
+    maker: 'Cortland',
+    name: 'Cortland Cold Salt Striped Bass Sink 8',
+    sizes: sizes(LINEUP['cortland-cold-salt-striped-bass-sink-8'], {
+      id: (w) => `wf${w}s8`,
+      type: 'sinkhead-int',
+      colorways: [{ id: 'black-ice-blue', name: 'Black/Ice Blue', zones: zones([28, 'cortland-black'], [0, 'cortland-ice-blue']) }],
+    }),
+  }),
+  // A brown 30 ft Type 4 head (4–5 ips) on a gray intermediate running line; the chart's 15 ft step down
+  // to the running line, gray like the running line, is drawn here as running line. The WF12 and WF12+
+  // are both 12 wt.
+  makerProduct({
+    id: 'cortland-specialty-pike-musky-sink-4',
+    maker: 'Cortland',
+    name: 'Cortland Pike Musky Sink 4',
+    sizes: sizes(LINEUP['cortland-specialty-pike-musky-sink-4'], {
+      id: (w) => `wf${w}s4`,
+      type: 'sinkhead-int',
+      colorways: [{ id: 'brown-gray', name: 'Brown/Gray', zones: zones([30, 'cortland-pike-musky-sink-4-brown'], [0, 'cortland-pike-musky-sink-4-gray']) }],
+    }).map((size) => (size.lineup.label.includes('+') ? { ...size, id: `${size.id}-plus` } : size)),
+  }),
+  // The Pike Musky Sink 4's chart and split with a black Type 8 head (8–8.5 ips) on an olive intermediate
+  // running line; the chart's 15 ft step down to the running line, olive like the running line, is
+  // drawn here as running line. The WF12 and WF12+ are both 12 wt; the 700 gr size has no line weight.
+  makerProduct({
+    id: 'cortland-specialty-pike-musky-sink-8',
+    maker: 'Cortland',
+    name: 'Cortland Pike Musky Sink 8',
+    sizes: sizes(
+      { ...LINEUP['cortland-specialty-pike-musky-sink-8'], sizes: LINEUP['cortland-specialty-pike-musky-sink-8'].sizes.filter((size) => size.weight) },
+      {
+        id: (w) => `wf${w}s8`,
+        type: 'sinkhead-int',
+        colorways: [{ id: 'black-olive', name: 'Black/Olive', zones: zones([30, 'cortland-black'], [0, 'cortland-pike-olive']) }],
+      },
+    ).map((size) => (size.lineup.label.includes('+') ? { ...size, id: `${size.id}-plus` } : size)),
+  }),
+  // Kelly Galloup's deep streamer line, rated by grain weight for two rod weights and drawn at the lower.
+  // A 40 ft Type 6 head (6–7.5 ips) on an intermediate running line, one running line color per size
+  // (yellow 200 gr, blue 250 gr, orange 300 gr). The page gives the head
+  // as 40 ft; the chart's head adds up to 43 ft (1, 40 and 2 ft) and is drawn as is. The chart draws the
+  // head black through the body, then the running line's color from the 2 ft back taper on. The blue is
+  // drawn in the near-identical Sky Blue of the Big Shot.
+  makerProduct({
+    id: 'cortland-galloup-rock-bottom',
+    maker: 'Cortland',
+    name: 'Cortland Rock Bottom',
+    sizes: sizes(LINEUP['cortland-galloup-rock-bottom'], {
+      id: (w) => `wf${w}s6`,
+      lineup: (size) => overriding(size, { head: 43 }),
+      type: 'sinkhead-int',
+      colorways: [],
+    }).map((size) => {
+      const [id, name, color] = {
+        200: ['black-yellow', 'Black/Yellow', 'cortland-yellow'],
+        250: ['black-blue', 'Black/Blue', 'cortland-sky-blue'],
+        300: ['black-orange', 'Black/Orange', 'cortland-rock-bottom-orange'],
+      }[size.lineup.label.match(/(\d+) gr$/)[1]];
+      return { ...size, colorways: [{ id, name, zones: zones([41, 'cortland-black'], [0, color]) }] };
+    }),
+  }),
+  // Kelly Galloup's big-river streamer line, rated by grain weight for two rod weights and drawn at the
+  // lower. An overweighted 30 ft Type 6 head (6–7.5 ips) with a 20 ft back taper on an intermediate
+  // running line, one running line color per size (white 230 gr, green 280 gr, olive 330 gr). The page gives the head as 30 ft; the chart's head adds up to 31 ft (1, 10
+  // and 20 ft) and is drawn as is. The chart draws the whole head black. The olive is drawn in the
+  // near-identical Pike Olive of the Pike Musky lines.
+  makerProduct({
+    id: 'cortland-galloup-dungeon-30',
+    maker: 'Cortland',
+    name: 'Cortland Dungeon 30',
+    sizes: sizes(LINEUP['cortland-galloup-dungeon-30'], {
+      id: (w) => `wf${w}s6`,
+      lineup: (size) => overriding(size, { head: 31 }),
+      type: 'sinkhead-int',
+      colorways: [],
+    }).map((size) => {
+      const [id, name, color] = {
+        230: ['black-white', 'Black/White', 'cortland-white'],
+        280: ['black-green', 'Black/Green', 'cortland-dungeon-30-green'],
+        330: ['black-olive', 'Black/Olive', 'cortland-pike-olive'],
+      }[size.lineup.label.match(/(\d+) gr$/)[1]];
+      return { ...size, colorways: [{ id, name, zones: zones([31, 'cortland-black'], [0, color]) }] };
+    }),
+  }),
+  // Cortland's budget full sinker, 84 ft long, with 8 ft tapers either side of a 20 ft body. Type 2
+  // (2 ips), drawn as Type 3.
+  makerProduct({
+    id: 'cortland-fairplay-sinking-type-2',
+    maker: 'Cortland',
+    name: 'Cortland Fairplay Sinking Type 2',
+    sizes: sizes(LINEUP['cortland-fairplay-sinking-type-2'], {
+      id: (w) => `wf${w}s2`,
+      type: 'sink3',
+      colorways: [{ id: 'black', name: 'Black', zones: zones([0, 'cortland-black']) }],
     }),
   }),
 ];
