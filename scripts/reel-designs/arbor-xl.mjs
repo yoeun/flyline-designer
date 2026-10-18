@@ -2,7 +2,7 @@
 // Drag side: the frame is a thin rim and five evenly spaced straight spokes ("sage" on the upper right one) round a
 // dark dial ring numbered 1–20 anticlockwise from the top, round a knob with three raised spokes and three ribbed
 // windows round a ringed logo badge. Through the frame shows the spool's cage, which turns: 26 windows and an inner
-// ring drilled with small holes. The back of the spool's handle pad shows through at 12 too, but the wound line
+// ring. The back of the spool's handle pad shows through at 12 too, but the wound line
 // hides it. Spool side: the cage sits set down inside the frame's rim, its 24 windows broken by the handle's pad
 // at 12 and the knob's at 6. Its three spokes (one up, two spread 130° from it) run in to a hub with a logo badge.
 import { P, arcPts, circle, f, frameRim, pad, rad, recessed, ring, roundPoly, slots, spoke, svg } from './lib.mjs';
@@ -56,11 +56,8 @@ const SPOKE_LOGO = (() => {
   return `<g data-print="" transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-28, 0, 12)}<text x="-18" y="6" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="17" fill="#f2f2ee">sage</text></g>`;
 })();
 
-// The cage's inner ring, drilled with a small hole behind each window.
-const HOLES = Array.from({ length: RIM.n }, (_, k) => circle(2.6, ...P(111, rad(-90 + (k * 360) / RIM.n)))).join('');
-
 export const drag = svg({
-  cage: [ring(190, 104) + slots({ ...RIM, rOut: 186 }) + HOLES],
+  cage: [ring(190, 104) + slots({ ...RIM, rOut: 186 })],
   body: [
     ring(200, 189),
     sageFoot(),
