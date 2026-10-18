@@ -663,6 +663,7 @@ const LOOKALIKES = new Map([
   ...[6, 7].map((w) => [`rio-ambassador-series-phil-rowley-lake-wf${w}f`, `rio-elite-stillwater-floater-wf${w}f`]),
   ...[6, 7].map((w) => [`rio-ambassador-series-phil-rowley-lake-wf${w}i`, `rio-premier-aqualux-wf${w}i`]),
   ...[10, 11, 12].map((w) => [`sa-amplitude-textured-tarpon-wf${w}f`, `sa-amplitude-smooth-tarpon-wf${w}f`]),
+  ...[3, 4, 5].map((w) => [`sa-amplitude-textured-double-taper-dt${w}f`, `sa-amplitude-smooth-double-taper-dt${w}f`]),
 ]);
 
 describe('presetForLine', () => {
