@@ -52,7 +52,7 @@ function ModelCard({ model, view, onNewSetup }) {
   ].filter(Boolean);
   const photos = PHOTOS_BY_MODEL[model.id] ?? [];
   return (
-    <li className={cn('flex min-w-0 flex-col gap-3 rounded-card border border-border bg-card p-4', CARD_GROW, CARD_OUTLINE)}>
+    <li className={cn('flex min-w-0 flex-col gap-3 rounded-card border border-border bg-card p-4', CARD_GROW, 'motion-safe:hover:scale-101', CARD_OUTLINE)}>
       <div className="flex flex-col gap-0.5">
         <div className="flex items-start justify-between gap-2">
           <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">

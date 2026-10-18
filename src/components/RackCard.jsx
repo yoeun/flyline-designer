@@ -30,6 +30,7 @@ export default function RackCard({ setup, current = false, conflicts = [], curre
         'relative flex flex-none flex-col overflow-hidden rounded-card border border-border bg-card',
         // A keyboard user tabbing through the rack sees the same growth.
         CARD_GROW,
+        'motion-safe:hover:scale-103',
         'has-[:focus-visible]:z-10 has-[:focus-visible]:shadow-md motion-safe:has-[:focus-visible]:scale-103',
         !(current && currentStyle === 'outline') && CARD_OUTLINE,
         size === 'lg' ? 'w-full sm:w-[300px]' : 'w-[200px]',
