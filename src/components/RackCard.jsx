@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { REELS, findById } from '../data/catalog.js';
 import { STYLES, displayName } from '../lib/rack.js';
 import { CARD_GROW, CARD_OUTLINE } from './cardHover.js';
+import ConfirmDialog from './ConfirmDialog.jsx';
 import Icon from './Icon.jsx';
 import ReelPreview from './ReelPreview.jsx';
 
@@ -18,9 +20,7 @@ export default function RackCard({ setup, current = false, conflicts = [], curre
   const reelName = findById(REELS, setup.reel.model)?.name ?? 'Reel';
   const styles = STYLES.filter((s) => setup.styles?.includes(s.id));
 
-  const remove = () => {
-    if (window.confirm(`Remove “${name}” from your rack?`)) onRemove(setup.id);
-  };
+  const [confirmingRemove, setConfirmingRemove] = useState(false);
 
   const flagged = conflicts.length > 0;
 
@@ -110,7 +110,7 @@ export default function RackCard({ setup, current = false, conflicts = [], curre
                 <DropdownMenuItem className="pointer-coarse:py-3" onClick={() => onDuplicate(setup)}>
                   Duplicate
                 </DropdownMenuItem>
-                <DropdownMenuItem className="pointer-coarse:py-3" onClick={remove}>
+                <DropdownMenuItem className="pointer-coarse:py-3" onClick={() => setConfirmingRemove(true)}>
                   Remove
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -133,6 +133,19 @@ export default function RackCard({ setup, current = false, conflicts = [], curre
           {showNotes && setup.notes && <span className="mt-1 line-clamp-3 text-[12px] text-muted-foreground">{setup.notes}</span>}
         </span>
       </button>
+      {onRemove && (
+        <ConfirmDialog
+          open={confirmingRemove}
+          title="Remove from your rack?"
+          description={`“${name}” will be removed from your rack.`}
+          confirmLabel="Remove"
+          onConfirm={() => {
+            setConfirmingRemove(false);
+            onRemove(setup.id);
+          }}
+          onCancel={() => setConfirmingRemove(false)}
+        />
+      )}
     </div>
   );
 }
