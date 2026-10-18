@@ -78,6 +78,11 @@ export const COLORS = [
   // Far yellower than the Modern Trout's orange.
   { id: 'cortland-rock-bottom-orange', name: 'Rock Bottom Orange', hex: '#f79128' },
   { id: 'cortland-dungeon-30-green', name: 'Dungeon 30 Green', hex: '#54b96a' },
+  // From Cortland's euro taper charts: the Euro Nymph Braid Core and Mono Core chart chartreuse, the
+  // Versatile Euro Nymph sage green and a greener chartreuse.
+  { id: 'cortland-euro-nymph-chartreuse', name: 'Euro Nymph Chartreuse', hex: '#d1db54' },
+  { id: 'cortland-versatile-euro-nymph-sage-green', name: 'Versatile Euro Sage Green', hex: '#c9d08a' },
+  { id: 'cortland-versatile-euro-nymph-chartreuse', name: 'Versatile Euro Chartreuse', hex: '#b8d432' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). The 444 Full Sinking was one
@@ -969,5 +974,53 @@ export const PRODUCTS = [
       type: 'sink3',
       colorways: [{ id: 'black', name: 'Black', zones: zones([0, 'cortland-black']) }],
     }),
+  }),
+  // Euro Nymph Braid Core and Mono Core: .022″ level euro lines, 90 ft, drawn like RIO's euro lines
+  // (see rio.js) as a token 1.5 ft head on a 3 wt; Cortland rates them for no line weight. Their charts
+  // are chartreuse end to end, so the two draw alike. The Mono Core's .017 is left out: the menu can't
+  // draw a line thinner than its smallest weight, so it would draw exactly like the .022.
+  ...[
+    ['cortland-euro-nymph-braid-core', 'Cortland Euro Nymph Braid Core'],
+    ['cortland-euro-nymph-mono-core', 'Cortland Euro Nymph Mono Core'],
+  ].map(([id, name]) =>
+    makerProduct({
+      id,
+      maker: 'Cortland',
+      name,
+      sizes: LINEUP[id].sizes
+        .filter((size) => size.label === '.022 level')
+        .map((size) => ({
+          id: '022-level',
+          label: '.022 Level',
+          type: 'floating',
+          weight: 3,
+          taper: [0.5, 0.5, 0.5, size.total - 1.5],
+          lineup: overriding(size, { weight: 3, head: 1.5 }),
+          colorways: [{ id: 'chartreuse', name: 'Chartreuse', zones: zones([0, 'cortland-euro-nymph-chartreuse']) }],
+        })),
+    }),
+  ),
+  // Versatile Euro Nymph: a 90 ft double taper down to a .022″ tip at both ends, 10 ft tapers on a 70
+  // ft body, from Cortland's chart; drawn as a 3 wt, as Cortland rates it for no line weight. Sage
+  // green on the chart's left half, chartreuse on the right.
+  makerProduct({
+    id: 'cortland-versatile-euro-nymph',
+    maker: 'Cortland',
+    name: 'Cortland Versatile Euro Nymph',
+    sizes: LINEUP['cortland-versatile-euro-nymph'].sizes.map((size) => ({
+      id: '022-dt',
+      label: '.022 DT',
+      type: 'floating',
+      weight: 3,
+      taper: publishedTaper(size),
+      lineup: overriding(size, { weight: 3, head: size.total }),
+      colorways: [
+        {
+          id: 'sage-green-chartreuse',
+          name: 'Sage Green/Chartreuse',
+          zones: zones([45, 'cortland-versatile-euro-nymph-sage-green'], [0, 'cortland-versatile-euro-nymph-chartreuse']),
+        },
+      ],
+    })),
   }),
 ];

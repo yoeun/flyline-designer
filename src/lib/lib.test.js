@@ -33,7 +33,7 @@ import { makerProduct, zones } from '../data/lines/product.js';
 import BEFORE_PRODUCTS from './fixtures/presets-before-products.json';
 import { rackConflicts, backingContrast, conflictsFor } from './checks.js';
 import { deltaE } from './color.js';
-import { ARBOR_RATIO, backingYardsForFill, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
+import { ARBOR_RATIO, PACK, backingYardsForFill, diameterAt, lineDiameters, lineProfile, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
 import { FRAMES, SIDES, frameArbor, frameMarkup } from './reelFrames.js';
 import { decodeSetup, encodeSetup, queryToState, stateToQuery } from './share.js';
 import { parseTheme, resolveTheme } from './theme.js';
@@ -96,6 +96,20 @@ describe('geometry', () => {
   it('30 lb backing takes more room than 20 lb', () => {
     const b30 = spoolLayout(setup({ backing: { ...DEFAULT_SETUP.backing, pounds: 30 } }));
     expect(b30.fill).toBeGreaterThan(spoolLayout(DEFAULT_SETUP).fill);
+  });
+
+  it('a level line drawn as all body is one diameter end to end, with no bump', () => {
+    for (const id of ['sa-air-cel-level-l5f', 'sa-air-cel-level-l8f', 'sa-wetcel-full-sink-trolling-line-level-s6']) {
+      const { line } = findById(LINE_PRESETS, id);
+      const profile = lineProfile(line);
+      const { body } = lineDiameters(line);
+      const total = totalLength(line);
+      for (const ft of [0.01, 0.25, 1, 10, total / 2, total - 1, total]) expect(diameterAt(profile, ft), `${id} at ${ft} ft`).toBe(body);
+      // So its rings take the area of a line that thick all the way.
+      const layout = spoolLayout({ ...DEFAULT_SETUP, line, backing: { ...DEFAULT_SETUP.backing, yards: 0 } });
+      const area = layout.rings.filter((r) => r.kind === 'line').reduce((s, r) => s + r.area, 0);
+      expect(area).toBeCloseTo((body * body * total * 12 * PACK) / layout.reel.width, 10);
+    }
   });
 });
 
@@ -196,6 +210,18 @@ describe('real line presets', () => {
     ['airflo-stillwater-intermediate-wf6', 46, 105],
     ['cortland-444-peach-wf5f', 32, 90],
     ['cortland-streamer-sink-tip-15-wf7', 31, 100],
+    ['rio-outbound-short-shooting-head-sh8f', 30, 30],
+    ['rio-fips-euro-nymph-2-5', 1.5, 80],
+    ['rio-euro-nymph-shorty-2-5', 1.5, 20],
+    ['rio-premier-technical-euro-nymph-shorty-2-5', 1.5, 34],
+    ['royal-wulff-sea-wulff-triangle-taper-shooting-head-sink-4-sh9s4', 30, 30],
+    ['sa-mastery-euro-tactical-nymph-braided-core-level', 1.5, 80],
+    ['sa-mastery-euro-tactical-nymph-braided-core-dt', 80, 80],
+    ['sa-air-cel-level-l6f', 72, 72],
+    ['sa-wetcel-full-sink-trolling-line-level-s6', 140, 140],
+    ['cortland-euro-nymph-braid-core-022-level', 1.5, 90],
+    ['cortland-euro-nymph-mono-core-022-level', 1.5, 90],
+    ['cortland-versatile-euro-nymph-022-dt', 90, 90],
   ])('%s has a %s ft head on a %i ft line', (id, head, length) => {
     const { taper } = findById(LINE_PRESETS, id).line;
     expect(taper.front + taper.body + taper.back).toBe(head);
@@ -490,6 +516,14 @@ describe('line editing', () => {
     expect(s.x(30)).toBe(300);
     expect(s.x(120)).toBe(0);
   });
+
+  it('a boundary between two empty sections stays put, and the others still move', () => {
+    const level = { ...line(), taper: { front: 0, body: 72, back: 0, running: 0 } };
+    expect(moveTaperBoundary(level, 3, 70)).toBe(level);
+    const back = moveTaperBoundary(level, 2, 60);
+    expect(back.taper).toEqual({ front: 0, body: 60, back: 12, running: 0 });
+    expect(Object.values(back.taper).every((ft) => ft >= 0)).toBe(true);
+  });
 });
 
 describe('catalog', () => {
@@ -737,6 +771,8 @@ const LOOKALIKES = new Map([
   ['cortland-specialty-pike-musky-sink-4-wf12s4-plus', 'cortland-specialty-pike-musky-sink-4-wf12s4'],
   ['cortland-specialty-pike-musky-sink-8-wf12s8-plus', 'cortland-specialty-pike-musky-sink-8-wf12s8'],
   ['sa-sonar-musky-gen-2-500gr', 'sa-sonar-musky-gen-2-450gr'],
+  // Cortland's .022 euro lines chart the same chartreuse level line on a braid or mono core.
+  ['cortland-euro-nymph-mono-core-022-level', 'cortland-euro-nymph-braid-core-022-level'],
 ]);
 
 describe('presetForLine', () => {
@@ -1328,6 +1364,8 @@ describe('RIO lines', () => {
     'rio-elite-sub-surface-hover': table([[5, 30, 90], [6, 30, 100], [7, 30, 100], [8, 30, 100]]),
     'rio-premier-midge-tip-hover': table([[5, 40, 90], [6, 40, 90], [7, 42, 100], [8, 44, 100]]),
     'rio-premier-midge-tip-long-hover': table([[5, 40, 90], [6, 40, 90], [7, 42, 100], [8, 44, 100]]),
+    // A shooting head is all head, with no running line.
+    'rio-outbound-short-shooting-head': table([7, 8, 9, 10].map((w) => [w, 30, 30])),
   };
   const rio = LINE_PRESETS.filter((p) => p.maker === 'RIO');
   const head = ({ taper }) => taper.front + taper.body + taper.back;
@@ -1338,13 +1376,16 @@ describe('RIO lines', () => {
     return SPECS[p.product]?.[p.line.weight];
   };
 
-  it('has a spec for every product except the Euro nymph line', () => {
+  // Level euro lines have no head; their token taper and lengths are checked against the lineup.
+  const EURO = ['rio-technical-euro-nymph', 'rio-fips-euro-nymph', 'rio-euro-nymph-shorty', 'rio-premier-technical-euro-nymph-shorty'];
+
+  it('has a spec for every product except the Euro nymph lines', () => {
     const products = new Set(rio.map((p) => p.product));
-    products.delete('rio-technical-euro-nymph');
+    for (const id of EURO) products.delete(id);
     expect([...products].sort()).toEqual(Object.keys(SPECS).sort());
   });
 
-  it.each(rio.filter((p) => p.product !== 'rio-technical-euro-nymph').map((p) => [p.id, p]))('%s has RIO\'s head and total length', (_, p) => {
+  it.each(rio.filter((p) => !EURO.includes(p.product)).map((p) => [p.id, p]))('%s has RIO\'s head and total length', (_, p) => {
     const [h, total] = spec(p);
     expect(head(p.line)).toBe(h);
     expect(totalLength(p.line)).toBe(total);
@@ -1365,7 +1406,7 @@ describe('RIO lines', () => {
   });
 
   it('only sizes drawn on a RIO diagram are exact', () => {
-    const exact = rio.filter((p) => !p.estimated && p.product !== 'rio-technical-euro-nymph').map((p) => p.id);
+    const exact = rio.filter((p) => !p.estimated && !EURO.includes(p.product)).map((p) => p.id);
     expect(exact).toEqual([
       'rio-premier-gold-wf5f',
       'rio-premier-outbound-short-wf8f',

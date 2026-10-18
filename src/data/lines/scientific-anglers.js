@@ -106,6 +106,10 @@ export const COLORS = [
   { id: 'sa-sonar-trout-express-pale-yellow', name: 'Trout Express Pale Yellow', hex: '#d1e38f' },
   { id: 'sa-sonar-trout-express-light-blue', name: 'Trout Express Light Blue', hex: '#8db7e1' },
   { id: 'sa-sonar-trout-express-charcoal', name: 'Trout Express Charcoal', hex: '#78797d' },
+  // Sampled from the Mastery Euro Tactical Nymph Braided Core diagram's double-taper tip.
+  { id: 'sa-mastery-euro-tactical-nymph-orange', name: 'Euro Tactical Nymph Orange', hex: '#f67830' },
+  // Sampled from the Wet Cel Full Sink Trolling Line photo, a near-black charcoal.
+  { id: 'sa-wet-cel-trolling-charcoal', name: 'Wet Cel Trolling Charcoal', hex: '#2d2d2d' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -2062,6 +2066,70 @@ export const PRODUCTS = [
           zones: zones([9, 'sa-titan-dark-green'], [28.5, 'sa-charcoal'], [0, 'sa-titan-dark-green']),
         },
       ],
+    })),
+  }),
+  // Mastery Euro Tactical Nymph Braided Core, 80 ft for 0–5 wt rods, drawn as a 3 wt. The Level
+  // (.022″) is drawn like the Mono's: a token 1.5 ft head. SA's diagram for the Double Taper is drawn
+  // to scale with no numbers; measured on its axis it has a 5 ft orange front tip and a 12 ft front
+  // taper, a 45 ft belly, and a 12 ft rear taper and 5 ft rear tip, so 17.5 ft at each end.
+  // Mist green is SA's Mist Green swatch.
+  makerProduct({
+    id: 'sa-mastery-euro-tactical-nymph-braided-core',
+    maker: 'Scientific Anglers',
+    name: 'SA Mastery Euro Tactical Nymph Braided Core',
+    sizes: [
+      ...[lineupSize(LINEUP['sa-mastery-euro-tactical-nymph-braided-core'], 'Level 0-5wt (.022")')].map((size) => ({
+        id: 'level',
+        label: 'Level 0–5 wt',
+        type: 'floating',
+        weight: 3,
+        taper: [0.5, 0.5, 0.5, size.total - 1.5],
+        lineup: overriding(size, { weight: 3, head: 1.5 }),
+        colorways: [{ id: 'mist-green', name: 'Mist Green', zones: zones([0, 'sa-mist-green']) }],
+      })),
+      ...[lineupSize(LINEUP['sa-mastery-euro-tactical-nymph-braided-core'], 'Double Taper 0-5wt (.022" tip)')].map((size) => ({
+        id: 'dt',
+        label: 'Double Taper 0–5 wt',
+        type: 'floating',
+        weight: 3,
+        taper: [17.5, 45, 17.5, 0],
+        lineup: overriding(size, { weight: 3, head: size.total }),
+        colorways: [{ id: 'mist-green-orange', name: 'Mist Green/Orange', zones: zones([5, 'sa-mastery-euro-tactical-nymph-orange'], [0, 'sa-mist-green']) }],
+      })),
+    ],
+  }),
+  // Air Cel Level: SA's level floating line, 72 ft in L5F–L8F. With no head it is drawn as all body,
+  // at its rated weight's body diameter end to end, so it draws level; a level line weighs what a head
+  // of its rating does (SA's 30 ft grain weights are the AFFTA ones), not what a running line does.
+  // Green is the Air Cel's.
+  makerProduct({
+    id: 'sa-air-cel-level',
+    maker: 'Scientific Anglers',
+    name: 'SA Air Cel Level',
+    sizes: LINEUP['sa-air-cel-level'].sizes.map((size) => ({
+      id: `l${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: [0, size.total, 0, 0],
+      lineup: overriding(size, { head: size.total }),
+      colorways: [{ id: 'green', name: 'Green', zones: zones([0, 'sa-green']) }],
+    })),
+  }),
+  // Wet Cel Full Sink Trolling Line: 140 ft of level Sink 6 for 6–8 wt rods, drawn level like the Air
+  // Cel Level at 6 wt, and as Type 5 like the Wet Cel Full Sink's Sink 6. SA lists it as charcoal.
+  makerProduct({
+    id: 'sa-wetcel-full-sink-trolling-line',
+    maker: 'Scientific Anglers',
+    name: 'SA Wet Cel Full Sink Trolling Line',
+    sizes: [lineupSize(LINEUP['sa-wetcel-full-sink-trolling-line'], 'Level 6-8wt Sink 6')].map((size) => ({
+      id: 'level-s6',
+      label: 'Level 6–8 wt Sink 6',
+      type: 'sink5',
+      weight: size.weight,
+      taper: [0, size.total, 0, 0],
+      lineup: overriding(size, { head: size.total }),
+      colorways: [{ id: 'charcoal', name: 'Charcoal', zones: zones([0, 'sa-wet-cel-trolling-charcoal']) }],
     })),
   }),
 ];

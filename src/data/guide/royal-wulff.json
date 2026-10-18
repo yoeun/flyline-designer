@@ -23,8 +23,7 @@
   "Multi Tip Spey Triangle Taper",
   "Tracer Shooting Line",
   "Ambush Leaders (sinking/floating leader system)",
-  "Ambush Triangle Taper Head Floating",
-  "Sea Wulff Triangle Taper Shooting Head Sink 4"
+  "Ambush Triangle Taper Head Floating"
  ],
  "products": [
   {
@@ -4344,6 +4343,72 @@
      "headGrains": 400,
      "colors": [
       "Black/Blue"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "royal-wulff-sea-wulff-triangle-taper-shooting-head-sink-4",
+   "name": "Sea Wulff Triangle Taper Shooting Head Sink 4",
+   "series": "Sea Wulff",
+   "category": "salt",
+   "discontinued": false,
+   "rank": 25,
+   "rankSource": "royalwulff.com all products sorted by Best Selling, rank among single-hand fly lines only (2026-10-16)",
+   "price": 39.95,
+   "priceNote": "list price; site shows $24.97/$29.96 (compare-at $39.95)",
+   "primaryUse": "Sinking shooting head for salt",
+   "secondaryUse": "Pair with Tracer shooting line",
+   "weightLabel": null,
+   "summary": "30' sink-4 shooting head with a loop kit, 8-10 wt.",
+   "url": "https://www.royalwulff.com/products/sea-wulff-triangle-taper-shooting-head-sink-4",
+   "sizes": [
+    {
+     "label": "SH8 S4",
+     "weights": [
+      8
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Dark Green"
+     ]
+    },
+    {
+     "label": "SH9 S4",
+     "weights": [
+      9
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Dark Green"
+     ]
+    },
+    {
+     "label": "SH10 S4",
+     "weights": [
+      10
+     ],
+     "density": "sink4",
+     "densityLabel": null,
+     "sinkIps": 4,
+     "head": 30,
+     "total": 30,
+     "grains30": null,
+     "headGrains": null,
+     "colors": [
+      "Dark Green"
      ]
     }
    ]

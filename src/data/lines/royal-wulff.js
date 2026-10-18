@@ -23,6 +23,8 @@ export const COLORS = [
   // The Striper Fast Sink's head looks charcoal rather than black in its photo.
   { id: 'rw-striper-black', name: 'Black', hex: '#3b3b39' },
   { id: 'rw-striper-blue', name: 'Blue', hex: '#1f4fae' },
+  // Sampled from the Sea Wulff Shooting Head Sink 4 photo, a dark olive green.
+  { id: 'rw-sea-wulff-shooting-head-dark-green', name: 'Dark Green', hex: '#32392b' },
 ];
 
 export const PRODUCTS = [
@@ -372,6 +374,23 @@ export const PRODUCTS = [
       taper: [size.head, 0, 0, size.total - size.head],
       lineup: size,
       colorways: [{ id: 'black-blue', name: 'Black/Blue', zones: zones([size.head, 'rw-striper-black'], [0, 'rw-striper-blue']) }],
+    })),
+  }),
+  // The Sea Wulff Triangle Taper as a 30 ft, 4 ips shooting head, with no running line. Royal Wulff
+  // gives only the 30 ft length; as on the other Sea Wulff lines the 30 ft taper is the whole head,
+  // so it's all front taper. 4 ips is drawn as Type 3, like the Full Sink 4.
+  makerProduct({
+    id: 'royal-wulff-sea-wulff-triangle-taper-shooting-head-sink-4',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Sea Wulff Triangle Taper Shooting Head Sink 4',
+    sizes: LINEUP['royal-wulff-sea-wulff-triangle-taper-shooting-head-sink-4'].sizes.map((size) => ({
+      id: `sh${size.weight}s4`,
+      label: size.label,
+      type: 'sink3',
+      weight: size.weight,
+      taper: [size.head, 0, 0, size.total - size.head],
+      lineup: size,
+      colorways: [{ id: 'dark-green', name: 'Dark Green', zones: zones([0, 'rw-sea-wulff-shooting-head-dark-green']) }],
     })),
   }),
 ];
