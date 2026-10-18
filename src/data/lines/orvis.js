@@ -18,6 +18,12 @@ export const COLORS = [
   { id: 'orvis-light-willow', name: 'Light Willow', hex: '#b5b09f' },
   { id: 'orvis-ivory', name: 'Ivory', hex: '#ebeae3' },
   { id: 'orvis-horizon', name: 'Horizon', hex: '#bcc8da' },
+  { id: 'orvis-salmon-light-olive', name: 'Light Olive', hex: '#b9b694' },
+  { id: 'orvis-salmon-moss', name: 'Moss', hex: '#c9d046' },
+  { id: 'orvis-hydros-horizon', name: 'Horizon', hex: '#cad8ea' },
+  { id: 'orvis-sand', name: 'Sand', hex: '#ece5bc' },
+  { id: 'orvis-big-game-moss', name: 'Moss', hex: '#b5c346' },
+  { id: 'orvis-all-rounder-moss', name: 'Moss', hex: '#a6b84c' },
 ];
 
 // Splits from Orvis's per-size taper charts: the tip and every front taper section are the front,
@@ -167,6 +173,51 @@ export const PRODUCTS = [
     name: 'Orvis Hydros Bank Shot Float',
     sizes: wf(LINEUP['orvis-hydros-bank-shot-float'], [
       { id: 'light-willow-orange', name: 'Light Willow/Orange', zones: zones([23.5, 'orvis-light-willow'], [0, 'orvis-bank-shot-orange']) },
+    ]),
+  }),
+  // An ultra-long head for long drifts and mends. Orvis's chart sections come to half a foot more
+  // than each stated head; taking the front from the head makes them 7.5, 8, 8.5 and 9 ft. Light
+  // olive front and moss rear, changing 30 ft from the tip, per Orvis's description (the box reads
+  // Lt Olive/Moss).
+  makerProduct({
+    id: 'orvis-hydros-salmon-steelhead',
+    maker: 'Orvis',
+    name: 'Orvis Hydros Salmon/Steelhead',
+    sizes: wf(LINEUP['orvis-hydros-salmon-steelhead'], [
+      { id: 'light-olive-moss', name: 'Light Olive/Moss', zones: zones([30, 'orvis-salmon-light-olive'], [0, 'orvis-salmon-moss']) },
+    ]),
+  }),
+  // Mono core for big flies and big fish. Orvis sells a WF8 but charts only 9 to 12 wt, so the 8 is
+  // left out. Horizon front and moss rear, changing at 30 ft, per Orvis's description.
+  makerProduct({
+    id: 'orvis-hydros-saltwater-big-game',
+    maker: 'Orvis',
+    name: 'Orvis Hydros Saltwater Big Game',
+    sizes: wf({ sizes: LINEUP['orvis-hydros-saltwater-big-game'].sizes.filter((size) => size.taper) }, [
+      { id: 'horizon-moss', name: 'Horizon/Moss', zones: zones([30, 'orvis-hydros-horizon'], [0, 'orvis-big-game-moss']) },
+    ]),
+  }),
+  // Compound taper on a multifilament core for cooler water. Orvis's chart has a 0.5 ft tip and 6 ft
+  // of front taper, half a foot more than its 40 ft head allows; taking the front from the head makes
+  // it 6. Horizon front and sand rear, changing at 30 ft, per Orvis's description.
+  makerProduct({
+    id: 'orvis-hydros-saltwater',
+    maker: 'Orvis',
+    name: 'Orvis Hydros Saltwater',
+    sizes: wf(LINEUP['orvis-hydros-saltwater'], [
+      { id: 'horizon-sand', name: 'Horizon/Sand', zones: zones([30, 'orvis-hydros-horizon'], [0, 'orvis-sand']) },
+    ]),
+  }),
+  // Dual-belly 40 ft head on a multifilament core, the cooler-water partner to the Tropic. The
+  // chart's first belly is 11 ft, half a foot short of the head; Orvis's taper diagram draws it as
+  // 11.5, which the lineup follows. Three colors at the PRO marks (an 8 ft tip, a change 30 ft from
+  // the tip, the rear taper and running line); the box reads Ivory/Horizon/Moss and the photos match.
+  makerProduct({
+    id: 'orvis-pro-saltwater-all-rounder-textured',
+    maker: 'Orvis',
+    name: 'Orvis PRO Saltwater All Rounder Textured',
+    sizes: wf(LINEUP['orvis-pro-saltwater-all-rounder-fly-line-textured'], [
+      { id: 'horizon', name: 'Horizon', zones: zones([8, 'orvis-ivory'], [22, 'orvis-horizon'], [0, 'orvis-all-rounder-moss']) },
     ]),
   }),
 ];

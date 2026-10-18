@@ -981,6 +981,7 @@
       "weight_label": null,
       "summary": "Textured do-it-all saltwater line on a multifilament core with a dual-belly 40' head; cooler-water counterpart to PRO Tropic.",
       "taper_source": "maker table (orvis.com Taper Chart): front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running. Orvis \"Tip\" and all \"Front Taper #n\" segments are summed into front; per-variant notes flag any table inconsistencies.",
+      "data_notes": "The taper chart's Belly #1 is 11', so its segments come to 39.5' against its stated 40' head; the taper diagram (image 2SK7_Pro_Saltwater_AR_Textured on the product page) draws Belly #1 as 11.5' and the front taper (tip included) as 4.5', which add up to the 40' head, so body uses the diagram's 11.5'.",
       "variants": [
         {
           "label": "WF6F",
@@ -994,11 +995,11 @@
           "head_grains": null,
           "taper_ft": {
             "front": 4.5,
-            "body": 31,
+            "body": 31.5,
             "back": 4,
             "running": 50
           },
-          "taper_source": "maker table (orvis.com Taper Chart): front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running",
+          "taper_source": "maker table (orvis.com Taper Chart), with Belly #1 from the maker taper diagram: front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running",
           "colors": [
             "Horizon"
           ]
@@ -1015,11 +1016,11 @@
           "head_grains": null,
           "taper_ft": {
             "front": 4.5,
-            "body": 31,
+            "body": 31.5,
             "back": 4,
             "running": 50
           },
-          "taper_source": "maker table (orvis.com Taper Chart): front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running",
+          "taper_source": "maker table (orvis.com Taper Chart), with Belly #1 from the maker taper diagram: front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running",
           "colors": [
             "Horizon"
           ]
@@ -1036,11 +1037,11 @@
           "head_grains": null,
           "taper_ft": {
             "front": 4.5,
-            "body": 31,
+            "body": 31.5,
             "back": 4,
             "running": 50
           },
-          "taper_source": "maker table (orvis.com Taper Chart): front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running",
+          "taper_source": "maker table (orvis.com Taper Chart), with Belly #1 from the maker taper diagram: front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running",
           "colors": [
             "Horizon"
           ]
@@ -1057,11 +1058,11 @@
           "head_grains": null,
           "taper_ft": {
             "front": 4.5,
-            "body": 31,
+            "body": 31.5,
             "back": 4,
             "running": 50
           },
-          "taper_source": "maker table (orvis.com Taper Chart): front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running",
+          "taper_source": "maker table (orvis.com Taper Chart), with Belly #1 from the maker taper diagram: front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running",
           "colors": [
             "Horizon"
           ]
@@ -1078,11 +1079,11 @@
           "head_grains": null,
           "taper_ft": {
             "front": 4.5,
-            "body": 31,
+            "body": 31.5,
             "back": 4,
             "running": 50
           },
-          "taper_source": "maker table (orvis.com Taper Chart): front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running",
+          "taper_source": "maker table (orvis.com Taper Chart), with Belly #1 from the maker taper diagram: front = Tip + Front Taper #1; body = Belly #1 + Rear Taper #1 + Belly #2; back = Rear Taper #2; running = Running",
           "colors": [
             "Horizon"
           ]
