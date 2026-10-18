@@ -23,7 +23,8 @@ Commit the regenerated SVGs with the script.
   so 90° is 6 o'clock).
 - Sort every part into the frame or the spool:
   - **Drag side:** the frame is usually only the rim, a few spokes, the hub and the dial. Window bars, inner rings
-    and many-spoked cages behind them are the spool showing through.
+    and many-spoked cages behind them are the spool showing through: a drag side with a lot of spokes is the spool
+    cage behind a few frame spokes.
   - **Spool side:** the outer rim is the frame's, and the whole spool sits inset inside it.
   - Handle and knob pads seen through the drag side's windows (dark dots on grey pads) are the back of the spool.
     Leave them out: the wound line hides them.
@@ -40,8 +41,9 @@ export const drag = svg({
 });
 ```
 
-- `cage` paths go into a `[data-cage="cw"]` group. `spinCage` turns it clockwise, the mirror of the spool side, and
-  draws it 25% darker than the frame so the two read as separate pieces.
+- `cage` paths go into a `[data-cage="cw"]` group. `spinCage` turns it clockwise, the mirror of the spool side.
+  It's shaded by `--reel-cage`: 25% darker than the frame, or lighter on a dark finish (ReelPreview picks it), so
+  the two read as separate pieces. Check both a light and a dark `--color` in the preview.
 - The cage must match the spool side: same window count, radii and bar width (share one `RIM` object), with no
   handle or knob pads.
 - Spokes that look evenly spaced usually are: build them from one angle list (e.g. 72° apart for five) rather than
