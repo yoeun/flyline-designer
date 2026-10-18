@@ -56,6 +56,11 @@ export const COLORS = [
   // Superflo Max Ridge 2.0 Double' Double Taper, sampled from its taper diagram.
   { id: 'airflo-ddt-lichen-green', name: 'Lichen Green', hex: '#918649' },
   { id: 'airflo-ddt-tan', name: 'Tan', hex: '#a68365' },
+  // Sixth Sense 2 Slow Intermediate, sampled from its taper diagram. Airflo's current listing names
+  // no color, but its Slow Intermediate SKUs end -TO, the code Fishtec (Airflo's UK retailer) gave
+  // as Trans Olive for the Sixth Sense Slow Intermediate it sold in 2019:
+  // https://web.archive.org/web/20190715202835/https://www.fishtec.co.uk/buy.cfm/fly-lines/airflo-sixth-sense-intermediate-lines-new-2019-models/40/yes/190177
+  { id: 'airflo-ss2-trans-olive', name: 'Trans Olive', hex: '#668540' },
 ];
 
 const half = (ft) => Math.round(ft * 2) / 2;
@@ -148,6 +153,10 @@ const STREAMER_MAX_COLORWAYS = {
 // diagram's split applies to all of them.
 const SIXTH_SENSE = LINEUP['airflo-sixth-sense-2-sinking'];
 const SIXTH_SENSE_SPLIT = split(lineupSize(SIXTH_SENSE, 'WF6/7S Di3'));
+// Sixth Sense 2 Intermediate's table lists only the Slow Intermediate, with the same 46 ft head in
+// every size, so the WF6/7 diagram's split applies to all of them.
+const SIXTH_SENSE_INT = LINEUP['airflo-sixth-sense-2-intermediate'];
+const SIXTH_SENSE_INT_SPLIT = split(lineupSize(SIXTH_SENSE_INT, 'WF6/7I Slow Intermediate'));
 const DELTA = LINEUP['airflo-delta-taper-clear-intermediate'];
 const DELTA_SPLIT = split(lineupSize(DELTA, 'WF5I Fast Intermediate'));
 
@@ -346,6 +355,28 @@ export const PRODUCTS = [
           taper: [...SIXTH_SENSE_SPLIT, size.total - size.head],
           lineup: overriding(size, { weight }),
           colorways: [{ id: 'black', name: 'Black', zones: zones([0, 'airflo-sinking-black']) }],
+        };
+      }),
+  }),
+  // 0.5 ips; sold in split ratings and drawn at the heavier weight, like Sixth Sense 2 Sinking. Mid
+  // and Fast Intermediate are sold too, but Airflo's table gives no numbers for them, so they're left
+  // out. Trans Olive over the whole line, with yellow hang markers.
+  makerProduct({
+    id: 'airflo-sixth-sense-2-intermediate',
+    maker: 'Airflo',
+    name: 'Airflo Sixth Sense 2 Intermediate',
+    sizes: SIXTH_SENSE_INT.sizes
+      .filter((size) => size.head !== null)
+      .map((size) => {
+        const weight = size.weight + 1;
+        return {
+          id: `wf${weight}-si`,
+          label: `WF${weight - 1}/${weight} Slow Intermediate`,
+          type: 'intermediate',
+          weight,
+          taper: [...SIXTH_SENSE_INT_SPLIT, size.total - size.head],
+          lineup: overriding(size, { weight }),
+          colorways: [{ id: 'trans-olive', name: 'Trans Olive', zones: zones([0, 'airflo-ss2-trans-olive']) }],
         };
       }),
   }),
