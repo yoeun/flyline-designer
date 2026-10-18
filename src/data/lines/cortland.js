@@ -36,6 +36,13 @@ export const COLORS = [
   { id: 'cortland-pike-olive', name: 'Pike Olive', hex: '#a29d59' },
   { id: 'cortland-dark-green', name: 'Dark Green', hex: '#164722' },
   { id: 'cortland-seaweed', name: 'Seaweed', hex: '#d0e298' },
+  // The Striped Bass Float's light blue is far bluer than the Finesse Trout II's.
+  { id: 'cortland-cold-salt-light-blue', name: 'Cold Salt Light Blue', hex: '#17aadd' },
+  { id: 'cortland-aqua-blue', name: 'Aqua Blue', hex: '#7aced9' },
+  { id: 'cortland-pale-yellow', name: 'Pale Yellow', hex: '#f1d07f' },
+  // The 50+ Giant Trevally's yellow is far brighter than the 333 Trout All Purpose's.
+  { id: 'cortland-giant-trevally-yellow', name: 'Giant Trevally Yellow', hex: '#f9ed25' },
+  { id: 'cortland-pineapple', name: 'Pineapple', hex: '#eee04c' },
 ];
 
 // Cortland draws one taper chart per line with the head length on it but no size. Every size of a
@@ -46,6 +53,9 @@ const sizes = (product, { label = (size) => size.label, id = (w) => `wf${w}f`, l
 // A double taper has no head: Cortland charts it as taper, body and taper over the whole 90 ft, so the
 // lineup leaves its head empty. The menu draws all of it as head, with no running line.
 const doubleTaper = (size) => overriding(size, { head: size.total });
+
+// The menu tops out at 12 wt, so heavier sizes are left out.
+const upTo12 = (product) => ({ ...product, sizes: product.sizes.filter((size) => size.weight <= 12) });
 
 export const PRODUCTS = [
   makerProduct({
@@ -390,6 +400,71 @@ export const PRODUCTS = [
     sizes: sizes(LINEUP['cortland-tropic-plus-backcountry'], {
       type: 'floating',
       colorways: [{ id: 'seaweed-sand', name: 'Seaweed/Sand', zones: zones([41, 'cortland-seaweed'], [0, 'cortland-sand']) }],
+    }),
+  }),
+  // Full floating for stripers and albies in cooler water. Short 30 ft head: a 21 ft body between a
+  // 4 ft front taper and a 5 ft back taper.
+  makerProduct({
+    id: 'cortland-cold-salt-striped-bass-float',
+    maker: 'Cortland',
+    name: 'Cortland Cold Salt Striped Bass Float',
+    sizes: sizes(LINEUP['cortland-cold-salt-striped-bass-float'], {
+      type: 'floating',
+      colorways: [{ id: 'aqua-green-light-blue', name: 'Aqua Green/Light Blue', zones: zones([30, 'cortland-aqua-green'], [0, 'cortland-cold-salt-light-blue']) }],
+    }),
+  }),
+  // 1.5–2 ips, clear on a mono core. Short 7 ft body and a 28 ft back taper in a 41 ft head.
+  makerProduct({
+    id: 'cortland-444-clear-intermediate',
+    maker: 'Cortland',
+    name: 'Cortland 444 Clear Intermediate',
+    sizes: sizes(LINEUP['cortland-444-clear-intermediate'], {
+      id: (w) => `wf${w}i`,
+      type: 'intermediate',
+      colorways: [{ id: 'clear', name: 'Clear', zones: zones([0, 'cortland-clear']) }],
+    }),
+  }),
+  // Overweighted, with a compact 26 ft head for wind and big flies. The chart's 10 ft step down to
+  // the running line, pale yellow like the running line, is drawn here as running line.
+  makerProduct({
+    id: 'cortland-tropic-plus-all-purpose-xp',
+    maker: 'Cortland',
+    name: 'Cortland Tropic Plus All Purpose XP',
+    sizes: sizes(LINEUP['cortland-tropic-plus-all-purpose-xp'], {
+      type: 'floating',
+      colorways: [{ id: 'aqua-blue-pale-yellow', name: 'Aqua Blue/Pale Yellow', zones: zones([26, 'cortland-aqua-blue'], [0, 'cortland-pale-yellow']) }],
+    }),
+  }),
+  // On a 50 lb braided core. Short 7 ft body and a 31 ft back taper in a 41 ft head. WF13 is above the menu's 12 wt.
+  makerProduct({
+    id: 'cortland-50-plus-giant-trevally',
+    maker: 'Cortland',
+    name: 'Cortland 50+ Giant Trevally',
+    sizes: sizes(upTo12(LINEUP['cortland-50-plus-giant-trevally']), {
+      type: 'floating',
+      colorways: [{ id: 'light-blue-yellow', name: 'Light Blue/Yellow', zones: zones([41, 'cortland-light-blue'], [0, 'cortland-giant-trevally-yellow']) }],
+    }),
+  }),
+  // The Streamer Sink Tip 10 with a 10 ft Type 3 tip (3–4 ips) instead of Type 6, on the same chart, so
+  // it draws exactly like it. The chart's 10 ft step down to the running line is drawn as running line.
+  makerProduct({
+    id: 'cortland-streamer-sink-tip-10-t3',
+    maker: 'Cortland',
+    name: 'Cortland Streamer Sink Tip 10 T3',
+    sizes: sizes(LINEUP['cortland-streamer-sink-tip-10-t3'], {
+      id: (w) => `wf${w}`,
+      type: 'sinktip',
+      colorways: [{ id: 'black-olive', name: 'Black/Olive', zones: zones([10, 'cortland-black'], [0, 'cortland-streamer-olive']) }],
+    }),
+  }),
+  // Mono core with a hard finish for the heat. Short 27 ft head with an 18 ft body.
+  makerProduct({
+    id: 'cortland-444-tropic-all-purpose',
+    maker: 'Cortland',
+    name: 'Cortland 444 Tropic All Purpose',
+    sizes: sizes(LINEUP['cortland-444-tropic-all-purpose'], {
+      type: 'floating',
+      colorways: [{ id: 'pineapple', name: 'Pineapple', zones: zones([0, 'cortland-pineapple']) }],
     }),
   }),
 ];
