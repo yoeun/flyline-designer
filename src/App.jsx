@@ -376,7 +376,7 @@ export default function App() {
       <header className={`flex flex-wrap items-center justify-between gap-3 border-b border-border bg-card py-3.5 ${GUTTER}`}>
         <div className="flex min-w-0 items-center gap-2">
           <NavMenu page={page} onNavigate={(id) => navigate[id]()} theme={themeChoice} onTheme={setThemeChoice} />
-          <h1 className="font-heading text-[24px] leading-none font-bold tracking-[0.04em] whitespace-nowrap uppercase">Flyline Designer</h1>
+          <h1 className="font-heading text-[clamp(20px,6.5vw,24px)] leading-none font-bold tracking-[0.04em] whitespace-nowrap uppercase">Flyline Designer</h1>
         </div>
         <div className="flex flex-wrap gap-2">
           {page !== 'guide' && page !== 'reels' && <Button onClick={startNew}>New</Button>}
