@@ -66,7 +66,8 @@ export default function Rack({ setups, currentId, open, onToggle, filter: picked
             </p>
           </div>
         ) : (
-          <ul ref={listRef} className="flex gap-3 overflow-x-auto pb-2" aria-label="Saved setups">
+          // Room around the cards so the scroll box doesn't clip the current card's ring.
+          <ul ref={listRef} className="-mx-1 flex gap-3 overflow-x-auto px-1 pt-1 pb-2" aria-label="Saved setups">
             {shown.map((s) => (
               <li key={s.id} className="flex">
                 <RackCard setup={s} current={s.id === currentId} conflicts={conflictsFor(s.id, conflicts, setups)} onLoad={onLoad} onEditDetails={onEditDetails} onRemove={onRemove} />
