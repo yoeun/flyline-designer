@@ -37,6 +37,15 @@ export const COLORS = [
   { id: 'sa-pale-yellow', name: 'Pale Yellow', hex: '#f2eb5f' },
   { id: 'sa-sand', name: 'Sand', hex: '#f0c9a2' },
   { id: 'sa-horizon', name: 'Horizon', hex: '#bbccea' },
+  { id: 'sa-titan-sage', name: 'Sage', hex: '#a3a468' },
+  { id: 'sa-dark-olive', name: 'Dark Olive', hex: '#5f6738' },
+  { id: 'sa-anadro-willow', name: 'Willow', hex: '#e3deb6' },
+  { id: 'sa-anadro-optic-green', name: 'Optic Green', hex: '#59ba47' },
+  { id: 'sa-orange', name: 'Orange', hex: '#d87c2f' },
+  { id: 'sa-surf', name: 'Surf', hex: '#9cc7ea' },
+  { id: 'sa-tropical-sand', name: 'Sand', hex: '#fde492' },
+  { id: 'sa-tropical-horizon', name: 'Horizon', hex: '#b8e5fa' },
+  { id: 'sa-clear', name: 'Clear', hex: '#e8e8ea' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -56,7 +65,8 @@ const scaled = ([front, body, back], head) => {
   const s = head / (front + body + back);
   const f = half(front * s);
   const b = half(back * s);
-  return [f, head - f - b, b];
+  // Rounded to a tenth so a head like 39.7 ft leaves no float noise in the body.
+  return [f, Math.round((head - f - b) * 10) / 10, b];
 };
 
 // A line with the same head in every size: the diagram's [front, body, back] applies to all of
@@ -95,6 +105,26 @@ const GRAND_SLAM = [2.5, 18, 19.5];
 const TROUT_EXPERT = [13, 30.5, 25.5];
 const TROUT_EXPERT_LINEUP = LINEUP['sa-amplitude-smooth-trout-expert'];
 
+// Smooth and Textured Anadro Indicator share a diagram: front taper 2.5, front belly and belly 31,
+// rear taper 27.5. Its head measures 61 ft, the WF7's (WF5 and WF6 list 60). The tip color runs to the end
+// of the front belly, about 7.5 ft.
+const ANADRO = [2.5, 31, 27.5];
+const anadro = (id, name, tip) =>
+  makerProduct({
+    id,
+    maker: 'Scientific Anglers',
+    name,
+    sizes: floating(ANADRO, 7, LINEUP[id].sizes, (head) => {
+      const front = half((7.5 * head) / 61);
+      return [{ id: `moss-willow-${tip.id}`, name: `Moss/Willow/${tip.name}`, zones: zones([front, tip.color], [head - front, 'sa-anadro-willow'], [0, 'sa-moss']) }];
+    }),
+  });
+
+// Amplitude Smooth Bonefish's diagram: two front tapers (7 ft), a front belly, a short rear taper
+// into a thicker rear belly (28.5 ft together, drawn here as the body), then a 4.5 ft rear taper.
+// Its 40 ft head is nearest the WF8's 39.7. The last 10 ft of the 100 ft line is a black sighter.
+const BONEFISH = [7, 28.5, 4.5];
+
 // Frequency Full Sink's densities: Sink 6 draws as Type 5.
 const FULL_SINK_RATES = {
   sink3: { rate: 3, type: 'sink3', colorway: { id: 'dark-green', name: 'Dark Green', color: 'sa-dark-green' } },
@@ -104,6 +134,10 @@ const FULL_SINK_RATES = {
 // The Sonar Titan head, shared by the Full Intermediate and 3D: 33.5 ft in every size.
 const TITAN = [5.5, 24.5, 3.5];
 const TITAN_3D = LINEUP['sa-sonar-titan-3d-triple-density'];
+// The Tropical/Jungle Clear Tip's own diagram: front taper 5.5, two bellies to 34, a 1 ft rear taper.
+// The diagram's head measures 34.75 ft against the 33.5 ft SA lists for every size; the split is
+// scaled to 33.5.
+const TITAN_TROPICAL = [5.5, 27, 1];
 const SINK_25_COLD = LINEUP['sa-sonar-sink-25-cold'];
 const EURO_MONO = lineupSize(LINEUP['sa-mastery-competition-nymph'], 'Level 0-5wt (.022")');
 
@@ -224,6 +258,10 @@ export const PRODUCTS = [
       },
     ),
   }),
+  // One and a half sizes heavy, for indicator nymphing. Orange tip, willow head, moss running line.
+  anadro('sa-amplitude-smooth-anadro-indicator', 'SA Amplitude Smooth Anadro Indicator', { id: 'orange', name: 'Orange', color: 'sa-orange' }),
+  // The Smooth Anadro Indicator taper with SA's textures; an optic green tip.
+  anadro('sa-amplitude-anadro', 'SA Amplitude Textured Anadro Indicator', { id: 'optic', name: 'Optic Green', color: 'sa-anadro-optic-green' }),
   // Replaced by Trout GP and Trout Expert. SA's old diagram is the Trout Expert taper (69 ft head at
   // WF5; one retailer lists 68). Only that WF5 head is known, so every size borrows Trout Expert's
   // head and total length, and the sizes other than WF5 are marked estimated. Blue heron front
@@ -260,6 +298,23 @@ export const PRODUCTS = [
       colorways: [{ id: 'camo-shad-frog', name: 'Camo/Shad Blue/Frog Green', zones: zones([12.5, 'sa-bass-camo'], [30.5, 'sa-shad-blue'], [0, 'sa-frog-green']) }],
     })),
   }),
+  // Two sizes heavy, for big flies. SA's diagram: front taper 5, two bellies 28, rear taper 10, the
+  // 43 ft head SA lists for every size (the Bass Bug's split). Dark olive front taper, moss head, sage
+  // running line.
+  makerProduct({
+    id: 'sa-amplitude-smooth-titan-long',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Titan Long',
+    sizes: LINEUP['sa-amplitude-smooth-titan-long'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead([5, 28, 10], size),
+      lineup: size,
+      colorways: [{ id: 'sage-moss-dark-olive', name: 'Sage/Moss/Dark Olive', zones: zones([5, 'sa-dark-olive'], [38, 'sa-sonar-moss'], [0, 'sa-titan-sage']) }],
+    })),
+  }),
   // Three-quarter size heavy saltwater line. Same 40 ft head in every size. Horizon front taper, sand
   // head, pale yellow running line.
   makerProduct({
@@ -290,6 +345,15 @@ export const PRODUCTS = [
       lineup: size,
       colorways: [{ id: 'pale-yellow-sand-horizon', name: 'Pale Yellow/Sand/Horizon', zones: zones([2.5, 'sa-horizon'], [37.5, 'sa-sand'], [0, 'sa-pale-yellow']) }],
     })),
+  }),
+  // True to weight. Ivory head, surf running line, black sighter.
+  makerProduct({
+    id: 'sa-amplitude-smooth-bonefish',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Bonefish',
+    sizes: floating(BONEFISH, 8, LINEUP['sa-amplitude-smooth-bonefish'].sizes, (head) => [
+      { id: 'black-surf-ivory', name: 'Black/Surf/Ivory', zones: zones([head, 'sa-ivory'], [90 - head, 'sa-surf'], [0, 'sa-black']) },
+    ]),
   }),
   // 2 ips, two sizes heavy. Long three-part front taper; one color over the whole line. Every size
   // has the same 45 ft head.
@@ -383,6 +447,22 @@ export const PRODUCTS = [
           colorways: [{ id, name, zones: zones([33.5, head], [20.5, handling], [0, running]) }],
         })),
     ),
+  }),
+  // A floating Titan with a 15 ft clear intermediate tip (1.25 ips), drawn as a sink tip like RIO's
+  // clear tips. Clear tip, horizon to the end of the head, sand running line.
+  makerProduct({
+    id: 'sa-sonar-titan-tropical-clear-tip',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Titan Tropical/Jungle Clear Tip',
+    sizes: LINEUP['sa-sonar-titan-tropical-clear-tip'].sizes.map((size) => ({
+      id: `wf${size.weight}-f-i`,
+      label: size.label,
+      type: 'sinktip',
+      weight: size.weight,
+      taper: sameHead(TITAN_TROPICAL, size),
+      lineup: size,
+      colorways: [{ id: 'sand-horizon-clear', name: 'Sand/Horizon/Clear', zones: zones([15, 'sa-clear'], [18.5, 'sa-tropical-horizon'], [0, 'sa-tropical-sand']) }],
+    })),
   }),
   // Grain-rated: the rod weight for each is our estimate (the lineup has none). Every size has a
   // 25 ft sinking head, then a floating handling line; the split inside the head is estimated. Sink 6
