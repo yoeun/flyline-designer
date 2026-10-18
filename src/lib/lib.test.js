@@ -1282,7 +1282,9 @@ describe('RIO lines', () => {
     'rio-elite-permit': table([[8, 46, 100], [9, 48, 100], [10, 50, 100]]),
     'rio-elite-tarpon': table([[8, 38, 100], [9, 39.5, 100], [10, 40.5, 100], [11, 40.5, 100], [12, 40.5, 100]]),
     // RIO lists the 26 ft sinking tip (listed at the lower of its two rod weights); its diagram puts the head at 34 ft.
-    'rio-elite-leviathan': table([7, 8, 9, 10, 12].map((w) => [w, 34, 100])),
+    'rio-elite-leviathan': table([7, 8, 9, 10, 12, 14, 15].map((w) => [w, 34, 100])),
+    // A shooting head: all head, no running line (listed at its AFFTA weight; RIO gives none).
+    'rio-billfish-shooting-head': table([[15, 31, 31]]),
     'rio-premier-tarpon-clear-tip-floater': table([10, 11, 12].map((w) => [w, 40.5, 100])),
     'rio-premier-flats-clear-floater': table([[7, 49, 100], [8, 49, 100], [9, 50, 100], [10, 50, 100], [11, 50, 100], [12, 50, 100]]),
     // RIO's diagram draws the WF8F head at 35 ft; its table says 35.5.
