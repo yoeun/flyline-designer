@@ -171,21 +171,21 @@ export default function ReelsPage({ onNewSetup }) {
   const count = REEL_MODELS.reduce((n, m) => n + reelSizes(m.id).length, 0);
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Reels">
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Reels</h2>
-          <p className="text-[14px] text-muted-foreground">
-            {REEL_MODELS.length} models, {count} sizes, drawn to scale
-          </p>
+      {/* The title, the maker filter and, from sm up, the line colors stay in a bar under the fixed header while
+          the reels scroll. On phones the chips are one row that scrolls sideways, so the bar stays short. */}
+      <div className="sticky top-(--header-h) z-10 -mx-[max(16px,2.5vw)] -mt-6 flex flex-col gap-2.5 border-b border-border bg-background/95 px-[max(16px,2.5vw)] pt-4 pb-3 backdrop-blur">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
+            <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Reels</h2>
+            <p className="text-[14px] text-muted-foreground">
+              {REEL_MODELS.length} models, {count} sizes, drawn to scale
+            </p>
+          </div>
+          {/* On phones the line colors open in a sheet instead of a bar over the reels. */}
+          <FilterSheet title="View" icon="tune" active={active} onClear={() => setView(PREVIEW_COLORS)} clearLabel="Reset">
+            <ColorRows view={view} onChange={setView} />
+          </FilterSheet>
         </div>
-        {/* On phones the line colors open in a sheet instead of a bar over the reels. */}
-        <FilterSheet title="View" icon="tune" active={active} onClear={() => setView(PREVIEW_COLORS)} clearLabel="Reset">
-          <ColorRows view={view} onChange={setView} />
-        </FilterSheet>
-      </div>
-      {/* The maker filter, and from sm up the line colors, stay in a bar under the fixed header while the
-          reels scroll. On phones the chips are one row that scrolls sideways, so the bar stays short. */}
-      <div className="sticky top-(--header-h) z-10 -mx-[max(16px,2.5vw)] flex flex-col gap-2.5 border-b border-border bg-background/95 px-[max(16px,2.5vw)] py-3 backdrop-blur">
         {/* Pick one maker, or All; each chip says how many models it holds. */}
         <Row label="Brand" className="-mr-[max(16px,2.5vw)] sm:mr-0" labelClassName="max-sm:w-auto">
           <div role="group" aria-label="Brand" className="flex min-w-0 gap-2 overflow-x-auto pr-[max(16px,2.5vw)] sm:flex-wrap sm:overflow-visible sm:pr-0">
