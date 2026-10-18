@@ -23,13 +23,17 @@ const SPOOL = (rOut, rIn) =>
   `<path d="${ring(rOut, rIn)}" fill="currentColor" fill-rule="evenodd"/><path d="${ring(rOut, rIn)}" fill="#000" fill-opacity=".38" fill-rule="evenodd"/>` +
   `<circle r="${rOut - 14}" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="5"/>`;
 
-// A flat dial in the accent: a numbered outer ring and a web-patterned face round a ringed logo badge.
+// A flat dial in the accent: an outer ring numbered 1–10 anticlockwise from the top, with a dot between each pair,
+// and a web-patterned face round a ringed logo badge.
 const DIAL =
   `<circle r="80" ${ACCENT}/><circle r="80" fill="url(#sheen)"/>` +
   `<circle r="66" fill="#000" fill-opacity=".1"/><circle r="66" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="1.5"/>` +
-  Array.from({ length: 30 }, (_, i) => {
-    const [x, y] = P(73, rad(-90 + i * 12));
-    return `<circle cx="${f(x)}" cy="${f(y)}" r="${i % 3 ? 1 : 1.8}" fill="#1b1d1f" fill-opacity=".55"/>`;
+  Array.from({ length: 10 }, (_, i) => {
+    const a = -96 - i * 36, [x, y] = P(73, rad(a)), [dx, dy] = P(73, rad(a - 18));
+    return (
+      `<text transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)})" y="3" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" fill="#1b1d1f" fill-opacity=".75">${i + 1}</text>` +
+      `<circle cx="${f(dx)}" cy="${f(dy)}" r="1.4" fill="#1b1d1f" fill-opacity=".55"/>`
+    );
   }).join('') +
   `<path d="${Array.from({ length: 16 }, (_, i) => {
     const a = rad(i * 22.5), [x0, y0] = P(36, a), [x1, y1] = P(58, a);
