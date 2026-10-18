@@ -32,7 +32,7 @@ function Viewer({ shown }) {
           <ReelPreview setup={setup} side={side} showLine={shown.showLine} background="none" title={`${shown.size.name}, ${side} side`} className="max-h-full w-auto max-w-full" />
         </div>
         {finishes.length > 1 && (
-          <Swatches colors={finishes} value={setup.reel.color} onChange={setColor} label={`${shown.size.name} color`} size={30} className="flex-none justify-center" />
+          <Swatches colors={finishes} value={setup.reel.color} onChange={setColor} label={`${shown.size.name} color`} size={24} touchSize={32} className="flex-none justify-center gap-3" />
         )}
       </div>
       <p className="flex-none text-center font-mono text-[12px] text-muted-foreground tabular-nums">
