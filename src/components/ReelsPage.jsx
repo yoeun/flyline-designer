@@ -3,7 +3,9 @@ import PHOTOS from 'reel-photos';
 import { BACKING_COLORS, LINE_COLORS, REELS, REEL_MODELS, makerGroups, reelColors, reelSizeLabel, reelSizes } from '../data/catalog.js';
 import { PREVIEW_COLORS, capacityText, photosByModel, previewSetup } from '../lib/reelsPage.js';
 import { SIDES } from '../lib/reelFrames.js';
+import Button from './Button.jsx';
 import Field from './Field.jsx';
+import Icon from './Icon.jsx';
 import ReelPreview from './ReelPreview.jsx';
 import Segmented from './Segmented.jsx';
 import Select from './Select.jsx';
@@ -29,8 +31,9 @@ const LINE_OPTIONS = [
 
 // One model: a stage with the size picker at the top left and Drag/Spool at the top right, the reel
 // drawn to the page's scale, and the finishes along the bottom; the size's numbers below. `view` is the
-// page-wide drawing settings: { line: 'shown' | 'hidden', colors }.
-function ModelCard({ model, view }) {
+// page-wide drawing settings: { line: 'shown' | 'hidden', colors }. New setup opens the designer on the
+// size and finish picked here.
+function ModelCard({ model, view, onNewSetup }) {
   const sizes = reelSizes(model.id);
   const colors = reelColors(model);
   const [sizeId, setSizeId] = useState(sizes[0].id);
@@ -51,9 +54,15 @@ function ModelCard({ model, view }) {
   return (
     <li className="flex min-w-0 flex-col gap-3 rounded-card border border-border bg-card p-4">
       <div className="flex flex-col gap-0.5">
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <h4 className="text-[17px] leading-tight font-bold">{model.name}</h4>
-          {model.discontinued && <span className="rounded-full border border-warn-border bg-warn-bg px-2 py-0.5 text-[12px] font-semibold text-warn">Discontinued</span>}
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
+            <h4 className="text-[17px] leading-tight font-bold">{model.name}</h4>
+            {model.discontinued && <span className="rounded-full border border-warn-border bg-warn-bg px-2 py-0.5 text-[12px] font-semibold text-warn">Discontinued</span>}
+          </div>
+          <Button className="-my-1 flex-none gap-1 pl-2.5 font-semibold" onClick={() => onNewSetup(setup.reel)} aria-label={`New setup on ${size.name}`}>
+            <Icon name="add" />
+            New setup
+          </Button>
         </div>
         {/* The catalog id and drawing design, for checking the data; like the photos, only on the dev server. */}
         {import.meta.env.DEV && (
@@ -148,7 +157,7 @@ function ViewControls({ view, onChange }) {
 
 const DEFAULT_VIEW = { line: 'shown', colors: PREVIEW_COLORS };
 
-export default function ReelsPage() {
+export default function ReelsPage({ onNewSetup }) {
   const [view, setView] = useState(DEFAULT_VIEW);
   // What the View button says once the view differs from the default.
   const active = view.line !== 'shown' ? 'Line hidden' : view.colors !== PREVIEW_COLORS ? 'Custom colors' : '';
@@ -184,7 +193,7 @@ export default function ReelsPage() {
           {/* Cards in equal columns, so every drawing area is the same size and the scale holds across them. */}
           <ul className="grid gap-3 sm:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]">
             {models.map((m) => (
-              <ModelCard key={m.id} model={m} view={view} />
+              <ModelCard key={m.id} model={m} view={view} onNewSetup={onNewSetup} />
             ))}
           </ul>
         </section>

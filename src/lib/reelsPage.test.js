@@ -1,6 +1,24 @@
 import { describe, expect, it } from 'vitest';
-import { REELS, REEL_MODELS, findById } from '../data/catalog.js';
-import { capacityText, photosByModel, previewSetup, previewWeight } from './reelsPage.js';
+import { DEFAULT_SETUP, LINE_PRESETS, REELS, REEL_MODELS, findById } from '../data/catalog.js';
+import { capacityText, photosByModel, previewSetup, previewWeight, setupForReel } from './reelsPage.js';
+
+describe('setupForReel', () => {
+  it('starts from the defaults on the chosen reel and finish', () => {
+    const { setup, presetId } = setupForReel({ model: 'lamson-liquid-s-5', color: 'day-break' });
+    expect(setup.reel).toEqual({ model: 'lamson-liquid-s-5', color: 'day-break' });
+    expect(setup.backing).toEqual(DEFAULT_SETUP.backing);
+    expect(setup.title).toBe('');
+    expect(presetId).toBe(LINE_PRESETS[0].id);
+  });
+  it('puts the line at the weight the page draws the size with', () => {
+    const reel = findById(REELS, 'lamson-liquid-s-7');
+    const { setup } = setupForReel({ model: reel.id, color: 'smoke' });
+    const [lo, hi] = reel.weights;
+    expect(setup.line.weight).toBeGreaterThanOrEqual(lo);
+    expect(setup.line.weight).toBeLessThanOrEqual(hi);
+    expect(setup.line.weight).toBe(previewWeight(reel));
+  });
+});
 
 describe('reels page', () => {
   it('draws each size with a line at the middle of its weights, rounded up', () => {

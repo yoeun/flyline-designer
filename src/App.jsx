@@ -22,6 +22,7 @@ import { rackConflicts } from './lib/checks.js';
 import { clampSelection } from './lib/lineEdit.js';
 import { SECTION_KEYS, changedSections, copyOf, displayName, isDirty, loadEntries } from './lib/rack.js';
 import { resolveView } from './lib/rackView.js';
+import { setupForReel } from './lib/reelsPage.js';
 import { SIDES } from './lib/reelFrames.js';
 import { queryToState, stateToQuery } from './lib/share.js';
 import { createShare, deleteShare, loadShare, rotateShare, storeShare, updateShare } from './lib/shareApi.js';
@@ -369,6 +370,18 @@ export default function App() {
     setPage('designer');
   };
 
+  // From the Reels page: a new setup on the reel and finish picked there.
+  const newFromReel = (reel) => {
+    if (!discardOk()) return;
+    const next = setupForReel(reel);
+    setLineSelection(null);
+    setState(next);
+    setEditingId(null);
+    setCameFromDesigner(false);
+    setPage('designer');
+    toast(`Started a new setup on the ${findById(REELS, reel.model)?.name ?? 'reel'}.`);
+  };
+
   const backToDesigner = () => {
     if (returning.current) return;
     if (cameFromDesigner) {
@@ -425,7 +438,7 @@ export default function App() {
 
       {page === 'reels' ? (
         <Suspense fallback={<p className={`pt-6 text-[14px] text-muted-foreground ${GUTTER}`}>Loading reels…</p>}>
-          <ReelsPage />
+          <ReelsPage onNewSetup={newFromReel} />
         </Suspense>
       ) : page === 'guide' ? (
         <Suspense fallback={<p className={`pt-6 text-[14px] text-muted-foreground ${GUTTER}`}>Loading the line guide…</p>}>
