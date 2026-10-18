@@ -22,8 +22,12 @@ const AREA_RATIO = '430 / 470';
 
 const heading = 'font-heading text-[15px] font-bold tracking-[0.06em] uppercase';
 const PHOTOS_BY_MODEL = photosByModel(REEL_MODELS, PHOTOS);
-// Makers A–Z, generic last; within a maker, current models before discontinued ones.
-const GROUPS = makerGroups(REEL_MODELS, 'Generic').map(([maker, models]) => [maker, [...models.filter((m) => !m.discontinued), ...models.filter((m) => m.discontinued)]]);
+// Makers A–Z; within a maker, current models before discontinued ones. The generic reels are the
+// designer's stand-ins, not real reels, so they're left out.
+const GROUPS = makerGroups(REEL_MODELS, 'Generic')
+  .filter(([maker]) => maker !== 'Generic')
+  .map(([maker, models]) => [maker, [...models.filter((m) => !m.discontinued), ...models.filter((m) => m.discontinued)]]);
+const ALL_MODELS = GROUPS.flatMap(([, models]) => models);
 
 // One model: a stage with the size picker at the top left and Drag/Spool at the top right, the reel
 // drawn to the page's scale, and the finishes along the bottom; the size's numbers below. `view` is the
@@ -183,7 +187,7 @@ export default function ReelsPage({ onNewSetup }) {
         {/* Pick one maker, or All; each chip says how many models it holds. */}
         <Row label="Brand" className="-mr-[max(16px,2.5vw)] sm:mr-0" labelClassName="max-sm:w-auto self-start pt-2 pointer-coarse:pt-3">
           <div role="group" aria-label="Brand" className="flex min-w-0 gap-2 overflow-x-auto pr-[max(16px,2.5vw)] sm:flex-wrap sm:overflow-visible sm:pr-0">
-            {[[null, REEL_MODELS], ...GROUPS].map(([m, models]) => (
+            {[[null, ALL_MODELS], ...GROUPS].map(([m, models]) => (
               <button key={m ?? 'all'} type="button" aria-pressed={maker === m} onClick={() => pickMaker(m)} className={cn(CHIP, 'group inline-flex flex-none items-center gap-1.5 font-semibold')}>
                 {m ?? 'All'}
                 <span className="text-[12px] font-normal text-muted-foreground group-aria-pressed:text-primary-foreground/80">{models.length}</span>
