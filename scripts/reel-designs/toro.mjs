@@ -1,13 +1,16 @@
 // Maxcatch Toro.
 // Spool side drawn from Maxcatch's three-quarter shot of the green 5/6; drag side from the black reels on a rod
 // (a slight angle) and a near-frontal 7/8 beside its reel bag, with the frame's layout read off the exploded render
-// of the bare frame from inside. The frame is a thin rim on three slotted spokes, a Y with one up to the foot and
-// two out to about 4 and 8 o'clock, around a big black knurled drag knob; between them shows the spool's back. The
-// spool face has a band of fourteen windows between straight bars, then a solid ring, and inside it an open web of
-// five curved spokes out from a ring around the red hub, with the red knurled spool cap (the finish's accent) in
-// the middle, a silver counterweight at about 3 o'clock and the black handle at 9. Foot and handle are black
-// whatever the finish. Window counts and sizes, spoke angles and sweep are read off angled photos, so approximate,
-// and the line guard hooking out under the frame is left out.
+// of the bare frame from inside.
+// Drag side: the frame is a thin rim on three slotted spokes, a Y with one up to the foot and two out to about 4 and
+// 8 o'clock, around a big black knurled drag knob. Through it, and through the spokes' slots, shows the spool's
+// cage, which turns: the spool side's band of fourteen windows and solid ring, and the web of five curved spokes
+// inside it (seen from behind, so swept the other way). The handle and counterweight would show through too, but
+// the wound line hides them. Spool side: the band of fourteen windows between straight bars, then a solid ring, and
+// inside it an open web of five curved spokes out from a ring around the red hub, with the red knurled spool cap
+// (the finish's accent) in the middle, a silver counterweight at about 3 o'clock and the black handle at 9. Foot
+// and handle are black whatever the finish. Window counts and sizes, spoke angles and sweep are read off angled
+// photos, so approximate, and the line guard hooking out under the frame is left out.
 import { ACCENT, P, circle, f, foot, knob, knurl, rad, ring, roundPoly, slots, strut, svg } from './lib.mjs';
 
 // The wound line starts at the drum: the 5/6 is 55 mm inside a 90 mm rim.
@@ -26,6 +29,7 @@ const BLACK_FOOT = `<path d="${FOOT}" fill="#1f2123"/><path d="${FOOT}" fill="ur
 // The spool face: fourteen windows from 136 out to the rim's inner edge, then a solid ring down to 124.
 const WINDOWS = slots({ n: 14, rIn: 136, rOut: 186, bar: 14, corner: 6, off: -90 });
 const FACE = circle(200) + WINDOWS + circle(124);
+const CAGE = ring(192, 124) + WINDOWS;
 
 // The web inside the ring: five spokes leaving the hub ring swept clockwise, then straightening out to meet the
 // face's inner edge square on.
@@ -39,13 +43,15 @@ const curvedSpoke = (a0, a1, r0, r1, w) => {
     });
   return roundPoly([...side(1), ...side(-1).reverse()], 4);
 };
-const WEB = [-110, -38, 34, 106, 178].map((a) => curvedSpoke(a, a + 28, 70, 128, 22));
+// `mirror` flips them for the view from behind, through the frame.
+const web = (mirror = false) =>
+  [-110, -38, 34, 106, 178].map((a) => (mirror ? curvedSpoke(180 - a, 152 - a, 70, 128, 22) : curvedSpoke(a, a + 28, 70, 128, 22)));
 const HUB_RING = ring(76, 62);
 
 export const drag = svg({
   under: BLACK_FOOT,
   // The spool's back face behind the frame: its windows and web, as on the spool side.
-  back: [FACE, ...WEB, HUB_RING],
+  cage: [CAGE, ...web(true), HUB_RING],
   body: [
     ring(200, 186),
     // Each spoke with its slot cut through (evenodd), so the spool shows in it.
@@ -73,7 +79,7 @@ const weight = P(142, rad(18));
 export const spool = svg({
   foot: BLACK_FOOT,
   handles: [[...handle, 16]],
-  body: [FACE, ...WEB, HUB_RING],
+  body: [FACE, ...web(), HUB_RING],
   details:
     `<circle r="188" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
     `<circle r="124" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +

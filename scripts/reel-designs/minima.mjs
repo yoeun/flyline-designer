@@ -1,10 +1,12 @@
 // Maxcatch Minima.
 // Drag side traced from Maxcatch's straight-on spec drawing of the 0Three (the left reel of its "Inside DIA /
-// Outside DIA" graphic) and checked against the three-quarter frame-side product shot. The frame is just one broad
-// bar straight down from the foot past the bottom of the rim, tapering a little, with a window just under the foot,
-// a round logo boss over the hub, a pair of long slots either side of a center rib below it and a screw near its
-// foot end; there's no drag knob (a clicker inside). Everything round is the spool's back flange behind it: a rim, a
-// ring of fourteen windows and the inner ring that bounds the super large arbor, with the U-shaped drum open inside.
+// Outside DIA" graphic) and checked against the three-quarter frame-side product shot. The frame is just the foot
+// and one broad bar straight down from it past the bottom of the rim, tapering a little, with a window just under
+// the foot, a round logo boss over the hub, a pair of long slots either side of a center rib below it and a screw
+// near its foot end; there's no rim and no drag knob (a clicker inside). Everything round is the spool's cage,
+// which turns: its back flange, the same as the spool side's, a rim, a ring of fourteen windows and the inner ring
+// that bounds the super large arbor, with the U-shaped drum open inside. The handle would show through too, but
+// the wound line hides it.
 // Spool side from the three-quarter spool-side shot: the same flange, open inside the inner ring except for one bar
 // across the reel holding the logo hub and, at its right end, the black handle, with the frame bar behind. The
 // spool shot is at an angle, so its window count, the bar's width and the handle's radius are approximate, as are
@@ -33,7 +35,7 @@ const BAR_HOLES =
 
 export const drag = svg({
   // The spool's back flange, a window centered at 9 and 3.
-  back: [FLANGE(-90)],
+  cage: [FLANGE(-90)],
   body: [BAR + BAR_HOLES, FOOT],
   details:
     `<circle r="${RIM_IN}" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +

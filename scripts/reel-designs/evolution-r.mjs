@@ -1,14 +1,16 @@
 // Ross Evolution R.
-// Drag side: an outer cage of twelve windows (wider posts at 3 and 9 o'clock) in the frame color, and inside it a
-// spider in the finish's accent (gold on Matte Olive, silver on Matte Blue, else the frame color): a ring, six
-// straight spokes and a flat cap with the RR monogram. The foot takes the finish's trim. The spool's slotted back shows between the spokes.
-// Spool side: the same window band, with six spokes running from the hub right out to the rim; black handle
+// Drag side: the frame is a rim, the foot (in the finish's trim), wide posts at 3 and 9 o'clock, and a spider in the
+// finish's accent (gold on Matte Olive, silver on Matte Blue, else the frame color): a ring, six straight spokes and
+// a flat cap with the RR monogram. Through it shows the spool's cage, which turns: its twelve windows, the same as
+// the spool side's, without the handle and counterweight (the wound line hides them), and inside them the spool's
+// slotted back, between the spider's spokes. Spool side: the same window band, with six spokes running from the hub right out to the rim; black handle
 // at 9 o'clock, round counterweight at 3. Both from Ross's straight-on product photos.
 import { ACCENT, P, TRIM, circle, f, foot, knob, recessed, ring, slots, spoke, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the outer window band; the inner slots look into the arbor.
 export const arbor = 152;
 
+// The spool's twelve windows, shared by both sides.
 const BAND = { n: 12, rIn: 152, rOut: 188, bar: 12, corner: 8, off: -90 };
 const SPOKES = [0, 60, 120, 180, 240, 300];
 const EVO_FOOT = foot(136, -244, 14, 30);
@@ -26,8 +28,8 @@ const footArt = `<path d="${EVO_FOOT}" ${TRIM}/><path d="${EVO_FOOT}" fill="url(
 
 export const drag = svg({
   under: footArt,
-  back: [ring(148, 122) + slots({ n: 18, rIn: 128, rOut: 144, bar: 10, corner: 4 })],
-  body: [ring(200, 152) + slots({ ...BAND, rIn: 160 }), spoke(0, 150, 196, 26), spoke(180, 150, 196, 26)],
+  cage: [ring(194, 122) + slots(BAND) + slots({ n: 18, rIn: 128, rOut: 144, bar: 10, corner: 4 })],
+  body: [ring(200, 188), spoke(0, 150, 196, 26), spoke(180, 150, 196, 26)],
   details:
     spiderLayer('fill="#000" fill-opacity=".28" transform="translate(2 4)"') +
     spiderLayer(ACCENT) +

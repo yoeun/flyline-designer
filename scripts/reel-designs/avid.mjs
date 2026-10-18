@@ -1,15 +1,16 @@
 // Maxcatch Avid.
 // Drawn from Maxcatch's three-quarter product shots of the 5/6 in jade, one of each side, checked against an
-// in-use shot of the drag side in sapphire and the size chart. The machined frame is a thin rim with a comb of
-// radial teeth hanging in from it, free at their inner ends, crossed by three straight bars that form a triangle
-// with its corners at the rim, one up under the foot; they meet the raised boss around the big black drag knob
-// (its printed dial and logo left out). The spool face is a ring of radial windows around a thin inner ring, with
-// three curved spokes from the hub, the red spool cap over the red drag housing behind (both the finish's accent),
-// a silver counterweight at about 3 o'clock and the black handle at 9. Foot and drag knob are black on every
-// finish.
-// The photos are all at an angle, so the triangle's corners, tooth and window counts and the spokes' sweep are
-// approximate.
-import { ACCENT, P, circle, f, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+// in-use shot of the drag side in sapphire and the size chart.
+// Drag side: the frame is a thin rim and three straight bars that form a triangle with its corners at the rim, one
+// up under the foot; they meet the raised boss around the big black drag knob (its printed dial and logo left out).
+// Through it shows the spool's cage, which turns: the 20 radial windows and thin inner ring of the spool side, and
+// its three curved spokes (seen from behind, so swept the other way). The comb of radial teeth seen between the
+// frame's bars is the cage's window bars. The handle and counterweight would show through too, but the wound line
+// hides them. Spool side: the same window ring around the thin inner ring, three curved spokes from the hub, the
+// red spool cap over the red drag housing behind (both the finish's accent), a silver counterweight at about
+// 3 o'clock and the black handle at 9. Foot and drag knob are black on every finish.
+// The photos are all at an angle, so the triangle's corners, window count and the spokes' sweep are approximate.
+import { ACCENT, P, circle, f, foot, knob, knurl, rad, ring, roundPoly, slots, strut, svg } from './lib.mjs';
 
 // The wound line starts on the drum: the 5/6's 41 mm inside 85 mm (96), the 7/8's 47 in 95 (99).
 export const arbor = 97;
@@ -25,10 +26,7 @@ const triangle = (mirror = false) =>
     const [mx, my] = P(D, a), u = [-Math.sin(a), Math.cos(a)];
     return strut([mx - u[0] * t, my - u[1] * t], [mx + u[0] * t, my + u[1] * t], W);
   });
-// Comb of teeth from the rim, free at their inner ends.
-const TEETH = Array.from({ length: 20 }, (_, k) => -90 + 9 + k * 18);
-const teeth = () => TEETH.map((a) => spoke(a, 114, 192, 10, 18));
-const frame = (mirror) => [ring(200, 186), ...teeth(), ...triangle(mirror), ...(mirror ? [] : [circle(82)])];
+const frame = (mirror) => [ring(200, 186), ...triangle(mirror), ...(mirror ? [] : [circle(82)])];
 
 const FOOT = foot(132, -244, 14, 30);
 const BLACK_FOOT = `<path d="${FOOT}" fill="#1f2123"/><path d="${FOOT}" fill="url(#sheen)"/>`;
@@ -52,8 +50,9 @@ function curvedSpoke(a0, a1, r0, r1, w0, w1, steps = 10) {
 // Spool face: 20 radial windows between the rim and a thin inner ring, open inside it but for three swept spokes
 // to the hub. `mirror` flips the spokes for the view from behind, through the frame.
 const RING_IN = 104;
-const face = (mirror = false) => [
-  circle(200) + slots({ n: 20, rIn: 124, rOut: 186, bar: 17, corner: 6 }) + circle(RING_IN),
+const RIM = { n: 20, rIn: 124, rOut: 186, bar: 17, corner: 6 };
+const face = (mirror = false, rOut = 200) => [
+  circle(rOut) + slots(RIM) + circle(RING_IN),
   ...[-170, -50, 70].map((a) => (mirror ? curvedSpoke(180 - a, 180 - a - 32, 44, 108, 16, 22) : curvedSpoke(a, a + 32, 44, 108, 16, 22))),
   circle(50),
 ];
@@ -70,7 +69,7 @@ const DRAG_KNOB =
 
 export const drag = svg({
   under: BLACK_FOOT,
-  back: face(true),
+  cage: face(true, 192),
   body: frame(false),
   details: `<circle r="186" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` + DRAG_KNOB,
 });

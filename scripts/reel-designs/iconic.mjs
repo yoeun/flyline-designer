@@ -1,6 +1,10 @@
 // Hatch Iconic (Large and Mid Arbor share this frame).
-// Drawn from Hatch's straight-on 5 Plus photos. The drag side's swirl is simplified to six curved arms from the hub
-// to the rim, over the spool's darker outer cage.
+// Drawn from Hatch's straight-on 5 Plus photos.
+// Drag side: the frame is a rim, the foot on two posts, six curved arms swirling from the hub to the rim (simplified
+// from the photos' swirl) and the knurled drag cap. Through it shows the spool's outer cage, which turns: a base ring
+// with twelve swept bars out to its rim, the same as the spool side's, seen from the other face. The handle and
+// counterweight bosses would show through too, but the wound line hides them. Spool side: that outer cage, eight
+// straight spokes to the hub, the handle and a counterweight on bosses across from each other.
 import { P, circle, f, knurl, rad, recessed, ring, roundPoly, strut, svg } from './lib.mjs';
 
 // The wound line starts at the outer edge of the cage's base ring.
@@ -52,24 +56,24 @@ const mirrorX = (d) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x, 
 // clockwise.
 const ARM_BOW = 30;
 const ARMS = [0, 1, 2, 3, 4, 5].map((k) => [-130 + k * 60, -85 + k * 60, ARM_BOW]);
-// Behind the arms, the spool's outer cage shows in a much darker shade so it reads as a separate piece: a ring
-// where the backing starts (radius ~120 across the sizes) with curved bars out to the rim, set up like the main
-// arms (laid out clockwise, then mirrored): they lean hard counter-clockwise and curve clockwise.
-// The spool side shows the same cage from the other face: `mirrored` false.
+// The spool's outer cage, shared by both sides: a ring where the backing starts (radius ~120 across the sizes) with
+// curved bars out to the spool's rim. Seen through the drag side's arms it's laid out like them (clockwise, then
+// mirrored): the bars lean hard counter-clockwise and curve clockwise. The spool side shows it from the other face:
+// `mirrored` false, with its rim drawn there as the spool's own.
 const CAGE_R = 120;
 const outerCage = ({ mirrored = true, r = CAGE_R, bars = 12, lean = 50, bow = 18 } = {}) => [
+  ...(mirrored ? [ring(190, 180)] : []),
   ring(r + 8, r - 8),
   ...Array.from({ length: bars }, (_, k) => {
     const d = arm(-75 + (k * 360) / bars, r, -75 + (k * 360) / bars + lean, 190, 16, 12, bow);
     return mirrored ? mirrorX(d) : d;
   }),
 ];
-const shaded = (paths) => paths.map((d) => `<path d="${d}" fill="currentColor" fill-rule="evenodd"/><path d="${d}" fill="#000" fill-opacity=".45" fill-rule="evenodd"/>`).join('');
 
 // The arms start at `armIn`, well inside the hub, so they run deep toward the center under the cap.
 export const iconicDrag = ({ hub = 56, cap = 50, armIn = 30, arms = ARMS } = {}) =>
   svg({
-    under: shaded(outerCage()),
+    cage: outerCage(),
     body: [ring(200, 184), ...hatchFoot(), ...arms.map(([a0, a1, b]) => mirrorX(arm(a0, armIn, a1, 190, 36, 12, b))), circle(hub)],
     details: hatchCap(cap),
   });

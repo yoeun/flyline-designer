@@ -1,7 +1,9 @@
 // Sage Click.
-// A click-and-pawl reel, so the frame side has no drag knob. Frame side (from a straight-on photo): three Y spokes,
-// two curving up to about 10 and 2 o'clock and one down to 6 o'clock carrying the click button; in photos the
-// spool's own spokes show through between them. Spool side: three Y spokes 120° apart, one up to 12. The spool's gear teeth show inside the window ring; 22 teardrop windows on both sides.
+// A click-and-pawl reel, so the frame side has no drag knob. Frame side (from a straight-on photo): the frame is a
+// rim, the foot, a pad with a screw at 12 o'clock and three Y spokes, two curving up to about 10 and 2 o'clock and
+// one down to 6 o'clock carrying a screw pad and the click button. Through it shows the spool's cage, which turns:
+// the same 22 teardrop windows as the spool side's, and inside them the spool's gear teeth. Spool side: that window
+// ring, three Y spokes 120° apart, one up to 12, with the handle at 12 and a small knob at 6.
 import { P, circle, knurl, pad, rad, recessed, ring, roundPoly, strut, svg } from './lib.mjs';
 import { arm, frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
 
@@ -15,6 +17,7 @@ const ovals = (n, rIn, rOut, wIn, wOut) =>
     const c = (r, w) => [u[0] * r + v[0] * w, u[1] * r + v[1] * w];
     return roundPoly([c(rIn, -wIn / 2), c(rOut, -wOut / 2), c(rOut, wOut / 2), c(rIn, wIn / 2)], 14);
   }).join('');
+// The spool's 22 windows, shared by both sides.
 const RIM = ovals(22, 146, 190, 22, 36);
 const GEAR = knurl(134, 3.5, 44) + circle(124);
 
@@ -37,13 +40,13 @@ const web = (angles, r = 52, edge = 18, depth = 16) => {
 const spokes = (first) => [0, 1, 2].flatMap((k) => ySpoke(first + k * 120));
 
 // A frame spoke: a Y like ySpoke, its own width and fork.
-// Its tips run across the window ring to the outer edge of the cage.
+// Its tips run across the cage's windows to the frame's rim.
 const frameY = (a, w0, w1, spread) => [-1, 1].map((sd) => arm(P(-14, rad(a)), P(118, rad(a)), P(192, rad(a + sd * spread)), w0, w1, 20));
 
 export const drag = svg({
-  back: [GEAR],
+  cage: [ring(192, 140) + RIM, GEAR],
   body: [
-    ring(200, 140) + RIM,
+    ring(200, 186),
     sageFoot(),
     pad(166, -90, 34, 40),
     pad(166, 90, 34, 40),
