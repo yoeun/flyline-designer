@@ -1129,6 +1129,12 @@ describe('RIO lines', () => {
     // RIO's diagram draws the WF8F head at 35 ft; its table says 35.5.
     'rio-premier-bonefish-quickshooter': table([[5, 34.5, 90], [6, 34.5, 90], [7, 35.5, 90], [8, 35.5, 100], [9, 35.5, 100]]),
     'rio-elite-gt': table([10, 11, 12].map((w) => [w, 36, 100])),
+    'rio-elite-salmon-steelhead': table([6, 7, 8, 9, 10].map((w) => [w, 52, 100])),
+    'rio-premier-redfish': table([[7, 36, 90], [8, 37, 100], [9, 37, 100]]),
+    'rio-premier-redfish-xp': table([8, 9, 10].map((w) => [w, 35, 100])),
+    'rio-elite-smallmouth-bass': table([[6, 35.5, 90], [7, 37, 100], [8, 38, 100]]),
+    // RIO's diagram draws the WF9I head at 32 ft; its table says 33.
+    'rio-premier-coastal-quickshooter-xp': table([[8, 32, 100], [9, 33, 100], [10, 33, 100]]),
   };
   const rio = LINE_PRESETS.filter((p) => p.maker === 'RIO');
   const head = ({ taper }) => taper.front + taper.body + taper.back;
@@ -1206,6 +1212,10 @@ describe('RIO lines', () => {
       'rio-premier-tarpon-clear-tip-floater-wf11f',
       'rio-premier-flats-clear-floater-wf10f',
       'rio-elite-gt-wf12f',
+      'rio-elite-salmon-steelhead-wf8f',
+      'rio-premier-redfish-wf8f',
+      'rio-premier-redfish-xp-wf8f',
+      'rio-elite-smallmouth-bass-wf8f',
     ]);
   });
 
@@ -1225,6 +1235,10 @@ describe('RIO lines', () => {
     ['rio-premier-tarpon-clear-tip-floater-wf11f', [6, 22.5, 12, 59.5]],
     ['rio-premier-flats-clear-floater-wf10f', [6, 20, 24, 50]],
     ['rio-elite-gt-wf12f', [3, 27, 6, 64]],
+    ['rio-elite-salmon-steelhead-wf8f', [6.5, 32, 13.5, 48]],
+    ['rio-premier-redfish-wf8f', [6, 24, 7, 63]],
+    ['rio-premier-redfish-xp-wf8f', [3, 24, 8, 65]],
+    ['rio-elite-smallmouth-bass-wf8f', [7, 24, 7, 62]],
   ])('%s has the taper on RIO\'s diagram', (id, [front, body, back, running]) => {
     expect(findById(LINE_PRESETS, id).line.taper).toEqual({ front, body, back, running });
   });
