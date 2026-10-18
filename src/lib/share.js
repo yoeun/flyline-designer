@@ -1,5 +1,6 @@
 import { BACKING_COLORS, BACKING_DIAMETER, DEFAULT_SETUP, LEGACY_PRESET_IDS, LINE_PRESETS, REELS, findById, lineColorway, reelColors } from '../data/catalog.js';
 import { STYLES, legacyTitle, normalizeEntry } from './rack.js';
+import { NO_REELS_FILTER, reelsFilterFromQuery, reelsFilterParams } from './reelsPage.js';
 
 // The whole design lives in the URL query so a reload or a shared link restores it. Catalog picks
 // are readable params; a line that matches no preset travels as base64url JSON in `l`.
@@ -38,11 +39,12 @@ export function decodeSetup(text) {
 
 const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
-export function stateToQuery({ setup, presetId, side, mode, editingId = null, page = 'designer', demo = false }) {
+export function stateToQuery({ setup, presetId, side, mode, editingId = null, page = 'designer', demo = false, reelsFilter = NO_REELS_FILTER }) {
   const q = new URLSearchParams();
   if (demo) q.set('demo', '1');
   if (PAGES.includes(page)) {
     q.set('page', page);
+    if (page === 'reels') for (const [k, v] of reelsFilterParams(reelsFilter)) q.set(k, v);
     return q.toString();
   }
   if (editingId) q.set('edit', editingId);
@@ -83,7 +85,7 @@ export function queryToState(search, hash = '') {
     // Old links carry `name` and no details; normalizing migrates them.
     const legacy = normalizeEntry(decodeSetup(hash.replace(/^#/, '')));
     if (legacy) return { ...base, setup: legacy, presetId: 'custom', ...meta, page: 'designer', hasSetup: true };
-    return { ...base, ...meta, page: PAGES.includes(q.get('page')) ? q.get('page') : null, hasSetup: false };
+    return { ...base, ...meta, page: PAGES.includes(q.get('page')) ? q.get('page') : null, hasSetup: false, reelsFilter: reelsFilterFromQuery(q) };
   }
 
   const { setup } = base;

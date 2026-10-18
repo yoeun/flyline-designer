@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { DEFAULT_SETUP, LINE_PRESETS, REELS, REEL_MODELS, findById } from '../data/catalog.js';
 import { spoolLayout } from './geometry.js';
-import { PREVIEW_FILL, capacityText, photosByModel, previewSetup, previewWeight, scrollToFit, setupForReel } from './reelsPage.js';
+import { NO_REELS_FILTER, PREVIEW_FILL, capacityText, photosByModel, previewSetup, previewWeight, reelsFilterFromQuery, reelsFilterParams, scrollToFit, setupForReel } from './reelsPage.js';
 
 describe('setupForReel', () => {
   it('starts from the defaults on the chosen reel and finish', () => {
@@ -77,5 +77,42 @@ describe('scrollToFit', () => {
     expect(scrollToFit({ top: 300, bottom: 1200 }, 150, 800)).toBe(138);
     expect(scrollToFit({ top: -400, bottom: 500 }, 150, 800)).toBe(-562);
     expect(scrollToFit({ top: 100, bottom: 1200 }, 150, 800)).toBe(-62);
+  });
+});
+
+describe('reels page url filters', () => {
+  const parse = (search) => reelsFilterFromQuery(new URLSearchParams(search));
+
+  it('reads a brand whatever its case', () => {
+    expect(parse('brand=sage')).toEqual({ ...NO_REELS_FILTER, brand: 'Sage' });
+    expect(parse('brand=nobody')).toEqual(NO_REELS_FILTER);
+  });
+
+  it('reads one model with the size, finish and side its card shows', () => {
+    expect(parse('model=sage-arbor-xl&size=sage-arbor-xl-678&color=sage-slate&side=spool')).toEqual({
+      ...NO_REELS_FILTER,
+      models: ['sage-arbor-xl'],
+      size: 'sage-arbor-xl-678',
+      color: 'sage-slate',
+      side: 'spool',
+    });
+  });
+
+  it('takes a size id as its model at that size', () => {
+    expect(parse('model=sage-arbor-xl-678')).toMatchObject({ models: ['sage-arbor-xl'], size: 'sage-arbor-xl-678' });
+  });
+
+  it('drops unknown models, and sizes, finishes and sides that do not fit', () => {
+    expect(parse('model=sage-arbor-xl,nope&size=sage-spectrum-34&color=smoke&side=up')).toEqual({ ...NO_REELS_FILTER, models: ['sage-arbor-xl'] });
+  });
+
+  it('keeps a size, finish and side only for a single model', () => {
+    expect(parse('model=sage-arbor-xl,sage-spectrum&size=sage-arbor-xl-678&side=spool')).toEqual({ ...NO_REELS_FILTER, models: ['sage-arbor-xl', 'sage-spectrum'] });
+  });
+
+  it('writes back what it reads', () => {
+    const filter = parse('brand=Sage&model=sage-arbor-xl&size=sage-arbor-xl-678&side=spool');
+    expect(parse(new URLSearchParams(reelsFilterParams(filter)).toString())).toEqual(filter);
+    expect(reelsFilterParams(NO_REELS_FILTER)).toEqual([]);
   });
 });
