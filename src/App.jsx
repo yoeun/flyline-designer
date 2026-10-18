@@ -8,6 +8,7 @@ import HeaderMenu from './components/HeaderMenu.jsx';
 import NavMenu from './components/NavMenu.jsx';
 import PreviewModeToggle from './components/PreviewModeToggle.jsx';
 import Rack from './components/Rack.jsx';
+import { NO_FILTER } from './components/RackFilter.jsx';
 import RackPage from './components/RackPage.jsx';
 import Segmented from './components/Segmented.jsx';
 import ReelPreview from './components/ReelPreview.jsx';
@@ -74,6 +75,8 @@ export default function App() {
   const [themeChoice, setThemeChoice, theme] = useTheme();
   const [rack, setRack] = useState(initial.rack);
   const [rackOpen, setRackOpen] = useState(false);
+  // The rack's search and filter, shared by the strip and the rack page; not kept across reloads.
+  const [rackFilter, setRackFilter] = useState(NO_FILTER);
   // This browser's view link to its rack ({ shareId, ownerToken }), if it has one.
   const [share, setShare] = useState(loadShare);
   const [shareOpen, setShareOpen] = useState(false);
@@ -421,6 +424,8 @@ export default function App() {
           setups={rack}
           currentId={editingId}
           conflicts={rackConflicts(rack)}
+          filter={rackFilter}
+          onFilterChange={setRackFilter}
           onLoad={loadEntry}
           onEditDetails={(entry) => setDetailsEntryId(entry.id)}
           onRemove={removeEntry}
@@ -467,6 +472,8 @@ export default function App() {
               setups={rack}
               open={rackOpen}
               onToggle={() => setRackOpen((o) => !o)}
+              filter={rackFilter}
+              onFilterChange={setRackFilter}
               currentId={editingId}
               onLoad={loadEntry}
               onEditDetails={(entry) => setDetailsEntryId(entry.id)}
