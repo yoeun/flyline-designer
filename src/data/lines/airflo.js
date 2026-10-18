@@ -61,6 +61,13 @@ export const COLORS = [
   // as Trans Olive for the Sixth Sense Slow Intermediate it sold in 2019:
   // https://web.archive.org/web/20190715202835/https://www.fishtec.co.uk/buy.cfm/fly-lines/airflo-sixth-sense-intermediate-lines-new-2019-models/40/yes/190177
   { id: 'airflo-ss2-trans-olive', name: 'Trans Olive', hex: '#668540' },
+  // Sixth Sense 2 Sinking Di3 and Di5, sampled from the line coils on the box in Airflo's product
+  // photo (its taper diagram draws every density black). Airflo's current listing names no color,
+  // but its Di3, Di5 and Di7 SKUs end -DG, -DB and -BK, the codes Fishtec gave as Dark Green, Dark
+  // Blue and Black for the Sixth Sense Di3, Di5 and Di7 it sold in 2019:
+  // https://web.archive.org/web/20190715200229/https://www.fishtec.co.uk/buy.cfm/fly-lines/airflo-sixth-sense-sinking-lines-new-2019-models/40/yes/190183
+  { id: 'airflo-ss2-dark-green', name: 'Dark Green', hex: '#5d7862' },
+  { id: 'airflo-ss2-dark-blue', name: 'Dark Blue', hex: '#4e5ab1' },
 ];
 
 const half = (ft) => Math.round(ft * 2) / 2;
@@ -153,6 +160,13 @@ const STREAMER_MAX_COLORWAYS = {
 // diagram's split applies to all of them.
 const SIXTH_SENSE = LINEUP['airflo-sixth-sense-2-sinking'];
 const SIXTH_SENSE_SPLIT = split(lineupSize(SIXTH_SENSE, 'WF6/7S Di3'));
+const SIXTH_SENSE_BLACK = { id: 'black', name: 'Black', zones: zones([0, 'airflo-sinking-black']) };
+const SIXTH_SENSE_OLDER_BLACK = { ...SIXTH_SENSE_BLACK, name: 'Black (older listing)' };
+const SIXTH_SENSE_COLORWAYS = {
+  3: [{ id: 'dark-green', name: 'Dark Green', zones: zones([0, 'airflo-ss2-dark-green']) }, SIXTH_SENSE_OLDER_BLACK],
+  5: [{ id: 'dark-blue', name: 'Dark Blue', zones: zones([0, 'airflo-ss2-dark-blue']) }, SIXTH_SENSE_OLDER_BLACK],
+  7: [SIXTH_SENSE_BLACK],
+};
 // Sixth Sense 2 Intermediate's table lists only the Slow Intermediate, with the same 46 ft head in
 // every size, so the WF6/7 diagram's split applies to all of them.
 const SIXTH_SENSE_INT = LINEUP['airflo-sixth-sense-2-intermediate'];
@@ -334,10 +348,12 @@ export const PRODUCTS = [
       };
     }),
   }),
-  // Di3, Di5 and Di7 sink at 3, 5 and 7 ips; all black with orange hang markers. Sold in split
-  // ratings (#5/6 … #8/9) and drawn at the heavier weight (the lineup lists the lower), since every
-  // size runs heavy for its lower number. Split from the #6/7 diagram. Di8 is also sold but would
-  // draw the same as Di7, so it's left out.
+  // Di3, Di5 and Di7 sink at 3, 5 and 7 ips; dark green, dark blue and black over the whole line,
+  // with hang markers. Sold in split ratings (#5/6 … #8/9) and drawn at the heavier weight (the
+  // lineup lists the lower), since every size runs heavy for its lower number. Split from the #6/7
+  // diagram. Di8 is also sold but would draw the same as Di7, so it's left out. Di3 and Di5 were
+  // drawn all black before, from the diagram; they keep that as a second colorway so saved setups
+  // still match their size.
   makerProduct({
     id: 'airflo-sixth-sense',
     maker: 'Airflo',
@@ -354,7 +370,7 @@ export const PRODUCTS = [
           weight,
           taper: [...SIXTH_SENSE_SPLIT, size.total - size.head],
           lineup: overriding(size, { weight }),
-          colorways: [{ id: 'black', name: 'Black', zones: zones([0, 'airflo-sinking-black']) }],
+          colorways: SIXTH_SENSE_COLORWAYS[rate],
         };
       }),
   }),

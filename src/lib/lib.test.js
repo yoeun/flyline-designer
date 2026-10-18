@@ -1119,9 +1119,17 @@ describe('maker products', () => {
   });
 
   it('every preset from before products still loads the same line, by its id or a legacy mapping', () => {
+    // Sizes recolored from the maker's own colors since: their old colors are kept as a later
+    // colorway, so a saved setup still matches its size, but the size now loads in its new colors.
+    const recolored = new Set(['airflo-sixth-sense-wf7-di3', 'airflo-sixth-sense-wf7-di5']);
     for (const { id, line, colorways } of BEFORE_PRODUCTS) {
       const preset = findById(LINE_PRESETS, LEGACY_PRESET_IDS[id] ?? id);
       expect(preset, id).toBeDefined();
+      if (recolored.has(id)) {
+        expect(presetForLine(structuredClone(line)), id).toBe(preset.id);
+        for (const { id: cw, zones } of colorways) expect(preset.colorways, id).toContainEqual(expect.objectContaining({ id: cw, zones }));
+        continue;
+      }
       expect(preset.line, id).toEqual(line);
       // Sizes may have gained colorways since; the old ones still come first, in order.
       expect(colorways ? preset.colorways.slice(0, colorways.length) : preset.colorways, id).toEqual(colorways);
