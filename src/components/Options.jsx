@@ -252,14 +252,19 @@ export function FlyLineOptions({ line, reel, backingColor, presetId, onChange, o
   );
 }
 
-export function BackingOptions({ backing, onChange, changed, onReset }) {
+// `maxYards(pounds)` is the most backing of that strength the reel takes with its line. Lengths and
+// strengths past it show red, so the ones that fit are plain to see.
+export function BackingOptions({ backing, onChange, changed, onReset, maxYards }) {
+  const max = maxYards(backing.pounds);
+  const tooLong = (yards) => yards > max && `Won't fit. At most ${max} yd of ${backing.pounds} lb backing.`;
+  const tooThick = (pounds) => backing.yards > maxYards(pounds) && `Won't fit. At most ${maxYards(pounds)} yd of ${pounds} lb backing.`;
   return (
     <section className={GROUP}>
       <SectionHeading title="Backing" changed={changed} onReset={onReset} />
       <div className="flex flex-wrap items-start gap-x-4 gap-y-2.5">
         <Field label="Length">
           <div className="flex flex-wrap items-center gap-2.5">
-            <Segmented label="Backing length" options={BACKING_LENGTHS.map((y) => [y, y])} value={backing.yards} onChange={(yards) => onChange({ ...backing, yards })} />
+            <Segmented label="Backing length" options={BACKING_LENGTHS.map((y) => [y, y])} value={backing.yards} onChange={(yards) => onChange({ ...backing, yards })} invalid={tooLong} />
             <NumberInput
               label="Backing length in yards"
               unit="yd"
@@ -267,14 +272,21 @@ export function BackingOptions({ backing, onChange, changed, onReset }) {
               step="10"
               className="w-20"
               value={backing.yards}
+              aria-invalid={backing.yards > max || undefined}
               onChange={(e) => onChange({ ...backing, yards: numberOr(e.target.value, backing.yards) })}
             />
           </div>
         </Field>
         <Field label="Strength">
-          <Segmented label="Backing strength" options={STRENGTHS} value={backing.pounds} onChange={(pounds) => onChange({ ...backing, pounds })} />
+          <Segmented label="Backing strength" options={STRENGTHS} value={backing.pounds} onChange={(pounds) => onChange({ ...backing, pounds })} invalid={tooThick} />
         </Field>
       </div>
+      {backing.yards > max && (
+        <p className="flex items-center gap-1.5 text-[13px] text-destructive" role="alert">
+          <Icon name="error" className="flex-none text-[18px]" />
+          Won't fit. This line takes at most {max} yd of {backing.pounds} lb backing.
+        </p>
+      )}
       <Field label={`Color · ${nameOf(backing.color)}`}>
         <Swatches colors={BACKING_COLORS} value={backing.color} onChange={(c) => onChange({ ...backing, color: c })} label="Backing color" />
       </Field>

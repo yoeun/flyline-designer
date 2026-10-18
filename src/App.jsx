@@ -20,6 +20,7 @@ import ShareDialog from './components/ShareDialog.jsx';
 import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, fitLineToReel, presetForLine, switchLine } from './data/catalog.js';
 import { DEMO_RACK } from './data/demoRack.js';
 import { exportPng, exportSvg } from './lib/export.js';
+import { spoolLayout } from './lib/geometry.js';
 import { rackConflicts } from './lib/checks.js';
 import { clampSelection } from './lib/lineEdit.js';
 import { SECTION_KEYS, changedSections, copyOf, displayName, isDirty, loadEntries } from './lib/rack.js';
@@ -542,7 +543,13 @@ export default function App() {
               onReset={() => resetSection('line')}
               onOpenGuide={openGuide}
             />
-            <BackingOptions backing={setup.backing} onChange={(backing) => update({ backing })} changed={changed?.backing ?? false} onReset={() => resetSection('backing')} />
+            <BackingOptions
+              backing={setup.backing}
+              onChange={(backing) => update({ backing })}
+              changed={changed?.backing ?? false}
+              onReset={() => resetSection('backing')}
+              maxYards={(pounds) => spoolLayout({ ...setup, backing: { ...setup.backing, pounds } }).maxBackingYards}
+            />
           </section>
         </main>
       )}
