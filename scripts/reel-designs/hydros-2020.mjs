@@ -3,6 +3,9 @@
 import { dragKnob, rad, strut, svg } from './lib.mjs';
 import { HUB, HYDROS_FOOT, HYDROS_FRAME, hydrosSpool } from './hydros.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 116;
+
 export const drag = svg({ under: HYDROS_FOOT, body: HYDROS_FRAME, details: dragKnob(64) });
 
 const W = 14;

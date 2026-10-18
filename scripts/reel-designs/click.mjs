@@ -5,6 +5,9 @@
 import { P, circle, knurl, pad, rad, ring, roundPoly, strut, svg } from './lib.mjs';
 import { arm, frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
 
+// The wound line starts at the inner edge of the teardrop windows.
+export const arbor = 146;
+
 // n rounded teardrop windows, wIn wide at rIn and wOut wide at rOut, the first bar at -90°.
 const ovals = (n, rIn, rOut, wIn, wOut) =>
   Array.from({ length: n }, (_, k) => {

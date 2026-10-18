@@ -5,6 +5,9 @@
 // round the rim, an open center with three V-shaped spokes; handle and a counterweight pin sit opposite each other.
 import { P, circle, f, foot, knob, knurl, pad, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 124;
+
 const L = P(194, rad(-125)), R = P(194, rad(-55)), APEX = [0, 194];
 const WINDOWS = { n: 24, rIn: 124, rOut: 180, bar: 13, corner: 9 };
 

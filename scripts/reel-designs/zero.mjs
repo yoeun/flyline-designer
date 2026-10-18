@@ -39,4 +39,6 @@ export const zeroSides = (fingerIn) => ({
   }),
 });
 
-export const { drag, spool } = zeroSides(121);
+// The wound line starts where the fingers end.
+export const arbor = 121;
+export const { drag, spool } = zeroSides(arbor);

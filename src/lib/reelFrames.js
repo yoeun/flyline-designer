@@ -8,6 +8,12 @@ for (const [path, svg] of Object.entries(FILES)) {
   (FRAMES[design] ??= {})[side] = svg;
 }
 
+// The radius (rim = 200) a design draws its spool's arbor at, or undefined if it doesn't say.
+export function frameArbor(design) {
+  const arbor = FRAMES[design]?.drag?.match(/<svg[^>]*\sdata-arbor="([\d.]+)"/)?.[1];
+  return arbor ? Number(arbor) : undefined;
+}
+
 export const SIDES = [
   ['drag', 'Drag'],
   ['spool', 'Spool'],

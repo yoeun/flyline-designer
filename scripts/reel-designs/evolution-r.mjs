@@ -6,6 +6,9 @@
 // at 9 o'clock, round counterweight at 3. Both from Ross's straight-on product photos.
 import { ACCENT, P, TRIM, circle, f, foot, knob, ring, slots, spoke, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the outer window band; the inner slots look into the arbor.
+export const arbor = 152;
+
 const BAND = { n: 12, rIn: 152, rOut: 188, bar: 12, corner: 8, off: -90 };
 const SPOKES = [0, 60, 120, 180, 240, 300];
 const EVO_FOOT = foot(136, -244, 14, 30);

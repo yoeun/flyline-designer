@@ -6,6 +6,9 @@
 import { P, circle, knurl, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
 import { dial, frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 122;
+
 const RIM = { n: 20, rIn: 122, rOut: 184, bar: 13, corner: 8, off: -90 };
 
 // Like the Spectrum C: five straight frame spokes over the spool's window cage, which is drawn in a much darker

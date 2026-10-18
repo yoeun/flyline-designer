@@ -2,6 +2,9 @@
 // Both sides share a cage of tilted V's: pairs of bars that meet at an inner ring and open out to the rim.
 import { ACCENT, P, circle, foot, hexSpokes, knob, knurl, pad, rad, ring, screw, strut, svg } from './lib.mjs';
 
+// The wound line starts at the outer edge of the spool side's inner ring.
+export const arbor = 118;
+
 const V_COUNT = 12;
 const V_TILT = 6; // degrees the V's lean, clockwise at the rim
 const V_SPREAD = 8; // half the angle between a V's arms at the rim

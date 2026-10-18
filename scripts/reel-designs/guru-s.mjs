@@ -2,6 +2,9 @@
 // The photos are three-quarter views; the straight-on spoke angles, the slot counts and the handle radius are inferred.
 import { ACCENT, P, circle, foot, knob, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the drag side's windows.
+export const arbor = 128;
+
 // Drag side: a wide bar tapering from the foot to the hub, a narrow one down to 6 o'clock, and three spokes a side,
 // all 45° apart. Each runs on through the window ring behind, two windows to a gap.
 const GURU_SPOKES = [-45, 0, 45, 135, 180, -135];

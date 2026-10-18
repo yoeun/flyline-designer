@@ -2,7 +2,7 @@ import { useId } from 'react';
 import { cn } from '@/lib/utils';
 import { REEL_COLORS, findById, hexOf, reelAccent, reelTrim } from '../data/catalog.js';
 import { spoolLayout } from '../lib/geometry.js';
-import { frameMarkup } from '../lib/reelFrames.js';
+import { frameArbor, frameMarkup } from '../lib/reelFrames.js';
 
 const VIEW = { x: -215, y: -250, w: 430, h: 470 };
 const RIM_PX = 200;
@@ -17,9 +17,13 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
   const uid = useId().replace(/[^a-zA-Z0-9]/g, '');
   const layout = spoolLayout(setup);
   const s = RIM_PX / layout.rimR;
-  const arbor = layout.arborR * s;
   const spool = layout.spoolR * s;
-  const outer = layout.outerR * s;
+  // The line starts on the arbor the frame drawing shows, where it shows one. Each ring keeps its share of the
+  // spool's area between the arbor and the spool's edge, so the reel looks as full as the numbers say it is.
+  const arbor = frameArbor(layout.reel.design) ?? layout.arborR * s;
+  const share = (spool * spool - arbor * arbor) / (layout.spoolR ** 2 - layout.arborR ** 2);
+  const drawn = (r) => Math.sqrt(arbor * arbor + (r * r - layout.arborR ** 2) * share);
+  const outer = drawn(layout.outerR);
   const finish = findById(REEL_COLORS, setup.reel.color) ?? REEL_COLORS[2];
   const reelHex = finish.hex;
   const reelOpacity = mode === 'reel' ? 1 : mode === 'see-through' ? 0.32 : 0;
@@ -73,7 +77,7 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
         <g mask={`url(#line-${uid})`}>
           {/* Outermost ring first so each smaller circle paints over it: no gaps between layers. */}
           {[...layout.rings].reverse().map((ring, i) => (
-            <circle key={i} r={ring.outer * s} fill={hexOf(ring.color)} />
+            <circle key={i} r={drawn(ring.outer)} fill={hexOf(ring.color)} />
           ))}
           <g fill="none" strokeWidth="0.9">
             {wraps.map((r, i) => (
@@ -82,7 +86,7 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
           </g>
           <g fill="none" stroke="#000" strokeOpacity="0.28" strokeWidth="1.2">
             {layout.rings.map((ring, i) => (
-              <circle key={i} r={ring.outer * s} />
+              <circle key={i} r={drawn(ring.outer)} />
             ))}
           </g>
           <circle r={outer} fill={`url(#line-light-${uid})`} />

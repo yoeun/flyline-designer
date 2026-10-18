@@ -2,6 +2,9 @@
 // The photos are three-quarter views; the straight-on spoke angles, the 16-slot ring and the handle radius are inferred.
 import { ACCENT, P, circle, foot, hexSpokes, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 140;
+
 // Drag side: a wide bar tapering from the foot to the hub, a slim one down to 6 o'clock and two spokes a side,
 // leaving big open windows. With the two bars they make six spokes 60° apart, each on a bar of the ring behind.
 const SPEEDSTER_SPOKES = [-30, 30, 150, -150];

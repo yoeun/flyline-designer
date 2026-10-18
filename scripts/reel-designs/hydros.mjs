@@ -1,6 +1,9 @@
 // Orvis Hydros (2026). Its parts are shared with the 2020–25 Hydros (hydros-2020.mjs).
 import { P, circle, dragKnob, foot, knob, pad, rad, ring, roundPoly, screw, slots, strut, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 116;
+
 // The Hydros foot is dark whatever the reel color.
 export const HYDROS_FOOT = `<path d="${foot(130, -244, 14, 30)}" fill="#3b3e41"/><path d="${foot(130, -244, 14, 30)}" fill="url(#sheen)"/>`;
 // Drag side: the window ring and two straight bars, wide apart at the top and closer at the bottom.

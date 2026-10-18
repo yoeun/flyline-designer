@@ -2,6 +2,9 @@
 // Foot, drag ring and handle take the finish's accent: teal on Silver Dragonfly, navy on Blackout.
 import { ACCENT, P, arcPts, circle, foot, hexSpokes, rad, ring, roundPoly, slots, strut, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 134;
+
 const accentFoot = `<path d="${foot(118, -240, 16, 56)}" ${ACCENT}/><path d="${foot(118, -240, 16, 56)}" fill="url(#sheen)"/>`;
 
 // The Mirage cap: three rounded lobes, seen as grooves on the drag knob and the spool cap.

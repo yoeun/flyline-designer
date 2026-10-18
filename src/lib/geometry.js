@@ -136,3 +136,12 @@ export function spoolLayout(setup) {
 
 // The color of the fly line right next to the backing.
 export const innermostLineColor = (line) => line.zones[line.zones.length - 1].color;
+
+// Yards of the setup's backing that bring the spool to `fill` (0–1) with its line, in whole `step`s.
+export function backingYardsForFill(setup, fill, step = 10) {
+  const { reel, rings, arborR, spoolR } = spoolLayout({ ...setup, backing: { ...setup.backing, yards: 0 } });
+  const flyLineArea = rings.reduce((s, r) => s + r.area, 0);
+  const capacity = Math.PI * (spoolR * spoolR - arborR * arborR);
+  const yards = (fill * capacity - flyLineArea) / backingAreaPerYard(setup.backing.pounds, reel.width);
+  return Math.max(0, Math.floor(yards / step) * step);
+}

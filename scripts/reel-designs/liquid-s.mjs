@@ -1,6 +1,9 @@
 // Lamson Liquid S.
 import { ACCENT, P, circle, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 126;
+
 // Liquid S spool side: five spokes swept back 40°; the handle sits partway along the one ending at -105°.
 const LIQUID_SPOKES = [0, 1, 2, 3, 4].map((k) => -105 + k * 72);
 const liquidHandle = (() => {
