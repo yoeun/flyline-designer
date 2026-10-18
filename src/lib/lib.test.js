@@ -681,6 +681,8 @@ describe('change tracking', () => {
 // SA's Amplitude Textured Tropical/Jungle Titan and Magnitude Textured Bonefish Plus and Trout Expert
 // Clear Tip Floats, and the Magnitude Smooth Infinity Salt Clear Float, are the earlier-listed other
 // coating's tapers and colors.
+// SA's Magnitude Smooth Tarpon Clear Float and Textured Infinity Clear Float are the earlier-listed
+// other coating's tapers and colors.
 const LOOKALIKES = new Map([
   ...[6, 7, 8, 9, 10].map((w) => [`rio-premier-outbound-short-wf${w}-int-5-7`, `rio-premier-outbound-short-wf${w}-int-3-5`]),
   ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-amplitude-textured-mpx-wf${w}f`, `sa-amplitude-smooth-mpx-wf${w}f`]),
@@ -707,6 +709,8 @@ const LOOKALIKES = new Map([
   ...[7, 8, 9, 10, 11, 12].map((w) => [`sa-magnitude-smooth-infinity-salt-clear-tip-wf${w}f`, `sa-magnitude-textured-infinity-salt-clear-tip-wf${w}f`]),
   ...[6, 7, 8, 9].map((w) => [`sa-magnitude-textured-bonefish-plus-clear-float-wf${w}f`, `sa-magnitude-smooth-bonefish-plus-clear-tip-wf${w}f`]),
   ...[4, 5, 6].map((w) => [`sa-magnitude-textured-trout-expert-clear-tip-float-wf${w}f`, `sa-magnitude-smooth-trout-expert-clear-tip-float-wf${w}f`]),
+  ...[10, 11, 12].map((w) => [`sa-magnitude-smooth-tarpon-clear-tip-wf${w}f`, `sa-magnitude-textured-tarpon-clear-float-wf${w}f`]),
+  ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-magnitude-textured-infinity-clear-float-wf${w}f`, `sa-magnitude-smooth-infinity-clear-float-wf${w}f`]),
 ]);
 
 describe('presetForLine', () => {
