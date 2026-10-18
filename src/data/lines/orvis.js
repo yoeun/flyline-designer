@@ -24,6 +24,16 @@ export const COLORS = [
   { id: 'orvis-sand', name: 'Sand', hex: '#ece5bc' },
   { id: 'orvis-big-game-moss', name: 'Moss', hex: '#b5c346' },
   { id: 'orvis-all-rounder-moss', name: 'Moss', hex: '#a6b84c' },
+  // Orvis's only PRO Depth Charge photo is the 350 gr's (green front, dark gray running line), so the
+  // dark gray is matched by eye to it; the front colors of the sizes drawn and the dark green middle
+  // aren't in any photo and follow Orvis's color names.
+  { id: 'orvis-depth-charge-dark-gray', name: 'Dark Gray', hex: '#36383a' },
+  { id: 'orvis-depth-charge-dark-green', name: 'Dark Green', hex: '#26422e' },
+  { id: 'orvis-depth-charge-mist-green', name: 'Mist Green', hex: '#b4d9b0' },
+  { id: 'orvis-depth-charge-yellow', name: 'Yellow', hex: '#f2e04a' },
+  { id: 'orvis-depth-charge-orange', name: 'Orange', hex: '#f7943c' },
+  { id: 'orvis-depth-charge-surf', name: 'Surf', hex: '#8fc3df' },
+  { id: 'orvis-depth-charge-white', name: 'White', hex: '#efefea' },
 ];
 
 // Splits from Orvis's per-size taper charts: the tip and every front taper section are the front,
@@ -63,6 +73,15 @@ const dt = (product, colorways) =>
       colorways,
     };
   });
+
+// PRO Depth Charge 3D front colors by rod weight, from Orvis's description.
+const DEPTH_CHARGE_FRONTS = {
+  5: ['mist-green', 'Mist Green'],
+  6: ['yellow', 'Yellow'],
+  7: ['orange', 'Orange'],
+  8: ['surf', 'Surf'],
+  11: ['white', 'White'],
+};
 
 export const PRODUCTS = [
   // Compound front taper and a long head for mending. Orvis describes three color sections (an
@@ -219,5 +238,28 @@ export const PRODUCTS = [
     sizes: wf(LINEUP['orvis-pro-saltwater-all-rounder-fly-line-textured'], [
       { id: 'horizon', name: 'Horizon', zones: zones([8, 'orvis-ivory'], [22, 'orvis-horizon'], [0, 'orvis-all-rounder-moss']) },
     ]),
+  }),
+  // Triple density, sized by grain weight and drawn at the lower rod weight: a 30 ft front sinking
+  // about 6 ips, a 1 ft transition, a 20 ft Type 3 middle and an intermediate running line, so it
+  // draws as a sinking head on an intermediate running line. Orvis's chart counts only the front and
+  // transition as head (31 ft), so the Type 3 middle is drawn as running line. Its chart has no rows
+  // for the 350 and 550 gr, which are left out. Orvis lists each size's colors front, middle, running
+  // line (a front color by size, then dark green and dark gray), and its taper diagram draws the
+  // transition green with the middle, so the front color runs 30 ft and dark green the next 21.
+  makerProduct({
+    id: 'orvis-pro-depth-charge-3d-smooth',
+    maker: 'Orvis',
+    name: 'Orvis PRO Depth Charge 3D Smooth',
+    sizes: LINEUP['orvis-pro-depth-charge-3d-fly-line-smooth'].sizes
+      .filter((size) => size.taper)
+      .flatMap((size) => {
+        const [id, name] = DEPTH_CHARGE_FRONTS[size.weight];
+        const colorway = {
+          id,
+          name: `${name}/Dark Green/Dark Gray`,
+          zones: zones([30, `orvis-depth-charge-${id}`], [21, 'orvis-depth-charge-dark-green'], [0, 'orvis-depth-charge-dark-gray']),
+        };
+        return wf({ sizes: [size] }, [colorway], { type: 'sinkhead-int', id: (w) => `wf${w}s` });
+      }),
   }),
 ];
