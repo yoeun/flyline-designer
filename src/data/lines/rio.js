@@ -66,6 +66,7 @@ export const COLORS = [
   { id: 'rio-silver-gray', name: 'Silver Gray', hex: '#a7a9a8' },
   { id: 'rio-light-orange', name: 'Light Orange', hex: '#f6a03c' },
   { id: 'rio-purple', name: 'Purple', hex: '#bd55c4' },
+  { id: 'rio-pale-green', name: 'Pale Green', hex: '#b4e68c' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -706,6 +707,67 @@ const coastalQuickShooterXp = rio({
   densities: [intermediate({ split: [3, 26, 3] }, colorway('clear-purple', 'Clear/Purple', [32, 'rio-clear'], [0, 'rio-purple']))],
 });
 
+// Elite Sub-Surface CamoLux, 1.5–2 ips. RIO's WF6I diagram: front taper 4 plus 2, body 22, back
+// taper 2 on 70 ft of running line. Every size has a 30 ft head. A camo head on a dark green running
+// line, as RIO's photo shows it (the diagram draws a pale green running line).
+const camoLux = rio({
+  id: 'rio-elite-sub-surface-camolux',
+  name: 'RIO Elite Sub-Surface CamoLux',
+  sizes: LINEUP['rio-elite-sub-surface-camolux'].sizes,
+  densities: [{ ...intermediate({ split: [6, 22, 2], example: 6 }, colorway('camo-dark-green', 'Camo/Dark Green', [30, 'rio-camo'], [0, 'rio-dark-green'])), sink: '1.5–2 ips' }],
+});
+
+// Ambassador Series Lake Chucker. RIO's #7 diagram: front taper 2, body 32, back taper 1, then a 2 ft
+// load point and 63 ft of running line. Every size has a 35 ft head. A gray head, the orange load
+// point, then a green running line.
+const lakeChucker = rio({
+  id: 'rio-ambassador-series-lake-chucker',
+  name: 'RIO Ambassador Series Lake Chucker',
+  sizes: LINEUP['rio-ambassador-series-lake-chucker'].sizes,
+  densities: [float({ split: [2, 32, 1], example: 7 }, colorway('gray-orange-green', 'Gray/Orange/Green', [35, 'rio-light-gray'], [2, 'rio-orange'], [0, 'rio-green']))],
+});
+
+// Elite Stillwater Floater. RIO's WF6F diagram: front taper 2 plus 2, body 6 plus a 20 ft back body,
+// back taper 20 on 40 ft of running line. That head is 50 ft; RIO's table says 49.5 for WF6F, so
+// every size, the WF6F too, is the diagram scaled to its table head and marked estimated. Orange
+// over the first 2 ft, green to about 38 ft (partway down the back taper, read off the diagram by
+// eye), then yellow.
+const stillwaterFloater = rio({
+  id: 'rio-elite-stillwater-floater',
+  name: 'RIO Elite Stillwater Floater',
+  sizes: LINEUP['rio-elite-stillwater-floater'].sizes,
+  densities: [float({ split: [4, 26, 20] }, colorway('orange-green-yellow', 'Orange/Green/Yellow', [2, 'rio-orange'], [36, 'rio-green'], [0, 'rio-pale-yellow']))],
+});
+
+// Premier Tarpon Quickshooter. RIO's WF12F diagram: front taper 7, body 5 plus 7, back body 10, back
+// taper 1, then a 10 ft handling section and 60 ft of running line. Every size has a 30 ft head. A
+// camo head; the handling section and running line are ivory.
+const tarponQuickShooter = rio({
+  id: 'rio-premier-tarpon-quickshooter',
+  name: 'RIO Premier Tarpon Quickshooter',
+  sizes: LINEUP['rio-premier-tarpon-quickshooter'].sizes,
+  densities: [float({ split: [7, 22, 1], example: 12 }, colorway('camo-ivory', 'Camo/Ivory', [30, 'rio-camo'], [0, 'rio-ivory']))],
+});
+
+// Avid Trout Grand. RIO's WF6F diagram: front taper 7, body 7 plus 18, body taper 7 on 41 ft of
+// running line. Pale green end to end.
+const avidTroutGrand = rio({
+  id: 'rio-avid-trout-grand',
+  name: 'RIO Avid Trout Grand',
+  sizes: LINEUP['rio-avid-trout-grand'].sizes,
+  densities: [float({ split: [7, 25, 7], example: 6 }, colorway('pale-green', 'Pale Green', [0, 'rio-pale-green']))],
+});
+
+// Premier Midge Tip, a floating line with a 1.5 ips clear tip. RIO's WF6F/I diagram: front taper 3
+// (the clear tip) plus 4, body 28, back taper 5 on 50 ft of running line. Clear over the first 3 ft,
+// yellow to the end of the head, then a beige running line.
+const midgeTip = rio({
+  id: 'rio-premier-midge-tip',
+  name: 'RIO Premier Midge Tip',
+  sizes: LINEUP['rio-premier-midge-tip'].sizes,
+  densities: [{ ...tip('F/I', { split: [7, 28, 5], example: 6 }, colorway('clear-yellow-beige', 'Clear/Yellow/Beige', [3, 'rio-clear'], [37, 'rio-yellow'], [0, 'rio-beige'])), sink: 'Float/1.5 ips' }],
+});
+
 export const PRODUCTS = [
   makerProduct({
     id: 'rio-premier-gold',
@@ -773,4 +835,10 @@ export const PRODUCTS = [
       },
     ],
   }),
+  camoLux,
+  lakeChucker,
+  stillwaterFloater,
+  tarponQuickShooter,
+  avidTroutGrand,
+  midgeTip,
 ];

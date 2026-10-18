@@ -1137,6 +1137,13 @@ describe('RIO lines', () => {
     'rio-elite-smallmouth-bass': table([[6, 35.5, 90], [7, 37, 100], [8, 38, 100]]),
     // RIO's diagram draws the WF9I head at 32 ft; its table says 33.
     'rio-premier-coastal-quickshooter-xp': table([[8, 32, 100], [9, 33, 100], [10, 33, 100]]),
+    'rio-elite-sub-surface-camolux': table([[4, 30, 90], [5, 30, 90], [6, 30, 100], [7, 30, 100], [8, 30, 100]]),
+    'rio-ambassador-series-lake-chucker': table([6, 7, 8].map((w) => [w, 35, 100])),
+    // RIO's diagram draws the WF6F head at 50 ft; its table says 49.5.
+    'rio-elite-stillwater-floater': table([[5, 49, 90], [6, 49.5, 90], [7, 50, 100], [8, 50.5, 100]]),
+    'rio-premier-tarpon-quickshooter': table([10, 11, 12].map((w) => [w, 30, 100])),
+    'rio-avid-trout-grand': table([[5, 37, 80], [6, 39, 80], [7, 40, 80], [8, 41, 80]]),
+    'rio-premier-midge-tip': table([[5, 40, 90], [6, 40, 90], [7, 42, 100], [8, 44, 100]]),
   };
   const rio = LINE_PRESETS.filter((p) => p.maker === 'RIO');
   const head = ({ taper }) => taper.front + taper.body + taper.back;
@@ -1218,6 +1225,11 @@ describe('RIO lines', () => {
       'rio-premier-redfish-wf8f',
       'rio-premier-redfish-xp-wf8f',
       'rio-elite-smallmouth-bass-wf8f',
+      'rio-elite-sub-surface-camolux-wf6i',
+      'rio-ambassador-series-lake-chucker-wf7f',
+      'rio-premier-tarpon-quickshooter-wf12f',
+      'rio-avid-trout-grand-wf6f',
+      'rio-premier-midge-tip-wf6-f-i',
     ]);
   });
 
@@ -1241,6 +1253,11 @@ describe('RIO lines', () => {
     ['rio-premier-redfish-wf8f', [6, 24, 7, 63]],
     ['rio-premier-redfish-xp-wf8f', [3, 24, 8, 65]],
     ['rio-elite-smallmouth-bass-wf8f', [7, 24, 7, 62]],
+    ['rio-elite-sub-surface-camolux-wf6i', [6, 22, 2, 70]],
+    ['rio-ambassador-series-lake-chucker-wf7f', [2, 32, 1, 65]],
+    ['rio-premier-tarpon-quickshooter-wf12f', [7, 22, 1, 70]],
+    ['rio-avid-trout-grand-wf6f', [7, 25, 7, 41]],
+    ['rio-premier-midge-tip-wf6-f-i', [7, 28, 5, 50]],
   ])('%s has the taper on RIO\'s diagram', (id, [front, body, back, running]) => {
     expect(findById(LINE_PRESETS, id).line.taper).toEqual({ front, body, back, running });
   });
