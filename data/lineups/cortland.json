@@ -9433,10 +9433,33 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 6,
+            "body": 34,
+            "back": 25,
+            "running": 35
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Olive / White"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 6
+            },
+            {
+              "name": "BODY",
+              "ft": 34
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 25
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 35
+            }
           ]
         },
         {
@@ -9448,10 +9471,33 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 6,
+            "body": 34,
+            "back": 25,
+            "running": 35
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Olive / White"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 6
+            },
+            {
+              "name": "BODY",
+              "ft": 34
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 25
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 35
+            }
           ]
         },
         {
@@ -9463,10 +9509,33 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 6,
+            "body": 34,
+            "back": 25,
+            "running": 35
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Olive / White"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 6
+            },
+            {
+              "name": "BODY",
+              "ft": 34
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 25
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 35
+            }
           ]
         },
         {
@@ -9478,10 +9547,33 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 6,
+            "body": 34,
+            "back": 25,
+            "running": 35
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Olive / White"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 6
+            },
+            {
+              "name": "BODY",
+              "ft": 34
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 25
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 35
+            }
           ]
         },
         {
@@ -9493,14 +9585,38 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 6,
+            "body": 34,
+            "back": 25,
+            "running": 35
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Olive / White"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 6
+            },
+            {
+              "name": "BODY",
+              "ft": 34
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 25
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 35
+            }
           ]
         }
       ],
-      "url": "https://www.cortlandline.com/products/salmon-steelhead-moss-green-fly-line"
+      "url": "https://www.cortlandline.com/products/salmon-steelhead-moss-green-fly-line",
+      "data_notes": "The taper chart gives no length for the olive-to-white color change, which falls partway along the body. The chart isn't to scale; going by where the change sits between the ends of the 34 ft body, it is about 33 ft from the tip (27.5 ft into the body). That 33 ft is an estimate."
     },
     {
       "id": "cortland-specialty-ghost-tip-3",
