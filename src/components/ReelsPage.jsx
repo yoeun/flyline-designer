@@ -90,8 +90,15 @@ function ModelCard({ model, view, onNewSetup }) {
           <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
         </div>
         <div className="flex items-center justify-center" style={{ aspectRatio: AREA_RATIO }}>
-          <span className="block" style={{ width: `${(size.rim / MAX_RIM) * 100}%` }}>
-            <ReelPreview setup={setup} side={side} showLine={showLine} background="none" title={`${size.name}, ${side} side`} />
+          {/* Both sides drawn back to back, so Drag/Spool turns the reel over; only the side rotates it. */}
+          <span className="block perspective-[1600px]" style={{ width: `${(size.rim / MAX_RIM) * 100}%` }}>
+            <span className={`grid transition-transform duration-500 ease-in-out transform-3d motion-reduce:transition-none ${side === 'spool' ? 'rotate-y-180' : ''}`}>
+              {SIDES.map(([value]) => (
+                <span key={value} className={`[grid-area:1/1] backface-hidden ${value === 'spool' ? 'rotate-y-180' : ''}`} aria-hidden={value !== side}>
+                  <ReelPreview setup={setup} side={value} showLine={showLine} background="none" title={`${size.name}, ${value} side`} />
+                </span>
+              ))}
+            </span>
           </span>
         </div>
         {colors.length > 1 && <Swatches colors={colors} value={color} onChange={setColor} label={`${model.name} color`} size={24} touchSize={32} className="justify-center gap-3" />}
