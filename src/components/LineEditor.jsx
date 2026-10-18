@@ -46,8 +46,9 @@ function zoneLabel(z, count) {
 
 // Dimension line for the taper on top, the fly line colored by zone below. Tip on the right.
 // With `zonesLocked` (a maker colorway) the color boundaries can't be dragged.
-// readOnly draws the line without selection or handles, for showing a setup that can't be edited.
-export default function LineEditor({ line, selection = null, onSelect, onChange, backingColor, zonesLocked = false, readOnly = false }) {
+// readOnly draws the line without selection or handles, for showing a setup that can't be edited. bare
+// draws only the tapered line in its colors, a picture with no rules, labels or backing, named by label.
+export default function LineEditor({ line, selection = null, onSelect, onChange, backingColor, zonesLocked = false, readOnly = false, bare = false, label }) {
   const clip = `editor-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   const svgRef = useRef(null);
   const drag = useRef(null);
@@ -160,6 +161,23 @@ export default function LineEditor({ line, selection = null, onSelect, onChange,
     const next = h.move(line, h.ft + delta);
     if (!sameLengths(next, line)) onChange(next);
   };
+
+  if (bare)
+    return (
+      <svg viewBox={`${LEFT - 2} ${MID - 13} ${W - LEFT - 4} 26`} className="block h-auto w-full" role="img" aria-label={label ?? 'Fly line'}>
+        <defs>
+          <clipPath id={clip}>
+            <polygon points={outline} />
+          </clipPath>
+        </defs>
+        <g clipPath={`url(#${clip})`}>
+          {zones.map((z) => (
+            <rect key={z.index} x={x(z.end)} y={MID - 14} width={Math.max(0, x(z.start) - x(z.end))} height="28" fill={hexOf(z.color)} />
+          ))}
+        </g>
+        <polygon className="fill-none stroke-foreground [stroke-opacity:0.25]" points={outline} />
+      </svg>
+    );
 
   return (
     <svg
