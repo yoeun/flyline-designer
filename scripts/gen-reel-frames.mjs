@@ -1,5 +1,7 @@
 // Draws the reel frame SVGs in src/assets/reels: one per design and side. Each design is a module in
 // scripts/reel-designs exporting `drag` and `spool` SVG text, built from the shapes in its lib.mjs.
+// A design may also export `arbor`: the radius (rim = 200) its spool's arbor is drawn at, where the wound line
+// starts; it's written to each SVG as data-arbor.
 // Run `npm run reels` after adding or editing a design, and commit the regenerated SVGs with it.
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
 
@@ -17,7 +19,8 @@ for (const name of names) {
   if (!design.drag && !design.spool) continue;
   for (const side of ['drag', 'spool']) {
     if (!design[side]) throw new Error(`${name} has no ${side} side`);
-    writeFileSync(`${OUT}/${name}-${side}.svg`, design[side]);
+    const svg = design.arbor ? design[side].replace('<svg ', `<svg data-arbor="${design.arbor}" `) : design[side];
+    writeFileSync(`${OUT}/${name}-${side}.svg`, svg);
   }
 }
 console.log(names.filter((n) => existsSync(`${OUT}/${n}-drag.svg`)).join(' '));

@@ -1,6 +1,9 @@
 // The generic reel: a plain three-spoke frame and a five-spoke spool, for reels without their own drawing.
 import { P, circle, f, foot, knob, knurl, rad, ring, slots, spoke, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 116;
+
 export const drag = svg({
   back: [ring(186, 108) + slots({ n: 20, rIn: 118, rOut: 176, bar: 11, corner: 6 })],
   body: [ring(200, 184), foot(120), spoke(-90, 0, 192, 40, 34), spoke(30, 0, 192, 36, 28), spoke(150, 0, 192, 36, 28), circle(56)],

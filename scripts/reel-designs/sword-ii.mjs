@@ -7,6 +7,9 @@
 // with the drilled back flange of the spool showing through. Spoke count and sweep are approximate.
 import { P, circle, f, foot, knob, knurl, rad, ring, roundPoly, screw, spoke, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the small holes.
+export const arbor = 114;
+
 // A spoke curving from (r0, a0) to (r1, a1), w0 wide at the hub and w1 at the rim.
 function curvedSpoke(a0, a1, r0, r1, w0, w1, steps = 10) {
   const mid = Array.from({ length: steps + 1 }, (_, i) => {

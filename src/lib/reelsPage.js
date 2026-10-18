@@ -1,16 +1,20 @@
 import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetForLine, reelColors } from '../data/catalog.js';
+import { backingYardsForFill } from './geometry.js';
 
 // The setup each size is drawn with on the Reels page: the generic WF floating line at the middle of
-// the size's weights (rounded up) on 100 yd of 20 lb backing, so the fill is comparable across reels.
+// the size's weights (rounded up) on 20 lb backing (or the pound test the maker rates it for): at least
+// 100 yd, and more where it takes more to fill the spool to PREVIEW_FILL, as a bigger reel would be spooled.
 // `colors` sets the backing, the head (front taper to back taper) and the running line for every reel.
 const LINE = findById(LINE_PRESETS, 'generic-wf5f').line;
 const HEAD = LINE.taper.front + LINE.taper.body + LINE.taper.back;
 export const PREVIEW_COLORS = { backing: 'blue', head: 'green', running: 'yellow' };
 export const previewWeight = ({ weights: [lo, hi] }) => Math.ceil((lo + hi) / 2);
+export const PREVIEW_FILL = 0.85;
+const MIN_PREVIEW_BACKING = 100;
 
 export function previewSetup(size, color, colors = PREVIEW_COLORS) {
   const finishes = reelColors(size).map((c) => c.id);
-  return {
+  const setup = {
     reel: { model: size.id, color: finishes.includes(color) ? color : finishes[0] },
     line: {
       ...structuredClone(LINE),
@@ -20,8 +24,10 @@ export function previewSetup(size, color, colors = PREVIEW_COLORS) {
         { length: 0, color: colors.running },
       ],
     },
-    backing: { yards: 100, pounds: 20, color: colors.backing },
+    backing: { yards: MIN_PREVIEW_BACKING, pounds: size.rated?.pounds ?? 20, color: colors.backing },
   };
+  setup.backing.yards = Math.max(MIN_PREVIEW_BACKING, backingYardsForFill(setup, PREVIEW_FILL));
+  return setup;
 }
 
 // A new setup on a reel from the Reels page: the defaults, with the line at the weight the page draws

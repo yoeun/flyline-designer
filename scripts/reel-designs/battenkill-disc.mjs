@@ -5,6 +5,9 @@
 // handle at 6. The foot is dark whatever the finish.
 import { P, circle, foot, knob, rad, roundPoly, arcPts, screw, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the innermost holes.
+export const arbor = 100;
+
 // Holes of radius `hr` on a ring of radius r, n positions from `off` degrees, skipping any `skip(deg)` says to.
 const holes = (n, r, hr, off = -90, skip = () => false) =>
   Array.from({ length: n }, (_, k) => off + (k * 360) / n)

@@ -5,6 +5,9 @@
 import { f } from './lib.mjs';
 import { hatchSpool, iconicDrag } from './iconic.mjs';
 
+// The wound line starts at the outer edge of the cage's base ring.
+export const arbor = 128;
+
 // The Finatic's counterweight: a silver collar around a hex-socket screw.
 const hexCounterweight = (cx, cy, r) =>
   `<circle cx="${f(cx)}" cy="${f(cy)}" r="${r}" fill="#c9c6bd"/><circle cx="${f(cx)}" cy="${f(cy)}" r="${r}" fill="url(#sheen)"/>` +

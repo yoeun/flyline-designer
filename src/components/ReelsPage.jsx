@@ -47,7 +47,7 @@ function ModelCard({ model, view, onNewSetup }) {
     ['Spool', `${size.spool}″`],
     ['Width', `${size.width}″`],
     size.rated ? ['Capacity', capacityText(size)] : size.arbor && ['Arbor', `${size.arbor}″`],
-    import.meta.env.DEV && ['Drawn with', `WF${setup.line.weight}F + 100 yd`],
+    import.meta.env.DEV && ['Drawn with', `WF${setup.line.weight}F + ${setup.backing.yards} yd of ${setup.backing.pounds} lb`],
   ].filter(Boolean);
   const photos = PHOTOS_BY_MODEL[model.id] ?? [];
   return (

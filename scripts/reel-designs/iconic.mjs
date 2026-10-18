@@ -3,6 +3,9 @@
 // to the rim, over the spool's darker outer cage.
 import { P, circle, f, knurl, rad, ring, roundPoly, strut, svg } from './lib.mjs';
 
+// The wound line starts at the outer edge of the cage's base ring.
+export const arbor = 128;
+
 // A curved bar from point p0 to p2, bowed `bend` sideways at its middle, w0 wide at p0 and w1 at p2.
 const curvePt = (p0, p2, bend, t) => {
   const len = Math.hypot(p2[0] - p0[0], p2[1] - p0[1]);

@@ -1,6 +1,9 @@
 // Redington Run.
 import { P, circle, f, foot, knob, rect, ring, slots, spoke, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 118;
+
 export const drag = svg({
   back: [ring(188, 112) + slots({ n: 32, rIn: 120, rOut: 180, bar: 8, corner: 3 })],
   body: [ring(200, 186), foot(150, -240, 14, 30), spoke(-125, 0, 194, 44, 36), spoke(-55, 0, 194, 44, 36), spoke(90, 0, 194, 54, 46), circle(64)],

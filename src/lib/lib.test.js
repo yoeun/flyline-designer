@@ -33,8 +33,8 @@ import { makerProduct, zones } from '../data/lines/product.js';
 import BEFORE_PRODUCTS from './fixtures/presets-before-products.json';
 import { rackConflicts, backingContrast, conflictsFor } from './checks.js';
 import { deltaE } from './color.js';
-import { ARBOR_RATIO, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
-import { FRAMES, SIDES, frameMarkup } from './reelFrames.js';
+import { ARBOR_RATIO, backingYardsForFill, lineDiameters, reelArbor, spoolLayout, totalLength, zoneRanges } from './geometry.js';
+import { FRAMES, SIDES, frameArbor, frameMarkup } from './reelFrames.js';
 import { decodeSetup, encodeSetup, queryToState, stateToQuery } from './share.js';
 import { parseTheme, resolveTheme } from './theme.js';
 import {
@@ -61,6 +61,14 @@ describe('geometry', () => {
     const zones = zoneRanges(DEFAULT_SETUP.line);
     expect(zones.map((z) => z.length)).toEqual([20, 17, 53]);
     expect(zones.at(-1).end).toBe(totalLength(DEFAULT_SETUP.line));
+  });
+
+  it('finds the backing that fills the spool to a given share', () => {
+    const yards = backingYardsForFill(DEFAULT_SETUP, 0.85);
+    const at = (y) => spoolLayout({ ...DEFAULT_SETUP, backing: { ...DEFAULT_SETUP.backing, yards: y } }).fill;
+    expect(yards % 10).toBe(0);
+    expect(at(yards)).toBeLessThanOrEqual(0.85);
+    expect(at(yards + 10)).toBeGreaterThan(0.85);
   });
 
   it('rings grow outward from the arbor with no gaps', () => {
@@ -567,6 +575,12 @@ describe('catalog', () => {
 describe('reel frames', () => {
   it.each(REELS.map((r) => [r.id, r]))('%s has a drawing for each side', (_, reel) => {
     for (const [side] of SIDES) expect(FRAMES[reel.design]?.[side]).toContain('<svg');
+  });
+
+  it('reads the radius a design draws its arbor at, if it gives one', () => {
+    expect(frameArbor('liquid-s')).toBe(126);
+    expect(frameArbor('behemoth')).toBeUndefined();
+    expect(frameArbor('nope')).toBeUndefined();
   });
 
   it('inlines a frame without its outer svg and with page-unique ids', () => {

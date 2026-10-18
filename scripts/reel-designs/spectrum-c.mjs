@@ -5,6 +5,9 @@
 import { ACCENT, P, circle, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
 import { frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 110;
+
 const RIM = { n: 18, rIn: 110, rOut: 178, bar: 18, corner: 9, off: -90 };
 
 // A flat dial in the accent, with tick dots round its edge and a ringed logo badge.

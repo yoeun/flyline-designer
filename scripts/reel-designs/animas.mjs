@@ -6,6 +6,9 @@
 // Both from Ross's straight-on product photos; the spool's dark drag housing behind the spokes is left out.
 import { ACCENT, P, circle, f, foot, knurl, pad, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
+// The wound line starts at the inner edge of the spool's windows.
+export const arbor = 146;
+
 // The spool: eight Y's 45° apart, stems at 12, 3, 6 and 9 o'clock; each Y's arms carry on as bars of the outer cage.
 const N = 8;
 const FORK = 360 / N / 4; // each arm of a Y sits this many degrees off its stem

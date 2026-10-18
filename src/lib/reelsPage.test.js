@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { DEFAULT_SETUP, LINE_PRESETS, REELS, REEL_MODELS, findById } from '../data/catalog.js';
-import { capacityText, photosByModel, previewSetup, previewWeight, setupForReel } from './reelsPage.js';
+import { spoolLayout } from './geometry.js';
+import { PREVIEW_FILL, capacityText, photosByModel, previewSetup, previewWeight, setupForReel } from './reelsPage.js';
 
 describe('setupForReel', () => {
   it('starts from the defaults on the chosen reel and finish', () => {
@@ -33,6 +34,17 @@ describe('reels page', () => {
     expect(setup.backing.color).toBe('orange');
     expect(setup.line.zones.map((z) => z.color)).toEqual(['red', 'white']);
     expect(previewSetup(size, 'gunmetal').reel.color).toBe('smoke');
+  });
+
+  it('draws at least 100 yd of backing, and more where a bigger reel needs it to look full', () => {
+    const small = previewSetup(findById(REELS, 'lamson-liquid-s-3'), 'smoke');
+    expect(small.backing.yards).toBe(100);
+    const big = findById(REELS, 'lamson-liquid-s-9');
+    const setup = previewSetup(big, 'smoke');
+    expect(setup.backing.yards).toBeGreaterThan(100);
+    expect(setup.backing.pounds).toBe(big.rated.pounds);
+    expect(spoolLayout(setup).fill).toBeGreaterThan(PREVIEW_FILL - 0.05);
+    expect(spoolLayout(setup).fill).toBeLessThanOrEqual(PREVIEW_FILL);
   });
 
   it('describes capacity as rated, or by arbor', () => {
