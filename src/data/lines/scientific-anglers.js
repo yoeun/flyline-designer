@@ -70,6 +70,9 @@ export const COLORS = [
   { id: 'sa-infinity-warm-bronze', name: 'Infinity Warm Bronze', hex: '#f4f098' },
   { id: 'sa-tannic', name: 'Tannic', hex: '#cd793d' },
   { id: 'sa-turtle-grass', name: 'Turtle Grass', hex: '#b3be34' },
+  { id: 'sa-infinity-plus-buckskin', name: 'Infinity Plus Buckskin', hex: '#edc295' },
+  { id: 'sa-infinity-plus-willow', name: 'Infinity Plus Willow', hex: '#cdcaa9' },
+  { id: 'sa-panfish-pale-yellow', name: 'Panfish Pale Yellow', hex: '#e8ea6f' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -214,8 +217,8 @@ const EURO_MONO = lineupSize(LINEUP['sa-mastery-competition-nymph'], 'Level 0-5w
 // against the 45 ft SA lists for every size; the split is scaled to 45.
 const CARP = scaled([7.5, 23.5, 15], 45);
 
-// Amplitude Smooth Infinity Salt's diagram: front taper 4, belly 26, two rear tapers 19. Its 49 ft
-// head is the WF8's; the other sizes scale it.
+// Amplitude Smooth and Textured Infinity Salt's diagram (the same on both pages): front taper 4, belly
+// 26, two rear tapers 19. Its 49 ft head is the WF8's; the other sizes scale it.
 const INFINITY_SALT = [4, 26, 19];
 
 // Amplitude Smooth Redfish's diagram, drawn for Warm and Cold alike: front taper 4, belly 21.5, rear
@@ -228,8 +231,8 @@ const REDFISH = [4, 21.5, 5.5];
 // SA lists for every size.
 const TARPON = [7, 22, 7];
 
-// Amplitude Textured Bonefish Plus's diagram: front taper 3, belly 18.5, two rear tapers 29, the
-// 50.5 ft head SA lists for every size.
+// Amplitude Textured and Smooth Bonefish Plus's diagram (the same on both pages): front taper 3, belly
+// 18.5, two rear tapers 29, the 50.5 ft head SA lists for every size.
 const BONEFISH_PLUS = [3, 18.5, 29];
 
 // These saltwater lines end in a black sighter over the last 10 ft of their 100 ft (on each diagram).
@@ -248,6 +251,19 @@ const doubleTaper = (size) => {
   const end = (size.total - size.head) / 2;
   return [end, size.head, end, 0];
 };
+
+// Amplitude Smooth Infinity Plus's diagram measures the Textured Infinity's split: front 6.5, belly
+// 24, two rear tapers 18.5 on a 49 ft head (the WF5's).
+const INFINITY_PLUS = [6.5, 24, 18.5];
+
+// Amplitude Smooth Panfish's diagram: two front tapers 6.5, belly 25.5, rear taper 26. Its 58 ft head
+// is the WF4–6's; the WF2 and WF3 (56 and 57 ft) scale it.
+const PANFISH = [6.5, 25.5, 26];
+
+// Amplitude Smooth Striper's diagram: front taper 5, then a belly, a short rear taper into a thicker
+// rear belly (22 ft together, drawn as the body), then a 3 ft rear taper. Its head measures 30.5 ft
+// against the 30 ft SA lists for every size; the split is scaled to 30.
+const STRIPER = [5, 22, 3];
 
 export const PRODUCTS = [
   // Half-size heavy. Head and total per size from SA's table; the WF6 split was measured off the
@@ -930,5 +946,92 @@ export const PRODUCTS = [
         { id: 'black-turtle-grass-horizon', name: 'Black/Turtle Grass/Horizon', zones: sighted(31, 'sa-infinity-salt-horizon', 'sa-turtle-grass', 'sa-black') },
       ],
     })),
+  }),
+  // Half-size heavy: SA's Grand Slam taper with a longer head. Same 50.5 ft head in every size: ivory
+  // head, pale yellow running line, black sighter. The Textured Bonefish Plus's taper and colors.
+  makerProduct({
+    id: 'sa-amplitude-smooth-bonefish-plus',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Bonefish Plus',
+    sizes: LINEUP['sa-amplitude-smooth-bonefish-plus'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(BONEFISH_PLUS, size),
+      lineup: size,
+      colorways: [{ id: 'black-pale-yellow-ivory', name: 'Black/Pale Yellow/Ivory', zones: sighted(50.5, 'sa-ivory', 'sa-bonefish-plus-pale-yellow', 'sa-black') }],
+    })),
+  }),
+  // One size heavy: SA's Infinity taper scaled up. Willow front taper, buckskin to the end of the head,
+  // mist green running line.
+  makerProduct({
+    id: 'sa-amplitude-smooth-infinity-plus',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Infinity Plus',
+    sizes: floating(INFINITY_PLUS, 5, LINEUP['sa-amplitude-smooth-infinity-plus'].sizes, (head, [front]) => [
+      { id: 'mist-green-buckskin-willow', name: 'Mist Green/Buckskin/Willow', zones: zones([front, 'sa-infinity-plus-willow'], [head - front, 'sa-infinity-plus-buckskin'], [0, 'sa-mist-green']) },
+    ]),
+  }),
+  // True to weight. SA's text says a 45 ft head, but its table and diagram agree on 56–58 ft. Leather
+  // front tapers, sage green to the end of the head, pale yellow running line.
+  makerProduct({
+    id: 'sa-amplitude-smooth-panfish',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Panfish',
+    sizes: LINEUP['sa-amplitude-smooth-panfish'].sizes.map((size) => {
+      const { weight, head, total } = size;
+      const taper = scaled(PANFISH, head);
+      return {
+        id: `wf${weight}f`,
+        label: size.label,
+        type: 'floating',
+        weight,
+        taper: [...taper, total - head],
+        estimated: head !== 58,
+        lineup: size,
+        colorways: [
+          { id: 'pale-yellow-sage-leather', name: 'Pale Yellow/Sage Green/Leather', zones: zones([taper[0], 'sa-leather'], [head - taper[0], 'sa-sage'], [0, 'sa-panfish-pale-yellow']) },
+        ],
+      };
+    }),
+  }),
+  // Two sizes heavy, for big flies. Same 30 ft head in every size: sand head, grass running line, black
+  // sighter. SA's Grass swatch matches the Redfish Warm's Turtle Grass, and its Black the Titan's.
+  makerProduct({
+    id: 'sa-amplitude-smooth-striper',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Striper',
+    sizes: LINEUP['sa-amplitude-smooth-striper'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(STRIPER, size),
+      lineup: size,
+      colorways: [{ id: 'black-grass-sand', name: 'Black/Grass/Sand', zones: sighted(30, 'sa-sand', 'sa-turtle-grass', 'sa-titan-black') }],
+    })),
+  }),
+  // Half-size heavy saltwater line: the Smooth Infinity Salt's taper and colors with a texture.
+  makerProduct({
+    id: 'sa-amplitude-textured-infinity-salt',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Textured Infinity Salt',
+    sizes: floating(INFINITY_SALT, 8, LINEUP['sa-amplitude-textured-infinity-salt'].sizes, (head) => [
+      { id: 'black-sand-horizon', name: 'Black/Sand/Horizon', zones: sighted(head, 'sa-infinity-salt-horizon', 'sa-infinity-salt-sand', 'sa-titan-black') },
+    ]),
+  }),
+  // The Smooth Trout Expert with SA's textures. Its own WF5 diagram has the same ticks and swatches as
+  // SA's current Smooth Trout Expert diagram, so it draws like the Smooth.
+  makerProduct({
+    id: 'sa-amplitude-textured-trout-expert',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Textured Trout Expert',
+    sizes: floating(TROUT_EXPERT, 5, LINEUP['sa-amplitude-textured-trout-expert'].sizes, (head, [front, body]) => {
+      const tip = half((6.5 * head) / 69);
+      return [
+        { id: 'leather-sage-buckskin', name: 'Leather/Sage Green/Buckskin', zones: zones([tip, 'sa-buckskin'], [front + body - tip, 'sa-sage'], [0, 'sa-leather']) },
+      ];
+    }),
   }),
 ];
