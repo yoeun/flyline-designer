@@ -41,6 +41,18 @@ export const COLORS = [
   { id: 'airflo-pale-blue', name: 'Pale Blue', hex: '#5b98b4' },
   { id: 'airflo-pale-tan', name: 'Pale Tan', hex: '#a78f77' },
   { id: 'airflo-pale-sunburst', name: 'Pale Sunburst', hex: '#e4aa19' },
+  // Superflo Max Smooth Euro Nymph, Superflo Cold Salt Universal Intermediate, Ultra Supple
+  // Indicator Taper and Super Trout, sampled from their taper diagrams.
+  { id: 'airflo-hi-viz-orange', name: 'Hi-Viz Orange', hex: '#d4805c' },
+  { id: 'airflo-euro-olive', name: 'Olive', hex: '#978c79' },
+  { id: 'airflo-euro-clear', name: 'Clear', hex: '#c9c8cd' },
+  { id: 'airflo-translucent-grey', name: 'Translucent Grey', hex: '#909090' },
+  { id: 'airflo-pale-grey', name: 'Pale Grey', hex: '#b9b7b9' },
+  { id: 'airflo-pale-orange', name: 'Pale Orange', hex: '#e19774' },
+  { id: 'airflo-hot-coral', name: 'Hot Coral', hex: '#db574d' },
+  { id: 'airflo-fire-orange', name: 'Fire Orange', hex: '#ca5645' },
+  { id: 'airflo-st-olive', name: 'Olive', hex: '#988254' },
+  { id: 'airflo-st-driftwood', name: 'Driftwood', hex: '#cbcadc' },
 ];
 
 const half = (ft) => Math.round(ft * 2) / 2;
@@ -50,12 +62,12 @@ const split = ({ taper: { front, body, back } }) => [front, body, back];
 
 // Airflo's diagrams give the split for one example size (named on the diagram); other sizes scale
 // its front and back taper to their own head from Airflo's spec table, to the nearest half foot,
-// and are marked estimated.
+// and are marked estimated. The body is rounded to a tenth so a 70.7 ft head doesn't leave float noise.
 const scaled = ([front, body, back], head) => {
   const s = head / (front + body + back);
   const f = half(front * s);
   const b = half(back * s);
-  return [f, head - f - b, b];
+  return [f, Math.round((head - f - b) * 10) / 10, b];
 };
 
 // A floating weight-forward line from its WF5 diagram's split: heads per size from Airflo's table
@@ -109,6 +121,38 @@ const SIXTH_SENSE_SPLIT = split(lineupSize(SIXTH_SENSE, 'WF6/7S Di3'));
 const DELTA = LINEUP['airflo-delta-taper-clear-intermediate'];
 const DELTA_SPLIT = split(lineupSize(DELTA, 'WF5I Fast Intermediate'));
 
+// Superflo Cold Salt Universal Intermediate has a 43 ft head in every size, so the WF8 diagram's
+// front taper, belly to rear belly (6.5 + 3 + 10 ft) and rear taper apply to all of them; a 12 ft
+// haul zone follows.
+const COLD_SALT_INT = LINEUP['airflo-superflo-cold-salt-universal-int'];
+const COLD_SALT_INT_SPLIT = split(lineupSize(COLD_SALT_INT, 'WF8I'));
+
+// Ultra Supple Indicator Taper: the WF5 diagram's front taper, belly and rear taper (7/25/19.5 ft),
+// the table's 51.5 ft head in every size.
+const INDICATOR = LINEUP['airflo-smr-ultra-supple-indicator'];
+
+// Super Trout: the WF5 diagram's front taper; belly and rear belly (14 + 15 ft); and rear taper. The
+// diagram's 71 ft head is the table's 70.7 ft rounded, so every size, the WF5 too, takes the
+// table's head.
+const SUPER_TROUT = LINEUP['airflo-smr-super-trout'];
+
+// Superflo Max Smooth Euro Nymph, a level 0.55 mm line sold in one size with no rated weight. Drawn
+// like RIO's and SA's euro lines (see rio.js), whose 0.022″ is the same diameter: a token 1.5 ft
+// head on Airflo's 82 ft total, as a 3 wt. Airflo's diagram shows 82.5 ft.
+const EURO_OLIVE = lineupSize(LINEUP['airflo-sms-euro-nymph-olive'], '0.55 mm level');
+const EURO_CLEAR = lineupSize(LINEUP['airflo-sms-euro-nymph-clear'], '0.55 mm level');
+const euro = (size, colorway) => [
+  {
+    id: 'level',
+    label: 'Level 0.55 mm',
+    type: 'floating',
+    weight: 3,
+    taper: [0.5, 0.5, 0.5, size.total - 1.5],
+    lineup: overriding(size, { weight: 3, head: 1.5 }),
+    colorways: [colorway],
+  },
+];
+
 export const PRODUCTS = [
   makerProduct({
     id: 'airflo-superflo-max-ridge-universal',
@@ -158,6 +202,39 @@ export const PRODUCTS = [
       { id: 'camo-caddis', name: 'Camo/Caddis', weights: [4, 8], head: 'airflo-camo-green', running: 'airflo-caddis' },
       { id: 'chartreuse-white', name: 'Chartreuse/White', weights: [5, 8], head: 'airflo-pt-chartreuse', running: 'airflo-white' },
     ]),
+  }),
+  makerProduct({
+    id: 'airflo-superflo-max-ridge-ultra-supple-indicator',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Max Ridge 2.0 Ultra Supple Indicator Taper',
+    sizes: floating(INDICATOR, split(lineupSize(INDICATOR, 'WF5F')), [
+      { id: 'pale-grey-pale-orange', name: 'Pale Grey/Pale Orange', weights: [4, 8], head: 'airflo-pale-grey', running: 'airflo-pale-orange' },
+      { id: 'hot-coral-white', name: 'Hot Coral/White', weights: [5, 8], head: 'airflo-hot-coral', running: 'airflo-white' },
+    ]),
+  }),
+  // Fire Orange is one color over the whole line.
+  makerProduct({
+    id: 'airflo-superflo-max-ridge-super-trout',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Max Ridge 2.0 Super Trout',
+    sizes: floating(SUPER_TROUT, split(lineupSize(SUPER_TROUT, 'WF5F')), [
+      { id: 'olive-driftwood', name: 'Olive/Driftwood', weights: [4, 7], head: 'airflo-st-olive', running: 'airflo-st-driftwood' },
+      { id: 'fire-orange', name: 'Fire Orange', weights: [5, 7], head: 'airflo-fire-orange', running: 'airflo-fire-orange' },
+    ]),
+  }),
+  // The orange tip is 4 ft, per Airflo's diagram; the line can be reversed to fish the olive end.
+  makerProduct({
+    id: 'airflo-superflo-max-smooth-euro-nymph-olive',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Max Smooth Euro Nymph Olive',
+    sizes: euro(EURO_OLIVE, { id: 'olive', name: 'Olive', zones: zones([4, 'airflo-hi-viz-orange'], [0, 'airflo-euro-olive']) }),
+  }),
+  // The same line on a 12 lb clear mono core.
+  makerProduct({
+    id: 'airflo-superflo-max-smooth-euro-nymph-clear',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Max Smooth Euro Nymph Clear Mono Core',
+    sizes: euro(EURO_CLEAR, { id: 'clear', name: 'Clear', zones: zones([0, 'airflo-euro-clear']) }),
   }),
   // Replaced by Superflo Max Ridge 2.0, same taper.
   makerProduct({
@@ -243,6 +320,21 @@ export const PRODUCTS = [
         { id: 'clear', name: 'Clear', zones: zones([0, 'airflo-clear']) },
         { id: 'camo', name: 'Camouflage', zones: zones([0, 'airflo-camo']) },
       ],
+    })),
+  }),
+  // Translucent Grey over the whole line; Airflo gives no sink rate.
+  makerProduct({
+    id: 'airflo-superflo-cold-salt-universal-intermediate',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Cold Salt Universal Intermediate',
+    sizes: COLD_SALT_INT.sizes.map((size) => ({
+      id: `wf${size.weight}i`,
+      label: size.label,
+      type: 'intermediate',
+      weight: size.weight,
+      taper: [...COLD_SALT_INT_SPLIT, size.total - size.head],
+      lineup: size,
+      colorways: [{ id: 'translucent-grey', name: 'Translucent Grey', zones: zones([0, 'airflo-translucent-grey']) }],
     })),
   }),
 ];
