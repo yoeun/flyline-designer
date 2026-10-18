@@ -46,6 +46,7 @@ export const COLORS = [
   { id: 'sa-tropical-sand', name: 'Sand', hex: '#fde492' },
   { id: 'sa-tropical-horizon', name: 'Horizon', hex: '#b8e5fa' },
   { id: 'sa-clear', name: 'Clear', hex: '#e8e8ea' },
+  { id: 'sa-magnitude-horizon', name: 'Horizon', hex: '#cad0d0' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -124,6 +125,43 @@ const anadro = (id, name, tip) =>
 // into a thicker rear belly (28.5 ft together, drawn here as the body), then a 4.5 ft rear taper.
 // Its 40 ft head is nearest the WF8's 39.7. The last 10 ft of the 100 ft line is a black sighter.
 const BONEFISH = [7, 28.5, 4.5];
+const bonefishColors = (head) => [
+  { id: 'black-surf-ivory', name: 'Black/Surf/Ivory', zones: zones([head, 'sa-ivory'], [90 - head, 'sa-surf'], [0, 'sa-black']) },
+];
+
+// Magnitude Grand Slam Clear Float, Smooth and Textured, share a diagram that measures the Grand
+// Slam split. Every size comes as Clear Tip: Horizon with SA's 10 ft clear tip, and a 10 ft sighter
+// just behind the head that the diagram draws in the tip's clear. Some sizes also come as Full
+// Clear, the same line in one color. SA's Clear swatches here are a little grayer than the Titan
+// Clear Tip's; they reuse its color.
+const magnitudeGrandSlam = (id, name) => {
+  const lineup = LINEUP[id];
+  return makerProduct({
+    id,
+    maker: 'Scientific Anglers',
+    name,
+    sizes: [...new Set(lineup.sizes.map((size) => size.weight))].map((weight) => {
+      const size = lineupSize(lineup, `WF${weight}F Clear Tip`);
+      const fullClear = lineup.sizes.some((s) => s.label === `WF${weight}F Full Clear`);
+      return {
+        id: `wf${weight}f`,
+        label: `WF${weight}F`,
+        type: 'floating',
+        weight,
+        taper: sameHead(GRAND_SLAM, size),
+        lineup: size,
+        colorways: [
+          { id: 'horizon-clear-tip', name: 'Horizon/Clear Tip', zones: zones([10, 'sa-clear'], [30, 'sa-magnitude-horizon'], [10, 'sa-clear'], [0, 'sa-magnitude-horizon']) },
+          ...(fullClear ? [{ id: 'clear', name: 'Clear', zones: zones([0, 'sa-clear']) }] : []),
+        ],
+      };
+    }),
+  });
+};
+
+// Sonar Saltwater Intermediate's diagram: front taper 4.5, belly 23, rear taper 10. Its 37.5 ft head
+// is the WF7–9's 38 ft; the WF10–12 (41 ft head) scale it.
+const SALTWATER_INTERMEDIATE = [4.5, 23, 10];
 
 // Frequency Full Sink's densities: Sink 6 draws as Type 5.
 const FULL_SINK_RATES = {
@@ -351,9 +389,57 @@ export const PRODUCTS = [
     id: 'sa-amplitude-smooth-bonefish',
     maker: 'Scientific Anglers',
     name: 'SA Amplitude Smooth Bonefish',
-    sizes: floating(BONEFISH, 8, LINEUP['sa-amplitude-smooth-bonefish'].sizes, (head) => [
-      { id: 'black-surf-ivory', name: 'Black/Surf/Ivory', zones: zones([head, 'sa-ivory'], [90 - head, 'sa-surf'], [0, 'sa-black']) },
-    ]),
+    sizes: floating(BONEFISH, 8, LINEUP['sa-amplitude-smooth-bonefish'].sizes, bonefishColors),
+  }),
+  // The Smooth Bonefish taper and colors with SA's textures, in WF7–9; its own diagram measures the
+  // same split.
+  makerProduct({
+    id: 'sa-amplitude-bonefish',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Textured Bonefish',
+    sizes: floating(BONEFISH, 8, LINEUP['sa-amplitude-bonefish'].sizes, bonefishColors),
+  }),
+  // Three-quarter size heavy clear floater. Same 40 ft head in every size.
+  magnitudeGrandSlam('sa-magnitude-smooth-grand-slam-clear-tip', 'SA Magnitude Smooth Grand Slam Clear Float'),
+  // The Smooth Magnitude Grand Slam with SA's textures.
+  magnitudeGrandSlam('sa-magnitude-textured-grand-slam-clear-float', 'SA Magnitude Textured Grand Slam Clear Float'),
+  // The Grand Slam taper with an 8 ft clear intermediate tip (1.25 ips; the diagram's clear section
+  // measures about 7 ft), drawn as a sink tip; its diagram measures the Grand Slam split. Same 40 ft
+  // head in every size. Clear tip, sand to the end of the head, pale yellow running line; SA's
+  // swatches are close to the Grand Slam's and the Titan Clear Tip's colors, which they reuse.
+  makerProduct({
+    id: 'sa-sonar-grand-slam-clear-tip',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Grand Slam Clear Tip',
+    sizes: LINEUP['sa-sonar-grand-slam-clear-tip'].sizes.map((size) => ({
+      id: `wf${size.weight}-f-i`,
+      label: size.label,
+      type: 'sinktip',
+      weight: size.weight,
+      taper: sameHead(GRAND_SLAM, size),
+      lineup: size,
+      colorways: [{ id: 'pale-yellow-sand-clear', name: 'Pale Yellow/Sand/Clear', zones: zones([8, 'sa-clear'], [32, 'sa-sand'], [0, 'sa-pale-yellow']) }],
+    })),
+  }),
+  // 1.25 ips, all clear (SA's swatch is close to the Titan Clear Tip's Clear).
+  makerProduct({
+    id: 'sa-sonar-saltwater-intermediate',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Saltwater Intermediate',
+    sizes: LINEUP['sa-sonar-saltwater-intermediate'].sizes.map((size) => {
+      const { weight, head, total } = size;
+      const taper = scaled(SALTWATER_INTERMEDIATE, head);
+      return {
+        id: `wf${weight}i`,
+        label: size.label,
+        type: 'intermediate',
+        weight,
+        taper: [...taper, total - head],
+        estimated: head !== 38,
+        lineup: size,
+        colorways: [{ id: 'clear', name: 'Clear', zones: zones([0, 'sa-clear']) }],
+      };
+    }),
   }),
   // 2 ips, two sizes heavy. Long three-part front taper; one color over the whole line. Every size
   // has the same 45 ft head.
