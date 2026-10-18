@@ -43,6 +43,17 @@ export const COLORS = [
   // The 50+ Giant Trevally's yellow is far brighter than the 333 Trout All Purpose's.
   { id: 'cortland-giant-trevally-yellow', name: 'Giant Trevally Yellow', hex: '#f9ed25' },
   { id: 'cortland-pineapple', name: 'Pineapple', hex: '#eee04c' },
+  // The Striped Bass Blitz's blues are both darker than the Striped Bass Intermediate's and Float's.
+  { id: 'cortland-striped-bass-blitz-ice-blue', name: 'Striped Bass Blitz Ice Blue', hex: '#0a80c8' },
+  { id: 'cortland-striped-bass-blitz-sky-blue', name: 'Striped Bass Blitz Sky Blue', hex: '#51cced' },
+  // The Cold Salt Clear Tip's sand is darker than the Tropic Plus All Purpose's.
+  { id: 'cortland-cold-salt-clear-tip-sand', name: 'Cold Salt Clear Tip Sand', hex: '#ddcdac' },
+  { id: 'cortland-streamer-sink-tip-25-sage-green', name: 'Streamer Sink Tip 25 Sage Green', hex: '#cbd18b' },
+  { id: 'cortland-streamer-intermediate-tip-space-grey', name: 'Streamer Intermediate Tip Space Grey', hex: '#8a8f92' },
+  // Cortland's moss greens and olives differ from chart to chart.
+  { id: 'cortland-streamer-intermediate-tip-moss-green', name: 'Streamer Intermediate Tip Moss Green', hex: '#9ba66c' },
+  { id: 'cortland-headwater-olive', name: 'Headwater Olive', hex: '#4c5538' },
+  { id: 'cortland-headwater-moss-green', name: 'Headwater Moss Green', hex: '#bac78f' },
 ];
 
 // Cortland draws one taper chart per line with the head length on it but no size. Every size of a
@@ -477,6 +488,100 @@ export const PRODUCTS = [
     sizes: sizes(LINEUP['cortland-specialty-salmon-steelhead'], {
       type: 'floating',
       colorways: [{ id: 'olive-white', name: 'Olive/White', zones: zones([33, 'cortland-olive'], [0, 'cortland-white']) }],
+    }),
+  }),
+  // A line and a half size heavy, on a braided core. A 26 ft intermediate head (1.5–2 ips) on a
+  // floating running line, so it's drawn as a sink tip; the chart's 13 ft step down to the running
+  // line is drawn here as running line. The chart's legend calls the sky blue light blue.
+  makerProduct({
+    id: 'cortland-cold-salt-striped-bass-blitz',
+    maker: 'Cortland',
+    name: 'Cortland Cold Salt Striped Bass Blitz',
+    sizes: sizes(LINEUP['cortland-cold-salt-striped-bass-blitz'], {
+      id: (w) => `wf${w}i`,
+      type: 'sinktip',
+      colorways: [{ id: 'ice-blue-sky-blue', name: 'Ice Blue/Sky Blue', zones: zones([26, 'cortland-striped-bass-blitz-ice-blue'], [0, 'cortland-striped-bass-blitz-sky-blue']) }],
+    }),
+  }),
+  // Half a size heavy, full seafoam on a mono core. Short 6 ft body and a 29 ft back taper in a 38 ft head.
+  makerProduct({
+    id: 'cortland-liquid-crystal-guide',
+    maker: 'Cortland',
+    name: 'Cortland Liquid Crystal Guide',
+    sizes: sizes(LINEUP['cortland-liquid-crystal-guide'], {
+      type: 'floating',
+      colorways: [{ id: 'seafoam', name: 'Seafoam', zones: zones([0, 'cortland-seafoam']) }],
+    }),
+  }),
+  // A 10 ft clear intermediate tip on a sand floating head and running line, so it's drawn as a sink
+  // tip. The chart's clear runs through the 3 ft front taper and 7 ft body of a 41 ft head.
+  makerProduct({
+    id: 'cortland-cold-salt-clear-tip',
+    maker: 'Cortland',
+    name: 'Cortland Cold Salt Clear Tip',
+    sizes: sizes(LINEUP['cortland-cold-salt-clear-tip'], {
+      id: (w) => `wf${w}i`,
+      type: 'sinktip',
+      colorways: [{ id: 'clear-sand', name: 'Clear/Sand', zones: zones([10, 'cortland-clear'], [0, 'cortland-cold-salt-clear-tip-sand']) }],
+    }),
+  }),
+  // Hard finish on a mono core for summer heat. Short 27 ft head with an 18 ft body, for poppers and streamers.
+  makerProduct({
+    id: 'cortland-333-bass-panfish',
+    maker: 'Cortland',
+    name: 'Cortland 333 Bass Panfish',
+    sizes: sizes(LINEUP['cortland-333-bass-panfish'], {
+      type: 'floating',
+      colorways: [{ id: 'yellow', name: 'Yellow', zones: zones([0, 'cortland-yellow']) }],
+    }),
+  }),
+  // A 3 ft clear intermediate tip on a mint green floating head and running line, so it's drawn as a
+  // sink tip. The chart, not to scale, draws the tip ending partway along the 5 ft front taper.
+  makerProduct({
+    id: 'cortland-specialty-ghost-tip-3',
+    maker: 'Cortland',
+    name: 'Cortland Ghost Tip 3',
+    sizes: sizes(LINEUP['cortland-specialty-ghost-tip-3'], {
+      id: (w) => `wf${w}i`,
+      type: 'sinktip',
+      colorways: [{ id: 'clear-mint-green', name: 'Clear/Mint Green', zones: zones([3, 'cortland-clear'], [0, 'cortland-mint-green']) }],
+    }),
+  }),
+  // Rated by grain weight for two rod weights, drawn at the lower. A 25 ft Type 6 tip (6 ips) on a
+  // floating sage green body and running line, in a 40 ft head with a 27 ft body.
+  makerProduct({
+    id: 'cortland-streamer-sink-tip-25',
+    maker: 'Cortland',
+    name: 'Cortland Streamer Sink Tip 25',
+    sizes: sizes(LINEUP['cortland-streamer-sink-tip-25'], {
+      id: (w) => `wf${w}`,
+      type: 'sinktip',
+      colorways: [{ id: 'black-sage-green', name: 'Black/Sage Green', zones: zones([25, 'cortland-black'], [0, 'cortland-streamer-sink-tip-25-sage-green']) }],
+    }),
+  }),
+  // A 10 ft intermediate tip (1.5–2 ips) on a moss green floating head and running line, so it's drawn
+  // as a sink tip, in a short 26 ft head with a 10 ft front taper. The chart's 10 ft step down to the
+  // running line is drawn here as running line. The chart, not to scale, draws the grey tip ending
+  // partway along the front taper; the description gives it as 10 ft.
+  makerProduct({
+    id: 'cortland-streamer-intermediate-tip',
+    maker: 'Cortland',
+    name: 'Cortland Streamer Intermediate Tip',
+    sizes: sizes(LINEUP['cortland-streamer-intermediate-tip'], {
+      id: (w) => `wf${w}i`,
+      type: 'sinktip',
+      colorways: [{ id: 'space-grey-moss-green', name: 'Space Grey/Moss Green', zones: zones([10, 'cortland-streamer-intermediate-tip-space-grey'], [0, 'cortland-streamer-intermediate-tip-moss-green']) }],
+    }),
+  }),
+  // True to size, 80 ft long for small streams. A muted olive front taper and body, then moss green
+  // from the 15 ft back taper on.
+  makerProduct({
+    id: 'cortland-headwater',
+    maker: 'Cortland',
+    name: 'Cortland Headwater',
+    sizes: sizes(LINEUP['cortland-trout-headwater'], {
+      type: 'floating',
+      colorways: [{ id: 'olive-moss-green', name: 'Olive/Moss Green', zones: zones([17, 'cortland-headwater-olive'], [0, 'cortland-headwater-moss-green']) }],
     }),
   }),
 ];
