@@ -2,11 +2,12 @@ import { useEffect, useId, useMemo, useState } from 'react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Toggle } from '@/components/ui/toggle';
 import { cn } from '@/lib/utils';
-import { LINE_PRESETS, nearestSize } from '../data/catalog.js';
+import { LINE_PRESETS, nameOf, nearestSize } from '../data/catalog.js';
 import { CATEGORIES, chartPoints, densityName, filterProducts, formatRange, groupBySeries, heaviness, linkProducts, makerSeries, productFacts } from '../lib/guide.js';
 import Chips, { CHIP } from './Chips.jsx';
 import FilterSheet from './FilterSheet.jsx';
 import Icon from './Icon.jsx';
+import LineEditor from './LineEditor.jsx';
 import { Input } from './Input.jsx';
 import Select from './Select.jsx';
 import TaperChart from './TaperChart.jsx';
@@ -70,6 +71,12 @@ function ProductCard({ maker, product, weight, sizes, showSeries, onTry }) {
           )}
         </div>
       </div>
+      {/* The line itself, at the size Try would load: a picture of its taper and colors. */}
+      {preset && (
+        <div className="rounded-md bg-stage px-3 py-2.5">
+          <LineEditor line={preset.line} bare label={`${product.name}, ${preset.sizeLabel ?? `${preset.line.weight} wt`}, ${preset.line.zones.length === 1 ? nameOf(preset.line.zones[0].color) : preset.line.zones.map((z) => nameOf(z.color)).join(' to ')}`} />
+        </div>
+      )}
       {product.summary && <p className="text-[14px] text-muted-foreground">{product.summary}</p>}
       {(product.primaryUse || product.secondaryUse) && (
         <ul className="flex flex-wrap gap-1.5" aria-label="Built for">
