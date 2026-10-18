@@ -52,7 +52,7 @@ import {
   zoneName,
 } from './lineEdit.js';
 import { STYLES, changedSections, displayName, isDirty, loadEntries, normalizeEntry } from './rack.js';
-import { filterRack, landingPage, rackWeights, resolveView } from './rackView.js';
+import { filterRack, landingPage, matchesSearch, rackWeights, resolveView } from './rackView.js';
 
 const setup = (patch = {}) => ({ ...structuredClone(DEFAULT_SETUP), ...patch });
 
@@ -698,6 +698,46 @@ describe('rack view', () => {
     expect(landingPage({ page: null, hasSetup: false }, 0)).toBe('designer');
     expect(landingPage({ page: 'designer', hasSetup: true }, 3)).toBe('designer');
     expect(landingPage({ page: 'rack', hasSetup: false }, 0)).toBe('rack');
+  });
+});
+
+describe('rack search', () => {
+  const rack = loadEntries(DEMO_RACK);
+  const ids = (query) => rack.filter((s) => matchesSearch(s, query)).map((s) => s.id);
+  const byId = (id) => rack.find((s) => s.id === id);
+  it('an empty query matches everything', () => {
+    expect(ids('')).toHaveLength(rack.length);
+    expect(ids('   ')).toHaveLength(rack.length);
+  });
+  it('matches the reel make and name, ignoring case', () => {
+    expect(ids('LAMSON')).toEqual(expect.arrayContaining(['demo-1', 'demo-5', 'demo-9']));
+    expect(ids('liquid s -7+')).toEqual(['demo-7', 'demo-8', 'demo-9']);
+  });
+  it('matches the line name, even under a title', () => {
+    expect(ids('euro nymph')).toEqual(expect.arrayContaining(['demo-1', 'demo-3']));
+    expect(matchesSearch({ ...byId('demo-4'), title: 'Home water' }, 'two-tone')).toBe(true);
+  });
+  it('matches title, notes and style names', () => {
+    expect(ids('competition')).toEqual(['demo-2']);
+    expect(ids('custom')).toContain('demo-10');
+    expect(ids('streamer')).toEqual(expect.arrayContaining(['demo-7', 'demo-8', 'demo-9', 'demo-12']));
+  });
+  it('every word has to match', () => {
+    expect(ids('liquid streamer')).toEqual(['demo-7', 'demo-8', 'demo-9']);
+    expect(ids('liquid hydros')).toEqual([]);
+  });
+  it('a weight matches as "5", "5wt" or "5 wt", and not 15', () => {
+    const fives = rack.filter((s) => s.line.weight === 5).map((s) => s.id);
+    expect(ids('5 wt')).toEqual(fives);
+    expect(ids('5wt')).toEqual(fives);
+    expect(ids('5')).toEqual(expect.arrayContaining(fives));
+    expect(matchesSearch({ ...byId('demo-4'), line: { ...byId('demo-4').line, weight: 15 } }, '5 wt')).toBe(false);
+  });
+  it('colors are not searched', () => expect(ids('chartreuse')).toEqual([]));
+  it('filterRack applies the query alongside weight and style', () => {
+    const { exact, near } = filterRack(rack, { weight: 5, style: 'dry', query: 'liquid' });
+    expect(exact.map((s) => s.id).sort()).toEqual(['demo-4', 'demo-5', 'demo-6']);
+    expect(near).toEqual([]);
   });
 });
 
