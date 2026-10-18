@@ -1680,7 +1680,8 @@
       "secondary_use": "Competition-legal",
       "weight_label": null,
       "summary": "Ultra-thin, lightly tapered 80.5' line for Euro nymphing; one size fits 1-4 wt nymphing rods and meets competition rules.",
-      "taper_source": "none published",
+      "data_notes": "Orvis's taper chart image (https://assets.orvis.com/is/image/orvisprd/HYDROS_TACTICAL_NYMPH_22B1) draws a double taper: a 12 ft front taper, a 56 ft belly and a 12 ft taper at the rear end (also labelled FRONT TAPER), under LINE LENGTH: 80'. The product page gives 80.5 ft, which total_ft keeps; the chart doesn't place the extra half foot. No per-size taper chart is published (Product-SizeChart?cid=22B1-taper-chart is empty). The box label reads DT-1 / Willow, though Orvis says the one line fits 1- to 4-weight nymphing rods.",
+      "taper_source": "maker diagram (orvis.com taper chart image): front = Front Taper; body = Belly; back = the rear-end taper; running = 0 (double taper, no running line)",
       "variants": [
         {
           "label": "Tactical Nymph (1-4 wt)",
@@ -1692,8 +1693,27 @@
           "grains_30ft": null,
           "grains_40ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 12,
+            "body": 56,
+            "back": 12,
+            "running": 0
+          },
+          "taper_source": "maker diagram",
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 12
+            },
+            {
+              "name": "BELLY",
+              "ft": 56
+            },
+            {
+              "name": "FRONT TAPER",
+              "ft": 12
+            }
+          ],
           "colors": [
             "Willow"
           ]

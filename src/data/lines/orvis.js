@@ -34,6 +34,9 @@ export const COLORS = [
   { id: 'orvis-depth-charge-orange', name: 'Orange', hex: '#f7943c' },
   { id: 'orvis-depth-charge-surf', name: 'Surf', hex: '#8fc3df' },
   { id: 'orvis-depth-charge-white', name: 'White', hex: '#efefea' },
+  // Orvis has no photo of the Hydros Tactical Nymph line itself, so its willow is matched by eye to
+  // the line drawn on Orvis's taper chart.
+  { id: 'orvis-tactical-nymph-willow', name: 'Willow', hex: '#b8c5bb' },
 ];
 
 // Splits from Orvis's per-size taper charts: the tip and every front taper section are the front,
@@ -261,5 +264,26 @@ export const PRODUCTS = [
         };
         return wf({ sizes: [size] }, [colorway], { type: 'sinkhead-int', id: (w) => `wf${w}s` });
       }),
+  }),
+  // Thin double taper for euro nymphing, one line for 1 to 4 wt rods. Orvis's taper chart draws a 12 ft
+  // taper at each end of a 56 ft belly on an 80 ft line; the product page gives 80.5 ft, so the belly
+  // takes the extra half foot. Drawn as a 1 wt, as the box reads DT-1, and all head, as a double taper
+  // has no running line. One color, willow, per Orvis's description and box.
+  makerProduct({
+    id: 'orvis-hydros-tactical-nymph',
+    maker: 'Orvis',
+    name: 'Orvis Hydros Tactical Nymph',
+    sizes: LINEUP['orvis-hydros-tactical-nymph'].sizes.map((size) => {
+      const { front, back } = size.taper;
+      return {
+        id: 'dt1f',
+        label: 'DT1F',
+        type: 'floating',
+        weight: 1,
+        taper: [front, size.total - front - back, back, 0],
+        lineup: overriding(size, { weight: 1, head: size.total }),
+        colorways: [{ id: 'willow', name: 'Willow', zones: zones([0, 'orvis-tactical-nymph-willow']) }],
+      };
+    }),
   }),
 ];
