@@ -71,6 +71,20 @@ export const COLORS = [
   { id: 'cortland-fairplay-blue-green', name: 'Fairplay Blue Green', hex: '#98d096' },
 ];
 
+// Old preset ids that are now sizes with another id (old → new). The 444 Full Sinking was one
+// product holding both types; it is now one product per type.
+export const LEGACY_IDS = {
+  'cortland-444-full-sink-wf4s3': 'cortland-444-full-sinking-type-3-wf4s3',
+  'cortland-444-full-sink-wf5s3': 'cortland-444-full-sinking-type-3-wf5s3',
+  'cortland-444-full-sink-wf6s3': 'cortland-444-full-sinking-type-3-wf6s3',
+  'cortland-444-full-sink-wf7s3': 'cortland-444-full-sinking-type-3-wf7s3',
+  'cortland-444-full-sink-wf8s3': 'cortland-444-full-sinking-type-3-wf8s3',
+  'cortland-444-full-sink-wf5s6': 'cortland-444-full-sinking-type-6-wf5s6',
+  'cortland-444-full-sink-wf6s6': 'cortland-444-full-sinking-type-6-wf6s6',
+  'cortland-444-full-sink-wf7s6': 'cortland-444-full-sinking-type-6-wf7s6',
+  'cortland-444-full-sink-wf8s6': 'cortland-444-full-sinking-type-6-wf8s6',
+};
+
 // Cortland draws one taper chart per line with the head length on it but no size. Every size of a
 // line has that head, so the lineup gives each size the chart's split.
 const sizes = (product, { label = (size) => size.label, id = (w) => `wf${w}f`, lineup = (size) => size, ...rest }) =>
@@ -215,25 +229,27 @@ export const PRODUCTS = [
       colorways: [{ id: 'black-olive', name: 'Black/Olive', zones: zones([10, 'cortland-black'], [0, 'cortland-streamer-olive']) }],
     }),
   }),
-  // Type 3 sinks 3–4 ips (dark brown), Type 6 6–7 ips (black, drawn as Type 7). Both share one chart.
+  // Type 3 sinks 3–4 ips (dark brown). Shares one chart with the Type 6.
   makerProduct({
-    id: 'cortland-444-full-sink',
+    id: 'cortland-444-full-sinking-type-3',
     maker: 'Cortland',
-    name: 'Cortland 444 Full Sinking',
-    sizes: [
-      ...sizes(LINEUP['cortland-444-full-sinking-type-3'], {
-        label: (size) => `${size.label} Type 3`,
-        id: (w) => `wf${w}s3`,
-        type: 'sink3',
-        colorways: [{ id: 'dark-brown', name: 'Dark Brown', zones: zones([0, 'cortland-dark-brown']) }],
-      }),
-      ...sizes(LINEUP['cortland-444-full-sinking-type-6'], {
-        label: (size) => `${size.label} Type 6`,
-        id: (w) => `wf${w}s6`,
-        type: 'sink7',
-        colorways: [{ id: 'black', name: 'Black', zones: zones([0, 'cortland-black']) }],
-      }),
-    ],
+    name: 'Cortland 444 Full Sinking Type 3',
+    sizes: sizes(LINEUP['cortland-444-full-sinking-type-3'], {
+      id: (w) => `wf${w}s3`,
+      type: 'sink3',
+      colorways: [{ id: 'dark-brown', name: 'Dark Brown', zones: zones([0, 'cortland-dark-brown']) }],
+    }),
+  }),
+  // Type 6 sinks 6–7 ips (black), drawn as Type 7. Shares one chart with the Type 3.
+  makerProduct({
+    id: 'cortland-444-full-sinking-type-6',
+    maker: 'Cortland',
+    name: 'Cortland 444 Full Sinking Type 6',
+    sizes: sizes(LINEUP['cortland-444-full-sinking-type-6'], {
+      id: (w) => `wf${w}s6`,
+      type: 'sink7',
+      colorways: [{ id: 'black', name: 'Black', zones: zones([0, 'cortland-black']) }],
+    }),
   }),
   // Full size heavy. Type 6 (5–6 ips) 15 ft tip, then a floating body and a 10 ft step down to the
   // running line, drawn here as running line.
