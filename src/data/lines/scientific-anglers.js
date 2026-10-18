@@ -34,6 +34,9 @@ export const COLORS = [
   { id: 'sa-black', name: 'Black', hex: '#1e1f21' },
   { id: 'sa-celestial-blue', name: 'Celestial Blue', hex: '#1aa6dd' },
   { id: 'sa-blue-heron', name: 'Blue Heron', hex: '#5c6770' },
+  { id: 'sa-pale-yellow', name: 'Pale Yellow', hex: '#f2eb5f' },
+  { id: 'sa-sand', name: 'Sand', hex: '#f0c9a2' },
+  { id: 'sa-horizon', name: 'Horizon', hex: '#bbccea' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -82,6 +85,11 @@ const floating = (split, ref, sizes, colorways) =>
 // and colors differ. WF5 diagram: front 6.5, bellies 25, rear 4.5 on a 36 ft head.
 const MPX = [6.5, 25, 4.5];
 
+// Grand Slam, Smooth and Textured share a diagram: front taper 2.5, front belly 18, rear taper 19.5.
+// The diagram's head measures 40.5 ft against the 40 ft SA lists for every size; the split is scaled
+// to 40.
+const GRAND_SLAM = [2.5, 18, 19.5];
+
 // Trout Expert and the Amplitude Smooth Trout it replaced share a diagram (WF5, 69 ft head):
 // two front tapers (13 ft), two bellies (30.5) and a 25.5 ft rear taper.
 const TROUT_EXPERT = [13, 30.5, 25.5];
@@ -122,12 +130,42 @@ export const PRODUCTS = [
       },
     ),
   }),
+  // The Smooth Infinity taper with SA's textures. Its own WF5 diagram (49 ft head): front 6.5,
+  // belly 24, two rear tapers 18.5; the other sizes scale it. The camo tip runs about 10.5 ft on that
+  // diagram.
+  makerProduct({
+    id: 'sa-amplitude-textured-infinity',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Textured Infinity',
+    sizes: floating(
+      [6.5, 24, 18.5],
+      5,
+      LINEUP['sa-amplitude-textured-infinity'].sizes,
+      (head, [front]) => {
+        const camo = half((10.5 * head) / 49);
+        return [
+          { id: 'optic', name: 'Optic', zones: zones([front, 'sa-buckskin'], [head - front, 'sa-mist-green'], [0, 'sa-optic-green']) },
+          { id: 'camo', name: 'Camo', zones: zones([camo, 'sa-camo'], [head - camo, 'sa-buckskin'], [0, 'sa-bamboo']) },
+        ];
+      },
+    ),
+  }),
   // Half-size heavy all-rounder. Buckskin tip, moss head, optic green running line.
   makerProduct({
     id: 'sa-amplitude-smooth-mpx',
     maker: 'Scientific Anglers',
     name: 'SA Amplitude Smooth MPX',
     sizes: floating(MPX, 5, LINEUP['sa-amplitude-smooth-mpx'].sizes, (head, [front]) => [
+      { id: 'optic-moss-buckskin', name: 'Optic Green/Moss/Buckskin', zones: zones([front, 'sa-buckskin'], [head - front, 'sa-moss'], [0, 'sa-optic-green']) },
+    ]),
+  }),
+  // The Amplitude Smooth MPX taper and colors with SA's textures; its own WF5 diagram measures the
+  // same split.
+  makerProduct({
+    id: 'sa-amplitude-textured-mpx',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Textured MPX',
+    sizes: floating(MPX, 5, LINEUP['sa-amplitude-textured-mpx'].sizes, (head, [front]) => [
       { id: 'optic-moss-buckskin', name: 'Optic Green/Moss/Buckskin', zones: zones([front, 'sa-buckskin'], [head - front, 'sa-moss'], [0, 'sa-optic-green']) },
     ]),
   }),
@@ -220,6 +258,37 @@ export const PRODUCTS = [
       taper: sameHead([5, 28, 10], size),
       lineup: size,
       colorways: [{ id: 'camo-shad-frog', name: 'Camo/Shad Blue/Frog Green', zones: zones([12.5, 'sa-bass-camo'], [30.5, 'sa-shad-blue'], [0, 'sa-frog-green']) }],
+    })),
+  }),
+  // Three-quarter size heavy saltwater line. Same 40 ft head in every size. Horizon front taper, sand
+  // head, pale yellow running line.
+  makerProduct({
+    id: 'sa-amplitude-smooth-grand-slam',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Grand Slam',
+    sizes: LINEUP['sa-amplitude-smooth-grand-slam'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(GRAND_SLAM, size),
+      lineup: size,
+      colorways: [{ id: 'pale-yellow-sand-horizon', name: 'Pale Yellow/Sand/Horizon', zones: zones([2.5, 'sa-horizon'], [37.5, 'sa-sand'], [0, 'sa-pale-yellow']) }],
+    })),
+  }),
+  // The Smooth Grand Slam taper and colors with SA's textures, in WF7–12.
+  makerProduct({
+    id: 'sa-amplitude-grand-slam',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Textured Grand Slam',
+    sizes: LINEUP['sa-amplitude-grand-slam'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(GRAND_SLAM, size),
+      lineup: size,
+      colorways: [{ id: 'pale-yellow-sand-horizon', name: 'Pale Yellow/Sand/Horizon', zones: zones([2.5, 'sa-horizon'], [37.5, 'sa-sand'], [0, 'sa-pale-yellow']) }],
     })),
   }),
   // 2 ips, two sizes heavy. Long three-part front taper; one color over the whole line. Every size
