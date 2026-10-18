@@ -180,10 +180,17 @@ export default function ReelsPage({ onNewSetup }) {
       <div className="sticky top-(--header-h) z-10 -mx-[max(16px,2.5vw)] hidden flex-wrap items-end gap-x-6 gap-y-3 border-b border-border bg-background/95 px-[max(16px,2.5vw)] py-3 backdrop-blur sm:flex">
         <ViewControls view={view} onChange={setView} />
       </div>
-      <nav aria-label="Makers" className="flex flex-wrap gap-x-4 gap-y-1 text-[14px]">
-        {GROUPS.map(([maker]) => (
-          <a key={maker} href={`#reels-${maker}`} className="text-primary underline-offset-2 hover:underline pointer-coarse:inline-flex pointer-coarse:min-h-11 pointer-coarse:items-center">
+      {/* Maker chips that jump to each maker's reels, styled like the app's filter chips so they read as controls. */}
+      <nav aria-label="Makers" className="flex flex-wrap items-center gap-2">
+        <span className="mr-1 text-[13px] font-semibold text-muted-foreground">Jump to</span>
+        {GROUPS.map(([maker, models]) => (
+          <a
+            key={maker}
+            href={`#reels-${maker}`}
+            className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-input bg-card px-3.5 text-[14px] font-semibold hover:border-primary hover:text-primary pointer-coarse:min-h-11 pointer-coarse:px-4"
+          >
             {maker}
+            <span className="text-[12px] font-normal text-muted-foreground">{models.length}</span>
           </a>
         ))}
       </nav>
