@@ -6201,20 +6201,48 @@
       "secondary_use": null,
       "weight_label": null,
       "summary": "Intermediate head (1.5-2 ips) with floating running line, built a line-and-a-half size heavy.",
+      "data_notes": "Taper split from the maker's taper chart (head 26 ft = 3 + 20 + 3, then a 13 ft step and 61 ft running line). The chart's legend names the colors Ice Blue / Light Blue where the product page sells it as Ice Blue / Sky Blue.",
       "variants": [
         {
           "label": "WF7I/F",
           "weight": 7,
           "density": "intermediate",
           "sink_ips": "1.5-2",
-          "head_ft": null,
+          "head_ft": 26,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 20,
+            "back": 3,
+            "running": 74
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Ice Blue / Sky Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 20
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 3
+            },
+            {
+              "name": "STEP",
+              "ft": 13
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 61
+            }
           ]
         },
         {
@@ -6222,14 +6250,41 @@
           "weight": 8,
           "density": "intermediate",
           "sink_ips": "1.5-2",
-          "head_ft": null,
+          "head_ft": 26,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 20,
+            "back": 3,
+            "running": 74
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Ice Blue / Sky Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 20
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 3
+            },
+            {
+              "name": "STEP",
+              "ft": 13
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 61
+            }
           ]
         },
         {
@@ -6237,14 +6292,41 @@
           "weight": 9,
           "density": "intermediate",
           "sink_ips": "1.5-2",
-          "head_ft": null,
+          "head_ft": 26,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 20,
+            "back": 3,
+            "running": 74
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Ice Blue / Sky Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 20
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 3
+            },
+            {
+              "name": "STEP",
+              "ft": 13
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 61
+            }
           ]
         },
         {
@@ -6252,14 +6334,41 @@
           "weight": 10,
           "density": "intermediate",
           "sink_ips": "1.5-2",
-          "head_ft": null,
+          "head_ft": 26,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 20,
+            "back": 3,
+            "running": 74
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Ice Blue / Sky Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 20
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 3
+            },
+            {
+              "name": "STEP",
+              "ft": 13
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 61
+            }
           ]
         }
       ],
@@ -6491,14 +6600,37 @@
           "weight": 7,
           "density": "sinktip",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 41,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 7,
+            "back": 31,
+            "running": 59
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Clear / Sand"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 7
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 31
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 59
+            }
           ]
         }
       ],
@@ -7300,14 +7432,37 @@
           "weight": 7,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 38,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 6,
+            "back": 29,
+            "running": 62
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Seafoam"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 6
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 29
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 62
+            }
           ]
         },
         {
@@ -7315,14 +7470,37 @@
           "weight": 8,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 38,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 6,
+            "back": 29,
+            "running": 62
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Seafoam"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 6
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 29
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 62
+            }
           ]
         },
         {
@@ -7330,14 +7508,37 @@
           "weight": 9,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 38,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 6,
+            "back": 29,
+            "running": 62
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Seafoam"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 6
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 29
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 62
+            }
           ]
         },
         {
@@ -7345,14 +7546,37 @@
           "weight": 10,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 38,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 6,
+            "back": 29,
+            "running": 62
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Seafoam"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 6
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 29
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 62
+            }
           ]
         },
         {
@@ -7360,14 +7584,37 @@
           "weight": 11,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 38,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 6,
+            "back": 29,
+            "running": 62
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Seafoam"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 6
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 29
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 62
+            }
           ]
         },
         {
@@ -7375,14 +7622,37 @@
           "weight": 12,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 38,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 6,
+            "back": 29,
+            "running": 62
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Seafoam"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 6
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 29
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 62
+            }
           ]
         }
       ],
