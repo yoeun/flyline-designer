@@ -1,4 +1,4 @@
-import { LINE_PRESETS, findById, reelColors } from '../data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetForLine, reelColors } from '../data/catalog.js';
 
 // The setup each size is drawn with on the Reels page: the generic WF floating line at the middle of
 // the size's weights (rounded up) on 100 yd of 20 lb backing, so the fill is comparable across reels.
@@ -22,6 +22,14 @@ export function previewSetup(size, color, colors = PREVIEW_COLORS) {
     },
     backing: { yards: 100, pounds: 20, color: colors.backing },
   };
+}
+
+// A new setup on a reel from the Reels page: the defaults, with the line at the weight the page draws
+// that size with (the middle of its weights), so the designer opens on what the card showed.
+export function setupForReel(reel) {
+  const setup = structuredClone(DEFAULT_SETUP);
+  const line = { ...setup.line, weight: previewWeight(findById(REELS, reel.model)) };
+  return { setup: { ...setup, reel: { ...reel }, line }, presetId: presetForLine(line) };
 }
 
 // A size's capacity as the maker rates it, or its arbor when that's what we have instead.
