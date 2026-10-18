@@ -84,7 +84,8 @@ function ModelCard({ model, view }) {
         rim {size.rim}″ · spool {size.spool}″ · width {size.width}″
         {capacity && <br />}
         {capacity}
-        {showLine && (
+        {/* What line the drawing assumes: for checking the drawings, so only on the dev server. */}
+        {import.meta.env.DEV && showLine && (
           <>
             <br />
             drawn with WF{setup.line.weight}F + 100 yd
@@ -102,7 +103,8 @@ function ModelCard({ model, view }) {
           ))}
         </ul>
       )}
-      {model.notes && <p className="text-[13px] text-muted-foreground">{model.notes}</p>}
+      {/* Research notes on where the numbers came from; only on the dev server. */}
+      {import.meta.env.DEV && model.notes && <p className="text-[13px] text-muted-foreground">{model.notes}</p>}
     </li>
   );
 }
