@@ -467,4 +467,16 @@ export const PRODUCTS = [
       colorways: [{ id: 'pineapple', name: 'Pineapple', zones: zones([0, 'cortland-pineapple']) }],
     }),
   }),
+  // Overweighted, with a long 65 ft head that roll casts and mends easily. The chart, not to scale, gives
+  // no length for the olive-to-white change partway along the body; 33 ft from the tip is an estimate
+  // read off where it sits between the body's ends.
+  makerProduct({
+    id: 'cortland-specialty-salmon-steelhead',
+    maker: 'Cortland',
+    name: 'Cortland Salmon Steelhead',
+    sizes: sizes(LINEUP['cortland-specialty-salmon-steelhead'], {
+      type: 'floating',
+      colorways: [{ id: 'olive-white', name: 'Olive/White', zones: zones([33, 'cortland-olive'], [0, 'cortland-white']) }],
+    }),
+  }),
 ];
