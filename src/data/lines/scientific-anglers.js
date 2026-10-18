@@ -91,6 +91,8 @@ export const COLORS = [
   { id: 'sa-frequency-magnum-optic-green', name: 'Magnum Optic Green', hex: '#d9e8a3' },
   { id: 'sa-sonar-stillwater-intermediate-light-gray', name: 'Light Gray', hex: '#b3b5b2' },
   { id: 'sa-sonar-stillwater-intermediate-olive-drab', name: 'Olive Drab', hex: '#766e47' },
+  { id: 'sa-mastery-double-taper-dark-willow', name: 'Dark Willow', hex: '#b0953a' },
+  { id: 'sa-frequency-mpx-orange', name: 'Frequency MPX Orange', hex: '#f15522' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -136,8 +138,9 @@ const floating = (split, ref, sizes, colorways) =>
     };
   });
 
-// Amplitude, Mastery and Frequency share tapers: MPX is the same line in each, only the coating
-// and colors differ. WF5 diagram: front 6.5, bellies 25, rear 4.5 on a 36 ft head.
+// Amplitude and Mastery share tapers: MPX is the same line in each, only the coating and colors
+// differ. WF5 diagram: front 6.5, bellies 25, rear 4.5 on a 36 ft head. (Frequency MPX's own diagram
+// measures differently; see FREQUENCY_BOOST.)
 const MPX = [6.5, 25, 4.5];
 
 // Grand Slam, Smooth and Textured share a diagram: front taper 2.5, front belly 18, rear taper 19.5.
@@ -318,7 +321,8 @@ const STILLWATER_EMERGER_TIP = scaled([22, 12.5, 10], 45);
 const MASTERY_GRAND_SLAM_COLD = scaled([2, 19.5, 19.5], 40);
 
 // Frequency Boost's diagram: front taper 6, belly 25, rear taper 5. Its 36 ft head is the WF4–6's;
-// the WF3 (32 ft) and WF7–8 (40 ft) scale it.
+// the WF3 (32 ft) and WF7–8 (40 ft) scale it. Frequency MPX's own WF5 diagram (36 ft head) measures
+// the same split, not quite the Amplitude and Mastery MPX's, and uses it too.
 const FREQUENCY_BOOST = [6, 25, 5];
 
 // Frequency Magnum's diagram: front taper 5.5, two bellies 27.5, rear taper 6. Its head measures
@@ -328,6 +332,15 @@ const FREQUENCY_MAGNUM = [5.5, 27.5, 6];
 // Sonar Stillwater Intermediate's diagram: three front tapers 22, belly 13, rear taper 10, the 45 ft
 // head SA lists for every size. The textured hang markers 10 and 20 ft from the tip aren't drawn.
 const SONAR_STILLWATER_INTERMEDIATE = [22, 13, 10];
+
+// Amplitude Smooth Titan GT's diagram: front taper 5.5, two bellies 23.5, rear taper 3.5, the 32.5 ft
+// head SA lists for both sizes. The last 10 ft of the 90 ft line is a black sighter.
+const AMPLITUDE_TITAN_GT = [5.5, 23.5, 3.5];
+
+// Frequency Trout GP's WF5 diagram measures the Amplitude Trout GP's split: front 6, belly 22, two
+// rear tapers 22.5 on a 50.5 ft head. It draws the running line to 90 ft; the line uses the 85 ft
+// SA's table lists for every size.
+const FREQUENCY_TROUT_GP = [6, 22, 22.5];
 
 export const PRODUCTS = [
   // Half-size heavy. Head and total per size from SA's table; the WF6 split was measured off the
@@ -1555,5 +1568,149 @@ export const PRODUCTS = [
         ],
       };
     }),
+  }),
+  // SA's table gives each size's belly; the diagram's belly measures 81.5 ft, the DT2's, between a
+  // 4 ft front and a 4.5 ft rear taper on the 90 ft line. As with the Amplitude Smooth Double Taper,
+  // each size splits the rest equally between its ends, and the sizes other than DT2 are marked
+  // estimated. Drawn as all head with no running line. All dark willow.
+  makerProduct({
+    id: 'sa-mastery-double-taper',
+    maker: 'Scientific Anglers',
+    name: 'SA Mastery Double Taper',
+    sizes: LINEUP['sa-mastery-double-taper'].sizes.map((size) => ({
+      id: `dt${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: doubleTaper(size),
+      estimated: size.weight !== 2,
+      lineup: overriding(size, { head: size.total }),
+      colorways: [{ id: 'dark-willow', name: 'Dark Willow', zones: zones([0, 'sa-mastery-double-taper-dark-willow']) }],
+    })),
+  }),
+  // Two sizes heavy, WF11–12. Sand head, surf running line, black sighter; SA's Sand and Black
+  // swatches match the Tarpon's, and Surf is the Bonefish's.
+  makerProduct({
+    id: 'sa-amplitude-smooth-titan-gt',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Titan GT',
+    sizes: LINEUP['sa-amplitude-smooth-titan-gt'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(AMPLITUDE_TITAN_GT, size),
+      lineup: size,
+      colorways: [{ id: 'black-surf-sand', name: 'Black/Surf/Sand', zones: zones([32.5, 'sa-tarpon-sand'], [47.5, 'sa-surf'], [0, 'sa-tarpon-black']) }],
+    })),
+  }),
+  // Two sizes heavy, with a camo tip. Its diagram measures the Sonar Titan Sink Tip's split (front
+  // taper 5.5, two bellies 28, rear taper 10: a 43.5 ft head against the 43 ft SA lists for every
+  // size), scaled to 43 the same way. The camo runs about 15 ft from the tip (drawn at the Smooth's
+  // 15.5), then dark turtle grass to the end of the head, a horizon running line and a black sighter
+  // over the last 10 ft. Its swatches are the Smooth's, so it draws like the Smooth.
+  makerProduct({
+    id: 'sa-amplitude-tropical-titan',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Textured Tropical/Jungle Titan',
+    sizes: LINEUP['sa-amplitude-tropical-titan'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(TITAN_SINK_TIP, size),
+      lineup: size,
+      colorways: [
+        {
+          id: 'black-horizon-dark-turtle-grass-camo',
+          name: 'Black/Horizon/Dark Turtle Grass/Camo',
+          zones: zones([15.5, 'sa-amplitude-tropical-titan-camo'], [27.5, 'sa-amplitude-tropical-titan-dark-turtle-grass'], [47, 'sa-infinity-salt-horizon'], [0, 'sa-titan-black']),
+        },
+      ],
+    })),
+  }),
+  // One color over the whole line: moss in every size, orange in WF4–6. SA's Moss swatch is the
+  // Sonar's.
+  makerProduct({
+    id: 'sa-frequency-mpx',
+    maker: 'Scientific Anglers',
+    name: 'SA Frequency MPX',
+    sizes: floating(FREQUENCY_BOOST, 5, LINEUP['sa-frequency-mpx'].sizes, (head, taper, weight) => [
+      { id: 'moss', name: 'Moss', zones: zones([0, 'sa-sonar-moss']) },
+      ...(weight >= 4 && weight <= 6 ? [{ id: 'orange', name: 'Orange', zones: zones([0, 'sa-frequency-mpx-orange']) }] : []),
+    ]),
+  }),
+  // All sage, the Amplitude Trout GP's Sage.
+  makerProduct({
+    id: 'sa-frequency-trout-gp',
+    maker: 'Scientific Anglers',
+    name: 'SA Frequency Trout GP',
+    sizes: floating(FREQUENCY_TROUT_GP, 5, LINEUP['sa-frequency-trout-gp'].sizes, () => [{ id: 'sage', name: 'Sage', zones: zones([0, 'sa-sage']) }]),
+  }),
+  // The Infinity Salt taper as a clear floater; its diagram measures the Amplitude Infinity Salt's
+  // split on the WF8's 49 ft head, and the other sizes scale it. Every size comes as Clear Tip:
+  // translucent aqua with a clear tip of about 12 ft, and a 10 ft clear sighter just behind the head.
+  // WF8–11 also come as Full Clear. Clear is the Magnitude clear; it draws like the Textured.
+  makerProduct({
+    id: 'sa-magnitude-smooth-infinity-salt-clear-tip',
+    maker: 'Scientific Anglers',
+    name: 'SA Magnitude Smooth Infinity Salt Clear Float',
+    sizes: [...new Set(LINEUP['sa-magnitude-smooth-infinity-salt-clear-tip'].sizes.map((size) => size.weight))].map((weight) => {
+      const lineup = LINEUP['sa-magnitude-smooth-infinity-salt-clear-tip'];
+      const size = lineupSize(lineup, `WF${weight}F Clear Tip`);
+      const { head, total } = size;
+      const fullClear = lineup.sizes.some((s) => s.label === `WF${weight}F Full Clear`);
+      const aqua = 'sa-magnitude-infinity-salt-translucent-aqua';
+      return {
+        id: `wf${weight}f`,
+        label: `WF${weight}F`,
+        type: 'floating',
+        weight,
+        taper: [...scaled(INFINITY_SALT, head), total - head],
+        estimated: weight !== 8,
+        lineup: size,
+        colorways: [
+          { id: 'translucent-aqua-clear-tip', name: 'Translucent Aqua/Clear Tip', zones: zones([12, 'sa-magnitude-clear'], [head - 12, aqua], [10, 'sa-magnitude-clear'], [0, aqua]) },
+          ...(fullClear ? [{ id: 'clear', name: 'Clear', zones: zones([0, 'sa-magnitude-clear']) }] : []),
+        ],
+      };
+    }),
+  }),
+  // The Bonefish Plus taper as a textured clear floater; its diagram measures the Amplitude Bonefish
+  // Plus's split on the same 50.5 ft head. Every size comes as Clear Tip: ivory with a 10 ft clear tip
+  // and a 10 ft clear sighter just behind the head. WF7–9 also come as Full Clear. Its swatches are the
+  // Magnitude Smooth Bonefish Plus's Ivory and the Magnitude clear, so it draws like the Smooth.
+  makerProduct({
+    id: 'sa-magnitude-textured-bonefish-plus-clear-float',
+    maker: 'Scientific Anglers',
+    name: 'SA Magnitude Textured Bonefish Plus Clear Float',
+    sizes: [...new Set(LINEUP['sa-magnitude-textured-bonefish-plus-clear-float'].sizes.map((size) => size.weight))].map((weight) => {
+      const lineup = LINEUP['sa-magnitude-textured-bonefish-plus-clear-float'];
+      const size = lineupSize(lineup, `WF${weight}F Clear Tip`);
+      const fullClear = lineup.sizes.some((s) => s.label === `WF${weight}F Full Clear`);
+      return {
+        id: `wf${weight}f`,
+        label: `WF${weight}F`,
+        type: 'floating',
+        weight,
+        taper: sameHead(BONEFISH_PLUS, size),
+        lineup: size,
+        colorways: [
+          { id: 'ivory-clear-tip', name: 'Ivory/Clear Tip', zones: zones([10, 'sa-magnitude-clear'], [40.5, 'sa-magnitude-bonefish-plus-ivory'], [10, 'sa-magnitude-clear'], [0, 'sa-magnitude-bonefish-plus-ivory']) },
+          ...(fullClear ? [{ id: 'clear', name: 'Clear', zones: zones([0, 'sa-magnitude-clear']) }] : []),
+        ],
+      };
+    }),
+  }),
+  // The Smooth Trout Expert Clear Tip with SA's textures; its own WF5 diagram measures the same split
+  // (MAGNITUDE_TROUT_EXPERT), and its clear tip about 9.5 ft, drawn at the Smooth's 10. Sage green over
+  // the rest of the line, so it draws like the Smooth.
+  makerProduct({
+    id: 'sa-magnitude-textured-trout-expert-clear-tip-float',
+    maker: 'Scientific Anglers',
+    name: 'SA Magnitude Textured Trout Expert Clear Tip Float',
+    sizes: floating(MAGNITUDE_TROUT_EXPERT, 5, LINEUP['sa-magnitude-textured-trout-expert-clear-tip-float'].sizes, () => [
+      { id: 'sage-green-clear', name: 'Sage Green/Clear', zones: zones([10, 'sa-magnitude-clear'], [0, 'sa-sage']) },
+    ]),
   }),
 ];
