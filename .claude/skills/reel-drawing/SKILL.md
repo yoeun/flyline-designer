@@ -42,7 +42,7 @@ export const drag = svg({
 ```
 
 - `cage` paths go into a `[data-cage="cw"]` group. `spinCage` turns it clockwise, the mirror of the spool side.
-  It's shaded by `--reel-cage`: 25% darker than the frame, or lighter on a dark finish (ReelPreview picks it), so
+  It's shaded as one layer by `--reel-cage` and `--reel-cage-opacity`: 25% darker than the frame, or lighter on a dark finish (ReelPreview picks it), so
   the two read as separate pieces. Check both a light and a dark `--color` in the preview.
 - The cage must match the spool side: same window count, radii and bar width (share one `RIM` object), with no
   handle or knob pads.

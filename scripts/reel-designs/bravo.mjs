@@ -1,8 +1,10 @@
 // Echo Bravo.
-// Drag side traced from Echo's straight-on render and Trident Fly Fishing's near-straight-on photo: a thin rim and six
-// thin straight spokes 60° apart (one pair horizontal) around the sealed drag's boss, with two short fingers reaching
-// in from the rim between each pair, and at 12 and 6 a forked tab screwed to the rim instead. The drag knob is a dark
-// knurled cylinder with a two-tone face (the logo is left out).
+// Drag side traced from Echo's straight-on render and Trident Fly Fishing's near-straight-on photo: the frame is a
+// thin rim, the foot, six thin straight spokes 60° apart (one pair horizontal) round the sealed drag's boss, and at
+// 12 and 6 a forked tab screwed to the rim. The drag knob is a dark knurled cylinder with a two-tone face (the logo
+// is left out). Through it shows the spool's cage, which turns: the same twenty pointed windows as the spool side
+// (the short fingers between the spokes in the photos are its bars). The handle and counterweight would show
+// through too, but the wound line hides them.
 // Spool side drawn from Trident's three-quarter photos (no straight-on shot): a thin rim around a ring of twenty
 // windows that narrow to a point at the drum, three spokes inside the drum to a black knurled release cap, the
 // handle up and to the right and a counterweight down and to the left. The red drag stack (the finish's accent)
@@ -25,7 +27,9 @@ const flangeWindows = ({ n, rOut, rKink, rTip, bar, off = -90 }) =>
     const outer = Array.from({ length: 5 }, (_, i) => P(rOut, aA + ((aB - aA) * i) / 4));
     return roundPoly([...outer, B1, P(rTip, mid), A1], 6);
   }).join('');
+// The spool's twenty windows, shared by both sides.
 const FLANGE = flangeWindows({ n: 20, rOut: 186, rKink: 146, rTip: 116, bar: 11 });
+const DRUM = 98;
 
 const FOOT = foot(112, -242, 14, 38);
 const BOSS = 84;
@@ -33,9 +37,7 @@ const BOSS = 84;
 // The sealed drag stack, red on the frame behind the spool.
 const STACK = (r) => `<circle r="${r}" ${ACCENT}/><circle r="${r}" fill="#000" fill-opacity=".12"/>`;
 
-// Drag side: two fingers in each side sector, and in the top and bottom sectors a fork of two parallel prongs
-// joined by a block on the rim with a screw.
-const FINGERS = [-40, -20, 20, 40, 140, 160, 200, 220].map((a) => spoke(a, 98, 190, 11, 12));
+// Drag side: in the top and bottom sectors a fork of two parallel prongs joined by a block on the rim with a screw.
 const fork = (sy) => [
   ...[-1, 1].map((sx) => (sy < 0 ? rect(sx * 20 - 6, -190, 12, 94, 4) : rect(sx * 20 - 6, 96, 12, 94, 4))),
   sy < 0 ? rect(-32, -190, 64, 24, 8) : rect(-32, 166, 64, 24, 8),
@@ -43,13 +45,11 @@ const fork = (sy) => [
 
 export const drag = svg({
   under: STACK(90),
-  // The spool's flange behind the windows.
-  back: [ring(196, 106) + FLANGE],
+  cage: [ring(196, DRUM) + FLANGE],
   body: [
     ring(200, 183),
     FOOT,
     ...[0, 60, 120, 180, 240, 300].map((a) => spoke(a, BOSS - 6, 190, 15, 13)),
-    ...FINGERS,
     ...fork(-1),
     ...fork(1),
     circle(BOSS),
@@ -74,7 +74,7 @@ export const spool = svg({
   foot: recessed(FOOT) + STACK(104) + recessed(circle(92)) + `<circle r="92" fill="#000" fill-opacity=".35"/>`,
   handles: [[...handle, 18]],
   body: [
-    circle(200) + FLANGE + circle(98),
+    circle(200) + FLANGE + circle(DRUM),
     ...[-90, 30, 150].map((a) => spoke(a, 40, 102, 22, 18)),
     circle(54),
   ],

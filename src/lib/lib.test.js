@@ -667,6 +667,12 @@ describe('reel frames', () => {
     expect(cage).toMatch(/<\/g>\s*$/);
   });
 
+  // The Battenkill Disc's drag side is a solid plate, and the Ascent's has no photo to split frame from spool.
+  const NO_DRAG_CAGE = ['battenkill-disc', 'ascent'];
+  it.each(Object.keys(FRAMES).filter((d) => !NO_DRAG_CAGE.includes(d)))('%s drag side shows the spool through the frame as a cage that turns clockwise', (design) => {
+    expect(frameMarkup(design, 'drag', 'x')).toContain('<g data-cage="cw"');
+  });
+
   it('adds handles only when asked, and only to the spool side', () => {
     expect(frameMarkup('run', 'spool', 'x')).not.toContain('data-handle=');
     expect(frameMarkup('run', 'drag', 'x', { handles: true })).not.toContain('data-handle=');

@@ -5,8 +5,9 @@
 // between them; one bar crosses the face, from the handle at 12 o'clock down through bat-wing flares to the hub
 // (the black Echo logo cap), then splits into two legs to the rim either side of 6 o'clock as the counterbalance.
 // Drag side: the frame is just a wide grooved post from the foot down to the hub, the black click cap, and two legs
-// arching down to the bottom of the rim (the adjustable lower leg); the spool's tabbed back flange and its bar show
-// through. The drag side is drawn from angled photos, so the post's taper, the legs' spread and the tab size are
+// arching down to the bottom of the rim (the adjustable lower leg). Through it shows the spool's cage, which turns:
+// its tabbed back flange (the outer rim here is the spool's), its bar and hub, without the handle (the wound line
+// hides it). The drag side is drawn from angled photos, so the post's taper, the legs' spread and the tab size are
 // approximate; the Echo logo is a simplified mark.
 import { P, arcPts, circle, f, foot, knurl, rad, recessed, roundPoly, svg } from './lib.mjs';
 import { arm } from './sage.mjs';
@@ -33,6 +34,7 @@ const tabbedEdge = (() => {
   return roundPoly(pts, 9);
 })();
 const FLANGE = circle(200) + tabbedEdge;
+const HUB = 50;
 
 // The spool's bar: up to the handle with a pair of bat-wing flares part way, and two legs down from the hub to the
 // rim either side of 6 o'clock. `turn` rotates it (degrees), `flip` mirrors it, for the back flange seen from behind.
@@ -69,12 +71,11 @@ const clickCap = (r) =>
   `<circle r="9" fill="#1b1d1f"/>`;
 
 export const drag = svg({
-  // The spool's tabbed back flange and its bar, seen from behind through the open frame.
-  back: [FLANGE, ...spoolBar(100, -1), circle(48)],
+  // Seen from behind, so mirrored.
+  cage: [FLANGE, ...spoolBar(100, -1), circle(HUB)],
   body: [POST, ...LEGS, circle(58), FOOT],
   details:
-    // The drum's edge, and the grooves down the post.
-    `<circle r="${arbor}" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="3"/>` +
+    // The grooves down the post.
     [-14, 14].map((x) => `<path d="M${x} -196L${x * 0.8} -110" stroke="#000" stroke-opacity=".3" stroke-width="3" stroke-linecap="round"/>`).join('') +
     `<circle r="58" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
     clickCap(46),
@@ -96,10 +97,10 @@ export const spool = svg({
   handles: [[...handle, 20]],
   // The frame's post and legs behind the spool.
   back: [POST, ...LEGS],
-  body: [FLANGE, ...spoolBar(), circle(50), circle(27, ...handle)],
+  body: [FLANGE, ...spoolBar(), circle(HUB), circle(27, ...handle)],
   details:
     `<circle r="190" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
-    `<circle r="50" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
+    `<circle r="${HUB}" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
     `<circle r="38" fill="#1f2123"/><circle r="38" fill="url(#sheen)"/>` +
     echoMark(36) +
     // The handle: a dark knob with a silver screw head.

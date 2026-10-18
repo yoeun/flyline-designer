@@ -20,7 +20,7 @@ const isDark = (hex) => {
 const inkOn = (hex) => (isDark(hex) ? '#e4e4e0' : '#1b1d1f');
 // The spool cage seen through the drag side: darker than the frame, or lighter on a dark finish, where darker
 // wouldn't show.
-const cageOn = (hex) => (isDark(hex) ? 'rgb(255 255 255 / .16)' : 'rgb(0 0 0 / .25)');
+const cageOn = (hex) => (isDark(hex) ? ['#fff', 0.16] : ['#000', 0.25]);
 
 // mode: 'reel' | 'see-through' | 'line-only'; side: 'drag' | 'spool'. showLine false draws the reel empty.
 export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showLine = true, background = '#e9ebe6', size, svgRef, title, className }) {
@@ -115,7 +115,8 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
             '--reel-accent': reelAccent(layout.reel, finish.id) ?? 'currentColor',
             '--reel-trim': reelTrim(layout.reel, finish.id) ?? 'currentColor',
             '--reel-ink': inkOn(reelAccent(layout.reel, finish.id) ?? reelHex),
-            '--reel-cage': cageOn(reelHex),
+            '--reel-cage': cageOn(reelHex)[0],
+            '--reel-cage-opacity': cageOn(reelHex)[1],
           }}
           opacity={reelOpacity}
           // Clicking the handle turns the spool.

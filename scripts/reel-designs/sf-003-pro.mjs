@@ -9,9 +9,9 @@
 // big opening into the drum, a recessed web of three spokes, a tall knurled hub cap, a silver counterweight at
 // about 10 o'clock and the black handle knob at 5.
 // On the black finish the foot, triangle plate and both hub caps are black but the spool and the drag side's outer
-// rim stay gunmetal, so those take the finish's trim (the reel color where there is none); the drag side's cage
-// takes the cage shade of the frame color instead. The spool-side shots are at an angle, so its slot count, the web
-// and the handle and counterweight positions are approximate.
+// rim stay gunmetal, so those, and the drag side's cage, take the finish's trim (the reel color where there is
+// none). The spool-side shots are at an angle, so its slot count, the web and the handle and counterweight
+// positions are approximate.
 import { P, TRIM, circle, f, foot, knob, knurl, rad, recessed, ring, roundPoly, slots, spoke, svg } from './lib.mjs';
 
 // The wound line starts at the spool face's opening: a 50 mm drum in a 94 mm spool (7/8) is 106 at rim 200.
@@ -69,6 +69,7 @@ const cap = (r) =>
 
 export const drag = svg({
   cage: [ring(196, 104) + slots(SLOTS)],
+  cageFill: TRIM,
   body: [circle(200) + WINDOWS, FOOT],
   details:
     // The outer rim is gunmetal on the black finish too: redrawn in the trim over the body's frame color.
