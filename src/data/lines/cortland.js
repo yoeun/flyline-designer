@@ -21,6 +21,10 @@ export const COLORS = [
   { id: 'cortland-tan', name: 'Tan', hex: '#c4bb9c' },
   { id: 'cortland-sand', name: 'Sand', hex: '#ebe5cd' },
   { id: 'cortland-blue', name: 'Blue', hex: '#75d3db' },
+  { id: 'cortland-seafoam', name: 'Seafoam', hex: '#4ebfa9' },
+  { id: 'cortland-sky-blue', name: 'Sky Blue', hex: '#a1d1e7' },
+  { id: 'cortland-olive', name: 'Olive', hex: '#878e4b' },
+  { id: 'cortland-ice-blue', name: 'Ice Blue', hex: '#0fa7e2' },
 ];
 
 // Cortland draws one taper chart per line with the head length on it but no size. Every size of a
@@ -84,6 +88,26 @@ export const PRODUCTS = [
     sizes: sizes(LINEUP['cortland-444-sl'], {
       type: 'floating',
       colorways: [{ id: 'mint-green', name: 'Mint Green', zones: zones([0, 'cortland-mint-green']) }],
+    }),
+  }),
+  // Dark olive to cut line flash on spring creeks, with a long 8 ft front taper in a 35 ft head.
+  makerProduct({
+    id: 'cortland-spring-creek',
+    maker: 'Cortland',
+    name: 'Cortland Spring Creek',
+    sizes: sizes(LINEUP['cortland-spring-creek'], {
+      type: 'floating',
+      colorways: [{ id: 'olive', name: 'Olive', zones: zones([0, 'cortland-olive']) }],
+    }),
+  }),
+  // Full size heavy, with a compact 26 ft head for big flies, heavy nymph rigs and wind.
+  makerProduct({
+    id: 'cortland-big-shot',
+    maker: 'Cortland',
+    name: 'Cortland Big Shot',
+    sizes: sizes(LINEUP['cortland-big-shot'], {
+      type: 'floating',
+      colorways: [{ id: 'sky-blue', name: 'Sky Blue', zones: zones([0, 'cortland-sky-blue']) }],
     }),
   }),
   // Half a size heavy. Short front taper and a 25 ft back taper; sold as two listings, one per color.
@@ -204,6 +228,30 @@ export const PRODUCTS = [
     sizes: sizes(LINEUP['cortland-tropic-plus-all-purpose'], {
       type: 'floating',
       colorways: [{ id: 'sand-blue', name: 'Sand/Blue', zones: zones([41, 'cortland-sand'], [0, 'cortland-blue']) }],
+    }),
+  }),
+  // The Tarpon Taper's 41 ft head with a clear intermediate tip on a seafoam floating head and running
+  // line, so it's drawn as a sink tip. The description gives the tip as 9 ft; the chart, not to scale,
+  // draws it ending partway along the body.
+  makerProduct({
+    id: 'cortland-tropic-plus-ghost-tip',
+    maker: 'Cortland',
+    name: 'Cortland Tropic Plus Ghost Tip',
+    sizes: sizes(LINEUP['cortland-tropic-plus-ghost-tip'], {
+      id: (w) => `wf${w}i`,
+      type: 'sinktip',
+      colorways: [{ id: 'clear-seafoam', name: 'Clear/Seafoam', zones: zones([9, 'cortland-clear'], [0, 'cortland-seafoam']) }],
+    }),
+  }),
+  // 1.5–2 ips full intermediate for cold-water surf, flats and boats. 22 ft body in a 32 ft head.
+  makerProduct({
+    id: 'cortland-cold-salt-striped-bass-intermediate',
+    maker: 'Cortland',
+    name: 'Cortland Cold Salt Striped Bass Intermediate',
+    sizes: sizes(LINEUP['cortland-cold-salt-striped-bass-intermediate'], {
+      id: (w) => `wf${w}i`,
+      type: 'intermediate',
+      colorways: [{ id: 'ice-blue', name: 'Ice Blue', zones: zones([0, 'cortland-ice-blue']) }],
     }),
   }),
 ];
