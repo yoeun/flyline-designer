@@ -43,12 +43,17 @@ function ModelCard({ model, view }) {
   const photos = PHOTOS_BY_MODEL[model.id] ?? [];
   return (
     <li className="flex min-w-0 flex-col gap-3 rounded-card border border-border bg-card p-4">
-      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-        <h4 className="text-[17px] leading-tight font-bold">{model.name}</h4>
-        {model.discontinued && <span className="rounded-full border border-warn-border bg-warn-bg px-2 py-0.5 text-[12px] font-semibold text-warn">Discontinued</span>}
-        <span className="font-mono text-[12px] text-muted-foreground">
-          {model.id} · design {model.design}
-        </span>
+      <div className="flex flex-col gap-0.5">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <h4 className="text-[17px] leading-tight font-bold">{model.name}</h4>
+          {model.discontinued && <span className="rounded-full border border-warn-border bg-warn-bg px-2 py-0.5 text-[12px] font-semibold text-warn">Discontinued</span>}
+        </div>
+        {/* The catalog id and drawing design, for checking the data; like the photos, only on the dev server. */}
+        {import.meta.env.DEV && (
+          <p className="font-mono text-[12px] text-muted-foreground">
+            {model.id} · design {model.design}
+          </p>
+        )}
       </div>
       <div className="flex flex-col gap-2 rounded-panel bg-stage p-3 text-stage-foreground">
         <div className="flex items-start justify-between gap-2">
