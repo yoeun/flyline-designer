@@ -5,7 +5,7 @@
 // No straight-on drag-side photo exists: the frame (thin rim, five swept spokes from a central boss,
 // body-colored knurled drag knob with a silver screw) is inferred from the angle and exploded shots,
 // with the drilled back flange of the spool showing through. Spoke count and sweep are approximate.
-import { P, circle, f, foot, knob, knurl, rad, ring, roundPoly, screw, spoke, svg } from './lib.mjs';
+import { P, circle, f, foot, knob, knurl, rad, recessed, ring, roundPoly, screw, spoke, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the small holes.
 export const arbor = 114;
@@ -60,7 +60,8 @@ const weight = (cx, cy) =>
   `<circle cx="${f(cx)}" cy="${f(cy)}" r="18" fill="#8d9092"/><circle cx="${f(cx)}" cy="${f(cy)}" r="14" fill="#d3d5d3"/><circle cx="${f(cx)}" cy="${f(cy)}" r="14" fill="url(#sheen)"/>`;
 
 export const spool = svg({
-  back: [FOOT],
+  foot: recessed(FOOT),
+  handles: [[...P(150, rad(120)), 17]],
   body: [
     drilled(200, 108),
     ring(108, 94),

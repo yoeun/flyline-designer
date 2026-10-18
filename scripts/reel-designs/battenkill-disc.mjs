@@ -38,7 +38,8 @@ export const drag = svg({
 const pad = roundPoly([...arcPts(180, rad(-106), rad(-74), 8), ...arcPts(134, rad(-77), rad(-103), 8)], 6);
 
 export const spool = svg({
-  under: DARK_FOOT,
+  foot: DARK_FOOT,
+  handles: [[0, 150, 18]],
   body: [
     circle(200) +
       holes(20, 152, 20.5, -81, (d) => near(d, -90, 10) || near(d, 90, 10)) +

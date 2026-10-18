@@ -3,7 +3,7 @@
 // behind five straight frame spokes (two up, one each side, one down) and a black numbered dial ring around a ribbed knob in the reel
 // color. Spool side: three straight spokes 120° apart around the knurled spool-release cap, the handle in line
 // with the top one and a small knob opposite at 6 o'clock.
-import { P, circle, knurl, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
+import { P, circle, knurl, pad, rad, recessed, ring, slots, spoke, svg } from './lib.mjs';
 import { dial, frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
@@ -32,7 +32,8 @@ export const drag = svg({
 });
 
 export const spool = svg({
-  back: [sageFoot()],
+  foot: recessed(sageFoot()),
+  handles: [[...P(162, rad(-90)), 18]],
   body: [
     ring(200, 112) + slots({ ...RIM, rIn: 124 }),
     pad(162, -90, 30, 44),

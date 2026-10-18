@@ -3,7 +3,7 @@
 // from the rim at either end of the foot to a point opposite it at 6 o'clock, filled solid from the hub down; the spool's ring of rounded windows shows through the rest.
 // Body-colored knurled drag knob with five scalloped recesses and a silver cap. Spool side: ~24 rounded windows
 // round the rim, an open center with three V-shaped spokes; handle and a counterweight pin sit opposite each other.
-import { P, circle, f, foot, knob, knurl, pad, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { P, circle, f, foot, knob, knurl, pad, rad, recessed, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
 export const arbor = 124;
@@ -37,7 +37,8 @@ export const drag = svg({
 // The counterweight sits in the mouth of the V pointing to 8 o'clock; the handle is opposite, at 2 o'clock.
 const HANDLE = -30;
 export const spool = svg({
-  back: [foot(130, -244, 14, 30)],
+  foot: recessed(foot(130, -244, 14, 30)),
+  handles: [[...P(150, rad(HANDLE)), 22]],
   body: [
     ring(200, 112) + slots(WINDOWS),
     // Three V's 120° apart: each pair of arms leaves the hub together and spreads to the window ring.

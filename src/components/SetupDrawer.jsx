@@ -3,14 +3,13 @@ import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetT
 import { LINE_PRESETS, LINE_TYPES, REEL_COLORS, REELS, findById, hexOf, lineColorway, nameOf, presetForLine } from '../data/catalog.js';
 import { zoneRanges } from '../lib/geometry.js';
 import { STYLES, displayName } from '../lib/rack.js';
-import { SIDES } from '../lib/reelFrames.js';
 import { STAGE } from '../lib/theme.js';
 import Button from './Button.jsx';
 import Checks from './Checks.jsx';
 import FlippingReelPreview from './FlippingReelPreview.jsx';
 import LineEditor from './LineEditor.jsx';
 import PreviewModeToggle from './PreviewModeToggle.jsx';
-import Segmented from './Segmented.jsx';
+import ReelSideToggle from './ReelSideToggle.jsx';
 
 const ft = (n) => `${Math.round(n * 10) / 10} ft`;
 
@@ -36,6 +35,7 @@ const Row = ({ label, children }) => (
 
 function SetupDetails({ setup, theme, onOpen, openLabel }) {
   const [side, setSide] = useState('drag');
+  const [spins, setSpins] = useState(0);
   const [mode, setMode] = useState('reel');
   const name = displayName(setup);
   const reel = findById(REELS, setup.reel.model);
@@ -59,10 +59,10 @@ function SetupDetails({ setup, theme, onOpen, openLabel }) {
         {/* The preview on top, as in the designer: side and view toggles, then the checks. */}
         <div className="mx-4 flex flex-col items-center gap-2 rounded-panel bg-stage p-3 text-stage-foreground">
           <div className="flex flex-wrap justify-between gap-2 self-stretch">
-            <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
+            <ReelSideToggle side={side} onChange={setSide} onSpin={() => setSpins((n) => n + 1)} />
             <PreviewModeToggle value={mode} onChange={setMode} />
           </div>
-          <FlippingReelPreview setup={setup} mode={mode} side={side} background={STAGE[theme]} title={`${name} preview`} className="w-full max-w-[340px]" />
+          <FlippingReelPreview setup={setup} mode={mode} side={side} spins={spins} background={STAGE[theme]} title={`${name} preview`} className="w-full max-w-[340px]" />
           <Checks setup={setup} />
         </div>
 

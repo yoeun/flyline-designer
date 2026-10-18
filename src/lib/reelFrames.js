@@ -19,11 +19,48 @@ export const SIDES = [
   ['spool', 'Spool'],
 ];
 
-// The SVG's contents without the outer <svg>, ids suffixed so several previews can share a page.
-export function frameMarkup(design, side, suffix) {
+// Handles smaller than this (rim = 200) get a bigger circle to click.
+const HANDLE_HIT = 26;
+
+// The SVG's contents without the outer <svg>, ids suffixed so several previews can share a page. With handles,
+// a drawing whose spool turns (a [data-cage] group) gets a clear [data-handle] circle over each handle, inside
+// the cage so it turns with it.
+export function frameMarkup(design, side, suffix, { handles = false } = {}) {
   const svg = (FRAMES[design] ?? FRAMES.generic)[side] ?? FRAMES.generic.drag;
+  const hits = handles
+    ? (svg.match(/<svg[^>]*\sdata-handles="([^"]+)"/)?.[1] ?? '')
+        .split(',')
+        .filter(Boolean)
+        .map((h) => {
+          const [cx, cy, r] = h.split(' ').map(Number);
+          return `<circle data-handle="" cx="${cx}" cy="${cy}" r="${Math.max(r, HANDLE_HIT)}" fill="transparent" style="cursor:pointer"/>`;
+        })
+        .join('')
+    : '';
   return svg
     .replace(/^[\s\S]*?<svg[^>]*>/, '')
     .replace(/<\/svg>\s*$/, '')
+    .replace(/(<g data-cage="">[\s\S]*)<\/g>\s*$/, `$1${hits}</g>`)
     .replace(/(id="|url\(#|href="#)([\w-]+)/g, `$1$2-${suffix}`);
+}
+
+// Turns a spool's cage, every [data-cage] piece in `frame`, one more full turn counter-clockwise, easing out to a
+// stop where it started, so the drawing at rest never changes. A click mid-spin carries on from wherever it is.
+export function spinCage(frame) {
+  const pieces = [...frame.querySelectorAll('[data-cage]')];
+  if (!pieces.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const [a, b] = getComputedStyle(pieces[0]).transform.match(/-?[\d.e]+/g)?.map(Number) ?? [1, 0];
+  // Counter-clockwise is negative: how far round the cage is now, from 0 down to -360.
+  const from = -((360 - (Math.atan2(b, a) * 180) / Math.PI) % 360);
+  // At least a full turn: from partway round, on through the next 360.
+  const to = from ? -720 : -360;
+  for (const piece of pieces) {
+    for (const anim of piece.getAnimations()) anim.cancel();
+    Object.assign(piece.style, { transformBox: 'view-box', transformOrigin: '0 0' });
+    piece.animate([{ transform: `rotate(${from}deg)` }, { transform: `rotate(${to}deg)` }], {
+      // A gentle ease-out: a sharper one starts so fast that the windows strobe and the spool seems to turn back.
+      duration: 1000,
+      easing: 'ease-out',
+    });
+  }
 }

@@ -1,5 +1,5 @@
 // Redington Behemoth.
-import { P, arcPts, circle, f, foot, knob, knurl, rad, ring, roundPoly, spoke, svg } from './lib.mjs';
+import { P, arcPts, circle, f, foot, knob, knurl, rad, recessed, ring, roundPoly, spoke, svg } from './lib.mjs';
 
 // Behemoth drag dial: body-colored, knurled edge, radial ribs on the face.
 const behemothDial = (() => {
@@ -40,7 +40,8 @@ export const drag = svg({
 });
 
 export const spool = svg({
-  back: [foot(118, -244, 14, 30)],
+  foot: recessed(foot(118, -244, 14, 30)),
+  handles: [[...P(150, rad(-67.5)), 22]],
   body: [ring(200, 184), ...Array.from({ length: 16 }, (_, k) => spoke(-90 + k * 22.5, 40, 190, 10, 22)), circle(46)],
   details:
     Array.from({ length: 16 }, (_, i) => {

@@ -2,7 +2,7 @@
 // A click-and-pawl reel, so the frame side has no drag knob. Frame side (from a straight-on photo): three Y spokes,
 // two curving up to about 10 and 2 o'clock and one down to 6 o'clock carrying the click button; in photos the
 // spool's own spokes show through between them. Spool side: three Y spokes 120° apart, one up to 12. The spool's gear teeth show inside the window ring; 22 teardrop windows on both sides.
-import { P, circle, knurl, pad, rad, ring, roundPoly, strut, svg } from './lib.mjs';
+import { P, circle, knurl, pad, rad, recessed, ring, roundPoly, strut, svg } from './lib.mjs';
 import { arm, frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
 
 // The wound line starts at the inner edge of the teardrop windows.
@@ -62,7 +62,8 @@ export const drag = svg({
 
 // Spool side: the spokes turned over; handle near the rim at 12 o'clock on the upper spoke, a small knob at 6.
 export const spool = svg({
-  back: [sageFoot()],
+  foot: recessed(sageFoot()),
+  handles: [[...P(169, rad(-90)), 18]],
   body: [ring(200, 140) + RIM, pad(169, -90, 30, 40), pad(169, 90, 26, 36), ...spokes(-90), web([-90, 30, 150])],
   details:
     logo(0, 0, 26) +

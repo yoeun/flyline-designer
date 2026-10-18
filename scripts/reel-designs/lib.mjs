@@ -105,21 +105,36 @@ export const SHEEN = `<linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1"><st
 export const SHEEN_RECT = `<rect x="-215" y="-250" width="430" height="470" fill="url(#sheen)" mask="url(#body-mask)"/>`;
 
 // under: fixed-color markup behind everything; back: recessed metal (darkened); body: front metal in reel color;
-// details: fixed colors on top.
-export function svg({ under = '', back = [], body, details = '' }) {
+// details: fixed colors on top. On the spool side the spool turns: foot is markup that stays put behind it, and
+// handles lists the [cx, cy, r] circles a click on the handle can land in. Everything else is in [data-cage]
+// pieces that turn together, while the shadow's offset and the sheen's light stay put.
+export function svg({ foot = '', under = '', back = [], body, details = '', handles = [] }) {
   const backPaths = back.map((d) => `<path d="${d}"/>`).join('');
   const bodyPaths = body.map((d) => `<path d="${d}"/>`).join('');
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-215 -250 430 470" color="#b8bdc2">
-<defs>${SHEEN}<g id="back" fill-rule="evenodd">${backPaths}</g><g id="body" fill-rule="evenodd">${bodyPaths}</g><mask id="body-mask"><use href="#body" fill="#fff"/></mask></defs>
-${under ? under + '\n' : ''}${back.length ? '<use href="#back" fill="currentColor"/><use href="#back" fill="#000" opacity=".2"/>' : ''}
-<use href="#body" fill="#000" opacity=".28" transform="translate(2 4)"/>
-<use href="#body" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="2"/>
-<use href="#body" fill="currentColor"/>
+  const handleAttr = handles.length ? ` data-handles="${handles.map((h) => h.map(f).join(' ')).join(',')}"` : '';
+  const cage = foot ? ' data-cage=""' : '';
+  const turn = (markup) => (foot ? `<g data-cage="">${markup}</g>` : markup);
+  const behind = `${under ? under + '\n' : ''}${back.length ? '<use href="#back" fill="currentColor"/><use href="#back" fill="#000" opacity=".2"/>' : ''}`;
+  const shadow = foot
+    ? '<g transform="translate(2 4)"><use href="#body" data-cage="" fill="#000" opacity=".28"/></g>'
+    : '<use href="#body" fill="#000" opacity=".28" transform="translate(2 4)"/>';
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-215 -250 430 470" color="#b8bdc2"${handleAttr}>
+<defs>${SHEEN}<g id="back" fill-rule="evenodd">${backPaths}</g><g id="body" fill-rule="evenodd">${bodyPaths}</g><mask id="body-mask"><use href="#body"${cage} fill="#fff"/></mask></defs>
+${foot ? foot + '\n' : ''}${behind && turn(behind)}
+${shadow}
+${turn(`<use href="#body" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="2"/>
+<use href="#body" fill="currentColor"/>`)}
 ${SHEEN_RECT}
-${details}
+${turn(details)}
 </svg>
 `;
 }
+
+// Paths in recessed metal, as `back` draws them, e.g. for svg's foot.
+export const recessed = (...ds) => {
+  const paths = ds.map((d) => `<path d="${d}"/>`).join('');
+  return `<g fill-rule="evenodd" fill="currentColor">${paths}</g><g fill-rule="evenodd" fill="#000" opacity=".2">${paths}</g>`;
+};
 
 // Dark knob with a screw slot, e.g. a handle seen end-on.
 export const knob = (cx, cy, r) =>

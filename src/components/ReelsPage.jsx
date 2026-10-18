@@ -2,13 +2,12 @@ import { useRef, useState } from 'react';
 import PHOTOS from 'reel-photos';
 import { BACKING_COLORS, LINE_COLORS, REELS, REEL_MODELS, makerGroups, reelColors, reelSizeLabel, reelSizes } from '../data/catalog.js';
 import { PREVIEW_COLORS, capacityText, photosByModel, previewSetup } from '../lib/reelsPage.js';
-import { SIDES } from '../lib/reelFrames.js';
 import { cn } from '@/lib/utils';
 import Button from './Button.jsx';
 import { CHIP } from './Chips.jsx';
 import FlippingReelPreview from './FlippingReelPreview.jsx';
 import Icon from './Icon.jsx';
-import Segmented from './Segmented.jsx';
+import ReelSideToggle from './ReelSideToggle.jsx';
 import Select from './Select.jsx';
 import Swatches from './Swatches.jsx';
 import FilterSheet from './FilterSheet.jsx';
@@ -38,6 +37,7 @@ function ModelCard({ model, view, onNewSetup }) {
   const colors = reelColors(model);
   const [sizeId, setSizeId] = useState(sizes[0].id);
   const [side, setSide] = useState('drag');
+  const [spins, setSpins] = useState(0);
   const [color, setColor] = useState(colors[0].id);
   const size = sizes.find((s) => s.id === sizeId) ?? sizes[0];
   const setup = previewSetup(size, color, view);
@@ -86,11 +86,11 @@ function ModelCard({ model, view, onNewSetup }) {
           ) : (
             <span className="self-center text-[14px] font-semibold">{reelSizeLabel(size)}</span>
           )}
-          <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
+          <ReelSideToggle side={side} onChange={setSide} onSpin={() => setSpins((n) => n + 1)} />
         </div>
         <div className="flex items-center justify-center" style={{ aspectRatio: AREA_RATIO }}>
           <span className="block" style={{ width: `${(size.rim / MAX_RIM) * 100}%` }}>
-            <FlippingReelPreview setup={setup} side={side} background="none" title={size.name} />
+            <FlippingReelPreview setup={setup} side={side} spins={spins} background="none" title={size.name} />
           </span>
         </div>
         {colors.length > 1 && <Swatches colors={colors} value={color} onChange={setColor} label={`${model.name} color`} size={24} touchSize={32} className="justify-center gap-3" />}

@@ -1,6 +1,6 @@
 // Lamson Speedster S.
 // The photos are three-quarter views; the straight-on spoke angles, the 16-slot ring and the handle radius are inferred.
-import { ACCENT, P, circle, foot, hexSpokes, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, foot, hexSpokes, knob, knurl, rad, recessed, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
 export const arbor = 140;
@@ -35,7 +35,8 @@ const SPOKE_LINES = hexSpokes({ hex: HEX, reach: 132, ends: SPOKE_ENDS, ccw: tru
 const handle = SPOKE_LINES[4].end;
 const holes = [0, 1, 2, 3, 4, 5].map((k) => `<circle cx="${P(13, rad(k * 60)).map((v) => v.toFixed(1)).join('" cy="')}" r="3" fill="#2a2c2e"/>`).join('');
 export const spool = svg({
-  back: [foot(128, -244, 14, 34)],
+  foot: recessed(foot(128, -244, 14, 34)),
+  handles: [[...handle, 17]],
   body: [
     ring(200, 128) + slots({ n: 18, rIn: 140, rOut: 186, bar: 14, corner: 7, off: SPOKE_ENDS[0] }),
     ...SPOKE_LINES.map(({ corner, end }) => strut(corner, end, 22, 16)),

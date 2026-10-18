@@ -1,6 +1,6 @@
 // Lamson Guru S.
 // The photos are three-quarter views; the straight-on spoke angles, the slot counts and the handle radius are inferred.
-import { ACCENT, P, circle, foot, knob, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, foot, knob, rad, recessed, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the drag side's windows.
 export const arbor = 128;
@@ -35,7 +35,8 @@ export const drag = svg({
 // Spool side: a rim of 20 square slots round an inner band, and six thin spokes from the cap to the band;
 // the handle sits where the upper-left one meets the band.
 export const spool = svg({
-  back: [foot(128, -244, 14, 34)],
+  foot: recessed(foot(128, -244, 14, 34)),
+  handles: [[...P(134, rad(-150)), 17]],
   body: [
     ring(200, 124) + slots({ n: 20, rIn: 138, rOut: 186, bar: 14, corner: 6 }),
     ...[-90, -30, 30, 90, 150, 210].map((a) => spoke(a, 30, 130, 22, 15)),

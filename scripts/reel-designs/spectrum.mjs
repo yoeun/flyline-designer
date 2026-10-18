@@ -3,7 +3,7 @@
 // Drag side from Far Bank's photo: 18 deep windows, five wide straight spokes (two up, one each side, one
 // down) and a flat numbered dial with a logo badge, in the frame color (the Spectrum C's takes the other finish's). Spool side: three straight spokes 120° apart, the handle in line with the top one and
 // a small knob opposite at 6 o'clock.
-import { ACCENT, P, circle, pad, rad, ring, slots, spoke, svg } from './lib.mjs';
+import { ACCENT, P, circle, pad, rad, recessed, ring, slots, spoke, svg } from './lib.mjs';
 import { frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
@@ -35,7 +35,8 @@ export const drag = svg({
 });
 
 export const spool = svg({
-  back: [sageFoot()],
+  foot: recessed(sageFoot()),
+  handles: [[...P(158, rad(-90)), 18]],
   body: [
     ring(200, 102) + slots({ ...RIM, rIn: 114 }),
     pad(158, -90, 34, 50),

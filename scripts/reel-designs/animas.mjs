@@ -4,7 +4,7 @@
 // the spool's outer cage of windows shows through, recessed. Spool side: eight Y's whose stems run in to the hub
 // and whose arms carry on as the outer cage's sixteen bars; wood-wrapped handle at 9 o'clock, counterweight at 3.
 // Both from Ross's straight-on product photos; the spool's dark drag housing behind the spokes is left out.
-import { ACCENT, P, circle, f, foot, knurl, pad, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, f, foot, knurl, pad, rad, recessed, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
 export const arbor = 146;
@@ -59,7 +59,8 @@ const handleAt = P(166, Math.PI);
 const weightAt = P(166, 0);
 
 export const spool = svg({
-  back: [ANIMAS_FOOT],
+  foot: recessed(ANIMAS_FOOT),
+  handles: [[...handleAt, 30]],
   body: [
     ring(200, 134) + slots({ ...OUTER, rIn: 146 }),
     ...ys,

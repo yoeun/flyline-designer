@@ -4,7 +4,7 @@
 // Spool side: ~24 hooked fingers reach in from the rim; every third is a full spoke to the hub. Handle position is
 // inferred from angled photos. The fingers reach down to about where the backing starts, which differs by size:
 // this is the 4/5; zero-23.mjs is the 2/3.
-import { P, bars, circle, foot, knob, rad, ring, roundPoly, spoke, svg } from './lib.mjs';
+import { P, bars, circle, foot, knob, rad, recessed, ring, roundPoly, spoke, svg } from './lib.mjs';
 
 // Fingers from the rim inward, hooking sideways at the tip.
 const finger = (deg, rOut, rIn, w) => bars([P(rOut, rad(deg)), P(rIn, rad(deg)), P(rIn - 12, rad(deg + 6))], w);
@@ -27,7 +27,8 @@ export const zeroSides = (fingerIn) => ({
     details: '',
   }),
   spool: svg({
-    back: [foot(150, -244, 14, 30)],
+    foot: recessed(foot(150, -244, 14, 30)),
+    handles: [[...P(150, rad(HANDLE)), 22]],
     body: [
       ring(200, 182),
       ...FINGERS.filter((_, k) => k % 3 !== 0).flatMap((a) => finger(a, 188, fingerIn, 14)),

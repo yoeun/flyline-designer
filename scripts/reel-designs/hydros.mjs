@@ -54,7 +54,8 @@ const HYDROS_SPOKES = [-30, 90, 210].map(arcBand);
 // The spool around the spokes: window ring, hub, handle pad and counterweight.
 export const hydrosSpool = (spokes) =>
   svg({
-    under: HYDROS_FOOT,
+    foot: HYDROS_FOOT,
+    handles: [[...P(146, rad(-38)), 23]],
     body: [ring(200, 100) + slots({ n: 14, rIn: 116, rOut: 176, bar: 17, corner: 9, off: -90 + 360 / 28 }), ...spokes, circle(HUB), pad(146, -38, 46, 64)],
     details: SPOOL_DETAILS,
   });

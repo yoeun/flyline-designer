@@ -1,7 +1,7 @@
 // Hatch Iconic (Large and Mid Arbor share this frame).
 // Drawn from Hatch's straight-on 5 Plus photos. The drag side's swirl is simplified to six curved arms from the hub
 // to the rim, over the spool's darker outer cage.
-import { P, circle, f, knurl, rad, ring, roundPoly, strut, svg } from './lib.mjs';
+import { P, circle, f, knurl, rad, recessed, ring, roundPoly, strut, svg } from './lib.mjs';
 
 // The wound line starts at the outer edge of the cage's base ring.
 export const arbor = 128;
@@ -90,7 +90,8 @@ export const hatchSpool = ({ inner = 132, bars = 12, barSweep = -30, barBend = -
     ? [...Array.from({ length: straight }, (_, k) => strut([0, 0], P(CAGE_R, rad(-90 + (k * 360) / straight)), 20, 16)), circle(hub)]
     : [...Array.from({ length: spokes }, (_, k) => arm(-90 + (k * 360) / spokes - spokeSweep, hub - 6, -90 + (k * 360) / spokes, inner - 8, 22, 16, spokeBend)), circle(hub)];
   return svg({
-  back: [...hatchFoot()],
+  foot: recessed(...hatchFoot()),
+  handles: [[...P(160, rad(handle)), 30]],
   body: [
     ring(200, 180),
     // With straight spokes (the Iconic) the outer cage is the drag side's, seen from this face; otherwise a ring
