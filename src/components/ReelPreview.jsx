@@ -105,7 +105,7 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
           onClick={(e) => {
             if (!e.target.closest('[data-handle]')) return;
             e.stopPropagation();
-            spinCage(e.currentTarget.querySelector('[data-cage]'));
+            spinCage(e.currentTarget);
           }}
           dangerouslySetInnerHTML={{ __html: frameMarkup(layout.reel.design, side, uid, { handles: side === 'spool' }) }}
         />

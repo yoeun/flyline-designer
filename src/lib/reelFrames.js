@@ -44,20 +44,23 @@ export function frameMarkup(design, side, suffix, { handles = false } = {}) {
     .replace(/(id="|url\(#|href="#)([\w-]+)/g, `$1$2-${suffix}`);
 }
 
-// Turns a spool's cage one more full turn counter-clockwise, easing out to a stop where it started, so the
-// drawing at rest never changes. A click mid-spin carries on from wherever the cage is.
-export function spinCage(cage) {
-  if (!cage || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const [a, b] = getComputedStyle(cage).transform.match(/-?[\d.e]+/g)?.map(Number) ?? [1, 0];
+// Turns a spool's cage, every [data-cage] piece in `frame`, one more full turn counter-clockwise, easing out to a
+// stop where it started, so the drawing at rest never changes. A click mid-spin carries on from wherever it is.
+export function spinCage(frame) {
+  const pieces = [...frame.querySelectorAll('[data-cage]')];
+  if (!pieces.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const [a, b] = getComputedStyle(pieces[0]).transform.match(/-?[\d.e]+/g)?.map(Number) ?? [1, 0];
   // Counter-clockwise is negative: how far round the cage is now, from 0 down to -360.
   const from = -((360 - (Math.atan2(b, a) * 180) / Math.PI) % 360);
-  for (const anim of cage.getAnimations()) anim.cancel();
-  Object.assign(cage.style, { transformBox: 'view-box', transformOrigin: '0 0' });
   // At least a full turn: from partway round, on through the next 360.
   const to = from ? -720 : -360;
-  cage.animate([{ transform: `rotate(${from}deg)` }, { transform: `rotate(${to}deg)` }], {
-    // A gentle ease-out: a sharper one starts so fast that the windows strobe and the spool seems to turn back.
-    duration: 1000,
-    easing: 'ease-out',
-  });
+  for (const piece of pieces) {
+    for (const anim of piece.getAnimations()) anim.cancel();
+    Object.assign(piece.style, { transformBox: 'view-box', transformOrigin: '0 0' });
+    piece.animate([{ transform: `rotate(${from}deg)` }, { transform: `rotate(${to}deg)` }], {
+      // A gentle ease-out: a sharper one starts so fast that the windows strobe and the spool seems to turn back.
+      duration: 1000,
+      easing: 'ease-out',
+    });
+  }
 }
