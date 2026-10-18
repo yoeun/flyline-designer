@@ -69,6 +69,7 @@ export const COLORS = [
   // Far paler than the 444 SL's mint green.
   { id: 'cortland-sink-tip-type-6-mint-green', name: 'Sink Tip Type 6 Mint Green', hex: '#98cc9b' },
   { id: 'cortland-fairplay-blue-green', name: 'Fairplay Blue Green', hex: '#98d096' },
+  { id: 'cortland-compact-sink-type-6-electric-green', name: 'Compact Sink Type 6 Electric Green', hex: '#05834c' },
 ];
 
 // Cortland draws one taper chart per line with the head length on it but no size. Every size of a
@@ -790,6 +791,19 @@ export const PRODUCTS = [
     sizes: sizes(LINEUP['cortland-fairplay-saltwater-floating'], {
       type: 'floating',
       colorways: [{ id: 'yellow', name: 'Yellow', zones: zones([0, 'cortland-yellow']) }],
+    }),
+  }),
+  // Rated by grain weight for two rod weights, drawn at the lower. A black 28 ft Type 6 sinking head
+  // on an electric green intermediate running line; the chart's 12 ft step down to the running line,
+  // green like the running line, is drawn here as running line.
+  makerProduct({
+    id: 'cortland-compact-sink-type-6',
+    maker: 'Cortland',
+    name: 'Cortland Compact Sink Type 6',
+    sizes: sizes(LINEUP['cortland-specialty-compact-sink-type-6'], {
+      id: (w) => `wf${w}s6`,
+      type: 'sinkhead-int',
+      colorways: [{ id: 'black-electric-green', name: 'Black/Electric Green', zones: zones([28, 'cortland-black'], [0, 'cortland-compact-sink-type-6-electric-green']) }],
     }),
   }),
 ];

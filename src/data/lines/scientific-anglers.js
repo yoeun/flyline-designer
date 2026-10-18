@@ -98,6 +98,7 @@ export const COLORS = [
   { id: 'sa-frequency-intermediate-atmosphere', name: 'Atmosphere', hex: '#89ceb9' },
   { id: 'sa-sonar-striper-blue', name: 'Striper Blue', hex: '#4b8dca' },
   { id: 'sa-sonar-striper-storm-grey', name: 'Storm Grey', hex: '#9eb1ad' },
+  { id: 'sa-sonar-stillwater-hover-blue-spruce', name: 'Blue Spruce', hex: '#5e7875' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -1865,6 +1866,23 @@ export const PRODUCTS = [
       taper: sameHead(STRIPER, size),
       lineup: size,
       colorways: [{ id: 'blue-storm-grey', name: 'Blue/Storm Grey', zones: zones([30, 'sa-sonar-striper-storm-grey'], [0, 'sa-sonar-striper-blue']) }],
+    })),
+  }),
+  // 0.5 ips, two sizes heavy. Its own diagram has the Sonar Stillwater Intermediate's ticks, so it shares
+  // SONAR_STILLWATER_INTERMEDIATE on the same 45 ft head in every size. A blue spruce head on a surf
+  // running line; the swatch's surf matches SA's Surf.
+  makerProduct({
+    id: 'sa-sonar-stillwater-hover',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Stillwater Hover',
+    sizes: LINEUP['sa-sonar-stillwater-hover'].sizes.map((size) => ({
+      id: `wf${size.weight}h`,
+      label: size.label,
+      type: 'hover',
+      weight: size.weight,
+      taper: sameHead(SONAR_STILLWATER_INTERMEDIATE, size),
+      lineup: size,
+      colorways: [{ id: 'surf-blue-spruce', name: 'Surf/Blue Spruce', zones: zones([45, 'sa-sonar-stillwater-hover-blue-spruce'], [0, 'sa-surf']) }],
     })),
   }),
 ];
