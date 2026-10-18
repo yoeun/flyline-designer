@@ -3,6 +3,7 @@ import { toast } from 'sonner';
 import Button from './components/Button.jsx';
 import Checks from './components/Checks.jsx';
 import DetailsDialog from './components/DetailsDialog.jsx';
+import DiscardDialog from './components/DiscardDialog.jsx';
 import FlippingReelPreview from './components/FlippingReelPreview.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
 import HeaderMenu from './components/HeaderMenu.jsx';
@@ -93,6 +94,8 @@ export default function App() {
   const [detailsEntryId, setDetailsEntryId] = useState(null);
   // The rack entry shown in the setup drawer (from a rack card's menu), if any.
   const [viewingId, setViewingId] = useState(null);
+  // The unsaved-changes dialog, and the action to run if the changes are discarded.
+  const [discard, setDiscard] = useState({ open: false, run: null, name: '' });
   const svgRef = useRef(null);
   const headerRef = useFixedHeader();
   // The page the address bar shows; a change of page pushes a history entry, design edits replace it.
@@ -241,48 +244,53 @@ export default function App() {
     setState({ setup: { ...setup, reel, line: next.line }, presetId: next.presetId });
   };
 
-  const discardOk = () => !dirty || window.confirm(`Discard your changes to “${displayName(setup)}”? They aren't saved to your rack.`);
+  // Runs an action that replaces the design, first asking in a dialog when there are unsaved changes.
+  const discardThen = (run) => (dirty ? setDiscard({ open: true, run, name: displayName(setup) }) : run());
 
   // Open a rack entry in the designer to edit it in place.
   const loadEntry = (entry) => {
-    if (!discardOk()) return;
-    const { id, ...rest } = structuredClone(entry);
-    setLineSelection(null);
-    setState({ setup: rest, presetId: presetForLine(rest.line) });
-    setEditingId(id);
-    setCameFromDesigner(false);
-    setPage('designer');
+    discardThen(() => {
+      const { id, ...rest } = structuredClone(entry);
+      setLineSelection(null);
+      setState({ setup: rest, presetId: presetForLine(rest.line) });
+      setEditingId(id);
+      setCameFromDesigner(false);
+      setPage('designer');
+    });
   };
 
   // A copy of a rack entry as a new setup in the designer; it joins the rack when saved.
   const duplicateEntry = (entry) => {
-    if (!discardOk()) return;
-    const copy = copyOf(entry);
-    setLineSelection(null);
-    setState({ setup: copy, presetId: presetForLine(copy.line) });
-    setEditingId(null);
-    setCameFromDesigner(false);
-    setPage('designer');
-    toast(`Started “${copy.title}”.`);
+    discardThen(() => {
+      const copy = copyOf(entry);
+      setLineSelection(null);
+      setState({ setup: copy, presetId: presetForLine(copy.line) });
+      setEditingId(null);
+      setCameFromDesigner(false);
+      setPage('designer');
+      toast(`Started “${copy.title}”.`);
+    });
   };
 
   // Back to the default reel, line and backing, to design the next setup. The preview view stays as is.
   const startNew = () => {
-    if (!discardOk()) return;
-    setLineSelection(null);
-    setState({ setup: structuredClone(DEFAULT_SETUP), presetId: LINE_PRESETS[0].id });
-    setEditingId(null);
-    setCameFromDesigner(false);
-    setPage('designer');
-    toast('Started a new setup.');
+    discardThen(() => {
+      setLineSelection(null);
+      setState({ setup: structuredClone(DEFAULT_SETUP), presetId: LINE_PRESETS[0].id });
+      setEditingId(null);
+      setCameFromDesigner(false);
+      setPage('designer');
+      toast('Started a new setup.');
+    });
   };
 
   // Back to the saved entry (or the defaults for a new setup), staying on it.
   const resetAll = () => {
-    if (!discardOk()) return;
-    const { id, ...rest } = structuredClone(baseline);
-    setLineSelection(null);
-    setState({ setup: rest, presetId: presetForLine(rest.line) });
+    discardThen(() => {
+      const { id, ...rest } = structuredClone(baseline);
+      setLineSelection(null);
+      setState({ setup: rest, presetId: presetForLine(rest.line) });
+    });
   };
 
   const resetSection = (key) => {
@@ -365,24 +373,27 @@ export default function App() {
   // reel doesn't take (the checks then say so).
   const tryLine = (id) => {
     const preset = findById(LINE_PRESETS, id);
-    if (!preset || !discardOk()) return;
-    setLineSelection(null);
-    setState({ setup: { ...structuredClone(DEFAULT_SETUP), reel: setup.reel, backing: setup.backing, line: structuredClone(preset.line) }, presetId: id });
-    setEditingId(null);
-    setCameFromDesigner(false);
-    setPage('designer');
+    if (!preset) return;
+    discardThen(() => {
+      setLineSelection(null);
+      setState({ setup: { ...structuredClone(DEFAULT_SETUP), reel: setup.reel, backing: setup.backing, line: structuredClone(preset.line) }, presetId: id });
+      setEditingId(null);
+      setCameFromDesigner(false);
+      setPage('designer');
+    });
   };
 
   // From the Reels page: a new setup on the reel and finish picked there.
   const newFromReel = (reel) => {
-    if (!discardOk()) return;
-    const next = setupForReel(reel);
-    setLineSelection(null);
-    setState(next);
-    setEditingId(null);
-    setCameFromDesigner(false);
-    setPage('designer');
-    toast(`Started a new setup on the ${findById(REELS, reel.model)?.name ?? 'reel'}.`);
+    discardThen(() => {
+      const next = setupForReel(reel);
+      setLineSelection(null);
+      setState(next);
+      setEditingId(null);
+      setCameFromDesigner(false);
+      setPage('designer');
+      toast(`Started a new setup on the ${findById(REELS, reel.model)?.name ?? 'reel'}.`);
+    });
   };
 
   const backToDesigner = () => {
@@ -539,6 +550,15 @@ export default function App() {
         // Reset and Save stay in reach on a phone, fixed to the bottom of the screen.
         <div className="fixed inset-x-0 bottom-0 z-30 flex gap-2 border-t border-border bg-card px-4 py-3 sm:hidden [&>*]:flex-1">{saveButtons}</div>
       )}
+      <DiscardDialog
+        open={discard.open}
+        name={discard.name}
+        onDiscard={() => {
+          setDiscard((d) => ({ ...d, open: false }));
+          discard.run();
+        }}
+        onCancel={() => setDiscard((d) => ({ ...d, open: false }))}
+      />
       <ShareDialog open={shareOpen} share={share} busy={shareBusy} onShare={startSharing} onRotate={newShareLink} onStop={stopSharing} onClose={() => setShareOpen(false)} />
       <SetupDrawer
         setup={rack.find((s) => s.id === viewingId) ?? null}
