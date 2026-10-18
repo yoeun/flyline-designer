@@ -59,7 +59,7 @@ function SheetContent({
         data-slot="sheet-content"
         data-side={side}
         className={cn(
-          "fixed z-50 flex flex-col gap-4 bg-popover text-sm text-popover-foreground shadow-lg outline-none duration-200 data-open:animate-in data-closed:animate-out",
+          "fixed z-50 flex flex-col gap-4 border-border bg-popover text-sm text-popover-foreground shadow-lg outline-none duration-200 data-open:animate-in data-closed:animate-out",
           side === "right" &&
             "inset-y-0 right-0 h-full w-3/4 border-l data-open:slide-in-from-right data-closed:slide-out-to-right sm:max-w-sm",
           side === "left" &&
