@@ -60,6 +60,12 @@ export const COLORS = [
   { id: 'rio-trans-green', name: 'Trans Green', hex: '#90c5b8' },
   { id: 'rio-seafoam', name: 'Seafoam', hex: '#9fe3c4' },
   { id: 'rio-peach-sand', name: 'Sand', hex: '#efcf9f' },
+  { id: 'rio-gray-moss', name: 'Gray Moss', hex: '#8e9a74' },
+  { id: 'rio-brown-moss', name: 'Brown Moss', hex: '#a39a76' },
+  { id: 'rio-chartreuse', name: 'Chartreuse', hex: '#d6ee4c' },
+  { id: 'rio-silver-gray', name: 'Silver Gray', hex: '#a7a9a8' },
+  { id: 'rio-light-orange', name: 'Light Orange', hex: '#f6a03c' },
+  { id: 'rio-purple', name: 'Purple', hex: '#bd55c4' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -647,6 +653,59 @@ const eliteGt = rio({
   densities: [float({ split: [3, 27, 6], example: 12 }, colorway('blue-orange-sea-grass', 'Blue/Orange/Sea Grass', [20, 'rio-pale-blue'], [16, 'rio-orange'], [0, 'rio-sea-grass']))],
 });
 
+// Elite Salmon/Steelhead. RIO's WF8F diagram: front taper 6.5, body 24 plus 8, back taper 13.5 on
+// 48 ft of running line. Every size has a 52 ft head. Moss to the end of the body (38.5 ft), then
+// yellow from the back taper to the end of the line.
+const salmonSteelhead = rio({
+  id: 'rio-elite-salmon-steelhead',
+  name: 'RIO Elite Salmon/Steelhead',
+  sizes: LINEUP['rio-elite-salmon-steelhead'].sizes,
+  densities: [float({ split: [6.5, 32, 13.5], example: 8 }, colorway('moss-yellow', 'Moss/Yellow', [38.5, 'rio-gray-moss'], [0, 'rio-pale-yellow']))],
+});
+
+// Premier Redfish. RIO's WF8F diagram: front taper 6, front body 9, body 15, back taper 5 plus 2 on
+// 63 ft of running line. Aqua Blue to 35 ft (the end of the 5 ft taper; the last 2 ft are drawn in
+// the running line's color), then sand.
+const redfish = rio({
+  id: 'rio-premier-redfish',
+  name: 'RIO Premier Redfish',
+  sizes: LINEUP['rio-premier-redfish'].sizes,
+  densities: [float({ split: [6, 24, 7], example: 8 }, colorway('aqua-blue-sand', 'Aqua Blue/Sand', [35, 'rio-aqua-blue'], [0, 'rio-sand']))],
+});
+
+// Premier Redfish XP. RIO's WF8F diagram: front taper 3, front body 13, body 11, back taper 8, then a
+// 12 ft handling section and 53 ft of running line. Every size has a 35 ft head. A gray head on an
+// orange running line.
+const redfishXp = rio({
+  id: 'rio-premier-redfish-xp',
+  name: 'RIO Premier Redfish XP',
+  sizes: LINEUP['rio-premier-redfish-xp'].sizes,
+  densities: [float({ split: [3, 24, 8], example: 8 }, colorway('gray-orange', 'Gray/Orange', [35, 'rio-silver-gray'], [0, 'rio-light-orange']))],
+});
+
+// Elite Smallmouth Bass. RIO's WF8F diagram: front taper 7, body 13 plus 11, back taper 7, then a
+// 28 ft handling section and 34 ft of running line. The diagram's darker green runs to 20 ft and its
+// lighter green to the end of the head; RIO's colors, tip first, are Moss/Chartreuse/Beige.
+const smallmouthBass = rio({
+  id: 'rio-elite-smallmouth-bass',
+  name: 'RIO Elite Smallmouth Bass',
+  sizes: LINEUP['rio-elite-smallmouth-bass'].sizes,
+  densities: [
+    float({ split: [7, 24, 7], example: 8 }, colorway('moss-chartreuse-beige', 'Moss/Chartreuse/Beige', [20, 'rio-brown-moss'], [18, 'rio-chartreuse'], [0, 'rio-beige'])),
+  ],
+});
+
+// Premier Coastal Quickshooter XP. RIO's WF9I diagram: front taper 3, front body 13, body 13, back
+// taper 3, then a 10 ft handling section. That head is 32 ft; RIO's table says 33 for WF9I, so every
+// size is the diagram scaled to its table head and marked estimated. A clear head on a purple
+// running line.
+const coastalQuickShooterXp = rio({
+  id: 'rio-premier-coastal-quickshooter-xp',
+  name: 'RIO Premier Coastal Quickshooter XP',
+  sizes: LINEUP['rio-premier-coastal-quickshooter-xp'].sizes,
+  densities: [intermediate({ split: [3, 26, 3] }, colorway('clear-purple', 'Clear/Purple', [32, 'rio-clear'], [0, 'rio-purple']))],
+});
+
 export const PRODUCTS = [
   makerProduct({
     id: 'rio-premier-gold',
@@ -689,6 +748,11 @@ export const PRODUCTS = [
   flatsClear,
   bonefishQuickShooter,
   eliteGt,
+  salmonSteelhead,
+  redfish,
+  redfishXp,
+  smallmouthBass,
+  coastalQuickShooterXp,
   // Euro nymph lines are level (about 0.022″), much thinner than a WF head of any weight, so they're
   // drawn as running line behind a token taper. RIO sells one size for 2–5 wt rods, drawn as a 3 wt;
   // it comes with a 14 ft pink mono leader. RIO's table has no lengths for it, so all three numbers
