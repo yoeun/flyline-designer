@@ -40,6 +40,7 @@ import { parseTheme, resolveTheme } from './theme.js';
 import {
   clampSelection,
   editorScale,
+  handleHalfWidths,
   formatFeet,
   moveTaperBoundary,
   moveZoneBoundary,
@@ -1189,5 +1190,16 @@ describe('RIO lines', () => {
   it('colorways made only in some weights are listed only on those sizes', () => {
     const camo = productSizes('rio-elite-gold-max').filter((p) => p.colorways.some((cw) => cw.id === 'camo'));
     expect(camo.map((p) => p.sizeLabel)).toEqual(['WF4F', 'WF5F', 'WF6F', 'WF7F', 'WF8F']);
+  });
+});
+
+describe('handleHalfWidths', () => {
+  it('gives each handle the wanted width when there is room', () => {
+    expect(handleHalfWidths([100, 300], 40)).toEqual([40, 40]);
+  });
+
+  it('stops short of halfway to a close neighbor, but never under the minimum', () => {
+    expect(handleHalfWidths([100, 150, 400], 40)).toEqual([24, 24, 40]);
+    expect(handleHalfWidths([100, 104], 40)).toEqual([10, 10]);
   });
 });

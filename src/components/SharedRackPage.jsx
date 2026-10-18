@@ -41,7 +41,7 @@ export default function SharedRackPage({ shareId }) {
   return (
     <div>
       <header className={`flex flex-wrap items-center justify-between gap-3 border-b border-border bg-card py-3.5 ${GUTTER}`}>
-        <h1 className="font-heading text-[24px] leading-none font-bold tracking-[0.04em] whitespace-nowrap uppercase">
+        <h1 className="font-heading text-[clamp(20px,6.5vw,24px)] leading-none font-bold tracking-[0.04em] whitespace-nowrap uppercase">
           <a href="/">Flyline Designer</a>
         </h1>
         <Button onClick={() => window.location.assign('/')}>Design your own</Button>

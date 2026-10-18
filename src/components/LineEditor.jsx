@@ -1,8 +1,8 @@
-import { useId, useRef } from 'react';
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react';
 import { cn } from '@/lib/utils';
 import { hexOf, nameOf } from '../data/catalog.js';
 import { lineDiameters, totalLength, zoneRanges } from '../lib/geometry.js';
-import { STEP, TAPER_KEYS, TAPER_NAMES, editorScale, formatFeet, moveTaperBoundary, moveZoneBoundary, zoneName } from '../lib/lineEdit.js';
+import { STEP, TAPER_KEYS, TAPER_NAMES, editorScale, formatFeet, handleHalfWidths, moveTaperBoundary, moveZoneBoundary, zoneName } from '../lib/lineEdit.js';
 
 const W = 520;
 const LEFT = 26; // room for the backing stub
@@ -12,6 +12,19 @@ const RULE_Y = 34;
 const MID = 76;
 const TOTAL_Y = 124; // total dimension rule, below the zone lengths
 const MAX_HALF = 11;
+// Touch screens get finger-sized drag handles.
+const COARSE = '(pointer: coarse)';
+const subscribeCoarse = (onChange) => {
+  const media = window.matchMedia(COARSE);
+  media.addEventListener('change', onChange);
+  return () => media.removeEventListener('change', onChange);
+};
+const useCoarsePointer = () => useSyncExternalStore(subscribeCoarse, () => window.matchMedia(COARSE).matches);
+// Half a 44px tap target, in screen pixels.
+const FINGER = 22;
+// The touch bands for taper and zone targets, top to bottom of the drawing, split below the taper lengths.
+const BANDS = { taper: [0, 55], zone: [55, 150] };
+
 const sameLengths = (a, b) =>
   TAPER_KEYS.every((k) => a.taper[k] === b.taper[k]) && a.zones.every((z, i) => z.length === b.zones[i].length);
 
@@ -38,6 +51,16 @@ export default function LineEditor({ line, selection = null, onSelect, onChange,
   const clip = `editor-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   const svgRef = useRef(null);
   const drag = useRef(null);
+  const coarse = useCoarsePointer();
+  // Drawing units per screen pixel, so handle sizes can be set in pixels.
+  const [unitsPerPx, setUnitsPerPx] = useState(1);
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg || readOnly) return;
+    const observer = new ResizeObserver(([entry]) => entry.contentRect.width && setUnitsPerPx(W / entry.contentRect.width));
+    observer.observe(svg);
+    return () => observer.disconnect();
+  }, [readOnly]);
   const scale = editorScale(line, SPAN, MIN_PX);
   const x = (ft) => LEFT + scale.x(ft);
   const zones = zoneRanges(line);
@@ -81,6 +104,17 @@ export default function LineEditor({ line, selection = null, onSelect, onChange,
       y2: MID + 17,
     })),
   ];
+
+  // Hit areas: 20 units wide with a mouse. A phone draws the whole line under 100px tall, so on touch
+  // screens the taper handles take the top band and the zone handles the rest, each about 44px wide
+  // but kept clear of neighbors in their row.
+  for (const row of ['taper', 'zone']) {
+    const inRow = handles.filter((h) => h.id.startsWith(row));
+    handleHalfWidths(inRow.map((h) => x(h.ft)), coarse ? FINGER * unitsPerPx : 10).forEach((half, i) => {
+      const [top, bottom] = coarse ? BANDS[row] : [inRow[i].y1 - 3, inRow[i].y2 + 3];
+      Object.assign(inRow[i], { half, hitY1: top, hitY2: bottom });
+    });
+  }
 
   const isTaper = (key) => selection?.kind === 'taper' && selection.key === key;
   const isZone = (i) => selection?.kind === 'zone' && selection.index === i;
@@ -153,7 +187,7 @@ export default function LineEditor({ line, selection = null, onSelect, onChange,
         const mid = LEFT + (e.x0 + e.x1) / 2;
         return (
           <g key={e.key} {...part(sel, on, `${TAPER_NAMES[e.key]}, ${formatFeet(t[e.key])}`)}>
-            <rect x={LEFT + e.x1} y="6" width={e.x0 - e.x1} height="46" rx="4" fill="transparent" />
+            <rect x={LEFT + e.x1} y={coarse ? BANDS.taper[0] : 6} width={e.x0 - e.x1} height={coarse ? BANDS.taper[1] - BANDS.taper[0] : 46} rx="4" fill="transparent" />
             {on && <line className={RULE_ON} strokeLinecap="round" x1={LEFT + e.x1} x2={LEFT + e.x0} y1={RULE_Y} y2={RULE_Y} />}
             <text className={cn(NAME, on && SELECTED_TEXT)} x={mid} y={RULE_Y - 11} textAnchor="middle">
               {SHORT[e.key]}
@@ -186,7 +220,7 @@ export default function LineEditor({ line, selection = null, onSelect, onChange,
         const width = Math.max(0, x(z.start) - x(z.end));
         return (
           <g key={z.index} {...part(sel, on, `${zoneName(z.index, zones.length)}, ${nameOf(z.color)}, ${formatFeet(z.length)}`)} className={cn(!readOnly && PART, dim(z.index) && 'opacity-30')}>
-            <rect x={x(z.end)} y={MID - 18} width={width} height="52" rx="4" fill="transparent" />
+            <rect x={x(z.end)} y={coarse ? BANDS.zone[0] : MID - 18} width={width} height={coarse ? BANDS.zone[1] - BANDS.zone[0] : 52} rx="4" fill="transparent" />
             <text className={cn(LEN, on && SELECTED_TEXT)} x={x(z.end) + width / 2} y={MID + 30} textAnchor="middle">
               {zoneLabel(z, zones.length)}
             </text>
@@ -221,7 +255,7 @@ export default function LineEditor({ line, selection = null, onSelect, onChange,
           onClick={(e) => e.stopPropagation()}
           onKeyDown={onHandleKey(h)}
         >
-          <rect x={x(h.ft) - 10} y={h.y1 - 3} width="20" height={h.y2 - h.y1 + 6} rx="4" fill="transparent" />
+          <rect x={x(h.ft) - h.half} y={h.hitY1} width={2 * h.half} height={h.hitY2 - h.hitY1} rx="4" fill="transparent" />
           <line className={cn('stroke-foreground', h.on ? 'stroke-3' : 'stroke-2')} strokeLinecap="round" x1={x(h.ft)} x2={x(h.ft)} y1={h.y1} y2={h.y2} />
         </g>
       ))}

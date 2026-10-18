@@ -22,7 +22,7 @@ export default function NavMenu({ page, onNavigate, theme, onTheme }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className="flex size-10 cursor-pointer items-center justify-center rounded-md text-foreground hover:bg-accent focus-visible:outline-2 focus-visible:outline-ring"
+        className="flex size-10 pointer-coarse:size-11 cursor-pointer items-center justify-center rounded-md text-foreground hover:bg-accent focus-visible:outline-2 focus-visible:outline-ring"
         aria-label="Pages"
       >
         <Icon name="menu" />
@@ -34,7 +34,7 @@ export default function NavMenu({ page, onNavigate, theme, onTheme }) {
             <DropdownMenuItem
               key={p.id}
               aria-current={current ? 'page' : undefined}
-              className={cn('gap-2.5 px-3 py-2 text-[15px]', current && 'bg-accent font-semibold text-accent-foreground')}
+              className={cn('gap-2.5 px-3 py-2 text-[15px] pointer-coarse:py-3', current && 'bg-accent font-semibold text-accent-foreground')}
               onClick={() => !current && onNavigate(p.id)}
             >
               {p.icon === 'reel' ? <ReelIcon /> : <Icon name={p.icon} />}
@@ -47,7 +47,7 @@ export default function NavMenu({ page, onNavigate, theme, onTheme }) {
           <DropdownMenuLabel className="px-3 pt-1.5 pb-1">Theme</DropdownMenuLabel>
           <DropdownMenuRadioGroup value={theme} onValueChange={onTheme}>
             {THEMES.map(([id, label]) => (
-              <DropdownMenuRadioItem key={id} value={id} className="gap-2.5 py-2 pr-9 pl-3 text-[15px]">
+              <DropdownMenuRadioItem key={id} value={id} className="gap-2.5 py-2 pr-9 pl-3 text-[15px] pointer-coarse:py-3">
                 <Icon name={THEME_ICONS[id]} />
                 {label}
               </DropdownMenuRadioItem>

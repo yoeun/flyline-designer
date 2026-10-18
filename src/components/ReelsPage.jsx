@@ -134,7 +134,7 @@ export default function ReelsPage() {
       <ViewControls view={view} onChange={setView} />
       <nav aria-label="Makers" className="flex flex-wrap gap-x-4 gap-y-1 text-[14px]">
         {GROUPS.map(([maker]) => (
-          <a key={maker} href={`#reels-${maker}`} className="text-primary underline-offset-2 hover:underline">
+          <a key={maker} href={`#reels-${maker}`} className="text-primary underline-offset-2 hover:underline pointer-coarse:inline-flex pointer-coarse:min-h-11 pointer-coarse:items-center">
             {maker}
           </a>
         ))}

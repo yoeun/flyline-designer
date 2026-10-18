@@ -105,19 +105,19 @@ function ProductCard({ maker, product, weight, sizes, showSeries, onTry }) {
           aria-expanded={open}
           aria-controls={tableId}
           onClick={() => setOpen((o) => !o)}
-          className="flex min-h-9 cursor-pointer items-center gap-1 rounded-lg pr-2 text-[14px] font-semibold text-primary hover:bg-accent"
+          className="flex min-h-9 cursor-pointer items-center gap-1 rounded-lg pr-2 text-[14px] font-semibold text-primary pointer-coarse:min-h-11 hover:bg-accent"
         >
           <Icon name={open ? 'expand_less' : 'expand_more'} />
           {open ? 'Hide specs' : `Specs for ${product.sizes.length} ${product.sizes.length === 1 ? 'size' : 'sizes'}`}
         </button>
         {preset && (
-          <button type="button" onClick={() => onTry(preset.id)} className="flex min-h-9 cursor-pointer items-center gap-1 rounded-lg px-2 text-[14px] font-semibold text-primary hover:bg-accent">
+          <button type="button" onClick={() => onTry(preset.id)} className="flex min-h-9 cursor-pointer items-center gap-1 rounded-lg px-2 text-[14px] font-semibold text-primary pointer-coarse:min-h-11 hover:bg-accent">
             <Icon name="visibility" />
             Try {preset.sizeLabel ?? `${preset.line.weight} wt`} on a reel
           </button>
         )}
         {product.url && (
-          <a href={product.url} target="_blank" rel="noreferrer" className="flex min-h-9 items-center gap-1 rounded-lg px-2 text-[14px] text-muted-foreground hover:bg-accent">
+          <a href={product.url} target="_blank" rel="noreferrer" className="flex min-h-9 items-center gap-1 rounded-lg px-2 text-[14px] text-muted-foreground pointer-coarse:min-h-11 hover:bg-accent">
             {maker.maker} page
             <Icon name="open_in_new" className="text-[16px]" />
           </a>
@@ -267,7 +267,7 @@ export default function GuidePage({ onTry }) {
           </div>
           <TaperChart points={chartData} weight={CHART_WEIGHT} />
           <details className="text-[14px]">
-            <summary className="min-h-9 cursor-pointer py-1.5 font-semibold text-primary">Chart data</summary>
+            <summary className="min-h-9 cursor-pointer py-1.5 font-semibold text-primary pointer-coarse:py-2.5">Chart data</summary>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[400px] border-collapse tabular-nums">
                 <thead>

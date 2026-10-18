@@ -41,7 +41,7 @@ export default function Rack({ setups, currentId, open, onToggle, onLoad, onEdit
               {conflicts.length} color {conflicts.length === 1 ? 'conflict' : 'conflicts'}
             </span>
           )}
-          <button type="button" onClick={onExpand} className="-mr-2 ml-auto flex min-h-9 cursor-pointer items-center rounded-lg px-2 font-semibold text-primary hover:bg-accent">
+          <button type="button" onClick={onExpand} className="-mr-2 ml-auto flex min-h-9 pointer-coarse:min-h-11 cursor-pointer items-center rounded-lg px-2 font-semibold text-primary hover:bg-accent">
             See all
           </button>
         </div>

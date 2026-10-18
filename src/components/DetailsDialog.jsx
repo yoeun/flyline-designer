@@ -37,7 +37,7 @@ function DetailsForm({ mode, details, fallbackTitle, onSubmit, onClose }) {
         <legend className="mb-1.5 text-muted-foreground">Style</legend>
         <div className="flex flex-wrap gap-x-5 gap-y-2">
           {STYLES.map((s) => (
-            <label key={s.id} className="flex cursor-pointer items-center gap-2 text-[15px]">
+            <label key={s.id} className="flex cursor-pointer items-center gap-2 text-[15px] pointer-coarse:min-h-11 pointer-coarse:pr-2">
               <input type="checkbox" className="size-4 accent-primary" checked={styles.includes(s.id)} onChange={() => toggle(s.id)} />
               {s.name}
             </label>
@@ -45,7 +45,7 @@ function DetailsForm({ mode, details, fallbackTitle, onSubmit, onClose }) {
         </div>
       </fieldset>
       <Field label="Notes" htmlFor="details-notes">
-        <Textarea id="details-notes" value={notes} onChange={(e) => setNotes(e.target.value)} className="max-h-36 min-h-20 overflow-y-auto text-[15px] md:text-[15px]" />
+        <Textarea id="details-notes" value={notes} onChange={(e) => setNotes(e.target.value)} className="max-h-36 min-h-20 overflow-y-auto text-[15px] md:text-[15px] pointer-coarse:text-[16px]" />
       </Field>
       <DialogFooter>
         <Button onClick={onClose}>Cancel</Button>
