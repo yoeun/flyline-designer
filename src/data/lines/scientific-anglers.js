@@ -110,6 +110,8 @@ export const COLORS = [
   { id: 'sa-mastery-euro-tactical-nymph-orange', name: 'Euro Tactical Nymph Orange', hex: '#f67830' },
   // Sampled from the Wet Cel Full Sink Trolling Line photo, a near-black charcoal.
   { id: 'sa-wet-cel-trolling-charcoal', name: 'Wet Cel Trolling Charcoal', hex: '#2d2d2d' },
+  { id: 'sa-frequency-double-taper-mist-green', name: 'Frequency Mist Green', hex: '#dbe8a3' },
+  { id: 'sa-sonar-tropical-custom-tip-blue', name: 'Custom Tip Blue', hex: '#4c78b7' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -2130,6 +2132,65 @@ export const PRODUCTS = [
       taper: [0, size.total, 0, 0],
       lineup: overriding(size, { head: size.total }),
       colorways: [{ id: 'charcoal', name: 'Charcoal', zones: zones([0, 'sa-wet-cel-trolling-charcoal']) }],
+    })),
+  }),
+  // SA's diagram measures a 4.5 ft taper at each end of a 76 ft belly over the 85 ft line. SA's table
+  // gives no belly and the diagram names no size; every size is 85 ft, so each draws that split and
+  // is marked estimated. Drawn, like the other double tapers, as all head with no running line. SA's
+  // Mist Green swatch here is far paler than the Mist Green already here.
+  makerProduct({
+    id: 'sa-frequency-double-taper',
+    maker: 'Scientific Anglers',
+    name: 'SA Frequency Double Taper',
+    sizes: LINEUP['sa-frequency-double-taper'].sizes.map((size) => ({
+      id: `dt${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: [4.5, 76, 4.5, 0],
+      estimated: true,
+      lineup: overriding(size, { head: size.total }),
+      colorways: [{ id: 'mist-green', name: 'Mist Green', zones: zones([0, 'sa-frequency-double-taper-mist-green']) }],
+    })),
+  }),
+  // A 1.25 ips intermediate head on a floating running line, drawn as a sink tip. SA's diagram measures
+  // front taper 5.5, two bellies 23.5, rear taper 4; its head measures 33 ft against the 32.5 ft SA
+  // lists for every size, so the split is scaled to 32.5. The WF14 is over the menu's heaviest line
+  // and left out. A surf head on a sand running line; SA's swatches are the Tarpon's Sand and the Surf
+  // already here.
+  makerProduct({
+    id: 'sa-sonar-titan-gt',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Titan GT',
+    sizes: LINEUP['sa-sonar-titan-gt'].sizes
+      .filter((size) => size.weight <= 12)
+      .map((size) => ({
+        id: `wf${size.weight}-f-i`,
+        label: size.label,
+        type: 'sinktip',
+        weight: size.weight,
+        taper: sameHead(scaled([5.5, 23.5, 4], 32.5), size),
+        lineup: size,
+        colorways: [{ id: 'sand-surf', name: 'Sand/Surf', zones: zones([32.5, 'sa-surf'], [0, 'sa-tarpon-sand']) }],
+      })),
+  }),
+  // A level Sink 7 (7.75 ips) head on an intermediate running line, made to be cut shorter for lighter
+  // rods, so drawn uncut as a sink head on an intermediate running line. SA's diagram measures no front
+  // taper, a 33 ft sinking belly and a 2 ft rear taper, the 35 ft head SA lists. Uncut it is 462 gr,
+  // which SA's cut chart rates for 12–15 wt; it's drawn at 12 wt (the lineup leaves the weight out). A
+  // black head on a blue running line; SA's black swatch is the Titan's Black.
+  makerProduct({
+    id: 'sa-sonar-titan-tropical-custom-tip',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Tropical/Jungle Custom Tip',
+    sizes: LINEUP['sa-sonar-titan-tropical-custom-tip'].sizes.map((size) => ({
+      id: '462gr',
+      label: '462 gr uncut Sink 7',
+      type: 'sinkhead-int',
+      weight: 12,
+      taper: sameHead([0, 33, 2], size),
+      lineup: overriding(size, { weight: 12 }),
+      colorways: [{ id: 'blue-black', name: 'Blue/Black', zones: zones([35, 'sa-titan-black'], [0, 'sa-sonar-tropical-custom-tip-blue']) }],
     })),
   }),
 ];

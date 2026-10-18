@@ -7950,12 +7950,17 @@
           "weight": 5,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 10,
+            "running": 64
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Lily Green / Hot Orange"
           ]
@@ -7965,12 +7970,17 @@
           "weight": 6,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 10,
+            "running": 64
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Lily Green / Hot Orange"
           ]
@@ -7980,12 +7990,17 @@
           "weight": 7,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 10,
+            "running": 64
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Lily Green / Hot Orange"
           ]
@@ -7995,12 +8010,17 @@
           "weight": 8,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 10,
+            "running": 64
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Lily Green / Hot Orange"
           ]
@@ -8010,18 +8030,24 @@
           "weight": 9,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 10,
+            "running": 64
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Lily Green / Hot Orange"
           ]
         }
       ],
-      "url": "https://www.cortlandline.com/products/bass-lily-green-hot-orange"
+      "url": "https://www.cortlandline.com/products/bass-lily-green-hot-orange",
+      "data_notes": "Head and taper split from the taper chart on the product page (Bass_Float_Taper_Comp.jpg): 3 ft front taper, 23 ft body, 10 ft back taper, 64 ft running line, a 36 ft head on 100 ft. The page has no spec table."
     },
     {
       "id": "cortland-specialty-bass-intermediate",
@@ -8042,12 +8068,17 @@
           "weight": 5,
           "density": "intermediate",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 10,
+            "running": 64
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Clear Camo / Aqua Green"
           ]
@@ -8057,12 +8088,17 @@
           "weight": 6,
           "density": "intermediate",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 10,
+            "running": 64
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Clear Camo / Aqua Green"
           ]
@@ -8072,12 +8108,17 @@
           "weight": 7,
           "density": "intermediate",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 10,
+            "running": 64
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Clear Camo / Aqua Green"
           ]
@@ -8087,12 +8128,17 @@
           "weight": 8,
           "density": "intermediate",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 10,
+            "running": 64
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Clear Camo / Aqua Green"
           ]
@@ -8102,18 +8148,24 @@
           "weight": 9,
           "density": "intermediate",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 10,
+            "running": 64
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Clear Camo / Aqua Green"
           ]
         }
       ],
-      "url": "https://www.cortlandline.com/products/bass-intermediate"
+      "url": "https://www.cortlandline.com/products/bass-intermediate",
+      "data_notes": "Head and taper split from the taper chart on the product page (Bass_Inter_Taper_Comp.jpg): 3 ft front taper, 23 ft body, 10 ft back taper, 64 ft running line, a 36 ft head on 100 ft. The description gives a 26 ft intermediate tip. The page has no spec table."
     },
     {
       "id": "cortland-specialty-pike-musky-float",
@@ -12124,9 +12176,14 @@
           "total_ft": 100,
           "grains_30ft": 200,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 6,
+            "body": 7,
+            "back": 28,
+            "running": 59
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": ["Clear"]
         },
         {
           "label": "WF8I",
@@ -12137,9 +12194,14 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 6,
+            "body": 7,
+            "back": 28,
+            "running": 59
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": ["Clear"]
         },
         {
           "label": "WF9I",
@@ -12150,9 +12212,14 @@
           "total_ft": 100,
           "grains_30ft": 260,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 6,
+            "body": 7,
+            "back": 28,
+            "running": 59
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": ["Clear"]
         },
         {
           "label": "WF10I",
@@ -12163,9 +12230,14 @@
           "total_ft": 100,
           "grains_30ft": 305,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 6,
+            "body": 7,
+            "back": 28,
+            "running": 59
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": ["Clear"]
         },
         {
           "label": "WF11I",
@@ -12176,9 +12248,14 @@
           "total_ft": 100,
           "grains_30ft": 355,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 6,
+            "body": 7,
+            "back": 28,
+            "running": 59
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": ["Clear"]
         },
         {
           "label": "WF12I",
@@ -12189,13 +12266,18 @@
           "total_ft": 100,
           "grains_30ft": 415,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 6,
+            "body": 7,
+            "back": 28,
+            "running": 59
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": ["Clear"]
         }
       ],
       "url": "https://www.cortlandline.com/products/clear-intermediate",
-      "data_notes": "Maker page prints the WF8I grain weight as '20225' (typo; left null) and shows the 444 Clear Intermediate taper chart (90 ft) although this line is 100 ft, so no taper attached."
+      "data_notes": "Maker page prints the WF8I grain weight as '20225' (typo; left null). Its taper chart is the 444 Clear Intermediate's: 6 ft front taper, 7 ft body and 28 ft back taper (the 41 ft head this line's table gives) on 49 ft of running line, 90 ft in all. The page and the box both give 100 ft, so the chart's head is kept and the running line is 59 ft. 'Full Clear' from the page and box."
     },
     {
       "id": "cortland-tropic-plus-ghost-tip",
