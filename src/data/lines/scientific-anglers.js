@@ -93,6 +93,11 @@ export const COLORS = [
   { id: 'sa-sonar-stillwater-intermediate-olive-drab', name: 'Olive Drab', hex: '#766e47' },
   { id: 'sa-mastery-double-taper-dark-willow', name: 'Dark Willow', hex: '#b0953a' },
   { id: 'sa-frequency-mpx-orange', name: 'Frequency MPX Orange', hex: '#f15522' },
+  { id: 'sa-mastery-grand-slam-aqua', name: 'Aqua', hex: '#61c6c0' },
+  { id: 'sa-mastery-saltwater-sunrise', name: 'Sunrise', hex: '#f47667' },
+  { id: 'sa-frequency-intermediate-atmosphere', name: 'Atmosphere', hex: '#89ceb9' },
+  { id: 'sa-sonar-striper-blue', name: 'Striper Blue', hex: '#4b8dca' },
+  { id: 'sa-sonar-striper-storm-grey', name: 'Storm Grey', hex: '#9eb1ad' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -341,6 +346,14 @@ const AMPLITUDE_TITAN_GT = [5.5, 23.5, 3.5];
 // rear tapers 22.5 on a 50.5 ft head. It draws the running line to 90 ft; the line uses the 85 ft
 // SA's table lists for every size.
 const FREQUENCY_TROUT_GP = [6, 22, 22.5];
+
+// Sonar Stillwater Float's diagram: three front tapers 22.5, belly 12.5, rear taper 10, the 45 ft head
+// SA lists for every size. The buckskin tip runs to the end of the first front taper, about 4 ft.
+const SONAR_STILLWATER_FLOAT = [22.5, 12.5, 10];
+
+// Frequency Intermediate's diagram: front taper 4, belly 33.5, rear taper 2.5 on a 40 ft head, longer
+// than any size SA lists (34–38 ft). Every size scales it and is marked estimated.
+const FREQUENCY_INTERMEDIATE = [4, 33.5, 2.5];
 
 export const PRODUCTS = [
   // Half-size heavy. Head and total per size from SA's table; the WF6 split was measured off the
@@ -1712,5 +1725,146 @@ export const PRODUCTS = [
     sizes: floating(MAGNITUDE_TROUT_EXPERT, 5, LINEUP['sa-magnitude-textured-trout-expert-clear-tip-float'].sizes, () => [
       { id: 'sage-green-clear', name: 'Sage Green/Clear', zones: zones([10, 'sa-magnitude-clear'], [0, 'sa-sage']) },
     ]),
+  }),
+  // Three-quarter size heavy, on Tropi-Core. Its own diagram has the Mastery Grand Slam Cold's ticks
+  // (front taper 2, front belly 19.5, rear taper 19.5 on a 41 ft head), so it shares
+  // MASTERY_GRAND_SLAM_COLD, scaled to the 40 ft head SA lists for every size. An aqua head on a light
+  // blue running line; SA's Light Blue swatch is the Frequency Saltwater's.
+  makerProduct({
+    id: 'sa-mastery-grand-slam',
+    maker: 'Scientific Anglers',
+    name: 'SA Mastery Grand Slam',
+    sizes: LINEUP['sa-mastery-grand-slam'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(MASTERY_GRAND_SLAM_COLD, size),
+      lineup: size,
+      colorways: [{ id: 'light-blue-aqua', name: 'Light Blue/Aqua', zones: zones([40, 'sa-mastery-grand-slam-aqua'], [0, 'sa-frequency-saltwater-light-blue']) }],
+    })),
+  }),
+  // Half-size heavy compound taper, on Tropi-Core. Its diagram measures the Sonar Saltwater
+  // Intermediate's split, the 37.5 ft head of the WF7–9; the WF10 (40 ft head) scales it. A light blue
+  // head on a sunrise running line; SA's Light Blue swatch is the Frequency Saltwater's.
+  makerProduct({
+    id: 'sa-mastery-saltwater',
+    maker: 'Scientific Anglers',
+    name: 'SA Mastery Saltwater',
+    sizes: LINEUP['sa-mastery-saltwater'].sizes.map((size) => {
+      const { weight, head, total } = size;
+      return {
+        id: `wf${weight}f`,
+        label: size.label,
+        type: 'floating',
+        weight,
+        taper: [...scaled(SALTWATER_INTERMEDIATE, head), total - head],
+        estimated: head !== 37.5,
+        lineup: size,
+        colorways: [{ id: 'sunrise-light-blue', name: 'Sunrise/Light Blue', zones: zones([head, 'sa-frequency-saltwater-light-blue'], [0, 'sa-mastery-saltwater-sunrise']) }],
+      };
+    }),
+  }),
+  // Two sizes heavy, for indicators and long leaders. Same 45 ft head in every size: a buckskin tip,
+  // willow to the end of the head, grass running line. SA's Willow and Grass swatches are the Emerger
+  // Tip's, and its Buckskin is close to the Infinity Plus's.
+  makerProduct({
+    id: 'sa-sonar-stillwater-float',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Stillwater Float',
+    sizes: LINEUP['sa-sonar-stillwater-float'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(SONAR_STILLWATER_FLOAT, size),
+      lineup: size,
+      colorways: [{ id: 'grass-willow-buckskin', name: 'Grass/Willow/Buckskin', zones: zones([4, 'sa-infinity-plus-buckskin'], [41, 'sa-willow'], [0, 'sa-turtle-grass']) }],
+    })),
+  }),
+  // 1.25 ips budget full intermediate. One color.
+  makerProduct({
+    id: 'sa-frequency-intermediate',
+    maker: 'Scientific Anglers',
+    name: 'SA Frequency Intermediate',
+    sizes: LINEUP['sa-frequency-intermediate'].sizes.map((size) => {
+      const { weight, head, total } = size;
+      return {
+        id: `wf${weight}i`,
+        label: size.label,
+        type: 'intermediate',
+        weight,
+        taper: [...scaled(FREQUENCY_INTERMEDIATE, head), total - head],
+        estimated: true,
+        lineup: size,
+        colorways: [{ id: 'atmosphere', name: 'Atmosphere', zones: zones([0, 'sa-frequency-intermediate-atmosphere']) }],
+      };
+    }),
+  }),
+  // The Textured Tarpon Clear Float without the textures; its own diagram has the same ticks and
+  // swatches. Clear Tip: SA's 12 ft clear tip, sand to the end of the head, a 10 ft clear sighter (on
+  // the diagram), then sand running line. Full Clear is the same line in one color. It draws like the
+  // Textured.
+  makerProduct({
+    id: 'sa-magnitude-smooth-tarpon-clear-tip',
+    maker: 'Scientific Anglers',
+    name: 'SA Magnitude Smooth Tarpon Clear Float',
+    sizes: [...new Set(LINEUP['sa-magnitude-smooth-tarpon-clear-tip'].sizes.map((size) => size.weight))].map((weight) => {
+      const size = lineupSize(LINEUP['sa-magnitude-smooth-tarpon-clear-tip'], `WF${weight}F Clear Tip`);
+      return {
+        id: `wf${weight}f`,
+        label: `WF${weight}F`,
+        type: 'floating',
+        weight,
+        taper: sameHead(TARPON, size),
+        lineup: size,
+        colorways: [
+          { id: 'sand-clear-tip', name: 'Sand/Clear Tip', zones: zones([12, 'sa-magnitude-clear'], [24, 'sa-sand'], [10, 'sa-magnitude-clear'], [0, 'sa-sand']) },
+          { id: 'clear', name: 'Clear', zones: zones([0, 'sa-magnitude-clear']) },
+        ],
+      };
+    }),
+  }),
+  // The Smooth Infinity Clear Float with SA's textures; its own diagram has the same ticks (the
+  // Textured Infinity's split on the WF5's 49 ft head) and swatches, so it draws like the Smooth. Every
+  // size comes as Clear Tip (SA's 10 ft clear tip, then buckskin) and as Clear Head.
+  makerProduct({
+    id: 'sa-magnitude-textured-infinity-clear-float',
+    maker: 'Scientific Anglers',
+    name: 'SA Magnitude Textured Infinity Clear Float',
+    sizes: [...new Set(LINEUP['sa-magnitude-textured-infinity-clear-float'].sizes.map((size) => size.weight))].map((weight) => {
+      const size = lineupSize(LINEUP['sa-magnitude-textured-infinity-clear-float'], `WF${weight}F Clear Tip`);
+      const { head, total } = size;
+      return {
+        id: `wf${weight}f`,
+        label: `WF${weight}F`,
+        type: 'floating',
+        weight,
+        taper: [...scaled(INFINITY_PLUS, head), total - head],
+        estimated: weight !== 5,
+        lineup: size,
+        colorways: [
+          { id: 'buckskin-clear-tip', name: 'Buckskin/Clear Tip', zones: zones([10, 'sa-magnitude-clear'], [0, 'sa-buckskin']) },
+          { id: 'buckskin-clear-head', name: 'Buckskin/Clear Head', zones: zones([head, 'sa-magnitude-clear'], [0, 'sa-buckskin']) },
+        ],
+      };
+    }),
+  }),
+  // Two sizes heavy, 1.25 ips over the whole line. Its own diagram has the Amplitude Smooth Striper's
+  // ticks, so it shares STRIPER on the same 30 ft head in every size. A storm grey head on a blue
+  // running line.
+  makerProduct({
+    id: 'sa-sonar-striper-intermediate',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Striper Intermediate',
+    sizes: LINEUP['sa-sonar-striper-intermediate'].sizes.map((size) => ({
+      id: `wf${size.weight}i`,
+      label: size.label,
+      type: 'intermediate',
+      weight: size.weight,
+      taper: sameHead(STRIPER, size),
+      lineup: size,
+      colorways: [{ id: 'blue-storm-grey', name: 'Blue/Storm Grey', zones: zones([30, 'sa-sonar-striper-storm-grey'], [0, 'sa-sonar-striper-blue']) }],
+    })),
   }),
 ];
