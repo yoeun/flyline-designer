@@ -1,0 +1,36 @@
+{
+  "maker": "Ventures Fly Co",
+  "finishes": [
+    {
+      "id": "ventures-gray",
+      "name": "Gray",
+      "hex": "#afb3b6",
+      "notes": "Ascent face and outer ring. Hex sampled from Ventures' combo photos (median of the frame, #abafb7–#afb4b7); the inner hub is darker (#76797b)."
+    }
+  ],
+  "models": [
+    {
+      "id": "ventures-ascent",
+      "name": "Ventures Ascent",
+      "design": "ascent",
+      "colors": [
+        "ventures-gray"
+      ],
+      "notes": "CNC aluminum 5/6 reel sold in Ventures Fly Co's Fly Flinger combo and starter packs (venturesflyco.com, Oct 2026); sold alone as 'Ascent Reel 5/6' in 2021–24. Ventures publishes no dimensions, so every figure is an estimate: rim ~3.4″ (82–91 mm) from scaling combo photos against the Fly Flinger's cork grip; arbor ≤ 0.53 × rim from where backing shows through the ports; width 0.95″ is typical of budget CNC 5/6 reels. Ventures spools it with WF5F and 30 lb backing but gives no yardage. An olive version appears only in 2022 Amazon renders and is left out.",
+      "sizes": [
+        {
+          "id": "ventures-ascent-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.4,
+          "spool": 3.16,
+          "width": 0.95,
+          "arbor": 1.8
+        }
+      ]
+    }
+  ]
+}

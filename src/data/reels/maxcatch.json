@@ -1,0 +1,417 @@
+{
+  "maker": "Maxcatch",
+  "finishes": [
+    {
+      "id": "maxcatch-jade",
+      "name": "Jade Green",
+      "hex": "#4b6f4d",
+      "notes": "Avid. Hex sampled from Maxcatch's product photo."
+    },
+    {
+      "id": "maxcatch-sapphire",
+      "name": "Sapphire Blue",
+      "hex": "#597cd7",
+      "notes": "Avid. Hex sampled from Maxcatch's product photo (a lit render, so approximate)."
+    },
+    {
+      "id": "maxcatch-rose-gold",
+      "name": "Rose Gold",
+      "hex": "#be9d6f",
+      "notes": "Avid Pro. Hex sampled from Maxcatch's product photo."
+    },
+    {
+      "id": "maxcatch-brown-trout",
+      "name": "Brown Trout",
+      "hex": "#c07d3c",
+      "notes": "ECO fish-skin print, drawn in its base color. Hex sampled from Maxcatch's product photo (#b47338–#cd8741)."
+    },
+    {
+      "id": "maxcatch-green",
+      "name": "Green",
+      "hex": "#4c794e",
+      "notes": "Toro. Hex sampled from Maxcatch's product photo."
+    },
+    {
+      "id": "maxcatch-olive",
+      "name": "Olive",
+      "hex": "#545446",
+      "notes": "Minima. Hex sampled from Maxcatch's product photo (#525344–#565648)."
+    }
+  ],
+  "models": [
+    {
+      "id": "maxcatch-avid",
+      "name": "Maxcatch Avid",
+      "design": "avid",
+      "colors": [
+        "black",
+        "maxcatch-jade",
+        "maxcatch-sapphire"
+      ],
+      "accents": {
+        "black": "#af2931",
+        "maxcatch-jade": "#af2931",
+        "maxcatch-sapphire": "#af2931"
+      },
+      "notes": "Maxcatch's best seller. Rim, width and rated capacity from Maxcatch's spec table (maxcatchfishing.com product image 10, Oct 2026), converted from mm; the table also gives inner diameters of 35–47 mm. Another Maxcatch image labels the 5/6 86 mm rim / 44 mm arbor against the table's 85/41. Spool is estimated as rim − 0.24″. The red spool cap is the accent (#af2931, sampled). Charcoal Black uses the base black: no clean studio photo of it.",
+      "sizes": [
+        {
+          "id": "maxcatch-avid-13",
+          "size": "1/3",
+          "weights": [
+            1,
+            3
+          ],
+          "rim": 2.68,
+          "spool": 2.44,
+          "width": 0.83,
+          "rated": {
+            "weight": 2,
+            "yards": 35,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-avid-34",
+          "size": "3/4",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 2.95,
+          "spool": 2.71,
+          "width": 0.87,
+          "rated": {
+            "weight": 4,
+            "yards": 60,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-avid-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.35,
+          "spool": 3.11,
+          "width": 0.87,
+          "rated": {
+            "weight": 6,
+            "yards": 60,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-avid-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 3.74,
+          "spool": 3.5,
+          "width": 1.06,
+          "rated": {
+            "weight": 8,
+            "yards": 90,
+            "pounds": 30
+          }
+        },
+        {
+          "id": "maxcatch-avid-910",
+          "size": "9/10",
+          "weights": [
+            9,
+            10
+          ],
+          "rim": 3.74,
+          "spool": 3.5,
+          "width": 1.3,
+          "rated": {
+            "weight": 9,
+            "yards": 100,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "maxcatch-avid-pro",
+      "name": "Maxcatch Avid Pro",
+      "design": "avid-pro",
+      "colors": [
+        "black",
+        "maxcatch-rose-gold"
+      ],
+      "notes": "Rim and rated capacity from Maxcatch's spec table (maxcatchfishing.com, Oct 2026), converted from mm; the table also gives inner diameters of 51–68 mm. No widths are published: the 5Seven's ~23 mm is scaled from an angled photo, the rest are estimates. The table rates the 9Eleven for WF8F (probably a typo; kept as printed). Spool is estimated as rim − 0.24″.",
+      "sizes": [
+        {
+          "id": "maxcatch-avid-pro-35",
+          "size": "3Five",
+          "weights": [
+            3,
+            5
+          ],
+          "rim": 3.39,
+          "spool": 3.15,
+          "width": 0.87,
+          "rated": {
+            "weight": 4,
+            "yards": 80,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-avid-pro-57",
+          "size": "5Seven",
+          "weights": [
+            5,
+            7
+          ],
+          "rim": 3.74,
+          "spool": 3.5,
+          "width": 0.91,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-avid-pro-79",
+          "size": "7Nine",
+          "weights": [
+            7,
+            9
+          ],
+          "rim": 4.13,
+          "spool": 3.89,
+          "width": 0.98,
+          "rated": {
+            "weight": 8,
+            "yards": 120,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-avid-pro-911",
+          "size": "9Eleven",
+          "weights": [
+            9,
+            11
+          ],
+          "rim": 4.49,
+          "spool": 4.25,
+          "width": 1.06,
+          "rated": {
+            "weight": 8,
+            "yards": 150,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "maxcatch-avid-pro-nymph",
+      "name": "Maxcatch Avid Pro Nymph",
+      "design": "avid-pro-nymph",
+      "colors": [
+        "black"
+      ],
+      "notes": "Full-cage nymphing reel. Rim, width and rated capacity from Maxcatch's spec image (maxcatchfishing.com, Oct 2026), converted from mm; inner diameter 60 mm. A 2/3 option is offered with no specs, so it's left out. Spool is estimated as rim − 0.24″. Matte black uses the base black (photo samples #252626).",
+      "sizes": [
+        {
+          "id": "maxcatch-avid-pro-nymph-35",
+          "size": "3Five",
+          "weights": [
+            3,
+            5
+          ],
+          "rim": 3.74,
+          "spool": 3.5,
+          "width": 0.79,
+          "rated": {
+            "weight": 4,
+            "yards": 50,
+            "pounds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "maxcatch-eco",
+      "name": "Maxcatch ECO",
+      "design": "eco",
+      "colors": [
+        "black",
+        "silver",
+        "maxcatch-brown-trout"
+      ],
+      "accents": {
+        "black": "#e4683f",
+        "silver": "#26282b",
+        "maxcatch-brown-trout": "#26282b"
+      },
+      "notes": "Die-cast large arbor; the same casting and the same spec table as the Sunshine SF-001. Rim, width (as published: the 3/4 is wider than the 5/6) and rated capacity from Maxcatch's spec image and description (maxcatchfishing.com, Oct 2026); inner diameters 1.81–2.40″. The 1/2 and 2/3 are no longer sold. Spool is estimated as rim − 0.24″. The foot, drag knob and spool cap are the accent: orange on black (#e4683f, sampled), black on silver and Brown Trout. Brown Trout is a fish-skin print, drawn in its base color; the Rainbow and Brook Trout prints are left out.",
+      "sizes": [
+        {
+          "id": "maxcatch-eco-34",
+          "size": "3/4",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 2.95,
+          "spool": 2.71,
+          "width": 1.06,
+          "rated": {
+            "weight": 4,
+            "yards": 60,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-eco-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.35,
+          "spool": 3.11,
+          "width": 1.02,
+          "rated": {
+            "weight": 6,
+            "yards": 60,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-eco-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 3.74,
+          "spool": 3.5,
+          "width": 1.14,
+          "rated": {
+            "weight": 8,
+            "yards": 90,
+            "pounds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "maxcatch-toro",
+      "name": "Maxcatch Toro",
+      "design": "toro",
+      "colors": [
+        "maxcatch-green",
+        "black"
+      ],
+      "accents": {
+        "maxcatch-green": "#a81a2a",
+        "black": "#a81a2a"
+      },
+      "notes": "Rim, width and rated capacity from Maxcatch's spec table (maxcatchfishing.com, Oct 2026), converted from mm; inner diameters 50–60 mm. An older Amazon text screenshot on the same page gives other diameters (3.2/3.5/3.8″) and capacities; the table is used. Black comes in 5/6 and 7/8 only; blue and silver are no longer offered. Spool is estimated as rim − 0.24″. The red spool cap is the accent (#a81a2a, sampled).",
+      "sizes": [
+        {
+          "id": "maxcatch-toro-34",
+          "size": "3/4",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 3.35,
+          "spool": 3.11,
+          "width": 1.1,
+          "rated": {
+            "weight": 4,
+            "yards": 60,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-toro-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.54,
+          "spool": 3.3,
+          "width": 1.1,
+          "rated": {
+            "weight": 6,
+            "yards": 60,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-toro-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 3.74,
+          "spool": 3.5,
+          "width": 1.18,
+          "rated": {
+            "weight": 8,
+            "yards": 90,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "maxcatch-minima",
+      "name": "Maxcatch Minima",
+      "design": "minima",
+      "colors": [
+        "maxcatch-olive"
+      ],
+      "notes": "Click-and-pawl, super large arbor. Rim, width and rated capacity from Maxcatch's spec image (maxcatchfishing.com, Oct 2026), converted from mm; inner diameters 50 and 56 mm. Spool is estimated as rim − 0.24″.",
+      "sizes": [
+        {
+          "id": "maxcatch-minima-03",
+          "size": "0Three",
+          "weights": [
+            0,
+            3
+          ],
+          "rim": 3.19,
+          "spool": 2.95,
+          "width": 0.91,
+          "rated": {
+            "weight": 2,
+            "yards": 50,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "maxcatch-minima-25",
+          "size": "2Five",
+          "weights": [
+            2,
+            5
+          ],
+          "rim": 3.5,
+          "spool": 3.26,
+          "width": 0.98,
+          "rated": {
+            "weight": 4,
+            "yards": 60,
+            "pounds": 20
+          }
+        }
+      ]
+    }
+  ]
+}

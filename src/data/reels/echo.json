@@ -1,0 +1,344 @@
+{
+  "maker": "Echo",
+  "finishes": [
+    {
+      "id": "echo-ion-black",
+      "name": "Matte Black",
+      "hex": "#404040",
+      "notes": "The Ion's matte finish reads charcoal next to Echo's other black reels. Hex sampled from Echo's and Trident's product photos (#404040, #444343)."
+    }
+  ],
+  "models": [
+    {
+      "id": "echo-bravo",
+      "name": "Echo Bravo",
+      "design": "bravo",
+      "colors": [
+        "black"
+      ],
+      "accents": {
+        "black": "#a02723"
+      },
+      "notes": "Rim, width (inside spool) and rated capacity from Echo's Bravo page (echoflyfishing.com, Oct 2026). Trident measured the 7/9's spool at 3.94″ (rim − 0.31″) and its arbor at ~2.32″; the other spools are estimated as rim − 0.31″. The red drag stack seen through the spool is the accent (#a02723, sampled from Trident's photo). Black uses the base black (photo samples #20201f–#252323).",
+      "sizes": [
+        {
+          "id": "echo-bravo-79",
+          "size": "7/9",
+          "weights": [
+            7,
+            9
+          ],
+          "rim": 4.25,
+          "spool": 3.94,
+          "width": 1.25,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-bravo-810",
+          "size": "8/10",
+          "weights": [
+            8,
+            10
+          ],
+          "rim": 4.5,
+          "spool": 4.19,
+          "width": 1.35,
+          "rated": {
+            "weight": 9,
+            "yards": 200,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-bravo-1012",
+          "size": "10/12",
+          "weights": [
+            10,
+            12
+          ],
+          "rim": 4.75,
+          "spool": 4.44,
+          "width": 1.5,
+          "rated": {
+            "weight": 10,
+            "yards": 250,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "echo-bravo-lt",
+      "name": "Echo Bravo LT",
+      "design": "bravo-lt",
+      "colors": [
+        "black"
+      ],
+      "notes": "Rim, width and rated capacity from Echo's Bravo LT page (Oct 2026); Echo rates the 8/10 for WF8/9, rated here at WF8. Trident measured the 4/5's spool at 3.2″ (rim − 0.28″) and arbor at 2.16″; the other spools are estimated as rim − 0.28″. Black uses the base black (photo samples #212122–#262629).",
+      "sizes": [
+        {
+          "id": "echo-bravo-lt-45",
+          "size": "4/5",
+          "weights": [
+            4,
+            5
+          ],
+          "rim": 3.48,
+          "spool": 3.2,
+          "width": 0.89,
+          "rated": {
+            "weight": 5,
+            "yards": 150,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-bravo-lt-67",
+          "size": "6/7",
+          "weights": [
+            6,
+            7
+          ],
+          "rim": 3.85,
+          "spool": 3.57,
+          "width": 0.95,
+          "rated": {
+            "weight": 7,
+            "yards": 150,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-bravo-lt-810",
+          "size": "8/10",
+          "weights": [
+            8,
+            10
+          ],
+          "rim": 4.17,
+          "spool": 3.89,
+          "width": 1.1,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "echo-ion",
+      "name": "Echo Ion",
+      "design": "ion",
+      "colors": [
+        "echo-ion-black"
+      ],
+      "notes": "Rim, width and rated capacity from Echo's Ion page (Oct 2026). Echo gives the 7/9 and 8/10 the same 3.9″ rim, the 8/10 wider; retailers repeat it. Echo rates the 8/10 for WF8/9 and the 10/12 for WF9/10, rated here at the lighter line. Spool is estimated as rim − 0.2″ (Trident measured the 7/9's at ~3.9″ and its arbor at 1.98″).",
+      "sizes": [
+        {
+          "id": "echo-ion-23",
+          "size": "2/3",
+          "weights": [
+            2,
+            3
+          ],
+          "rim": 2.9,
+          "spool": 2.7,
+          "width": 0.9,
+          "rated": {
+            "weight": 3,
+            "yards": 75,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-ion-45",
+          "size": "4/5",
+          "weights": [
+            4,
+            5
+          ],
+          "rim": 3.4,
+          "spool": 3.2,
+          "width": 1.2,
+          "rated": {
+            "weight": 5,
+            "yards": 150,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-ion-67",
+          "size": "6/7",
+          "weights": [
+            6,
+            7
+          ],
+          "rim": 3.7,
+          "spool": 3.5,
+          "width": 1.2,
+          "rated": {
+            "weight": 7,
+            "yards": 150,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-ion-79",
+          "size": "7/9",
+          "weights": [
+            7,
+            9
+          ],
+          "rim": 3.9,
+          "spool": 3.7,
+          "width": 1.3,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-ion-810",
+          "size": "8/10",
+          "weights": [
+            8,
+            10
+          ],
+          "rim": 3.9,
+          "spool": 3.7,
+          "width": 1.5,
+          "rated": {
+            "weight": 8,
+            "yards": 200,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-ion-1012",
+          "size": "10/12",
+          "weights": [
+            10,
+            12
+          ],
+          "rim": 4.7,
+          "spool": 4.5,
+          "width": 1.5,
+          "rated": {
+            "weight": 9,
+            "yards": 250,
+            "pounds": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "echo-base",
+      "name": "Echo Base",
+      "design": "echo-base",
+      "colors": [
+        "black"
+      ],
+      "notes": "Rim, width and rated capacity from Echo's Base page (Oct 2026). The composite frame cages the spool: Trident measured the 4/5's spool at 3.0″ (rim − 0.5″) and arbor at 1.6″; the other spools are estimated as rim − 0.5″. Black uses the base black (photo samples #212221).",
+      "sizes": [
+        {
+          "id": "echo-base-23",
+          "size": "2/3",
+          "weights": [
+            2,
+            3
+          ],
+          "rim": 3.0,
+          "spool": 2.5,
+          "width": 0.9,
+          "rated": {
+            "weight": 3,
+            "yards": 75,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-base-45",
+          "size": "4/5",
+          "weights": [
+            4,
+            5
+          ],
+          "rim": 3.5,
+          "spool": 3.0,
+          "width": 0.9,
+          "rated": {
+            "weight": 5,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-base-68",
+          "size": "6/8",
+          "weights": [
+            6,
+            8
+          ],
+          "rim": 3.9,
+          "spool": 3.4,
+          "width": 1.1,
+          "rated": {
+            "weight": 7,
+            "yards": 175,
+            "pounds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "echo-shadow-click",
+      "name": "Echo Shadow Click",
+      "design": "shadow-click",
+      "colors": [
+        "black"
+      ],
+      "discontinued": true,
+      "notes": "No longer on echoflyfishing.com or at Trident (Oct 2026); a few shops still have stock. Rim, width and rated capacity from retailer listings (Drift Outfitters, ADH Fishing; read second-hand from search snippets). Trident measured the 4/5's spool at 3.1″ and arbor at 2.17″; the 2/3's spool is estimated as rim − 0.3″. Black uses the base black.",
+      "sizes": [
+        {
+          "id": "echo-shadow-click-23",
+          "size": "2/3",
+          "weights": [
+            2,
+            3
+          ],
+          "rim": 2.9,
+          "spool": 2.6,
+          "width": 0.6,
+          "rated": {
+            "weight": 3,
+            "yards": 50,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "echo-shadow-click-45",
+          "size": "4/5",
+          "weights": [
+            4,
+            5
+          ],
+          "rim": 3.4,
+          "spool": 3.1,
+          "width": 0.9,
+          "rated": {
+            "weight": 5,
+            "yards": 125,
+            "pounds": 20
+          }
+        }
+      ]
+    }
+  ]
+}

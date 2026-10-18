@@ -6,9 +6,112 @@
       "name": "Green",
       "hex": "#4b7247",
       "notes": "Sword II green. Hex sampled from Piscifun's product photo (average of the frame)."
+    },
+    {
+      "id": "piscifun-gunmetal",
+      "name": "Gunmetal",
+      "hex": "#adadad",
+      "accent": "#4a8a45",
+      "notes": "Sword. Despite the name, a light silver. Hex sampled from Piscifun's Amazon photo (spool face #9b9b9b–#bfbfbf). The foot, handle and logo knob are green (accent, #315e26–#65aa66)."
+    },
+    {
+      "id": "piscifun-gray",
+      "name": "Gray",
+      "hex": "#a2a0a1",
+      "accent": "#b3b1b2",
+      "notes": "Sword. Hex sampled from Piscifun's Amazon photo (face #8c8b8b–#b7b5b6); gray foot and knob (accent)."
+    },
+    {
+      "id": "piscifun-olive",
+      "name": "Olive Green",
+      "hex": "#52583b",
+      "accent": "#cfb594",
+      "notes": "Sword. Hex sampled from Piscifun's Amazon photo (#494e30–#575d41); champagne foot and handle (accent, #c3ad8a–#d9bd9e)."
     }
   ],
   "models": [
+    {
+      "id": "piscifun-sword",
+      "name": "Piscifun Sword",
+      "design": "sword",
+      "colors": [
+        "piscifun-gunmetal",
+        "black",
+        "piscifun-olive",
+        "piscifun-gray"
+      ],
+      "trims": {
+        "piscifun-gunmetal": "#4a8a45",
+        "piscifun-gray": "#b3b1b2"
+      },
+      "notes": "The original Sword (2015), still sold on Amazon (B017I6Y7WA, Oct 2026); piscifun.com no longer lists fly reels. Rim, width and rated capacity ('braid capacity') from Piscifun's spec image on that listing, in inches. Its widths are wider than the Sword II's and may be overall width. The 9/10 is printed as WF7F (probably a typo for WF9F; kept as printed). Spool is estimated as rim − 0.24″. Black and Gray come in fewer sizes on Amazon (Gray in 3/4 only). Black uses the base black. The foot and handle take the finish accent; the logo and drag knobs take the trim (green on Gunmetal, gray on Gray, body color otherwise).",
+      "sizes": [
+        {
+          "id": "piscifun-sword-34",
+          "size": "3/4",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 2.9,
+          "spool": 2.66,
+          "width": 1.0,
+          "rated": {
+            "weight": 3,
+            "yards": 50,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "piscifun-sword-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.4,
+          "spool": 3.16,
+          "width": 1.1,
+          "rated": {
+            "weight": 6,
+            "yards": 100,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "piscifun-sword-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 3.7,
+          "spool": 3.46,
+          "width": 1.3,
+          "rated": {
+            "weight": 7,
+            "yards": 125,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "piscifun-sword-910",
+          "size": "9/10",
+          "weights": [
+            9,
+            10
+          ],
+          "rim": 4.0,
+          "spool": 3.76,
+          "width": 1.3,
+          "rated": {
+            "weight": 7,
+            "yards": 150,
+            "pounds": 20
+          }
+        }
+      ]
+    },
     {
       "id": "piscifun-sword-ii",
       "name": "Piscifun Sword II",
