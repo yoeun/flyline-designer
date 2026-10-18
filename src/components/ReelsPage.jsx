@@ -2,22 +2,20 @@ import { useState } from 'react';
 import PHOTOS from 'reel-photos';
 import { BACKING_COLORS, LINE_COLORS, REELS, REEL_MODELS, makerGroups, reelColors, reelSizeLabel, reelSizes } from '../data/catalog.js';
 import { PREVIEW_COLORS, capacityText, photosByModel, previewSetup } from '../lib/reelsPage.js';
+import { SIDES } from '../lib/reelFrames.js';
 import Field from './Field.jsx';
 import ReelPreview from './ReelPreview.jsx';
 import Segmented from './Segmented.jsx';
+import Select from './Select.jsx';
 import Swatches from './Swatches.jsx';
 import FilterSheet from './FilterSheet.jsx';
 
-// Every reel model on one page, each size drawn from both sides, to check the drawings and data at a
-// glance. Drawings share one scale, so a bigger reel draws bigger. In dev, the maker photos sit beside them.
-const PX_PER_INCH = 34;
-// ReelPreview's rim spans 400 of its 430 units across.
-const previewWidth = (rim) => Math.round((rim * PX_PER_INCH * 430) / 400);
-// Every drawing sits in a box of one size, big enough for the largest reel plus padding, so the
-// sizes line up in a grid; the reel inside keeps its scale.
-const BOX_PAD = 20;
-const BOX = previewWidth(Math.max(...REELS.map((r) => r.rim))) + 2 * BOX_PAD;
-const BOX_H = Math.round(((BOX - 2 * BOX_PAD) * 470) / 430) + 2 * BOX_PAD;
+// Every reel model on one page, one large drawing each: pick the size, the side and the finish on the
+// drawing itself. Drawings share one scale across the page, so a bigger reel draws bigger, both between
+// a model's sizes and between models. In dev, the maker photos sit below.
+const MAX_RIM = Math.max(...REELS.map((r) => r.rim));
+// The drawing area fits the largest reel; ReelPreview's rim spans 400 of its 430 units across, 470 down.
+const AREA_RATIO = '430 / 470';
 
 const heading = 'font-heading text-[15px] font-bold tracking-[0.06em] uppercase';
 const PHOTOS_BY_MODEL = photosByModel(REEL_MODELS, PHOTOS);
@@ -29,58 +27,79 @@ const LINE_OPTIONS = [
   ['hidden', 'Empty'],
 ];
 
-// `view` is the page-wide drawing settings: { line: 'shown' | 'hidden', colors }.
-function SizeBlock({ size, color, view }) {
+// One model: a stage with the size picker at the top left and Drag/Spool at the top right, the reel
+// drawn to the page's scale, and the finishes along the bottom; the size's numbers below. `view` is the
+// page-wide drawing settings: { line: 'shown' | 'hidden', colors }.
+function ModelCard({ model, view }) {
+  const sizes = reelSizes(model.id);
+  const colors = reelColors(model);
+  const [sizeId, setSizeId] = useState(sizes[0].id);
+  const [side, setSide] = useState('drag');
+  const [color, setColor] = useState(colors[0].id);
+  const size = sizes.find((s) => s.id === sizeId) ?? sizes[0];
   const setup = previewSetup(size, color, view.colors);
   const showLine = view.line === 'shown';
-  const width = previewWidth(size.rim);
-  const capacity = capacityText(size);
-  return (
-    <li className="flex flex-col gap-1.5">
-      <p className="text-[14px] font-semibold">{reelSizeLabel(size)}</p>
-      <div className="flex flex-wrap gap-1.5">
-        {['drag', 'spool'].map((side) => (
-          <div key={side} className="flex items-center justify-center rounded-md bg-stage" style={{ width: BOX, height: BOX_H }}>
-            <ReelPreview setup={setup} side={side} showLine={showLine} size={width} background="none" className="w-auto" title={`${size.name}, ${side} side`} />
-          </div>
-        ))}
-      </div>
-      <p className="font-mono text-[12px] text-muted-foreground tabular-nums">
-        rim {size.rim}″ · spool {size.spool}″ · width {size.width}″
-        {capacity && <br />}
-        {capacity}
-        {showLine && (
-          <>
-            <br />
-            drawn with WF{setup.line.weight}F + 100 yd
-          </>
-        )}
-      </p>
-    </li>
-  );
-}
-
-function ModelCard({ model, view }) {
-  const colors = reelColors(model);
-  const [color, setColor] = useState(colors[0].id);
+  // The size's specs as table rows; the line the drawing assumes is for checking drawings, so dev only.
+  const specs = [
+    ['Rim', `${size.rim}″`],
+    ['Spool', `${size.spool}″`],
+    ['Width', `${size.width}″`],
+    size.rated ? ['Capacity', capacityText(size)] : size.arbor && ['Arbor', `${size.arbor}″`],
+    import.meta.env.DEV && showLine && ['Drawn with', `WF${setup.line.weight}F + 100 yd`],
+  ].filter(Boolean);
   const photos = PHOTOS_BY_MODEL[model.id] ?? [];
   return (
-    <li className="flex flex-col gap-3 rounded-card border border-border bg-card p-4">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap items-baseline gap-2">
+    <li className="flex min-w-0 flex-col gap-3 rounded-card border border-border bg-card p-4">
+      <div className="flex flex-col gap-0.5">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
           <h4 className="text-[17px] leading-tight font-bold">{model.name}</h4>
           {model.discontinued && <span className="rounded-full border border-warn-border bg-warn-bg px-2 py-0.5 text-[12px] font-semibold text-warn">Discontinued</span>}
-          <span className="font-mono text-[12px] text-muted-foreground">
+        </div>
+        {/* The catalog id and drawing design, for checking the data; like the photos, only on the dev server. */}
+        {import.meta.env.DEV && (
+          <p className="font-mono text-[12px] text-muted-foreground">
             {model.id} · design {model.design}
+          </p>
+        )}
+      </div>
+      <div className="flex flex-col gap-2 rounded-panel bg-stage p-3 text-stage-foreground">
+        <div className="flex items-start justify-between gap-2">
+          {sizes.length > 1 ? (
+            <Select
+              label={`${model.name} size`}
+              labelHidden
+              items={sizes.map((s) => ({ value: s.id, label: reelSizeLabel(s) }))}
+              value={size.id}
+              onChange={setSizeId}
+              // Closed, it shows just the weights ("3/4/5 wt") so it fits beside Drag/Spool on a small phone.
+              valueLabel={(id) => reelSizeLabel(sizes.find((s) => s.id === id) ?? size).replace(/\s*\(.*\)$/, '')}
+              triggerClassName="w-auto max-w-full rounded-lg"
+            />
+          ) : (
+            <span className="self-center text-[14px] font-semibold">{reelSizeLabel(size)}</span>
+          )}
+          <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
+        </div>
+        <div className="flex items-center justify-center" style={{ aspectRatio: AREA_RATIO }}>
+          <span className="block" style={{ width: `${(size.rim / MAX_RIM) * 100}%` }}>
+            <ReelPreview setup={setup} side={side} showLine={showLine} background="none" title={`${size.name}, ${side} side`} />
           </span>
         </div>
-        <Swatches colors={colors} value={color} onChange={setColor} label={`${model.name} color`} size={24} />
+        {colors.length > 1 && <Swatches colors={colors} value={color} onChange={setColor} label={`${model.name} color`} size={24} touchSize={32} className="justify-center gap-3" />}
       </div>
-      <ul className="grid gap-x-6 gap-y-5" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(min(100%, ${2 * BOX + 6}px), ${2 * BOX + 6}px))` }}>
-        {reelSizes(model.id).map((size) => (
-          <SizeBlock key={size.id} size={size} color={color} view={view} />
-        ))}
-      </ul>
+      <table className="w-full border-collapse text-[14px] tabular-nums">
+        <caption className="sr-only">{`${size.name} specs`}</caption>
+        <tbody>
+          {specs.map(([label, value]) => (
+            <tr key={label} className="border-b border-border last:border-0">
+              <th scope="row" className="w-24 py-1.5 pr-3 text-left font-normal text-muted-foreground">
+                {label}
+              </th>
+              <td className="py-1.5">{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       {photos.length > 0 && (
         <ul className="flex flex-wrap gap-2" aria-label="Maker photos">
           {photos.map((p) => (
@@ -92,7 +111,13 @@ function ModelCard({ model, view }) {
           ))}
         </ul>
       )}
-      {model.notes && <p className="text-[13px] text-muted-foreground">{model.notes}</p>}
+      {/* Research notes on where the numbers came from, folded away until asked for. */}
+      {model.notes && (
+        <details className="text-[14px]">
+          <summary className="min-h-9 cursor-pointer py-1.5 font-semibold text-primary pointer-coarse:py-2.5">Research notes</summary>
+          <p className="text-[13px] text-muted-foreground">{model.notes}</p>
+        </details>
+      )}
     </li>
   );
 }
@@ -156,7 +181,8 @@ export default function ReelsPage() {
       {GROUPS.map(([maker, models]) => (
         <section key={maker} id={`reels-${maker}`} className="flex scroll-mt-[calc(var(--header-h)+1rem)] flex-col gap-3 sm:scroll-mt-[calc(var(--header-h)+9rem)]" aria-label={maker}>
           <h3 className={heading}>{maker}</h3>
-          <ul className="flex flex-col gap-3">
+          {/* Cards in equal columns, so every drawing area is the same size and the scale holds across them. */}
+          <ul className="grid gap-3 sm:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]">
             {models.map((m) => (
               <ModelCard key={m.id} model={m} view={view} />
             ))}
