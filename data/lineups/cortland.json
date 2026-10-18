@@ -6282,65 +6282,190 @@
           "weight": 6,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 30,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 4,
+            "body": 21,
+            "back": 5,
+            "running": 70
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": [
+            "Aqua Green / Sky Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 4
+            },
+            {
+              "name": "BODY",
+              "ft": 21
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 5
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 70
+            }
+          ]
         },
         {
           "label": "WF7F",
           "weight": 7,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 30,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 4,
+            "body": 21,
+            "back": 5,
+            "running": 70
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": [
+            "Aqua Green / Sky Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 4
+            },
+            {
+              "name": "BODY",
+              "ft": 21
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 5
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 70
+            }
+          ]
         },
         {
           "label": "WF8F",
           "weight": 8,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 30,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 4,
+            "body": 21,
+            "back": 5,
+            "running": 70
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": [
+            "Aqua Green / Sky Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 4
+            },
+            {
+              "name": "BODY",
+              "ft": 21
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 5
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 70
+            }
+          ]
         },
         {
           "label": "WF9F",
           "weight": 9,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 30,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 4,
+            "body": 21,
+            "back": 5,
+            "running": 70
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": [
+            "Aqua Green / Sky Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 4
+            },
+            {
+              "name": "BODY",
+              "ft": 21
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 5
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 70
+            }
+          ]
         },
         {
           "label": "WF10F",
           "weight": 10,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 30,
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": null,
-          "taper_ft": null,
-          "taper_source": null,
-          "colors": []
+          "taper_ft": {
+            "front": 4,
+            "body": 21,
+            "back": 5,
+            "running": 70
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
+          "colors": [
+            "Aqua Green / Sky Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 4
+            },
+            {
+              "name": "BODY",
+              "ft": 21
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 5
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 70
+            }
+          ]
         }
       ],
       "url": "https://www.cortlandline.com/products/coldsaltredfish"
