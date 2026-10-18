@@ -3,6 +3,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 import { REELS, findById } from '../data/catalog.js';
 import { STYLES, displayName } from '../lib/rack.js';
+import { CARD_GROW, CARD_OUTLINE } from './cardHover.js';
 import Icon from './Icon.jsx';
 import ReelPreview from './ReelPreview.jsx';
 
@@ -27,6 +28,11 @@ export default function RackCard({ setup, current = false, conflicts = [], curre
     <div
       className={cn(
         'relative flex flex-none flex-col overflow-hidden rounded-card border border-border bg-card',
+        // A keyboard user tabbing through the rack sees the same growth.
+        CARD_GROW,
+        'hover:shadow-md motion-safe:hover:scale-103',
+        'has-[:focus-visible]:z-10 has-[:focus-visible]:shadow-md motion-safe:has-[:focus-visible]:scale-103',
+        !(current && currentStyle === 'outline') && CARD_OUTLINE,
         size === 'lg' ? 'w-full sm:w-[300px]' : 'w-[200px]',
         flagged && 'border-warn-border/60',
         current && currentStyle === 'outline' && 'border-primary ring-2 ring-primary',
