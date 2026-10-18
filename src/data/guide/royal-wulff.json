@@ -2862,7 +2862,9 @@
      "total": 90,
      "grains30": 140,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Dark Green"
+     ]
     },
     {
      "label": "WF6S",
@@ -2876,7 +2878,9 @@
      "total": 90,
      "grains30": 160,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Dark Green"
+     ]
     },
     {
      "label": "WF7S",
@@ -2890,7 +2894,9 @@
      "total": 90,
      "grains30": 185,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Dark Green"
+     ]
     },
     {
      "label": "WF8S",
@@ -2904,7 +2910,9 @@
      "total": 90,
      "grains30": 210,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Dark Green"
+     ]
     },
     {
      "label": "WF9S",
@@ -2918,7 +2926,9 @@
      "total": 90,
      "grains30": 240,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Dark Green"
+     ]
     }
    ]
   },

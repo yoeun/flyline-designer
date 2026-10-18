@@ -3437,7 +3437,8 @@
       "secondary_use": "Budget",
       "weight_label": null,
       "summary": "Value-priced full-sinking (type 3) Classic triangle taper.",
-      "taper_source": "maker table (royalwulff.com): front = TAPER (Lee Wulff's continuous triangle taper, whole head); body = 0; back = 0; running = RUNNING LINE. sink rate inferred from \"Full Sink 3\" name",
+      "taper_source": "maker table (royalwulff.com): front = TAPER (Lee Wulff's continuous triangle taper, whole head); body = 0; back = 0; running = RUNNING LINE",
+      "data_notes": "The page gives Color: Dark Green and Sinking 3 ips; the 5 wt box in its photo calls the color Evergreen.",
       "variants": [
         {
           "label": "WF5S",
@@ -3456,7 +3457,9 @@
             "running": 54
           },
           "taper_source": "maker table (royalwulff.com): front = TAPER (Lee Wulff's continuous triangle taper, whole head); body = 0; back = 0; running = RUNNING LINE",
-          "colors": []
+          "colors": [
+            "Dark Green"
+          ]
         },
         {
           "label": "WF6S",
@@ -3475,7 +3478,9 @@
             "running": 50
           },
           "taper_source": "maker table (royalwulff.com): front = TAPER (Lee Wulff's continuous triangle taper, whole head); body = 0; back = 0; running = RUNNING LINE",
-          "colors": []
+          "colors": [
+            "Dark Green"
+          ]
         },
         {
           "label": "WF7S",
@@ -3494,7 +3499,9 @@
             "running": 50
           },
           "taper_source": "maker table (royalwulff.com): front = TAPER (Lee Wulff's continuous triangle taper, whole head); body = 0; back = 0; running = RUNNING LINE",
-          "colors": []
+          "colors": [
+            "Dark Green"
+          ]
         },
         {
           "label": "WF8S",
@@ -3513,7 +3520,9 @@
             "running": 50
           },
           "taper_source": "maker table (royalwulff.com): front = TAPER (Lee Wulff's continuous triangle taper, whole head); body = 0; back = 0; running = RUNNING LINE",
-          "colors": []
+          "colors": [
+            "Dark Green"
+          ]
         },
         {
           "label": "WF9S",
@@ -3532,7 +3541,9 @@
             "running": 50
           },
           "taper_source": "maker table (royalwulff.com): front = TAPER (Lee Wulff's continuous triangle taper, whole head); body = 0; back = 0; running = RUNNING LINE",
-          "colors": []
+          "colors": [
+            "Dark Green"
+          ]
         }
       ],
       "url": "https://www.royalwulff.com/products/triangle-taper-classic-full-sink"
