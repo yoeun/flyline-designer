@@ -20,17 +20,17 @@ const RIM = { n: 20, rIn: 100, rOut: 172, bar: 19, corner: 8, off: -99 };
 // A flat dial in the accent: tick dots and a pointer round its edge, 1–10 counting anticlockwise from the top,
 // and a ringed logo badge.
 const DIAL =
-  `<circle r="86" ${ACCENT}/><circle r="86" fill="url(#sheen)"/>` +
+  `<circle r="76" ${ACCENT}/><circle r="76" fill="url(#sheen)"/>` +
   Array.from({ length: 30 }, (_, i) => {
-    const [x, y] = P(73, rad(-90 + i * 12));
+    const [x, y] = P(65, rad(-90 + i * 12));
     return i ? `<circle cx="${f(x)}" cy="${f(y)}" r="${i % 3 ? 1.1 : 1.9}" fill="#e4e4e0"/>` : '';
   }).join('') +
-  `<path d="M0 -77L4 -69H-4Z" fill="#e4e4e0"/>` +
+  `<path d="M0 -69L3.5 -62H-3.5Z" fill="#e4e4e0"/>` +
   Array.from({ length: 10 }, (_, i) => {
-    const a = -81 - i * 36, [x, y] = P(54, rad(a));
-    return `<text transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)})" y="4.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#e4e4e0">${i + 1}</text>`;
+    const a = -81 - i * 36, [x, y] = P(48, rad(a));
+    return `<text transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)})" y="4" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#e4e4e0">${i + 1}</text>`;
   }).join('') +
-  `<circle r="27" fill="#9ea3a6"/><circle r="27" fill="url(#sheen)"/><circle r="23" fill="#2b2e31"/>${logo(0, 0, 26)}`;
+  `<circle r="24" fill="#9ea3a6"/><circle r="24" fill="url(#sheen)"/><circle r="20.5" fill="#2b2e31"/>${logo(0, 0, 23)}`;
 
 // "sage" and the leaf, reading outward along the upper right spoke.
 const SPOKE_LOGO = (() => {
@@ -39,12 +39,13 @@ const SPOKE_LOGO = (() => {
 })();
 
 export const drag = svg({
-  cage: [ring(184, 90) + slots(RIM)],
+  // Its inner ring shows round the frame's hub.
+  cage: [ring(184, 92) + slots(RIM)],
   body: [
     ring(200, 178),
     sageFoot(),
     ...SPOKES.map((a) => spoke(a, 60, 192, 34, 30)),
-    circle(94),
+    circle(82),
   ],
   details: SPOKE_LOGO + DIAL,
 });
@@ -52,7 +53,6 @@ export const drag = svg({
 export const spool = svg({
   foot: recessed(sageFoot()) + frameRim(),
   handles: [[...P(154, rad(-90)), 20]],
-  under: `<path d="${ring(92, 28)}" fill="#1b1d1f" fill-rule="evenodd"/>`,
   // The cage is set into the frame's rim and the spokes and hub stand up from it: three shades.
   back: [ring(185, 90) + slots(RIM), pad(136, -90, 54, 74), pad(136, 90, 54, 74)],
   body: [

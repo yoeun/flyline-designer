@@ -18,11 +18,6 @@ const SPOKES = [90, 162, 234, 306, 18].map((a) => (a > 180 ? a - 360 : a));
 // The spool's 20 windows, centered on 12 o'clock, with the handle and knob pads at 12 and 6.
 const RIM = { n: 20, rIn: 132, rOut: 177, bar: 14, corner: 8, off: -99 };
 
-// The spool seen through the frame's middle: a darkened disc with the arbor's lip.
-const SPOOL = (rOut, rIn) =>
-  `<path d="${ring(rOut, rIn)}" fill="currentColor" fill-rule="evenodd"/><path d="${ring(rOut, rIn)}" fill="#000" fill-opacity=".38" fill-rule="evenodd"/>` +
-  `<circle r="${rOut - 14}" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="5"/>`;
-
 // A flat dial in the accent: an outer ring numbered 1–10 anticlockwise from the top, with a dot between each pair,
 // and a face crossed by 12 pairs of lines round a ringed logo badge.
 const DIAL =
@@ -51,7 +46,6 @@ const SPOKE_LOGO = (() => {
 })();
 
 export const drag = svg({
-  under: SPOOL(120, 84),
   cage: [ring(182, 118) + slots(RIM)],
   body: [
     ring(200, 178),
@@ -65,7 +59,6 @@ export const drag = svg({
 export const spool = svg({
   foot: recessed(sageFoot()) + frameRim(),
   handles: [[...P(156, rad(-90)), 20]],
-  under: SPOOL(118, 40),
   // The cage is set into the frame's rim and the spokes and hub stand up from it: three shades.
   back: [ring(185, 116) + slots(RIM), pad(156, -90, 46, 50), pad(156, 90, 46, 50)],
   body: [
