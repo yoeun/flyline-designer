@@ -3364,7 +3364,9 @@
             "running": 58
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Black / Mint Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -3400,7 +3402,9 @@
             "running": 58
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Black / Mint Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -3436,7 +3440,9 @@
             "running": 58
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Black / Mint Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -3472,7 +3478,9 @@
             "running": 58
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Black / Mint Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -3508,7 +3516,9 @@
             "running": 58
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Black / Mint Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -3544,7 +3554,9 @@
             "running": 58
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Black / Mint Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -3565,7 +3577,8 @@
           ]
         }
       ],
-      "url": "https://www.cortlandline.com/products/sink-tip-type-6"
+      "url": "https://www.cortlandline.com/products/sink-tip-type-6",
+      "data_notes": "Colors from the product page's color field. The description gives the black sink tip as 10 ft; the taper chart, not to scale, draws it over the 8 ft front taper."
     },
     {
       "id": "cortland-444-tropic-all-purpose",
@@ -13484,7 +13497,8 @@
           ]
         }
       ],
-      "url": "https://www.cortlandline.com/products/indicator-ii"
+      "url": "https://www.cortlandline.com/products/indicator-ii",
+      "data_notes": "The taper chart gives no length for the white tip: it draws it as a short stub at the loop, ahead of the olive. The chart isn't to scale; going by where the olive starts within the 7 ft front taper, the white tip is about 2 ft long, which is an estimate."
     },
     {
       "id": "cortland-trout-double-taper",
@@ -13878,7 +13892,8 @@
           ]
         }
       ],
-      "url": "https://www.cortlandline.com/products/ultralight-ii"
+      "url": "https://www.cortlandline.com/products/ultralight-ii",
+      "data_notes": "The taper chart gives no lengths for the color changes: the head is aqua green, with dark green from partway along the body to the end of the body. The chart isn't to scale; going by where the change sits between the ends of the body, the dark green starts about 24 ft from the tip on the 2-3 wt chart (16 ft body) and about 25 ft on the 4-6 wt chart (19 ft body). Those starts are estimates."
     },
     {
       "id": "cortland-trout-headwater",
@@ -14521,7 +14536,7 @@
           "weight": 4,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 84,
           "grains_30ft": 120,
           "head_grains": null,
@@ -14532,7 +14547,9 @@
             "running": 48
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Blue Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -14557,7 +14574,7 @@
           "weight": 5,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 84,
           "grains_30ft": 140,
           "head_grains": null,
@@ -14568,7 +14585,9 @@
             "running": 48
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Blue Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -14593,7 +14612,7 @@
           "weight": 6,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 84,
           "grains_30ft": 160,
           "head_grains": null,
@@ -14604,7 +14623,9 @@
             "running": 48
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Blue Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -14629,7 +14650,7 @@
           "weight": 7,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 84,
           "grains_30ft": 185,
           "head_grains": null,
@@ -14640,7 +14661,9 @@
             "running": 48
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Blue Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -14665,7 +14688,7 @@
           "weight": 8,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 84,
           "grains_30ft": 210,
           "head_grains": null,
@@ -14676,7 +14699,9 @@
             "running": 48
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Blue Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -14701,7 +14726,7 @@
           "weight": 9,
           "density": "floating",
           "sink_ips": null,
-          "head_ft": null,
+          "head_ft": 36,
           "total_ft": 84,
           "grains_30ft": 240,
           "head_grains": null,
@@ -14712,7 +14737,9 @@
             "running": 48
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Blue Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -14733,7 +14760,8 @@
           ]
         }
       ],
-      "url": "https://www.cortlandline.com/products/fairplay-floating"
+      "url": "https://www.cortlandline.com/products/fairplay-floating",
+      "data_notes": "Colors from the product page's color field. The page gives no head length; 36 ft is the taper chart's 8 ft front taper, 20 ft body and 8 ft back taper."
     },
     {
       "id": "cortland-fairplay-sinking-type-2",
@@ -14926,7 +14954,9 @@
             "running": 63
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Yellow"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -14947,7 +14977,8 @@
           ]
         }
       ],
-      "url": "https://www.cortlandline.com/products/fairplay-saltwater-floating-fly-line"
+      "url": "https://www.cortlandline.com/products/fairplay-saltwater-floating-fly-line",
+      "data_notes": "Colors from the product page's color field."
     },
     {
       "id": "cortland-competition-fo-tech-intermediate",

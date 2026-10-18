@@ -54,11 +54,21 @@ export const COLORS = [
   // Cortland's moss greens and olives differ from chart to chart.
   { id: 'cortland-streamer-intermediate-tip-moss-green', name: 'Streamer Intermediate Tip Moss Green', hex: '#9ba66c' },
   { id: 'cortland-headwater-olive', name: 'Headwater Olive', hex: '#4c5538' },
-  // Far paler than the Modern Trout's moss green. Shared by the Headwater and Trout Double Taper.
+  // Far paler than the Modern Trout's moss green. Shared by the Headwater, Trout Double Taper and
+  // Indicator II, whose chart draws its olive in the same hex.
   { id: 'cortland-headwater-moss-green', name: 'Pale Moss Green', hex: '#bac78f' },
   // The Pike Musky Float's pale yellow is far brighter than the Tropic Plus All Purpose XP's.
   { id: 'cortland-pike-musky-float-pale-yellow', name: 'Pike Musky Float Pale Yellow', hex: '#f8ec80' },
   { id: 'cortland-333-double-taper-mango', name: 'Mango', hex: '#f99d3a' },
+  // The Ultralight II's aqua green is far duller than the Cold Salt lines'.
+  { id: 'cortland-ultralight-ii-aqua-green', name: 'Ultralight II Aqua Green', hex: '#c5cb85' },
+  { id: 'cortland-ultralight-ii-dark-green', name: 'Ultralight II Dark Green', hex: '#6a754b' },
+  // Greyer than the Streamer Sink Tip 25's sage green.
+  { id: 'cortland-top-shelf-sage-green', name: 'Top Shelf Sage Green', hex: '#c3c28a' },
+  { id: 'cortland-top-shelf-lime-green', name: 'Top Shelf Lime Green', hex: '#cedd28' },
+  // Far paler than the 444 SL's mint green.
+  { id: 'cortland-sink-tip-type-6-mint-green', name: 'Sink Tip Type 6 Mint Green', hex: '#98cc9b' },
+  { id: 'cortland-fairplay-blue-green', name: 'Fairplay Blue Green', hex: '#98d096' },
 ];
 
 // Cortland draws one taper chart per line with the head length on it but no size. Every size of a
@@ -694,6 +704,92 @@ export const PRODUCTS = [
           ],
         },
       );
+    }),
+  }),
+  // True to size, with a long 18 ft front taper: a 40 ft head on the 80 ft WF2–3 and a 45 ft head on the
+  // 90 ft WF4–6. Aqua green, with dark green from partway along the body to its end. The chart gives no
+  // lengths for the color changes; read off where the dark green starts along the body, it begins about
+  // 24 ft from the tip on the WF2–3 and 25 ft on the WF4–6, which are estimates.
+  makerProduct({
+    id: 'cortland-ultralight-ii',
+    maker: 'Cortland',
+    name: 'Cortland Ultralight II',
+    sizes: [
+      [80, 24, 10],
+      [90, 25, 12],
+    ].flatMap(([total, start, dark]) =>
+      sizes(
+        { ...LINEUP['cortland-trout-ultralight-ii'], sizes: LINEUP['cortland-trout-ultralight-ii'].sizes.filter((size) => size.total === total) },
+        {
+          type: 'floating',
+          colorways: [
+            {
+              id: 'aqua-green-dark-green',
+              name: 'Aqua Green/Dark Green',
+              zones: zones([start, 'cortland-ultralight-ii-aqua-green'], [dark, 'cortland-ultralight-ii-dark-green'], [0, 'cortland-ultralight-ii-aqua-green']),
+            },
+          ],
+        },
+      ),
+    ),
+  }),
+  // Kelly Galloup's streamer line, 100 ft long, with a short 15 ft body and an 18 ft back taper in a 37 ft
+  // head. The chart's 12 ft step down to the running line, lime green like the running line, is drawn
+  // here as running line.
+  makerProduct({
+    id: 'cortland-top-shelf',
+    maker: 'Cortland',
+    name: 'Cortland Top Shelf',
+    sizes: sizes(LINEUP['cortland-galloup-top-shelf'], {
+      type: 'floating',
+      colorways: [{ id: 'sage-green-lime-green', name: 'Sage Green/Lime Green', zones: zones([37, 'cortland-top-shelf-sage-green'], [0, 'cortland-top-shelf-lime-green']) }],
+    }),
+  }),
+  // Full size heavy, with a 25 ft back taper in a 48 ft head for mending and roll casts. A hi-vis white
+  // tip, then olive to the end of the head and a white running line. The chart, not to scale, draws the
+  // tip only as a short stub at the loop and gives no length for it; read off where the olive starts
+  // within the 7 ft front taper, about 2 ft is an estimate.
+  makerProduct({
+    id: 'cortland-indicator-ii',
+    maker: 'Cortland',
+    name: 'Cortland Indicator II',
+    sizes: sizes(LINEUP['cortland-trout-indicator-ii'], {
+      type: 'floating',
+      colorways: [{ id: 'white-olive-white', name: 'White/Olive/White', zones: zones([2, 'cortland-white'], [46, 'cortland-headwater-moss-green'], [0, 'cortland-white']) }],
+    }),
+  }),
+  // The 444 Sink Tip Type 3's 32 ft head with a Type 6 tip (6–7 ips) on a floating mint green body and
+  // running line. The description gives the tip as 10 ft; the chart, not to scale, draws the black over
+  // the 8 ft front taper.
+  makerProduct({
+    id: 'cortland-444-sink-tip-type-6',
+    maker: 'Cortland',
+    name: 'Cortland 444 Sink Tip Type 6',
+    sizes: sizes(LINEUP['cortland-444-sink-tip-type-6'], {
+      id: (w) => `wf${w}`,
+      type: 'sinktip',
+      colorways: [{ id: 'black-mint-green', name: 'Black/Mint Green', zones: zones([10, 'cortland-black'], [0, 'cortland-sink-tip-type-6-mint-green']) }],
+    }),
+  }),
+  // Cortland's budget line, 84 ft long, with 8 ft tapers either side of a 20 ft body.
+  makerProduct({
+    id: 'cortland-fairplay-floating',
+    maker: 'Cortland',
+    name: 'Cortland Fairplay Floating',
+    sizes: sizes(LINEUP['cortland-fairplay-floating'], {
+      type: 'floating',
+      colorways: [{ id: 'blue-green', name: 'Blue Green', zones: zones([0, 'cortland-fairplay-blue-green']) }],
+    }),
+  }),
+  // Cortland's budget inshore line, sold in one size for two rod weights, drawn at the lower. Short 27 ft
+  // head with an 18 ft body.
+  makerProduct({
+    id: 'cortland-fairplay-saltwater-floating',
+    maker: 'Cortland',
+    name: 'Cortland Fairplay Saltwater Floating',
+    sizes: sizes(LINEUP['cortland-fairplay-saltwater-floating'], {
+      type: 'floating',
+      colorways: [{ id: 'yellow', name: 'Yellow', zones: zones([0, 'cortland-yellow']) }],
     }),
   }),
 ];
