@@ -5374,6 +5374,7 @@
       "secondary_use": "Flats, Gamefish",
       "weight_label": null,
       "summary": "1.5-2 ips intermediate for big-game subsurface work, 350-600 gr.",
+      "data_notes": "The spec table gives a 30 ft head, but the taper chart's 3 ft front taper, 7 ft body and 31 ft back taper add up to the 41 ft head printed on it (the same chart as the 50+ Giant Trevally), so the split is unconfirmed.",
       "variants": [
         {
           "label": "WF10I 350 gr",

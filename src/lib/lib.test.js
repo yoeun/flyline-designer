@@ -651,6 +651,7 @@ const LOOKALIKES = new Map([
   ...[3, 4, 5, 6, 7, 8, 9].map((w) => [`airflo-superflo-max-ridge-power-wf${w}f`, `airflo-superflo-max-smooth-power-wf${w}f`]),
   ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-amplitude-textured-trout-gp-wf${w}f`, `sa-amplitude-smooth-trout-gp-wf${w}f`]),
   ['cortland-50-plus-cannon-500gr', 'cortland-50-plus-cannon-450gr'],
+  ...[5, 6, 7, 8].map((w) => [`cortland-streamer-sink-tip-10-t3-wf${w}`, `cortland-streamer-sink-tip-10-wf${w}`]),
 ]);
 
 describe('presetForLine', () => {
