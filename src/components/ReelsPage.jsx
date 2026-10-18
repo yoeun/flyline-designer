@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import PHOTOS from 'reel-photos';
 import { BACKING_COLORS, LINE_COLORS, REELS, REEL_MODELS, makerGroups, reelColors, reelSizeLabel, reelSizes } from '../data/catalog.js';
 import { PREVIEW_COLORS, capacityText, photosByModel, previewSetup } from '../lib/reelsPage.js';
 import { SIDES } from '../lib/reelFrames.js';
+import { cn } from '@/lib/utils';
 import Button from './Button.jsx';
+import { CHIP } from './Chips.jsx';
 import Field from './Field.jsx';
 import Icon from './Icon.jsx';
 import ReelPreview from './ReelPreview.jsx';
@@ -159,6 +161,16 @@ const DEFAULT_VIEW = { line: 'shown', colors: PREVIEW_COLORS };
 
 export default function ReelsPage({ onNewSetup }) {
   const [view, setView] = useState(DEFAULT_VIEW);
+  // The maker shown, or null for all of them.
+  const [maker, setMaker] = useState(null);
+  const groups = maker ? GROUPS.filter(([m]) => m === maker) : GROUPS;
+  // A new maker starts at the top of the list rather than wherever the last one was scrolled to.
+  const listRef = useRef(null);
+  const pickMaker = (m) => {
+    setMaker(m);
+    const list = listRef.current;
+    if (list && list.getBoundingClientRect().top < 0) window.scrollTo({ top: 0 });
+  };
   // What the View button says once the view differs from the default.
   const active = view.line !== 'shown' ? 'Line hidden' : view.colors !== PREVIEW_COLORS ? 'Custom colors' : '';
   const count = REEL_MODELS.reduce((n, m) => n + reelSizes(m.id).length, 0);
@@ -176,34 +188,35 @@ export default function ReelsPage({ onNewSetup }) {
           <ViewControls view={view} onChange={setView} />
         </FilterSheet>
       </div>
-      {/* From sm up the controls stay in a bar under the fixed header while the reels scroll. */}
-      <div className="sticky top-(--header-h) z-10 -mx-[max(16px,2.5vw)] hidden flex-wrap items-end gap-x-6 gap-y-3 border-b border-border bg-background/95 px-[max(16px,2.5vw)] py-3 backdrop-blur sm:flex">
-        <ViewControls view={view} onChange={setView} />
+      {/* The maker filter, and from sm up the line and colors, stay in a bar under the fixed header while the
+          reels scroll. On phones the chips are one row that scrolls sideways, so the bar stays short. */}
+      <div className="sticky top-(--header-h) z-10 -mx-[max(16px,2.5vw)] flex flex-col gap-3 border-b border-border bg-background/95 px-[max(16px,2.5vw)] py-3 backdrop-blur">
+        <div className="hidden flex-wrap items-end gap-x-6 gap-y-3 sm:flex">
+          <ViewControls view={view} onChange={setView} />
+        </div>
+        {/* Pick one maker, or All; each chip says how many models it holds. */}
+        <div role="group" aria-label="Maker" className="-mx-[max(16px,2.5vw)] flex gap-2 overflow-x-auto px-[max(16px,2.5vw)] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
+          {[[null, REEL_MODELS], ...GROUPS].map(([m, models]) => (
+            <button key={m ?? 'all'} type="button" aria-pressed={maker === m} onClick={() => pickMaker(m)} className={cn(CHIP, 'group inline-flex flex-none items-center gap-1.5 font-semibold')}>
+              {m ?? 'All'}
+              <span className="text-[12px] font-normal text-muted-foreground group-aria-pressed:text-primary-foreground/80">{models.length}</span>
+            </button>
+          ))}
+        </div>
       </div>
-      {/* Maker chips that jump to each maker's reels, styled like the app's filter chips so they read as controls. */}
-      <nav aria-label="Makers" className="flex flex-wrap gap-2">
-        {GROUPS.map(([maker, models]) => (
-          <a
-            key={maker}
-            href={`#reels-${maker}`}
-            className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-input bg-card px-3.5 text-[14px] font-semibold hover:border-primary hover:text-primary pointer-coarse:min-h-11 pointer-coarse:px-4"
-          >
-            {maker}
-            <span className="text-[12px] font-normal text-muted-foreground">{models.length}</span>
-          </a>
+      <div ref={listRef} className="flex flex-col gap-5">
+        {groups.map(([group, models]) => (
+          <section key={group} className="flex flex-col gap-3" aria-label={group}>
+            <h3 className={heading}>{group}</h3>
+            {/* Cards in equal columns, so every drawing area is the same size and the scale holds across them. */}
+            <ul className="grid gap-3 sm:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]">
+              {models.map((m) => (
+                <ModelCard key={m.id} model={m} view={view} onNewSetup={onNewSetup} />
+              ))}
+            </ul>
+          </section>
         ))}
-      </nav>
-      {GROUPS.map(([maker, models]) => (
-        <section key={maker} id={`reels-${maker}`} className="flex scroll-mt-[calc(var(--header-h)+1rem)] flex-col gap-3 sm:scroll-mt-[calc(var(--header-h)+9rem)]" aria-label={maker}>
-          <h3 className={heading}>{maker}</h3>
-          {/* Cards in equal columns, so every drawing area is the same size and the scale holds across them. */}
-          <ul className="grid gap-3 sm:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]">
-            {models.map((m) => (
-              <ModelCard key={m.id} model={m} view={view} onNewSetup={onNewSetup} />
-            ))}
-          </ul>
-        </section>
-      ))}
+      </div>
     </main>
   );
 }
