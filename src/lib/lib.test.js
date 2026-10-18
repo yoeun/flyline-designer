@@ -631,12 +631,19 @@ describe('change tracking', () => {
   });
 });
 
+// Maker sizes that draw exactly like an earlier one, so a saved line reads back as that one (id →
+// the preset it matches). RIO's OutBound Short Int/3/5 and Int/5/7 have the same taper and colors;
+// SA's Textured MPX and Textured Grand Slam are the Smooth lines' tapers and colors with a texture.
+const LOOKALIKES = new Map([
+  ...[6, 7, 8, 9, 10].map((w) => [`rio-premier-outbound-short-wf${w}-int-5-7`, `rio-premier-outbound-short-wf${w}-int-3-5`]),
+  ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-amplitude-textured-mpx-wf${w}f`, `sa-amplitude-smooth-mpx-wf${w}f`]),
+  ...[7, 8, 9, 10, 11, 12].map((w) => [`sa-amplitude-grand-slam-wf${w}f`, `sa-amplitude-smooth-grand-slam-wf${w}f`]),
+]);
+
 describe('presetForLine', () => {
-  // RIO's OutBound Short Int/3/5 and Int/5/7 have the same taper and colors, so they can't be told apart.
-  const lookalikes = new Set([6, 7, 8, 9, 10].map((w) => `rio-premier-outbound-short-wf${w}-int-5-7`));
   it('finds the preset a line was loaded from', () => {
-    for (const preset of LINE_PRESETS.filter((p) => !lookalikes.has(p.id))) expect(presetForLine(structuredClone(preset.line))).toBe(preset.id);
-    for (const id of lookalikes) expect(presetForLine(structuredClone(findById(LINE_PRESETS, id).line))).toBe(id.replace('int-5-7', 'int-3-5'));
+    for (const preset of LINE_PRESETS.filter((p) => !LOOKALIKES.has(p.id))) expect(presetForLine(structuredClone(preset.line))).toBe(preset.id);
+    for (const [id, twin] of LOOKALIKES) expect(presetForLine(structuredClone(findById(LINE_PRESETS, id).line))).toBe(twin);
   });
 
   it('finds a maker line in any of its colorways', () => {
@@ -874,8 +881,8 @@ describe('maker lines beyond RIO', () => {
   });
 
   it('every size and colorway is told apart when a saved line is matched back to its preset', () => {
-    // RIO's OutBound Short Int/5/7 draws exactly like Int/3/5 (see above), so it is left out.
-    for (const preset of LINE_PRESETS.filter((p) => p.maker && !/^rio-premier-outbound-short-wf\d+-int-5-7$/.test(p.id))) {
+    // Lookalikes draw exactly like another size (see LOOKALIKES), so they are left out.
+    for (const preset of LINE_PRESETS.filter((p) => p.maker && !LOOKALIKES.has(p.id))) {
       for (const cw of preset.colorways) {
         expect(presetForLine({ ...structuredClone(preset.line), zones: structuredClone(cw.zones) }), `${preset.id} ${cw.id}`).toBe(preset.id);
       }
