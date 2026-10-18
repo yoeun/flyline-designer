@@ -595,6 +595,25 @@ describe('reel frames', () => {
   it('falls back to the generic frame for an unknown design', () => {
     expect(frameMarkup('nope', 'spool', 'x')).toBe(frameMarkup('generic', 'spool', 'x'));
   });
+
+  it.each(Object.keys(FRAMES))('%s spool side puts its handles in a cage that turns, apart from the foot', (design) => {
+    const markup = frameMarkup(design, 'spool', 'x', { handles: true });
+    const cage = markup.slice(markup.indexOf('<g data-cage="">'));
+    expect(markup.indexOf('<g data-cage="">')).toBeGreaterThan(markup.indexOf('</defs>'));
+    expect(cage.match(/<circle data-handle=""/g)?.length).toBeGreaterThan(0);
+    expect(cage).toMatch(/<\/g>\s*$/);
+  });
+
+  it('adds handles only when asked, and only to the spool side', () => {
+    expect(frameMarkup('run', 'spool', 'x')).not.toContain('data-handle=');
+    expect(frameMarkup('run', 'drag', 'x', { handles: true })).not.toContain('data-handle=');
+    expect(frameMarkup('run', 'spool', 'x', { handles: true }).match(/data-handle=""/g)).toHaveLength(2);
+  });
+
+  it('gives a small handle a bigger circle to click', () => {
+    expect(frameMarkup('liquid-s', 'spool', 'x', { handles: true })).toMatch(/data-handle="" cx="[-\d.]+" cy="[-\d.]+" r="26"/);
+    expect(frameMarkup('animas', 'spool', 'x', { handles: true })).toMatch(/data-handle="" cx="[-\d.]+" cy="[-\d.]+" r="30"/);
+  });
 });
 
 describe('setup records', () => {

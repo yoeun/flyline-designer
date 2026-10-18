@@ -1,5 +1,5 @@
 // Redington Run.
-import { P, circle, f, foot, knob, rect, ring, slots, spoke, svg } from './lib.mjs';
+import { P, circle, f, foot, knob, recessed, rect, ring, slots, spoke, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
 export const arbor = 118;
@@ -18,7 +18,8 @@ export const drag = svg({
 });
 
 export const spool = svg({
-  back: [foot(150, -240, 14, 30)],
+  foot: recessed(foot(150, -240, 14, 30)),
+  handles: [[0, -150, 15], [0, 150, 15]],
   body: [
     ring(200, 108) + slots({ n: 32, rIn: 118, rOut: 182, bar: 8, corner: 3 }),
     rect(-21, -184, 42, 70, 6),

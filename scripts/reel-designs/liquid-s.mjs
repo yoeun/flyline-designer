@@ -1,5 +1,5 @@
 // Lamson Liquid S.
-import { ACCENT, P, circle, foot, knob, knurl, rad, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, foot, knob, knurl, rad, recessed, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
 export const arbor = 126;
@@ -28,7 +28,9 @@ export const drag = svg({
 
 export const spool = svg({
   // The frame's slotted ring shows behind the spool, as on the drag side.
-  back: [foot(128, -244, 14, 34), ring(190, 116) + slots({ n: 24, rIn: 126, rOut: 180, bar: 12, corner: 7 })],
+  foot: recessed(foot(128, -244, 14, 34)),
+  handles: [[...liquidHandle, 16]],
+  back: [ring(190, 116) + slots({ n: 24, rIn: 126, rOut: 180, bar: 12, corner: 7 })],
   body: [ring(200, 184), ...LIQUID_SPOKES.map((a) => spoke(a, 26, 188, 20, 13, 40)), circle(38)],
   details: `${knob(...liquidHandle, 16)}<circle r="30" fill="#fff" fill-opacity=".1"/>`,
 });

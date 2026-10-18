@@ -2,7 +2,7 @@
 // Photos are angled; the straight-on layout is inferred. Drag side: a solid wedge up to the rim under the foot, its
 // two edges tangent to the drag boss and 120° apart; the rest is open between tapered spokes. Red accent ring around the spool hub; the drag side is all frame color. Handle placement on the
 // spool is arbitrary (it turns); it sits opposite a round counterweight.
-import { P, arcPts, circle, f, foot, knob, knurl, rad, ring, roundPoly, spoke, svg } from './lib.mjs';
+import { P, arcPts, circle, f, foot, knob, knurl, rad, recessed, ring, roundPoly, spoke, svg } from './lib.mjs';
 
 const RED = '#b0243a';
 // Each edge runs up and out to the rim at WEDGE degrees from straight up, just touching the boss (r 66). Below it, seven
@@ -47,7 +47,8 @@ const HANDLE = 160;
 export const spool = svg({
   // The red hub sits behind the spokes, showing between them.
   under: `<circle r="56" fill="${RED}"/><circle r="56" fill="url(#sheen)"/>`,
-  back: [foot(132, -244, 14, 30)],
+  foot: recessed(foot(132, -244, 14, 30)),
+  handles: [[...P(150, rad(HANDLE)), 26]],
   body: [
     ring(200, 182),
     ...SPOOL_SPOKES.map((a) => spoke(a, 20, 186, 8, 24)),

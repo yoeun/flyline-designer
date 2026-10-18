@@ -4,7 +4,7 @@
 // straight spokes and a flat cap with the RR monogram. The foot takes the finish's trim. The spool's slotted back shows between the spokes.
 // Spool side: the same window band, with six spokes running from the hub right out to the rim; black handle
 // at 9 o'clock, round counterweight at 3. Both from Ross's straight-on product photos.
-import { ACCENT, P, TRIM, circle, f, foot, knob, ring, slots, spoke, svg } from './lib.mjs';
+import { ACCENT, P, TRIM, circle, f, foot, knob, recessed, ring, slots, spoke, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the outer window band; the inner slots look into the arbor.
 export const arbor = 152;
@@ -41,7 +41,8 @@ const handleAt = P(162, Math.PI);
 const weightAt = P(160, 0);
 
 export const spool = svg({
-  back: [EVO_FOOT],
+  foot: recessed(EVO_FOOT),
+  handles: [[...handleAt, 24]],
   body: [
     ring(200, 144) + slots(BAND),
     ...SPOKES.map((a) => spoke(a, 30, 194, 14, 12)),

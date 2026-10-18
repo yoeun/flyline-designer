@@ -1,6 +1,6 @@
 // Orvis Clearwater (Cast). Traced from straight-on photos of both sides.
 // Both sides share a cage of tilted V's: pairs of bars that meet at an inner ring and open out to the rim.
-import { ACCENT, P, circle, foot, hexSpokes, knob, knurl, pad, rad, ring, screw, strut, svg } from './lib.mjs';
+import { ACCENT, P, circle, foot, hexSpokes, knob, knurl, pad, rad, recessed, ring, screw, strut, svg } from './lib.mjs';
 
 // The wound line starts at the outer edge of the spool side's inner ring.
 export const arbor = 118;
@@ -62,7 +62,8 @@ const SPOKES = hexSpokes({ hex: HEX, reach: 112, ends: [0, 1, 2, 3, 4, 5].map((k
 const handle = P(156, rad(98));
 
 export const spool = svg({
-  back: [foot(124, -244, 14, 30)],
+  foot: recessed(foot(124, -244, 14, 30)),
+  handles: [[...handle, 24]],
   body: [
     ring(200, 184),
     ring(118, 106),
