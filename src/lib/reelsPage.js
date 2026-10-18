@@ -56,3 +56,13 @@ export function photosByModel(models, photos) {
   }
   return byModel;
 }
+
+// How far to scroll so a card sits fully in the visible band from `top` to `bottom` (viewport pixels), with
+// `gap` to spare: 0 when it already does. A card taller than the band scrolls only as far as it takes to
+// fill the band, showing its top if that was the end cut off; one that already fills it stays put.
+export function scrollToFit(card, top, bottom, gap = 12) {
+  const up = card.top - (top + gap);
+  const down = card.bottom - (bottom - gap);
+  if (up < 0) return down > 0 ? 0 : Math.max(up, down);
+  return down > 0 ? Math.min(up, down) : 0;
+}

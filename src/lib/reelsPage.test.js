@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { DEFAULT_SETUP, LINE_PRESETS, REELS, REEL_MODELS, findById } from '../data/catalog.js';
 import { spoolLayout } from './geometry.js';
-import { PREVIEW_FILL, capacityText, photosByModel, previewSetup, previewWeight, setupForReel } from './reelsPage.js';
+import { PREVIEW_FILL, capacityText, photosByModel, previewSetup, previewWeight, scrollToFit, setupForReel } from './reelsPage.js';
 
 describe('setupForReel', () => {
   it('starts from the defaults on the chosen reel and finish', () => {
@@ -60,5 +60,26 @@ describe('reels page', () => {
       'sage-spectrum': [{ file: 'sage-spectrum-drag-black.jpg' }],
     });
     expect(Object.keys(photosByModel(REEL_MODELS, []))).toEqual([]);
+  });
+});
+
+describe('scrollToFit', () => {
+  it('leaves a card that already fits', () => {
+    expect(scrollToFit({ top: 200, bottom: 600 }, 150, 800)).toBe(0);
+  });
+  it('scrolls up to a card cut off at the top', () => {
+    expect(scrollToFit({ top: 100, bottom: 500 }, 150, 800)).toBe(-62);
+  });
+  it('scrolls down to a card cut off at the bottom', () => {
+    expect(scrollToFit({ top: 500, bottom: 900 }, 150, 800)).toBe(112);
+  });
+  it('lines up the top of a card taller than the band when its bottom is cut off', () => {
+    expect(scrollToFit({ top: 300, bottom: 1200 }, 150, 800)).toBe(138);
+  });
+  it('brings up the bottom of a card taller than the band only as far as it fills the band', () => {
+    expect(scrollToFit({ top: -400, bottom: 500 }, 150, 800)).toBe(-288);
+  });
+  it('leaves a card taller than the band that already fills it', () => {
+    expect(scrollToFit({ top: 100, bottom: 1200 }, 150, 800)).toBe(0);
   });
 });

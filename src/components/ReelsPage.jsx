@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import PHOTOS from 'reel-photos';
 import { BACKING_COLORS, LINE_COLORS, REELS, REEL_MODELS, makerGroups, reelColors, reelSizeLabel, reelSizes } from '../data/catalog.js';
-import { PREVIEW_COLORS, capacityText, photosByModel, previewSetup } from '../lib/reelsPage.js';
+import { PREVIEW_COLORS, capacityText, photosByModel, previewSetup, scrollToFit } from '../lib/reelsPage.js';
 import { cn } from '@/lib/utils';
 import Button from './Button.jsx';
 import { CARD_GROW, CARD_OUTLINE } from './cardHover.js';
@@ -32,8 +32,8 @@ const ALL_MODELS = GROUPS.flatMap(([, models]) => models);
 // One model: a stage with the size picker at the top left and Drag/Spool at the top right, the reel
 // drawn to the page's scale, and the finishes along the bottom; the size's numbers below. `view` is the
 // page-wide line colors: { backing, head, running }. New setup opens the designer on the
-// size and finish picked here.
-function ModelCard({ model, view, onNewSetup }) {
+// size and finish picked here. A click anywhere on the card hands it to `onReveal`, to scroll it into view.
+function ModelCard({ model, view, onNewSetup, onReveal }) {
   const sizes = reelSizes(model.id);
   const colors = reelColors(model);
   const [sizeId, setSizeId] = useState(sizes[0].id);
@@ -52,7 +52,7 @@ function ModelCard({ model, view, onNewSetup }) {
   ].filter(Boolean);
   const photos = PHOTOS_BY_MODEL[model.id] ?? [];
   return (
-    <li className={cn('flex min-w-0 flex-col gap-3 rounded-card border border-border bg-card p-4', CARD_GROW, 'hover:shadow-sm motion-safe:hover:scale-[1.005]', CARD_OUTLINE)}>
+    <li className={cn('flex min-w-0 flex-col gap-3 rounded-card border border-border bg-card p-4', CARD_GROW, 'hover:shadow-sm motion-safe:hover:scale-[1.005]', CARD_OUTLINE)} onClick={(e) => onReveal(e.currentTarget)}>
       <div className="flex flex-col gap-0.5">
         <div className="flex items-start justify-between gap-2">
           <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
@@ -171,6 +171,12 @@ export default function ReelsPage({ onNewSetup }) {
     const list = listRef.current;
     if (list && list.getBoundingClientRect().top < 0) window.scrollTo({ top: 0 });
   };
+  // A clicked card that's cut off, under the filter bar or past the bottom of the screen, scrolls fully into view.
+  const barRef = useRef(null);
+  const reveal = (card) => {
+    const by = scrollToFit(card.getBoundingClientRect(), barRef.current.getBoundingClientRect().bottom, window.innerHeight);
+    if (by) window.scrollBy({ top: by, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
   // What the View button says once the view differs from the default.
   const active = view !== PREVIEW_COLORS ? 'Custom colors' : '';
   return (
@@ -178,7 +184,7 @@ export default function ReelsPage({ onNewSetup }) {
       {/* The title, the maker filter and, from sm up, the line colors stay in a bar under the fixed header while
           the reels scroll; it sits above a hovered card (z-10), which would otherwise draw over it. On phones the
           chips are one row that scrolls sideways, so the bar stays short. */}
-      <div className="sticky top-(--header-h) z-20 -mx-[max(16px,2.5vw)] -mt-6 flex flex-col gap-2.5 border-b border-border bg-background/95 px-[max(16px,2.5vw)] pt-4 pb-3 backdrop-blur">
+      <div ref={barRef} className="sticky top-(--header-h) z-20 -mx-[max(16px,2.5vw)] -mt-6 flex flex-col gap-2.5 border-b border-border bg-background/95 px-[max(16px,2.5vw)] pt-4 pb-3 backdrop-blur">
         <div className="flex items-center justify-between gap-3">
           <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Reels</h2>
           {/* On phones the line colors open in a sheet instead of a bar over the reels. */}
@@ -208,7 +214,7 @@ export default function ReelsPage({ onNewSetup }) {
             {/* Cards in equal columns, so every drawing area is the same size and the scale holds across them. */}
             <ul className="grid gap-3 sm:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]">
               {models.map((m) => (
-                <ModelCard key={m.id} model={m} view={view} onNewSetup={onNewSetup} />
+                <ModelCard key={m.id} model={m} view={view} onNewSetup={onNewSetup} onReveal={reveal} />
               ))}
             </ul>
           </section>
