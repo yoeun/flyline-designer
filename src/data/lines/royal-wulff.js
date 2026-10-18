@@ -434,4 +434,22 @@ export const PRODUCTS = [
       colorways: [{ id: 'tropic-blue-sand', name: 'Tropic Blue/Sand', zones: zones([size.taper.front + size.taper.back, 'rw-tropic-blue'], [0, 'rw-bermuda-sand']) }],
     })),
   }),
+  // The Bermuda line for the biggest fish, on a 55 lb braided mono core. Royal Wulff's table gives
+  // only a 30–33 ft head, with no front and rear taper split, so the whole head is front taper, as
+  // on the Sea Wulff lines; the handling line counts as running line. Its photo shows the same coil
+  // as the Bermuda Floating's, blue innermost, so the head is Tropic Blue and the rest sand.
+  makerProduct({
+    id: 'royal-wulff-bermuda-triangle-taper-giants-floating',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Bermuda Triangle Taper GIANTS Floating',
+    sizes: LINEUP['royal-wulff-bermuda-triangle-taper-giants-floating'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [{ id: 'tropic-blue-sand', name: 'Tropic Blue/Sand', zones: zones([size.head, 'rw-tropic-blue'], [0, 'rw-bermuda-sand']) }],
+    })),
+  }),
 ];
