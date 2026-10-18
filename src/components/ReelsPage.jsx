@@ -185,7 +185,7 @@ export default function ReelsPage({ onNewSetup }) {
           </FilterSheet>
         </div>
         {/* Pick one maker, or All; each chip says how many models it holds. */}
-        <Row label="Brand" className="-mr-[max(16px,2.5vw)] sm:mr-0" labelClassName="max-sm:w-auto self-start pt-2 pointer-coarse:pt-3">
+        <Row label="Brand" className="-mr-[max(16px,2.5vw)] sm:mr-0" labelClassName="max-sm:hidden self-start pt-2 pointer-coarse:pt-3">
           <div role="group" aria-label="Brand" className="flex min-w-0 gap-2 overflow-x-auto pr-[max(16px,2.5vw)] sm:flex-wrap sm:overflow-visible sm:pr-0">
             {[[null, ALL_MODELS], ...GROUPS].map(([m, models]) => (
               <button key={m ?? 'all'} type="button" aria-pressed={maker === m} onClick={() => pickMaker(m)} className={cn(CHIP, 'group inline-flex flex-none items-center gap-1.5 font-semibold')}>
