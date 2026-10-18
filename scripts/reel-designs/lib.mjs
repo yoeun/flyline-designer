@@ -107,19 +107,24 @@ export const SHEEN_RECT = `<rect x="-215" y="-250" width="430" height="470" fill
 // under: fixed-color markup behind everything; back: recessed metal (darkened); body: front metal in reel color;
 // details: fixed colors on top. On the spool side the spool turns: foot is markup that stays put behind it, and
 // handles lists the [cx, cy, r] circles a click on the handle can land in. Everything else is in [data-cage]
-// pieces that turn together, while the shadow's offset and the sheen's light stay put.
-export function svg({ foot = '', under = '', back = [], body, details = '', handles = [] }) {
+// pieces that turn together, while the shadow's offset and the sheen's light stay put. On the drag side, cage is
+// the spool seen through the frame, in recessed metal: a [data-cage="cw"] piece that turns the other way.
+export function svg({ foot = '', under = '', cage = [], back = [], body, details = '', handles = [] }) {
   const backPaths = back.map((d) => `<path d="${d}"/>`).join('');
   const bodyPaths = body.map((d) => `<path d="${d}"/>`).join('');
   const handleAttr = handles.length ? ` data-handles="${handles.map((h) => h.map(f).join(' ')).join(',')}"` : '';
-  const cage = foot ? ' data-cage=""' : '';
+  const cageAttr = foot ? ' data-cage=""' : '';
   const turn = (markup) => (foot ? `<g data-cage="">${markup}</g>` : markup);
-  const behind = `${under ? under + '\n' : ''}${back.length ? '<use href="#back" fill="currentColor"/><use href="#back" fill="#000" opacity=".2"/>' : ''}`;
+  const cagePaths = cage.map((d) => `<path d="${d}"/>`).join('');
+  const spoolCage = cage.length
+    ? `<g data-cage="cw" fill-rule="evenodd"><g fill="currentColor">${cagePaths}</g><g fill="#000" opacity=".25">${cagePaths}</g></g>\n`
+    : '';
+  const behind = `${under ? under + '\n' : ''}${spoolCage}${back.length ? '<use href="#back" fill="currentColor"/><use href="#back" fill="#000" opacity=".2"/>' : ''}`;
   const shadow = foot
     ? '<g transform="translate(2 4)"><use href="#body" data-cage="" fill="#000" opacity=".28"/></g>'
     : '<use href="#body" fill="#000" opacity=".28" transform="translate(2 4)"/>';
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-215 -250 430 470" color="#b8bdc2"${handleAttr}>
-<defs>${SHEEN}<g id="back" fill-rule="evenodd">${backPaths}</g><g id="body" fill-rule="evenodd">${bodyPaths}</g><mask id="body-mask"><use href="#body"${cage} fill="#fff"/></mask></defs>
+<defs>${SHEEN}<g id="back" fill-rule="evenodd">${backPaths}</g><g id="body" fill-rule="evenodd">${bodyPaths}</g><mask id="body-mask"><use href="#body"${cageAttr} fill="#fff"/></mask></defs>
 ${foot ? foot + '\n' : ''}${behind && turn(behind)}
 ${shadow}
 ${turn(`<use href="#body" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="2"/>
@@ -129,6 +134,13 @@ ${turn(details)}
 </svg>
 `;
 }
+
+// The frame's rim seen from the spool side: a ring outside the spool that stays still while it turns, a shade
+// lighter than the spool's face, with a dark groove between rim and spool. Markup for svg's foot; the spool's own
+// rim then stops at `gap`.
+export const frameRim = (inner = 189, gap = 185) =>
+  `<path d="${ring(200, inner)}" fill="currentColor" fill-rule="evenodd"/><path d="${ring(200, inner)}" fill="#fff" fill-opacity=".12" fill-rule="evenodd"/><path d="${ring(200, inner)}" fill="url(#sheen)" fill-rule="evenodd"/>` +
+  `<path d="${ring(inner, gap)}" fill="#1b1d1f" fill-opacity=".7" fill-rule="evenodd"/>`;
 
 // Paths in recessed metal, as `back` draws them, e.g. for svg's foot.
 export const recessed = (...ds) => {

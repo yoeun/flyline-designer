@@ -1,0 +1,98 @@
+---
+name: reel-drawing
+description: Use when drawing or fixing a reel's frame SVG in scripts/reel-designs (drag or spool side), when the user shares photos of a reel, or says a reel drawing looks wrong. Covers splitting the fixed frame from the spool cage that spins, insets and grooves, and checking the drawing against photos.
+---
+
+# Drawing a reel
+
+A reel is two pieces: the **frame** (foot, rim, spokes, hub, drag dial), which stays still, and the **spool**,
+which turns inside it. Photos make them look like one solid casting. Draw them as two pieces on both sides, so
+they read as separate and the spool spins on its own.
+
+Designs live in `scripts/reel-designs/<design>.mjs` and are built with `svg()` and the shapes in `lib.mjs`
+(maker-shared shapes in files like `sage.mjs`). `npm run reels` writes `src/assets/reels/<design>-{drag,spool}.svg`.
+Commit the regenerated SVGs with the script.
+
+## 1. Get photos and find the two pieces
+
+- Get straight-on photos of both sides. Fetch the product page's images yourself (WebFetch for the image URLs, then
+  `curl` into the scratchpad; try the gallery's sibling file names, e.g. `_a.jpg`, `_b.jpg`), and only ask the user
+  when that fails.
+- Crop each photo to the reel with `sips -c H W --cropOffset Y X` and measure: the center, the rim radius in
+  pixels, then each feature in rim = 200 units. Measure angles with `atan2` from the center (screen y points down,
+  so 90° is 6 o'clock).
+- Sort every part into the frame or the spool:
+  - **Drag side:** the frame is usually only the rim, a few spokes, the hub and the dial. Window bars, inner rings
+    and many-spoked cages behind them are the spool showing through.
+  - **Spool side:** the outer rim is the frame's, and the whole spool sits inset inside it.
+  - Handle and knob pads seen through the drag side's windows (dark dots on grey pads) are the back of the spool.
+    Leave them out: the wound line hides them.
+- When the user corrects the frame/spool split or a measurement, trust that over the photo.
+
+## 2. Draw the drag side
+
+```js
+export const drag = svg({
+  under: '…',                       // still, behind everything: e.g. the spool's dark disc round the hub
+  cage: [ring(182, 118) + slots(RIM)], // the spool seen through the frame: recessed and darker, turns clockwise
+  body: [ring(200, 178), sageFoot(), ...SPOKES.map((a) => spoke(a, 60, 190, 26, 22)), circle(90)], // the frame
+  details: DIAL,                    // fixed colors on top (dial, logos, screws)
+});
+```
+
+- `cage` paths go into a `[data-cage="cw"]` group. `spinCage` turns it clockwise, the mirror of the spool side, and
+  draws it 25% darker than the frame so the two read as separate pieces.
+- The cage must match the spool side: same window count, radii and bar width (share one `RIM` object), with no
+  handle or knob pads.
+- Spokes that look evenly spaced usually are: build them from one angle list (e.g. 72° apart for five) rather than
+  measured angles.
+
+## 3. Draw the spool side, inset in the frame's rim
+
+A spool side needs at least three shades, outside in:
+
+1. **Outer:** the frame's rim, the lightest, still.
+2. **Cage:** the spool's window ring, set into the rim and darker (`back`).
+3. **Inner:** the hub and its spokes, either raised from the cage (`body`, which casts a shadow onto the cage) or
+   sunk below it (`back` plus a darker `under`). Check the photo for which.
+
+```js
+export const spool = svg({
+  foot: recessed(sageFoot()) + frameRim(), // 1. still: the foot and the frame's rim, with a groove inside it
+  handles: [[...P(156, rad(-90)), 20]],
+  under: '…',                               // the spool's inside, behind the spokes
+  back: [ring(185, 116) + slots(RIM), pad(156, -90, 46, 50)], // 2. the cage, recessed: turns
+  body: [...[-90, 30, 150].map((a) => spoke(a, 34, 118, 30, 24)), circle(32)], // 3. raised hub: turns
+  details: logo(0, 0, 24) + rimHandle(156, -90, 20),
+});
+```
+
+- `frameRim(inner = 189, gap = 185)` (in `lib.mjs`) draws the frame's rim from 200 in to `inner`, a shade lighter
+  than the spool's face, plus a dark groove from `inner` in to `gap`. Start the spool's own rim at `gap`.
+- End raised spokes where they meet the cage ring (its inner radius, plus about 2), so no square ends sit on top of
+  it.
+- Everything in `body`, `under`, `back` and `details` turns with the spool. Keep only round, unlit or truly fixed
+  parts in `foot`.
+
+## 4. Grooves and insets
+
+Most reels have them, and they're what makes a flat drawing read as machined metal:
+
+- **Between parts:** a dark ring (`#1b1d1f` at about 70% opacity) where one piece sits inside another, like
+  `frameRim`'s groove.
+- **Recessed parts:** `back` (or `recessed()` for still parts) draws metal 20% darker. Use it for floors of
+  pockets and anything set below the face.
+- **Separate parts, one finish:** give the inset part a darker shade than the part around it, never the same flat
+  color.
+
+## 5. Check it
+
+- `npm run reels`, then
+  `node scripts/preview-reel-design.mjs <design> --color '#hex' [--accent '#hex'] --out <scratchpad>/x.png <photo crops…>`,
+  and read the PNG next to the photos.
+- For a close fit, overlay the drawing at half opacity on the photo, scaled so the rims match, in a page that
+  headless Chrome screenshots.
+- `npx vitest run` (every design's spool side must keep its handles inside the turning cage).
+- Run the app (`?page=reels`, with `&demo=1` for a seeded rack) and spin the spool from both sides.
+- Note in the design's header comment where the drawing comes from and which parts are the frame and which the
+  spool.
