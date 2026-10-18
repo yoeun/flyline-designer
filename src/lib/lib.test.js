@@ -660,6 +660,8 @@ const LOOKALIKES = new Map([
   ...[7, 8, 9].map((w) => [`sa-amplitude-smooth-bonefish-plus-wf${w}f`, `sa-amplitude-textured-bonefish-plus-wf${w}f`]),
   ...[7, 8, 9, 10, 11].map((w) => [`sa-amplitude-textured-infinity-salt-wf${w}f`, `sa-amplitude-smooth-infinity-salt-wf${w}f`]),
   ...[8, 9, 10].map((w) => [`cortland-333-salmon-wf${w}f`, `cortland-333-trout-all-purpose-wf${w}f`]),
+  ...[6, 7].map((w) => [`rio-ambassador-series-phil-rowley-lake-wf${w}f`, `rio-elite-stillwater-floater-wf${w}f`]),
+  ...[6, 7].map((w) => [`rio-ambassador-series-phil-rowley-lake-wf${w}i`, `rio-premier-aqualux-wf${w}i`]),
 ]);
 
 describe('presetForLine', () => {
@@ -1223,12 +1225,21 @@ describe('RIO lines', () => {
     'rio-avid-bass': table([6, 7, 8].map((w) => [w, 33, 80])),
     'rio-mainstream-striper': table([6, 7, 8, 9, 10].map((w) => [w, 30, 80])),
     'rio-premier-dog-days-gold': table([[4, 46, 90], [5, 47, 90], [6, 48, 90]]),
+    // RIO gives no overall length except on the WF5F diagram, so only the WF5F is drawn.
+    'rio-premier-glacial-gold': table([[5, 47, 90]]),
+    'rio-premier-midge-tip-long': table([[5, 40, 90], [6, 40, 90], [7, 42, 100], [8, 44, 100]]),
+    'rio-avid-bonefish': table([[7, 48.5, 80], [8, 49.5, 80], [9, 49.5, 80]]),
+    'rio-avid-tarpon': table([10, 11, 12].map((w) => [w, 40, 80])),
+    // The floating sizes are the Stillwater Floater (whose diagram draws the WF6F head at 50 ft; the
+    // table says 49.5); the intermediate sizes are the AquaLux, with a 30 ft head. Checked by size below.
+    'rio-ambassador-series-phil-rowley-lake': table([[6, 49.5, 90], [7, 50, 100]]),
   };
   const rio = LINE_PRESETS.filter((p) => p.maker === 'RIO');
   const head = ({ taper }) => taper.front + taper.body + taper.back;
   const spec = (p) => {
     if (/-wf\d+s7$/.test(p.id) && p.product === 'rio-premier-outbound-short') return [30, 110];
     if (p.product === 'rio-premier-striper' && /gr$/.test(p.id)) return [35, 100];
+    if (p.product === 'rio-ambassador-series-phil-rowley-lake' && p.line.type === 'intermediate') return [30, 100];
     return SPECS[p.product]?.[p.line.weight];
   };
 
@@ -1313,6 +1324,11 @@ describe('RIO lines', () => {
       'rio-avid-bass-wf8f',
       'rio-mainstream-striper-wf9i',
       'rio-premier-dog-days-gold-wf5f',
+      'rio-premier-glacial-gold-wf5f',
+      'rio-premier-midge-tip-long-wf6-f-i',
+      'rio-avid-bonefish-wf8f',
+      'rio-avid-tarpon-wf11f',
+      'rio-ambassador-series-phil-rowley-lake-wf6i',
     ]);
   });
 
@@ -1345,6 +1361,11 @@ describe('RIO lines', () => {
     ['rio-avid-bass-wf8f', [5, 10, 18, 47]],
     ['rio-mainstream-striper-wf9i', [16, 11, 3, 50]],
     ['rio-premier-dog-days-gold-wf5f', [6, 22, 19, 43]],
+    ['rio-premier-glacial-gold-wf5f', [5, 23, 19, 43]],
+    ['rio-premier-midge-tip-long-wf6-f-i', [6, 29, 5, 50]],
+    ['rio-avid-bonefish-wf8f', [7, 24, 18.5, 30.5]],
+    ['rio-avid-tarpon-wf11f', [6, 22, 12, 40]],
+    ['rio-ambassador-series-phil-rowley-lake-wf6i', [6, 22, 2, 70]],
   ])('%s has the taper on RIO\'s diagram', (id, [front, body, back, running]) => {
     expect(findById(LINE_PRESETS, id).line.taper).toEqual({ front, body, back, running });
   });

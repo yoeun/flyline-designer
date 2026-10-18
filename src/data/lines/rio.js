@@ -72,6 +72,8 @@ export const COLORS = [
   { id: 'rio-golden-yellow', name: 'Golden Yellow', hex: '#f9c62a' },
   { id: 'rio-bronze', name: 'Bronze', hex: '#d27f26' },
   { id: 'rio-golden-tan', name: 'Golden Tan', hex: '#c8b27a' },
+  { id: 'rio-glacial-green', name: 'Glacial Green', hex: '#86d9a0' },
+  { id: 'rio-ice-blue', name: 'Ice Blue', hex: '#b3c2e2' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -852,6 +854,66 @@ const dogDaysGold = rio({
   ],
 });
 
+// Premier Glacial Gold. RIO's WF5F diagram: front taper 5, body 15 plus 8, back taper 7 plus 12 on
+// 43 ft of running line, 90 ft overall. RIO's table gives the other sizes' heads but no overall
+// length, so only the WF5F is drawn. Frost White to 20 ft (the end of the 15 ft body), Glacial Green
+// to about 41 ft (halfway down the 12 ft taper, read off the diagram by eye), then Ice Blue.
+const glacialGold = rio({
+  id: 'rio-premier-glacial-gold',
+  name: 'RIO Premier Glacial Gold',
+  sizes: LINEUP['rio-premier-glacial-gold'].sizes.filter((size) => size.total !== null),
+  densities: [
+    float(
+      { split: [5, 23, 19], example: 5 },
+      colorway('frost-white-glacial-green-ice-blue', 'Frost White/Glacial Green/Ice Blue', [20, 'rio-white'], [21, 'rio-glacial-green'], [0, 'rio-ice-blue']),
+    ),
+  ],
+});
+
+// Premier Midge Tip Long, a floating line with a 1.5 ips clear tip. RIO's WF6F/I diagram: front taper
+// 3 plus 3 (the clear tip), body 2 plus 27, back taper 5 on 50 ft of running line. Clear over the
+// first 6 ft, melon to the end of the head, then a beige running line.
+const midgeTipLong = rio({
+  id: 'rio-premier-midge-tip-long',
+  name: 'RIO Premier Midge Tip Long',
+  sizes: LINEUP['rio-premier-midge-tip-long'].sizes,
+  densities: [{ ...tip('F/I', { split: [6, 29, 5], example: 6 }, colorway('clear-melon-beige', 'Clear/Melon/Beige', [6, 'rio-clear'], [34, 'rio-melon'], [0, 'rio-beige'])), sink: 'Float/1.5 ips' }],
+});
+
+// Avid Bonefish. RIO's WF8F diagram: front taper 7, body 24, a 6.5 ft body taper and a 12 ft handling
+// section (together the back taper, 18.5) on 30.5 ft of running line. Blue end to end.
+const avidBonefish = rio({
+  id: 'rio-avid-bonefish',
+  name: 'RIO Avid Bonefish',
+  sizes: LINEUP['rio-avid-bonefish'].sizes,
+  densities: [float({ split: [7, 24, 18.5], example: 8 }, colorway('blue', 'Blue', [0, 'rio-pale-blue']))],
+});
+
+// Avid Tarpon. RIO's WF11F diagram: front taper 6, body 22, then a 12 ft handling section (the back
+// taper) on 40 ft of running line. Every size has a 40 ft head. Sand end to end.
+const avidTarpon = rio({
+  id: 'rio-avid-tarpon',
+  name: 'RIO Avid Tarpon',
+  sizes: LINEUP['rio-avid-tarpon'].sizes,
+  densities: [float({ split: [6, 22, 12], example: 11 }, colorway('sand', 'Sand', [0, 'rio-sand']))],
+});
+
+// Ambassador Series Phil Rowley Lake: RIO's lake lines with an integrated tippet ring, one listing for
+// several tapers. RIO says the floater is the Stillwater Floater and the 1.5–2 ips intermediate the
+// AquaLux, and the listing shows both of their diagrams, so those sizes draw (and look) exactly like
+// Elite Stillwater Floater and Premier AquaLux. Its Midge Tip rows bundle the Midge Tip and Midge Tip
+// Long (two different splits) in one size, and its Midge Tip Hover rows are hover lines, so they're
+// left out.
+const philRowleyLake = rio({
+  id: 'rio-ambassador-series-phil-rowley-lake',
+  name: 'RIO Ambassador Series Phil Rowley Lake',
+  sizes: LINEUP['rio-ambassador-series-phil-rowley-lake'].sizes,
+  densities: [
+    float({ split: [4, 26, 20] }, colorway('orange-green-yellow', 'Orange/Green/Yellow', [2, 'rio-orange'], [36, 'rio-green'], [0, 'rio-pale-yellow'])),
+    { ...intermediate({ split: [6, 22, 2], example: 6 }, colorway('clear-translucent-green', 'Clear/Translucent Green', [30, 'rio-clear'], [0, 'rio-light-teal'])), sink: '1.5–2 ips' },
+  ],
+});
+
 export const PRODUCTS = [
   makerProduct({
     id: 'rio-premier-gold',
@@ -931,4 +993,9 @@ export const PRODUCTS = [
   avidBass,
   mainstreamStriper,
   dogDaysGold,
+  glacialGold,
+  midgeTipLong,
+  avidBonefish,
+  avidTarpon,
+  philRowleyLake,
 ];
