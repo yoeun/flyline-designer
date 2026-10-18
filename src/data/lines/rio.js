@@ -67,6 +67,11 @@ export const COLORS = [
   { id: 'rio-light-orange', name: 'Light Orange', hex: '#f6a03c' },
   { id: 'rio-purple', name: 'Purple', hex: '#bd55c4' },
   { id: 'rio-pale-green', name: 'Pale Green', hex: '#b4e68c' },
+  { id: 'rio-light-seagrass', name: 'Light Seagrass', hex: '#c8c070' },
+  { id: 'rio-sage-green', name: 'Sage Green', hex: '#b4bc94' },
+  { id: 'rio-golden-yellow', name: 'Golden Yellow', hex: '#f9c62a' },
+  { id: 'rio-bronze', name: 'Bronze', hex: '#d27f26' },
+  { id: 'rio-golden-tan', name: 'Golden Tan', hex: '#c8b27a' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -768,6 +773,85 @@ const midgeTip = rio({
   densities: [{ ...tip('F/I', { split: [7, 28, 5], example: 6 }, colorway('clear-yellow-beige', 'Clear/Yellow/Beige', [3, 'rio-clear'], [37, 'rio-yellow'], [0, 'rio-beige'])), sink: 'Float/1.5 ips' }],
 });
 
+// Premier Bonefish. RIO's WF8F diagram: front taper 6, body 32, back taper 12 on 50 ft of running
+// line. That head is 50 ft; RIO's table says 49.5 for WF8F, so every size, the WF8F too, is the
+// diagram scaled to its table head and marked estimated. Sand to the end of the body (38 ft), then
+// blue from the back taper to the end of the line.
+const premierBonefish = rio({
+  id: 'rio-premier-bonefish',
+  name: 'RIO Premier Bonefish',
+  sizes: LINEUP['rio-premier-bonefish'].sizes,
+  densities: [float({ split: [6, 32, 12] }, colorway('sand-blue', 'Sand/Blue', [38, 'rio-light-sand'], [0, 'rio-pale-blue']))],
+});
+
+// Avid 24ft Sink Tip. RIO's 200 gr (6/7 wt) diagram: a 24 ft black sinking tip (a 4 ft front taper
+// and 20 ft), a 5 ft body and a 4 ft back taper, then an 8 ft handling section and 39 ft of running
+// line. RIO's table gives only the 24 ft tip as the head, so every size overrides it with the
+// diagram's 33 ft head. Sold for two rod weights and drawn at the lower (which the lineup leaves
+// out). A black tip on a gold line.
+const AVID_SINK_TIP = { split: [4, 25, 4], example: 6 };
+const AVID_SINK_TIP_LINEUP = LINEUP['rio-avid-24ft-sink-tip'];
+const avidSinkTip24 = makerProduct({
+  id: 'rio-avid-24ft-sink-tip',
+  maker: 'RIO',
+  name: 'RIO Avid 24ft Sink Tip',
+  sizes: [
+    [5, 'F/S4'],
+    [6, 'F/S5'],
+    [7, 'F/S6'],
+    [8, 'F/S7'],
+    [9, 'F/S8'],
+  ].map(([weight, densities]) =>
+    sized(
+      { taper: AVID_SINK_TIP, colorways: [colorway('black-gold', 'Black/Gold', [24, 'rio-black'], [0, 'rio-amber-gold'])] },
+      { id: `${weight}-${weight + 1}wt-${slug(densities)}`, label: `${weight}/${weight + 1} wt ${densities}`, type: 'sinktip' },
+      overriding(lineupSize(AVID_SINK_TIP_LINEUP, `${weight}/${weight + 1}wt`), { weight, head: 33 }),
+    ),
+  ),
+});
+
+// Avid Saltwater. RIO's WF8F diagram: front taper 6, front body 9, back body 14, back taper 7 on 44 ft
+// of running line. That head is 36 ft; RIO's table says 37 for WF8F, so every size, the WF8F too, is
+// the diagram scaled to its table head and marked estimated. Light Seagrass end to end.
+const avidSaltwater = rio({
+  id: 'rio-avid-saltwater',
+  name: 'RIO Avid Saltwater',
+  sizes: LINEUP['rio-avid-saltwater'].sizes,
+  densities: [float({ split: [6, 23, 7] }, colorway('light-seagrass', 'Light Seagrass', [0, 'rio-light-seagrass']))],
+});
+
+// Avid Bass. RIO's WF8F diagram: front taper 5, body 10, back taper 18 on 47 ft of running line.
+// Every size has a 33 ft head. Green end to end.
+const avidBass = rio({
+  id: 'rio-avid-bass',
+  name: 'RIO Avid Bass',
+  sizes: LINEUP['rio-avid-bass'].sizes,
+  densities: [float({ split: [5, 10, 18], example: 8 }, colorway('green', 'Green', [0, 'rio-sage-green']))],
+});
+
+// Mainstream Striper. RIO's diagram is Premier Striper's split: front taper 3 plus a 13 ft body
+// taper, body 11, back taper 3, then a 12 ft handling section and 38 ft of running line. It is
+// labelled WF9F, but the line is sold only as an intermediate, so the WF9I is its example. Every
+// size has a 30 ft head. Clear end to end in RIO's photo.
+const mainstreamStriper = rio({
+  id: 'rio-mainstream-striper',
+  name: 'RIO Mainstream Striper',
+  sizes: LINEUP['rio-mainstream-striper'].sizes,
+  densities: [intermediate(STRIPER, colorway('clear', 'Clear', [0, 'rio-clear']))],
+});
+
+// Premier Dog Days Gold. RIO's WF5F diagram: front taper 6, body 14 plus 8, back taper 7 plus 12 on
+// 43 ft of running line. Yellow to 20 ft, bronze to about 41 ft (halfway down the 12 ft taper, read
+// off the diagram by eye), then tan.
+const dogDaysGold = rio({
+  id: 'rio-premier-dog-days-gold',
+  name: 'RIO Premier Dog Days Gold',
+  sizes: LINEUP['rio-premier-dog-days-gold'].sizes,
+  densities: [
+    float({ split: [6, 22, 19], example: 5 }, colorway('yellow-bronze-tan', 'Yellow/Bronze/Tan', [20, 'rio-golden-yellow'], [21, 'rio-bronze'], [0, 'rio-golden-tan'])),
+  ],
+});
+
 export const PRODUCTS = [
   makerProduct({
     id: 'rio-premier-gold',
@@ -841,4 +925,10 @@ export const PRODUCTS = [
   tarponQuickShooter,
   avidTroutGrand,
   midgeTip,
+  premierBonefish,
+  avidSinkTip24,
+  avidSaltwater,
+  avidBass,
+  mainstreamStriper,
+  dogDaysGold,
 ];
