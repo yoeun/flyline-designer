@@ -1,4 +1,4 @@
-import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, presetForLine, reelColors } from '../data/catalog.js';
+import { DEFAULT_SETUP, LINE_PRESETS, REELS, REEL_MODELS, findById, presetForLine, reelColors, reelSizes } from '../data/catalog.js';
 import { backingYardsForFill } from './geometry.js';
 
 // The setup each size is drawn with on the Reels page: the generic WF floating line at the middle of
@@ -64,4 +64,44 @@ export function scrollToFit(card, top, bottom, gap = 12) {
   if (up < 0) return up;
   const down = card.bottom - (bottom - gap);
   return down > 0 ? Math.min(up, down) : 0;
+}
+
+// The Reels page's filters, kept in its URL so a reload or a link opens the same reels: a brand
+// (?brand=Sage), or one or more models (?model=sage-arbor-xl,sage-spectrum) and, for a single model, the
+// size, finish and side its card shows (&size=sage-arbor-xl-678&color=sage-slate&side=spool). A size id in
+// `model` stands for its model at that size. Anything unknown is dropped.
+export const NO_REELS_FILTER = { brand: null, models: [], size: null, color: null, side: null };
+const MAKERS = [...new Set(REEL_MODELS.map((m) => m.maker).filter(Boolean))];
+
+export function reelsFilterFromQuery(q) {
+  const brand = MAKERS.find((m) => m.toLowerCase() === q.get('brand')?.toLowerCase()) ?? null;
+  let size = q.get('size');
+  const models = [];
+  for (const id of (q.get('model') ?? '').split(',')) {
+    const model = findById(REEL_MODELS, id)?.id ?? findById(REELS, id)?.product;
+    if (!model || models.includes(model)) continue;
+    models.push(model);
+    if (model !== id) size ??= id;
+  }
+  const only = models.length === 1 ? models[0] : null;
+  const color = q.get('color');
+  return {
+    ...NO_REELS_FILTER,
+    brand,
+    models,
+    size: only && reelSizes(only).some((s) => s.id === size) ? size : null,
+    color: only && reelColors(findById(REEL_MODELS, only)).some((c) => c.id === color) ? color : null,
+    side: only && ['drag', 'spool'].includes(q.get('side')) ? q.get('side') : null,
+  };
+}
+
+// The filter's URL params, in reelsFilterFromQuery's terms.
+export function reelsFilterParams({ brand, models, size, color, side }) {
+  return [
+    ['brand', brand],
+    ['model', models.join(',')],
+    ['size', size],
+    ['color', color],
+    ['side', side],
+  ].filter(([, v]) => v);
 }

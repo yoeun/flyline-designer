@@ -26,7 +26,7 @@ import { rackConflicts } from './lib/checks.js';
 import { clampSelection } from './lib/lineEdit.js';
 import { SECTION_KEYS, changedSections, copyOf, displayName, isDirty, loadEntries } from './lib/rack.js';
 import { resolveView } from './lib/rackView.js';
-import { setupForReel } from './lib/reelsPage.js';
+import { NO_REELS_FILTER, setupForReel } from './lib/reelsPage.js';
 import { queryToState, stateToQuery } from './lib/share.js';
 import { createShare, deleteShare, loadShare, rotateShare, storeShare, updateShare } from './lib/shareApi.js';
 import { FIXED_HEADER, HEADER_SPACER, useFixedHeader } from './lib/fixedHeader.js';
@@ -72,6 +72,8 @@ export default function App() {
   const [{ setup, presetId }, setState] = useState({ setup: initial.setup, presetId: initial.presetId });
   const [editingId, setEditingId] = useState(initial.editingId);
   const [page, setPage] = useState(initial.page);
+  // The Reels page's brand or model filter, kept in its URL.
+  const [reelsFilter, setReelsFilter] = useState(initial.reelsFilter ?? NO_REELS_FILTER);
   const [cameFromDesigner, setCameFromDesigner] = useState(false);
   const [mode, setMode] = useState(initial.mode);
   const [side, setSide] = useState(initial.side);
@@ -189,11 +191,11 @@ export default function App() {
 
   // Keep the URL in step with the design so a reload or a copied link restores it.
   useEffect(() => {
-    const url = `${window.location.pathname}?${stateToQuery({ setup, presetId, side, mode, editingId, page, demo })}`;
+    const url = `${window.location.pathname}?${stateToQuery({ setup, presetId, side, mode, editingId, page, demo, reelsFilter })}`;
     if (page === urlPage.current) window.history.replaceState(null, '', url);
     else window.history.pushState(null, '', url);
     urlPage.current = page;
-  }, [setup, presetId, side, mode, editingId, page, demo]);
+  }, [setup, presetId, side, mode, editingId, page, demo, reelsFilter]);
 
   // Browser back/forward: restore the page, and for a designer address the setup it carries.
   useEffect(() => {
@@ -209,6 +211,7 @@ export default function App() {
       const view = resolveView(state, rackRef.current);
       urlPage.current = view.page;
       setPage(view.page);
+      setReelsFilter(state.reelsFilter ?? NO_REELS_FILTER);
       if (view.page === 'designer') {
         setLineSelection(null);
         setState({ setup: view.setup, presetId: view.presetId });
@@ -456,7 +459,7 @@ export default function App() {
 
       {page === 'reels' ? (
         <Suspense fallback={<p className={`pt-6 text-[14px] text-muted-foreground ${GUTTER}`}>Loading reels…</p>}>
-          <ReelsPage onNewSetup={newFromReel} />
+          <ReelsPage onNewSetup={newFromReel} filter={reelsFilter} onFilterChange={setReelsFilter} />
         </Suspense>
       ) : page === 'guide' ? (
         <Suspense fallback={<p className={`pt-6 text-[14px] text-muted-foreground ${GUTTER}`}>Loading the line guide…</p>}>

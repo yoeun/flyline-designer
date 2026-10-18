@@ -381,6 +381,13 @@ describe('url state: details, edit marker, pages', () => {
     expect(q.has('reel')).toBe(false);
     expect(queryToState(`?${q}`)).toMatchObject({ page: 'rack', hasSetup: false });
   });
+  it('reels page url keeps its filters', () => {
+    const reelsFilter = { brand: null, models: ['sage-arbor-xl'], size: 'sage-arbor-xl-678', color: 'sage-slate', side: 'spool' };
+    const q = new URLSearchParams(stateToQuery(args({ page: 'reels', reelsFilter })));
+    expect(Object.fromEntries(q)).toEqual({ page: 'reels', model: 'sage-arbor-xl', size: 'sage-arbor-xl-678', color: 'sage-slate', side: 'spool' });
+    expect(queryToState(`?${q}`)).toMatchObject({ page: 'reels', hasSetup: false, reelsFilter });
+    expect(stateToQuery(args({ page: 'rack', reelsFilter }))).toBe('page=rack');
+  });
   it('no params leaves the page to landing', () => {
     expect(queryToState('')).toMatchObject({ page: null, hasSetup: false, editingId: null, demo: false });
     expect(queryToState('?demo=1')).toMatchObject({ page: null, demo: true });
