@@ -643,6 +643,8 @@ describe('change tracking', () => {
 // SA's Amplitude Textured Infinity Salt is the Smooth Infinity Salt's taper and colors with a texture;
 // the Smooth Bonefish Plus is the (earlier-listed) Textured Bonefish Plus's without one.
 // Cortland's 333 Salmon is sold on the 333 Trout All Purpose's chart and color.
+// SA's Magnitude Smooth Balance Clear Float is the (earlier-listed) Textured Balance's taper and
+// colors without a texture.
 const LOOKALIKES = new Map([
   ...[6, 7, 8, 9, 10].map((w) => [`rio-premier-outbound-short-wf${w}-int-5-7`, `rio-premier-outbound-short-wf${w}-int-3-5`]),
   ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-amplitude-textured-mpx-wf${w}f`, `sa-amplitude-smooth-mpx-wf${w}f`]),
@@ -664,6 +666,7 @@ const LOOKALIKES = new Map([
   ...[6, 7].map((w) => [`rio-ambassador-series-phil-rowley-lake-wf${w}i`, `rio-premier-aqualux-wf${w}i`]),
   ...[10, 11, 12].map((w) => [`sa-amplitude-textured-tarpon-wf${w}f`, `sa-amplitude-smooth-tarpon-wf${w}f`]),
   ...[3, 4, 5].map((w) => [`sa-amplitude-textured-double-taper-dt${w}f`, `sa-amplitude-smooth-double-taper-dt${w}f`]),
+  ...[7, 8, 9, 10, 11, 12].map((w) => [`sa-magnitude-smooth-balance-clear-float-wf${w}f`, `sa-magnitude-textured-balance-clear-float-wf${w}f`]),
 ]);
 
 describe('presetForLine', () => {
