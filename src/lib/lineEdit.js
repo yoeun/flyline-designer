@@ -30,11 +30,13 @@ export function clampSelection(selection, line) {
 }
 
 // Boundary k sits between TAPER_KEYS[k - 1] and TAPER_KEYS[k]; toFt is its new distance from the tip.
+// Two sections too short to share (a level line's empty back taper and running line) stay as they are.
 export function moveTaperBoundary(line, k, toFt) {
   const before = TAPER_KEYS[k - 1];
   const after = TAPER_KEYS[k];
   const start = TAPER_KEYS.slice(0, k - 1).reduce((sum, key) => sum + line.taper[key], 0);
   const pair = line.taper[before] + line.taper[after];
+  if (pair < 2 * MIN_LENGTH) return line;
   const length = clamp(snap(toFt - start), MIN_LENGTH, pair - MIN_LENGTH);
   return { ...line, taper: { ...line.taper, [before]: length, [after]: pair - length } };
 }

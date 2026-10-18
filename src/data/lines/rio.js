@@ -85,6 +85,11 @@ export const COLORS = [
   // The Leviathan's 600 and 750 gr bodies; far stronger than the Elite Flats Pro's Trans Orange.
   { id: 'rio-leviathan-trans-yellow', name: 'Trans Yellow', hex: '#c4c92e' },
   { id: 'rio-leviathan-trans-orange', name: 'Trans Orange', hex: '#e65945' },
+  // Sampled from the OutBound Short Shooting Head's medium-sink coil photo, a dark chocolate brown.
+  { id: 'rio-outbound-short-shooting-head-brown', name: 'Brown', hex: '#371f18' },
+  // Sampled from the FIPS Euro Nymph and Euro Nymph Shorty taper diagrams (their orange is RIO Orange).
+  { id: 'rio-fips-euro-nymph-sage', name: 'Sage', hex: '#c5d99d' },
+  { id: 'rio-fips-euro-nymph-olive', name: 'Olive', hex: '#769341' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -1138,4 +1143,79 @@ export const PRODUCTS = [
   subSurfaceHover,
   midgeTipHover,
   midgeTipLongHover,
+  // OutBound Short Shooting Head: RIO's 30 ft head with no running line, so every size is head = total.
+  // RIO publishes no taper diagram for it; the split is the Premier OutBound Short's (also a 30 ft
+  // head), so every size is estimated. Medium Sink (3–4 ips) is drawn as Type 3, the slower type, as
+  // elsewhere; Fast Sink (6–7 ips) as Type 7, like the Premier OutBound Short's 7 ips. Colors from
+  // RIO's coil photos.
+  rio({
+    id: 'rio-outbound-short-shooting-head',
+    name: 'RIO OutBound Short Shooting Head',
+    sizes: LINEUP['rio-outbound-short-shooting-head'].sizes,
+    densities: [
+      { sink: 'Floating', id: (w) => `sh${w}f`, label: (w) => `SH${w}F`, type: 'floating', taper: { split: OUTBOUND.split }, colorways: [colorway('moss', 'Moss', [0, 'rio-moss'])] },
+      { sink: '1.5–2 ips', id: (w) => `sh${w}i`, label: (w) => `SH${w}I`, type: 'intermediate', taper: { split: OUTBOUND.split }, colorways: [colorway('clear', 'Clear', [0, 'rio-clear'])] },
+      { sink: '3–4 ips', id: (w) => `sh${w}-medium-sink`, label: (w) => `SH${w} Medium Sink`, type: 'sink3', taper: { split: OUTBOUND.split }, colorways: [colorway('brown', 'Brown', [0, 'rio-outbound-short-shooting-head-brown'])] },
+      { sink: '6–7 ips', id: (w) => `sh${w}-fast-sink`, label: (w) => `SH${w} Fast Sink`, type: 'sink7', taper: { split: OUTBOUND.split }, colorways: [colorway('black', 'Black', [0, 'rio-black'])] },
+    ],
+  }),
+  // FIPS Euro Nymph: one 80 ft size for 2–5 wt rods, drawn like the Technical Euro Nymph (a token
+  // 1.5 ft head on a 3 wt). RIO's diagram has a 6 ft orange tip at each end, 15 ft sage tapers and a
+  // 49 ft olive body, but those add up to 91 ft against the 80 ft overall (and head) length it states;
+  // the colors are scaled to 80 ft, to the nearest half foot.
+  makerProduct({
+    id: 'rio-fips-euro-nymph',
+    maker: 'RIO',
+    name: 'RIO FIPS Euro Nymph',
+    sizes: [lineupSize(LINEUP['rio-fips-euro-nymph'], '2-5 wt')].map((size) => ({
+      id: '2-5',
+      label: '2–5 wt',
+      type: 'floating',
+      weight: 3,
+      taper: [0.5, 0.5, 0.5, size.total - 1.5],
+      lineup: overriding(size, { weight: 3, head: 1.5 }),
+      colorways: [
+        {
+          id: 'orange-sage-olive',
+          name: 'Orange/Sage/Olive',
+          zones: zones([5.5, 'rio-orange'], [13, 'rio-fips-euro-nymph-sage'], [43, 'rio-fips-euro-nymph-olive'], [13, 'rio-fips-euro-nymph-sage'], [0, 'rio-orange']),
+        },
+      ],
+    })),
+  }),
+  // Euro Nymph Shorty: a 20 ft euro section for 2–5 wt rods, drawn like the FIPS Euro Nymph. RIO's
+  // diagram: a 7'6" orange taper, a 5 ft sage body and a 7'6" olive taper.
+  makerProduct({
+    id: 'rio-euro-nymph-shorty',
+    maker: 'RIO',
+    name: 'RIO Euro Nymph Shorty',
+    sizes: [lineupSize(LINEUP['rio-euro-nymph-shorty'], '2-5wt')].map((size) => ({
+      id: '2-5',
+      label: '2–5 wt',
+      type: 'floating',
+      weight: 3,
+      taper: [0.5, 0.5, 0.5, size.total - 1.5],
+      lineup: overriding(size, { weight: 3, head: 1.5 }),
+      colorways: [{ id: 'orange-sage-olive', name: 'Orange/Sage/Olive', zones: zones([7.5, 'rio-orange'], [5, 'rio-fips-euro-nymph-sage'], [0, 'rio-fips-euro-nymph-olive']) }],
+    })),
+  }),
+  // Premier Technical Euro Nymph Shorty: the Technical Euro Nymph's short version. RIO's table has no
+  // length, but its diagram gives 34 ft overall: 20 ft of yellow line and a 14 ft integrated leader,
+  // drawn pink as on the Technical Euro Nymph.
+  makerProduct({
+    id: 'rio-premier-technical-euro-nymph-shorty',
+    maker: 'RIO',
+    name: 'RIO Premier Technical Euro Nymph Shorty',
+    sizes: [
+      {
+        id: '2-5',
+        label: '2–5 wt',
+        type: 'floating',
+        weight: 3,
+        taper: [0.5, 0.5, 0.5, 32.5],
+        lineup: overriding(lineupSize(LINEUP['rio-premier-technical-euro-nymph-shorty'], '2-5wt'), { weight: 3, head: 1.5, total: 34 }),
+        colorways: [{ id: 'pink-yellow', name: 'Pink/Yellow', zones: zones([14, 'rio-pink'], [0, 'rio-yellow']) }],
+      },
+    ],
+  }),
 ];
