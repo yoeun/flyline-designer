@@ -59,7 +59,7 @@ function ModelCard({ model, view, onNewSetup }) {
             <h4 className="text-[17px] leading-tight font-bold">{model.name}</h4>
             {model.discontinued && <span className="rounded-full border border-warn-border bg-warn-bg px-2 py-0.5 text-[12px] font-semibold text-warn">Discontinued</span>}
           </div>
-          <Button variant="ghost" className="-my-1.5 -mr-2 flex-none gap-1 px-2 font-semibold text-primary" onClick={() => onNewSetup(setup.reel)} aria-label={`New setup on ${size.name}`}>
+          <Button className="-my-1 flex-none gap-1 pl-2.5 font-semibold" onClick={() => onNewSetup(setup.reel)} aria-label={`New setup on ${size.name}`}>
             <Icon name="add" />
             New setup
           </Button>
