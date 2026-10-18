@@ -1029,6 +1029,7 @@ describe('maker lines beyond RIO', () => {
     ...[[5, 22], [6, 24], [7, 24], [8, 27], [9, 27]].flatMap(([w, h]) => [3, 5, 7].map((r) => ['airflo-streamer-max-short', `wf${w}-s${r}`, h, 100])),
     ...['wf6-di3', 'wf7-di7', 'wf8-di5', 'wf9-di3'].map((id) => ['airflo-sixth-sense', id, 46, 105]),
     ...[5, 6, 7, 8].map((w) => ['airflo-stillwater-intermediate', `wf${w}`, 46, 105]),
+    ...[6, 7, 8, 9].map((w) => ['airflo-sixth-sense-2-intermediate', `wf${w}-si`, 46, 105]),
     ...[2, 3, 4, 5, 6, 7, 8, 9].map((w) => ['cortland-444-peach', `wf${w}f`, 32, 90]),
     ...[2, 3, 4, 5, 6, 7, 8].map((w) => ['cortland-444-sylk', `wf${w}f`, 37, 90]),
     ...[4, 5, 6, 7, 8, 9, 10].map((w) => ['cortland-444-clear-camo', `wf${w}i`, 41, 90]),
@@ -1167,6 +1168,9 @@ describe('maker products', () => {
     expect(productSizes('airflo-streamer-max-short')).toHaveLength(15);
     expect(productSizes('airflo-sixth-sense').map((p) => p.sizeLabel)).toEqual([
       'WF5/6 Di3', 'WF5/6 Di5', 'WF6/7 Di3', 'WF6/7 Di5', 'WF6/7 Di7', 'WF7/8 Di3', 'WF7/8 Di5', 'WF7/8 Di7', 'WF8/9 Di3', 'WF8/9 Di5', 'WF8/9 Di7',
+    ]);
+    expect(productSizes('airflo-sixth-sense-2-intermediate').map((p) => p.sizeLabel)).toEqual([
+      'WF5/6 Slow Intermediate', 'WF6/7 Slow Intermediate', 'WF7/8 Slow Intermediate', 'WF8/9 Slow Intermediate',
     ]);
     expect(productSizes('generic-wf5f')).toEqual([]);
   });
