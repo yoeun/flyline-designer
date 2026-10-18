@@ -4,6 +4,7 @@ import { rackConflicts } from '../lib/checks.js';
 import { loadEntries } from '../lib/rack.js';
 import { fetchShare } from '../lib/shareApi.js';
 import { stateToQuery } from '../lib/share.js';
+import { FIXED_HEADER, HEADER_SPACER, useFixedHeader } from '../lib/fixedHeader.js';
 import { useTheme } from '../lib/theme.js';
 import Button from './Button.jsx';
 import RackPage from './RackPage.jsx';
@@ -15,6 +16,7 @@ const GUTTER = 'px-[max(16px,2.5vw)]';
 // the viewer can start a copy in the designer to save to their own rack; nothing here writes to the shared one.
 export default function SharedRackPage({ shareId }) {
   const [, , theme] = useTheme();
+  const headerRef = useFixedHeader();
   // The setup whose details are open in the drawer.
   const [selected, setSelected] = useState(null);
   // null while loading, then { rack } or { error: 'missing' | 'failed' }.
@@ -40,12 +42,13 @@ export default function SharedRackPage({ shareId }) {
 
   return (
     <div>
-      <header className={`flex flex-wrap items-center justify-between gap-3 border-b border-border bg-card py-3.5 ${GUTTER}`}>
+      <header ref={headerRef} className={`${FIXED_HEADER} flex flex-wrap items-center justify-between gap-3 border-b border-border bg-card py-3.5 ${GUTTER}`}>
         <h1 className="font-heading text-[clamp(20px,6.5vw,24px)] leading-none font-bold tracking-[0.04em] whitespace-nowrap uppercase">
           <a href="/">Flyline Designer</a>
         </h1>
         <Button onClick={() => window.location.assign('/')}>Design your own</Button>
       </header>
+      <div className={HEADER_SPACER} aria-hidden="true" />
       {state === null
         ? message('Loading the rack…')
         : state.error === 'missing'

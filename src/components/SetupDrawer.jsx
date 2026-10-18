@@ -47,64 +47,68 @@ function SetupDetails({ setup, theme, onOpenCopy }) {
 
   return (
     <>
-      <SheetHeader className="pr-12">
+      <SheetHeader className="flex-none border-b border-border pr-14">
         <SheetTitle className="font-heading text-[20px] leading-tight font-bold tracking-[0.04em] uppercase">{name}</SheetTitle>
         <SheetDescription>
           {reel?.name ?? 'Reel'} · {setup.line.weight} wt{styles.length > 0 && ` · ${styles.map((s) => s.name).join(', ')}`}
         </SheetDescription>
       </SheetHeader>
 
-      {/* The preview on top, as in the designer: side and view toggles, then the checks. */}
-      <div className="mx-4 flex flex-col items-center gap-2 rounded-panel bg-stage p-3 text-stage-foreground">
-        <div className="flex flex-wrap justify-end gap-2 self-stretch">
-          <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
-          <PreviewModeToggle value={mode} onChange={setMode} />
+      {/* Only the middle scrolls; the title above and the button below stay put. */}
+      <div className="flex min-h-0 flex-1 flex-col gap-3.5 overflow-y-auto pt-3.5 pb-4">
+        {/* The preview on top, as in the designer: side and view toggles, then the checks. */}
+        <div className="mx-4 flex flex-col items-center gap-2 rounded-panel bg-stage p-3 text-stage-foreground">
+          <div className="flex flex-wrap justify-between gap-2 self-stretch">
+            <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
+            <PreviewModeToggle value={mode} onChange={setMode} />
+          </div>
+          <ReelPreview setup={setup} mode={mode} side={side} background={STAGE[theme]} title={`${name} preview`} className="w-full max-w-[340px]" />
+          <Checks setup={setup} />
         </div>
-        <ReelPreview setup={setup} mode={mode} side={side} background={STAGE[theme]} title={`${name} preview`} className="w-full max-w-[340px]" />
-        <Checks setup={setup} />
+
+        {setup.notes && <p className="px-4 text-[14px] whitespace-pre-line">{setup.notes}</p>}
+
+        <Section title="Reel">
+          <Row label="Model">{reel?.name ?? setup.reel.model}</Row>
+          <Row label="Color">
+            {reelColor && <Dot hex={reelColor.hex} />}
+            {reelColor?.name ?? setup.reel.color}
+          </Row>
+        </Section>
+
+        <Section title="Fly line" lead={<LineEditor line={setup.line} backingColor={setup.backing.color} readOnly />}>
+          <Row label="Line">{preset?.name ?? 'Custom line'}</Row>
+          <Row label="Type">
+            {type?.name ?? setup.line.type} · {setup.line.weight} wt
+          </Row>
+          <Row label="Colors">
+            <span className="flex flex-col gap-1">
+              {zoneRanges(setup.line).map((z) => (
+                <span key={z.index} className="flex items-center gap-2">
+                  <Dot hex={hexOf(z.color)} />
+                  {nameOf(z.color)}
+                  <span className="text-muted-foreground">{ft(z.length)}</span>
+                </span>
+              ))}
+              {colorway && <span className="text-[13px] text-muted-foreground">{colorway.name} colorway</span>}
+            </span>
+          </Row>
+        </Section>
+
+        <Section title="Backing">
+          <Row label="Color">
+            <Dot hex={hexOf(setup.backing.color)} />
+            {nameOf(setup.backing.color)}
+          </Row>
+          <Row label="Amount">
+            {setup.backing.yards} yd of {setup.backing.pounds} lb
+          </Row>
+        </Section>
+
       </div>
 
-      {setup.notes && <p className="px-4 text-[14px] whitespace-pre-line">{setup.notes}</p>}
-
-      <Section title="Reel">
-        <Row label="Model">{reel?.name ?? setup.reel.model}</Row>
-        <Row label="Color">
-          {reelColor && <Dot hex={reelColor.hex} />}
-          {reelColor?.name ?? setup.reel.color}
-        </Row>
-      </Section>
-
-      <Section title="Fly line" lead={<LineEditor line={setup.line} backingColor={setup.backing.color} readOnly />}>
-        <Row label="Line">{preset?.name ?? 'Custom line'}</Row>
-        <Row label="Type">
-          {type?.name ?? setup.line.type} · {setup.line.weight} wt
-        </Row>
-        <Row label="Colors">
-          <span className="flex flex-col gap-1">
-            {zoneRanges(setup.line).map((z) => (
-              <span key={z.index} className="flex items-center gap-2">
-                <Dot hex={hexOf(z.color)} />
-                {nameOf(z.color)}
-                <span className="text-muted-foreground">{ft(z.length)}</span>
-              </span>
-            ))}
-            {colorway && <span className="text-[13px] text-muted-foreground">{colorway.name} colorway</span>}
-          </span>
-        </Row>
-      </Section>
-
-      <Section title="Backing">
-        <Row label="Color">
-          <Dot hex={hexOf(setup.backing.color)} />
-          {nameOf(setup.backing.color)}
-        </Row>
-        <Row label="Amount">
-          {setup.backing.yards} yd of {setup.backing.pounds} lb
-        </Row>
-      </Section>
-
       {onOpenCopy && (
-        <SheetFooter className="border-t border-border">
+        <SheetFooter className="mt-0 flex-none border-t border-border">
           <Button variant="primary" onClick={() => onOpenCopy(setup)}>
             Open a copy in the designer
           </Button>
@@ -122,7 +126,7 @@ export default function SetupDrawer({ setup, theme, onOpenCopy, onClose }) {
 
   return (
     <Sheet open={Boolean(setup)} onOpenChange={(next) => !next && onClose()}>
-      <SheetContent side="right" className="w-full gap-3.5 overflow-y-auto pb-4 sm:max-w-md">
+      <SheetContent side="right" className="w-full gap-0 overflow-hidden sm:max-w-md">
         {shown && <SetupDetails key={shown.id} setup={shown} theme={theme} onOpenCopy={onOpenCopy} />}
       </SheetContent>
     </Sheet>

@@ -24,6 +24,7 @@ import { resolveView } from './lib/rackView.js';
 import { SIDES } from './lib/reelFrames.js';
 import { queryToState, stateToQuery } from './lib/share.js';
 import { createShare, deleteShare, loadShare, rotateShare, storeShare, updateShare } from './lib/shareApi.js';
+import { FIXED_HEADER, HEADER_SPACER, useFixedHeader } from './lib/fixedHeader.js';
 import { STAGE, useTheme } from './lib/theme.js';
 
 const RACK_KEY = 'flyline-designer:rack';
@@ -86,6 +87,7 @@ export default function App() {
   // The rack entry whose details are open in the dialog (from a rack card's menu), if any.
   const [detailsEntryId, setDetailsEntryId] = useState(null);
   const svgRef = useRef(null);
+  const headerRef = useFixedHeader();
   // The page the address bar shows; a change of page pushes a history entry, design edits replace it.
   const urlPage = useRef(initial.page);
   // Set while Back to designer steps back through history, so the work in memory is kept as is.
@@ -369,36 +371,42 @@ export default function App() {
     png: () => exportPng(svgRef.current, slug(displayName(setup))),
   };
 
+  // Reset, Save and (when editing a saved setup) Save as new: in the header, or the bottom bar on phones.
+  const saveButtons = (
+    <>
+      <Button onClick={resetAll} disabled={!dirty}>
+        Reset
+      </Button>
+      <Button variant="primary" onClick={() => (editingId ? saveEntry({ asNew: false }) : setDetailsMode('save'))} disabled={!!editingId && !dirty}>
+        Save
+      </Button>
+      {editingId && (
+        <Button onClick={() => setDetailsMode('save-as-new')} disabled={!dirty}>
+          Save as new
+        </Button>
+      )}
+    </>
+  );
+
   return (
     // Side by side, the page fits the window: the reel takes whatever height the checks and rack
     // leave, and the rack list and options panel scroll inside their own boxes.
     <div className="wide:flex wide:h-dvh wide:flex-col">
-      <header className={`flex flex-wrap items-center justify-between gap-3 border-b border-border bg-card py-3.5 ${GUTTER}`}>
+      <header ref={headerRef} className={`${FIXED_HEADER} flex flex-wrap items-center justify-between gap-3 border-b border-border bg-card py-3.5 ${GUTTER}`}>
         <div className="flex min-w-0 items-center gap-2">
           <NavMenu page={page} onNavigate={(id) => navigate[id]()} theme={themeChoice} onTheme={setThemeChoice} />
           <h1 className="font-heading text-[clamp(20px,6.5vw,24px)] leading-none font-bold tracking-[0.04em] whitespace-nowrap uppercase">Flyline Designer</h1>
         </div>
         <div className="flex flex-wrap gap-2">
           {page !== 'guide' && page !== 'reels' && <Button onClick={startNew}>New</Button>}
-          {page === 'designer' && (
-            <>
-              <Button onClick={resetAll} disabled={!dirty}>
-                Reset
-              </Button>
-              <Button variant="primary" onClick={() => (editingId ? saveEntry({ asNew: false }) : setDetailsMode('save'))} disabled={!!editingId && !dirty}>
-                Save
-              </Button>
-              {editingId && (
-                <Button onClick={() => setDetailsMode('save-as-new')} disabled={!dirty}>
-                  Save as new
-                </Button>
-              )}
-            </>
-          )}
+          {/* On phones these move to the bar fixed at the bottom of the designer. */}
+          {page === 'designer' && <div className="hidden sm:contents">{saveButtons}</div>}
           <HeaderMenu page={page} onSelect={(id) => menuActions[id]()} />
         </div>
       </header>
-      <Toaster theme={theme} position="bottom-center" duration={2500} />
+      <div className={HEADER_SPACER} aria-hidden="true" />
+      {/* On phones the designer's save bar takes the bottom of the screen, so toasts sit above it. */}
+      <Toaster theme={theme} position="bottom-center" duration={2500} mobileOffset={page === 'designer' ? { bottom: 84 } : undefined} />
 
       {page === 'reels' ? (
         <Suspense fallback={<p className={`pt-6 text-[14px] text-muted-foreground ${GUTTER}`}>Loading reels…</p>}>
@@ -425,7 +433,7 @@ export default function App() {
           }
         />
       ) : (
-        <main className={`flex flex-wrap items-start gap-7 pt-6 pb-10 wide:min-h-0 wide:flex-1 wide:flex-nowrap wide:items-stretch wide:pb-6 ${GUTTER}`}>
+        <main className={`flex flex-wrap items-start gap-7 pt-6 pb-10 max-sm:pb-24 wide:min-h-0 wide:flex-1 wide:flex-nowrap wide:items-stretch wide:pb-6 ${GUTTER}`}>
           <section className="flex min-w-0 flex-[1_1_560px] flex-col gap-4 wide:min-h-0" aria-label="Preview">
             <div className="flex flex-col items-center gap-2 rounded-panel bg-stage p-4 text-stage-foreground wide:min-h-0 wide:flex-1">
               <div className="flex flex-wrap items-start justify-between gap-2 self-stretch">
@@ -436,7 +444,8 @@ export default function App() {
                   detailsChanged={!!changed?.details}
                   onOpenDetails={() => setDetailsMode('edit')}
                 />
-                <div className="flex flex-wrap justify-end gap-2">
+                {/* On a phone the toggles get their own row, Drag/Spool at the left and the view at the right. */}
+                <div className="flex flex-wrap justify-end gap-2 max-sm:w-full max-sm:justify-between">
                   <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
                   <PreviewModeToggle value={mode} onChange={setMode} />
                 </div>
@@ -485,6 +494,10 @@ export default function App() {
             <BackingOptions backing={setup.backing} onChange={(backing) => update({ backing })} changed={changed?.backing ?? false} onReset={() => resetSection('backing')} />
           </section>
         </main>
+      )}
+      {page === 'designer' && (
+        // Reset and Save stay in reach on a phone, fixed to the bottom of the screen.
+        <div className="fixed inset-x-0 bottom-0 z-30 flex gap-2 border-t border-border bg-card px-4 py-3 sm:hidden [&>*]:flex-1">{saveButtons}</div>
       )}
       <ShareDialog open={shareOpen} share={share} busy={shareBusy} onShare={startSharing} onRotate={newShareLink} onStop={stopSharing} onClose={() => setShareOpen(false)} />
       <DetailsDialog
