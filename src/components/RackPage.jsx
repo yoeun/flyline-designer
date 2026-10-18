@@ -6,7 +6,7 @@ import RackFilter, { NO_FILTER, isFiltered, rackFilter } from './RackFilter.jsx'
 
 // The whole rack, searched and filtered by line weight and style; the filter is shared with the designer's
 // rack strip (a shared rack keeps its own). A shared rack (readOnly) has its own heading and no card menus; actions sit beside the heading.
-export default function RackPage({ setups, currentId, conflicts, filter: given, onFilterChange: onGivenChange, onLoad, onEditDetails, onDuplicate, onRemove, readOnly = false, title = 'Your rack', actions = null }) {
+export default function RackPage({ setups, currentId, conflicts, filter: given, onFilterChange: onGivenChange, onLoad, onViewDetails, onEditDetails, onDuplicate, onRemove, readOnly = false, title = 'Your rack', actions = null }) {
   const [own, setOwn] = useState(NO_FILTER);
   const onFilterChange = onGivenChange ?? setOwn;
   const weights = rackWeights(setups);
@@ -29,6 +29,7 @@ export default function RackPage({ setups, currentId, conflicts, filter: given, 
             size="lg"
             loadLabel={readOnly ? 'View' : 'Load'}
             onLoad={onLoad}
+            onViewDetails={readOnly ? undefined : onViewDetails}
             onEditDetails={readOnly ? undefined : onEditDetails}
             onDuplicate={readOnly ? undefined : onDuplicate}
             onRemove={readOnly ? undefined : onRemove}

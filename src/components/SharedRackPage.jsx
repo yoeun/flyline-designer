@@ -56,7 +56,7 @@ export default function SharedRackPage({ shareId }) {
           : state.error
             ? message('Couldn’t load this rack. Try again in a minute.')
             : <RackPage setups={state.rack} conflicts={rackConflicts(state.rack)} onLoad={setSelected} readOnly title="Shared rack" />}
-      <SetupDrawer setup={selected} theme={theme} onOpenCopy={openCopy} onClose={() => setSelected(null)} />
+      <SetupDrawer setup={selected} theme={theme} onOpen={openCopy} onClose={() => setSelected(null)} />
     </div>
   );
 }

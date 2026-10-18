@@ -3,6 +3,7 @@ import { toast } from 'sonner';
 import Button from './components/Button.jsx';
 import Checks from './components/Checks.jsx';
 import DetailsDialog from './components/DetailsDialog.jsx';
+import FlippingReelPreview from './components/FlippingReelPreview.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
 import HeaderMenu from './components/HeaderMenu.jsx';
 import NavMenu from './components/NavMenu.jsx';
@@ -11,8 +12,8 @@ import Rack from './components/Rack.jsx';
 import { NO_FILTER } from './components/RackFilter.jsx';
 import RackPage from './components/RackPage.jsx';
 import Segmented from './components/Segmented.jsx';
-import ReelPreview from './components/ReelPreview.jsx';
 import { Toaster } from './components/ui/sonner.jsx';
+import SetupDrawer from './components/SetupDrawer.jsx';
 import SetupTitle from './components/SetupTitle.jsx';
 import ShareDialog from './components/ShareDialog.jsx';
 import { DEFAULT_SETUP, LINE_PRESETS, REELS, findById, fitLineToReel, presetForLine, switchLine } from './data/catalog.js';
@@ -90,6 +91,8 @@ export default function App() {
   const [detailsMode, setDetailsMode] = useState(null);
   // The rack entry whose details are open in the dialog (from a rack card's menu), if any.
   const [detailsEntryId, setDetailsEntryId] = useState(null);
+  // The rack entry shown in the setup drawer (from a rack card's menu), if any.
+  const [viewingId, setViewingId] = useState(null);
   const svgRef = useRef(null);
   const headerRef = useFixedHeader();
   // The page the address bar shows; a change of page pushes a history entry, design edits replace it.
@@ -452,6 +455,7 @@ export default function App() {
           filter={rackFilter}
           onFilterChange={setRackFilter}
           onLoad={loadEntry}
+          onViewDetails={(entry) => setViewingId(entry.id)}
           onEditDetails={(entry) => setDetailsEntryId(entry.id)}
           onDuplicate={duplicateEntry}
           onRemove={removeEntry}
@@ -482,14 +486,15 @@ export default function App() {
                 </div>
               </div>
               <div className="w-[min(100%,460px)] wide:flex wide:min-h-0 wide:w-full wide:flex-1 wide:justify-center">
-                <ReelPreview
+                <FlippingReelPreview
                   setup={setup}
                   mode={mode}
                   side={side}
                   background={STAGE[theme]}
                   svgRef={svgRef}
                   title={`${displayName(setup)} preview`}
-                  className="wide:h-full wide:w-auto wide:max-w-full"
+                  className="wide:h-full"
+                  svgClassName="wide:h-full wide:w-auto wide:max-w-full"
                 />
               </div>
               <Checks setup={setup} />
@@ -534,6 +539,16 @@ export default function App() {
         <div className="fixed inset-x-0 bottom-0 z-30 flex gap-2 border-t border-border bg-card px-4 py-3 sm:hidden [&>*]:flex-1">{saveButtons}</div>
       )}
       <ShareDialog open={shareOpen} share={share} busy={shareBusy} onShare={startSharing} onRotate={newShareLink} onStop={stopSharing} onClose={() => setShareOpen(false)} />
+      <SetupDrawer
+        setup={rack.find((s) => s.id === viewingId) ?? null}
+        theme={theme}
+        onOpen={(entry) => {
+          setViewingId(null);
+          loadEntry(entry);
+        }}
+        openLabel="Open in the designer"
+        onClose={() => setViewingId(null)}
+      />
       <DetailsDialog
         key={detailsEntryId ?? 'setup'}
         open={detailsMode !== null || detailsEntry !== undefined}

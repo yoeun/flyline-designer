@@ -6,8 +6,8 @@ import { SIDES } from '../lib/reelFrames.js';
 import { cn } from '@/lib/utils';
 import Button from './Button.jsx';
 import { CHIP } from './Chips.jsx';
+import FlippingReelPreview from './FlippingReelPreview.jsx';
 import Icon from './Icon.jsx';
-import ReelPreview from './ReelPreview.jsx';
 import Segmented from './Segmented.jsx';
 import Select from './Select.jsx';
 import Swatches from './Swatches.jsx';
@@ -90,7 +90,7 @@ function ModelCard({ model, view, onNewSetup }) {
         </div>
         <div className="flex items-center justify-center" style={{ aspectRatio: AREA_RATIO }}>
           <span className="block" style={{ width: `${(size.rim / MAX_RIM) * 100}%` }}>
-            <ReelPreview setup={setup} side={side} background="none" title={`${size.name}, ${side} side`} />
+            <FlippingReelPreview setup={setup} side={side} background="none" title={size.name} />
           </span>
         </div>
         {colors.length > 1 && <Swatches colors={colors} value={color} onChange={setColor} label={`${model.name} color`} size={24} touchSize={32} className="justify-center gap-3" />}
