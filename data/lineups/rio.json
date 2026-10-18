@@ -8298,6 +8298,7 @@
    "secondary_use": "Big Dry / Light Indicator",
    "weight_label": null,
    "summary": "A deep-winter trout line with PolarFlex technology that keeps it soft and pliable in the coldest conditions.",
+   "data_notes": "RIO's spec table gives head lengths but no overall length; the WF5F's 90 ft is from RIO's WF5F taper diagram. The other sizes' overall lengths are unpublished. Colors are from RIO's variant names.",
    "variants": [
     {
      "label": "4wt",
@@ -8311,7 +8312,9 @@
      "head_grains": 175,
      "taper_ft": null,
      "taper_source": null,
-     "colors": []
+     "colors": [
+      "Frost White/Glacial Green/Ice Blue"
+     ]
     },
     {
      "label": "5wt",
@@ -8320,12 +8323,14 @@
      "density_label": "Floating",
      "sink_ips": null,
      "head_ft": 47,
-     "total_ft": null,
+     "total_ft": 90,
      "grains_30ft": null,
      "head_grains": 208,
      "taper_ft": null,
      "taper_source": null,
-     "colors": []
+     "colors": [
+      "Frost White/Glacial Green/Ice Blue"
+     ]
     },
     {
      "label": "6wt",
@@ -8339,7 +8344,9 @@
      "head_grains": 234,
      "taper_ft": null,
      "taper_source": null,
-     "colors": []
+     "colors": [
+      "Frost White/Glacial Green/Ice Blue"
+     ]
     },
     {
      "label": "7wt",
@@ -8353,7 +8360,9 @@
      "head_grains": 270,
      "taper_ft": null,
      "taper_source": null,
-     "colors": []
+     "colors": [
+      "Frost White/Glacial Green/Ice Blue"
+     ]
     },
     {
      "label": "8wt",
@@ -8367,7 +8376,9 @@
      "head_grains": 310,
      "taper_ft": null,
      "taper_source": null,
-     "colors": []
+     "colors": [
+      "Frost White/Glacial Green/Ice Blue"
+     ]
     }
    ],
    "url": "https://farbank.com/products/rio-premier-glacial-gold"

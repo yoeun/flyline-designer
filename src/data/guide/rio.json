@@ -8440,7 +8440,9 @@
      "total": null,
      "grains30": null,
      "headGrains": 175,
-     "colors": []
+     "colors": [
+      "Frost White/Glacial Green/Ice Blue"
+     ]
     },
     {
      "label": "5wt",
@@ -8451,10 +8453,12 @@
      "densityLabel": "Floating",
      "sinkIps": null,
      "head": 47,
-     "total": null,
+     "total": 90,
      "grains30": null,
      "headGrains": 208,
-     "colors": []
+     "colors": [
+      "Frost White/Glacial Green/Ice Blue"
+     ]
     },
     {
      "label": "6wt",
@@ -8468,7 +8472,9 @@
      "total": null,
      "grains30": null,
      "headGrains": 234,
-     "colors": []
+     "colors": [
+      "Frost White/Glacial Green/Ice Blue"
+     ]
     },
     {
      "label": "7wt",
@@ -8482,7 +8488,9 @@
      "total": null,
      "grains30": null,
      "headGrains": 270,
-     "colors": []
+     "colors": [
+      "Frost White/Glacial Green/Ice Blue"
+     ]
     },
     {
      "label": "8wt",
@@ -8496,7 +8504,9 @@
      "total": null,
      "grains30": null,
      "headGrains": 310,
-     "colors": []
+     "colors": [
+      "Frost White/Glacial Green/Ice Blue"
+     ]
     }
    ]
   },
