@@ -5,8 +5,9 @@ import { SIDES } from '../lib/reelFrames.js';
 import ReelPreview from './ReelPreview.jsx';
 import Segmented from './Segmented.jsx';
 
-// One reel size drawn as large as the screen allows, with a Drag/Spool toggle. It fills the screen on a
-// phone and is a large dialog on wider screens. `shown` is { size, setup, side, showLine }, or null.
+// One reel size drawn as large as the screen allows, with a Drag/Spool toggle in the preview's corner.
+// It fills the screen on a phone and is a large dialog on wider screens. `shown` is
+// { size, setup, side, showLine }, or null.
 function Viewer({ shown }) {
   const [side, setSide] = useState(shown.side);
   return (
@@ -15,10 +16,11 @@ function Viewer({ shown }) {
         <DialogTitle className="font-heading text-[18px] font-bold tracking-[0.04em] uppercase">{shown.size.name}</DialogTitle>
         <DialogDescription>{reelSizeLabel(shown.size)}</DialogDescription>
       </DialogHeader>
-      <div className="flex flex-none justify-center">
-        <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
-      </div>
-      <div className="flex min-h-0 flex-1 items-center justify-center rounded-panel bg-stage p-3">
+      {/* The side toggle sits in the preview's top-right corner, as in the designer. */}
+      <div className="relative flex min-h-0 flex-1 items-center justify-center rounded-panel bg-stage p-3 pt-16 text-stage-foreground">
+        <div className="absolute top-3 right-3">
+          <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
+        </div>
         <ReelPreview
           setup={shown.setup}
           side={side}
