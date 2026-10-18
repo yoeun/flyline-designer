@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { toast } from 'sonner';
 import Button from './Button.jsx';
+import ConfirmDialog from './ConfirmDialog.jsx';
 import Field from './Field.jsx';
 import { Input } from './Input.jsx';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -19,13 +21,8 @@ export default function ShareDialog({ open, share, busy, onShare, onRotate, onSt
     }
   };
 
-  const stop = () => {
-    if (window.confirm('Stop sharing your rack? The link will stop working for everyone who has it.')) onStop();
-  };
-
-  const renew = () => {
-    if (window.confirm('Make a new link? The current link will stop working for everyone who has it.')) onRotate();
-  };
+  // Stop sharing and New link each ask first, since the current link stops working.
+  const [confirming, setConfirming] = useState(null);
 
   return (
     <Dialog open={open} onOpenChange={(next) => !next && onClose()}>
@@ -51,10 +48,10 @@ export default function ShareDialog({ open, share, busy, onShare, onRotate, onSt
         <DialogFooter className="flex-wrap">
           {share ? (
             <>
-              <Button onClick={stop} disabled={busy}>
+              <Button onClick={() => setConfirming('stop')} disabled={busy}>
                 Stop sharing
               </Button>
-              <Button onClick={renew} disabled={busy}>
+              <Button onClick={() => setConfirming('rotate')} disabled={busy}>
                 New link
               </Button>
               <Button onClick={onClose}>Done</Button>
@@ -69,6 +66,28 @@ export default function ShareDialog({ open, share, busy, onShare, onRotate, onSt
           )}
         </DialogFooter>
       </DialogContent>
+      <ConfirmDialog
+        open={confirming === 'stop'}
+        title="Stop sharing your rack?"
+        description="The link will stop working for everyone who has it."
+        confirmLabel="Stop sharing"
+        onConfirm={() => {
+          setConfirming(null);
+          onStop();
+        }}
+        onCancel={() => setConfirming(null)}
+      />
+      <ConfirmDialog
+        open={confirming === 'rotate'}
+        title="Make a new link?"
+        description="The current link will stop working for everyone who has it."
+        confirmLabel="New link"
+        onConfirm={() => {
+          setConfirming(null);
+          onRotate();
+        }}
+        onCancel={() => setConfirming(null)}
+      />
     </Dialog>
   );
 }
