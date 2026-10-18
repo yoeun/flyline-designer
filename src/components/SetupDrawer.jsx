@@ -126,7 +126,7 @@ export default function SetupDrawer({ setup, theme, onOpenCopy, onClose }) {
 
   return (
     <Sheet open={Boolean(setup)} onOpenChange={(next) => !next && onClose()}>
-      <SheetContent side="right" className="w-full gap-0 overflow-hidden sm:max-w-md">
+      <SheetContent side="right" className="w-full gap-0 overflow-hidden max-sm:border-l-0 sm:max-w-md">
         {shown && <SetupDetails key={shown.id} setup={shown} theme={theme} onOpenCopy={onOpenCopy} />}
       </SheetContent>
     </Sheet>

@@ -17,7 +17,7 @@ export default function FilterSheet({ title = 'Filter', icon = 'filter_list', ac
         <span className="max-w-40 truncate">{active || title}</span>
       </Button>
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side="bottom" className="max-h-[85dvh] gap-0 overflow-hidden rounded-t-2xl">
+        <SheetContent side="bottom" className="max-h-[85dvh] gap-0 overflow-hidden rounded-t-2xl border-t-0">
           <SheetHeader className="flex-none pb-2">
             <SheetTitle className="font-heading text-[17px] font-bold tracking-[0.06em] uppercase">{title}</SheetTitle>
           </SheetHeader>
