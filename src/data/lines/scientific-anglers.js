@@ -1,7 +1,8 @@
 import * as LINEUP from 'lineups:scientific-anglers';
 import { lineupSize, makerProduct, overriding, zones } from './product.js';
 
-// Sampled from SA's swatches and taper diagrams.
+// Sampled from SA's swatches and taper diagrams. A new color whose SA name is already taken here
+// carries the line's name in front (Titan Willow).
 export const COLORS = [
   { id: 'sa-buckskin', name: 'Buckskin', hex: '#fad773' },
   { id: 'sa-mist-green', name: 'Mist Green', hex: '#abd691' },
@@ -47,6 +48,12 @@ export const COLORS = [
   { id: 'sa-tropical-horizon', name: 'Horizon', hex: '#b8e5fa' },
   { id: 'sa-clear', name: 'Clear', hex: '#e8e8ea' },
   { id: 'sa-magnitude-horizon', name: 'Horizon', hex: '#cad0d0' },
+  { id: 'sa-tan', name: 'Tan', hex: '#fad771' },
+  { id: 'sa-titan-buckskin', name: 'Titan Buckskin', hex: '#ffe49d' },
+  { id: 'sa-titan-willow', name: 'Titan Willow', hex: '#c2b99a' },
+  { id: 'sa-titan-pale-green', name: 'Titan Pale Green', hex: '#becf9b' },
+  { id: 'sa-titan-dark-green', name: 'Titan Dark Green', hex: '#5f6937' },
+  { id: 'sa-titan-black', name: 'Titan Black', hex: '#030708' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -176,6 +183,14 @@ const TITAN_3D = LINEUP['sa-sonar-titan-3d-triple-density'];
 // The diagram's head measures 34.75 ft against the 33.5 ft SA lists for every size; the split is
 // scaled to 33.5.
 const TITAN_TROPICAL = [5.5, 27, 1];
+// Mastery Tropical/Jungle Titan's own diagram: front taper 5, two bellies 28.5, a 1 ft rear taper. Its
+// head measures 34 ft against the 33.5 ft SA lists for every size; the split is scaled to 33.5.
+const JUNGLE_TITAN = [5, 27.5, 1];
+// Sonar Titan Sink Tip's diagram: front taper 5.5, two bellies 28, rear taper 10. Its head measures
+// 43.5 ft against the 43 ft SA lists for every size; the split is scaled to 43. The sink tip's length
+// per size is from SA's table (the diagram's tip color runs about 12 ft, the WF7's).
+const TITAN_SINK_TIP = [5.5, 27.5, 10];
+const TITAN_SINK_TIP_LENGTH = { 5: 8, 6: 10, 7: 12, 8: 14, 9: 16 };
 const SINK_25_COLD = LINEUP['sa-sonar-sink-25-cold'];
 const EURO_MONO = lineupSize(LINEUP['sa-mastery-competition-nymph'], 'Level 0-5wt (.022")');
 
@@ -266,6 +281,21 @@ export const PRODUCTS = [
       ],
     ),
   }),
+  // The Smooth Trout GP taper and colors with SA's textures; its own WF5 diagram (50.5 ft head)
+  // measures the same split.
+  makerProduct({
+    id: 'sa-amplitude-textured-trout-gp',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Textured Trout GP',
+    sizes: floating(
+      [6, 22, 22.5],
+      5,
+      LINEUP['sa-amplitude-textured-trout-gp'].sizes,
+      (head, [front]) => [
+        { id: 'butter-sage-willow', name: 'Butter/Sage/Willow', zones: zones([front, 'sa-willow'], [head - front, 'sa-sage'], [0, 'sa-butter']) },
+      ],
+    ),
+  }),
   // True-to-weight dry-fly line with a long front taper. Buckskin tip, sage green to the end of the
   // bellies, leather rear taper and running line.
   makerProduct({
@@ -336,6 +366,22 @@ export const PRODUCTS = [
       colorways: [{ id: 'camo-shad-frog', name: 'Camo/Shad Blue/Frog Green', zones: zones([12.5, 'sa-bass-camo'], [30.5, 'sa-shad-blue'], [0, 'sa-frog-green']) }],
     })),
   }),
+  // The Bass Bug in Mastery, WF6–9. Its own diagram measures the same split on the same 43 ft head:
+  // a shad blue head on a frog green running line.
+  makerProduct({
+    id: 'sa-mastery-bass-bug',
+    maker: 'Scientific Anglers',
+    name: 'SA Mastery Bass Bug',
+    sizes: LINEUP['sa-mastery-bass-bug'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead([5, 28, 10], size),
+      lineup: size,
+      colorways: [{ id: 'frog-shad', name: 'Frog Green/Shad Blue', zones: zones([43, 'sa-shad-blue'], [0, 'sa-frog-green']) }],
+    })),
+  }),
   // Two sizes heavy, for big flies. SA's diagram: front taper 5, two bellies 28, rear taper 10, the
   // 43 ft head SA lists for every size (the Bass Bug's split). Dark olive front taper, moss head, sage
   // running line.
@@ -351,6 +397,22 @@ export const PRODUCTS = [
       taper: sameHead([5, 28, 10], size),
       lineup: size,
       colorways: [{ id: 'sage-moss-dark-olive', name: 'Sage/Moss/Dark Olive', zones: zones([5, 'sa-dark-olive'], [38, 'sa-sonar-moss'], [0, 'sa-titan-sage']) }],
+    })),
+  }),
+  // The Titan Long in Mastery, WF5–10. Its own diagram measures the same split on the same 43 ft head:
+  // a buckskin head on a moss running line.
+  makerProduct({
+    id: 'sa-mastery-titan-long',
+    maker: 'Scientific Anglers',
+    name: 'SA Mastery Titan Long',
+    sizes: LINEUP['sa-mastery-titan-long'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead([5, 28, 10], size),
+      lineup: size,
+      colorways: [{ id: 'moss-buckskin', name: 'Moss/Buckskin', zones: zones([43, 'sa-titan-buckskin'], [0, 'sa-moss']) }],
     })),
   }),
   // Three-quarter size heavy saltwater line. Same 40 ft head in every size. Horizon front taper, sand
@@ -549,6 +611,51 @@ export const PRODUCTS = [
       lineup: size,
       colorways: [{ id: 'sand-horizon-clear', name: 'Sand/Horizon/Clear', zones: zones([15, 'sa-clear'], [18.5, 'sa-tropical-horizon'], [0, 'sa-tropical-sand']) }],
     })),
+  }),
+  // Two sizes heavy, on Tropi-Core. Same 33.5 ft head in every size: horizon head, tan running line.
+  // SA's Horizon swatch is close to the Tropical/Jungle Clear Tip's, which it reuses.
+  makerProduct({
+    id: 'sa-mastery-jungle-titan',
+    maker: 'Scientific Anglers',
+    name: 'SA Mastery Tropical/Jungle Titan',
+    sizes: LINEUP['sa-mastery-jungle-titan'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(JUNGLE_TITAN, size),
+      lineup: size,
+      colorways: [{ id: 'tan-horizon', name: 'Tan/Horizon', zones: zones([33.5, 'sa-tropical-horizon'], [0, 'sa-tan']) }],
+    })),
+  }),
+  // Two sizes heavy: a floating Titan with an intermediate, Sink 3 or Sink 6 tip, all drawn as sink
+  // tips. Each density has its own tip color (SA's swatches): the tip, moss to the end of the head,
+  // willow running line.
+  makerProduct({
+    id: 'sa-sonar-titan-sink-tip',
+    maker: 'Scientific Anglers',
+    name: 'SA Sonar Titan Sink Tip',
+    sizes: [...new Set(LINEUP['sa-sonar-titan-sink-tip'].sizes.map((size) => size.weight))].flatMap((weight) =>
+      [
+        { id: 'i', density: 'I', tip: { id: 'pale-green', name: 'Pale Green', color: 'sa-titan-pale-green' } },
+        { id: 's3', density: 'S3', tip: { id: 'dark-green', name: 'Dark Green', color: 'sa-titan-dark-green' } },
+        { id: 's6', density: 'S6', tip: { id: 'black', name: 'Black', color: 'sa-titan-black' } },
+      ].map(({ id, density, tip }) => {
+        const size = lineupSize(LINEUP['sa-sonar-titan-sink-tip'], `WF${weight}F/${density}`);
+        const length = TITAN_SINK_TIP_LENGTH[weight];
+        return {
+          id: `wf${weight}-f-${id}`,
+          label: size.label,
+          type: 'sinktip',
+          weight,
+          taper: sameHead(TITAN_SINK_TIP, size),
+          lineup: size,
+          colorways: [
+            { id: `willow-moss-${tip.id}`, name: `Willow/Moss/${tip.name}`, zones: zones([length, tip.color], [size.head - length, 'sa-sonar-moss'], [0, 'sa-titan-willow']) },
+          ],
+        };
+      }),
+    ),
   }),
   // Grain-rated: the rod weight for each is our estimate (the lineup has none). Every size has a
   // 25 ft sinking head, then a floating handling line; the split inside the head is estimated. Sink 6

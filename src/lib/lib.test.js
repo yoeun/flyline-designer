@@ -638,6 +638,7 @@ describe('change tracking', () => {
 // Royal Wulff's Midstream TT Floating is the Triangle Taper Classic Float in Ivory.
 // Airflo's Superflo Max Smooth Universal and Superflo Max Ridge 2.0 Power Taper are the other
 // coating's tapers and colors.
+// SA's Amplitude Textured Trout GP is the Smooth Trout GP's taper and colors with a texture.
 const LOOKALIKES = new Map([
   ...[6, 7, 8, 9, 10].map((w) => [`rio-premier-outbound-short-wf${w}-int-5-7`, `rio-premier-outbound-short-wf${w}-int-3-5`]),
   ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-amplitude-textured-mpx-wf${w}f`, `sa-amplitude-smooth-mpx-wf${w}f`]),
@@ -648,6 +649,7 @@ const LOOKALIKES = new Map([
   ...[2, 3, 4, 5, 6, 7, 8, 9].map((w) => [`royal-wulff-midstream-tt-floating-wf${w}f`, `royal-wulff-triangle-taper-classic-wf${w}f`]),
   ...[3, 4, 5, 6, 7, 8].map((w) => [`airflo-superflo-max-smooth-universal-wf${w}f`, `airflo-superflo-max-ridge-universal-wf${w}f`]),
   ...[3, 4, 5, 6, 7, 8, 9].map((w) => [`airflo-superflo-max-ridge-power-wf${w}f`, `airflo-superflo-max-smooth-power-wf${w}f`]),
+  ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-amplitude-textured-trout-gp-wf${w}f`, `sa-amplitude-smooth-trout-gp-wf${w}f`]),
 ]);
 
 describe('presetForLine', () => {
