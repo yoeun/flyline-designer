@@ -193,9 +193,8 @@ describe('guide → designer', () => {
   it('links every maker line in the menu to a guide card', () => {
     const guides = Object.values(import.meta.glob('../data/guide/*.json', { eager: true, import: 'default' }));
     const linked = new Set([...linkProducts(guides, LINE_PRESETS).values()].map((sizes) => sizes[0].product));
-    // One menu product holds both 444 Full Sinking types, which the guide lists apart (#82).
     const unlinked = new Set(LINE_PRESETS.filter((p) => p.product && !linked.has(p.product)).map((p) => p.product));
-    expect([...unlinked]).toEqual(['cortland-444-full-sink']);
+    expect([...unlinked]).toEqual([]);
   });
 });
 

@@ -970,8 +970,8 @@ describe('maker lines beyond RIO', () => {
     ...[2, 3, 4, 5, 6, 7, 8, 9].map((w) => ['cortland-444-peach', `wf${w}f`, 32, 90]),
     ...[2, 3, 4, 5, 6, 7, 8].map((w) => ['cortland-444-sylk', `wf${w}f`, 37, 90]),
     ...[4, 5, 6, 7, 8, 9, 10].map((w) => ['cortland-444-clear-camo', `wf${w}i`, 41, 90]),
-    ...[4, 5, 6, 7, 8].map((w) => ['cortland-444-full-sink', `wf${w}s3`, 32, 90]),
-    ...[5, 6, 7, 8].map((w) => ['cortland-444-full-sink', `wf${w}s6`, 32, 90]),
+    ...[4, 5, 6, 7, 8].map((w) => ['cortland-444-full-sinking-type-3', `wf${w}s3`, 32, 90]),
+    ...[5, 6, 7, 8].map((w) => ['cortland-444-full-sinking-type-6', `wf${w}s6`, 32, 90]),
     ...[5, 6, 7, 8].map((w) => ['cortland-streamer-sink-tip-15', `wf${w}`, 31, 100]),
     ...[[3, 50, 90], [4, 50, 90], [5, 50.5, 90.5], [6, 52, 90], [7, 52.5, 90.5], [8, 54.5, 90.5]].map(([w, h, t]) => ['orvis-pro-trout-smooth', `wf${w}f`, h, t]),
     ...[[3, 45.5], [4, 46.5], [5, 47.5], [6, 48.5], [7, 49.5], [8, 50.5]].map(([w, h]) => ['orvis-hydros-trout', `wf${w}f`, h, 90]),
@@ -1076,6 +1076,16 @@ describe('maker products', () => {
     const [old, id] = Object.entries(LEGACY_PRESET_IDS)[0];
     expect(queryToState(`?line=${old}`)).toMatchObject({ presetId: id, setup: { line: findById(LINE_PRESETS, id).line } });
     expect(queryToState('?line=rio-premier-gold-wf8f').presetId).toBe('rio-premier-gold-wf8f');
+  });
+
+  it('old share links to the one 444 Full Sinking product load the size of its type (#82)', () => {
+    for (const [w, type, sink, color] of [...[4, 5, 6, 7, 8].map((w) => [w, 3, 'sink3', 'cortland-dark-brown']), ...[5, 6, 7, 8].map((w) => [w, 6, 'sink7', 'cortland-black'])]) {
+      const id = `cortland-444-full-sinking-type-${type}-wf${w}s${type}`;
+      const state = queryToState(`?line=cortland-444-full-sink-wf${w}s${type}&colorway=${type === 3 ? 'dark-brown' : 'black'}`);
+      expect(state.presetId).toBe(id);
+      expect(findById(LINE_PRESETS, id)).toMatchObject({ sizeLabel: `WF${w}S`, name: `Cortland 444 Full Sinking Type ${type} WF${w}S` });
+      expect(state.setup.line).toMatchObject({ type: sink, weight: w, taper: { front: 6, body: 20, back: 6, running: 58 }, zones: [{ color }] });
+    }
   });
 
   it('ids are unique and product ids never collide with preset ids', () => {
