@@ -25,6 +25,22 @@ export const COLORS = [
   { id: 'airflo-max-head-chartreuse', name: 'Chartreuse', hex: '#829d42' },
   { id: 'airflo-max-lichen', name: 'Lichen', hex: '#95815c' },
   { id: 'airflo-max-driftwood', name: 'Driftwood', hex: '#d6d9e7' },
+  // Superflo Max Smooth Power Taper, Superflo Max Ridge 2.0 Tactical Taper and the Ultra Supple
+  // tapers, sampled from their taper diagrams. Airflo names no color for the Tactical Taper (one
+  // colorway, sold without a color option), so its two are named here from the diagram.
+  { id: 'airflo-sunburst', name: 'Sunburst', hex: '#de8e52' },
+  { id: 'airflo-purple', name: 'Purple', hex: '#bc82ac' },
+  { id: 'airflo-camo-green', name: 'Camo', hex: '#968242' },
+  { id: 'airflo-caddis', name: 'Caddis', hex: '#c5ae82' },
+  { id: 'airflo-pt-chartreuse', name: 'Chartreuse', hex: '#89ad31' },
+  { id: 'airflo-tactical-tan', name: 'Tan', hex: '#bc9b6e' },
+  { id: 'airflo-tactical-olive', name: 'Olive', hex: '#a49e7f' },
+  { id: 'airflo-pale-olive', name: 'Pale Olive', hex: '#829370' },
+  { id: 'airflo-mint-green', name: 'Mint Green', hex: '#b7d5b9' },
+  { id: 'airflo-pale-yellow', name: 'Pale Yellow', hex: '#dbce34' },
+  { id: 'airflo-pale-blue', name: 'Pale Blue', hex: '#5b98b4' },
+  { id: 'airflo-pale-tan', name: 'Pale Tan', hex: '#a78f77' },
+  { id: 'airflo-pale-sunburst', name: 'Pale Sunburst', hex: '#e4aa19' },
 ];
 
 const half = (ft) => Math.round(ft * 2) / 2;
@@ -42,13 +58,10 @@ const scaled = ([front, body, back], head) => {
   return [f, head - f - b, b];
 };
 
-// Universal Taper, shared by Ridge 2.0 and Superflo Max Ridge 2.0. The split is the WF5 diagram's
-// front taper, belly and rear belly, and rear taper; the 12 ft haul zone behind it is drawn as
-// running line. Heads per size from Airflo's table (sizes without one are left out); the head color
-// runs to the end of the rear taper.
-const MAX_RIDGE_UNIVERSAL = LINEUP['airflo-smr-universal'];
-const UNIVERSAL = split(lineupSize(MAX_RIDGE_UNIVERSAL, 'WF5F'));
-const universal = (product, colorways) =>
+// A floating weight-forward line from its WF5 diagram's split: heads per size from Airflo's table
+// (sizes without one are left out); the head color runs to the end of the rear taper and the haul
+// zone behind it is drawn as running line. A colorway's `weights` are the sizes it's sold in.
+const floating = (product, taper, colorways) =>
   product.sizes
     .filter((size) => size.head !== null)
     .map((size) => ({
@@ -56,13 +69,32 @@ const universal = (product, colorways) =>
       label: size.label,
       type: 'floating',
       weight: size.weight,
-      taper: [...scaled(UNIVERSAL, size.head), size.total - size.head],
+      taper: [...scaled(taper, size.head), size.total - size.head],
       estimated: !size.taper,
       lineup: size,
       colorways: colorways
         .filter(({ weights: [lo, hi] }) => size.weight >= lo && size.weight <= hi)
         .map(({ id, name, head: headColor, running }) => ({ id, name, zones: zones([size.head, headColor], [0, running]) })),
     }));
+
+// Universal Taper, shared by Ridge 2.0, Superflo Max Ridge 2.0 and its Ultra Supple version. The
+// split is the WF5 diagram's front taper, belly and rear belly, and rear taper.
+const MAX_RIDGE_UNIVERSAL = LINEUP['airflo-smr-universal'];
+const UNIVERSAL = split(lineupSize(MAX_RIDGE_UNIVERSAL, 'WF5F'));
+const universal = (product, colorways) => floating(product, UNIVERSAL, colorways);
+
+// Ultra Supple Universal Taper: the same taper and table as the Superflo Max Ridge 2.0 Universal in
+// a cold-weather coating; its own WF5 diagram gives the same split.
+const ULTRA_SUPPLE_UNIVERSAL = LINEUP['airflo-smr-ultra-supple-universal'];
+
+// Tactical Taper, shared by Superflo Max Ridge 2.0 and its Ultra Supple Tailwater version: the WF5
+// diagrams' front taper, belly and rear taper (20/16/10 ft), then a 10 ft haul zone.
+const TACTICAL = LINEUP['airflo-smr-tactical'];
+const TAILWATER = LINEUP['airflo-smr-ultra-supple-tailwater'];
+
+// Superflo Max Smooth Power Taper. The split is the WF5 diagram's front taper; belly, belly taper
+// and rear belly (5 + 11.5 + 3 ft); and rear taper, then a 12 ft haul zone.
+const SMOOTH_POWER = LINEUP['airflo-sms-power'];
 
 const STREAMER_MAX_COLORWAYS = {
   3: { name: 'Black/Green/Chartreuse', bellyColor: 'airflo-green', running: 'airflo-chartreuse' },
@@ -90,6 +122,42 @@ export const PRODUCTS = [
         { id: 'lichen-driftwood', name: 'Lichen/Driftwood', weights: [3, 6], head: 'airflo-max-lichen', running: 'airflo-max-driftwood' },
       ],
     ),
+  }),
+  makerProduct({
+    id: 'airflo-superflo-max-ridge-ultra-supple-universal',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Max Ridge 2.0 Ultra Supple Universal Taper',
+    sizes: floating(ULTRA_SUPPLE_UNIVERSAL, split(lineupSize(ULTRA_SUPPLE_UNIVERSAL, 'WF5F')), [
+      { id: 'pale-olive-mint-green', name: 'Pale Olive/Mint Green', weights: [3, 8], head: 'airflo-pale-olive', running: 'airflo-mint-green' },
+      { id: 'pale-yellow-white', name: 'Pale Yellow/White', weights: [3, 8], head: 'airflo-pale-yellow', running: 'airflo-white' },
+    ]),
+  }),
+  makerProduct({
+    id: 'airflo-superflo-max-ridge-tactical',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Max Ridge 2.0 Tactical Taper',
+    sizes: floating(TACTICAL, split(lineupSize(TACTICAL, 'WF5F')), [
+      { id: 'tan-olive', name: 'Tan/Olive', weights: [2, 7], head: 'airflo-tactical-tan', running: 'airflo-tactical-olive' },
+    ]),
+  }),
+  makerProduct({
+    id: 'airflo-superflo-max-ridge-ultra-supple-tailwater',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Max Ridge 2.0 Ultra Supple Tailwater Taper',
+    sizes: floating(TAILWATER, split(lineupSize(TAILWATER, 'WF5F')), [
+      { id: 'pale-blue-white', name: 'Pale Blue/White', weights: [2, 6], head: 'airflo-pale-blue', running: 'airflo-white' },
+      { id: 'pale-tan-pale-sunburst', name: 'Pale Tan/Pale Sunburst', weights: [3, 5], head: 'airflo-pale-tan', running: 'airflo-pale-sunburst' },
+    ]),
+  }),
+  makerProduct({
+    id: 'airflo-superflo-max-smooth-power',
+    maker: 'Airflo',
+    name: 'Airflo Superflo Max Smooth Power Taper',
+    sizes: floating(SMOOTH_POWER, split(lineupSize(SMOOTH_POWER, 'WF5F')), [
+      { id: 'sunburst-purple', name: 'Sunburst/Purple', weights: [3, 9], head: 'airflo-sunburst', running: 'airflo-purple' },
+      { id: 'camo-caddis', name: 'Camo/Caddis', weights: [4, 8], head: 'airflo-camo-green', running: 'airflo-caddis' },
+      { id: 'chartreuse-white', name: 'Chartreuse/White', weights: [5, 8], head: 'airflo-pt-chartreuse', running: 'airflo-white' },
+    ]),
   }),
   // Replaced by Superflo Max Ridge 2.0, same taper.
   makerProduct({
