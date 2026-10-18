@@ -58,6 +58,8 @@ export const COLORS = [
   { id: 'rio-trans-blue', name: 'Trans Blue', hex: '#7ba7b9' },
   { id: 'rio-trans-tan', name: 'Trans Tan', hex: '#b3a978' },
   { id: 'rio-trans-green', name: 'Trans Green', hex: '#90c5b8' },
+  { id: 'rio-seafoam', name: 'Seafoam', hex: '#9fe3c4' },
+  { id: 'rio-peach-sand', name: 'Sand', hex: '#efcf9f' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -596,6 +598,55 @@ const leviathan = makerProduct({
   ),
 });
 
+// Premier Tarpon Clear Tip Floater. RIO's WF11F diagram: front taper 6, then 4 ft and an 18.5 ft
+// body, back taper 12 on 59.5 ft of running line. Every size has a 40.5 ft head. A 10 ft clear tip
+// (from RIO's description and the diagram), seafoam to the end of the head, then a sand running line.
+const tarponClearTip = rio({
+  id: 'rio-premier-tarpon-clear-tip-floater',
+  name: 'RIO Premier Tarpon Clear Tip Floater',
+  sizes: LINEUP['rio-premier-tarpon-clear-tip-floater'].sizes,
+  densities: [float({ split: [6, 22.5, 12], example: 11 }, colorway('clear-seafoam-sand', 'Clear/Seafoam/Sand', [10, 'rio-clear'], [30.5, 'rio-seafoam'], [0, 'rio-peach-sand']))],
+});
+
+// Premier Flats Clear Floater. RIO's WF10F diagram is the Elite Flats Pro split (front taper 6,
+// front body 6, body 14, rear taper 24 on 50 ft of running line) and RIO says the Full Clear has
+// the same taper. The Clear Tip is clear over the front taper, sand to about 38 ft (partway down the
+// rear taper, read off the diagram by eye), then blue. The Full Clear is clear end to end in RIO's
+// photo.
+const flatsClear = rio({
+  id: 'rio-premier-flats-clear-floater',
+  name: 'RIO Premier Flats Clear Floater',
+  sizes: LINEUP['rio-premier-flats-clear-floater'].sizes,
+  densities: [
+    float(
+      FLATS,
+      colorway('clear-sand-blue', 'Clear/Sand/Blue', [6, 'rio-clear'], [32, 'rio-peach-sand'], [0, 'rio-blue']),
+      colorway('clear', 'Clear', [0, 'rio-clear']),
+    ),
+  ],
+});
+
+// Premier Bonefish Quickshooter. RIO's WF8F diagram: front taper 5, body 9 plus 14, back taper 7 on
+// 65 ft of running line. That head is 35 ft; RIO's table says 35.5 for WF8F, so every size, the WF8F
+// too, is the diagram scaled to its table head and marked estimated. Aqua Blue to about 31.5 ft
+// (halfway down the back taper, read off the diagram by eye), then sand.
+const bonefishQuickShooter = rio({
+  id: 'rio-premier-bonefish-quickshooter',
+  name: 'RIO Premier Bonefish Quickshooter',
+  sizes: LINEUP['rio-premier-bonefish-quickshooter'].sizes,
+  densities: [float({ split: [5, 23, 7] }, colorway('aqua-blue-sand', 'Aqua Blue/Sand', [31.5, 'rio-aqua-blue'], [0, 'rio-sand']))],
+});
+
+// Elite GT. RIO's WF12F diagram: front taper 3, body 10, a 3 ft body taper, 4 ft and a 10 ft back
+// body, back taper 6 on 64 ft of running line. Every size has a 36 ft head. Blue to 20 ft (the end
+// of the 4 ft section), orange to the end of the head, then a sea grass running line.
+const eliteGt = rio({
+  id: 'rio-elite-gt',
+  name: 'RIO Elite GT',
+  sizes: LINEUP['rio-elite-gt'].sizes,
+  densities: [float({ split: [3, 27, 6], example: 12 }, colorway('blue-orange-sea-grass', 'Blue/Orange/Sea Grass', [20, 'rio-pale-blue'], [16, 'rio-orange'], [0, 'rio-sea-grass']))],
+});
+
 export const PRODUCTS = [
   makerProduct({
     id: 'rio-premier-gold',
@@ -634,6 +685,10 @@ export const PRODUCTS = [
   elitePermit,
   eliteTarpon,
   leviathan,
+  tarponClearTip,
+  flatsClear,
+  bonefishQuickShooter,
+  eliteGt,
   // Euro nymph lines are level (about 0.022″), much thinner than a WF head of any weight, so they're
   // drawn as running line behind a token taper. RIO sells one size for 2–5 wt rods, drawn as a 3 wt;
   // it comes with a 14 ft pink mono leader. RIO's table has no lengths for it, so all three numbers
