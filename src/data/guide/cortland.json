@@ -1662,7 +1662,9 @@
      "total": 90,
      "grains30": 140,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Black / Mint Green"
+     ]
     },
     {
      "label": "WF6S/F",
@@ -1676,7 +1678,9 @@
      "total": 90,
      "grains30": 160,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Black / Mint Green"
+     ]
     },
     {
      "label": "WF7S/F",
@@ -1690,7 +1694,9 @@
      "total": 90,
      "grains30": 185,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Black / Mint Green"
+     ]
     },
     {
      "label": "WF8S/F",
@@ -1704,7 +1710,9 @@
      "total": 90,
      "grains30": 210,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Black / Mint Green"
+     ]
     },
     {
      "label": "WF9S/F",
@@ -1718,7 +1726,9 @@
      "total": 90,
      "grains30": 240,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Black / Mint Green"
+     ]
     },
     {
      "label": "WF10S/F",
@@ -1732,7 +1742,9 @@
      "total": 90,
      "grains30": 280,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Black / Mint Green"
+     ]
     }
    ]
   },
@@ -7252,11 +7264,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 84,
      "grains30": 120,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Blue Green"
+     ]
     },
     {
      "label": "WF5F",
@@ -7266,11 +7280,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 84,
      "grains30": 140,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Blue Green"
+     ]
     },
     {
      "label": "WF6F",
@@ -7280,11 +7296,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 84,
      "grains30": 160,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Blue Green"
+     ]
     },
     {
      "label": "WF7F",
@@ -7294,11 +7312,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 84,
      "grains30": 185,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Blue Green"
+     ]
     },
     {
      "label": "WF8F",
@@ -7308,11 +7328,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 84,
      "grains30": 210,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Blue Green"
+     ]
     },
     {
      "label": "WF9F",
@@ -7322,11 +7344,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 84,
      "grains30": 240,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Blue Green"
+     ]
     }
    ]
   },
@@ -7432,7 +7456,9 @@
      "total": 90,
      "grains30": 280,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Yellow"
+     ]
     }
    ]
   },
