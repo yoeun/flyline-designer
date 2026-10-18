@@ -349,12 +349,12 @@ export const PRODUCTS = [
         };
       }),
   }),
-  // 1.5 ips on a clear mono core; sold in the UK as Delta Taper Clear Intermediate. Split from the
-  // WF5 diagram. Clear or camo over the whole line.
+  // 1.5 ips on a clear mono core; also sold as Stillwater Intermediate, but named here as the line
+  // guide lists it so its card links to it. Split from the WF5 diagram. Clear or camo over the whole line.
   makerProduct({
     id: 'airflo-stillwater-intermediate',
     maker: 'Airflo',
-    name: 'Airflo Stillwater Intermediate',
+    name: 'Airflo Delta Taper Clear Intermediate',
     sizes: DELTA.sizes.map((size) => ({
       id: `wf${size.weight}`,
       label: `WF${size.weight}I`,
