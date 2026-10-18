@@ -63,6 +63,13 @@ export const COLORS = [
   { id: 'sa-tarpon-sand', name: 'Tarpon Sand', hex: '#fdc995' },
   { id: 'sa-tarpon-black', name: 'Tarpon Black', hex: '#343233' },
   { id: 'sa-bonefish-plus-pale-yellow', name: 'Bonefish Plus Pale Yellow', hex: '#faf28a' },
+  { id: 'sa-yellow', name: 'Yellow', hex: '#ffde62' },
+  { id: 'sa-air-cel-orange', name: 'Air Cel Orange', hex: '#f8981d' },
+  { id: 'sa-wet-cel-green', name: 'Wet Cel Green', hex: '#94cea8' },
+  { id: 'sa-wet-cel-charcoal', name: 'Wet Cel Charcoal', hex: '#222222' },
+  { id: 'sa-infinity-warm-bronze', name: 'Infinity Warm Bronze', hex: '#f4f098' },
+  { id: 'sa-tannic', name: 'Tannic', hex: '#cd793d' },
+  { id: 'sa-turtle-grass', name: 'Turtle Grass', hex: '#b3be34' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). Mastery Competition Nymph is now
@@ -212,7 +219,8 @@ const CARP = scaled([7.5, 23.5, 15], 45);
 const INFINITY_SALT = [4, 26, 19];
 
 // Amplitude Smooth Redfish's diagram, drawn for Warm and Cold alike: front taper 4, belly 21.5, rear
-// taper 5.5, the 31 ft head SA lists for every size.
+// taper 5.5, the 31 ft head SA lists for every size. (The Warm page's copy measured 4, 21.5 and 6, a
+// 31.5 ft head; this reading matches SA's 31 ft exactly, so both use it.)
 const REDFISH = [4, 21.5, 5.5];
 
 // Amplitude Smooth Tarpon's diagram: two front tapers (7 ft), a front belly, a short rear taper into a
@@ -226,6 +234,20 @@ const BONEFISH_PLUS = [3, 18.5, 29];
 
 // These saltwater lines end in a black sighter over the last 10 ft of their 100 ft (on each diagram).
 const sighted = (head, headColor, running, sighter) => zones([head, headColor], [90 - head, running], [0, sighter]);
+
+// Air Cel Trout, Air Cel Kit, Air Cel WF and Wet Cel Sink Tip share a diagram: front taper 5, belly
+// 31.5, rear taper 3.5 on a 40 ft head (Air Cel WF's yellow diagram measures 5.5, 31.5 and 3). The
+// Air Cels' small bump in the running line, about 52 ft back, isn't drawn.
+const AIR_CEL = [5, 31.5, 3.5];
+
+// Amplitude Smooth Double Taper: SA's table gives each size's belly; the tapers at either end make up
+// the rest of the 85 ft line. The DT5 diagram draws them equal (6.5 ft each, measured 6.7 and 6.2), so
+// the other sizes split theirs equally too and are marked estimated. Buckskin for the first 40 ft, a
+// 5 ft leather band at the middle, then mist green.
+const doubleTaper = (size) => {
+  const end = (size.total - size.head) / 2;
+  return [end, size.head, end, 0];
+};
 
 export const PRODUCTS = [
   // Half-size heavy. Head and total per size from SA's table; the WF6 split was measured off the
@@ -746,7 +768,7 @@ export const PRODUCTS = [
     id: 'sa-aircel-trout-5-6',
     maker: 'Scientific Anglers',
     name: 'SA Air Cel Trout',
-    sizes: floating([5, 31.5, 3.5], 5, LINEUP['sa-aircel-trout-5-6'].sizes, () => [{ id: 'green', name: 'Green', zones: zones([0, 'sa-green']) }]),
+    sizes: floating(AIR_CEL, 5, LINEUP['sa-aircel-trout-5-6'].sizes, () => [{ id: 'green', name: 'Green', zones: zones([0, 'sa-green']) }]),
   }),
   // Same 45 ft head in every size. Camo front taper (the diagram's camo runs to its end), bronze to the
   // end of the head, dark grass running line.
@@ -819,6 +841,94 @@ export const PRODUCTS = [
       taper: sameHead(BONEFISH_PLUS, size),
       lineup: size,
       colorways: [{ id: 'black-pale-yellow-ivory', name: 'Black/Pale Yellow/Ivory', zones: sighted(50.5, 'sa-ivory', 'sa-bonefish-plus-pale-yellow', 'sa-black') }],
+    })),
+  }),
+  // Sold with leader and backing. The diagram's 40 ft head is the WF6's; the other sizes (34–44 ft
+  // heads) scale it. One color.
+  makerProduct({
+    id: 'sa-air-cel-kit',
+    maker: 'Scientific Anglers',
+    name: 'SA Air Cel Kit',
+    sizes: floating(AIR_CEL, 6, LINEUP['sa-air-cel-kit'].sizes, () => [{ id: 'green', name: 'Green', zones: zones([0, 'sa-green']) }]),
+  }),
+  // Every size has the same 40 ft head. Yellow in every size, orange in WF4–6.
+  makerProduct({
+    id: 'sa-air-cel-wf',
+    maker: 'Scientific Anglers',
+    name: 'SA Air Cel WF',
+    sizes: LINEUP['sa-air-cel-wf'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(AIR_CEL, size),
+      lineup: size,
+      colorways: [
+        { id: 'yellow', name: 'Yellow', zones: zones([0, 'sa-yellow']) },
+        ...(size.weight <= 6 ? [{ id: 'orange', name: 'Orange', zones: zones([0, 'sa-air-cel-orange']) }] : []),
+      ],
+    })),
+  }),
+  // A floating Air Cel with a Sink 4 tip, drawn as a sink tip. Same 40 ft head in every size. SA's
+  // table has no tip length; the diagram's charcoal tip measures about 12.5 ft, then green.
+  makerProduct({
+    id: 'sa-wetcel-sink-tip',
+    maker: 'Scientific Anglers',
+    name: 'SA Wet Cel Sink Tip',
+    sizes: LINEUP['sa-wetcel-sink-tip'].sizes.map((size) => ({
+      id: `wf${size.weight}-f-s4`,
+      label: size.label,
+      type: 'sinktip',
+      weight: size.weight,
+      taper: sameHead(AIR_CEL, size),
+      lineup: size,
+      colorways: [{ id: 'green-charcoal', name: 'Green/Charcoal', zones: zones([12.5, 'sa-wet-cel-charcoal'], [0, 'sa-wet-cel-green']) }],
+    })),
+  }),
+  // Drawn, like Cortland's double tapers, as all head with no running line.
+  makerProduct({
+    id: 'sa-amplitude-smooth-double-taper',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Double Taper',
+    sizes: LINEUP['sa-amplitude-smooth-double-taper'].sizes.map((size) => ({
+      id: `dt${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: doubleTaper(size),
+      estimated: size.weight !== 5,
+      lineup: overriding(size, { head: size.total }),
+      colorways: [
+        { id: 'mist-green-leather-buckskin', name: 'Mist Green/Leather/Buckskin', zones: zones([40, 'sa-buckskin'], [5, 'sa-leather'], [0, 'sa-mist-green']) },
+      ],
+    })),
+  }),
+  // WF6 diagram: front 6, belly 24, two rear tapers 19 (49 ft head); the other sizes scale it. Tannic
+  // front taper, bronze head, mist green running line. SA's Bronze here is lighter than the Carp's.
+  makerProduct({
+    id: 'sa-amplitude-smooth-infinity-warm',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Infinity Warm',
+    sizes: floating([6, 24, 19], 6, LINEUP['sa-amplitude-smooth-infinity-warm'].sizes, (head, [front]) => [
+      { id: 'mist-green-bronze-tannic', name: 'Mist Green/Bronze/Tannic', zones: zones([front, 'sa-tannic'], [head - front, 'sa-infinity-warm-bronze'], [0, 'sa-mist-green']) },
+    ]),
+  }),
+  // The Warm version, on the Redfish split above: horizon head, turtle grass running line, black
+  // sighter. SA's Horizon swatch matches the Infinity Salt's; Black is the Bonefish's.
+  makerProduct({
+    id: 'sa-amplitude-smooth-redfish-warm',
+    maker: 'Scientific Anglers',
+    name: 'SA Amplitude Smooth Redfish Warm',
+    sizes: LINEUP['sa-amplitude-smooth-redfish-warm'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: sameHead(REDFISH, size),
+      lineup: size,
+      colorways: [
+        { id: 'black-turtle-grass-horizon', name: 'Black/Turtle Grass/Horizon', zones: sighted(31, 'sa-infinity-salt-horizon', 'sa-turtle-grass', 'sa-black') },
+      ],
     })),
   }),
 ];
