@@ -1118,6 +1118,11 @@ describe('RIO lines', () => {
     'rio-elite-tarpon': table([[8, 38, 100], [9, 39.5, 100], [10, 40.5, 100], [11, 40.5, 100], [12, 40.5, 100]]),
     // RIO lists the 26 ft sinking tip (listed at the lower of its two rod weights); its diagram puts the head at 34 ft.
     'rio-elite-leviathan': table([7, 8, 9, 10, 12].map((w) => [w, 34, 100])),
+    'rio-premier-tarpon-clear-tip-floater': table([10, 11, 12].map((w) => [w, 40.5, 100])),
+    'rio-premier-flats-clear-floater': table([[7, 49, 100], [8, 49, 100], [9, 50, 100], [10, 50, 100], [11, 50, 100], [12, 50, 100]]),
+    // RIO's diagram draws the WF8F head at 35 ft; its table says 35.5.
+    'rio-premier-bonefish-quickshooter': table([[5, 34.5, 90], [6, 34.5, 90], [7, 35.5, 90], [8, 35.5, 100], [9, 35.5, 100]]),
+    'rio-elite-gt': table([10, 11, 12].map((w) => [w, 36, 100])),
   };
   const rio = LINE_PRESETS.filter((p) => p.maker === 'RIO');
   const head = ({ taper }) => taper.front + taper.body + taper.back;
@@ -1192,6 +1197,9 @@ describe('RIO lines', () => {
       'rio-premier-lightline-double-taper-dt5f',
       'rio-elite-permit-wf9f',
       'rio-elite-leviathan-500gr',
+      'rio-premier-tarpon-clear-tip-floater-wf11f',
+      'rio-premier-flats-clear-floater-wf10f',
+      'rio-elite-gt-wf12f',
     ]);
   });
 
@@ -1208,6 +1216,9 @@ describe('RIO lines', () => {
     ['rio-premier-lightline-double-taper-dt5f', [13, 54, 13, 0]],
     ['rio-elite-permit-wf9f', [6, 29, 13, 52]],
     ['rio-elite-leviathan-500gr', [4, 27, 3, 66]],
+    ['rio-premier-tarpon-clear-tip-floater-wf11f', [6, 22.5, 12, 59.5]],
+    ['rio-premier-flats-clear-floater-wf10f', [6, 20, 24, 50]],
+    ['rio-elite-gt-wf12f', [3, 27, 6, 64]],
   ])('%s has the taper on RIO\'s diagram', (id, [front, body, back, running]) => {
     expect(findById(LINE_PRESETS, id).line.taper).toEqual({ front, body, back, running });
   });
