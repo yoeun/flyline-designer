@@ -18,11 +18,13 @@ describe('reel weight fit', () => {
   it('measures from the edges of a one-weight range', () => {
     expect(allowedWeights(reel(6, 6))).toEqual([5, 6, 7]);
   });
-  it('over- and underlines only within 2–12 wt, keeping the reel’s own range', () => {
+  it('over- and underlines only within 2–15 wt, keeping the reel’s own range', () => {
     expect(allowedWeights(reel(2, 4))).toEqual([2, 3, 4, 5]);
     expect(reelWeightFit(reel(2, 4), 1)).toBe('out');
-    expect(allowedWeights(reel(11, 13))).toEqual([10, 11, 12, 13]);
-    expect(reelWeightFit(reel(11, 12), 13)).toBe('out');
+    expect(allowedWeights(reel(11, 13))).toEqual([10, 11, 12, 13, 14]);
+    expect(allowedWeights(reel(13, 15))).toEqual([12, 13, 14, 15]);
+    expect(reelWeightFit(reel(13, 15), 16)).toBe('out');
+    expect(reelWeightFit(reel(11, 13), 15)).toBe('out');
     expect(allowedWeights(reel(0, 2))).toEqual([0, 1, 2, 3]);
   });
   it('lets anything through without a reel', () => {
@@ -134,7 +136,7 @@ describe('weight check', () => {
   it('words an out-of-range line', () => {
     expect(weightCheck(setup('orvis-hydros-2026-3', 10)).text).toBe('A 10 wt line is out of range for this reel (suits 5–7 wt; 4–8 wt with over/underlining).');
     expect(weightCheck(setup('lamson-liquid-s-3', 8)).text).toBe('An 8 wt line is out of range for this reel (suits 2–4 wt; 2–5 wt with overlining).');
-    expect(weightCheck(setup('orvis-mirage-6', 8)).text).toBe('An 8 wt line is out of range for this reel (suits 11–13 wt; 10–13 wt with underlining).');
+    expect(weightCheck(setup('orvis-mirage-6', 8)).text).toBe('An 8 wt line is out of range for this reel (suits 11–13 wt; 10–14 wt with over/underlining).');
   });
   it('passes an unknown reel', () => {
     expect(weightCheck(setup('nope', 10))).toBeNull();

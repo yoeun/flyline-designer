@@ -82,6 +82,9 @@ export const COLORS = [
   { id: 'rio-sub-surface-hover-gray', name: 'Gray', hex: '#a29e96' },
   { id: 'rio-sub-surface-hover-olive', name: 'Olive', hex: '#aa9c1d' },
   { id: 'rio-midge-tip-hover-gray', name: 'Gray', hex: '#9b978a' },
+  // The Leviathan's 600 and 750 gr bodies; far stronger than the Elite Flats Pro's Trans Orange.
+  { id: 'rio-leviathan-trans-yellow', name: 'Trans Yellow', hex: '#c4c92e' },
+  { id: 'rio-leviathan-trans-orange', name: 'Trans Orange', hex: '#e65945' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -604,9 +607,9 @@ const eliteTarpon = rio({
 // Elite Leviathan. RIO's 500 gr diagram: a 26 ft black sinking tip (a 4 ft front taper and 22 ft),
 // then 2 ft stepping up to a 3 ft body and a 3 ft back taper on 66 ft of running line. RIO's table
 // gives only the 26 ft tip as the head, so every size overrides it with the diagram's 34 ft head.
-// Sold by grain weight, each rated for two rod weights and drawn at the lower (which the lineup
-// leaves out). The body and running line are a translucent color that changes with the size. RIO's
-// 600 and 750 gr sizes (14–16 and 15+ wt) are heavier than the designer's 12 wt top end.
+// Sold by grain weight, each rated for two or more rod weights and drawn at the lowest (which the
+// lineup leaves out, except the 750 gr's 15 wt). The body and running line are a translucent color
+// that changes with the size.
 const LEVIATHAN = { split: [4, 27, 3], example: 12 };
 const LEVIATHAN_LINEUP = LINEUP['rio-elite-leviathan'];
 const leviathan = makerProduct({
@@ -614,18 +617,40 @@ const leviathan = makerProduct({
   maker: 'RIO',
   name: 'RIO Elite Leviathan',
   sizes: [
-    [250, 7, '1.5/5.5', 'black-trans-gray', 'Black/Trans Gray', 'rio-trans-gray'],
-    [300, 8, '1.5/6.7', 'black-trans-salmon', 'Black/Trans Salmon', 'rio-trans-salmon'],
-    [350, 9, '1.5/7.2', 'black-trans-blue', 'Black/Trans Blue', 'rio-trans-blue'],
-    [400, 10, '1.5/7.7', 'black-trans-tan', 'Black/Trans Tan', 'rio-trans-tan'],
-    [500, 12, '1.5/8.5', 'black-trans-green', 'Black/Trans Green', 'rio-trans-green'],
-  ].map(([grains, weight, ips, id, name, body]) =>
-    sized(
+    [250, 7, '7/8wt', '1.5/5.5', 'black-trans-gray', 'Black/Trans Gray', 'rio-trans-gray'],
+    [300, 8, '8/9wt', '1.5/6.7', 'black-trans-salmon', 'Black/Trans Salmon', 'rio-trans-salmon'],
+    [350, 9, '9/10wt', '1.5/7.2', 'black-trans-blue', 'Black/Trans Blue', 'rio-trans-blue'],
+    [400, 10, '10/11wt', '1.5/7.7', 'black-trans-tan', 'Black/Trans Tan', 'rio-trans-tan'],
+    [500, 12, '12/13wt', '1.5/8.5', 'black-trans-green', 'Black/Trans Green', 'rio-trans-green'],
+    [600, 14, '14-16wt', '1.5/9.7', 'black-trans-yellow', 'Black/Trans Yellow', 'rio-leviathan-trans-yellow'],
+    [750, 15, '15wt+', '1.5/10.0', 'black-trans-orange', 'Black/Trans Orange', 'rio-leviathan-trans-orange'],
+  ].map(([grains, weight, rated, ips, id, name, body]) => {
+    const size = lineupSize(LEVIATHAN_LINEUP, rated);
+    return sized(
       { taper: LEVIATHAN, colorways: [colorway(id, name, [26, 'rio-black'], [0, body])] },
       { id: `${grains}gr`, label: `${grains}gr ${ips} ips`, type: 'sinktip' },
-      overriding(lineupSize(LEVIATHAN_LINEUP, `${weight}/${weight + 1}wt`), { weight, head: 34 }),
+      overriding(size, size.weight === weight ? { head: 34 } : { weight, head: 34 }),
+    );
+  }),
+});
+
+// Billfish Shooting Head: a 31 ft head (RIO's table and description) with no running line. RIO's
+// 550 gr diagram draws a 30 ft head: a 2'6" front taper and 27'6" level to the loop, with no back
+// taper; it's scaled to 31 ft, with a token half-foot back taper so the head ends in one. RIO
+// gives the 550 gr no rod weight; 550 gr is 15 wt on the AFFTA scale, so it's drawn as 15 wt.
+// The 8–9 ips head is drawn as Type 7. Black, with the 4 ft orange section RIO's description puts
+// at the back of the head.
+const billfishHead = makerProduct({
+  id: 'rio-billfish-shooting-head',
+  maker: 'RIO',
+  name: 'RIO Billfish Shooting Head',
+  sizes: [
+    sized(
+      { taper: { split: [2.5, 27, 0.5] }, colorways: [colorway('black-orange', 'Black/Orange', [26, 'rio-black'], [0, 'rio-orange'])] },
+      { id: '550gr', label: '550gr 8–9 ips', type: 'sink7' },
+      overriding(lineupSize(LINEUP['rio-billfish-shooting-head'], '550gr'), { weight: 15 }),
     ),
-  ),
+  ],
 });
 
 // Premier Tarpon Clear Tip Floater. RIO's WF11F diagram: front taper 6, then 4 ft and an 18.5 ft
@@ -1059,6 +1084,7 @@ export const PRODUCTS = [
   elitePermit,
   eliteTarpon,
   leviathan,
+  billfishHead,
   tarponClearTip,
   flatsClear,
   bonefishQuickShooter,

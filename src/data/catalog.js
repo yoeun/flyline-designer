@@ -201,7 +201,7 @@ export const productSizes = (product) => LINE_PRESETS.filter((p) => p.product ==
 
 // Line weights the app offers. Over- and underlining stay within them.
 const MIN_WEIGHT = 2;
-const MAX_WEIGHT = 12;
+const MAX_WEIGHT = 15;
 
 // How a line weight suits a reel size: 'in' its range, one 'over' or 'under' it (over- or
 // underlining), else 'out'. Without a reel, anything goes.

@@ -1959,22 +1959,25 @@ export const PRODUCTS = [
     })),
   }),
   // A Sink 6 (6+ ips) head on an intermediate running line and a 65 lb Tropi-Core, so drawn as a sink
-  // head on an intermediate running line. Same 23 ft head in both sizes; the 700 gr (13–15 wt) is over
-  // the menu's heaviest line and left out. A black head on a surf running line; SA's swatches are the
-  // Titan's Black and the Surf already here.
+  // head on an intermediate running line. Same 23 ft head in both sizes, each rated for three rod
+  // weights and drawn at the lowest (500 gr 11–13 wt, 700 gr 13–15 wt). A black head on a surf running
+  // line; SA's swatches are the Titan's Black and the Surf already here.
   makerProduct({
     id: 'sa-sonar-titan-pelagic',
     maker: 'Scientific Anglers',
     name: 'SA Sonar Titan Pelagic',
-    sizes: [lineupSize(LINEUP['sa-sonar-titan-pelagic'], '500gr F/Sink 6')].map((size) => ({
-      id: '500gr',
-      label: '500 gr Sink 6',
-      type: 'sinkhead-int',
-      weight: size.weight,
-      taper: sameHead(TITAN_PELAGIC, size),
-      lineup: size,
-      colorways: [{ id: 'surf-black', name: 'Surf/Black', zones: zones([23, 'sa-titan-black'], [0, 'sa-surf']) }],
-    })),
+    sizes: [500, 700].map((grains) => {
+      const size = lineupSize(LINEUP['sa-sonar-titan-pelagic'], `${grains}gr F/Sink 6`);
+      return {
+        id: `${grains}gr`,
+        label: `${grains} gr Sink 6`,
+        type: 'sinkhead-int',
+        weight: size.weight,
+        taper: sameHead(TITAN_PELAGIC, size),
+        lineup: size,
+        colorways: [{ id: 'surf-black', name: 'Surf/Black', zones: zones([23, 'sa-titan-black'], [0, 'sa-surf']) }],
+      };
+    }),
   }),
   // Grain-rated: a floating running line, an intermediate belly and a Sink 5 tip, drawn as a sink tip.
   // Charcoal tip, light blue to the end of the belly (where the diagram's colors change), then pale

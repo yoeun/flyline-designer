@@ -103,9 +103,6 @@ const sizes = (product, { label = (size) => size.label, id = (w) => `wf${w}f`, l
 // lineup leaves its head empty. The menu draws all of it as head, with no running line.
 const doubleTaper = (size) => overriding(size, { head: size.total });
 
-// The menu tops out at 12 wt, so heavier sizes are left out.
-const upTo12 = (product) => ({ ...product, sizes: product.sizes.filter((size) => size.weight <= 12) });
-
 export const PRODUCTS = [
   makerProduct({
     id: 'cortland-444-peach',
@@ -486,12 +483,12 @@ export const PRODUCTS = [
       colorways: [{ id: 'aqua-blue-pale-yellow', name: 'Aqua Blue/Pale Yellow', zones: zones([26, 'cortland-aqua-blue'], [0, 'cortland-pale-yellow']) }],
     }),
   }),
-  // On a 50 lb braided core. Short 7 ft body and a 31 ft back taper in a 41 ft head. WF13 is above the menu's 12 wt.
+  // On a 50 lb braided core. Short 7 ft body and a 31 ft back taper in a 41 ft head.
   makerProduct({
     id: 'cortland-50-plus-giant-trevally',
     maker: 'Cortland',
     name: 'Cortland 50+ Giant Trevally',
-    sizes: sizes(upTo12(LINEUP['cortland-50-plus-giant-trevally']), {
+    sizes: sizes(LINEUP['cortland-50-plus-giant-trevally'], {
       type: 'floating',
       colorways: [{ id: 'light-blue-yellow', name: 'Light Blue/Yellow', zones: zones([41, 'cortland-light-blue'], [0, 'cortland-giant-trevally-yellow']) }],
     }),
@@ -846,15 +843,31 @@ export const PRODUCTS = [
   // On a 50 lb braided core, sold by grain weight, with two sizes at 12 wt, so its sizes go by grains.
   // A black 30 ft Type 8 head (7–8 ips) on a deep blue intermediate running line; the chart's 15 ft
   // step down to the running line, blue like the running line, is drawn here as running line. The
-  // WF13–15 and WF15+ are above the menu's 12 wt.
+  // WF13–15 is drawn at 13 wt.
   makerProduct({
     id: 'cortland-50-plus-heavy-sink',
     maker: 'Cortland',
     name: 'Cortland 50+ Heavy Sink',
-    sizes: sizes(upTo12(LINEUP['cortland-50-plus-heavy-sink']), {
+    sizes: sizes(LINEUP['cortland-50-plus-heavy-sink'], {
       type: 'sinkhead-int',
       colorways: [{ id: 'black-deep-blue', name: 'Black/Deep Blue', zones: zones([30, 'cortland-black'], [0, 'cortland-50-plus-heavy-sink-deep-blue']) }],
     }).map((size) => ({ ...size, id: `${size.lineup.label.match(/(\d+) gr$/)[1]}gr` })),
+  }),
+  // For teasing billfish in the prop wash: a 600 gr Type 6 head on a 50 lb braided core and a floating
+  // running line, rated WF13–15 and drawn at 13 wt. An 18 in orange tip, a 30 ft black body, then
+  // orange from the 3 ft back taper on. The lineup gives the head as 34 ft; the chart's head adds up to
+  // 34.5 ft (18 in, 30 and 3 ft) and is drawn as is. The chart draws the body grey; the photo and box
+  // say black. The orange is drawn in the near-identical Rock Bottom Orange.
+  makerProduct({
+    id: 'cortland-50-plus-billfish',
+    maker: 'Cortland',
+    name: 'Cortland 50+ Billfish',
+    sizes: sizes(LINEUP['cortland-50-plus-billfish'], {
+      id: (w) => `wf${w}s6`,
+      lineup: (size) => overriding(size, { head: 34.5 }),
+      type: 'sinktip',
+      colorways: [{ id: 'orange-black', name: 'Orange/Black', zones: zones([1.5, 'cortland-rock-bottom-orange'], [30, 'cortland-black'], [0, 'cortland-rock-bottom-orange']) }],
+    }),
   }),
   // A black 28 ft Type 8 head (8–9 ips) on an ice blue intermediate running line, for current and
   // depth; the chart's 12 ft step down to the running line, ice blue like the running line, is drawn
