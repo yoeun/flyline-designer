@@ -176,8 +176,9 @@ export default function ReelsPage({ onNewSetup }) {
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Reels">
       {/* The title, the maker filter and, from sm up, the line colors stay in a bar under the fixed header while
-          the reels scroll. On phones the chips are one row that scrolls sideways, so the bar stays short. */}
-      <div className="sticky top-(--header-h) z-10 -mx-[max(16px,2.5vw)] -mt-6 flex flex-col gap-2.5 border-b border-border bg-background/95 px-[max(16px,2.5vw)] pt-4 pb-3 backdrop-blur">
+          the reels scroll; it sits above a hovered card (z-10), which would otherwise draw over it. On phones the
+          chips are one row that scrolls sideways, so the bar stays short. */}
+      <div className="sticky top-(--header-h) z-20 -mx-[max(16px,2.5vw)] -mt-6 flex flex-col gap-2.5 border-b border-border bg-background/95 px-[max(16px,2.5vw)] pt-4 pb-3 backdrop-blur">
         <div className="flex items-center justify-between gap-3">
           <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Reels</h2>
           {/* On phones the line colors open in a sheet instead of a bar over the reels. */}
