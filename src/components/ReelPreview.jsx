@@ -69,8 +69,10 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
 
       {reelOpacity > 0 && (
         <g clipPath={`url(#spool-${uid})`} opacity={reelOpacity}>
-          {/* The other side's frame, seen from behind: mirrored and in shadow. */}
+          {/* The other side's frame, seen from behind: mirrored and in shadow, without its printing (a dial's
+              numbers, a logo's name), which is on the far face. */}
           <g
+            className="[&_text]:hidden"
             transform="scale(-1 1)"
             color={shade(reelHex, 0.5)}
             style={{ '--reel-accent': 'currentColor', '--reel-trim': 'currentColor' }}
