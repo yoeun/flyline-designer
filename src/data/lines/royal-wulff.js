@@ -19,6 +19,10 @@ export const COLORS = [
   // The Midstream Bermuda Blue page has no photo; matched to the Tropic Blue in Royal Wulff's
   // Bermuda Triangle Taper Floating photo, a pale powder blue.
   { id: 'rw-tropic-blue', name: 'Tropic Blue', hex: '#b6c9e2' },
+  { id: 'rw-sea-wulff-gray', name: 'Gray', hex: '#4b4d50' },
+  // The Striper Fast Sink's head looks charcoal rather than black in its photo.
+  { id: 'rw-striper-black', name: 'Black', hex: '#3b3b39' },
+  { id: 'rw-striper-blue', name: 'Blue', hex: '#1f4fae' },
 ];
 
 export const PRODUCTS = [
@@ -331,6 +335,43 @@ export const PRODUCTS = [
       taper: publishedTaper(size),
       lineup: size,
       colorways: [{ id: 'mist-green', name: 'Mist Green', zones: zones([0, 'rw-mist-green']) }],
+    })),
+  }),
+  // The Sea Wulff taper as a 4 ips full sinker in gray. Royal Wulff's table gives a 30 ft taper with
+  // no rear taper, so the whole head is front taper; the handling section counts as running line.
+  // 4 ips is drawn as Type 3, whose range other makers give as 3–4 ips (Cortland's Type 3, SA's Sink
+  // 3); Type 5 starts at 5. Royal Wulff's table runs to 12 wt, but it sells only the 7 to 9.
+  makerProduct({
+    id: 'royal-wulff-sea-wulff-triangle-taper-full-sink-4',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Sea Wulff Triangle Taper Full Sink 4',
+    sizes: LINEUP['royal-wulff-sea-wulff-triangle-taper-full-sink-4'].sizes.map((size) => ({
+      id: `wf${size.weight}s`,
+      label: size.label,
+      type: 'sink3',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [{ id: 'gray', name: 'Gray', zones: zones([0, 'rw-sea-wulff-gray']) }],
+    })),
+  }),
+  // A 6 ips sinking head on a 1.5 ips intermediate running line. Royal Wulff gives only a 30 ft taper
+  // and a 100 ft length, with no table; as on the other Sea Wulff lines the 30 ft taper is the whole
+  // head, so it's all front taper and the rest running line. The page lists the colors, Black/Blue,
+  // in the same order as the densities, head then running line, and the photo shows the blue at the
+  // thin end, so the head is black and the running line blue.
+  makerProduct({
+    id: 'royal-wulff-sea-wulff-triangle-taper-striper-fast-sink',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Sea Wulff Triangle Taper Striper Fast Sink',
+    sizes: LINEUP['royal-wulff-sea-wulff-triangle-taper-striper-fast-sink'].sizes.map((size) => ({
+      id: `wf${size.weight}s6`,
+      label: size.label,
+      type: 'sinkhead-int',
+      weight: size.weight,
+      taper: [size.head, 0, 0, size.total - size.head],
+      lineup: size,
+      colorways: [{ id: 'black-blue', name: 'Black/Blue', zones: zones([size.head, 'rw-striper-black'], [0, 'rw-striper-blue']) }],
     })),
   }),
 ];
