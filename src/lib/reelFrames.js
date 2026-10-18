@@ -55,7 +55,8 @@ export function spinCage(cage) {
   // At least a full turn: from partway round, on through the next 360.
   const to = from ? 720 : 360;
   cage.animate([{ transform: `rotate(${from}deg)` }, { transform: `rotate(${to}deg)` }], {
-    duration: 1400,
-    easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    // A gentle ease-out: a sharper one starts so fast that the windows strobe and the spool seems to turn back.
+    duration: 1600,
+    easing: 'ease-out',
   });
 }
