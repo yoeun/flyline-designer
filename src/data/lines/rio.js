@@ -50,6 +50,14 @@ export const COLORS = [
   { id: 'rio-lt-green', name: 'Lt Green', hex: '#cde58f' },
   { id: 'rio-amber-gold', name: 'Gold', hex: '#dea222' },
   { id: 'rio-light-moss', name: 'Moss', hex: '#bcc08a' },
+  { id: 'rio-aqua-blue', name: 'Aqua Blue', hex: '#8cc4ea' },
+  { id: 'rio-sand', name: 'Sand', hex: '#e6d79e' },
+  { id: 'rio-sea-grass', name: 'Sea Grass', hex: '#9c9e6e' },
+  { id: 'rio-trans-gray', name: 'Trans Gray', hex: '#8c8d8a' },
+  { id: 'rio-trans-salmon', name: 'Trans Salmon', hex: '#d99a8c' },
+  { id: 'rio-trans-blue', name: 'Trans Blue', hex: '#7ba7b9' },
+  { id: 'rio-trans-tan', name: 'Trans Tan', hex: '#b3a978' },
+  { id: 'rio-trans-green', name: 'Trans Green', hex: '#90c5b8' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -510,6 +518,84 @@ const lightLine = rio({
   densities: [float({ split: [13, 25, 5] }, colorway('moss-ivory', 'Moss/Ivory', [36, 'rio-light-moss'], [0, 'rio-ivory']))],
 });
 
+// A double taper is all head: RIO's table gives a head as long as the line, so it draws with no
+// running line. The front taper, body and back taper are the diagram's, scaled to each size's length.
+const doubleTaper = (taper, ...colorways) => ({ sink: 'Floating', id: (w) => `dt${w}f`, label: (w) => `DT${w}F`, type: 'floating', taper, colorways });
+
+// Premier Technical Trout DT. RIO's DT5F diagram: front taper 9, body 36 plus 36, back taper 9 over
+// 90 ft. Sky Blue from the tip to the middle of the body, then Peach.
+const technicalTroutDt = rio({
+  id: 'rio-premier-technical-trout-dt',
+  name: 'RIO Premier Technical Trout DT',
+  sizes: LINEUP['rio-premier-technical-trout-dt'].sizes,
+  densities: [doubleTaper({ split: [9, 72, 9], example: 5 }, colorway('sky-blue-peach', 'Sky Blue/Peach', [45, 'rio-sky-blue'], [0, 'rio-peach']))],
+});
+
+// Premier LightLine Double Taper. RIO's DT5F diagram: front taper 5 plus an 8 ft body taper (the
+// front, 13), body 27 plus 27, then the same 8 and 5 at the back over 80 ft. Moss from the tip to the
+// middle of the body, then ivory. RIO also sells 000 and 00 wt, which would draw just like the 0 wt.
+const lightLineDt = rio({
+  id: 'rio-premier-lightline-double-taper',
+  name: 'RIO Premier LightLine Double Taper',
+  sizes: LINEUP['rio-premier-lightline-double-taper'].sizes.filter((size) => !['000wt', '00wt'].includes(size.label)),
+  densities: [doubleTaper({ split: [13, 54, 13], example: 5 }, colorway('moss-ivory', 'Moss/Ivory', [40, 'rio-light-moss'], [0, 'rio-ivory']))],
+});
+
+// Elite Permit. RIO's WF9F diagram: front taper 6, body 9 plus a 20 ft main body, back taper 13 on
+// 52 ft of running line. The tip color runs about 22.5 ft (partway down the main body, read off the
+// diagram by eye), the middle color to the end of the head. RIO's photos show the Sand/Camo/Light
+// Sand colorway laid out the same way.
+const elitePermit = rio({
+  id: 'rio-elite-permit',
+  name: 'RIO Elite Permit',
+  sizes: LINEUP['rio-elite-permit'].sizes,
+  densities: [
+    float(
+      { split: [6, 29, 13], example: 9 },
+      colorway('light-sand-orange-aqua-blue', 'Light Sand/Orange/Aqua Blue', [22.5, 'rio-light-sand'], [25.5, 'rio-orange'], [0, 'rio-aqua-blue']),
+      colorway('sand-camo-light-sand', 'Sand/Camo/Light Sand', [22.5, 'rio-sand'], [25.5, 'rio-camo'], [0, 'rio-light-sand']),
+    ),
+  ],
+});
+
+// Elite Tarpon. RIO's WF10F diagram: front taper 6, body 8.5, back body 13.5, back taper 12 on 60 ft
+// of running line. That head is 40 ft; RIO's table says 40.5 for WF10F, so every size, the WF10F too,
+// is the diagram scaled to its table head and marked estimated. Sea Grass to about 18.5 ft (partway
+// down the back body, read off the diagram by eye), orange to the end of the head, then sand.
+const eliteTarpon = rio({
+  id: 'rio-elite-tarpon',
+  name: 'RIO Elite Tarpon',
+  sizes: LINEUP['rio-elite-tarpon'].sizes,
+  densities: [float({ split: [6, 22, 12] }, colorway('sea-grass-orange-sand', 'Sea Grass/Orange/Sand', [18.5, 'rio-sea-grass'], [21.5, 'rio-orange'], [0, 'rio-sand']))],
+});
+
+// Elite Leviathan. RIO's 500 gr diagram: a 26 ft black sinking tip (a 4 ft front taper and 22 ft),
+// then 2 ft stepping up to a 3 ft body and a 3 ft back taper on 66 ft of running line. RIO's table
+// gives only the 26 ft tip as the head, so every size overrides it with the diagram's 34 ft head.
+// Sold by grain weight, each rated for two rod weights and drawn at the lower (which the lineup
+// leaves out). The body and running line are a translucent color that changes with the size. RIO's
+// 600 and 750 gr sizes (14–16 and 15+ wt) are heavier than the designer's 12 wt top end.
+const LEVIATHAN = { split: [4, 27, 3], example: 12 };
+const LEVIATHAN_LINEUP = LINEUP['rio-elite-leviathan'];
+const leviathan = makerProduct({
+  id: 'rio-elite-leviathan',
+  maker: 'RIO',
+  name: 'RIO Elite Leviathan',
+  sizes: [
+    [250, 7, '1.5/5.5', 'black-trans-gray', 'Black/Trans Gray', 'rio-trans-gray'],
+    [300, 8, '1.5/6.7', 'black-trans-salmon', 'Black/Trans Salmon', 'rio-trans-salmon'],
+    [350, 9, '1.5/7.2', 'black-trans-blue', 'Black/Trans Blue', 'rio-trans-blue'],
+    [400, 10, '1.5/7.7', 'black-trans-tan', 'Black/Trans Tan', 'rio-trans-tan'],
+    [500, 12, '1.5/8.5', 'black-trans-green', 'Black/Trans Green', 'rio-trans-green'],
+  ].map(([grains, weight, ips, id, name, body]) =>
+    sized(
+      { taper: LEVIATHAN, colorways: [colorway(id, name, [26, 'rio-black'], [0, body])] },
+      { id: `${grains}gr`, label: `${grains}gr ${ips} ips`, type: 'sinktip' },
+      overriding(lineupSize(LEVIATHAN_LINEUP, `${weight}/${weight + 1}wt`), { weight, head: 34 }),
+    ),
+  ),
+});
+
 export const PRODUCTS = [
   makerProduct({
     id: 'rio-premier-gold',
@@ -543,6 +629,11 @@ export const PRODUCTS = [
   bankRobber,
   avidTroutGold,
   lightLine,
+  technicalTroutDt,
+  lightLineDt,
+  elitePermit,
+  eliteTarpon,
+  leviathan,
   // Euro nymph lines are level (about 0.022″), much thinner than a WF head of any weight, so they're
   // drawn as running line behind a token taper. RIO sells one size for 2–5 wt rods, drawn as a 3 wt;
   // it comes with a 14 ft pink mono leader. RIO's table has no lengths for it, so all three numbers
