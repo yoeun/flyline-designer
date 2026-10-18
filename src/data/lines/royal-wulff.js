@@ -398,13 +398,12 @@ export const PRODUCTS = [
   // table, then a handling line that counts as running line. Retailers disagree on which end is
   // Tropic Blue. Royal Wulff's photo shows the blue coiled innermost, where its Lost Tip photo shows
   // that line's clear tip (and its Signature Plus Textured photo the buckskin tip), so the head is
-  // Tropic Blue and the rest sand. Royal Wulff's table runs to 13 wt; the menu stops at 12.
+  // Tropic Blue and the rest sand.
   makerProduct({
     id: 'royal-wulff-bermuda-triangle-taper-floating',
     maker: 'Royal Wulff',
     name: 'Royal Wulff Bermuda Triangle Taper Floating',
     sizes: LINEUP['royal-wulff-bermuda-triangle-taper-floating'].sizes
-      .filter((size) => size.weight <= 12)
       .map((size) => ({
         id: `wf${size.weight}f`,
         label: size.label,
