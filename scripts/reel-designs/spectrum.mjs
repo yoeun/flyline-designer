@@ -18,40 +18,34 @@ const SPOKES = [90, 162, 234, 306, 18].map((a) => (a > 180 ? a - 360 : a));
 // The spool's 20 windows, centered on 12 o'clock, with the handle and knob pads at 12 and 6.
 const RIM = { n: 20, rIn: 132, rOut: 177, bar: 14, corner: 8, off: -99 };
 
-// The spool seen through the frame's middle: a darkened disc with the arbor's lip.
-const SPOOL = (rOut, rIn) =>
-  `<path d="${ring(rOut, rIn)}" fill="currentColor" fill-rule="evenodd"/><path d="${ring(rOut, rIn)}" fill="#000" fill-opacity=".38" fill-rule="evenodd"/>` +
-  `<circle r="${rOut - 14}" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="5"/>`;
-
 // A flat dial in the accent: an outer ring numbered 1–10 anticlockwise from the top, with a dot between each pair,
 // and a face crossed by 12 pairs of lines round a ringed logo badge.
 const DIAL =
   `<circle r="80" ${ACCENT}/><circle r="80" fill="url(#sheen)"/>` +
-  `<circle r="66" fill="#000" fill-opacity=".1"/><circle r="66" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="1.5"/>` +
+  `<circle data-print="" r="66" fill="#000" fill-opacity=".1"/><circle data-print="" r="66" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="1.5"/>` +
   Array.from({ length: 10 }, (_, i) => {
     const a = -96 - i * 36, [x, y] = P(73, rad(a)), [dx, dy] = P(73, rad(a - 18));
     return (
       `<text transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)})" y="3" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" ${INK} fill-opacity=".8">${i + 1}</text>` +
-      `<circle cx="${f(dx)}" cy="${f(dy)}" r="1.4" ${INK} fill-opacity=".6"/>`
+      `<circle data-print="" cx="${f(dx)}" cy="${f(dy)}" r="1.4" ${INK} fill-opacity=".6"/>`
     );
   }).join('') +
   // 12 pairs of parallel lines across the face.
-  `<path d="${Array.from({ length: 24 }, (_, i) => {
+  `<path data-print="" d="${Array.from({ length: 24 }, (_, i) => {
     const a = rad(Math.floor(i / 2) * 30), d = i % 2 ? 3.5 : -3.5, [nx, ny] = [-Math.sin(a) * d, Math.cos(a) * d];
     const [x0, y0] = P(36, a), [x1, y1] = P(58, a);
     return `M${f(x0 + nx)} ${f(y0 + ny)}L${f(x1 + nx)} ${f(y1 + ny)}`;
   }).join('')}" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>` +
-  `<circle r="58" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/><circle r="36" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>` +
+  `<circle data-print="" r="58" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/><circle data-print="" r="36" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>` +
   `<circle r="27" fill="#c9ccc8"/><circle r="24" fill="#1b1d1f"/>${logo(0, 0, 26)}`;
 
 // "sage" and the leaf, reading outward along the upper right spoke.
 const SPOKE_LOGO = (() => {
   const a = SPOKES[3], [x, y] = P(146, rad(a));
-  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-26, 0, 11)}<text x="-17" y="5" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="15" fill="#f2f2ee">sage</text></g>`;
+  return `<g data-print="" transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-26, 0, 11)}<text x="-17" y="5" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="15" fill="#f2f2ee">sage</text></g>`;
 })();
 
 export const drag = svg({
-  under: SPOOL(120, 84),
   cage: [ring(182, 118) + slots(RIM)],
   body: [
     ring(200, 178),
@@ -65,7 +59,6 @@ export const drag = svg({
 export const spool = svg({
   foot: recessed(sageFoot()) + frameRim(),
   handles: [[...P(156, rad(-90)), 20]],
-  under: SPOOL(118, 40),
   // The cage is set into the frame's rim and the spokes and hub stand up from it: three shades.
   back: [ring(185, 116) + slots(RIM), pad(156, -90, 46, 50), pad(156, 90, 46, 50)],
   body: [
