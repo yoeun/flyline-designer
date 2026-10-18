@@ -11,7 +11,7 @@ import PreviewModeToggle from './components/PreviewModeToggle.jsx';
 import Rack from './components/Rack.jsx';
 import { NO_FILTER } from './components/RackFilter.jsx';
 import RackPage from './components/RackPage.jsx';
-import Segmented from './components/Segmented.jsx';
+import ReelSideToggle from './components/ReelSideToggle.jsx';
 import { Toaster } from './components/ui/sonner.jsx';
 import SetupDrawer from './components/SetupDrawer.jsx';
 import SetupTitle from './components/SetupTitle.jsx';
@@ -24,7 +24,6 @@ import { clampSelection } from './lib/lineEdit.js';
 import { SECTION_KEYS, changedSections, copyOf, displayName, isDirty, loadEntries } from './lib/rack.js';
 import { resolveView } from './lib/rackView.js';
 import { setupForReel } from './lib/reelsPage.js';
-import { SIDES } from './lib/reelFrames.js';
 import { queryToState, stateToQuery } from './lib/share.js';
 import { createShare, deleteShare, loadShare, rotateShare, storeShare, updateShare } from './lib/shareApi.js';
 import { FIXED_HEADER, HEADER_SPACER, useFixedHeader } from './lib/fixedHeader.js';
@@ -73,6 +72,7 @@ export default function App() {
   const [cameFromDesigner, setCameFromDesigner] = useState(false);
   const [mode, setMode] = useState(initial.mode);
   const [side, setSide] = useState(initial.side);
+  const [spins, setSpins] = useState(0);
   const [lineSelection, setLineSelection] = useState(null);
   const [themeChoice, setThemeChoice, theme] = useTheme();
   const [rack, setRack] = useState(initial.rack);
@@ -481,7 +481,7 @@ export default function App() {
                 />
                 {/* On a phone the toggles get their own row, Drag/Spool at the left and the view at the right. */}
                 <div className="flex flex-wrap justify-end gap-2 max-sm:w-full max-sm:justify-between">
-                  <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
+                  <ReelSideToggle side={side} onChange={setSide} onSpin={() => setSpins((n) => n + 1)} />
                   <PreviewModeToggle value={mode} onChange={setMode} />
                 </div>
               </div>
@@ -490,6 +490,7 @@ export default function App() {
                   setup={setup}
                   mode={mode}
                   side={side}
+                  spins={spins}
                   background={STAGE[theme]}
                   svgRef={svgRef}
                   title={`${displayName(setup)} preview`}
