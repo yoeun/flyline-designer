@@ -585,6 +585,8 @@ describe('catalog', () => {
 
   it.each(REELS.map((r) => [r.id, r]))('%s has a size label, weights and diameters', (_, reel) => {
     expect(reel.size).toBeTruthy();
+    // [lightest, heaviest], not every weight in between.
+    expect(reel.weights).toHaveLength(2);
     expect(reel.weights[0]).toBeLessThanOrEqual(reel.weights[1]);
     expect(reel.rim).toBeGreaterThan(reel.spool);
     expect(reel.width).toBeGreaterThan(0);

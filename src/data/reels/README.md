@@ -27,7 +27,7 @@ the Model menu groups models by maker, A–Z, with Generic last.
           "size": "-5+",                 // the maker's size label
           "name": "…",                   // optional; defaults to "<model name> <size>"
           "design": "zero-23",           // optional; a drawing for this size alone, over the model's
-          "weights": [5, 6],             // line weights it suits, lightest to heaviest
+          "weights": [5, 6],             // lightest and heaviest line weight it suits
           "rim": 3.65,                   // inches
           "spool": 3.41,                 // capacity diameter, inches
           "width": 1.0,                  // inside spool width, inches

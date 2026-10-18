@@ -1,0 +1,129 @@
+{
+  "maker": "Sunshine",
+  "finishes": [
+    {
+      "id": "sunshine-gunmetal",
+      "name": "Gunmetal Gray",
+      "hex": "#a4a4a4",
+      "notes": "SF-003 Pro machined gunmetal. Hex sampled from Sunshine's product photo (spool face on white, mid-tones)."
+    },
+    {
+      "id": "sunshine-gunmetal-black",
+      "name": "Gunmetal & Black",
+      "hex": "#2e2e2e",
+      "notes": "SF-003 Pro '& Black': black frame, foot and hub (hex between the photo's lit #404040 and shaded #232323), gunmetal spool (the model's trim)."
+    }
+  ],
+  "models": [
+    {
+      "id": "sunshine-sf-001",
+      "name": "Sunshine SF-001",
+      "design": "sf-001",
+      "colors": [
+        "black"
+      ],
+      "notes": "Die-cast large-arbor reel, sold on Amazon and sunshine-fishing.com as the 'SF Large Arbor', alone or preloaded. Rim, width (inside spool) and rated capacity from Sunshine's spec table (product image FRDC-SF001-34-KTB-4, sunshine-fishing.com, Oct 2026), which also gives the inner diameters 1.81, 2.20 and 2.40″. Spool is estimated as rim − 0.24″. Matt black uses the base black.",
+      "sizes": [
+        {
+          "id": "sunshine-sf-001-34",
+          "size": "3/4",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 2.95,
+          "spool": 2.71,
+          "width": 1.06,
+          "rated": {
+            "weight": 4,
+            "yards": 60,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sunshine-sf-001-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.35,
+          "spool": 3.11,
+          "width": 1.02,
+          "rated": {
+            "weight": 6,
+            "yards": 60,
+            "pounds": 20
+          }
+        },
+        {
+          "id": "sunshine-sf-001-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 3.74,
+          "spool": 3.5,
+          "width": 1.14,
+          "rated": {
+            "weight": 8,
+            "yards": 90,
+            "pounds": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "sunshine-sf-003-pro",
+      "name": "Sunshine SF-003 Pro",
+      "design": "sf-003-pro",
+      "colors": [
+        "sunshine-gunmetal",
+        "sunshine-gunmetal-black"
+      ],
+      "trims": {
+        "sunshine-gunmetal-black": "#a4a4a4"
+      },
+      "notes": "CNC-machined mid-arbor reel, sold on Amazon (model SF003PRO) and sunshine-fishing.com. Rim, width and spool inner (arbor) diameter for the 3/4 (74/21/40 mm) and 7/8 (94/27/50 mm) from the Amazon listings' bullets (B0FJXQYSNT, B0FJX2BFLB, Oct 2026); the 5/6 is interpolated between them (estimate). No rated capacity is published. Spool is estimated as rim − 0.24″. The Moss Green and Yellow listings differ only in the preloaded line; '& Black' has a black frame and hub with the gunmetal spool (trim).",
+      "sizes": [
+        {
+          "id": "sunshine-sf-003-pro-34",
+          "size": "3/4",
+          "weights": [
+            3,
+            4
+          ],
+          "rim": 2.91,
+          "spool": 2.67,
+          "width": 0.83,
+          "arbor": 1.57
+        },
+        {
+          "id": "sunshine-sf-003-pro-56",
+          "size": "5/6",
+          "weights": [
+            5,
+            6
+          ],
+          "rim": 3.31,
+          "spool": 3.07,
+          "width": 0.94,
+          "arbor": 1.77
+        },
+        {
+          "id": "sunshine-sf-003-pro-78",
+          "size": "7/8",
+          "weights": [
+            7,
+            8
+          ],
+          "rim": 3.7,
+          "spool": 3.46,
+          "width": 1.06,
+          "arbor": 1.97
+        }
+      ]
+    }
+  ]
+}
