@@ -79,7 +79,7 @@ export const spool = svg({
 - The app draws the other side's frame mirrored behind the spool, so whatever a side draws shows through the other
   side's open middle. Keep a side's middle open: no solid discs for "the spool's inside" in `under`.
 - Printing sits on the far face and must not show through: `<text>` is hidden there automatically. Tag every
-  other printed mark (dial dots and pointers, logo marks) with `data-print=""`, on the element or a `<g>` round it.
+  other printed mark (dial dots, pointers and face lines, logo marks) with `data-print=""`, on the element or a `<g>` round it.
 
 ## 5. Grooves and insets
 

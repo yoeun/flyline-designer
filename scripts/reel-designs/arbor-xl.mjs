@@ -29,7 +29,7 @@ const DIAL =
   `<circle data-print="" cy="-80" r="1.8" fill="#e4e4e0"/>` +
   `<circle r="57" fill="currentColor"/><circle r="57" fill="#fff" fill-opacity=".18"/><circle r="57" fill="url(#sheen)"/>` +
   // Four pairs in each 120° gap between arms, 22.5° apart.
-  `<path d="${ARMS.flatMap((arm) => [-33.75, -11.25, 11.25, 33.75].map((d) => arm + 60 + d))
+  `<path data-print="" d="${ARMS.flatMap((arm) => [-33.75, -11.25, 11.25, 33.75].map((d) => arm + 60 + d))
     .flatMap((deg) => [-2.2, 2.2].map((off) => {
       const a = rad(deg), [nx, ny] = [-Math.sin(a) * off, Math.cos(a) * off], [x0, y0] = P(26, a), [x1, y1] = P(52, a);
       return `M${f(x0 + nx)} ${f(y0 + ny)}L${f(x1 + nx)} ${f(y1 + ny)}`;

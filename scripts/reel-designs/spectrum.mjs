@@ -22,7 +22,7 @@ const RIM = { n: 20, rIn: 132, rOut: 177, bar: 14, corner: 8, off: -99 };
 // and a face crossed by 12 pairs of lines round a ringed logo badge.
 const DIAL =
   `<circle r="80" ${ACCENT}/><circle r="80" fill="url(#sheen)"/>` +
-  `<circle r="66" fill="#000" fill-opacity=".1"/><circle r="66" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="1.5"/>` +
+  `<circle data-print="" r="66" fill="#000" fill-opacity=".1"/><circle data-print="" r="66" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="1.5"/>` +
   Array.from({ length: 10 }, (_, i) => {
     const a = -96 - i * 36, [x, y] = P(73, rad(a)), [dx, dy] = P(73, rad(a - 18));
     return (
@@ -31,12 +31,12 @@ const DIAL =
     );
   }).join('') +
   // 12 pairs of parallel lines across the face.
-  `<path d="${Array.from({ length: 24 }, (_, i) => {
+  `<path data-print="" d="${Array.from({ length: 24 }, (_, i) => {
     const a = rad(Math.floor(i / 2) * 30), d = i % 2 ? 3.5 : -3.5, [nx, ny] = [-Math.sin(a) * d, Math.cos(a) * d];
     const [x0, y0] = P(36, a), [x1, y1] = P(58, a);
     return `M${f(x0 + nx)} ${f(y0 + ny)}L${f(x1 + nx)} ${f(y1 + ny)}`;
   }).join('')}" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>` +
-  `<circle r="58" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/><circle r="36" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>` +
+  `<circle data-print="" r="58" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/><circle data-print="" r="36" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>` +
   `<circle r="27" fill="#c9ccc8"/><circle r="24" fill="#1b1d1f"/>${logo(0, 0, 26)}`;
 
 // "sage" and the leaf, reading outward along the upper right spoke.
