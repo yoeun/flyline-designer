@@ -56,12 +56,15 @@ export default function RackPage({ setups, currentId, conflicts, onLoad, onEditD
 
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Rack">
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">{title}</h2>
-        <span className="text-[14px] text-muted-foreground">
-          {setups.length} {setups.length === 1 ? 'setup' : 'setups'}
-        </span>
-        <div className="ml-auto flex gap-2 self-center">
+      {/* The title with the setup count under it; the buttons sit to the right of both. */}
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex min-w-0 flex-col gap-0.5">
+          <h2 className="font-heading text-[20px] leading-tight font-bold tracking-[0.06em] uppercase">{title}</h2>
+          <span className="text-[14px] text-muted-foreground">
+            {setups.length} {setups.length === 1 ? 'setup' : 'setups'}
+          </span>
+        </div>
+        <div className="flex flex-none gap-2">
           {setups.length > 0 && (
             <Button className={cn('gap-1.5 sm:hidden', active && 'border-primary text-primary')} onClick={() => setFiltersOpen(true)} aria-label={active ? `Filter: ${active}` : 'Filter'}>
               <Icon name="filter_list" />
