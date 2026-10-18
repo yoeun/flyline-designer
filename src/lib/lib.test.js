@@ -639,6 +639,9 @@ describe('change tracking', () => {
 // Airflo's Superflo Max Smooth Universal and Superflo Max Ridge 2.0 Power Taper are the other
 // coating's tapers and colors.
 // SA's Amplitude Textured Trout GP is the Smooth Trout GP's taper and colors with a texture.
+// SA's Amplitude Textured Trout Expert is the Smooth Trout Expert's taper and colors with a texture.
+// SA's Amplitude Textured Infinity Salt is the Smooth Infinity Salt's taper and colors with a texture;
+// the Smooth Bonefish Plus is the (earlier-listed) Textured Bonefish Plus's without one.
 const LOOKALIKES = new Map([
   ...[6, 7, 8, 9, 10].map((w) => [`rio-premier-outbound-short-wf${w}-int-5-7`, `rio-premier-outbound-short-wf${w}-int-3-5`]),
   ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-amplitude-textured-mpx-wf${w}f`, `sa-amplitude-smooth-mpx-wf${w}f`]),
@@ -652,6 +655,9 @@ const LOOKALIKES = new Map([
   ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-amplitude-textured-trout-gp-wf${w}f`, `sa-amplitude-smooth-trout-gp-wf${w}f`]),
   ['cortland-50-plus-cannon-500gr', 'cortland-50-plus-cannon-450gr'],
   ...[5, 6, 7, 8].map((w) => [`cortland-streamer-sink-tip-10-t3-wf${w}`, `cortland-streamer-sink-tip-10-wf${w}`]),
+  ...[2, 3, 4, 5, 6, 7].map((w) => [`sa-amplitude-textured-trout-expert-wf${w}f`, `sa-amplitude-smooth-trout-expert-wf${w}f`]),
+  ...[7, 8, 9].map((w) => [`sa-amplitude-smooth-bonefish-plus-wf${w}f`, `sa-amplitude-textured-bonefish-plus-wf${w}f`]),
+  ...[7, 8, 9, 10, 11].map((w) => [`sa-amplitude-textured-infinity-salt-wf${w}f`, `sa-amplitude-smooth-infinity-salt-wf${w}f`]),
 ]);
 
 describe('presetForLine', () => {
