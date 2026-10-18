@@ -6,7 +6,6 @@ import { SIDES } from '../lib/reelFrames.js';
 import { cn } from '@/lib/utils';
 import Button from './Button.jsx';
 import { CHIP } from './Chips.jsx';
-import Field from './Field.jsx';
 import Icon from './Icon.jsx';
 import ReelPreview from './ReelPreview.jsx';
 import Segmented from './Segmented.jsx';
@@ -26,14 +25,9 @@ const PHOTOS_BY_MODEL = photosByModel(REEL_MODELS, PHOTOS);
 // Makers A–Z, generic last; within a maker, current models before discontinued ones.
 const GROUPS = makerGroups(REEL_MODELS, 'Generic').map(([maker, models]) => [maker, [...models.filter((m) => !m.discontinued), ...models.filter((m) => m.discontinued)]]);
 
-const LINE_OPTIONS = [
-  ['shown', 'Line'],
-  ['hidden', 'Empty'],
-];
-
 // One model: a stage with the size picker at the top left and Drag/Spool at the top right, the reel
 // drawn to the page's scale, and the finishes along the bottom; the size's numbers below. `view` is the
-// page-wide drawing settings: { line: 'shown' | 'hidden', colors }. New setup opens the designer on the
+// page-wide line colors: { backing, head, running }. New setup opens the designer on the
 // size and finish picked here.
 function ModelCard({ model, view, onNewSetup }) {
   const sizes = reelSizes(model.id);
@@ -42,15 +36,14 @@ function ModelCard({ model, view, onNewSetup }) {
   const [side, setSide] = useState('drag');
   const [color, setColor] = useState(colors[0].id);
   const size = sizes.find((s) => s.id === sizeId) ?? sizes[0];
-  const setup = previewSetup(size, color, view.colors);
-  const showLine = view.line === 'shown';
+  const setup = previewSetup(size, color, view);
   // The size's specs as table rows; the line the drawing assumes is for checking drawings, so dev only.
   const specs = [
     ['Rim', `${size.rim}″`],
     ['Spool', `${size.spool}″`],
     ['Width', `${size.width}″`],
     size.rated ? ['Capacity', capacityText(size)] : size.arbor && ['Arbor', `${size.arbor}″`],
-    import.meta.env.DEV && showLine && ['Drawn with', `WF${setup.line.weight}F + 100 yd`],
+    import.meta.env.DEV && ['Drawn with', `WF${setup.line.weight}F + 100 yd`],
   ].filter(Boolean);
   const photos = PHOTOS_BY_MODEL[model.id] ?? [];
   return (
@@ -93,7 +86,7 @@ function ModelCard({ model, view, onNewSetup }) {
         </div>
         <div className="flex items-center justify-center" style={{ aspectRatio: AREA_RATIO }}>
           <span className="block" style={{ width: `${(size.rim / MAX_RIM) * 100}%` }}>
-            <ReelPreview setup={setup} side={side} showLine={showLine} background="none" title={`${size.name}, ${side} side`} />
+            <ReelPreview setup={setup} side={side} background="none" title={`${size.name}, ${side} side`} />
           </span>
         </div>
         {colors.length > 1 && <Swatches colors={colors} value={color} onChange={setColor} label={`${model.name} color`} size={24} touchSize={32} className="justify-center gap-3" />}
@@ -133,34 +126,36 @@ function ModelCard({ model, view, onNewSetup }) {
   );
 }
 
-// The page-wide controls: line on or off, and the backing, head and running line colors.
-function ViewControls({ view, onChange }) {
-  const setColor = (key) => (id) => onChange({ ...view, colors: { ...view.colors, [key]: id } });
-  const shown = view.line === 'shown';
+// A labelled row of the filter bar: the label in a fixed column, its control beside it.
+function Row({ label, className, labelClassName, children }) {
+  return (
+    <div className={cn('flex min-w-0 items-center gap-3', className)}>
+      <span className={cn('w-24 flex-none text-[13px] font-semibold text-muted-foreground', labelClassName)}>{label}</span>
+      {children}
+    </div>
+  );
+}
+
+// The line colors every reel is drawn with: backing, then running line, then head.
+function ColorRows({ view, onChange }) {
+  const set = (key) => (id) => onChange({ ...view, [key]: id });
   return (
     <>
-      <Segmented label="Line" options={LINE_OPTIONS} value={view.line} onChange={(line) => onChange({ ...view, line })} />
-      {shown && (
-        <>
-          <Field label="Backing">
-            <Swatches colors={BACKING_COLORS} value={view.colors.backing} onChange={setColor('backing')} label="Backing color" size={22} />
-          </Field>
-          <Field label="Head">
-            <Swatches colors={LINE_COLORS} value={view.colors.head} onChange={setColor('head')} label="Head color" size={22} />
-          </Field>
-          <Field label="Running line">
-            <Swatches colors={LINE_COLORS} value={view.colors.running} onChange={setColor('running')} label="Running line color" size={22} />
-          </Field>
-        </>
-      )}
+      <Row label="Backing">
+        <Swatches colors={BACKING_COLORS} value={view.backing} onChange={set('backing')} label="Backing color" size={22} />
+      </Row>
+      <Row label="Running line">
+        <Swatches colors={LINE_COLORS} value={view.running} onChange={set('running')} label="Running line color" size={22} />
+      </Row>
+      <Row label="Head">
+        <Swatches colors={LINE_COLORS} value={view.head} onChange={set('head')} label="Head color" size={22} />
+      </Row>
     </>
   );
 }
 
-const DEFAULT_VIEW = { line: 'shown', colors: PREVIEW_COLORS };
-
 export default function ReelsPage({ onNewSetup }) {
-  const [view, setView] = useState(DEFAULT_VIEW);
+  const [view, setView] = useState(PREVIEW_COLORS);
   // The maker shown, or null for all of them.
   const [maker, setMaker] = useState(null);
   const groups = maker ? GROUPS.filter(([m]) => m === maker) : GROUPS;
@@ -172,7 +167,7 @@ export default function ReelsPage({ onNewSetup }) {
     if (list && list.getBoundingClientRect().top < 0) window.scrollTo({ top: 0 });
   };
   // What the View button says once the view differs from the default.
-  const active = view.line !== 'shown' ? 'Line hidden' : view.colors !== PREVIEW_COLORS ? 'Custom colors' : '';
+  const active = view !== PREVIEW_COLORS ? 'Custom colors' : '';
   const count = REEL_MODELS.reduce((n, m) => n + reelSizes(m.id).length, 0);
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Reels">
@@ -183,25 +178,27 @@ export default function ReelsPage({ onNewSetup }) {
             {REEL_MODELS.length} models, {count} sizes, drawn to scale
           </p>
         </div>
-        {/* On phones the line and colors open in a sheet instead of a bar over the reels. */}
-        <FilterSheet title="View" icon="tune" active={active} onClear={() => setView(DEFAULT_VIEW)} clearLabel="Reset">
-          <ViewControls view={view} onChange={setView} />
+        {/* On phones the line colors open in a sheet instead of a bar over the reels. */}
+        <FilterSheet title="View" icon="tune" active={active} onClear={() => setView(PREVIEW_COLORS)} clearLabel="Reset">
+          <ColorRows view={view} onChange={setView} />
         </FilterSheet>
       </div>
-      {/* The maker filter, and from sm up the line and colors, stay in a bar under the fixed header while the
+      {/* The maker filter, and from sm up the line colors, stay in a bar under the fixed header while the
           reels scroll. On phones the chips are one row that scrolls sideways, so the bar stays short. */}
-      <div className="sticky top-(--header-h) z-10 -mx-[max(16px,2.5vw)] flex flex-col gap-3 border-b border-border bg-background/95 px-[max(16px,2.5vw)] py-3 backdrop-blur">
-        <div className="hidden flex-wrap items-end gap-x-6 gap-y-3 sm:flex">
-          <ViewControls view={view} onChange={setView} />
-        </div>
+      <div className="sticky top-(--header-h) z-10 -mx-[max(16px,2.5vw)] flex flex-col gap-2.5 border-b border-border bg-background/95 px-[max(16px,2.5vw)] py-3 backdrop-blur">
         {/* Pick one maker, or All; each chip says how many models it holds. */}
-        <div role="group" aria-label="Maker" className="-mx-[max(16px,2.5vw)] flex gap-2 overflow-x-auto px-[max(16px,2.5vw)] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
-          {[[null, REEL_MODELS], ...GROUPS].map(([m, models]) => (
-            <button key={m ?? 'all'} type="button" aria-pressed={maker === m} onClick={() => pickMaker(m)} className={cn(CHIP, 'group inline-flex flex-none items-center gap-1.5 font-semibold')}>
-              {m ?? 'All'}
-              <span className="text-[12px] font-normal text-muted-foreground group-aria-pressed:text-primary-foreground/80">{models.length}</span>
-            </button>
-          ))}
+        <Row label="Brand" className="-mr-[max(16px,2.5vw)] sm:mr-0" labelClassName="max-sm:w-auto">
+          <div role="group" aria-label="Brand" className="flex min-w-0 gap-2 overflow-x-auto pr-[max(16px,2.5vw)] sm:flex-wrap sm:overflow-visible sm:pr-0">
+            {[[null, REEL_MODELS], ...GROUPS].map(([m, models]) => (
+              <button key={m ?? 'all'} type="button" aria-pressed={maker === m} onClick={() => pickMaker(m)} className={cn(CHIP, 'group inline-flex flex-none items-center gap-1.5 font-semibold')}>
+                {m ?? 'All'}
+                <span className="text-[12px] font-normal text-muted-foreground group-aria-pressed:text-primary-foreground/80">{models.length}</span>
+              </button>
+            ))}
+          </div>
+        </Row>
+        <div className="hidden flex-col gap-2.5 sm:flex">
+          <ColorRows view={view} onChange={setView} />
         </div>
       </div>
       <div ref={listRef} className="flex flex-col gap-5">
