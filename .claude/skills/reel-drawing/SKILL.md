@@ -74,7 +74,14 @@ export const spool = svg({
 - Everything in `body`, `under`, `back` and `details` turns with the spool. Keep only round, unlit or truly fixed
   parts in `foot`.
 
-## 4. Grooves and insets
+## 4. Printing and see-through
+
+- The app draws the other side's frame mirrored behind the spool, so whatever a side draws shows through the other
+  side's open middle. Keep a side's middle open: no solid discs for "the spool's inside" in `under`.
+- Printing sits on the far face and must not show through: `<text>` is hidden there automatically. Tag every
+  other printed mark (dial dots and pointers, logo marks) with `data-print=""`, on the element or a `<g>` round it.
+
+## 5. Grooves and insets
 
 Most reels have them, and they're what makes a flat drawing read as machined metal:
 
@@ -85,7 +92,7 @@ Most reels have them, and they're what makes a flat drawing read as machined met
 - **Separate parts, one finish:** give the inset part a darker shade than the part around it, never the same flat
   color.
 
-## 5. Check it
+## 6. Check it
 
 - `npm run reels`, then
   `node scripts/preview-reel-design.mjs <design> --color '#hex' [--accent '#hex'] --out <scratchpad>/x.png <photo crops…>`,

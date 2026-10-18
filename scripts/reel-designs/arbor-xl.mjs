@@ -26,7 +26,7 @@ const DIAL =
     const a = -90 - i * 18, [x, y] = P(66, rad(a));
     return `<text transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)})" y="2.8" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" fill="#e4e4e0">${i + 1}</text>`;
   }).join('') +
-  `<circle cy="-80" r="1.8" fill="#e4e4e0"/>` +
+  `<circle data-print="" cy="-80" r="1.8" fill="#e4e4e0"/>` +
   `<circle r="57" fill="currentColor"/><circle r="57" fill="#fff" fill-opacity=".18"/><circle r="57" fill="url(#sheen)"/>` +
   // Four pairs in each 120° gap between arms, 22.5° apart.
   `<path d="${ARMS.flatMap((arm) => [-33.75, -11.25, 11.25, 33.75].map((d) => arm + 60 + d))
@@ -40,7 +40,7 @@ const DIAL =
 // "sage" and the leaf, reading outward along the upper right spoke.
 const SPOKE_LOGO = (() => {
   const a = -54, [x, y] = P(150, rad(a));
-  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-28, 0, 12)}<text x="-18" y="6" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="17" fill="#f2f2ee">sage</text></g>`;
+  return `<g data-print="" transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-28, 0, 12)}<text x="-18" y="6" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="17" fill="#f2f2ee">sage</text></g>`;
 })();
 
 // The cage's inner ring, drilled with a small hole behind each window.

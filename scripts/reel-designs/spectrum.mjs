@@ -27,7 +27,7 @@ const DIAL =
     const a = -96 - i * 36, [x, y] = P(73, rad(a)), [dx, dy] = P(73, rad(a - 18));
     return (
       `<text transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)})" y="3" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" ${INK} fill-opacity=".8">${i + 1}</text>` +
-      `<circle cx="${f(dx)}" cy="${f(dy)}" r="1.4" ${INK} fill-opacity=".6"/>`
+      `<circle data-print="" cx="${f(dx)}" cy="${f(dy)}" r="1.4" ${INK} fill-opacity=".6"/>`
     );
   }).join('') +
   // 12 pairs of parallel lines across the face.
@@ -42,7 +42,7 @@ const DIAL =
 // "sage" and the leaf, reading outward along the upper right spoke.
 const SPOKE_LOGO = (() => {
   const a = SPOKES[3], [x, y] = P(146, rad(a));
-  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-26, 0, 11)}<text x="-17" y="5" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="15" fill="#f2f2ee">sage</text></g>`;
+  return `<g data-print="" transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-26, 0, 11)}<text x="-17" y="5" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="15" fill="#f2f2ee">sage</text></g>`;
 })();
 
 export const drag = svg({

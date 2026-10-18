@@ -23,9 +23,9 @@ const DIAL =
   `<circle r="76" ${ACCENT}/><circle r="76" fill="url(#sheen)"/>` +
   Array.from({ length: 30 }, (_, i) => {
     const [x, y] = P(65, rad(-90 + i * 12));
-    return i ? `<circle cx="${f(x)}" cy="${f(y)}" r="${i % 3 ? 1.1 : 1.9}" fill="#e4e4e0"/>` : '';
+    return i ? `<circle data-print="" cx="${f(x)}" cy="${f(y)}" r="${i % 3 ? 1.1 : 1.9}" fill="#e4e4e0"/>` : '';
   }).join('') +
-  `<path d="M0 -69L3.5 -62H-3.5Z" fill="#e4e4e0"/>` +
+  `<path data-print="" d="M0 -69L3.5 -62H-3.5Z" fill="#e4e4e0"/>` +
   Array.from({ length: 10 }, (_, i) => {
     const a = -81 - i * 36, [x, y] = P(48, rad(a));
     return `<text transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)})" y="4" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#e4e4e0">${i + 1}</text>`;
@@ -35,7 +35,7 @@ const DIAL =
 // "sage" and the leaf, reading outward along the upper right spoke.
 const SPOKE_LOGO = (() => {
   const a = SPOKES[3], [x, y] = P(140, rad(a));
-  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-28, 0, 12)}<text x="-18" y="6" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="17" fill="#1b1d1f" fill-opacity=".8">sage</text></g>`;
+  return `<g data-print="" transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-28, 0, 12)}<text x="-18" y="6" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="17" fill="#1b1d1f" fill-opacity=".8">sage</text></g>`;
 })();
 
 export const drag = svg({
