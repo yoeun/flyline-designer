@@ -6998,7 +6998,9 @@
             "running": 57
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Yellow"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -7034,7 +7036,9 @@
             "running": 57
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Blue"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -7070,7 +7074,9 @@
             "running": 57
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Orange"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -7091,7 +7097,8 @@
           ]
         }
       ],
-      "url": "https://www.cortlandline.com/products/rock-bottom"
+      "url": "https://www.cortlandline.com/products/rock-bottom",
+      "data_notes": "Colors are the running line's, from the page's Color spec (Yellow 200 gr, Blue 250 gr, Orange 300 gr); the chart draws the head black on all three. The chart's sections add up to a 43 ft head (1 + 40 + 2) where the page gives 40 ft."
     },
     {
       "id": "cortland-galloup-dungeon-30",
@@ -7123,7 +7130,9 @@
             "running": 69
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "White"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -7159,7 +7168,9 @@
             "running": 69
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Green"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -7195,7 +7206,9 @@
             "running": 69
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Olive"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -7216,7 +7229,8 @@
           ]
         }
       ],
-      "url": "https://www.cortlandline.com/products/dungeon-30"
+      "url": "https://www.cortlandline.com/products/dungeon-30",
+      "data_notes": "Colors are the running line's, from the page's Color spec (White 230 gr, Green 280 gr, Olive 330 gr); the chart draws the head black on all three. The chart's sections add up to a 31 ft head (1 + 10 + 20) where the page gives 30 ft."
     },
     {
       "id": "cortland-liquid-crystal-flats-taper",
@@ -9782,10 +9796,37 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": 200,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 2,
+            "running": 72
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Black / Light Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 23
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 2
+            },
+            {
+              "name": "STEP",
+              "ft": 12
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 60
+            }
           ]
         },
         {
@@ -9797,10 +9838,37 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": 240,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 2,
+            "running": 72
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Black / Light Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 23
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 2
+            },
+            {
+              "name": "STEP",
+              "ft": 12
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 60
+            }
           ]
         },
         {
@@ -9812,10 +9880,37 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": 275,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 2,
+            "running": 72
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Black / Light Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 23
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 2
+            },
+            {
+              "name": "STEP",
+              "ft": 12
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 60
+            }
           ]
         },
         {
@@ -9827,10 +9922,37 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": 310,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 2,
+            "running": 72
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Black / Light Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 23
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 2
+            },
+            {
+              "name": "STEP",
+              "ft": 12
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 60
+            }
           ]
         },
         {
@@ -9842,10 +9964,37 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": 350,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 2,
+            "running": 72
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Black / Light Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 23
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 2
+            },
+            {
+              "name": "STEP",
+              "ft": 12
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 60
+            }
           ]
         },
         {
@@ -9857,10 +10006,37 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": 425,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 2,
+            "running": 72
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Black / Light Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 23
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 2
+            },
+            {
+              "name": "STEP",
+              "ft": 12
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 60
+            }
           ]
         },
         {
@@ -9872,15 +10048,42 @@
           "total_ft": 100,
           "grains_30ft": null,
           "head_grains": 500,
-          "taper_ft": null,
-          "taper_source": null,
+          "taper_ft": {
+            "front": 3,
+            "body": 23,
+            "back": 2,
+            "running": 72
+          },
+          "taper_source": "maker diagram (one chart for all sizes; size not stated)",
           "colors": [
             "Black / Light Blue"
+          ],
+          "taper_segments": [
+            {
+              "name": "FRONT TAPER",
+              "ft": 3
+            },
+            {
+              "name": "BODY",
+              "ft": 23
+            },
+            {
+              "name": "BACK TAPER",
+              "ft": 2
+            },
+            {
+              "name": "STEP",
+              "ft": 12
+            },
+            {
+              "name": "RUNNING LINE",
+              "ft": 60
+            }
           ]
         }
       ],
       "url": "https://www.cortlandline.com/products/compact-sink-type-9",
-      "data_notes": "Type 9 (8-9 ips) mapped to density 'sink8' (schema tops out at sink8); head length from description."
+      "data_notes": "Type 9 (8-9 ips) mapped to density 'sink8' (schema tops out at sink8); head length from description and taper chart. The chart gives the Compact Sink Type 6's split; its 12 ft step is folded into running."
     },
     {
       "id": "cortland-specialty-salmon-steelhead",
@@ -14982,7 +15185,9 @@
             "running": 48
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Black"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -15018,7 +15223,9 @@
             "running": 48
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Black"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -15054,7 +15261,9 @@
             "running": 48
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Black"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
@@ -15090,7 +15299,9 @@
             "running": 48
           },
           "taper_source": "maker diagram (one chart for all sizes; size not stated)",
-          "colors": [],
+          "colors": [
+            "Black"
+          ],
           "taper_segments": [
             {
               "name": "FRONT TAPER",
