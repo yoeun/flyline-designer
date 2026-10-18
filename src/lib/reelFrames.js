@@ -57,7 +57,7 @@ export function spinCage(cage) {
   const to = from ? -720 : -360;
   cage.animate([{ transform: `rotate(${from}deg)` }, { transform: `rotate(${to}deg)` }], {
     // A gentle ease-out: a sharper one starts so fast that the windows strobe and the spool seems to turn back.
-    duration: 1600,
+    duration: 1000,
     easing: 'ease-out',
   });
 }
