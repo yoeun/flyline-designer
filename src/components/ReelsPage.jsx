@@ -181,8 +181,7 @@ export default function ReelsPage({ onNewSetup }) {
         <ViewControls view={view} onChange={setView} />
       </div>
       {/* Maker chips that jump to each maker's reels, styled like the app's filter chips so they read as controls. */}
-      <nav aria-label="Makers" className="flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-[13px] font-semibold text-muted-foreground">Jump to</span>
+      <nav aria-label="Makers" className="flex flex-wrap gap-2">
         {GROUPS.map(([maker, models]) => (
           <a
             key={maker}
