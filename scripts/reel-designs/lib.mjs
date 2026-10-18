@@ -100,6 +100,8 @@ export function knurl(r, amp, teeth) {
 export const ACCENT = 'style="fill:var(--reel-accent, currentColor)"';
 // A second part color, e.g. a foot that differs from both frame and accent; set by --reel-trim, else the reel color.
 export const TRIM = 'style="fill:var(--reel-trim, currentColor)"';
+// Ink for markings printed on the accent, like a dial's numbers: set by --reel-ink to contrast with it, else dark.
+export const INK = 'style="fill:var(--reel-ink, #1b1d1f)"';
 
 export const SHEEN = `<linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".4"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient>`;
 export const SHEEN_RECT = `<rect x="-215" y="-250" width="430" height="470" fill="url(#sheen)" mask="url(#body-mask)"/>`;

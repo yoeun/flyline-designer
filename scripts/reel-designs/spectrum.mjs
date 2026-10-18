@@ -6,7 +6,7 @@
 // handle and knob pads would show through too, but the wound line hides them. Spool side: the same window ring,
 // three straight spokes 120° apart to a logo hub, the handle in line with the top one and a round silver knob
 // opposite at 6 o'clock.
-import { ACCENT, P, circle, f, frameRim, pad, rad, recessed, ring, slots, spoke, svg } from './lib.mjs';
+import { ACCENT, INK, P, circle, f, frameRim, pad, rad, recessed, ring, slots, spoke, svg } from './lib.mjs';
 import { logo, rimHandle, sageFoot } from './sage.mjs';
 
 // The wound line starts at the inner edge of the window ring.
@@ -31,8 +31,8 @@ const DIAL =
   Array.from({ length: 10 }, (_, i) => {
     const a = -96 - i * 36, [x, y] = P(73, rad(a)), [dx, dy] = P(73, rad(a - 18));
     return (
-      `<text transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)})" y="3" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" fill="#1b1d1f" fill-opacity=".75">${i + 1}</text>` +
-      `<circle cx="${f(dx)}" cy="${f(dy)}" r="1.4" fill="#1b1d1f" fill-opacity=".55"/>`
+      `<text transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)})" y="3" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" ${INK} fill-opacity=".8">${i + 1}</text>` +
+      `<circle cx="${f(dx)}" cy="${f(dy)}" r="1.4" ${INK} fill-opacity=".6"/>`
     );
   }).join('') +
   `<path d="${Array.from({ length: 16 }, (_, i) => {
