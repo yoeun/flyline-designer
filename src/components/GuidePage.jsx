@@ -4,6 +4,7 @@ import { Toggle } from '@/components/ui/toggle';
 import { cn } from '@/lib/utils';
 import { LINE_PRESETS, nameOf, nearestSize } from '../data/catalog.js';
 import { CATEGORIES, chartPoints, densityName, filterProducts, formatRange, groupBySeries, heaviness, linkProducts, makerSeries, productFacts } from '../lib/guide.js';
+import { GROUP_HEADING, PAGE_BAR, usePageBar } from '../lib/pageBar.js';
 import Chips, { CHIP } from './Chips.jsx';
 import FilterSheet from './FilterSheet.jsx';
 import Icon from './Icon.jsx';
@@ -196,6 +197,7 @@ export default function GuidePage({ onTry }) {
   const [search, setSearch] = useState('');
   const [discontinued, setDiscontinued] = useState(false);
   const links = useMemo(() => (makers ? linkProducts(makers, LINE_PRESETS) : new Map()), [makers]);
+  const barRef = usePageBar();
 
   useEffect(() => {
     let live = true;
@@ -265,32 +267,36 @@ export default function GuidePage({ onTry }) {
 
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Line guide">
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Line guide</h2>
-          <span className="text-[14px] text-muted-foreground">
-            {count} {count === 1 ? 'line' : 'lines'}
-          </span>
+      {/* The title, the search and, from sm up, the filters stay in a bar under the fixed header while the
+          lines scroll, and each maker's heading sticks under it. */}
+      <div ref={barRef} className={PAGE_BAR}>
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
+            <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Line guide</h2>
+            <span className="text-[14px] text-muted-foreground">
+              {count} {count === 1 ? 'line' : 'lines'}
+            </span>
+          </div>
+          <FilterSheet active={active} onClear={clearFilters} doneLabel={`Show ${count} ${count === 1 ? 'line' : 'lines'}`}>
+            {makerChips}
+            {seriesChips}
+            {useChips}
+            <div className="w-40">{weightSelect}</div>
+            {discontinuedToggle}
+          </FilterSheet>
         </div>
-        <FilterSheet active={active} onClear={clearFilters} doneLabel={`Show ${count} ${count === 1 ? 'line' : 'lines'}`}>
+
+        {/* Phones keep only the search here; the other filters are in the Filter sheet. */}
+        <div className="sm:hidden">{searchField}</div>
+        <div className="hidden flex-col gap-2.5 sm:flex">
           {makerChips}
           {seriesChips}
           {useChips}
-          <div className="w-40">{weightSelect}</div>
-          {discontinuedToggle}
-        </FilterSheet>
-      </div>
-
-      {/* Phones keep only the search here; the other filters are in the Filter sheet. */}
-      <div className="sm:hidden">{searchField}</div>
-      <div className="hidden flex-col gap-2.5 sm:flex">
-        {makerChips}
-        {seriesChips}
-        {useChips}
-        <div className="flex flex-wrap items-end gap-3">
-          <div className="w-32">{weightSelect}</div>
-          {searchField}
-          {discontinuedToggle}
+          <div className="flex flex-wrap items-end gap-3">
+            <div className="w-32">{weightSelect}</div>
+            {searchField}
+            {discontinuedToggle}
+          </div>
         </div>
       </div>
 
@@ -339,7 +345,7 @@ export default function GuidePage({ onTry }) {
       {sections.length === 0 && <p className="text-[14px] text-muted-foreground">No lines match these filters.</p>}
       {sections.map(({ maker: m, products }) => (
         <section key={m.id} className="flex flex-col gap-3" aria-labelledby={`maker-${m.id}`}>
-          <h3 id={`maker-${m.id}`} className={heading}>
+          <h3 id={`maker-${m.id}`} className={cn(heading, GROUP_HEADING)}>
             {m.maker} <span className="font-sans text-[14px] font-normal tracking-normal text-muted-foreground normal-case">{products.length} {products.length === 1 ? 'line' : 'lines'}</span>
           </h3>
           <Explainer maker={m} />

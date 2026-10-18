@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { cn } from '@/lib/utils';
 import { conflictsFor } from '../lib/checks.js';
+import { GROUP_HEADING, PAGE_BAR, usePageBar } from '../lib/pageBar.js';
 import { filterRack, rackWeights } from '../lib/rackView.js';
 import RackCard from './RackCard.jsx';
 import RackFilter, { NO_FILTER, isFiltered, rackFilter } from './RackFilter.jsx';
@@ -39,27 +41,31 @@ export default function RackPage({ setups, currentId, conflicts, filter: given, 
     </ul>
   );
 
+  const barRef = usePageBar();
   const heading = 'font-heading text-[15px] font-bold tracking-[0.06em] uppercase';
 
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Rack">
-      {/* The title with the setup count under it; the buttons sit to the right of both. */}
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex min-w-0 flex-col gap-0.5">
-          <h2 className="font-heading text-[20px] leading-tight font-bold tracking-[0.06em] uppercase">{title}</h2>
-          <span className="text-[14px] text-muted-foreground">
-            {isFiltered(filter) && `${count} of `}
-            {setups.length} {setups.length === 1 ? 'setup' : 'setups'}
-          </span>
+      {/* The title with the setup count under it, the buttons to the right of both, and the search and Filter
+          button stay in a bar under the fixed header while the setups scroll; a weight's headings stick under it. */}
+      <div ref={barRef} className={PAGE_BAR}>
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex min-w-0 flex-col gap-0.5">
+            <h2 className="font-heading text-[20px] leading-tight font-bold tracking-[0.06em] uppercase">{title}</h2>
+            <span className="text-[14px] text-muted-foreground">
+              {isFiltered(filter) && `${count} of `}
+              {setups.length} {setups.length === 1 ? 'setup' : 'setups'}
+            </span>
+          </div>
+          <div className="flex flex-none gap-2">{actions}</div>
         </div>
-        <div className="flex flex-none gap-2">{actions}</div>
+        {setups.length > 0 && <RackFilter filter={filter} weights={weights} count={count} onChange={onFilterChange} />}
       </div>
 
       {setups.length === 0 ? (
         <p className="text-[14px] text-muted-foreground">{readOnly ? 'This rack is empty.' : 'Nothing saved yet. Design a setup and save it to keep it here.'}</p>
       ) : (
         <>
-          <RackFilter filter={filter} weights={weights} count={count} onChange={onFilterChange} />
           {count === 0 ? (
             <p className="flex items-center gap-2 text-[14px] text-muted-foreground">
               No setups match.
@@ -73,13 +79,13 @@ export default function RackPage({ setups, currentId, conflicts, filter: given, 
             <>
               {exact.length > 0 && (
                 <section className="flex flex-col gap-3">
-                  <h3 className={heading}>{weight} wt</h3>
+                  <h3 className={cn(heading, GROUP_HEADING)}>{weight} wt</h3>
                   {grid(exact, `${weight} wt setups`)}
                 </section>
               )}
               {near.length > 0 && (
                 <section className="flex flex-col gap-3">
-                  <h3 className={heading}>Also fits a {weight} wt</h3>
+                  <h3 className={cn(heading, GROUP_HEADING)}>Also fits a {weight} wt</h3>
                   {grid(near, `Also fits a ${weight} wt`)}
                 </section>
               )}

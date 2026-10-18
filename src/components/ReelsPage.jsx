@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import PHOTOS from 'reel-photos';
 import { BACKING_COLORS, LINE_COLORS, REELS, REEL_MODELS, makerGroups, reelColors, reelSizeLabel, reelSizes } from '../data/catalog.js';
+import { GROUP_HEADING, PAGE_BAR, usePageBar } from '../lib/pageBar.js';
 import { PREVIEW_COLORS, capacityText, photosByModel, previewSetup, scrollToFit } from '../lib/reelsPage.js';
 import { cn } from '@/lib/utils';
 import Button from './Button.jsx';
@@ -171,10 +172,12 @@ export default function ReelsPage({ onNewSetup }) {
     const list = listRef.current;
     if (list && list.getBoundingClientRect().top < 0) window.scrollTo({ top: 0 });
   };
-  // A clicked card that's cut off, under the filter bar or past the bottom of the screen, scrolls fully into view.
-  const barRef = useRef(null);
+  // A clicked card that's cut off, under the filter bar and its maker's heading or past the bottom of the
+  // screen, scrolls fully into view.
+  const barRef = usePageBar();
   const reveal = (card) => {
-    const by = scrollToFit(card.getBoundingClientRect(), barRef.current.getBoundingClientRect().bottom, window.innerHeight);
+    const top = card.closest('section').querySelector('h3').getBoundingClientRect().bottom;
+    const by = scrollToFit(card.getBoundingClientRect(), top, window.innerHeight);
     if (by) window.scrollBy({ top: by, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   };
   // What the View button says once the view differs from the default.
@@ -182,9 +185,9 @@ export default function ReelsPage({ onNewSetup }) {
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Reels">
       {/* The title, the maker filter and, from sm up, the line colors stay in a bar under the fixed header while
-          the reels scroll; it sits above a hovered card (z-10), which would otherwise draw over it. On phones the
-          chips are one row that scrolls sideways, so the bar stays short. */}
-      <div ref={barRef} className="sticky top-(--header-h) z-20 -mx-[max(16px,2.5vw)] -mt-6 flex flex-col gap-2.5 border-b border-border bg-background/95 px-[max(16px,2.5vw)] pt-4 pb-3 backdrop-blur">
+          the reels scroll, and each maker's heading sticks under it. On phones the chips are one row that scrolls
+          sideways, so the bar stays short. */}
+      <div ref={barRef} className={PAGE_BAR}>
         <div className="flex items-center justify-between gap-3">
           <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Reels</h2>
           {/* On phones the line colors open in a sheet instead of a bar over the reels. */}
@@ -210,7 +213,7 @@ export default function ReelsPage({ onNewSetup }) {
       <div ref={listRef} className="flex flex-col gap-5">
         {groups.map(([group, models]) => (
           <section key={group} className="flex flex-col gap-3" aria-label={group}>
-            <h3 className={heading}>{group}</h3>
+            <h3 className={cn(heading, GROUP_HEADING)}>{group}</h3>
             {/* Cards in equal columns, so every drawing area is the same size and the scale holds across them. */}
             <ul className="grid gap-3 sm:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]">
               {models.map((m) => (
