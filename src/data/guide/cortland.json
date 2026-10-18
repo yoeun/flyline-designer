@@ -3500,9 +3500,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 46,
      "total": 100,
-     "grains30": null,
+     "grains30": 140,
      "headGrains": null,
      "colors": [
       "Clear"
@@ -3516,9 +3516,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 46,
      "total": 100,
-     "grains30": null,
+     "grains30": 160,
      "headGrains": null,
      "colors": [
       "Clear"
@@ -3532,9 +3532,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 46,
      "total": 100,
-     "grains30": null,
+     "grains30": 185,
      "headGrains": null,
      "colors": [
       "Clear"
@@ -3548,9 +3548,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 46,
      "total": 100,
-     "grains30": null,
+     "grains30": 210,
      "headGrains": null,
      "colors": [
       "Clear"
@@ -3564,9 +3564,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 46,
      "total": 100,
-     "grains30": null,
+     "grains30": 240,
      "headGrains": null,
      "colors": [
       "Clear"
@@ -3712,9 +3712,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 41,
      "total": 100,
-     "grains30": null,
+     "grains30": 210,
      "headGrains": null,
      "colors": [
       "Clear"
@@ -3728,9 +3728,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 41,
      "total": 100,
-     "grains30": null,
+     "grains30": 240,
      "headGrains": null,
      "colors": [
       "Clear"
@@ -3744,9 +3744,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 41,
      "total": 100,
-     "grains30": null,
+     "grains30": 280,
      "headGrains": null,
      "colors": [
       "Clear"
@@ -3760,9 +3760,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 41,
      "total": 100,
-     "grains30": null,
+     "grains30": 330,
      "headGrains": null,
      "colors": [
       "Clear"
@@ -3776,9 +3776,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 41,
      "total": 100,
-     "grains30": null,
+     "grains30": 380,
      "headGrains": null,
      "colors": [
       "Clear"
@@ -3792,9 +3792,9 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 41,
      "total": 100,
-     "grains30": null,
+     "grains30": 450,
      "headGrains": null,
      "colors": [
       "Clear"
