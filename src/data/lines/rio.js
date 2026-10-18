@@ -74,6 +74,14 @@ export const COLORS = [
   { id: 'rio-golden-tan', name: 'Golden Tan', hex: '#c8b27a' },
   { id: 'rio-glacial-green', name: 'Glacial Green', hex: '#86d9a0' },
   { id: 'rio-ice-blue', name: 'Ice Blue', hex: '#b3c2e2' },
+  { id: 'rio-predator-deep-beige', name: 'Beige', hex: '#ab946e' },
+  { id: 'rio-musky-outbound-tannin', name: 'Tannin', hex: '#ba9468' },
+  { id: 'rio-cleansweep-light-aqua', name: 'Light Aqua', hex: '#2a97af' },
+  { id: 'rio-cleansweep-dark-aqua', name: 'Dark Aqua', hex: '#155561' },
+  { id: 'rio-blitz-sand', name: 'Sand', hex: '#e5ce68' },
+  { id: 'rio-sub-surface-hover-gray', name: 'Gray', hex: '#a29e96' },
+  { id: 'rio-sub-surface-hover-olive', name: 'Olive', hex: '#aa9c1d' },
+  { id: 'rio-midge-tip-hover-gray', name: 'Gray', hex: '#9b978a' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -174,6 +182,11 @@ const TIP_SINKS = {
   'F/I 15 ft': 'Float/15 ft intermediate tip',
   'F/I': 'Float/2 ips',
   'F/S6': 'Float/6 ips',
+  'F/S3/S5/S7': 'Float/3 ips/5 ips/7 ips',
+  'I/S5': 'I/S5',
+  'Int/4/2': '1.5 ips/4 ips/2 ips',
+  'Int/6/4': '1.5 ips/6 ips/4 ips',
+  'F/H': 'Float/1.0 ips',
 };
 // A floating or intermediate line with a sinking or multi-density head, e.g. "WF8 F/H/I".
 const tip = (densities, taper, ...colorways) => ({
@@ -184,6 +197,9 @@ const tip = (densities, taper, ...colorways) => ({
   taper,
   colorways,
 });
+
+// A sinking head on an intermediate running line, e.g. "WF11 I/S5".
+const intTip = (densities, taper, ...colorways) => ({ ...tip(densities, taper, ...colorways), type: 'sinkhead-int' });
 
 // Premier OutBound Short. RIO's WF8F diagram: front 6'1", body 6'9" plus a 12'2" back body, back
 // taper 4' plus 1'. Every size has a 30 ft head. Clear tips are 15 ft, from RIO's description.
@@ -901,9 +917,8 @@ const avidTarpon = rio({
 // Ambassador Series Phil Rowley Lake: RIO's lake lines with an integrated tippet ring, one listing for
 // several tapers. RIO says the floater is the Stillwater Floater and the 1.5–2 ips intermediate the
 // AquaLux, and the listing shows both of their diagrams, so those sizes draw (and look) exactly like
-// Elite Stillwater Floater and Premier AquaLux. Its Midge Tip rows bundle the Midge Tip and Midge Tip
-// Long (two different splits) in one size, and its Midge Tip Hover rows are hover lines, so they're
-// left out.
+// Elite Stillwater Floater and Premier AquaLux. Its Midge Tip and Midge Tip Hover rows each bundle
+// the short and Long tapers (two different splits) in one size, so they're left out.
 const philRowleyLake = rio({
   id: 'rio-ambassador-series-phil-rowley-lake',
   name: 'RIO Ambassador Series Phil Rowley Lake',
@@ -912,6 +927,98 @@ const philRowleyLake = rio({
     float({ split: [4, 26, 20] }, colorway('orange-green-yellow', 'Orange/Green/Yellow', [2, 'rio-orange'], [36, 'rio-green'], [0, 'rio-pale-yellow'])),
     { ...intermediate({ split: [6, 22, 2], example: 6 }, colorway('clear-translucent-green', 'Clear/Translucent Green', [30, 'rio-clear'], [0, 'rio-light-teal'])), sink: '1.5–2 ips' },
   ],
+});
+
+// Elite Predator Deep: the whole head sinks, split evenly between Type 3, 5 and 7, on a floating
+// running line, so it draws as a sink tip. RIO's listing shows only the Elite Predator diagrams, so
+// it borrows the 3D split, as the Predator F/I/S3 does, and every size is estimated. A black head
+// (RIO says all of it sinks) on a beige running line, as RIO's photo shows it.
+const predatorDeep = rio({
+  id: 'rio-elite-predator-deep',
+  name: 'RIO Elite Predator Deep',
+  sizes: LINEUP['rio-elite-predator-deep'].sizes,
+  densities: [tip('F/S3/S5/S7', { split: PREDATOR_3D.split }, colorway('black-beige', 'Black/Beige', [34, 'rio-black'], [0, 'rio-predator-deep-beige']))],
+});
+
+// Elite Musky OutBound, a Type 5 sinking head on an intermediate running line. RIO's WF11I/S5
+// diagram: front taper 6, body 4 plus 13, back taper 14 on 63 ft of running line. RIO's table gives
+// a 27 ft head, which stops 4 ft into the back taper where the black sinking section ends, so both
+// sizes override it with the diagram's 37 ft head. Black to 27 ft, then tannin, as RIO's photo shows
+// it (the diagram draws a yellow running line). RIO pitches the 600 gr and T-27 sizes at two-handed
+// casting and gives them no rod weight, so they're left out.
+const muskyOutbound = rio({
+  id: 'rio-elite-musky-outbound',
+  name: 'RIO Elite Musky OutBound',
+  sizes: LINEUP['rio-elite-musky-outbound'].sizes.filter((size) => size.weight !== null).map((size) => overriding(size, { head: 37 })),
+  densities: [intTip('I/S5', { split: [6, 17, 14], example: 11 }, colorway('black-tannin', 'Black/Tannin', [27, 'rio-black'], [0, 'rio-musky-outbound-tannin']))],
+});
+
+// Premier CleanSweep: a 1.5 ips clear tip and a black sinking body on a slower running line. RIO's
+// WF7 diagram (the 1.5/6/4 ips line): front taper 5 plus 2, body 21, back taper 7 on 70 ft of
+// running line; RIO draws no 1.5/4/2 ips line, so it borrows the split. Every size has a 35 ft head.
+// Clear over the first 7 ft, black to the end of the head, then light aqua (1.5/4/2) or dark aqua
+// (1.5/6/4). The 2 ips running line is intermediate, so the 1.5/4/2 draws as a sinking head on an
+// intermediate running line; the 4 ips running line sinks, so the 1.5/6/4 draws as the nearest type
+// to its 6 ips head, Type 5 (as Fathom's 6 ips does).
+const CLEANSWEEP = { split: [7, 21, 7], example: 7 };
+const cleanSweep = rio({
+  id: 'rio-premier-cleansweep',
+  name: 'RIO Premier CleanSweep',
+  sizes: LINEUP['rio-premier-cleansweep'].sizes,
+  densities: [
+    intTip('Int/4/2', { split: CLEANSWEEP.split }, colorway('clear-black-light-aqua', 'Clear/Black/Light Aqua', [7, 'rio-clear'], [28, 'rio-black'], [0, 'rio-cleansweep-light-aqua'])),
+    { ...tip('Int/6/4', CLEANSWEEP, colorway('clear-black-dark-aqua', 'Clear/Black/Dark Aqua', [7, 'rio-clear'], [28, 'rio-black'], [0, 'rio-cleansweep-dark-aqua'])), type: 'sink5' },
+  ],
+});
+
+// Ambassador Series Blitz, F/H/I. RIO's WF8F/H/I diagram: front taper 6, body 18, back taper 2, then
+// a 12 ft handling section and 62 ft of running line. Every size has a 26 ft head. Clear over the
+// front taper, seafoam to the end of the body, then sand.
+const blitz = rio({
+  id: 'rio-ambassador-series-blitz',
+  name: 'RIO Ambassador Series Blitz',
+  sizes: LINEUP['rio-ambassador-series-blitz'].sizes,
+  densities: [
+    { ...tip('F/H/I', { split: [6, 18, 2], example: 8 }, colorway('clear-seafoam-sand', 'Clear/Seafoam/Sand', [6, 'rio-clear'], [18, 'rio-seafoam'], [0, 'rio-blitz-sand'])), sink: 'F/H/I' },
+  ],
+});
+
+// Elite Sub-Surface Hover, 1 ips. RIO's WF6 diagram has the CamoLux split: front taper 4 plus 2, body
+// 22, back taper 2 on 70 ft of running line. Every size has a 30 ft head. A gray head on an olive
+// running line, as RIO's photo shows it (the tip is coiled innermost, as in its Midge Tip photos);
+// the diagram draws an olive head on an orange running line.
+const subSurfaceHover = rio({
+  id: 'rio-elite-sub-surface-hover',
+  name: 'RIO Elite Sub-Surface Hover',
+  sizes: LINEUP['rio-elite-sub-surface-hover'].sizes,
+  densities: [
+    {
+      sink: '1.0 ips',
+      id: (w) => `wf${w}h`,
+      label: (w) => `WF${w}H`,
+      type: 'hover',
+      taper: { split: [6, 22, 2], example: 6 },
+      colorways: [colorway('gray-olive', 'Gray/Olive', [30, 'rio-sub-surface-hover-gray'], [0, 'rio-sub-surface-hover-olive'])],
+    },
+  ],
+});
+
+// Premier Midge Tip Hover and Midge Tip Long Hover: floating lines with a 1 ips hover tip, so they
+// draw as sink tips, like the Midge Tips. RIO's listings show the Midge Tip diagrams (drawn for the
+// clear-tip lines, so every size is estimated): front taper 3 plus 4, body 28, back taper 5, and for
+// the Long, front taper 3 plus 3, body 2 plus 27, back taper 5, each on 50 ft of running line. Gray
+// over the tip (3 ft, and 6 ft on the Long), yellow or melon to the end of the head, then beige.
+const midgeTipHover = rio({
+  id: 'rio-premier-midge-tip-hover',
+  name: 'RIO Premier Midge Tip Hover',
+  sizes: LINEUP['rio-premier-midge-tip-hover'].sizes,
+  densities: [tip('F/H', { split: [7, 28, 5] }, colorway('gray-yellow-beige', 'Gray/Yellow/Beige', [3, 'rio-midge-tip-hover-gray'], [37, 'rio-yellow'], [0, 'rio-beige']))],
+});
+const midgeTipLongHover = rio({
+  id: 'rio-premier-midge-tip-long-hover',
+  name: 'RIO Premier Midge Tip Long Hover',
+  sizes: LINEUP['rio-premier-midge-tip-long-hover'].sizes,
+  densities: [tip('F/H', { split: [6, 29, 5] }, colorway('gray-melon-beige', 'Gray/Melon/Beige', [6, 'rio-midge-tip-hover-gray'], [34, 'rio-melon'], [0, 'rio-beige']))],
 });
 
 export const PRODUCTS = [
@@ -998,4 +1105,11 @@ export const PRODUCTS = [
   avidBonefish,
   avidTarpon,
   philRowleyLake,
+  predatorDeep,
+  muskyOutbound,
+  cleanSweep,
+  blitz,
+  subSurfaceHover,
+  midgeTipHover,
+  midgeTipLongHover,
 ];

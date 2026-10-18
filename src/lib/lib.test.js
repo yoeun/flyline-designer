@@ -1316,6 +1316,14 @@ describe('RIO lines', () => {
     // The floating sizes are the Stillwater Floater (whose diagram draws the WF6F head at 50 ft; the
     // table says 49.5); the intermediate sizes are the AquaLux, with a 30 ft head. Checked by size below.
     'rio-ambassador-series-phil-rowley-lake': table([[6, 49.5, 90], [7, 50, 100]]),
+    'rio-elite-predator-deep': table([[7, 34, 100], [8, 34, 100], [9, 34, 100], [10, 32, 100], [11, 32, 100]]),
+    // RIO's 27 ft stops 4 ft into the 14 ft back taper drawn on its diagram.
+    'rio-elite-musky-outbound': table([11, 12].map((w) => [w, 37, 100])),
+    'rio-premier-cleansweep': table([5, 6, 7, 8].map((w) => [w, 35, 105])),
+    'rio-ambassador-series-blitz': table([8, 9, 10].map((w) => [w, 26, 100])),
+    'rio-elite-sub-surface-hover': table([[5, 30, 90], [6, 30, 100], [7, 30, 100], [8, 30, 100]]),
+    'rio-premier-midge-tip-hover': table([[5, 40, 90], [6, 40, 90], [7, 42, 100], [8, 44, 100]]),
+    'rio-premier-midge-tip-long-hover': table([[5, 40, 90], [6, 40, 90], [7, 42, 100], [8, 44, 100]]),
   };
   const rio = LINE_PRESETS.filter((p) => p.maker === 'RIO');
   const head = ({ taper }) => taper.front + taper.body + taper.back;
@@ -1412,6 +1420,10 @@ describe('RIO lines', () => {
       'rio-avid-bonefish-wf8f',
       'rio-avid-tarpon-wf11f',
       'rio-ambassador-series-phil-rowley-lake-wf6i',
+      'rio-elite-musky-outbound-wf11-i-s5',
+      'rio-premier-cleansweep-wf7-int-6-4',
+      'rio-ambassador-series-blitz-wf8-f-h-i',
+      'rio-elite-sub-surface-hover-wf6h',
     ]);
   });
 
@@ -1449,6 +1461,10 @@ describe('RIO lines', () => {
     ['rio-avid-bonefish-wf8f', [7, 24, 18.5, 30.5]],
     ['rio-avid-tarpon-wf11f', [6, 22, 12, 40]],
     ['rio-ambassador-series-phil-rowley-lake-wf6i', [6, 22, 2, 70]],
+    ['rio-elite-musky-outbound-wf11-i-s5', [6, 17, 14, 63]],
+    ['rio-premier-cleansweep-wf7-int-6-4', [7, 21, 7, 70]],
+    ['rio-ambassador-series-blitz-wf8-f-h-i', [6, 18, 2, 74]],
+    ['rio-elite-sub-surface-hover-wf6h', [6, 22, 2, 70]],
   ])('%s has the taper on RIO\'s diagram', (id, [front, body, back, running]) => {
     expect(findById(LINE_PRESETS, id).line.taper).toEqual({ front, body, back, running });
   });
@@ -1466,6 +1482,19 @@ describe('RIO lines', () => {
   it('colorways made only in some weights are listed only on those sizes', () => {
     const camo = productSizes('rio-elite-gold-max').filter((p) => p.colorways.some((cw) => cw.id === 'camo'));
     expect(camo.map((p) => p.sizeLabel)).toEqual(['WF4F', 'WF5F', 'WF6F', 'WF7F', 'WF8F']);
+  });
+
+  it('draws multi-density and hover lines by their running line', () => {
+    const types = (product, weight) => productSizes(product).filter((p) => p.line.weight === weight).map((p) => [p.sizeLabel, p.line.type]);
+    expect(types('rio-elite-predator-deep', 8)).toEqual([['WF8 F/S3/S5/S7', 'sinktip']]);
+    expect(types('rio-elite-musky-outbound', 11)).toEqual([['WF11 I/S5', 'sinkhead-int']]);
+    expect(types('rio-premier-cleansweep', 7)).toEqual([
+      ['WF7 Int/4/2', 'sinkhead-int'],
+      ['WF7 Int/6/4', 'sink5'],
+    ]);
+    expect(types('rio-ambassador-series-blitz', 8)).toEqual([['WF8 F/H/I', 'sinktip']]);
+    expect(types('rio-elite-sub-surface-hover', 6)).toEqual([['WF6H', 'hover']]);
+    expect(types('rio-premier-midge-tip-hover', 6)).toEqual([['WF6 F/H', 'sinktip']]);
   });
 });
 
