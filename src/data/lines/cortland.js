@@ -159,7 +159,7 @@ export const PRODUCTS = [
   makerProduct({
     id: 'cortland-444-clear-camo',
     maker: 'Cortland',
-    name: 'Cortland 444 Clear Camo',
+    name: 'Cortland Clear Camo Intermediate',
     sizes: sizes(LINEUP['cortland-444-clear-camo-intermediate'], {
       id: (w) => `wf${w}i`,
       type: 'intermediate',
