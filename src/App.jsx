@@ -3,6 +3,7 @@ import { toast } from 'sonner';
 import Button from './components/Button.jsx';
 import Checks from './components/Checks.jsx';
 import DetailsDialog from './components/DetailsDialog.jsx';
+import FlippingReelPreview from './components/FlippingReelPreview.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
 import HeaderMenu from './components/HeaderMenu.jsx';
 import NavMenu from './components/NavMenu.jsx';
@@ -11,7 +12,6 @@ import Rack from './components/Rack.jsx';
 import { NO_FILTER } from './components/RackFilter.jsx';
 import RackPage from './components/RackPage.jsx';
 import Segmented from './components/Segmented.jsx';
-import ReelPreview from './components/ReelPreview.jsx';
 import { Toaster } from './components/ui/sonner.jsx';
 import SetupTitle from './components/SetupTitle.jsx';
 import ShareDialog from './components/ShareDialog.jsx';
@@ -482,14 +482,15 @@ export default function App() {
                 </div>
               </div>
               <div className="w-[min(100%,460px)] wide:flex wide:min-h-0 wide:w-full wide:flex-1 wide:justify-center">
-                <ReelPreview
+                <FlippingReelPreview
                   setup={setup}
                   mode={mode}
                   side={side}
                   background={STAGE[theme]}
                   svgRef={svgRef}
                   title={`${displayName(setup)} preview`}
-                  className="wide:h-full wide:w-auto wide:max-w-full"
+                  className="wide:h-full"
+                  svgClassName="wide:h-full wide:w-auto wide:max-w-full"
                 />
               </div>
               <Checks setup={setup} />

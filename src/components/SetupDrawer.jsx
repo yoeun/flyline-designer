@@ -7,9 +7,9 @@ import { SIDES } from '../lib/reelFrames.js';
 import { STAGE } from '../lib/theme.js';
 import Button from './Button.jsx';
 import Checks from './Checks.jsx';
+import FlippingReelPreview from './FlippingReelPreview.jsx';
 import LineEditor from './LineEditor.jsx';
 import PreviewModeToggle from './PreviewModeToggle.jsx';
-import ReelPreview from './ReelPreview.jsx';
 import Segmented from './Segmented.jsx';
 
 const ft = (n) => `${Math.round(n * 10) / 10} ft`;
@@ -62,7 +62,7 @@ function SetupDetails({ setup, theme, onOpenCopy }) {
             <Segmented label="Reel side" options={SIDES} value={side} onChange={setSide} />
             <PreviewModeToggle value={mode} onChange={setMode} />
           </div>
-          <ReelPreview setup={setup} mode={mode} side={side} background={STAGE[theme]} title={`${name} preview`} className="w-full max-w-[340px]" />
+          <FlippingReelPreview setup={setup} mode={mode} side={side} background={STAGE[theme]} title={`${name} preview`} className="w-full max-w-[340px]" />
           <Checks setup={setup} />
         </div>
 
