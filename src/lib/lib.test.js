@@ -636,6 +636,8 @@ describe('change tracking', () => {
 // SA's Textured MPX, Textured Grand Slam, Textured Bonefish and Magnitude Textured Grand Slam Clear
 // Float, and Orvis's PRO Trout Textured, are the Smooth lines' tapers and colors with a texture.
 // Royal Wulff's Midstream TT Floating is the Triangle Taper Classic Float in Ivory.
+// Airflo's Superflo Max Smooth Universal and Superflo Max Ridge 2.0 Power Taper are the other
+// coating's tapers and colors.
 const LOOKALIKES = new Map([
   ...[6, 7, 8, 9, 10].map((w) => [`rio-premier-outbound-short-wf${w}-int-5-7`, `rio-premier-outbound-short-wf${w}-int-3-5`]),
   ...[3, 4, 5, 6, 7, 8].map((w) => [`sa-amplitude-textured-mpx-wf${w}f`, `sa-amplitude-smooth-mpx-wf${w}f`]),
@@ -644,6 +646,8 @@ const LOOKALIKES = new Map([
   ...[6, 7, 8, 9, 10, 11, 12].map((w) => [`sa-magnitude-textured-grand-slam-clear-float-wf${w}f`, `sa-magnitude-smooth-grand-slam-clear-tip-wf${w}f`]),
   ...[3, 4, 5, 6].map((w) => [`orvis-pro-trout-textured-wf${w}f`, `orvis-pro-trout-smooth-wf${w}f`]),
   ...[2, 3, 4, 5, 6, 7, 8, 9].map((w) => [`royal-wulff-midstream-tt-floating-wf${w}f`, `royal-wulff-triangle-taper-classic-wf${w}f`]),
+  ...[3, 4, 5, 6, 7, 8].map((w) => [`airflo-superflo-max-smooth-universal-wf${w}f`, `airflo-superflo-max-ridge-universal-wf${w}f`]),
+  ...[3, 4, 5, 6, 7, 8, 9].map((w) => [`airflo-superflo-max-ridge-power-wf${w}f`, `airflo-superflo-max-smooth-power-wf${w}f`]),
 ]);
 
 describe('presetForLine', () => {
