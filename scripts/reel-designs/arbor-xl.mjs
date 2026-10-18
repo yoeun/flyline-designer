@@ -18,7 +18,7 @@ const SPOKES = [90, 162, -126, -54, 18];
 
 // The drag knob in a dark dial ring numbered 1–20 anticlockwise from the top, with a dot between each pair. The
 // knob's three raised spokes (at 1, 14 and 8) join an outer rim to a ring round the logo badge; between them sit
-// three recessed windows with four pairs of radial lines in each, 12 in all. The windows and lines are tagged as
+// three recessed windows with five pairs of radial lines in each, 20° apart. The windows and lines are tagged as
 // printing so they don't show through the spool side.
 const KNOB_SPOKES = [-90, 30, 150];
 const window_ = (arm) => {
@@ -39,7 +39,7 @@ const DIAL =
   `<g data-print="">` +
   KNOB_SPOKES.map((arm) => `<path d="${window_(arm)}" fill="#000" fill-opacity=".28"/>`).join('') +
   `<path d="${KNOB_SPOKES.flatMap((arm) =>
-    Array.from({ length: 4 }, (_, k) => rad(arm + 24 + k * 24)).flatMap((a) =>
+    Array.from({ length: 5 }, (_, k) => rad(arm + 20 + k * 20)).flatMap((a) =>
       [-1.8, 1.8].map((off) => {
         const [nx, ny] = [-Math.sin(a) * off, Math.cos(a) * off], [x0, y0] = P(37, a), [x1, y1] = P(53, a);
         return `M${f(x0 + nx)} ${f(y0 + ny)}L${f(x1 + nx)} ${f(y1 + ny)}`;
