@@ -3066,11 +3066,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 30,
      "total": 100,
      "grains30": null,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Aqua Green / Sky Blue"
+     ]
     },
     {
      "label": "WF7F",
@@ -3080,11 +3082,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 30,
      "total": 100,
      "grains30": null,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Aqua Green / Sky Blue"
+     ]
     },
     {
      "label": "WF8F",
@@ -3094,11 +3098,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 30,
      "total": 100,
      "grains30": null,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Aqua Green / Sky Blue"
+     ]
     },
     {
      "label": "WF9F",
@@ -3108,11 +3114,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 30,
      "total": 100,
      "grains30": null,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Aqua Green / Sky Blue"
+     ]
     },
     {
      "label": "WF10F",
@@ -3122,11 +3130,13 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 30,
      "total": 100,
      "grains30": null,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Aqua Green / Sky Blue"
+     ]
     }
    ]
   },

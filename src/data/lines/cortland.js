@@ -25,6 +25,12 @@ export const COLORS = [
   { id: 'cortland-sky-blue', name: 'Sky Blue', hex: '#a1d1e7' },
   { id: 'cortland-olive', name: 'Olive', hex: '#878e4b' },
   { id: 'cortland-ice-blue', name: 'Ice Blue', hex: '#0fa7e2' },
+  { id: 'cortland-streamer-olive', name: 'Streamer Olive', hex: '#b8ab77' },
+  { id: 'cortland-streamer-green', name: 'Streamer Green', hex: '#90ca51' },
+  { id: 'cortland-hi-vis-orange', name: 'Hi-Vis Orange', hex: '#ff7300' },
+  // The charts draw white in the same pale grey as clear.
+  { id: 'cortland-white', name: 'White', hex: '#e6e6e6' },
+  { id: 'cortland-aqua-green', name: 'Aqua Green', hex: '#d0e27f' },
 ];
 
 // Cortland draws one taper chart per line with the head length on it but no size. Every size of a
@@ -145,6 +151,29 @@ export const PRODUCTS = [
       colorways: [{ id: 'clear-camo', name: 'Clear Camo', zones: zones([0, 'cortland-clear-camo']) }],
     }),
   }),
+  // Full size heavy, with a compact 26 ft head for big flies and mice. The olive runs on through the
+  // chart's 10 ft step down to the running line, which is drawn here as running line.
+  makerProduct({
+    id: 'cortland-streamer',
+    maker: 'Cortland',
+    name: 'Cortland Streamer',
+    sizes: sizes(LINEUP['cortland-streamer'], {
+      type: 'floating',
+      colorways: [{ id: 'olive-green', name: 'Olive/Green', zones: zones([36, 'cortland-streamer-olive'], [0, 'cortland-streamer-green']) }],
+    }),
+  }),
+  // Full size heavy. 10 ft Type 6 tip (6 ips) on a floating olive head and running line; the chart's
+  // 10 ft step down to the running line is drawn here as running line.
+  makerProduct({
+    id: 'cortland-streamer-sink-tip-10',
+    maker: 'Cortland',
+    name: 'Cortland Streamer Sink Tip 10',
+    sizes: sizes(LINEUP['cortland-streamer-sink-tip-10'], {
+      id: (w) => `wf${w}`,
+      type: 'sinktip',
+      colorways: [{ id: 'black-olive', name: 'Black/Olive', zones: zones([10, 'cortland-black'], [0, 'cortland-streamer-olive']) }],
+    }),
+  }),
   // Type 3 sinks 3–4 ips (dark brown), Type 6 6–7 ips (black, drawn as Type 7). Both share one chart.
   makerProduct({
     id: 'cortland-444-full-sink',
@@ -210,6 +239,18 @@ export const PRODUCTS = [
       colorways: [{ id: 'clear-light-blue', name: 'Clear/Light Blue', zones: zones([26, 'cortland-clear'], [0, 'cortland-light-blue']) }],
     }),
   }),
+  // True to size. A 15 ft clear intermediate tip on a mint green floating head and running line, so
+  // it's drawn as a sink tip. The chart, not to scale, draws the tip ending partway along the body.
+  makerProduct({
+    id: 'cortland-specialty-ghost-tip-15',
+    maker: 'Cortland',
+    name: 'Cortland Ghost Tip 15',
+    sizes: sizes(LINEUP['cortland-specialty-ghost-tip-15'], {
+      id: (w) => `wf${w}i`,
+      type: 'sinktip',
+      colorways: [{ id: 'clear-mint-green', name: 'Clear/Mint Green', zones: zones([15, 'cortland-clear'], [0, 'cortland-mint-green']) }],
+    }),
+  }),
   // Half a size heavy, with a short 30 ft head for quick shots.
   makerProduct({
     id: 'cortland-tropic-plus-redfish',
@@ -218,6 +259,17 @@ export const PRODUCTS = [
     sizes: sizes(LINEUP['cortland-tropic-plus-redfish'], {
       type: 'floating',
       colorways: [{ id: 'seafoam-green-tan', name: 'Seafoam Green/Tan', zones: zones([30, 'cortland-seafoam-green'], [0, 'cortland-tan']) }],
+    }),
+  }),
+  // Short 30 ft head with a 22 ft body, for quick shots in stained water. Also sold reversed as
+  // White/Hi-Vis Orange, which has no chart, so only the charted orange head on white is drawn.
+  makerProduct({
+    id: 'cortland-tropic-plus-hi-vis-flip',
+    maker: 'Cortland',
+    name: 'Cortland Tropic Plus Hi-Vis Flip',
+    sizes: sizes(LINEUP['cortland-tropic-plus-hi-vis-flip'], {
+      type: 'floating',
+      colorways: [{ id: 'hi-vis-orange-white', name: 'Hi-Vis Orange/White', zones: zones([30, 'cortland-hi-vis-orange'], [0, 'cortland-white']) }],
     }),
   }),
   // Long 27 ft body in a 41 ft head, for wind and long shots.
@@ -252,6 +304,16 @@ export const PRODUCTS = [
       id: (w) => `wf${w}i`,
       type: 'intermediate',
       colorways: [{ id: 'ice-blue', name: 'Ice Blue', zones: zones([0, 'cortland-ice-blue']) }],
+    }),
+  }),
+  // Half a size heavy, on a braided core that stays supple in the cold. Short 30 ft head with a 21 ft body.
+  makerProduct({
+    id: 'cortland-cold-salt-redfish',
+    maker: 'Cortland',
+    name: 'Cortland Cold Salt Redfish',
+    sizes: sizes(LINEUP['cortland-cold-salt-redfish'], {
+      type: 'floating',
+      colorways: [{ id: 'aqua-green-sky-blue', name: 'Aqua Green/Sky Blue', zones: zones([30, 'cortland-aqua-green'], [0, 'cortland-sky-blue']) }],
     }),
   }),
 ];
