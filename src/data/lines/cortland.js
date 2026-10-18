@@ -83,6 +83,8 @@ export const COLORS = [
   { id: 'cortland-euro-nymph-chartreuse', name: 'Euro Nymph Chartreuse', hex: '#d1db54' },
   { id: 'cortland-versatile-euro-nymph-sage-green', name: 'Versatile Euro Sage Green', hex: '#c9d08a' },
   { id: 'cortland-versatile-euro-nymph-chartreuse', name: 'Versatile Euro Chartreuse', hex: '#b8d432' },
+  { id: 'cortland-bass-lily-green', name: 'Lily Green', hex: '#71a842' },
+  { id: 'cortland-bass-hot-orange', name: 'Hot Orange', hex: '#f57421' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new). The 444 Full Sinking was one
@@ -1022,5 +1024,44 @@ export const PRODUCTS = [
         },
       ],
     })),
+  }),
+  // A full line size heavy, with a short 36 ft head: the chart's 3 ft front taper, 23 ft body and 10 ft
+  // back taper on a 100 ft line. Lily green to about 30.5 ft (where the chart, not to scale, changes
+  // color partway along the back taper; an estimate), then hot orange.
+  makerProduct({
+    id: 'cortland-specialty-bass',
+    maker: 'Cortland',
+    name: 'Cortland Bass',
+    sizes: sizes(LINEUP['cortland-specialty-bass'], {
+      type: 'floating',
+      colorways: [{ id: 'lily-green-hot-orange', name: 'Lily Green/Hot Orange', zones: zones([30.5, 'cortland-bass-lily-green'], [0, 'cortland-bass-hot-orange']) }],
+    }),
+  }),
+  // The Bass taper with a 26 ft intermediate tip on a floating line, so it's drawn as a sink tip. Clear
+  // camo to about 33.5 ft (where the chart, not to scale, changes color partway along the back taper;
+  // an estimate), then aqua green.
+  makerProduct({
+    id: 'cortland-specialty-bass-intermediate',
+    maker: 'Cortland',
+    name: 'Cortland Bass Intermediate',
+    sizes: sizes(LINEUP['cortland-specialty-bass-intermediate'], {
+      id: (w) => `wf${w}i`,
+      type: 'sinktip',
+      colorways: [{ id: 'clear-camo-aqua-green', name: 'Clear Camo/Aqua Green', zones: zones([33.5, 'cortland-clear-camo'], [0, 'cortland-aqua-green']) }],
+    }),
+  }),
+  // Full clear 1.5–2 ips intermediate on a mono core for the heat. Its page shows the 444 Clear
+  // Intermediate's chart, a 6 ft front taper, 7 ft body and 28 ft back taper drawn on a 90 ft line;
+  // that 41 ft head is the one this line's table gives, and the page and box both say 100 ft, so the
+  // chart's head is drawn on 59 ft of running line.
+  makerProduct({
+    id: 'cortland-tropic-plus-clear-intermediate',
+    maker: 'Cortland',
+    name: 'Cortland Tropic Plus Clear Intermediate',
+    sizes: sizes(LINEUP['cortland-tropic-plus-clear-intermediate'], {
+      id: (w) => `wf${w}i`,
+      type: 'intermediate',
+      colorways: [{ id: 'clear', name: 'Clear', zones: zones([0, 'cortland-clear']) }],
+    }),
   }),
 ];

@@ -3868,7 +3868,7 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 100,
      "grains30": null,
      "headGrains": null,
@@ -3884,7 +3884,7 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 100,
      "grains30": null,
      "headGrains": null,
@@ -3900,7 +3900,7 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 100,
      "grains30": null,
      "headGrains": null,
@@ -3916,7 +3916,7 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 100,
      "grains30": null,
      "headGrains": null,
@@ -3932,7 +3932,7 @@
      "density": "floating",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 100,
      "grains30": null,
      "headGrains": null,
@@ -3966,7 +3966,7 @@
      "density": "intermediate",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 100,
      "grains30": null,
      "headGrains": null,
@@ -3982,7 +3982,7 @@
      "density": "intermediate",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 100,
      "grains30": null,
      "headGrains": null,
@@ -3998,7 +3998,7 @@
      "density": "intermediate",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 100,
      "grains30": null,
      "headGrains": null,
@@ -4014,7 +4014,7 @@
      "density": "intermediate",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 100,
      "grains30": null,
      "headGrains": null,
@@ -4030,7 +4030,7 @@
      "density": "intermediate",
      "densityLabel": null,
      "sinkIps": null,
-     "head": null,
+     "head": 36,
      "total": 100,
      "grains30": null,
      "headGrains": null,
@@ -5830,7 +5830,9 @@
      "total": 100,
      "grains30": 200,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Clear"
+     ]
     },
     {
      "label": "WF8I",
@@ -5844,7 +5846,9 @@
      "total": 100,
      "grains30": null,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Clear"
+     ]
     },
     {
      "label": "WF9I",
@@ -5858,7 +5862,9 @@
      "total": 100,
      "grains30": 260,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Clear"
+     ]
     },
     {
      "label": "WF10I",
@@ -5872,7 +5878,9 @@
      "total": 100,
      "grains30": 305,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Clear"
+     ]
     },
     {
      "label": "WF11I",
@@ -5886,7 +5894,9 @@
      "total": 100,
      "grains30": 355,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Clear"
+     ]
     },
     {
      "label": "WF12I",
@@ -5900,7 +5910,9 @@
      "total": 100,
      "grains30": 415,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Clear"
+     ]
     }
    ]
   },

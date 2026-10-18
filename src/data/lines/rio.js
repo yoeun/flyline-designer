@@ -90,6 +90,12 @@ export const COLORS = [
   // Sampled from the FIPS Euro Nymph and Euro Nymph Shorty taper diagrams (their orange is RIO Orange).
   { id: 'rio-fips-euro-nymph-sage', name: 'Sage', hex: '#c5d99d' },
   { id: 'rio-fips-euro-nymph-olive', name: 'Olive', hex: '#769341' },
+  { id: 'rio-mainstream-brown', name: 'Brown', hex: '#4b4030' },
+  { id: 'rio-mainstream-saltwater-blue', name: 'Blue', hex: '#93b2c8' },
+  { id: 'rio-mainstream-bass-yellow', name: 'Yellow', hex: '#ddcc54' },
+  { id: 'rio-outbound-custom-trans-blue', name: 'Trans Blue', hex: '#7f9fae' },
+  { id: 'rio-outbound-custom-trans-green', name: 'Trans Green', hex: '#88ada6' },
+  { id: 'rio-coastal-crabber-sand', name: 'Sand', hex: '#dba86e' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -195,6 +201,7 @@ const TIP_SINKS = {
   'Int/4/2': '1.5 ips/4 ips/2 ips',
   'Int/6/4': '1.5 ips/6 ips/4 ips',
   'F/H': 'Float/1.0 ips',
+  'F/S3': 'Float/3 ips',
 };
 // A floating or intermediate line with a sinking or multi-density head, e.g. "WF8 F/H/I".
 const tip = (densities, taper, ...colorways) => ({
@@ -1051,6 +1058,99 @@ const midgeTipLongHover = rio({
   densities: [tip('F/H', { split: [6, 29, 5] }, colorway('gray-melon-beige', 'Gray/Melon/Beige', [6, 'rio-midge-tip-hover-gray'], [34, 'rio-melon'], [0, 'rio-beige']))],
 });
 
+// Mainstream Trout Sink: four lines on one listing. RIO's diagrams for them are on its old site
+// (rioproducts.com, archived): the full sinkers' WF6S3 (front taper 4.5, body 32.5, back taper 3 on
+// 40 ft of running line, drawn for both rates), the sink tip's WF6 F/S3 (front taper 4 plus 8, body 20,
+// back taper 4 on 44 ft) and the WF5F diagram drawn for the Trout WF floating and intermediate lines
+// (front taper 7, body 7 plus 18, back taper 6 on 42 ft). The 3–4 ips line is brown and the 6–7 ips
+// black end to end; the sink tip is a brown 12 ft tip (the diagram's front taper and the next 8 ft)
+// on a lemon green line; the intermediate is clear. The old diagram calls the full sinkers Type 3 and
+// Type 6, which RIO now lists as 3–4 and 6–7 ips; 3–4 ips draws as Type 3 and 6–7 ips as Type 7.
+const MAINSTREAM_SINK = { split: [4.5, 32.5, 3], example: 6 };
+const mainstreamFullSink = (sink, type, id, name, color) => ({
+  sink,
+  id: (w) => `wf${w}s${slug(sink.replace(' ips', ''))}`,
+  label: (w) => `WF${w} Sink ${sink.replace(' ips', '')}`,
+  type,
+  taper: sink === '3–4 ips' ? MAINSTREAM_SINK : { split: MAINSTREAM_SINK.split },
+  colorways: [colorway(id, name, [0, color])],
+});
+const mainstreamTroutSink = rio({
+  id: 'rio-mainstream-trout-sink',
+  name: 'RIO Mainstream Trout Sink',
+  sizes: LINEUP['rio-mainstream-trout-sink'].sizes,
+  densities: [
+    { ...intermediate({ split: [7, 25, 6], example: 5 }, colorway('clear', 'Clear', [0, 'rio-clear'])), sink: '1.5–2 ips' },
+    tip('F/S3', { split: [4, 28, 4], example: 6 }, colorway('brown-lemon-green', 'Brown/Lemon Green', [12, 'rio-mainstream-brown'], [0, 'rio-lemon-green'])),
+    mainstreamFullSink('3–4 ips', 'sink3', 'brown', 'Brown', 'rio-mainstream-brown'),
+    mainstreamFullSink('6–7 ips', 'sink7', 'black', 'Black', 'rio-black'),
+  ],
+});
+
+// Mainstream Saltwater. RIO's WF10F diagram (archived from rioproducts.com): front taper 5, body 9
+// plus 18, back taper 4 on 44 ft of running line. Blue end to end.
+const mainstreamSaltwater = rio({
+  id: 'rio-mainstream-saltwater',
+  name: 'RIO Mainstream Saltwater',
+  sizes: LINEUP['rio-mainstream-saltwater'].sizes,
+  densities: [float({ split: [5, 27, 4], example: 10 }, colorway('blue', 'Blue', [0, 'rio-mainstream-saltwater-blue']))],
+});
+
+// Mainstream Bass. RIO's WF9F diagram (archived from rioproducts.com): front taper 5, body 9 plus 17,
+// back taper 4 on 45 ft of running line. Yellow end to end.
+const mainstreamBass = rio({
+  id: 'rio-mainstream-bass',
+  name: 'RIO Mainstream Bass',
+  sizes: LINEUP['rio-mainstream-bass'].sizes,
+  densities: [float({ split: [5, 26, 4], example: 9 }, colorway('yellow', 'Yellow', [0, 'rio-mainstream-bass-yellow']))],
+});
+
+// Mainstream Trout DT. RIO's DT5F diagram (archived from rioproducts.com): a 7 ft taper at each end of
+// a 66 ft body over 80 ft. RIO's table gives no head, so every size overrides it with the line's
+// length and draws as a double taper. Lemon green end to end.
+const mainstreamTroutDt = rio({
+  id: 'rio-mainstream-trout-dt',
+  name: 'RIO Mainstream Trout DT',
+  sizes: LINEUP['rio-mainstream-trout-dt'].sizes.map((size) => overriding(size, { head: size.total })),
+  densities: [doubleTaper({ split: [7, 66, 7], example: 5 }, colorway('lemon-green', 'Lemon Green', [0, 'rio-lemon-green']))],
+});
+
+// Premier OutBound Custom, a level sinking head on an intermediate running line, made to be cut to
+// length. RIO's T-11 diagram (the 8–10 wt, whose 385 gr head is 35 ft of T-11): no front taper, a
+// 35 ft body and a 2 ft back taper on 63 ft of running line. RIO's table gives only the 35 ft body as
+// the head, so both sizes override it with the diagram's 37 ft. Sold for three rod weights and drawn
+// at the lowest (which the lineup leaves out). A black head; the back taper and running line are the
+// translucent color of the size, as the diagram and RIO's photos show it.
+const OUTBOUND_CUSTOM = { split: [0, 35, 2], example: 8 };
+const OUTBOUND_CUSTOM_LINEUP = LINEUP['rio-premier-outbound-custom'];
+const outboundCustom = makerProduct({
+  id: 'rio-premier-outbound-custom',
+  maker: 'RIO',
+  name: 'RIO Premier OutBound Custom',
+  sizes: [
+    [8, 10, 8, 'black-trans-blue', 'Black/Trans Blue', 'rio-outbound-custom-trans-blue'],
+    [10, 12, 9, 'black-trans-green', 'Black/Trans Green', 'rio-outbound-custom-trans-green'],
+  ].map(([weight, top, ips, id, name, running]) =>
+    sized(
+      { taper: OUTBOUND_CUSTOM, colorways: [colorway(id, name, [35, 'rio-black'], [0, running])] },
+      { id: `${weight}-${top}wt-i-s${ips}`, label: `${weight}–${top} wt I/S${ips}`, type: 'sinkhead-int' },
+      overriding(lineupSize(OUTBOUND_CUSTOM_LINEUP, `${weight}-${top}wt`), { weight, head: 37 }),
+    ),
+  ),
+});
+
+// Ambassador Series Coastal Crabber, a 5 ips body and 7 ips front taper on an intermediate running
+// line. RIO's WF10I/S5/S7 diagram: front taper 12, body 20, then 78 ft of running line; its 32 ft head
+// is those two, and it gives no length for the thickening at the front of the running line, so there
+// is no back taper and that stretch is drawn as running line. A black head on a sand running line,
+// as RIO's photo shows it (the diagram draws the body gray and the running line yellow).
+const coastalCrabber = rio({
+  id: 'rio-ambassador-series-coastal-crabber',
+  name: 'RIO Ambassador Series Coastal Crabber',
+  sizes: LINEUP['rio-ambassador-series-coastal-crabber'].sizes,
+  densities: [intTip('Int/5/7', { split: [12, 20, 0], example: 10 }, colorway('black-sand', 'Black/Sand', [32, 'rio-black'], [0, 'rio-coastal-crabber-sand']))],
+});
+
 export const PRODUCTS = [
   makerProduct({
     id: 'rio-premier-gold',
@@ -1218,4 +1318,10 @@ export const PRODUCTS = [
       },
     ],
   }),
+  mainstreamTroutSink,
+  mainstreamSaltwater,
+  mainstreamBass,
+  mainstreamTroutDt,
+  outboundCustom,
+  coastalCrabber,
 ];

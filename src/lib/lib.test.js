@@ -1366,6 +1366,15 @@ describe('RIO lines', () => {
     'rio-premier-midge-tip-long-hover': table([[5, 40, 90], [6, 40, 90], [7, 42, 100], [8, 44, 100]]),
     // A shooting head is all head, with no running line.
     'rio-outbound-short-shooting-head': table([7, 8, 9, 10].map((w) => [w, 30, 30])),
+    // The full sinkers; the sink tip has a 36 ft head and the intermediate the Mainstream Trout WF's
+    // heads. Checked by size below.
+    'rio-mainstream-trout-sink': table([[4, 38, 80], [5, 38, 80], [6, 40, 80], [7, 42, 80], [8, 42, 80]]),
+    'rio-mainstream-saltwater': table([[7, 35, 80], [8, 35, 80], [9, 35, 80], [10, 36, 80], [11, 37, 80], [12, 38, 80]]),
+    'rio-mainstream-bass': table([[6, 35, 80], [7, 35, 80], [8, 35, 80], [9, 35, 80], [10, 36, 80]]),
+    'rio-mainstream-trout-dt': table([3, 4, 5, 6].map((w) => [w, 80, 80])),
+    // RIO lists the 35 ft body (listed at the lowest of its three rod weights); its diagram puts the head at 37 ft.
+    'rio-premier-outbound-custom': table([8, 10].map((w) => [w, 37, 100])),
+    'rio-ambassador-series-coastal-crabber': table([8, 9, 10].map((w) => [w, 32, 110])),
   };
   const rio = LINE_PRESETS.filter((p) => p.maker === 'RIO');
   const head = ({ taper }) => taper.front + taper.body + taper.back;
@@ -1373,6 +1382,8 @@ describe('RIO lines', () => {
     if (/-wf\d+s7$/.test(p.id) && p.product === 'rio-premier-outbound-short') return [30, 110];
     if (p.product === 'rio-premier-striper' && /gr$/.test(p.id)) return [35, 100];
     if (p.product === 'rio-ambassador-series-phil-rowley-lake' && p.line.type === 'intermediate') return [30, 100];
+    if (p.product === 'rio-mainstream-trout-sink' && p.line.type === 'sinktip') return [36, 80];
+    if (p.product === 'rio-mainstream-trout-sink' && p.line.type === 'intermediate') return SPECS['rio-mainstream-trout-wf'][p.line.weight];
     return SPECS[p.product]?.[p.line.weight];
   };
 
@@ -1389,8 +1400,13 @@ describe('RIO lines', () => {
     const [h, total] = spec(p);
     expect(head(p.line)).toBe(h);
     expect(totalLength(p.line)).toBe(total);
-    // A double taper has no running line.
-    for (const k of ['front', 'body', 'back', 'running']) if (k !== 'running' || h < total) expect(p.line.taper[k]).toBeGreaterThan(0);
+    // A double taper has no running line. OutBound Custom's level head has no front taper, and
+    // Coastal Crabber's diagram counts no back taper in its head.
+    const none = { 'rio-premier-outbound-custom': 'front', 'rio-ambassador-series-coastal-crabber': 'back' }[p.product];
+    for (const k of ['front', 'body', 'back', 'running']) {
+      if (k === none) expect(p.line.taper[k]).toBe(0);
+      else if (k !== 'running' || h < total) expect(p.line.taper[k]).toBeGreaterThan(0);
+    }
   });
 
   it('ids are unique kebab-case', () => {
@@ -1469,6 +1485,14 @@ describe('RIO lines', () => {
       'rio-premier-cleansweep-wf7-int-6-4',
       'rio-ambassador-series-blitz-wf8-f-h-i',
       'rio-elite-sub-surface-hover-wf6h',
+      'rio-mainstream-trout-sink-wf5i',
+      'rio-mainstream-trout-sink-wf6-f-s3',
+      'rio-mainstream-trout-sink-wf6s3-4',
+      'rio-mainstream-saltwater-wf10f',
+      'rio-mainstream-bass-wf9f',
+      'rio-mainstream-trout-dt-dt5f',
+      'rio-premier-outbound-custom-8-10wt-i-s8',
+      'rio-ambassador-series-coastal-crabber-wf10-int-5-7',
     ]);
   });
 

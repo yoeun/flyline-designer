@@ -25,6 +25,8 @@ export const COLORS = [
   { id: 'rw-striper-blue', name: 'Blue', hex: '#1f4fae' },
   // Sampled from the Sea Wulff Shooting Head Sink 4 photo, a dark olive green.
   { id: 'rw-sea-wulff-shooting-head-dark-green', name: 'Dark Green', hex: '#32392b' },
+  // The two-tone Bermuda lines' sand is a pale straw yellow in Royal Wulff's photos.
+  { id: 'rw-bermuda-sand', name: 'Sand', hex: '#e0c97c' },
 ];
 
 export const PRODUCTS = [
@@ -203,7 +205,7 @@ export const PRODUCTS = [
   }),
   // The Midstream Bermuda Blue is the floating Bermuda line in one color, Tropic Blue: a 30 ft front
   // taper and 2 ft rear taper from Royal Wulff's table, then a handling line that counts as running
-  // line. Being one color, it has none of the two-tone Bermuda lines' doubt over the head's color.
+  // line.
   makerProduct({
     id: 'royal-wulff-midstream-bermuda-blue-floating',
     maker: 'Royal Wulff',
@@ -273,8 +275,7 @@ export const PRODUCTS = [
     })),
   }),
   // The warm-water Bermuda line as a clear 1.75 ips intermediate: a 30 ft front taper and 2 ft rear
-  // taper from Royal Wulff's table, then a handling line that counts as running line. The two-tone
-  // floating Bermuda lines aren't here: sources disagree on whether their head is the sand or the blue.
+  // taper from Royal Wulff's table, then a handling line that counts as running line.
   makerProduct({
     id: 'royal-wulff-bermuda-triangle-taper-intermediate',
     maker: 'Royal Wulff',
@@ -391,6 +392,46 @@ export const PRODUCTS = [
       taper: [size.head, 0, 0, size.total - size.head],
       lineup: size,
       colorways: [{ id: 'dark-green', name: 'Dark Green', zones: zones([0, 'rw-sea-wulff-shooting-head-dark-green']) }],
+    })),
+  }),
+  // The two-tone floating Bermuda line: a 30 ft front taper and 2 ft rear taper from Royal Wulff's
+  // table, then a handling line that counts as running line. Retailers disagree on which end is
+  // Tropic Blue. Royal Wulff's photo shows the blue coiled innermost, where its Lost Tip photo shows
+  // that line's clear tip (and its Signature Plus Textured photo the buckskin tip), so the head is
+  // Tropic Blue and the rest sand. Royal Wulff's table runs to 13 wt; the menu stops at 12.
+  makerProduct({
+    id: 'royal-wulff-bermuda-triangle-taper-floating',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Bermuda Triangle Taper Floating',
+    sizes: LINEUP['royal-wulff-bermuda-triangle-taper-floating'].sizes
+      .filter((size) => size.weight <= 12)
+      .map((size) => ({
+        id: `wf${size.weight}f`,
+        label: size.label,
+        type: 'floating',
+        weight: size.weight,
+        taper: publishedTaper(size),
+        lineup: size,
+        colorways: [{ id: 'tropic-blue-sand', name: 'Tropic Blue/Sand', zones: zones([size.head, 'rw-tropic-blue'], [0, 'rw-bermuda-sand']) }],
+      })),
+  }),
+  // The Bermuda line with a short head: front taper (18.5–25.5 ft) and a 2 ft rear taper from Royal
+  // Wulff's table, then a handling line that counts as running line. The table's head column (20–27 ft)
+  // is half a foot shorter than those two tapers; the tapers, which add up to the 100 ft line with the
+  // handling and running line, are drawn, so every size overrides the head. Its photo shows the same
+  // coil as the Bermuda Floating's, blue innermost, so the head is Tropic Blue and the rest sand.
+  makerProduct({
+    id: 'royal-wulff-bermuda-triangle-taper-shorts-floating',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Bermuda Triangle Taper Shorts Floating',
+    sizes: LINEUP['royal-wulff-bermuda-triangle-taper-shorts-floating'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: overriding(size, { head: size.taper.front + size.taper.back }),
+      colorways: [{ id: 'tropic-blue-sand', name: 'Tropic Blue/Sand', zones: zones([size.taper.front + size.taper.back, 'rw-tropic-blue'], [0, 'rw-bermuda-sand']) }],
     })),
   }),
 ];
