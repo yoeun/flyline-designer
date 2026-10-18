@@ -1105,6 +1105,10 @@ describe('RIO lines', () => {
     'rio-premier-gold-max': table([[4, 36, 90], [5, 37, 90], [6, 38, 90], [7, 39, 90], [8, 40, 90], [9, 41, 90]]),
     'rio-premier-technical-trout-wf': table([[3, 45, 80], [4, 49, 90], [5, 52, 90], [6, 54, 90]]),
     'rio-premier-aqualux': table([[4, 30, 90], [5, 30, 90], [6, 30, 100], [7, 30, 100], [8, 30, 100]]),
+    'rio-premier-bank-robber': table([[5, 45, 90], [6, 45, 90]]),
+    'rio-avid-trout-gold': table([[3, 45, 70], [4, 46, 80], [5, 47, 80], [6, 48, 80], [7, 49, 80]]),
+    // RIO's diagram draws the WF5F head at 43 ft; its table says 42.
+    'rio-premier-lightline': table([[2, 40, 70], [3, 41, 70], [4, 41, 80], [5, 42, 80]]),
   };
   const rio = LINE_PRESETS.filter((p) => p.maker === 'RIO');
   const head = ({ taper }) => taper.front + taper.body + taper.back;
@@ -1172,6 +1176,8 @@ describe('RIO lines', () => {
       'rio-premier-gold-max-wf5f',
       'rio-premier-technical-trout-wf-wf5f',
       'rio-premier-aqualux-wf6i',
+      'rio-premier-bank-robber-wf5f',
+      'rio-avid-trout-gold-wf5f',
     ]);
   });
 
@@ -1182,6 +1188,8 @@ describe('RIO lines', () => {
     ['rio-elite-bonefish-wf8f', [6.5, 31, 12, 50.5]],
     ['rio-premier-fathom-wf7s6', [6, 21, 8, 70]],
     ['rio-premier-aqualux-wf6i', [6, 22, 2, 70]],
+    ['rio-premier-bank-robber-wf5f', [15, 20, 10, 45]],
+    ['rio-avid-trout-gold-wf5f', [5, 24, 18, 33]],
   ])('%s has the taper on RIO\'s diagram', (id, [front, body, back, running]) => {
     expect(findById(LINE_PRESETS, id).line.taper).toEqual({ front, body, back, running });
   });

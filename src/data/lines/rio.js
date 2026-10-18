@@ -46,6 +46,10 @@ export const COLORS = [
   { id: 'rio-blue', name: 'Blue', hex: '#4fa9dc' },
   { id: 'rio-deep-blue', name: 'Blue', hex: '#1f80bd' },
   { id: 'rio-white', name: 'White', hex: '#eef0f2' },
+  { id: 'rio-sand-tan', name: 'Tan', hex: '#cbc1a6' },
+  { id: 'rio-lt-green', name: 'Lt Green', hex: '#cde58f' },
+  { id: 'rio-amber-gold', name: 'Gold', hex: '#dea222' },
+  { id: 'rio-light-moss', name: 'Moss', hex: '#bcc08a' },
 ];
 
 // Old preset ids that are now sizes with another id (old → new).
@@ -476,6 +480,36 @@ const aquaLux = rio({
   densities: [{ ...intermediate({ split: [6, 22, 2], example: 6 }, colorway('clear-light-teal', 'Clear/Light Teal', [30, 'rio-clear'], [0, 'rio-light-teal'])), sink: '1.5–2 ips' }],
 });
 
+// Premier Bank Robber. RIO's WF5F diagram: front taper 15, front body 6 plus 4, back body 10, back
+// taper 10 on 45 ft of running line. Tan to 25 ft (the end of the front body), light green to the
+// end of the head, then a tan running line.
+const bankRobber = rio({
+  id: 'rio-premier-bank-robber',
+  name: 'RIO Premier Bank Robber',
+  sizes: LINEUP['rio-premier-bank-robber'].sizes,
+  densities: [float({ split: [15, 20, 10], example: 5 }, colorway('tan-lt-green-tan', 'Tan/Lt Green/Tan', [25, 'rio-sand-tan'], [20, 'rio-lt-green'], [0, 'rio-sand-tan']))],
+});
+
+// Avid Trout Gold. RIO's WF5F diagram: front taper 5, body 24, then 6 ft tapering into a 12 ft body
+// taper (together the back taper, 18) on 33 ft of running line. Gold end to end.
+const avidTroutGold = rio({
+  id: 'rio-avid-trout-gold',
+  name: 'RIO Avid Trout Gold',
+  sizes: LINEUP['rio-avid-trout-gold'].sizes,
+  densities: [float({ split: [5, 24, 18], example: 5 }, colorway('gold', 'Gold', [0, 'rio-amber-gold']))],
+});
+
+// Premier LightLine. RIO's WF5F diagram: front taper 5 plus an 8 ft body taper (the front, 13),
+// body 23 plus 2, back taper 5 on 37 ft of running line. That head is 43 ft; RIO's table says 42 for
+// WF5F, so every size, the WF5F too, is the diagram scaled to its table head and marked estimated.
+// Moss to 36 ft, then ivory from the last 2 ft of the body to the end of the line.
+const lightLine = rio({
+  id: 'rio-premier-lightline',
+  name: 'RIO Premier LightLine',
+  sizes: LINEUP['rio-premier-lightline'].sizes,
+  densities: [float({ split: [13, 25, 5] }, colorway('moss-ivory', 'Moss/Ivory', [36, 'rio-light-moss'], [0, 'rio-ivory']))],
+});
+
 export const PRODUCTS = [
   makerProduct({
     id: 'rio-premier-gold',
@@ -506,6 +540,9 @@ export const PRODUCTS = [
   premierGoldMax,
   premierTechnicalTrout,
   aquaLux,
+  bankRobber,
+  avidTroutGold,
+  lightLine,
   // Euro nymph lines are level (about 0.022″), much thinner than a WF head of any weight, so they're
   // drawn as running line behind a token taper. RIO sells one size for 2–5 wt rods, drawn as a 3 wt;
   // it comes with a 14 ft pink mono leader. RIO's table has no lengths for it, so all three numbers
