@@ -141,6 +141,26 @@ describe('generic line presets', () => {
     expect(tip.running).toBeCloseTo(floating.running, 10);
   });
 
+  it('sink head on intermediate has a sinking head on an intermediate running line', () => {
+    const line = generic('generic-wf8-sinktip');
+    const head = lineDiameters({ ...line, type: 'sinkhead-int' });
+    const sinking = lineDiameters({ ...line, type: 'sink5' });
+    const intermediate = lineDiameters({ ...line, type: 'intermediate' });
+    expect(head.tip).toBeCloseTo(sinking.tip, 10);
+    expect(head.body).toBeCloseTo(sinking.body, 10);
+    expect(head.running).toBeCloseTo(intermediate.running, 10);
+  });
+
+  it('hover draws between floating and intermediate, head and running line alike', () => {
+    const line = generic('generic-wf5f');
+    const [floating, hover, intermediate] = ['floating', 'hover', 'intermediate'].map((type) => lineDiameters({ ...line, type }));
+    for (const part of ['tip', 'body', 'running']) {
+      expect(hover[part]).toBeCloseTo(floating[part] * 0.95, 10);
+      expect(hover[part]).toBeLessThan(floating[part]);
+      expect(hover[part]).toBeGreaterThan(intermediate[part]);
+    }
+  });
+
   it.each([
     ['generic-wf5f', 'g56', 90],
     ['generic-wf7i', 'g78', 90],

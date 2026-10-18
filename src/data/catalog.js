@@ -56,12 +56,16 @@ export const BACKING_COLORS = ['red', 'orange', 'yellow', 'chartreuse', 'green',
 
 export const LINE_TYPES = [
   { id: 'floating', name: 'Floating', family: 'cool', diameterFactor: 1, suggested: null },
+  // Sinks very slowly (about 0.5 ips), just under the film; drawn between floating and intermediate.
+  { id: 'hover', name: 'Hover', family: 'neutral', diameterFactor: 0.95, suggested: null },
   { id: 'intermediate', name: 'Intermediate', family: 'neutral', diameterFactor: 0.9, suggested: null },
   { id: 'sink3', name: 'Sinking · Type 3', family: 'hot', diameterFactor: 0.82, suggested: 'yellow' },
   { id: 'sink5', name: 'Sinking · Type 5', family: 'hot', diameterFactor: 0.82, suggested: 'orange' },
   { id: 'sink7', name: 'Sinking · Type 7', family: 'hot', diameterFactor: 0.82, suggested: 'red' },
   // Sinking head on a floating running line.
   { id: 'sinktip', name: 'Sink tip', family: 'hot', diameterFactor: 0.82, runningDiameterFactor: 1, suggested: null },
+  // Sinking head on an intermediate running line.
+  { id: 'sinkhead-int', name: 'Sink head · int. running line', family: 'hot', diameterFactor: 0.82, runningDiameterFactor: 0.9, suggested: null },
 ];
 
 // Reel models, one JSON file per maker in src/data/reels (see its README). Adding a reel is a data change.
