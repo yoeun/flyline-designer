@@ -51,7 +51,7 @@ import {
   splitZone,
   zoneName,
 } from './lineEdit.js';
-import { STYLES, changedSections, displayName, isDirty, loadEntries, normalizeEntry } from './rack.js';
+import { STYLES, changedSections, copyOf, displayName, isDirty, loadEntries, normalizeEntry } from './rack.js';
 import { filterRack, landingPage, matchesSearch, rackWeights, resolveView } from './rackView.js';
 
 const setup = (patch = {}) => ({ ...structuredClone(DEFAULT_SETUP), ...patch });
@@ -706,6 +706,26 @@ describe('rack view', () => {
     expect(landingPage({ page: null, hasSetup: false }, 0)).toBe('designer');
     expect(landingPage({ page: 'designer', hasSetup: true }, 3)).toBe('designer');
     expect(landingPage({ page: 'rack', hasSetup: false }, 0)).toBe('rack');
+  });
+});
+
+describe('copyOf', () => {
+  const rack = loadEntries(DEMO_RACK);
+  it('drops the id and keeps the rest', () => {
+    const entry = rack.find((s) => s.id === 'demo-2');
+    const copy = copyOf(entry);
+    expect(copy).not.toHaveProperty('id');
+    expect({ ...copy, title: entry.title }).toEqual((({ id, ...rest }) => rest)(entry));
+  });
+  it('titles the copy after the setup, preset name when untitled', () => {
+    expect(copyOf(rack.find((s) => s.id === 'demo-10')).title).toBe('Custom (copy)');
+    const untitled = rack.find((s) => s.id === 'demo-4');
+    expect(copyOf(untitled).title).toBe(`${displayName(untitled)} (copy)`);
+  });
+  it('is a deep copy', () => {
+    const entry = rack.find((s) => s.id === 'demo-4');
+    copyOf(entry).line.zones[0].color = 'nope';
+    expect(entry.line.zones[0].color).not.toBe('nope');
   });
 });
 
