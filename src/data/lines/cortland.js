@@ -31,6 +31,11 @@ export const COLORS = [
   // The charts draw white in the same pale grey as clear.
   { id: 'cortland-white', name: 'White', hex: '#e6e6e6' },
   { id: 'cortland-aqua-green', name: 'Aqua Green', hex: '#d0e27f' },
+  { id: 'cortland-yellow', name: 'Yellow', hex: '#eedf52' },
+  { id: 'cortland-brown', name: 'Brown', hex: '#75613c' },
+  { id: 'cortland-pike-olive', name: 'Pike Olive', hex: '#a29d59' },
+  { id: 'cortland-dark-green', name: 'Dark Green', hex: '#164722' },
+  { id: 'cortland-seaweed', name: 'Seaweed', hex: '#d0e298' },
 ];
 
 // Cortland draws one taper chart per line with the head length on it but no size. Every size of a
@@ -314,6 +319,77 @@ export const PRODUCTS = [
     sizes: sizes(LINEUP['cortland-cold-salt-redfish'], {
       type: 'floating',
       colorways: [{ id: 'aqua-green-sky-blue', name: 'Aqua Green/Sky Blue', zones: zones([30, 'cortland-aqua-green'], [0, 'cortland-sky-blue']) }],
+    }),
+  }),
+  // Cortland's original PVC line, high floating. The chart's head adds up to 41 ft (10, 25 and 6 ft)
+  // where the spec table says 42 ft; the chart is drawn as is.
+  makerProduct({
+    id: 'cortland-333-trout-all-purpose',
+    maker: 'Cortland',
+    name: 'Cortland 333 Trout All Purpose',
+    sizes: sizes(LINEUP['cortland-333-trout-all-purpose'], {
+      lineup: (size) => overriding(size, { head: 41 }),
+      type: 'floating',
+      colorways: [{ id: 'yellow', name: 'Yellow', zones: zones([0, 'cortland-yellow']) }],
+    }),
+  }),
+  // Type 3 (3–4 ips) on the 333 Trout All Purpose's 41 ft head.
+  makerProduct({
+    id: 'cortland-333-full-sinking-type-3',
+    maker: 'Cortland',
+    name: 'Cortland 333 Full Sinking Type 3',
+    sizes: sizes(LINEUP['cortland-333-full-sinking-type-3'], {
+      id: (w) => `wf${w}s3`,
+      type: 'sink3',
+      colorways: [{ id: 'brown', name: 'Brown', zones: zones([0, 'cortland-brown']) }],
+    }),
+  }),
+  // Sold by grain weight, with two sizes at 12 wt, so its sizes go by grains. On a 50 lb core, with a
+  // short 30 ft head for big flies and wind; the chart's 15 ft step down to the running line is drawn
+  // here as running line. Its seafoam is drawn in the near-identical Seafoam Green of the Tropic Plus
+  // Redfish.
+  makerProduct({
+    id: 'cortland-50-plus-cannon',
+    maker: 'Cortland',
+    name: 'Cortland 50+ Cannon',
+    sizes: sizes(LINEUP['cortland-50-plus-cannon'], {
+      type: 'floating',
+      colorways: [{ id: 'seafoam-peach', name: 'Seafoam/Peach', zones: zones([30, 'cortland-seafoam-green'], [0, 'cortland-peach']) }],
+    }).map((size) => ({ ...size, id: `${size.lineup.label.match(/(\d+) gr$/)[1]}gr` })),
+  }),
+  // True to size. The Ghost Tip 15's head with a 5 ft clear intermediate tip on a mint green floating
+  // head and running line, so it's drawn as a sink tip.
+  makerProduct({
+    id: 'cortland-specialty-ghost-tip-5',
+    maker: 'Cortland',
+    name: 'Cortland Ghost Tip 5',
+    sizes: sizes(LINEUP['cortland-specialty-ghost-tip-5'], {
+      id: (w) => `wf${w}i`,
+      type: 'sinktip',
+      colorways: [{ id: 'clear-mint-green', name: 'Clear/Mint Green', zones: zones([5, 'cortland-clear'], [0, 'cortland-mint-green']) }],
+    }),
+  }),
+  // Full intermediate with a short 26 ft head for big flies; the chart's 13 ft step down to the
+  // running line is drawn here as running line. The page calls it olive and green; the chart names
+  // the dark green.
+  makerProduct({
+    id: 'cortland-specialty-pike-musky-intermediate',
+    maker: 'Cortland',
+    name: 'Cortland Pike Musky Intermediate',
+    sizes: sizes(LINEUP['cortland-specialty-pike-musky-intermediate'], {
+      id: (w) => `wf${w}i`,
+      type: 'intermediate',
+      colorways: [{ id: 'olive-dark-green', name: 'Olive/Dark Green', zones: zones([26, 'cortland-pike-olive'], [0, 'cortland-dark-green']) }],
+    }),
+  }),
+  // Short 7 ft body and a long 31 ft back taper in a 41 ft head, for quick changes of direction.
+  makerProduct({
+    id: 'cortland-tropic-plus-backcountry',
+    maker: 'Cortland',
+    name: 'Cortland Tropic Plus Backcountry',
+    sizes: sizes(LINEUP['cortland-tropic-plus-backcountry'], {
+      type: 'floating',
+      colorways: [{ id: 'seaweed-sand', name: 'Seaweed/Sand', zones: zones([41, 'cortland-seaweed'], [0, 'cortland-sand']) }],
     }),
   }),
 ];
