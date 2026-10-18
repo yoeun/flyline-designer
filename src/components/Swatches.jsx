@@ -4,9 +4,9 @@ import { cn } from '@/lib/utils';
 // Color dots that pick one color: shadcn's radio group, restyled. marked adds a small accent
 // dot to one color (the suggested one). On touch screens they grow to 44px, or 32px for the
 // small dense rows on the Reels page.
-export default function Swatches({ colors, value, onChange, label, size = 32, marked }) {
+export default function Swatches({ colors, value, onChange, label, size = 32, marked, className }) {
   return (
-    <RadioGroup aria-label={label} value={value} onValueChange={onChange} className="flex w-auto flex-wrap gap-2.5">
+    <RadioGroup aria-label={label} value={value} onValueChange={onChange} className={cn('flex w-auto flex-wrap gap-2.5', className)}>
       {colors.map((c) => (
         <RadioGroupItem
           key={c.id}

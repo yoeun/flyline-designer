@@ -46,7 +46,7 @@ function SizeBlock({ size, color, view, onOpen }) {
           <button
             key={side}
             type="button"
-            onClick={() => onOpen({ size, setup, side, showLine })}
+            onClick={() => onOpen({ size, color: setup.reel.color, lineColors: view.colors, side, showLine })}
             aria-label={`View ${size.name}, ${side} side, large`}
             className="flex w-full cursor-pointer items-center justify-center rounded-md bg-stage focus-visible:outline-2 focus-visible:outline-ring sm:w-(--box)"
             style={{ '--box': `${BOX}px`, aspectRatio: `${BOX} / ${BOX_H}` }}
