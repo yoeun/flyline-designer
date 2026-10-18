@@ -5,6 +5,7 @@ import Checks from './components/Checks.jsx';
 import DetailsDialog from './components/DetailsDialog.jsx';
 import DiscardDialog from './components/DiscardDialog.jsx';
 import FlippingReelPreview from './components/FlippingReelPreview.jsx';
+import FloatingPreview from './components/FloatingPreview.jsx';
 import { BackingOptions, FlyLineOptions, ReelOptions } from './components/Options.jsx';
 import HeaderMenu from './components/HeaderMenu.jsx';
 import NavMenu from './components/NavMenu.jsx';
@@ -98,6 +99,8 @@ export default function App() {
   // The unsaved-changes dialog, and the action to run if the changes are discarded.
   const [discard, setDiscard] = useState({ open: false, run: null, name: '' });
   const svgRef = useRef(null);
+  // The reel drawing, watched by the floating copy that shows once it scrolls away.
+  const stageRef = useRef(null);
   const headerRef = useFixedHeader();
   // The page the address bar shows; a change of page pushes a history entry, design edits replace it.
   const urlPage = useRef(initial.page);
@@ -497,7 +500,7 @@ export default function App() {
                   <PreviewModeToggle value={mode} onChange={setMode} />
                 </div>
               </div>
-              <div className="w-[min(100%,460px)] wide:flex wide:min-h-0 wide:w-full wide:flex-1 wide:justify-center">
+              <div ref={stageRef} className="w-[min(100%,460px)] wide:flex wide:min-h-0 wide:w-full wide:flex-1 wide:justify-center">
                 <FlippingReelPreview
                   setup={setup}
                   mode={mode}
@@ -512,6 +515,7 @@ export default function App() {
               </div>
               <Checks setup={setup} />
             </div>
+            <FloatingPreview targetRef={stageRef} setup={setup} mode={mode} side={side} background={STAGE[theme]} />
             <Rack
               setups={rack}
               open={rackOpen}
