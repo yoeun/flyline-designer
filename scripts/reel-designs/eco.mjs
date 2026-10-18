@@ -1,13 +1,15 @@
 // Maxcatch ECO.
 // Drawn from Maxcatch's product photos: a three-quarter shot of each side of the black reel with orange parts, a
 // near-frontal shot of the silver one and the finish lineup. It is the same die-cast frame and spool as Sunshine's
-// SF-001 (sf-001.mjs, whose shapes it reuses): a thin rim with three swept, drilled spokes and a drilled spool
-// flange over a recessed web. Here the reel foot, the drag knob and the spool's hub cap are the accent (orange on
-// the black reel). The knob is scalloped like SF-001's but its face is printed with a 0–9 scale; the hub cap carries
-// Maxcatch's M. The handle is black at 3 o'clock and the counterweight silver at 9, as in the spool-side photo.
-// The scale's ticks and the M are approximate.
+// SF-001 (sf-001.mjs, whose shapes it reuses). Drag side: the frame is a thin rim, the foot and three swept, drilled
+// spokes round the drag knob; through it shows the spool's cage, which turns: its drilled back flange, with the
+// spool face's ring of round holes. Spool side: the drilled spool flange over a recessed web. Here the reel foot,
+// the drag knob and the spool's hub cap are the accent (orange on the black reel). The knob is scalloped like
+// SF-001's but its face is printed with a 0–9 scale; the hub cap carries Maxcatch's M. The handle is black at 3
+// o'clock and the counterweight silver at 9, as in the spool-side photo. The scale's ticks and the M are
+// approximate.
 import { ACCENT, P, f, knob, knurl, rad, screw, svg } from './lib.mjs';
-import { FOOT, FRAME, FRAME_BACK, FRAME_DETAILS, SPOOL, SPOOL_BACK, SPOOL_DETAILS } from './sf-001.mjs';
+import { CAGE, FOOT, FRAME, FRAME_DETAILS, SPOOL, SPOOL_BACK, SPOOL_DETAILS } from './sf-001.mjs';
 
 // Same spool as the SF-001: the wound line starts just inside the flange's notched edge.
 export const arbor = 128;
@@ -30,7 +32,7 @@ const scale = Array.from({ length: 20 }, (_, k) => {
 
 export const drag = svg({
   under: ACCENT_FOOT,
-  back: [FRAME_BACK],
+  cage: [CAGE],
   body: [FRAME],
   details:
     FRAME_DETAILS +

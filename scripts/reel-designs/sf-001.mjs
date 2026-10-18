@@ -2,11 +2,13 @@
 // Drawn from Sunshine's own product photos: a three-quarter shot of each side, a near-frontal shot of the three
 // sizes side by side and an exploded view. The die-cast frame is a thin rim with three broad spokes swept slightly
 // clockwise (a Y), each drilled with a row of round holes, around a big black knurled drag knob with a silver center
-// screw; the deep windows between them show the spool's drilled back flange. The spool face is a flange drilled
-// with a ring of round holes, whose notched inner edge (the ends of the drum's bars) opens onto a recessed web of
-// three curved spokes, with a black hub cap, a silver counterweight at 3 o'clock and the handle at 9.
-// The photos are all at an angle, so spoke angles and widths, hole counts and the web inside the spool are
-// approximate. Maxcatch's ECO is the same casting (eco.mjs), so the shapes it shares are exported.
+// screw. That is the whole frame: the deep windows between the spokes show the spool's cage, which turns: its
+// drilled back flange, the same ring of 20 round holes as the spool face (counterweight and handle mounts left out:
+// the wound line hides them). The spool face is a flange drilled with a ring of round holes, whose notched inner
+// edge (the ends of the drum's bars) opens onto a recessed web of three curved spokes, with a black hub cap, a
+// silver counterweight at 3 o'clock and the handle at 9. The photos are all at an angle, so spoke angles and widths,
+// hole counts and the web inside the spool are approximate. Maxcatch's ECO is the same casting (eco.mjs), so the
+// shapes it shares are exported.
 import { P, arcPts, circle, f, foot, knob, knurl, rad, recessed, ring, roundPoly, screw, svg } from './lib.mjs';
 
 // The wound line starts on the drum, just inside the spool face's notched edge: 7/8 is 2.40 in inside 3.74 in.
@@ -69,8 +71,8 @@ const holeRing = (n, r, hr, off, skip = () => false) =>
 const FLANGE_HOLES = (skip) => holeRing(20, 163, 14, -90 + 9, skip);
 
 export const FOOT = foot(136, -244, 14, 40);
-// The spool's back flange behind the windows.
-export const FRAME_BACK = ring(196, 128) + FLANGE_HOLES();
+// The spool's back flange seen through the windows: the cage, with all 20 holes.
+export const CAGE = ring(196, 128) + FLANGE_HOLES();
 export const FRAME = circle(200) + [0, 1, 2].map(windowPath).join('') + SPOKES.map(spokeHoles).join('');
 // The rim's inner edge, then the boss under the knob.
 export const FRAME_DETAILS =
@@ -78,7 +80,7 @@ export const FRAME_DETAILS =
   `<circle r="82" fill="#000" fill-opacity=".22"/>`;
 
 export const drag = svg({
-  back: [FRAME_BACK],
+  cage: [CAGE],
   body: [FRAME, FOOT],
   details:
     FRAME_DETAILS +

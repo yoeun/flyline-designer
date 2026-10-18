@@ -7,7 +7,9 @@
 // behind them. The foot is black.
 // No drag-side photo exists (the maker's ReelBack and ReelDragKnob shots aren't archived): per the user, the drag
 // side looks like the spool side, so it's the same face with all fourteen ports open, an unbroken ring of hub
-// slots and the black center cap as the drag knob. Port and slot sizes are read off small photos, so approximate.
+// slots and the black center cap as the drag knob. That whole ported face is drawn as the frame, with no spool cage
+// behind it: nothing shows which of it is frame and which spool, and it has no spokes to keep if the port ring were
+// the spool. Port and slot sizes are read off small photos, so approximate.
 import { P, circle, f, foot, rad, slots, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the ports, where the backing shows: about 0.53 of the rim.

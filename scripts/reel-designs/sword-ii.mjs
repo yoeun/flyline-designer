@@ -2,9 +2,10 @@
 // Spool side drawn from Piscifun's near-straight-on spool photos: a wide face drilled with a ring of
 // twelve big round holes, small holes between them and near the rim, a solid hub disc with three swept
 // windows, the black knurled spool cap, a silver counterweight up top-left and the ribbed handle low-left.
-// No straight-on drag-side photo exists: the frame (thin rim, five swept spokes from a central boss,
-// body-colored knurled drag knob with a silver screw) is inferred from the angle and exploded shots,
-// with the drilled back flange of the spool showing through. Spoke count and sweep are approximate.
+// No straight-on drag-side photo exists: the frame (thin rim, foot, five swept spokes from a central boss,
+// body-colored knurled drag knob with a silver screw) is inferred from the angle and exploded shots.
+// Through it shows the spool's cage, which turns: the drilled flange, with the spool face's holes (the
+// counterweight and handle are left out: the wound line hides them). Spoke count and sweep are approximate.
 import { P, circle, f, foot, knob, knurl, rad, recessed, ring, roundPoly, screw, spoke, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the small holes.
@@ -38,7 +39,7 @@ const drilled = (outer, inner) =>
 const FOOT = foot(132, -244, 14, 30);
 
 export const drag = svg({
-  back: [drilled(196, 60)],
+  cage: [drilled(196, 108)],
   body: [
     ring(200, 186),
     FOOT,
