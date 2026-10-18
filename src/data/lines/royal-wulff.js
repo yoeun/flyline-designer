@@ -398,13 +398,12 @@ export const PRODUCTS = [
   // table, then a handling line that counts as running line. Retailers disagree on which end is
   // Tropic Blue. Royal Wulff's photo shows the blue coiled innermost, where its Lost Tip photo shows
   // that line's clear tip (and its Signature Plus Textured photo the buckskin tip), so the head is
-  // Tropic Blue and the rest sand. Royal Wulff's table runs to 13 wt; the menu stops at 12.
+  // Tropic Blue and the rest sand.
   makerProduct({
     id: 'royal-wulff-bermuda-triangle-taper-floating',
     maker: 'Royal Wulff',
     name: 'Royal Wulff Bermuda Triangle Taper Floating',
     sizes: LINEUP['royal-wulff-bermuda-triangle-taper-floating'].sizes
-      .filter((size) => size.weight <= 12)
       .map((size) => ({
         id: `wf${size.weight}f`,
         label: size.label,
@@ -432,6 +431,24 @@ export const PRODUCTS = [
       taper: publishedTaper(size),
       lineup: overriding(size, { head: size.taper.front + size.taper.back }),
       colorways: [{ id: 'tropic-blue-sand', name: 'Tropic Blue/Sand', zones: zones([size.taper.front + size.taper.back, 'rw-tropic-blue'], [0, 'rw-bermuda-sand']) }],
+    })),
+  }),
+  // The Bermuda line for the biggest fish, on a 55 lb braided mono core. Royal Wulff's table gives
+  // only a 30–33 ft head, with no front and rear taper split, so the whole head is front taper, as
+  // on the Sea Wulff lines; the handling line counts as running line. Its photo shows the same coil
+  // as the Bermuda Floating's, blue innermost, so the head is Tropic Blue and the rest sand.
+  makerProduct({
+    id: 'royal-wulff-bermuda-triangle-taper-giants-floating',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Bermuda Triangle Taper GIANTS Floating',
+    sizes: LINEUP['royal-wulff-bermuda-triangle-taper-giants-floating'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [{ id: 'tropic-blue-sand', name: 'Tropic Blue/Sand', zones: zones([size.head, 'rw-tropic-blue'], [0, 'rw-bermuda-sand']) }],
     })),
   }),
 ];

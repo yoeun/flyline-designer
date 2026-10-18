@@ -2155,15 +2155,13 @@ export const PRODUCTS = [
   }),
   // A 1.25 ips intermediate head on a floating running line, drawn as a sink tip. SA's diagram measures
   // front taper 5.5, two bellies 23.5, rear taper 4; its head measures 33 ft against the 32.5 ft SA
-  // lists for every size, so the split is scaled to 32.5. The WF14 is over the menu's heaviest line
-  // and left out. A surf head on a sand running line; SA's swatches are the Tarpon's Sand and the Surf
-  // already here.
+  // lists for every size, so the split is scaled to 32.5. A surf head on a sand running line; SA's
+  // swatches are the Tarpon's Sand and the Surf already here.
   makerProduct({
     id: 'sa-sonar-titan-gt',
     maker: 'Scientific Anglers',
     name: 'SA Sonar Titan GT',
     sizes: LINEUP['sa-sonar-titan-gt'].sizes
-      .filter((size) => size.weight <= 12)
       .map((size) => ({
         id: `wf${size.weight}-f-i`,
         label: size.label,
