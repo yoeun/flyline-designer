@@ -1,5 +1,5 @@
 import * as LINEUP from 'lineups:royal-wulff';
-import { makerProduct, publishedTaper, zones } from './product.js';
+import { makerProduct, overriding, publishedTaper, zones } from './product.js';
 
 // Matched by eye to product photos.
 export const COLORS = [
@@ -12,6 +12,8 @@ export const COLORS = [
   { id: 'rw-brown', name: 'Brown', hex: '#d4a12a' },
   // The clear monocore intermediates have a faint blue-green tint in the photos.
   { id: 'rw-clear', name: 'Clear', hex: '#c2d6d4' },
+  { id: 'rw-aqua', name: 'Aqua', hex: '#2fa88a' },
+  { id: 'rw-mist-green', name: 'Mist Green', hex: '#a6e6cb' },
 ];
 
 export const PRODUCTS = [
@@ -35,6 +37,22 @@ export const PRODUCTS = [
         { id: 'olive', name: 'Olive', zones: zones([0, 'rw-olive']) },
         { id: 'orange', name: 'Orange', zones: zones([0, 'rw-orange']) },
       ],
+    })),
+  }),
+  // The Triangle Taper Classic's taper as a clear monocore 1.5 ips intermediate: the whole head is
+  // one front taper, with the taper and running line lengths from Royal Wulff's table.
+  makerProduct({
+    id: 'royal-wulff-triangle-taper-classic-intermediate-mono-clear',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Triangle Taper Classic Intermediate Mono Clear',
+    sizes: LINEUP['royal-wulff-triangle-taper-classic-intermediate-mono-clear'].sizes.map((size) => ({
+      id: `wf${size.weight}i`,
+      label: size.label,
+      type: 'intermediate',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [{ id: 'clear', name: 'Clear', zones: zones([0, 'rw-clear']) }],
     })),
   }),
   // Joan Wulff's Signature: the Triangle Taper's long front taper with a short rear taper behind
@@ -105,6 +123,24 @@ export const PRODUCTS = [
       colorways: [{ id: 'ivory', name: 'Ivory', zones: zones([0, 'rw-ivory']) }],
     })),
   }),
+  // The Bamboo Special as a double taper: front taper, belly and rear taper from Royal Wulff's table
+  // over the whole 90 ft. A double taper has no head, so the lineup leaves it empty and the menu
+  // draws all of it as head, with no running line. Royal Wulff names no color for it; its photos
+  // show one golden brown, the Bamboo Special's Brown.
+  makerProduct({
+    id: 'royal-wulff-bamboo-special-double-taper',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Bamboo Special Double Taper',
+    sizes: LINEUP['royal-wulff-bamboo-special-double-taper'].sizes.map((size) => ({
+      id: `dt${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: overriding(size, { head: size.total }),
+      colorways: [{ id: 'brown', name: 'Brown', zones: zones([0, 'rw-brown']) }],
+    })),
+  }),
   // Midstream is Royal Wulff's budget series. Its TT Floating has the Triangle Taper Classic's taper
   // and lengths (Royal Wulff's table matches the Classic's size for size) with a front loop only, in
   // ivory, so each size draws like the Classic Float in Ivory.
@@ -120,6 +156,23 @@ export const PRODUCTS = [
       taper: publishedTaper(size),
       lineup: size,
       colorways: [{ id: 'ivory', name: 'Ivory', zones: zones([0, 'rw-ivory']) }],
+    })),
+  }),
+  // The Triangle Taper Short: a 27 ft front taper and 2 ft rear taper (23 ft and 4 ft on the 2 and 3
+  // weights), then a handling line and the running line. Taper lengths from Royal Wulff's table; the
+  // handling line counts as running line. All willow.
+  makerProduct({
+    id: 'royal-wulff-triangle-taper-short',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Triangle Taper Short',
+    sizes: LINEUP['royal-wulff-triangle-taper-short'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [{ id: 'willow', name: 'Willow', zones: zones([0, 'rw-willow']) }],
     })),
   }),
   // The Triangle Taper Short for bass bugs: a 27 ft front taper and 2 ft rear taper, then a handling
@@ -191,6 +244,39 @@ export const PRODUCTS = [
       taper: publishedTaper(size),
       lineup: size,
       colorways: [{ id: 'clear', name: 'Clear', zones: zones([0, 'rw-clear']) }],
+    })),
+  }),
+  // The Sea Wulff Monoclear's taper as an aqua 1.75 ips intermediate: Royal Wulff's table gives a 30
+  // ft taper with no rear taper, so the whole head is front taper; the handling section counts as
+  // running line.
+  makerProduct({
+    id: 'royal-wulff-sea-wulff-triangle-taper-intermediate',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Sea Wulff Triangle Taper Intermediate',
+    sizes: LINEUP['royal-wulff-sea-wulff-triangle-taper-intermediate'].sizes.map((size) => ({
+      id: `wf${size.weight}i`,
+      label: size.label,
+      type: 'intermediate',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [{ id: 'aqua', name: 'Aqua', zones: zones([0, 'rw-aqua']) }],
+    })),
+  }),
+  // The floating Sea Wulff, in mist green, with the same 30 ft taper and handling section from Royal
+  // Wulff's table.
+  makerProduct({
+    id: 'royal-wulff-sea-wulff-triangle-taper-float',
+    maker: 'Royal Wulff',
+    name: 'Royal Wulff Sea Wulff Triangle Taper Float',
+    sizes: LINEUP['royal-wulff-sea-wulff-triangle-taper-float'].sizes.map((size) => ({
+      id: `wf${size.weight}f`,
+      label: size.label,
+      type: 'floating',
+      weight: size.weight,
+      taper: publishedTaper(size),
+      lineup: size,
+      colorways: [{ id: 'mist-green', name: 'Mist Green', zones: zones([0, 'rw-mist-green']) }],
     })),
   }),
 ];
