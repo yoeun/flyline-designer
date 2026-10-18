@@ -1111,6 +1111,13 @@ describe('RIO lines', () => {
     'rio-avid-trout-gold': table([[3, 45, 70], [4, 46, 80], [5, 47, 80], [6, 48, 80], [7, 49, 80]]),
     // RIO's diagram draws the WF5F head at 43 ft; its table says 42.
     'rio-premier-lightline': table([[2, 40, 70], [3, 41, 70], [4, 41, 80], [5, 42, 80]]),
+    // Double tapers are all head.
+    'rio-premier-technical-trout-dt': table([[3, 80, 80], [4, 80, 80], [5, 90, 90], [6, 90, 90]]),
+    'rio-premier-lightline-double-taper': table([[0, 70, 70], [1, 70, 70], [2, 70, 70], [3, 70, 70], [4, 80, 80], [5, 80, 80]]),
+    'rio-elite-permit': table([[8, 46, 100], [9, 48, 100], [10, 50, 100]]),
+    'rio-elite-tarpon': table([[8, 38, 100], [9, 39.5, 100], [10, 40.5, 100], [11, 40.5, 100], [12, 40.5, 100]]),
+    // RIO lists the 26 ft sinking tip (listed at the lower of its two rod weights); its diagram puts the head at 34 ft.
+    'rio-elite-leviathan': table([7, 8, 9, 10, 12].map((w) => [w, 34, 100])),
   };
   const rio = LINE_PRESETS.filter((p) => p.maker === 'RIO');
   const head = ({ taper }) => taper.front + taper.body + taper.back;
@@ -1130,7 +1137,8 @@ describe('RIO lines', () => {
     const [h, total] = spec(p);
     expect(head(p.line)).toBe(h);
     expect(totalLength(p.line)).toBe(total);
-    for (const k of ['front', 'body', 'back', 'running']) expect(p.line.taper[k]).toBeGreaterThan(0);
+    // A double taper has no running line.
+    for (const k of ['front', 'body', 'back', 'running']) if (k !== 'running' || h < total) expect(p.line.taper[k]).toBeGreaterThan(0);
   });
 
   it('ids are unique kebab-case', () => {
@@ -1180,6 +1188,10 @@ describe('RIO lines', () => {
       'rio-premier-aqualux-wf6i',
       'rio-premier-bank-robber-wf5f',
       'rio-avid-trout-gold-wf5f',
+      'rio-premier-technical-trout-dt-dt5f',
+      'rio-premier-lightline-double-taper-dt5f',
+      'rio-elite-permit-wf9f',
+      'rio-elite-leviathan-500gr',
     ]);
   });
 
@@ -1192,6 +1204,10 @@ describe('RIO lines', () => {
     ['rio-premier-aqualux-wf6i', [6, 22, 2, 70]],
     ['rio-premier-bank-robber-wf5f', [15, 20, 10, 45]],
     ['rio-avid-trout-gold-wf5f', [5, 24, 18, 33]],
+    ['rio-premier-technical-trout-dt-dt5f', [9, 72, 9, 0]],
+    ['rio-premier-lightline-double-taper-dt5f', [13, 54, 13, 0]],
+    ['rio-elite-permit-wf9f', [6, 29, 13, 52]],
+    ['rio-elite-leviathan-500gr', [4, 27, 3, 66]],
   ])('%s has the taper on RIO\'s diagram', (id, [front, body, back, running]) => {
     expect(findById(LINE_PRESETS, id).line.taper).toEqual({ front, body, back, running });
   });
