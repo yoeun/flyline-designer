@@ -34,7 +34,7 @@ const Row = ({ label, children }) => (
   </>
 );
 
-function SetupDetails({ setup, theme, onOpenCopy }) {
+function SetupDetails({ setup, theme, onOpen, openLabel }) {
   const [side, setSide] = useState('drag');
   const [mode, setMode] = useState('reel');
   const name = displayName(setup);
@@ -107,10 +107,10 @@ function SetupDetails({ setup, theme, onOpenCopy }) {
 
       </div>
 
-      {onOpenCopy && (
+      {onOpen && (
         <SheetFooter className="mt-0 flex-none border-t border-border">
-          <Button variant="primary" onClick={() => onOpenCopy(setup)}>
-            Open a copy in the designer
+          <Button variant="primary" onClick={() => onOpen(setup)}>
+            {openLabel}
           </Button>
         </SheetFooter>
       )}
@@ -120,14 +120,14 @@ function SetupDetails({ setup, theme, onOpenCopy }) {
 
 // A setup's preview and full details, in a drawer from the right. The last setup stays drawn while the
 // drawer slides closed.
-export default function SetupDrawer({ setup, theme, onOpenCopy, onClose }) {
+export default function SetupDrawer({ setup, theme, onOpen, openLabel = 'Open a copy in the designer', onClose }) {
   const [shown, setShown] = useState(setup);
   if (setup && setup !== shown) setShown(setup);
 
   return (
     <Sheet open={Boolean(setup)} onOpenChange={(next) => !next && onClose()}>
       <SheetContent side="right" className="w-full gap-0 overflow-hidden max-sm:border-l-0 sm:max-w-md">
-        {shown && <SetupDetails key={shown.id} setup={shown} theme={theme} onOpenCopy={onOpenCopy} />}
+        {shown && <SetupDetails key={shown.id} setup={shown} theme={theme} onOpen={onOpen} openLabel={openLabel} />}
       </SheetContent>
     </Sheet>
   );

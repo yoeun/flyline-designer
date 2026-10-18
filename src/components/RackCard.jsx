@@ -12,7 +12,7 @@ const STYLE_COLORS = { dry: 'bg-[#b7791f]', nymph: 'bg-[#2c7a7b]', streamer: 'bg
 // A saved setup. The reel drawing is the card: the band above it and the text below stay small.
 // size 'lg' (the rack page) makes the card wider and the line weight large enough to read at a glance.
 // Without onRemove (a shared rack) the card has no actions menu. loadLabel names what a click does.
-export default function RackCard({ setup, current = false, conflicts = [], currentStyle = 'outline', showNotes = false, size = 'sm', className, loadLabel = 'Load', onLoad, onEditDetails, onDuplicate, onRemove }) {
+export default function RackCard({ setup, current = false, conflicts = [], currentStyle = 'outline', showNotes = false, size = 'sm', className, loadLabel = 'Load', onLoad, onViewDetails, onEditDetails, onDuplicate, onRemove }) {
   const name = displayName(setup);
   const reelName = findById(REELS, setup.reel.model)?.name ?? 'Reel';
   const styles = STYLES.filter((s) => setup.styles?.includes(s.id));
@@ -93,6 +93,11 @@ export default function RackCard({ setup, current = false, conflicts = [], curre
                 <Icon name="more_horiz" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-auto">
+                {onViewDetails && (
+                  <DropdownMenuItem className="pointer-coarse:py-3" onClick={() => onViewDetails(setup)}>
+                    View details
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuItem className="pointer-coarse:py-3" onClick={() => onEditDetails(setup)}>
                   Edit details
                 </DropdownMenuItem>
