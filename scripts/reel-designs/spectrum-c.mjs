@@ -1,50 +1,66 @@
-// Sage Spectrum C.
-// Drag side from Far Bank's photo: 18 deep windows, five wide straight spokes (two up, one each side, one
-// down) and a flat numbered dial with a logo badge, in the finish's accent: grey on Black, black on Grey. Spool side: three straight spokes 120° apart, the handle in line with the top one and
-// a small knob opposite at 6 o'clock.
-import { ACCENT, P, circle, pad, rad, recessed, ring, slots, spoke, svg } from './lib.mjs';
-import { frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
+// Sage Spectrum C, from House of Fly's photos of both sides.
+// Drag side: the frame is a rim and five wide straight spokes ("sage" on the upper right one) round a big flat dial
+// numbered 1–10 with a ringed logo badge, in the finish's accent: grey on Black, black on Grey. Spool side: 20
+// windows, three straight spokes 120° apart to a logo hub, the handle in line with the top one and a dark knob
+// opposite at 6 o'clock. From the drag side the spool's cage shows through the frame and turns: its 20 deep
+// windows (no inner ring, unlike the Spectrum). The back of its handle and knob pads would show too, but the wound
+// line hides them.
+import { ACCENT, P, circle, f, frameRim, pad, rad, recessed, ring, slots, spoke, svg } from './lib.mjs';
+import { logo, rimHandle, sageFoot } from './sage.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
-export const arbor = 110;
+export const arbor = 100;
 
-const RIM = { n: 18, rIn: 110, rOut: 178, bar: 18, corner: 9, off: -90 };
+// Five spokes 72° apart, one straight down.
+const SPOKES = [90, 162, 234, 306, 18].map((a) => (a > 180 ? a - 360 : a));
 
-// A flat dial in the accent, with tick dots round its edge and a ringed logo badge.
+// Windows centered on 12 o'clock, 18° apart, with pads at 12 and 6 on the spool side.
+const RIM = { n: 20, rIn: 100, rOut: 172, bar: 19, corner: 8, off: -99 };
+
+// A flat dial in the accent: tick dots and a pointer round its edge, 1–10 counting anticlockwise from the top,
+// and a ringed logo badge.
 const DIAL =
-  `<circle r="80" ${ACCENT}/><circle r="80" fill="url(#sheen)"/><circle r="64" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
-  Array.from({ length: 24 }, (_, i) => {
-    const [x, y] = P(73, rad(-90 + i * 15));
-    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${i % 2 ? 1.5 : 2.2}" fill="#e4e4e0" stroke="#1b1d1f" stroke-opacity=".6" stroke-width="1"/>`;
+  `<circle r="86" ${ACCENT}/><circle r="86" fill="url(#sheen)"/>` +
+  Array.from({ length: 30 }, (_, i) => {
+    const [x, y] = P(73, rad(-90 + i * 12));
+    return i ? `<circle cx="${f(x)}" cy="${f(y)}" r="${i % 3 ? 1.1 : 1.9}" fill="#e4e4e0"/>` : '';
   }).join('') +
-  `<circle r="22" fill="#c9ccc8"/><circle r="19" fill="#1b1d1f"/>${logo(0, 0, 22)}`;
+  `<path d="M0 -77L4 -69H-4Z" fill="#e4e4e0"/>` +
+  Array.from({ length: 10 }, (_, i) => {
+    const a = -81 - i * 36, [x, y] = P(54, rad(a));
+    return `<text transform="translate(${f(x)} ${f(y)}) rotate(${f(a + 90)})" y="4.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#e4e4e0">${i + 1}</text>`;
+  }).join('') +
+  `<circle r="27" fill="#9ea3a6"/><circle r="27" fill="url(#sheen)"/><circle r="23" fill="#2b2e31"/>${logo(0, 0, 26)}`;
 
-// The window ring behind the five spokes is the spool's, drawn in a much darker shade; the rim lip is the frame's.
-const SPOOL_CAGE = ring(186, 98) + slots(RIM);
+// "sage" and the leaf, reading outward along the upper right spoke.
+const SPOKE_LOGO = (() => {
+  const a = SPOKES[3], [x, y] = P(140, rad(a));
+  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-28, 0, 12)}<text x="-18" y="6" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="17" fill="#1b1d1f" fill-opacity=".8">sage</text></g>`;
+})();
+
 export const drag = svg({
-  under: `<path d="${SPOOL_CAGE}" fill="currentColor" fill-rule="evenodd"/><path d="${SPOOL_CAGE}" fill="#000" fill-opacity=".45" fill-rule="evenodd"/>`,
+  cage: [ring(184, 90) + slots(RIM)],
   body: [
-    ring(200, 186),
+    ring(200, 178),
     sageFoot(),
-    pad(160, -90, 36, 56),
-    ...[-130, -50, 170, 10, 90].map((a) => spoke(a, 60, 190, 30, 24)),
-    circle(84),
+    ...SPOKES.map((a) => spoke(a, 60, 192, 34, 30)),
+    circle(94),
   ],
-  details: frameScrew(0, -164, 9) + DIAL,
+  details: SPOKE_LOGO + DIAL,
 });
 
 export const spool = svg({
-  foot: recessed(sageFoot()),
-  handles: [[...P(158, rad(-90)), 18]],
+  foot: recessed(sageFoot()) + frameRim(),
+  handles: [[...P(154, rad(-90)), 20]],
+  under: `<path d="${ring(92, 28)}" fill="#1b1d1f" fill-rule="evenodd"/>`,
+  // The cage is set into the frame's rim and the spokes and hub stand up from it: three shades.
+  back: [ring(185, 90) + slots(RIM), pad(136, -90, 54, 74), pad(136, 90, 54, 74)],
   body: [
-    ring(200, 102) + slots({ ...RIM, rIn: 114 }),
-    pad(158, -90, 34, 50),
-    pad(158, 90, 30, 44),
-    ...[-90, 30, 150].map((a) => spoke(a, 34, 106, 26, 20)),
-    circle(40),
+    ...[-90, 30, 150].map((a) => spoke(a, 26, 92, 22, 18)),
+    circle(32),
   ],
   details:
-    logo(0, 0, 26) +
-    rimHandle(158, -90, 18) +
-    `<circle cx="${P(158, rad(90))[0].toFixed(1)}" cy="${P(158, rad(90))[1].toFixed(1)}" r="12" fill="#2b2e31"/>`,
+    logo(0, 0, 24) +
+    rimHandle(154, -90, 20) +
+    `<circle cx="0" cy="158" r="18" fill="#2b2e31"/><circle cx="0" cy="158" r="18" fill="url(#sheen)"/>`,
 });

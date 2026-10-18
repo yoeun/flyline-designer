@@ -44,20 +44,22 @@ export function frameMarkup(design, side, suffix, { handles = false } = {}) {
     .replace(/(id="|url\(#|href="#)([\w-]+)/g, `$1$2-${suffix}`);
 }
 
-// Turns a spool's cage, every [data-cage] piece in `frame`, one more full turn counter-clockwise, easing out to a
-// stop where it started, so the drawing at rest never changes. A click mid-spin carries on from wherever it is.
+// Turns a spool's cage, every [data-cage] piece in `frame`, one more full turn counter-clockwise (clockwise for a
+// [data-cage="cw"] cage: the spool seen from the drag side), easing out to a stop where it started, so the drawing
+// at rest never changes. A click mid-spin carries on from wherever it is.
 export function spinCage(frame) {
   const pieces = [...frame.querySelectorAll('[data-cage]')];
   if (!pieces.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const dir = pieces[0].dataset.cage === 'cw' ? -1 : 1;
   const [a, b] = getComputedStyle(pieces[0]).transform.match(/-?[\d.e]+/g)?.map(Number) ?? [1, 0];
-  // Counter-clockwise is negative: how far round the cage is now, from 0 down to -360.
-  const from = -((360 - (Math.atan2(b, a) * 180) / Math.PI) % 360);
+  // Counter-clockwise is negative: how far round the cage is now, from 0 down to -360 (mirrored for clockwise).
+  const from = -((360 - (dir * Math.atan2(b, a) * 180) / Math.PI) % 360);
   // At least a full turn: from partway round, on through the next 360.
   const to = from ? -720 : -360;
   for (const piece of pieces) {
     for (const anim of piece.getAnimations()) anim.cancel();
     Object.assign(piece.style, { transformBox: 'view-box', transformOrigin: '0 0' });
-    piece.animate([{ transform: `rotate(${from}deg)` }, { transform: `rotate(${to}deg)` }], {
+    piece.animate([{ transform: `rotate(${dir * from}deg)` }, { transform: `rotate(${dir * to}deg)` }], {
       // A gentle ease-out: a sharper one starts so fast that the windows strobe and the spool seems to turn back.
       duration: 1000,
       easing: 'ease-out',

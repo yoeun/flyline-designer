@@ -1,51 +1,73 @@
-// Sage Spectrum (original, 2017). Started as a copy of spectrum-c.mjs: the reels are nearly the same, so the two
-// are kept apart to differ where they do.
-// Drag side from Far Bank's photo: 18 deep windows, five wide straight spokes (two up, one each side, one
-// down) and a flat numbered dial with a logo badge, in the frame color (the Spectrum C's takes the other finish's). Spool side: three straight spokes 120° apart, the handle in line with the top one and
-// a small knob opposite at 6 o'clock.
-import { ACCENT, P, circle, pad, rad, recessed, ring, slots, spoke, svg } from './lib.mjs';
-import { frameScrew, logo, rimHandle, sageFoot } from './sage.mjs';
+// Sage Spectrum (original, 2017). Started as a copy of spectrum-c.mjs, then redrawn from House of Fly's Copper
+// photos of both sides.
+// Drag side: the frame is a rim and five wide straight spokes (two up, one each side, one down; "sage" on the upper
+// right one) round a flat numbered dial with a web-patterned face and a logo badge, in the accent (else the frame
+// color). Through it shows the spool's cage, which turns: 20 windows between its rim and an inner ring. The spool's
+// handle and knob pads would show through too, but the wound line hides them. Spool side: the same window ring,
+// three straight spokes 120° apart to a logo hub, the handle in line with the top one and a round silver knob
+// opposite at 6 o'clock.
+import { ACCENT, P, circle, f, frameRim, pad, rad, recessed, ring, slots, spoke, svg } from './lib.mjs';
+import { logo, rimHandle, sageFoot } from './sage.mjs';
 
-// The wound line starts at the inner edge of the spool's windows.
+// The wound line starts at the inner edge of the window ring.
 export const arbor = 110;
 
-const RIM = { n: 18, rIn: 110, rOut: 178, bar: 18, corner: 9, off: -90 };
+// Five spokes 72° apart, one straight down.
+const SPOKES = [90, 162, 234, 306, 18].map((a) => (a > 180 ? a - 360 : a));
 
-// A flat dial in the accent, with tick dots round its edge and a ringed logo badge.
+// The spool's 20 windows, centered on 12 o'clock, with the handle and knob pads at 12 and 6.
+const RIM = { n: 20, rIn: 132, rOut: 177, bar: 14, corner: 8, off: -99 };
+
+// The spool seen through the frame's middle: a darkened disc with the arbor's lip.
+const SPOOL = (rOut, rIn) =>
+  `<path d="${ring(rOut, rIn)}" fill="currentColor" fill-rule="evenodd"/><path d="${ring(rOut, rIn)}" fill="#000" fill-opacity=".38" fill-rule="evenodd"/>` +
+  `<circle r="${rOut - 14}" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="5"/>`;
+
+// A flat dial in the accent: a numbered outer ring and a web-patterned face round a ringed logo badge.
 const DIAL =
-  `<circle r="80" ${ACCENT}/><circle r="80" fill="url(#sheen)"/><circle r="64" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
-  Array.from({ length: 24 }, (_, i) => {
-    const [x, y] = P(73, rad(-90 + i * 15));
-    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${i % 2 ? 1.5 : 2.2}" fill="#e4e4e0" stroke="#1b1d1f" stroke-opacity=".6" stroke-width="1"/>`;
+  `<circle r="80" ${ACCENT}/><circle r="80" fill="url(#sheen)"/>` +
+  `<circle r="66" fill="#000" fill-opacity=".1"/><circle r="66" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="1.5"/>` +
+  Array.from({ length: 30 }, (_, i) => {
+    const [x, y] = P(73, rad(-90 + i * 12));
+    return `<circle cx="${f(x)}" cy="${f(y)}" r="${i % 3 ? 1 : 1.8}" fill="#1b1d1f" fill-opacity=".55"/>`;
   }).join('') +
-  `<circle r="22" fill="#c9ccc8"/><circle r="19" fill="#1b1d1f"/>${logo(0, 0, 22)}`;
+  `<path d="${Array.from({ length: 16 }, (_, i) => {
+    const a = rad(i * 22.5), [x0, y0] = P(36, a), [x1, y1] = P(58, a);
+    return `M${f(x0)} ${f(y0)}L${f(x1)} ${f(y1)}`;
+  }).join('')}" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>` +
+  `<circle r="58" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/><circle r="36" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>` +
+  `<circle r="27" fill="#c9ccc8"/><circle r="24" fill="#1b1d1f"/>${logo(0, 0, 26)}`;
 
-// The window ring behind the five spokes is the spool's, drawn in a much darker shade; the rim lip is the frame's.
-const SPOOL_CAGE = ring(186, 98) + slots(RIM);
+// "sage" and the leaf, reading outward along the upper right spoke.
+const SPOKE_LOGO = (() => {
+  const a = SPOKES[3], [x, y] = P(146, rad(a));
+  return `<g transform="translate(${f(x)} ${f(y)}) rotate(${a})">${logo(-26, 0, 11)}<text x="-17" y="5" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="15" fill="#f2f2ee">sage</text></g>`;
+})();
+
 export const drag = svg({
-  under: `<path d="${SPOOL_CAGE}" fill="currentColor" fill-rule="evenodd"/><path d="${SPOOL_CAGE}" fill="#000" fill-opacity=".45" fill-rule="evenodd"/>`,
+  under: SPOOL(120, 84),
+  cage: [ring(182, 118) + slots(RIM)],
   body: [
-    ring(200, 186),
+    ring(200, 178),
     sageFoot(),
-    pad(160, -90, 36, 56),
-    ...[-130, -50, 170, 10, 90].map((a) => spoke(a, 60, 190, 30, 24)),
-    circle(84),
+    ...SPOKES.map((a) => spoke(a, 60, 190, 26, 22)),
+    circle(90),
   ],
-  details: frameScrew(0, -164, 9) + DIAL,
+  details: SPOKE_LOGO + DIAL,
 });
 
 export const spool = svg({
-  foot: recessed(sageFoot()),
-  handles: [[...P(158, rad(-90)), 18]],
+  foot: recessed(sageFoot()) + frameRim(),
+  handles: [[...P(156, rad(-90)), 20]],
+  under: SPOOL(118, 40),
+  // The cage is set into the frame's rim and the spokes and hub stand up from it: three shades.
+  back: [ring(185, 116) + slots(RIM), pad(156, -90, 46, 50), pad(156, 90, 46, 50)],
   body: [
-    ring(200, 102) + slots({ ...RIM, rIn: 114 }),
-    pad(158, -90, 34, 50),
-    pad(158, 90, 30, 44),
-    ...[-90, 30, 150].map((a) => spoke(a, 34, 106, 26, 20)),
-    circle(40),
+    ...[-90, 30, 150].map((a) => spoke(a, 34, 118, 30, 24)),
+    circle(44),
   ],
   details:
-    logo(0, 0, 26) +
-    rimHandle(158, -90, 18) +
-    `<circle cx="${P(158, rad(90))[0].toFixed(1)}" cy="${P(158, rad(90))[1].toFixed(1)}" r="12" fill="#2b2e31"/>`,
+    logo(0, 0, 30) +
+    rimHandle(156, -90, 20) +
+    `<circle cx="0" cy="156" r="17" fill="#9ea3a6"/><circle cx="0" cy="156" r="17" fill="url(#sheen)"/><circle cx="0" cy="156" r="17" fill="none" stroke="#1b1d1f" stroke-opacity=".5" stroke-width="2"/>`,
 });
