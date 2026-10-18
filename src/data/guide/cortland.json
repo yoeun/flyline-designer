@@ -198,7 +198,9 @@
      "total": 90,
      "grains30": 80,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Peach"
+     ]
     },
     {
      "label": "DT3F",
@@ -212,7 +214,9 @@
      "total": 90,
      "grains30": 100,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Peach"
+     ]
     },
     {
      "label": "DT4F",
@@ -226,7 +230,9 @@
      "total": 90,
      "grains30": 120,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Peach"
+     ]
     },
     {
      "label": "DT5F",
@@ -240,7 +246,9 @@
      "total": 90,
      "grains30": 140,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Peach"
+     ]
     },
     {
      "label": "DT6F",
@@ -254,7 +262,9 @@
      "total": 90,
      "grains30": 160,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Peach"
+     ]
     },
     {
      "label": "DT7F",
@@ -268,7 +278,9 @@
      "total": 90,
      "grains30": 185,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Peach"
+     ]
     },
     {
      "label": "DT8F",
@@ -282,7 +294,9 @@
      "total": 90,
      "grains30": 210,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Peach"
+     ]
     },
     {
      "label": "DT9F",
@@ -296,7 +310,9 @@
      "total": 90,
      "grains30": 240,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Peach"
+     ]
     }
    ]
   },
@@ -7124,7 +7140,9 @@
      "total": 90,
      "grains30": 90,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Heron/Light Blue"
+     ]
     },
     {
      "label": "WF3F",
@@ -7138,7 +7156,9 @@
      "total": 90,
      "grains30": 110,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Heron/Light Blue"
+     ]
     },
     {
      "label": "WF4F",
@@ -7152,7 +7172,9 @@
      "total": 90,
      "grains30": 130,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Heron/Light Blue"
+     ]
     },
     {
      "label": "WF5F",
@@ -7166,7 +7188,9 @@
      "total": 90,
      "grains30": 150,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Heron/Light Blue"
+     ]
     },
     {
      "label": "WF6F",
@@ -7180,7 +7204,9 @@
      "total": 90,
      "grains30": 170,
      "headGrains": null,
-     "colors": []
+     "colors": [
+      "Heron/Light Blue"
+     ]
     }
    ]
   },
