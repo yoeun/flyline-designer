@@ -39,7 +39,14 @@ function ModelCard({ model, view }) {
   const size = sizes.find((s) => s.id === sizeId) ?? sizes[0];
   const setup = previewSetup(size, color, view.colors);
   const showLine = view.line === 'shown';
-  const capacity = capacityText(size);
+  // The size's specs as table rows; the line the drawing assumes is for checking drawings, so dev only.
+  const specs = [
+    ['Rim', `${size.rim}″`],
+    ['Spool', `${size.spool}″`],
+    ['Width', `${size.width}″`],
+    size.rated ? ['Capacity', capacityText(size)] : size.arbor && ['Arbor', `${size.arbor}″`],
+    import.meta.env.DEV && showLine && ['Drawn with', `WF${setup.line.weight}F + 100 yd`],
+  ].filter(Boolean);
   const photos = PHOTOS_BY_MODEL[model.id] ?? [];
   return (
     <li className="flex min-w-0 flex-col gap-3 rounded-card border border-border bg-card p-4">
@@ -80,18 +87,19 @@ function ModelCard({ model, view }) {
         </div>
         {colors.length > 1 && <Swatches colors={colors} value={color} onChange={setColor} label={`${model.name} color`} size={24} touchSize={32} className="justify-center gap-3" />}
       </div>
-      <p className="font-mono text-[12px] text-muted-foreground tabular-nums">
-        rim {size.rim}″ · spool {size.spool}″ · width {size.width}″
-        {capacity && <br />}
-        {capacity}
-        {/* What line the drawing assumes: for checking the drawings, so only on the dev server. */}
-        {import.meta.env.DEV && showLine && (
-          <>
-            <br />
-            drawn with WF{setup.line.weight}F + 100 yd
-          </>
-        )}
-      </p>
+      <table className="w-full border-collapse text-[14px] tabular-nums">
+        <caption className="sr-only">{`${size.name} specs`}</caption>
+        <tbody>
+          {specs.map(([label, value]) => (
+            <tr key={label} className="border-b border-border last:border-0">
+              <th scope="row" className="w-24 py-1.5 pr-3 text-left font-normal text-muted-foreground">
+                {label}
+              </th>
+              <td className="py-1.5">{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       {photos.length > 0 && (
         <ul className="flex flex-wrap gap-2" aria-label="Maker photos">
           {photos.map((p) => (
@@ -103,8 +111,13 @@ function ModelCard({ model, view }) {
           ))}
         </ul>
       )}
-      {/* Research notes on where the numbers came from; only on the dev server. */}
-      {import.meta.env.DEV && model.notes && <p className="text-[13px] text-muted-foreground">{model.notes}</p>}
+      {/* Research notes on where the numbers came from, folded away until asked for. */}
+      {model.notes && (
+        <details className="text-[14px]">
+          <summary className="min-h-9 cursor-pointer py-1.5 font-semibold text-primary pointer-coarse:py-2.5">Research notes</summary>
+          <p className="text-[13px] text-muted-foreground">{model.notes}</p>
+        </details>
+      )}
     </li>
   );
 }
