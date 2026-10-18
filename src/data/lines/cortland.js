@@ -15,6 +15,12 @@ export const COLORS = [
   { id: 'cortland-orange', name: 'Orange', hex: '#f27944' },
   { id: 'cortland-heron', name: 'Heron', hex: '#8db8c9' },
   { id: 'cortland-light-blue', name: 'Light Blue', hex: '#add7ed' },
+  // Cortland's charts draw clear line as this pale grey.
+  { id: 'cortland-clear', name: 'Clear', hex: '#e6e6e6' },
+  { id: 'cortland-seafoam-green', name: 'Seafoam Green', hex: '#9bdc98' },
+  { id: 'cortland-tan', name: 'Tan', hex: '#c4bb9c' },
+  { id: 'cortland-sand', name: 'Sand', hex: '#ebe5cd' },
+  { id: 'cortland-blue', name: 'Blue', hex: '#75d3db' },
 ];
 
 // Cortland draws one taper chart per line with the head length on it but no size. Every size of a
@@ -145,6 +151,59 @@ export const PRODUCTS = [
       id: (w) => `wf${w}`,
       type: 'sinktip',
       colorways: [{ id: 'black-green', name: 'Black/Green', zones: zones([15, 'cortland-black'], [0, 'cortland-green']) }],
+    }),
+  }),
+  // Full clear on a mono core. Short 7 ft body and a 31 ft back taper.
+  makerProduct({
+    id: 'cortland-liquid-crystal-tarpon-taper',
+    maker: 'Cortland',
+    name: 'Cortland Liquid Crystal Tarpon Taper',
+    sizes: sizes(LINEUP['cortland-liquid-crystal-tarpon-taper'], {
+      type: 'floating',
+      colorways: [{ id: 'clear', name: 'Clear', zones: zones([0, 'cortland-clear']) }],
+    }),
+  }),
+  // Full clear on a mono core. 14 ft body and a 26 ft back taper.
+  makerProduct({
+    id: 'cortland-liquid-crystal-flats-taper',
+    maker: 'Cortland',
+    name: 'Cortland Liquid Crystal Flats Taper',
+    sizes: sizes(LINEUP['cortland-liquid-crystal-flats-taper'], {
+      type: 'floating',
+      colorways: [{ id: 'clear', name: 'Clear', zones: zones([0, 'cortland-clear']) }],
+    }),
+  }),
+  // Rated by grain weight for two rod weights, drawn at the lower. A clear 26 ft intermediate head
+  // on a light blue running line Cortland calls floating, so it's drawn as a sink tip; the chart's
+  // 13 ft step down to the running line is drawn here as running line.
+  makerProduct({
+    id: 'cortland-compact-intermediate',
+    maker: 'Cortland',
+    name: 'Cortland Compact Intermediate',
+    sizes: sizes(LINEUP['cortland-specialty-compact-intermediate'], {
+      id: (w) => `wf${w}i`,
+      type: 'sinktip',
+      colorways: [{ id: 'clear-light-blue', name: 'Clear/Light Blue', zones: zones([26, 'cortland-clear'], [0, 'cortland-light-blue']) }],
+    }),
+  }),
+  // Half a size heavy, with a short 30 ft head for quick shots.
+  makerProduct({
+    id: 'cortland-tropic-plus-redfish',
+    maker: 'Cortland',
+    name: 'Cortland Tropic Plus Redfish',
+    sizes: sizes(LINEUP['cortland-tropic-plus-redfish'], {
+      type: 'floating',
+      colorways: [{ id: 'seafoam-green-tan', name: 'Seafoam Green/Tan', zones: zones([30, 'cortland-seafoam-green'], [0, 'cortland-tan']) }],
+    }),
+  }),
+  // Long 27 ft body in a 41 ft head, for wind and long shots.
+  makerProduct({
+    id: 'cortland-tropic-plus-all-purpose',
+    maker: 'Cortland',
+    name: 'Cortland Tropic Plus All Purpose Taper',
+    sizes: sizes(LINEUP['cortland-tropic-plus-all-purpose'], {
+      type: 'floating',
+      colorways: [{ id: 'sand-blue', name: 'Sand/Blue', zones: zones([41, 'cortland-sand'], [0, 'cortland-blue']) }],
     }),
   }),
 ];
