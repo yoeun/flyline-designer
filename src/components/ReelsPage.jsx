@@ -7,6 +7,7 @@ import ReelPreview from './ReelPreview.jsx';
 import Segmented from './Segmented.jsx';
 import Swatches from './Swatches.jsx';
 import FilterSheet from './FilterSheet.jsx';
+import ReelViewer from './ReelViewer.jsx';
 
 // Every reel model on one page, each size drawn from both sides, to check the drawings and data at a
 // glance. Drawings share one scale, so a bigger reel draws bigger. In dev, the maker photos sit beside them.
@@ -29,8 +30,10 @@ const LINE_OPTIONS = [
   ['hidden', 'Empty'],
 ];
 
-// `view` is the page-wide drawing settings: { line: 'shown' | 'hidden', colors }.
-function SizeBlock({ size, color, view }) {
+// `view` is the page-wide drawing settings: { line: 'shown' | 'hidden', colors }. Tapping a drawing opens
+// it large (onOpen). On phones the two sides share a row, each box half the width with the reel sized as a
+// share of its box, so drawings keep their scale against each other.
+function SizeBlock({ size, color, view, onOpen }) {
   const setup = previewSetup(size, color, view.colors);
   const showLine = view.line === 'shown';
   const width = previewWidth(size.rim);
@@ -38,11 +41,20 @@ function SizeBlock({ size, color, view }) {
   return (
     <li className="flex flex-col gap-1.5">
       <p className="text-[14px] font-semibold">{reelSizeLabel(size)}</p>
-      <div className="flex flex-wrap gap-1.5">
+      <div className="grid grid-cols-2 gap-1.5 sm:flex sm:flex-wrap">
         {['drag', 'spool'].map((side) => (
-          <div key={side} className="flex items-center justify-center rounded-md bg-stage" style={{ width: BOX, height: BOX_H }}>
-            <ReelPreview setup={setup} side={side} showLine={showLine} size={width} background="none" className="w-auto" title={`${size.name}, ${side} side`} />
-          </div>
+          <button
+            key={side}
+            type="button"
+            onClick={() => onOpen({ size, setup, side, showLine })}
+            aria-label={`View ${size.name}, ${side} side, large`}
+            className="flex w-full cursor-pointer items-center justify-center rounded-md bg-stage focus-visible:outline-2 focus-visible:outline-ring sm:w-(--box)"
+            style={{ '--box': `${BOX}px`, aspectRatio: `${BOX} / ${BOX_H}` }}
+          >
+            <span className="block" style={{ width: `${(width / BOX) * 100}%` }}>
+              <ReelPreview setup={setup} side={side} showLine={showLine} background="none" title={`${size.name}, ${side} side`} />
+            </span>
+          </button>
         ))}
       </div>
       <p className="font-mono text-[12px] text-muted-foreground tabular-nums">
@@ -60,7 +72,7 @@ function SizeBlock({ size, color, view }) {
   );
 }
 
-function ModelCard({ model, view }) {
+function ModelCard({ model, view, onOpen }) {
   const colors = reelColors(model);
   const [color, setColor] = useState(colors[0].id);
   const photos = PHOTOS_BY_MODEL[model.id] ?? [];
@@ -78,7 +90,7 @@ function ModelCard({ model, view }) {
       </div>
       <ul className="grid gap-x-6 gap-y-5" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(min(100%, ${2 * BOX + 6}px), ${2 * BOX + 6}px))` }}>
         {reelSizes(model.id).map((size) => (
-          <SizeBlock key={size.id} size={size} color={color} view={view} />
+          <SizeBlock key={size.id} size={size} color={color} view={view} onOpen={onOpen} />
         ))}
       </ul>
       {photos.length > 0 && (
@@ -125,6 +137,8 @@ const DEFAULT_VIEW = { line: 'shown', colors: PREVIEW_COLORS };
 
 export default function ReelsPage() {
   const [view, setView] = useState(DEFAULT_VIEW);
+  // The reel size open in the large viewer: { size, setup, side, showLine }, or null.
+  const [viewing, setViewing] = useState(null);
   // What the View button says once the view differs from the default.
   const active = view.line !== 'shown' ? 'Line hidden' : view.colors !== PREVIEW_COLORS ? 'Custom colors' : '';
   const count = REEL_MODELS.reduce((n, m) => n + reelSizes(m.id).length, 0);
@@ -158,11 +172,12 @@ export default function ReelsPage() {
           <h3 className={heading}>{maker}</h3>
           <ul className="flex flex-col gap-3">
             {models.map((m) => (
-              <ModelCard key={m.id} model={m} view={view} />
+              <ModelCard key={m.id} model={m} view={view} onOpen={setViewing} />
             ))}
           </ul>
         </section>
       ))}
+      <ReelViewer shown={viewing} onClose={() => setViewing(null)} />
     </main>
   );
 }
