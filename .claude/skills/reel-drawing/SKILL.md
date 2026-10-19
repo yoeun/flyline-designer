@@ -224,6 +224,14 @@ are chamfered. Drawn without them, a frame looks like flat pieces stacked on top
 
 ## 5a. SVG gradient gotchas
 
+- **No filters on anything that spins.** The spool side's `body`, `back`, `under` and `details`, and the drag side's
+  `cage`/`cageDetails`, all turn when the reel spins. A filter there (`bevel`, `chamfer`, any `<filter>`) is
+  re-run every frame. On the Sword that dropped the spin to about 2 fps on a phone. On spinning parts, draw
+  chamfers as plain shapes, such as a gradient-stroked ring just inside each hole (`ringChamfers` in
+  `scripts/reel-designs/sword.mjs`). Filters are fine on still parts (the drag frame, the foot). Measure the spin with a
+  throttled phone-sized render (CPU throttling ×6, 390 px wide at 3×) counting `requestAnimationFrame`s for a
+  second after `spinCage`.
+
 - A `radialGradient` with `gradientUnits="userSpaceOnUse"` needs `cx="0" cy="0"`. Without them it centers on 50%
   of the viewport, not the reel's center, and the shading lands off-center or not at all.
 - Write gradient stop offsets with `.toFixed(3)`, not `f()`. `f()` rounds to one decimal, which collapses
