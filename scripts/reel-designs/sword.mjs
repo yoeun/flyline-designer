@@ -66,10 +66,11 @@ export const drag = svg({
 });
 
 // Spool side.
-// The handle stands where the top big hole would be, so that hole isn't cut on the spool side.
+// The handle stands where the top big hole would be, and the counterweight where the bottom one would be, so those
+// two holes aren't cut on the spool side.
 const HANDLE = P(147, rad(-90));
-const SPOOL_HOLES = BIG.slice(1).map((a) => circle(27, ...P(147, rad(a)))).join('') + HOLES.slice(BIG_HOLES.length);
-const WEIGHT = P(166, rad(84));
+const SPOOL_HOLES = BIG.filter((a) => a !== -90 && a !== 90).map((a) => circle(27, ...P(147, rad(a)))).join('') + HOLES.slice(BIG_HOLES.length);
+const WEIGHT = P(147, rad(90));
 const HUB_ARMS = [0, 1, 2].map((k) => -60 + k * 120);
 
 export const spool = svg({
