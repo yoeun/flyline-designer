@@ -49,6 +49,44 @@ export function slots({ n, rIn, rOut, bar, corner, off = -90, slant = 0 }) {
   return d;
 }
 
+// n windows between spokes that taper toward the center: `barOut` wide at rOut, `barIn` at rIn, first spoke at `off`
+// degrees. Most reels' spokes taper; measure the bar at a few radii before reaching for straight `slots`.
+export function taperedSlots({ n, rIn, rOut, barIn, barOut, corner, off = -90 }) {
+  const at = ([x, y]) => Math.atan2(y, x);
+  const wrap = (from, to) => (to < from ? to + 2 * Math.PI : to);
+  let d = '';
+  for (let k = 0; k < n; k++) {
+    const a0 = rad(off + (k * 360) / n), a1 = rad(off + ((k + 1) * 360) / n);
+    const A2 = edge(a0, barOut / 2, rOut), B2 = edge(a1, -barOut / 2, rOut);
+    const B1 = edge(a1, -barIn / 2, rIn), A1 = edge(a0, barIn / 2, rIn);
+    const outer = arcPts(rOut, at(A2), wrap(at(A2), at(B2)));
+    const inner = arcPts(rIn, wrap(at(A1), at(B1)), at(A1), 6);
+    d += roundPoly([...outer, ...inner], corner);
+  }
+  return d;
+}
+
+// The subpaths of `d` whose index passes `keep`: e.g. drop the windows a handle or counterweight fills.
+export const pickPaths = (d, keep) => (d.match(/M[^Z]*Z/g) ?? []).filter((_, k) => keep(k)).join('');
+
+// A face sunk inside `wall` (rim = 200): the spokes drop steeply from `wall` to `floor`, darkest at the wall's foot,
+// then run on a shade darker to the center, with a light lip at the wall's top. `cut` is every opening in the face
+// (windows, holes): the shading covers metal only. Both gradients fade to nothing before their paths' edges, so
+// the parts of `cut` that even-odd turns back on outside them stay clear. `id` must be unique to the design.
+export function sunkFace({ id, wall, floor, cut }) {
+  const at = (r, outer) => (r / outer).toFixed(3);
+  const grad = (name, r, stops) =>
+    `<radialGradient id="${id}-${name}" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="${r}">` +
+    stops.map(([rr, color, op]) => `<stop offset="${at(rr, r)}" stop-color="${color}" stop-opacity="${op}"/>`).join('') +
+    '</radialGradient>';
+  return (
+    grad('wall', wall, [[floor - 12, '#000', '.25'], [floor, '#000', '.7'], [floor + 1, '#000', '.6'], [wall, '#000', '0']]) +
+    grad('lip', wall + 2, [[wall - 2, '#fff', '0'], [wall, '#fff', '.3'], [wall + 2, '#fff', '0']]) +
+    `<path d="${circle(wall) + cut}" fill="url(#${id}-wall)" fill-rule="evenodd"/>` +
+    `<path d="${circle(wall + 2) + circle(wall - 2) + cut}" fill="url(#${id}-lip)" fill-rule="evenodd"/>`
+  );
+}
+
 // A straight spoke from r0 to r1 along `deg`, w0 wide at r0 and w1 wide at r1.
 export function spoke(deg, r0, r1, w0, w1 = w0, sweep = 0) {
   const a = rad(deg), s = rad(deg - sweep);
