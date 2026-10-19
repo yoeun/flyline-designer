@@ -37,7 +37,7 @@ const MIDDLE_SPOKE = (() => {
 export const drag = svg({
   cage: [ring(190, 116) + slots(RIM)],
   body: [
-    ring(200, 189),
+    ring(200, 181),
     foot(128, -244, 14, 34),
     MIDDLE_SPOKE,
     // The Y arms branch off it above the drag and rise to the rim.

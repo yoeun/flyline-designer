@@ -207,8 +207,8 @@ are chamfered. Drawn without them, a frame looks like flat pieces stacked on top
   - **The foot is a separate piece.** Never chamfer it together with the frame. Keep it out of what's beveled, and
     treat any other separate part the same way.
   - **Run a dark chamfer all the way round the frame's outer edge**: a flat facet in `details`. Scale it to the rim:
-    `ring(200, 194)` at about 0.4 black on a wide rim like the Run's (21 wide), but `ring(200, 196)` at 0.2 on a
-    narrow one like the Liquid's (11 wide), where the user found 6 at 0.4 too dark. It runs across the foot's post where the post
+    `ring(200, 194)` at about 0.4 black suits the Run (rim 21 wide), but on the Liquid, when its rim was 11 wide,
+    the user found that too dark and preferred `ring(200, 196)` at 0.2. Start subtle and darken on request. It runs across the foot's post where the post
     meets the frame, so the foot reads as a separate piece. Without it the user saw frame and foot as one piece,
     even with the foot left unchamfered.
   - **Tune it in small steps.** The defaults (width 3.5, light 0.45, shade 0.4) suit the Run.
