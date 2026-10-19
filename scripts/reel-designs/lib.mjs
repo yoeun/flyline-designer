@@ -125,7 +125,9 @@ export function spokeWindows({ spokes, rIn, rOut, fillet }) {
 // A flat chamfer along the outline of the shape `d`, for svg's details: an angled facet of even width just inside its
 // edge, with crisp edges. Facets facing the top left are lit, those facing the bottom right shaded, each in one even
 // shade (a chamfer is a flat cut, not a rounded edge). Use it for a piece that sits on top of another, like a spoke
-// laid over a rim. `width` is the facet's width; `light` and `shade` its opacities. `id` must be unique to the design.
+// laid over a rim. `d` may be a list of paths, chamfered round their combined outline, so overlapping pieces of one
+// casting (a rim and the arms off it) chamfer as one. `width` is the facet's width; `light` and `shade` its
+// opacities. `id` must be unique to the design.
 export function chamfer(id, d, { width = 3.5, light = 0.45, shade = 0.4 } = {}) {
   const facing = (by, result) =>
     `<feOffset in="SourceAlpha" dx="${by}" dy="${by}" result="${result}-off"/>` +
@@ -138,7 +140,7 @@ export function chamfer(id, d, { width = 3.5, light = 0.45, shade = 0.4 } = {}) 
     `<feFlood flood-color="#fff" flood-opacity="${light}"/><feComposite in2="lit-a" operator="in" result="lit"/>` +
     `<feFlood flood-color="#000" flood-opacity="${shade}"/><feComposite in2="shade-a" operator="in" result="shade"/>` +
     '<feMerge><feMergeNode in="shade"/><feMergeNode in="lit"/></feMerge></filter>' +
-    `<path d="${d}" fill-rule="evenodd" filter="url(#${id}-chamfer)"/>`
+    `<g filter="url(#${id}-chamfer)">${[d].flat().map((p) => `<path d="${p}" fill-rule="evenodd"/>`).join('')}</g>`
   );
 }
 

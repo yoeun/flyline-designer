@@ -204,6 +204,9 @@ are chamfered. Drawn without them, a frame looks like flat pieces stacked on top
   - **A piece laid on top of another gets its whole outline chamfered** with `chamfer(id, d)`, which `bevel` is
     built on: e.g. the Liquid's middle drag spoke, which sits over the rim (`scripts/reel-designs/liquid-s.mjs`).
     The chamfer runs across the rim too, so the piece reads as separate.
+  - **Pieces of one casting chamfer as one.** Give `chamfer` a list of paths (e.g. the Liquid's rim and Y arms) to
+    chamfer their combined outline, with no lines where they overlap. Mask it off any piece laid on top, and keep
+    it inside the outer edge's dark chamfer.
   - **The foot is a separate piece.** Never chamfer it together with the frame. Keep it out of what's beveled, and
     treat any other separate part the same way.
   - **Run a dark chamfer all the way round the frame's outer edge**: a flat facet in `details`. Scale it to the rim:

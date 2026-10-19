@@ -40,6 +40,10 @@ const MIDDLE_SPOKE = (() => {
   return `M${pt(tl)}A200 200 0 0 1 ${pt(tr)}L${pt(br)}A200 200 0 0 1 ${pt(bl)}Z`;
 })();
 
+// The drag side's Y arms leave the middle spoke a little below halfway between the drag knob and the rim (at about
+// y -98) and rise steeply to the rim.
+const ARMS = [strut([-30, -86], P(194, rad(-128)), 20, 15), strut([30, -86], P(194, rad(-52)), 20, 15)];
+
 // The drag button takes the finish's accent: orange-red on Smoke, yellow on Day Break.
 export const drag = svg({
   cage: [ring(190, 116) + slots(RIM)],
@@ -47,16 +51,16 @@ export const drag = svg({
     ring(200, 181),
     foot(128, -244, 14, 34),
     MIDDLE_SPOKE,
-    // The Y arms leave it a little below halfway between the drag knob and the rim (at about y -98) and rise
-    // steeply to the rim.
-    strut([-30, -86], P(194, rad(-128)), 20, 15),
-    strut([30, -86], P(194, rad(-52)), 20, 15),
+    ...ARMS,
   ],
-  // The middle spoke's chamfer, then a dark chamfer, a flat facet, all the way round the frame's outer edge. That
-  // runs across the foot's post where it meets the frame, so the foot reads as a separate piece, and across the
-  // spoke's ends, where the spoke's own chamfer stops short of it, so the ends are shaded like the rim.
+  // Chamfers: the rim's inner edge and the arms as one casting, kept off the middle spoke laid over them; then the
+  // middle spoke's own, round its whole outline. Both stop inside the outer edge, where a dark chamfer, a flat facet,
+  // runs all the way round. That runs across the foot's post where it meets the frame, so the foot reads as a
+  // separate piece, and across the spoke's ends, so they're shaded like the rim.
   details:
     curvedFloor('drag') +
+    `<mask id="liquid-frame-mask"><circle r="196" fill="#fff"/><path d="${MIDDLE_SPOKE}" fill="#000"/></mask>` +
+    `<g mask="url(#liquid-frame-mask)">${chamfer('liquid-frame', [ring(200, 181), ...ARMS])}</g>` +
     `<clipPath id="liquid-spoke-clip"><circle r="196"/></clipPath><g clip-path="url(#liquid-spoke-clip)">${chamfer('liquid-spoke', MIDDLE_SPOKE)}</g>` +
     `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/><path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" ${ACCENT}/><circle cx="-4" cy="5" r="3" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-5" r="3" fill="#000" fill-opacity=".45"/>`,
 });
