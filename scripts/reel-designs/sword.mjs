@@ -71,13 +71,13 @@ export const drag = svg({
 const HANDLE = P(147, rad(-90));
 const SPOOL_HOLES = BIG.filter((a) => a !== -90 && a !== 90).map((a) => circle(27, ...P(147, rad(a)))).join('') + HOLES.slice(BIG_HOLES.length);
 const WEIGHT = P(147, rad(90));
-// The cavity's three arms: straight spokes, 20 wide, each leaning clockwise as it runs out, its outer edge
+// The cavity's three arms: straight spokes, 26 wide, each leaning clockwise as it runs out, its outer edge
 // tangent to the ring round the dial (58) at angle a. Between them the floor is cut through, each opening bounded by
 // one arm's inner edge, the floor ring's inner edge (100), the next arm's tangent edge and the ring round the dial.
 // The tangent edge flows on into that ring; the other corners are rounded (12), as where the Run's drag spokes
 // meet its collar, so the arms keep their width all the way in.
 const HUB_ARMS = [0, 1, 2].map((k) => -60 + k * 120);
-const ARM = { rIn: 58, rOut: 100, w: 20, fillet: 12, filletIn: 12 };
+const ARM = { rIn: 58, rOut: 100, w: 26, fillet: 12, filletIn: 12 };
 const hubOpenings = () => {
   // An arm's edge: the tangent one (outer) or the inner one, as a point and a direction (clockwise, outward).
   const edge = (a, outer) => {
