@@ -142,6 +142,11 @@ const armFacet = ([a, b]) => {
   return `<path d="M${pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join('L')}Z" ${fill}/>`;
 };
 
+// "LAMSON" printed up the middle spoke below the drag knob, reading from the rim in toward the center.
+const NAME =
+  '<text transform="translate(0 182) rotate(-90)" dominant-baseline="central" font-family="Helvetica, Arial, sans-serif" ' +
+  'font-weight="700" font-size="17" letter-spacing="6" fill="#f2f2ee" fill-opacity=".85">LAMSON</text>';
+
 // The drag button takes the finish's accent: orange-red on Smoke, yellow on Day Break.
 export const drag = svg({
   cage: [ring(190, 116) + slots(DRAG_CAGE)],
@@ -162,7 +167,7 @@ export const drag = svg({
     `<g mask="url(#liquid-frame-mask)">${chamfer('liquid-frame', ring(200, 181))}</g>` +
     `<g mask="url(#liquid-arm-mask)">${ARM_ENDS.map(armFacet).join('')}</g>` +
     `<clipPath id="liquid-spoke-clip"><circle r="196"/></clipPath><g clip-path="url(#liquid-spoke-clip)">${chamfer('liquid-spoke', MIDDLE_SPOKE)}</g>` +
-    `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/><path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" ${ACCENT}/><circle cx="-4" cy="5" r="3" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-5" r="3" fill="#000" fill-opacity=".45"/>`,
+    `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/>${NAME}<path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" ${ACCENT}/><circle cx="-4" cy="5" r="3" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-5" r="3" fill="#000" fill-opacity=".45"/>`,
 });
 
 export const spool = svg({
