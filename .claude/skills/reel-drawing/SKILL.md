@@ -34,8 +34,9 @@ Commit the regenerated SVGs with the script.
   symmetry too: spokes at both 3 and 9 o'clock mean an even count. If the user's count disagrees with the samples,
   say so and show the numbers.
 - **Look at what's below the backing in each window.** Either you see a floor (the spool's arbor, as metal under
-  the line) or you see straight through to the background. Many reels show no floor: the backing ends right on
-  background (floating backing). Decide which before drawing, because it sets the window shape and `arbor` (see 3b).
+  the line) or you see straight through to the background. Some reels show no floor: the backing ends right on
+  background (floating backing). Many others do show a floor. Decide which for each reel before drawing, because it
+  sets the window shape and `arbor` (see 3b).
 - **Look at how the spokes change from the rim inward.** Most taper and converge toward the center, often with a
   drop partway in where the face sinks. Measure each spoke's width at three or more radii (see 3a).
 - When the user corrects the frame/spool split or a measurement, trust that over the photo.
@@ -118,7 +119,15 @@ below the backing (that's 3b).
 
 Also called no visible floor: the backing ends right on the background, so it looks like it's floating in the
 window. This is about what shows below the backing only, whatever the spokes look like (that's 3a). When the
-photo shows no metal below the backing, the windows open straight through the reel:
+photo shows no metal below the backing, the windows open straight through the reel.
+
+**Floating backing is never a default, and never a sweep.** Make a reel floating only when its own photo clearly
+shows background right below the backing, or the user says so for that reel. Without that, keep the floor the
+drawing has. When fixing several reels, decide each one separately: one reel being floating says nothing about the
+next, even from the same maker. If the photo is unclear (small, angled, or the line hides the arbor), ask the user
+rather than guessing. Say which reels you're making floating and why.
+
+For a floating reel:
 
 - **Run each window's opening down past where the line starts**, to the cap or to the inner end of the spokes,
   with nothing behind it. Below the backing the window shows the app's background: never black, never metal.
