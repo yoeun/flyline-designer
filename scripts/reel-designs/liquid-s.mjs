@@ -173,6 +173,6 @@ export const spool = svg({
     curvedFloor('spool') +
     `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/>` +
     SPOKE_LINES.map(spokeFacet).join('') +
-    `<circle r="24" fill="#000" fill-opacity=".25"/><circle r="22" fill="currentColor"/><circle r="22" fill="url(#sheen)"/>` +
+    `<circle r="34" fill="#000" fill-opacity=".25"/><circle r="32" fill="currentColor"/><circle r="32" fill="url(#sheen)"/>` +
     knob(...liquidHandle, 16),
 });
