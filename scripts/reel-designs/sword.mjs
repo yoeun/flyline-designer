@@ -33,6 +33,36 @@ function curvedSpoke(a0, a1, r0, r1, w0, w1, ease = 2, steps = 12) {
   return roundPoly([...side(1), ...side(-1).reverse()], 4);
 }
 
+// A closed outline through `pts` with the corners at the given indices rounded: each cut back by its radius along
+// the outline on both sides and replaced by a curve through the corner.
+function fillet(pts, corners) {
+  const n = pts.length, dist = (p, q) => Math.hypot(q[0] - p[0], q[1] - p[1]);
+  // The point `len` along the outline from pts[i], stepping by `step` (1 or -1), and how many points it passed on
+  // the way, which the curve replaces.
+  const walk = (i, len, step) => {
+    let j = i, left = len;
+    for (;;) {
+      const k = (j + step + n) % n, l = dist(pts[j], pts[k]);
+      if (l >= left) return [[pts[j][0] + ((pts[k][0] - pts[j][0]) * left) / l, pts[j][1] + ((pts[k][1] - pts[j][1]) * left) / l], (step * (j - i) + n) % n];
+      left -= l; j = k;
+    }
+  };
+  const cut = corners.map(([i, r]) => ({ i, before: walk(i, r, -1), after: walk(i, r, 1) }));
+  const skip = new Set();
+  cut.forEach(({ i, before, after }) => {
+    for (let s = 1; s <= before[1]; s++) skip.add((i - s + n) % n);
+    for (let s = 1; s <= after[1]; s++) skip.add((i + s) % n);
+  });
+  const pt = ([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`;
+  let d = '';
+  pts.forEach((p, i) => {
+    if (skip.has(i)) return;
+    const c = cut.find((c) => c.i === i);
+    d += c ? `${d ? 'L' : 'M'}${pt(c.before[0])}Q${pt(p)} ${pt(c.after[0])}` : `${d ? 'L' : 'M'}${pt(p)}`;
+  });
+  return d + 'Z';
+}
+
 // The spool flange's holes: twelve big, and twelve small in the cage between them, just outside the big ones' ring
 // where the gap between neighbours widens. The thick outer rim outside them is plain.
 const BIG = Array.from({ length: 12 }, (_, k) => -90 + k * 30);
@@ -72,30 +102,30 @@ const pairCenter = (p, r) => {
   return near + (spiral - near) * PAIR.bend;
 };
 // An opening between two curves lo(r) and hi(r) (angles, hi clockwise of lo), from radius rA to rB, closed by arcs at
-// both ends and its corners rounded. Built radius by radius, so its sides meet the arcs cleanly.
-function opening(lo, hi, rA, rB, corner = 8) {
+// both ends, its corners rounded by cornerOut at rB and cornerIn at rA. Built radius by radius, so its sides meet
+// the arcs cleanly.
+function opening(lo, hi, rA, rB, cornerOut = 20, cornerIn = 20) {
   const n = PAIR.steps, rs = Array.from({ length: n + 1 }, (_, i) => rA + ((rB - rA) * i) / n);
   const arc = (r, a0, a1) => {
     let b = a1;
     while (b < a0) b += 2 * Math.PI;
     return Array.from({ length: 9 }, (_, i) => P(r, a0 + ((b - a0) * (i + 1)) / 10));
   };
-  return roundPoly(
-    [
-      ...rs.map((r) => P(r, lo(r))),
-      ...arc(rB, lo(rB), hi(rB)),
-      ...rs.slice().reverse().map((r) => P(r, hi(r))),
-      ...arc(rA, lo(rA), hi(rA)).reverse(),
-    ],
-    corner,
-  );
+  const pts = [
+    ...rs.map((r) => P(r, lo(r))),
+    ...arc(rB, lo(rB), hi(rB)),
+    ...rs.slice().reverse().map((r) => P(r, hi(r))),
+    ...arc(rA, lo(rA), hi(rA)).reverse(),
+  ];
+  // Its four corners, where the arms meet the rim (out) and the center (in).
+  return fillet(pts, [[0, cornerIn], [n, cornerOut], [n + 10, cornerOut], [2 * n + 10, cornerIn]]);
 }
 // The frame is one solid disc with its openings cut out: between each pair's arms a slot from the boss out into the
 // rim (to 186); between neighbouring pairs a big window from the boss to the rim's inner edge (166).
 const HALF = (r) => slotAt(r) / 2 / r, ARM_SPAN = (r) => (slotAt(r) / 2 + PAIR.arm) / r;
 const FRAME_OPENINGS = PAIRS.map((p, k) => {
   const q = PAIRS[(k + 1) % 3];
-  const slot = opening((r) => pairCenter(p, r) - HALF(r), (r) => pairCenter(p, r) + HALF(r), 84, 186);
+  const slot = opening((r) => pairCenter(p, r) - HALF(r), (r) => pairCenter(p, r) + HALF(r), 84, 186, 20, 4);
   const window = opening((r) => pairCenter(p, r) + ARM_SPAN(r), (r) => pairCenter(q, r) - ARM_SPAN(r), 84, 166);
   return slot + window;
 }).join('');
@@ -133,35 +163,6 @@ const hubOpenings = () => {
     let a1 = ang(to);
     while (a1 < a0) a1 += 2 * Math.PI;
     return Array.from({ length: n + 1 }, (_, i) => P(r, a0 + ((a1 - a0) * i) / n));
-  };
-  // A closed outline through `pts` with the corners at the given indices rounded: each cut back by its radius along
-  // the outline on both sides and replaced by a curve through the corner.
-  const fillet = (pts, corners) => {
-    const n = pts.length, dist = (p, q) => Math.hypot(q[0] - p[0], q[1] - p[1]);
-    // The point `len` along the outline from pts[i], stepping by `step` (1 or -1), and how many points it passed on
-    // the way, which the curve replaces.
-    const walk = (i, len, step) => {
-      let j = i, left = len;
-      for (;;) {
-        const k = (j + step + n) % n, l = dist(pts[j], pts[k]);
-        if (l >= left) return [[pts[j][0] + ((pts[k][0] - pts[j][0]) * left) / l, pts[j][1] + ((pts[k][1] - pts[j][1]) * left) / l], (step * (j - i) + n) % n];
-        left -= l; j = k;
-      }
-    };
-    const cut = corners.map(([i, r]) => ({ i, before: walk(i, r, -1), after: walk(i, r, 1) }));
-    const skip = new Set();
-    cut.forEach(({ i, before, after }) => {
-      for (let s = 1; s <= before[1]; s++) skip.add((i - s + n) % n);
-      for (let s = 1; s <= after[1]; s++) skip.add((i + s) % n);
-    });
-    const pt = ([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`;
-    let d = '';
-    pts.forEach((p, i) => {
-      if (skip.has(i)) return;
-      const c = cut.find((c) => c.i === i);
-      d += c ? `${d ? 'L' : 'M'}${pt(c.before[0])}Q${pt(p)} ${pt(c.after[0])}` : `${d ? 'L' : 'M'}${pt(p)}`;
-    });
-    return d + 'Z';
   };
   return HUB_ARMS.map((a, k) => {
     const inner = edge(a, false), tangent = edge(HUB_ARMS[(k + 1) % 3], true);
