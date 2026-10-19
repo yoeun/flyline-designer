@@ -201,6 +201,9 @@ are chamfered. Drawn without them, a frame looks like flat pieces stacked on top
   falloff: the user rejected a rounded, soft bevel twice.
   - **Only the openings get it.** Pass the frame's windows (e.g. the same `spokeWindows(…)` it's cut with). The
     outer rim stays flat, and so does everything else in `body`.
+  - **A piece laid on top of another gets its whole outline chamfered** with `chamfer(id, d)`, which `bevel` is
+    built on: e.g. the Liquid's middle drag spoke, which sits over the rim (`scripts/reel-designs/liquid-s.mjs`).
+    The chamfer runs across the rim too, so the piece reads as separate.
   - **The foot is a separate piece.** Never chamfer it together with the frame. Keep it out of what's beveled, and
     treat any other separate part the same way.
   - **Run a dark chamfer all the way round the frame's outer edge**: a flat facet in `details`. Scale it to the rim:
