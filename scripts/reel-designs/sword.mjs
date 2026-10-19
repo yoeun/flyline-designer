@@ -213,15 +213,19 @@ export const spoolSide = ({ rimHoles = [], id = 'sword' } = {}) => svg({
     `<stop offset=".86" stop-color="#000" stop-opacity=".05"/><stop offset=".97" stop-color="#000" stop-opacity=".45"/></radialGradient>` +
     `<mask id="${id}-floor-mask"><use href="#back" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
     `<circle r="116" fill="url(#${id}-floor)" mask="url(#${id}-floor-mask)"/>` +
-    // Each rim hole sits in a straight-sided recessed pocket across the rim, drawn as a dark rectangle round it.
-    rimHoles
-      .map(([x, y, r]) => {
-        const a = (Math.atan2(y, x) * 180) / Math.PI + 90;
-        // The pocket with the hole cut out of it, so the hole stays open.
-        const d = `M-6.5 -8H6.5Q8 -8 8 -6.5V6.5Q8 8 6.5 8H-6.5Q-8 8 -8 6.5V-6.5Q-8 -8 -6.5 -8Z${circle(r)}`;
-        return `<path d="${d}" fill-rule="evenodd" transform="translate(${f(x)} ${f(y)}) rotate(${f(a)})" fill="#000" fill-opacity=".38"/>`;
-      })
-      .join('') +
+    // Each rim hole sits in a straight-sided recessed pocket that runs from near the rim's edge in to the flange hole
+    // in line with it (every rim hole lines up with a big or a small one), drawn dark on the metal only.
+    (rimHoles.length
+      ? `<mask id="${id}-pocket-mask"><use href="#body" fill="#fff"/></mask><g mask="url(#${id}-pocket-mask)" fill="#000" fill-opacity=".38">` +
+        rimHoles
+          .map(([x, y]) => {
+            const a = (Math.atan2(y, x) * 180) / Math.PI + 90, r = Math.hypot(x, y);
+            // In the pocket's own frame +y points in toward the center: from 8 outside the hole to 165 out.
+            return `<rect x="-8" y="-8" width="16" height="${f(r - 165 + 8)}" rx="1.5" transform="translate(${f(x)} ${f(y)}) rotate(${f(a)})"/>`;
+          })
+          .join('') +
+        '</g>'
+      : '') +
     // Chamfers round the flange's holes, any rim holes and the scalloped inner edge.
     ringChamfers(`${id}-spool-chamfer`, [...BIG_LIST.filter((_, k) => k !== 0 && k !== 6), ...SMALL_LIST, ...rimHoles]) +
     // The thick outer rim's inner groove.
