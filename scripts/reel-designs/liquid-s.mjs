@@ -24,8 +24,8 @@ export const drag = svg({
   body: [
     ring(200, 189),
     foot(128, -244, 14, 34),
-    // One thick vertical spoke: wide under the foot, narrowing past the drag to a strip at 6 o'clock.
-    roundPoly([[-52, -196], [52, -196], [36, -40], [22, 40], [22, 196], [-22, 196], [-22, 40], [-36, -40]], 8),
+    // One thick vertical spoke, one straight taper: wide under the foot, narrowing evenly to 6 o'clock.
+    roundPoly([[-52, -196], [52, -196], [22, 196], [-22, 196]], 8),
     // The Y arms branch off it above the drag and rise to the rim.
     strut([-30, -108], P(194, rad(-137)), 20, 15),
     strut([30, -108], P(194, rad(-43)), 20, 15),
