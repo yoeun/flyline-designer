@@ -198,23 +198,50 @@ const hubOpenings = () => {
   }).join('');
 };
 
-export const spool = svg({
+// The recessed pockets round rim holes: straight-sided, 16 wide, from 8 outside each hole in to radius 165. With an
+// `id`, each is a little darker than the rim, by the way it faces the light from the top left: 10% where it faces it
+// (round the top left of the rim) to 25% where it faces away. Without one they're plain shapes, for masks.
+const pockets = (holes, id) =>
+  holes
+    .map(([x, y]) => {
+      const a = (Math.atan2(y, x) * 180) / Math.PI + 90, r = Math.hypot(x, y);
+      // How squarely the pocket faces the light: 1 toward the top left, -1 away.
+      const facing = -(x + y) / (r * Math.SQRT2);
+      const fill = id ? ` fill="#000" fill-opacity="${(0.175 - 0.075 * facing).toFixed(2)}"` : '';
+      // In the pocket's own frame +y points in toward the center.
+      return `<rect x="-8" y="-8" width="16" height="${f(r - 165 + 8)}" rx="1.5" transform="translate(${f(x)} ${f(y)}) rotate(${f(a)})"${fill}/>`;
+    })
+    .join('');
+
+// The spool side. `rimHoles` ([cx, cy, r]) are drilled through its thick outer rim, as on the Sword II; `grooveR` is
+// the radius of the groove between rim and cage; `id` keeps gradient and mask ids apart between designs.
+export const spoolSide = ({ rimHoles = [], grooveR = 182, id = 'sword' } = {}) => svg({
   foot: ACCENT_FOOT + `<path d="${FOOT}" fill="#000" fill-opacity=".2"/>`,
   handles: [[...HANDLE, 22]],
   // A recessed floor runs straight on under the flange's scalloped inner edge, no gap, out to 116; inside 100 the
   // middle is cut out. The three hub arms are down in that cavity with the floor, reaching from the dial to it.
   back: [circle(116) + hubOpenings()],
-  body: [circle(200) + SPOOL_HOLES + INNER_EDGE, circle(52)],
+  body: [circle(200) + SPOOL_HOLES + INNER_EDGE + rimHoles.map(([x, y, r]) => circle(r, x, y)).join(''), circle(52)],
   details:
     // The floor ring and arms in shadow just inside the ridges, where they drop under them.
-    '<radialGradient id="sword-floor" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="116">' +
-    '<stop offset=".86" stop-color="#000" stop-opacity=".05"/><stop offset=".97" stop-color="#000" stop-opacity=".45"/></radialGradient>' +
-    `<mask id="sword-floor-mask"><use href="#back" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
-    '<circle r="116" fill="url(#sword-floor)" mask="url(#sword-floor-mask)"/>' +
-    // Chamfers round the flange's holes and scalloped inner edge.
-    ringChamfers('sword-spool-chamfer', [...BIG_LIST.filter((_, k) => k !== 0 && k !== 6), ...SMALL_LIST]) +
-    // The thick outer rim's inner groove.
-    `<circle r="182" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
+    `<radialGradient id="${id}-floor" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="116">` +
+    `<stop offset=".86" stop-color="#000" stop-opacity=".05"/><stop offset=".97" stop-color="#000" stop-opacity=".45"/></radialGradient>` +
+    `<mask id="${id}-floor-mask"><use href="#back" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
+    `<circle r="116" fill="url(#${id}-floor)" mask="url(#${id}-floor-mask)"/>` +
+    // Each rim hole sits in a straight-sided recessed pocket that runs from near the rim's edge in to the flange hole
+    // in line with it (every rim hole lines up with a big or a small one), lit by the way it faces and kept to the
+    // metal.
+    (rimHoles.length
+      ? `<mask id="${id}-pocket-mask"><use href="#body" fill="#fff"/></mask><g mask="url(#${id}-pocket-mask)">${pockets(rimHoles, id)}</g>`
+      : '') +
+    // Chamfers round the flange's holes, any rim holes and the scalloped inner edge.
+    ringChamfers(`${id}-spool-chamfer`, [...BIG_LIST.filter((_, k) => k !== 0 && k !== 6), ...SMALL_LIST, ...rimHoles]) +
+    // The thick outer rim's inner groove, at `grooveR`. With rim holes it's kept to the metal and cut out where it
+    // crosses the pockets.
+    (rimHoles.length
+      ? `<mask id="${id}-groove-mask"><use href="#body" fill="#fff"/><g fill="#000">${pockets(rimHoles)}</g></mask>`
+      : '') +
+    `<circle r="${grooveR}" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"${rimHoles.length ? ` mask="url(#${id}-groove-mask)"` : ''}/>` +
     `<circle r="52" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
     // The logo knob: trim, knurled rim, a pale mark for the logo.
     `<circle r="48" fill="#000" fill-opacity=".25"/><path d="${knurl(44, 1.2, 52)}" ${TRIM}/><path d="${knurl(44, 1.2, 52)}" fill="#000" fill-opacity=".2"/>` +
@@ -251,3 +278,5 @@ export const drag = svg({
     `<circle r="60" ${TRIM}/><circle r="70" fill="url(#sheen)"/>` +
     screw(0, 0, 14),
 });
+
+export const spool = spoolSide();
