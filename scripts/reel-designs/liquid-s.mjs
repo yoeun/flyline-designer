@@ -49,8 +49,8 @@ export const drag = svg({
     MIDDLE_SPOKE,
     // The Y arms leave it a little below halfway between the drag knob and the rim (at about y -98) and rise
     // steeply to the rim.
-    strut([-30, -81], P(194, rad(-122)), 20, 15),
-    strut([30, -81], P(194, rad(-58)), 20, 15),
+    strut([-30, -86], P(194, rad(-128)), 20, 15),
+    strut([30, -86], P(194, rad(-52)), 20, 15),
   ],
   // The middle spoke's chamfer, then a dark chamfer, a flat facet, all the way round the frame's outer edge. That
   // runs across the foot's post where it meets the frame, so the foot reads as a separate piece, and across the
