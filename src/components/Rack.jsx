@@ -8,7 +8,7 @@ import RackFilter, { NO_FILTER, isFiltered, rackFilter } from './RackFilter.jsx'
 
 // Side by side, the rack takes at most 45% of the column and its list scrolls inside it.
 // The search and filter are shared with the rack page; a weight filter shows that weight, then one either side.
-export default function Rack({ setups, currentId, open, onToggle, filter: picked, onFilterChange, onLoad, onEditDetails, onDuplicate, onRemove, onExpand }) {
+export default function Rack({ ref, setups, currentId, open, onToggle, filter: picked, onFilterChange, onLoad, onEditDetails, onDuplicate, onRemove, onExpand }) {
   const conflicts = rackConflicts(setups);
   const weights = rackWeights(setups);
   const filter = rackFilter(picked, weights);
@@ -24,6 +24,7 @@ export default function Rack({ setups, currentId, open, onToggle, filter: picked
 
   return (
     <Collapsible
+      ref={ref}
       open={open}
       onOpenChange={onToggle}
       render={<section />}

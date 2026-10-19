@@ -2,27 +2,24 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import ReelPreview from './ReelPreview.jsx';
 
-// How much of the preview may scroll away before the floating copy shows.
-const SHOWN = 0.3;
-
-// A small copy of the preview, pinned at the top right under the header, once the real one has
-// scrolled up out of sight. On a narrow screen the options sit below the preview, so this keeps the
+// A small copy of the preview, pinned at the top right under the header, once the real one and the
+// rack under it have scrolled up out of sight, so it never covers either. On a narrow screen the options sit below the preview, so this keeps the
 // reel in view while editing them. Tapping it scrolls back to the preview. Wide screens keep the
 // preview beside the options, so it never shows there.
-export default function FloatingPreview({ targetRef, setup, mode, side, background }) {
+export default function FloatingPreview({ targetRef, untilRef, setup, mode, side, background }) {
   const [shown, setShown] = useState(false);
   useEffect(() => {
-    const target = targetRef.current;
+    const target = untilRef.current;
     if (!target) return;
     const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 0;
     const observer = new IntersectionObserver(
-      // Only once it is above the viewport, not before the page has scrolled to it.
-      ([entry]) => setShown(entry.intersectionRatio < SHOWN && entry.boundingClientRect.top < header),
-      { rootMargin: `-${header}px 0px 0px 0px`, threshold: [0, SHOWN, 1] },
+      // Only once it is wholly above the viewport, not before the page has scrolled to it.
+      ([entry]) => setShown(!entry.isIntersecting && entry.boundingClientRect.top < header),
+      { rootMargin: `-${header}px 0px 0px 0px`, threshold: 0 },
     );
     observer.observe(target);
     return () => observer.disconnect();
-  }, [targetRef]);
+  }, [untilRef]);
 
   return (
     <button
