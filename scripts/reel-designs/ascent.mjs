@@ -52,7 +52,23 @@ const BLACK_FOOT = `<path d="${FOOT}" fill="#1f2123"/><path d="${FOOT}" fill="ur
 
 // The hub disc is darker gunmetal than the face: recessed, plus a little more shade.
 const hubShade = (d) =>
-  `<path d="${d}" fill="#000" fill-opacity=".14" fill-rule="evenodd"/><circle r="${HUB}" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>`;
+  `<path d="${d}" fill="#000" fill-opacity=".22" fill-rule="evenodd"/><circle r="${HUB}" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>`;
+// The face drops steeply to the hub at the arbor: a wall from 120 down to the hub's edge at 100, darkest at its
+// foot, with its shadow pooling on the hub floor just inside and a light lip at its top. Shaded on the metal only:
+// the ports cut out of the band, and both gradients fade out before the band's edges so the cut-outs stay clear.
+const WALL = 120;
+const at = (r, outer) => (r / outer).toFixed(3);
+const BEVEL_GRADIENT =
+  `<radialGradient id="ascent-wall" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="${WALL}">` +
+  `<stop offset="${at(86, WALL)}" stop-color="#000" stop-opacity="0"/><stop offset="${at(HUB, WALL)}" stop-color="#000" stop-opacity=".85"/>` +
+  `<stop offset="${at(HUB + 1, WALL)}" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>` +
+  `<radialGradient id="ascent-lip" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="${WALL + 2}">` +
+  `<stop offset="${at(WALL - 2, WALL + 2)}" stop-color="#fff" stop-opacity="0"/><stop offset="${at(WALL, WALL + 2)}" stop-color="#fff" stop-opacity=".3"/>` +
+  `<stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>`;
+const bevel = (skip) =>
+  BEVEL_GRADIENT +
+  `<path d="${circle(WALL) + circle(86) + ports(skip)}" fill="url(#ascent-wall)" fill-rule="evenodd"/>` +
+  `<path d="${circle(WALL + 2) + circle(WALL - 2) + ports(skip)}" fill="url(#ascent-lip)" fill-rule="evenodd"/>`;
 // Black hub cap on the gunmetal collar.
 const CAP =
   `<circle r="44" fill="#000" fill-opacity=".22"/><circle r="40" fill="#1c1d1f"/><circle r="40" fill="url(#sheen)"/>` +
@@ -66,7 +82,7 @@ export const drag = svg({
   under: UNDER + BLACK_FOOT,
   back: [hub()],
   body: [circle(200) + ports() + circle(HUB)],
-  details: GROOVE + hubShade(hub()) + CAP,
+  details: GROOVE + hubShade(hub()) + bevel() + CAP,
 });
 
 // Spool side: handle in the port at about 4 o'clock (index 6), counterweight in the one at about 11 (index 13).
@@ -88,5 +104,5 @@ export const spool = svg({
   under: UNDER,
   back: [hub(HUB_SKIP)],
   body: [circle(200) + ports([6, 13]) + circle(HUB)],
-  details: GROOVE + hubShade(hub(HUB_SKIP)) + CAP + ball(weight) + grip(handle),
+  details: GROOVE + hubShade(hub(HUB_SKIP)) + bevel([6, 13]) + CAP + ball(weight) + grip(handle),
 });
