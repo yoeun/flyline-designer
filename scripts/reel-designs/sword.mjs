@@ -66,7 +66,9 @@ export const drag = svg({
 });
 
 // Spool side.
-const HANDLE = P(160, rad(-112));
+// The handle stands where the top big hole would be, so that hole isn't cut on the spool side.
+const HANDLE = P(147, rad(-90));
+const SPOOL_HOLES = BIG.slice(1).map((a) => circle(27, ...P(147, rad(a)))).join('') + HOLES.slice(BIG_HOLES.length);
 const WEIGHT = P(166, rad(84));
 const HUB_ARMS = [0, 1, 2].map((k) => -60 + k * 120);
 
@@ -76,7 +78,7 @@ export const spool = svg({
   // A recessed floor runs straight on under the flange's scalloped inner edge, no gap, out to 116; inside 100 the
   // middle is cut out. The three hub arms are down in that cavity with the floor, reaching from the dial to it.
   back: [ring(116, 100), ...HUB_ARMS.map((a) => curvedSpoke(a, a - 50, 40, 112, 22, 16))],
-  body: [circle(200) + HOLES + INNER_EDGE, circle(52)],
+  body: [circle(200) + SPOOL_HOLES + INNER_EDGE, circle(52)],
   details:
     // The floor ring and arms in shadow just inside the ridges, where they drop under them.
     '<radialGradient id="sword-floor" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="116">' +
