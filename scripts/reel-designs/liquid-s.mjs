@@ -3,7 +3,7 @@
 // Y arms branching off it up to the rim, round the knurled drag knob. Through it shows the spool's cage, which
 // turns: its 24 windows, the same as the spool side's, without the handle (the wound line hides it). Spool side:
 // that window ring set back behind the spool's rim and five swept spokes, with the handle partway along one.
-import { ACCENT, P, chamfer, circle, foot, knob, knurl, rad, recessed, ring, slots, spoke, strut, sunkFace, svg } from './lib.mjs';
+import { ACCENT, P, chamfer, circle, foot, knob, knurl, rad, recessed, ring, roundPoly, slots, strut, sunkFace, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
 export const arbor = 126;
@@ -11,12 +11,46 @@ export const arbor = 126;
 // The spool's 24 windows, shared by both sides.
 const RIM = { n: 24, rIn: 126, rOut: 171, bar: 12, corner: 7 };
 
-// Liquid S spool side: five spokes swept back 40°; the handle sits partway along the one ending at -105°.
+// Liquid S spool side, from Lamson's photo of the bare spool: five spokes, 72° apart, swept hard: each leaves the
+// hexagonal center almost tangent to it (70° back from where it meets the rim), so neighbours form a V beside it.
+// They're thick at the center and taper to the rim, and each has one deep chamfer along its trailing (clockwise)
+// edge. The one ending at -105° stops at the handle; the windows show past it.
 const LIQUID_SPOKES = [0, 1, 2, 3, 4].map((k) => -105 + k * 72);
+const SPOKE_W = [32, 14];
+const spokeEnds = (a) => [P(30, rad(a - 70)), P(190, rad(a))];
 const liquidHandle = (() => {
-  const [x0, y0] = P(26, rad(-145)), [x1, y1] = P(188, rad(-105));
-  return [x0 + (x1 - x0) * 0.62, y0 + (y1 - y0) * 0.62];
+  const [[x0, y0], [x1, y1]] = spokeEnds(-105);
+  return [x0 + (x1 - x0) * 0.75, y0 + (y1 - y0) * 0.75];
 })();
+const along = ([a, b], t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+// Each spoke from the center to the rim, or, for the handle's, to just past the handle.
+const SPOKE_LINES = LIQUID_SPOKES.map((a) => {
+  const [p0, p1] = spokeEnds(a);
+  return a === -105 ? [p0, along([p0, p1], 0.82)] : [p0, p1];
+});
+const spokeWidthAt = (t) => SPOKE_W[0] + (SPOKE_W[1] - SPOKE_W[0]) * t;
+const SPOOL_SPOKES = SPOKE_LINES.map(([p0, p1], i) => strut(p0, p1, SPOKE_W[0], i === 0 ? spokeWidthAt(0.82) : SPOKE_W[1]));
+// The hexagonal center the spokes grow out of, under the round cap.
+const HEX = roundPoly(Array.from({ length: 6 }, (_, k) => P(46, rad(-90 + k * 60))), 8);
+// A spoke's deep chamfer, like the drag side's arms': a facet along its clockwise edge, 2/3 of its width, in one shade by the way it faces the
+// light from the top left. It runs from the hexagonal center to the rim's inner edge.
+const spokeFacet = ([p0, p1], i) => {
+  const l = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
+  const n = [-(p1[1] - p0[1]) / l, (p1[0] - p0[0]) / l]; // the clockwise side
+  // Where the spoke's center line crosses radius r.
+  const cross = (r) => {
+    const d = [p1[0] - p0[0], p1[1] - p0[1]], B = p0[0] * d[0] + p0[1] * d[1], A = l * l, C = p0[0] ** 2 + p0[1] ** 2 - r * r;
+    return Math.min(1, (-B + Math.sqrt(B * B - A * C)) / A);
+  };
+  const t0 = cross(44), t1 = cross(181);
+  const w1 = i === 0 ? spokeWidthAt(0.82) : SPOKE_W[1];
+  const width = (t) => SPOKE_W[0] + (w1 - SPOKE_W[0]) * t;
+  const at = (t, k) => { const c = along([p0, p1], t); return [c[0] + n[0] * width(t) * k, c[1] + n[1] * width(t) * k]; };
+  const pts = [at(t0, 0.5), at(t1, 0.5), at(t1, -1 / 6), at(t0, -1 / 6)];
+  const facing = (n[0] + n[1]) * -Math.SQRT1_2;
+  const fill = facing > 0.3 ? `fill="#fff" fill-opacity="${(0.15 + 0.3 * facing).toFixed(2)}"` : `fill="#000" fill-opacity="${(0.3 + 0.2 * Math.max(0, -facing)).toFixed(2)}"`;
+  return `<path d="M${pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join('L')}Z" ${fill}/>`;
+};
 
 // The spool's window ring curves down to its floor below the windows: a gradient drop from the windows' inner edge
 // (126) to the ring's inner edge (116), on the ring only. A mask keeps it off the body (frame or spool spokes) that
@@ -89,6 +123,14 @@ export const spool = svg({
   handles: [[...liquidHandle, 16]],
   // The spool's window ring, set back behind its rim and spokes.
   back: [ring(190, 116) + slots(RIM)],
-  body: [ring(200, 184), ...LIQUID_SPOKES.map((a) => spoke(a, 26, 188, 20, 13, 40)), circle(38)],
-  details: `${curvedFloor('spool')}${knob(...liquidHandle, 16)}<circle r="30" fill="#fff" fill-opacity=".1"/>`,
+  body: [ring(200, 181), ...SPOOL_SPOKES, HEX],
+  // The spool's face is one casting: its rim, spokes and center chamfered as one, inside a dark outer chamfer; each
+  // spoke's deep chamfer; then the round cap on the hexagon, and the handle.
+  details:
+    curvedFloor('spool') +
+    `<clipPath id="liquid-spool-clip"><circle r="196"/></clipPath><g clip-path="url(#liquid-spool-clip)">${chamfer('liquid-spool', [ring(200, 181), ...SPOOL_SPOKES, HEX])}</g>` +
+    `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/>` +
+    SPOKE_LINES.map(spokeFacet).join('') +
+    `<circle r="24" fill="#000" fill-opacity=".25"/><circle r="22" fill="currentColor"/><circle r="22" fill="url(#sheen)"/>` +
+    knob(...liquidHandle, 16),
 });
