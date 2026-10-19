@@ -1,9 +1,15 @@
-// Orvis Mirage. Traced from straight-on photos; the spool's slanted bars show through behind the drag side.
-// Foot, drag ring and handle take the finish's accent: teal on Silver Dragonfly, navy on Blackout.
+// Orvis Mirage. Traced from straight-on photos.
+// Drag side: the frame is a rim, six spokes fanning from the right rim, and the knob's boss and drag ring. Through it
+// shows the spool's cage, which turns: its sixteen slanted windows, the same as the spool side's (mirrored, as seen
+// from behind), without the counterweight plate (the wound line hides it). Spool side: the same window ring round
+// six hexagon spokes. Foot, drag ring and handle take the finish's accent: teal on Silver Dragonfly, navy on Blackout.
 import { ACCENT, P, arcPts, circle, foot, hexSpokes, rad, ring, roundPoly, slots, strut, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
 export const arbor = 134;
+
+// The spool's sixteen slanted windows, shared by both sides.
+const RIM = { n: 16, rIn: 134, rOut: 184, bar: 11, corner: 6, slant: 76 };
 
 const accentFoot = `<path d="${foot(118, -240, 16, 56)}" ${ACCENT}/><path d="${foot(118, -240, 16, 56)}" fill="url(#sheen)"/>`;
 
@@ -42,7 +48,7 @@ const fan = (sy) => {
 
 export const drag = svg({
   under: accentFoot,
-  back: [ring(184, 128) + slots({ n: 16, rIn: 136, rOut: 178, bar: 9, corner: 5, slant: -80 })],
+  cage: [ring(190, 125) + slots({ ...RIM, slant: -RIM.slant })],
   body: [ring(200, 180), ...fan(-1), ...fan(1), circle(BOSS)],
   details:
     `<circle r="60" ${ACCENT}/><circle r="60" fill="url(#sheen)"/>` +
@@ -56,7 +62,7 @@ export const spool = svg({
   foot: accentFoot,
   handles: [[...P(162, rad(96)), 16]],
   body: [
-    ring(200, 125) + slots({ n: 16, rIn: 134, rOut: 184, bar: 11, corner: 6, slant: 76 }),
+    ring(200, 125) + slots(RIM),
     // The counterweight plate across the top of the slots.
     roundPoly([...arcPts(188, rad(-120), rad(-64), 10), ...arcPts(152, rad(-64), rad(-120), 10)], 8),
     ...SPOOL_SPOKES.map(({ corner, end }) => strut(corner, end, 16, 12)),

@@ -1,15 +1,17 @@
 // Sunshine Fishing SF-003 Pro.
-// Drag side drawn from Sunshine's two near-straight-on drag-side photos (gunmetal and black): a CNC frame that is a
-// thin rim and a "PRO" plate, an inverted triangle whose two straight arms run from the rim at about 10:30 and
-// 1:30 down to the rim at 6 o'clock, filled solid below the round hub and open above it. Through the three windows
-// shows the spool's back flange, cut with a ring of many narrow radial slots, and the hub cap is a plain disc.
+// Drag side drawn from Sunshine's two near-straight-on drag-side photos (gunmetal and black): the frame is a thin
+// rim, the foot and a "PRO" plate, an inverted triangle whose two straight arms run from the rim at about 10:30 and
+// 1:30 down to the rim at 6 o'clock, filled solid below the round hub and open above it, with a plain disc hub cap.
+// The many narrow bars seen through its three windows are the spool's cage, which turns: the same ring of 26 radial
+// slots as the spool face, round the opening into the drum (the counterweight and handle are left out: the wound
+// line hides them).
 // Spool side from the white-background three-quarter shots: a wide face cut with a ring of radial slots around a
 // big opening into the drum, a recessed web of three spokes, a tall knurled hub cap, a silver counterweight at
 // about 10 o'clock and the black handle knob at 5.
 // On the black finish the foot, triangle plate and both hub caps are black but the spool and the drag side's outer
-// rim stay gunmetal, so those take the finish's trim (the reel color where there is none). The spool-side shots are at an
-// angle, so its slot count, the web and the handle and counterweight positions are approximate; the drag-side
-// flange's slot count is estimated from the few slots each window shows.
+// rim stay gunmetal, so those, and the drag side's cage, take the finish's trim (the reel color where there is
+// none). The spool-side shots are at an angle, so its slot count, the web and the handle and counterweight
+// positions are approximate.
 import { P, TRIM, circle, f, foot, knob, knurl, rad, recessed, ring, roundPoly, slots, spoke, svg } from './lib.mjs';
 
 // The wound line starts at the spool face's opening: a 50 mm drum in a 94 mm spool (7/8) is 106 at rim 200.
@@ -55,8 +57,8 @@ const WINDOWS =
 const trimmed = (...ds) => ds.map((d) => `<path d="${d}" fill-rule="evenodd" ${TRIM}/>`).join('');
 const recessedTrim = (...ds) => trimmed(...ds) + ds.map((d) => `<path d="${d}" fill-rule="evenodd" fill="#000" opacity=".2"/>`).join('');
 
-// The spool's back flange: a ring of narrow radial slots, seen through the frame's windows.
-const FLANGE = ring(196, 96) + slots({ n: 36, rIn: 112, rOut: 180, bar: 10, corner: 4 });
+// The spool's ring of radial slots, shared by both sides.
+const SLOTS = { n: 26, rIn: 120, rOut: 182, bar: 13, corner: 6, off: -90 + 360 / 52 };
 
 const FOOT = foot(140, -244, 14, 40);
 
@@ -66,7 +68,8 @@ const cap = (r) =>
   `<circle r="${r}" fill="url(#sheen)"/><circle r="${r - 6}" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>`;
 
 export const drag = svg({
-  under: recessedTrim(FLANGE),
+  cage: [ring(196, 104) + slots(SLOTS)],
+  cageFill: TRIM,
   body: [circle(200) + WINDOWS, FOOT],
   details:
     // The outer rim is gunmetal on the black finish too: redrawn in the trim over the body's frame color.
@@ -80,7 +83,7 @@ export const drag = svg({
 });
 
 // Spool face: a ring of radial slots around the opening into the drum.
-const FACE = ring(200, 104) + slots({ n: 26, rIn: 120, rOut: 182, bar: 13, corner: 6, off: -90 + 360 / 52 });
+const FACE = ring(200, 104) + slots(SLOTS);
 // The recessed web inside the drum: a ring and three spokes out from the hub.
 const WEB = [ring(104, 92), ...[-90, 30, 150].map((a) => spoke(a, 30, 96, 22, 14)), circle(50)];
 const handle = P(150, rad(55));

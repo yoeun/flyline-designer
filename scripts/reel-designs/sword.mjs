@@ -3,9 +3,10 @@
 // and gray look the same): a flange drilled with a ring of twelve big round holes and twelve small ones between them
 // near the rim, its inner edge scalloped round the big holes, opening onto a thin drum ring with three swept arms to
 // the hub, a big knurled logo knob in the middle, the handle up top-left and a silver counterweight at the bottom.
-// No straight-on drag-side photo exists: the frame (a thin rim, five arms swept counter-clockwise from a central boss
-// in a "storm vortex", the knob over it) is inferred from Piscifun's stylized drag-side render and an angled
-// wet-studio shot, with the spool's drilled back flange showing through. Spoke sweep and widths are approximate.
+// No straight-on drag-side photo exists: the frame (a thin rim, the foot, five arms swept counter-clockwise from a
+// central boss in a "storm vortex", the knob over it) is inferred from Piscifun's stylized drag-side render and an
+// angled wet-studio shot. Through it shows the spool's cage, which turns: the flange's twelve big holes and scalloped
+// inner edge, as on the spool side (the small holes hide behind the rim). Spoke sweep and widths are approximate.
 // The foot and handle take the finish's accent (green on gunmetal, champagne on olive); the logo knob and drag knob
 // take its trim, falling back to the body color: green on gunmetal, gray on gray, body-colored on olive and black.
 import { ACCENT, P, TRIM, circle, f, foot, knurl, rad, ring, roundPoly, screw, svg } from './lib.mjs';
@@ -52,7 +53,7 @@ const ARMS = [0, 1, 2, 3, 4].map((k) => -150 + k * 72);
 
 export const drag = svg({
   under: ACCENT_FOOT,
-  back: [ring(196, 80) + BIG_HOLES],
+  cage: [circle(196) + BIG_HOLES + INNER_EDGE],
   body: [ring(200, 184), ...ARMS.map((a) => curvedSpoke(a + 70, a, 70, 192, 26, 18, 1.5)), circle(84)],
   details:
     `<circle r="184" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +

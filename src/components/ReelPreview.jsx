@@ -13,10 +13,14 @@ const shade = (hex, k) =>
   '#' + [1, 3, 5].map((i) => Math.round(parseInt(hex.slice(i, i + 2), 16) * k).toString(16).padStart(2, '0')).join('');
 
 // Ink for markings printed on a part of this color, like a dial's numbers: dark on light metal, light on dark.
-const inkOn = (hex) => {
+const isDark = (hex) => {
   const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
-  return 0.299 * r + 0.587 * g + 0.114 * b > 110 ? '#1b1d1f' : '#e4e4e0';
+  return 0.299 * r + 0.587 * g + 0.114 * b <= 110;
 };
+const inkOn = (hex) => (isDark(hex) ? '#e4e4e0' : '#1b1d1f');
+// The spool cage seen through the drag side: darker than the frame, or lighter on a dark finish, where darker
+// wouldn't show.
+const cageOn = (hex) => (isDark(hex) ? ['#fff', 0.16] : ['#000', 0.25]);
 
 // mode: 'reel' | 'see-through' | 'line-only'; side: 'drag' | 'spool'. showLine false draws the reel empty.
 export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showLine = true, background = '#e9ebe6', size, svgRef, title, className }) {
@@ -111,6 +115,8 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
             '--reel-accent': reelAccent(layout.reel, finish.id) ?? 'currentColor',
             '--reel-trim': reelTrim(layout.reel, finish.id) ?? 'currentColor',
             '--reel-ink': inkOn(reelAccent(layout.reel, finish.id) ?? reelHex),
+            '--reel-cage': cageOn(reelHex)[0],
+            '--reel-cage-opacity': cageOn(reelHex)[1],
           }}
           opacity={reelOpacity}
           // Clicking the handle turns the spool.

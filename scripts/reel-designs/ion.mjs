@@ -4,7 +4,8 @@
 // window between them and close together below it with a slot between them; a second pair across the reel, tilted
 // a little (higher on the right), with a slot between them holding a frame screw near each end; one spoke out to the
 // rim in each quadrant; and a thin ring around the boss of the big grey knurled drag knob, with a gap between them.
-// The spool's face shows through the windows.
+// That is all frame. Through it shows the spool's cage, which turns: its twelve outer windows and six inner ones,
+// the same as the spool side, without the handle and counterweight (the wound line hides them).
 // Spool side drawn from Trident's bare-spool shots and Echo's three-quarter view, so it's approximate: a ring of
 // twelve windows between radial bars, an inner ring, six windows around a raised hub under the black knurled spool
 // release knob; the handle (black, with a polished steel screw in its end) at 9 o'clock and a black counterweight
@@ -20,8 +21,9 @@ const TILT = -4; // degrees the cross bars lean, right side up
 
 const FOOT = foot(128, -236, 16, 44);
 
-// The spool's face as seen through the frame: its window ring and inner ring.
-const SPOOL_FACE = (rIn) => ring(196, rIn) + slots({ n: 12, rIn: 116, rOut: 182, bar: 15, corner: 10 });
+// The spool's windows, shared by both sides: twelve round the rim and six round the hub.
+const RIM = { n: 12, rIn: 120, rOut: 182, bar: 19, corner: 11, off: -8 };
+const HUB_WINDOWS = { n: 6, rIn: 60, rOut: 100, bar: 17, corner: 9, off: -8 };
 
 // A pair of parallel bars along angle `deg` from r0 to r1, `gap` apart, each w wide.
 const pair = (deg, r0, r1, gap, w) => {
@@ -37,7 +39,7 @@ const pair = (deg, r0, r1, gap, w) => {
 const crossScrews = [0, 180].map((d) => P(140, rad(d + TILT)));
 
 export const drag = svg({
-  back: [SPOOL_FACE(104)],
+  cage: [ring(196, 56) + slots(RIM) + slots(HUB_WINDOWS)],
   body: [
     ring(200, RIM_IN),
     FOOT,
@@ -74,7 +76,7 @@ export const spool = svg({
   foot: recessed(FOOT),
   handles: [[...handle, 20]],
   body: [
-    circle(200) + slots({ n: 12, rIn: 120, rOut: 182, bar: 19, corner: 11, off: -8 }) + slots({ n: 6, rIn: 60, rOut: 100, bar: 17, corner: 9, off: -8 }),
+    circle(200) + slots(RIM) + slots(HUB_WINDOWS),
   ],
   details:
     `<circle r="190" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +

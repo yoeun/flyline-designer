@@ -1,5 +1,8 @@
 // Orvis Clearwater (Cast). Traced from straight-on photos of both sides.
-// Both sides share a cage of tilted V's: pairs of bars that meet at an inner ring and open out to the rim.
+// Drag side: the frame is a rim, the foot, two long bars from the bottom of the rim to the top, an inner pair from
+// the foot onto the knob's boss, and the boss and knob. Through it shows the spool's cage, which turns: tilted V's,
+// pairs of bars that meet at an inner ring and open out to the rim, the same as the spool side's, without the
+// counterweight and handle (the wound line hides them). Spool side: the same cage round six hexagon spokes.
 import { ACCENT, P, circle, foot, hexSpokes, knob, knurl, pad, rad, recessed, ring, screw, strut, svg } from './lib.mjs';
 
 // The wound line starts at the outer edge of the spool side's inner ring.
@@ -8,12 +11,15 @@ export const arbor = 118;
 const V_COUNT = 12;
 const V_TILT = 6; // degrees the V's lean, clockwise at the rim
 const V_SPREAD = 8; // half the angle between a V's arms at the rim
-const vCage = (inner) =>
-  Array.from({ length: V_COUNT }, (_, k) => {
+// The spool's cage, shared by both sides: the inner ring and the V's whose apexes sit on it.
+const V_CAGE = [
+  ring(118, 106),
+  ...Array.from({ length: V_COUNT }, (_, k) => {
     const a = -90 + 360 / V_COUNT / 2 + (k * 360) / V_COUNT;
-    const apex = P(inner, rad(a));
+    const apex = P(112, rad(a));
     return [-1, 1].map((side) => strut(apex, P(190, rad(a + V_TILT + side * V_SPREAD)), 10, 12));
-  }).flat();
+  }).flat(),
+];
 
 // Drag side: two long straight bars from the bottom of the rim, close together, up to the top, wider apart (like the
 // 2020–25 Hydros), passing either side of the knob's boss; and an inner pair from the foot down onto the top of the boss.
@@ -43,10 +49,9 @@ const dragKnobWithRecess = (r) => {
 };
 
 export const drag = svg({
+  cage: V_CAGE,
   body: [
     ring(200, 184),
-    ring(132, 122),
-    ...vCage(127),
     foot(124, -244, 14, 30),
     ...[-1, 1].map((sx) => strut([sx * OUTER[0][0], OUTER[0][1]], [sx * OUTER[1][0], OUTER[1][1]], ...OUTER_W)),
     ...[-1, 1].map((sx) => strut([sx * INNER[0][0], INNER[0][1]], P(BOSS - 6, rad(-90 + sx * INNER[1])), 22, 28)),
@@ -66,8 +71,7 @@ export const spool = svg({
   handles: [[...handle, 24]],
   body: [
     ring(200, 184),
-    ring(118, 106),
-    ...vCage(112),
+    ...V_CAGE,
     ...SPOKES.map(({ corner, end }) => strut(corner, end, 18, 14)),
     `M${SPOKES.map(({ corner }) => corner.map((v) => v.toFixed(1)).join(' ')).join('L')}Z`,
   ],

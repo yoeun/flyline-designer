@@ -1,4 +1,8 @@
 // Orvis Hydros (2026). Its parts are shared with the 2020–25 Hydros (hydros-2020.mjs).
+// Drag side: the frame is a rim, the foot, two straight bars (wide apart at the top, closer at the bottom) with a
+// thinner one just inside each, and the drag knob. Through it shows the spool's cage, which turns: its fourteen
+// windows, the same as the spool side's, without the handle pad and counterweight (the wound line hides them).
+// Spool side: the same window ring round three arcs that read as double spokes.
 import { P, circle, dragKnob, foot, knob, pad, rad, ring, roundPoly, screw, slots, strut, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
@@ -6,14 +10,18 @@ export const arbor = 116;
 
 // The Hydros foot is dark whatever the reel color.
 export const HYDROS_FOOT = `<path d="${foot(130, -244, 14, 30)}" fill="#3b3e41"/><path d="${foot(130, -244, 14, 30)}" fill="url(#sheen)"/>`;
-// Drag side: the window ring and two straight bars, wide apart at the top and closer at the bottom.
+// The spool's fourteen windows, shared by both sides.
+const WINDOWS = { n: 14, rIn: 116, rOut: 176, bar: 17, corner: 9, off: -90 + 360 / 28 };
+export const HYDROS_CAGE = [ring(188, 100) + slots(WINDOWS)];
+// Drag side: the rim and two straight bars, wide apart at the top and closer at the bottom.
 export const HYDROS_FRAME = [
-  ring(200, 104) + slots({ n: 14, rIn: 118, rOut: 178, bar: 17, corner: 9, off: -90 + 360 / 28 }),
+  ring(200, 180),
   strut([-68, -190], [-36, 192], 28, 22),
   strut([68, -190], [36, 192], 28, 22),
 ];
 export const drag = svg({
   under: HYDROS_FOOT,
+  cage: HYDROS_CAGE,
   body: [
     ...HYDROS_FRAME,
     // Each bar has a thinner one just inside it, running the same way.
@@ -56,7 +64,7 @@ export const hydrosSpool = (spokes) =>
   svg({
     foot: HYDROS_FOOT,
     handles: [[...P(146, rad(-38)), 23]],
-    body: [ring(200, 100) + slots({ n: 14, rIn: 116, rOut: 176, bar: 17, corner: 9, off: -90 + 360 / 28 }), ...spokes, circle(HUB), pad(146, -38, 46, 64)],
+    body: [ring(200, 100) + slots(WINDOWS), ...spokes, circle(HUB), pad(146, -38, 46, 64)],
     details: SPOOL_DETAILS,
   });
 const SPOOL_DETAILS =

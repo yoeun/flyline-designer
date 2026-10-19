@@ -1,9 +1,10 @@
 // Maxcatch Avid Pro.
 // Drag side drawn from Maxcatch's near-frontal shot of the black 5Seven (beside the rose gold one) and the
-// three-quarter rose gold shot: a thin rim and a ring of about eighteen windows round a thin inner ring, open
-// inside it, crossed by three broad spokes from a triangular boss — one up into the foot with a slot in it, one
-// out to the left with a slot, one down to the right with a small hole — and a big silver drag knob. A screw sits
-// at the top of the top spoke and another on the bar at 6 o'clock.
+// three-quarter rose gold shot. The frame is a thin rim, the foot and three broad spokes from a triangular boss —
+// one up into the foot with a slot in it, one out to the left with a slot, one down to the right with a small
+// hole — and a big silver drag knob, with a screw at the top of the top spoke. Through it shows the spool's cage,
+// which turns: the spool side's ring of about eighteen windows round a thin inner ring, open inside it. The handle
+// and counterweight pads would show through too, but the wound line hides them.
 // Spool side drawn from the three-quarter handle-side shot: the same window ring and inner ring round an open
 // center crossed by three spokes from the silver knurled spool cap, the black handle on a pad at about 2 o'clock
 // and a silver counterweight across at about 8. That shot is at an angle, so the spool spokes' angles and widths
@@ -16,7 +17,7 @@ export const arbor = 118;
 const SILVER = '#9f9fa0';
 // The window ring both sides share: windows between the rim band and a thin inner ring.
 const WINDOWS = { n: 18, rIn: 134, rOut: 185, bar: 14, corner: 10, off: -90 };
-const frameRing = () => ring(200, 122) + slots(WINDOWS);
+const spoolRing = () => ring(200, 122) + slots(WINDOWS);
 
 // A slot along a spoke, from r0 to r1 at `deg`, w wide.
 const slot = (deg, r0, r1, w) => strut(P(r0, rad(deg)), P(r1, rad(deg)), w);
@@ -24,10 +25,9 @@ const slot = (deg, r0, r1, w) => strut(P(r0, rad(deg)), P(r1, rad(deg)), w);
 const FOOT = foot(142, -244, 14, 32);
 
 export const drag = svg({
-  // The spool's back flange behind the windows, its own windows offset half a pitch.
-  back: [ring(196, 118) + slots({ ...WINDOWS, off: -90 + 10 })],
+  cage: [ring(192, 122) + slots(WINDOWS)],
   body: [
-    frameRing(),
+    ring(200, 188),
     FOOT,
     // Top spoke into the foot, with a slot.
     strut(P(40, rad(-120)), P(196, rad(-88)), 74, 50) + slot(-90, 98, 124, 18),
@@ -38,15 +38,13 @@ export const drag = svg({
     circle(84),
   ],
   details:
-    `<circle r="122" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
-    `<circle r="185" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
+    `<circle r="188" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
     // The silver drag knob: a knurled rim round a flat face.
     `<circle r="72" fill="#000" fill-opacity=".25"/>` +
     `<path d="${knurl(66, 1.5, 54)}" fill="#7d7e7f"/><path d="${knurl(66, 1.5, 54)}" fill="url(#sheen)"/>` +
     `<circle r="58" fill="${SILVER}"/><circle r="58" fill="url(#sheen)"/>` +
     `<circle r="58" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/>` +
-    screw(...P(176, rad(-89)), 6) +
-    screw(...P(160, rad(90)), 6),
+    screw(...P(176, rad(-89)), 6),
 });
 
 const handle = P(156, rad(-20));
@@ -56,7 +54,7 @@ export const spool = svg({
   foot: recessed(FOOT),
   handles: [[...handle, 18]],
   body: [
-    frameRing(),
+    spoolRing(),
     strut([0, 0], P(126, rad(-20)), 40, 34),
     strut([0, 0], P(126, rad(100)), 34, 26),
     strut([0, 0], P(126, rad(-140)), 34, 26),

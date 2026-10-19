@@ -1,13 +1,14 @@
 // Echo Bravo LT.
 // Drag side drawn from Trident's near-straight-on shot (tilted, foot to one side); spool side from the left half of
 // Echo's 2021 product page image (small, but square-on), with Trident's hub close-up for the hub and handle.
-// Matte black, sealed carbon drag, no colour accent. The frame is a thin rim with twelve wedge spokes, narrow at the
-// big drag knob and broad at the rim, swept a little; the spool's spokes show through the narrow gaps between them.
-// The drag knob is a knurled black disc with grey ECHO lettering. The spool face is fourteen radial spokes from a
-// hub plate with six screws round a logo cap; the top spoke is wider and carries the handle just inside the rim, and
-// the bottom one ends in a small pointed counterweight.
-// The drag-side photo is at an angle, so the frame's spoke count (12), widths and sweep are approximate; the knob's
-// two-tone face is simplified to one shade.
+// Matte black, sealed carbon drag, no colour accent. On the drag side the frame is a thin rim, the foot and the
+// boss of the big drag knob, a knurled black disc with grey ECHO lettering. Through it shows the spool's cage, which
+// turns: the many spokes there are the spool's fourteen, the same as the spool side, without the handle and
+// counterweight (the wound line hides them). The spool face is those fourteen radial spokes from a hub plate with
+// six screws round a logo cap; the top spoke is wider and carries the handle just inside the rim, and the bottom one
+// ends in a small pointed counterweight.
+// The drag-side photo is at an angle, so whether any of the spokes there are the frame's (none are drawn) needs
+// checking; the knob's two-tone face is simplified to one shade.
 import { P, circle, f, foot, knob, knurl, rad, recessed, ring, roundPoly, spoke, svg } from './lib.mjs';
 
 // The wound line starts at the arbor: Trident measures 2.16 in inside a 3.48 in rim on the 4/5.
@@ -15,14 +16,11 @@ export const arbor = 124;
 
 const FOOT = foot(122, -244, 14, 36);
 
-// Spool spokes: fourteen, one straight up (the handle's) and one straight down (the
+// Spool spokes, shared by both sides: fourteen, one straight up (the handle's) and one straight down (the
 // counterweight's), both a little wider at the hub than the rest.
 const SPOOL_SPOKES = Array.from({ length: 14 }, (_, k) => -90 + (k * 360) / 14);
 const HUB = 46;
 const spoolSpokes = (angles) => angles.map((a) => (a === -90 || a === 90 ? spoke(a, HUB - 6, 190, 26, 40) : spoke(a, HUB - 6, 190, 17, 44)));
-
-// Drag side: twelve wedge spokes from the knob's boss to the rim, swept slightly clockwise towards the rim.
-const FRAME_SPOKES = Array.from({ length: 12 }, (_, k) => -90 + k * 30);
 
 const dragKnob = (r) =>
   `<path d="${knurl(r, 1.6, 60)}" fill="#1e2022"/><path d="${knurl(r, 1.6, 60)}" fill="url(#sheen)"/>` +
@@ -32,14 +30,8 @@ const dragKnob = (r) =>
   `<path d="M-4 22L-16 30M-4 22L4 34M-4 22L-6 4M-6 4L-14 -2M-6 4L8 0" stroke="#9a9ea2" stroke-width="2.4" stroke-linecap="round" fill="none"/>`;
 
 export const drag = svg({
-  // The spool's spokes, seen from behind through the frame (mirrored).
-  back: [ring(192, 176), ...spoolSpokes(SPOOL_SPOKES.map((a) => 180 - a))],
-  body: [
-    ring(200, 186),
-    FOOT,
-    ...FRAME_SPOKES.map((a) => spoke(a, 58, 194, 18, 58, -6)),
-    circle(64),
-  ],
+  cage: [ring(196, 184), ...spoolSpokes(SPOOL_SPOKES), circle(HUB)],
+  body: [ring(200, 186), FOOT, circle(64)],
   details: `<circle r="64" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` + dragKnob(56),
 });
 

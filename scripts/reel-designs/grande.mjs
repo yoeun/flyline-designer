@@ -1,12 +1,13 @@
 // Redington Grande.
-// Photos are angled; the straight-on layout is inferred. Drag side: a solid wedge up to the rim under the foot, its
-// two edges tangent to the drag boss and 120° apart; the rest is open between tapered spokes. Red accent ring around the spool hub; the drag side is all frame color. Handle placement on the
-// spool is arbitrary (it turns); it sits opposite a round counterweight.
+// Photos are angled; the straight-on layout is inferred. Drag side: the frame is a rim, the foot, a solid wedge up to
+// the rim under the foot, its two edges tangent to the drag boss and 120° apart, and the drag knob, all frame color.
+// Through the open lower half shows the spool's cage, which turns: its 14 tapered spokes, the same as the spool
+// side's, without the handle and counterweight (the wound line hides them). Red accent ring around the spool hub.
+// Handle placement on the spool is arbitrary (it turns); it sits opposite a round counterweight.
 import { P, arcPts, circle, f, foot, knob, knurl, rad, recessed, ring, roundPoly, spoke, svg } from './lib.mjs';
 
 const RED = '#b0243a';
-// Each edge runs up and out to the rim at WEDGE degrees from straight up, just touching the boss (r 66). Below it, seven
-// spokes, lined up with the spool's 14: the ones in the lower half.
+// Each edge runs up and out to the rim at WEDGE degrees from straight up, just touching the boss (r 66).
 const BOSS = 66;
 const WEDGE = rad(60);
 const edgeRim = (sx) => {
@@ -18,8 +19,8 @@ const edgeRim = (sx) => {
 const [LEFT, RIGHT] = [edgeRim(-1), edgeRim(1)];
 const RIM_ANGLE = (Math.atan2(RIGHT.rim[1], RIGHT.rim[0]) * 180) / Math.PI; // right edge's angle at the rim
 const plate = roundPoly([RIGHT.touch, LEFT.touch, LEFT.rim, ...arcPts(184, rad(-180 - RIM_ANGLE), rad(RIM_ANGLE), 20), RIGHT.rim], 8);
-const SPOOL_SPOKES = Array.from({ length: 14 }, (_, k) => -90 + (k * 360) / 14);
-const DRAG_SPOKES = SPOOL_SPOKES.filter((a) => a > 0 && a < 180);
+// The spool's 14 tapered spokes, shared by both sides.
+const SPOKES = Array.from({ length: 14 }, (_, k) => spoke(-90 + (k * 360) / 14, 20, 186, 8, 24));
 
 // Drag knob, all in the frame color: knurled skirt and a raised cap with a logo button.
 const grandeKnob =
@@ -29,6 +30,8 @@ const grandeKnob =
   `<circle r="19" fill="currentColor"/><circle r="19" fill="url(#sheen)"/><circle r="19" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>`;
 
 export const drag = svg({
+  cage: [ring(188, 182), ...SPOKES],
+  // Recessed groove between the outer rim and the inner one.
   back: [ring(190, 178)],
   body: [
     ring(200, 186),
@@ -36,7 +39,6 @@ export const drag = svg({
     foot(132, -244, 14, 30),
     plate,
     circle(BOSS),
-    ...DRAG_SPOKES.map((a) => spoke(a, 60, 176, 10, 24)),
   ],
   details: '<circle r="183" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="3"/>' + grandeKnob,
 });
@@ -51,7 +53,7 @@ export const spool = svg({
   handles: [[...P(150, rad(HANDLE)), 26]],
   body: [
     ring(200, 182),
-    ...SPOOL_SPOKES.map((a) => spoke(a, 20, 186, 8, 24)),
+    ...SPOKES,
     // Handle and counterweight bosses.
     circle(26, ...P(150, rad(HANDLE))),
     circle(24, ...P(150, rad(HANDLE - 180))),

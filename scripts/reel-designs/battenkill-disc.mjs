@@ -3,6 +3,8 @@
 // staggered rings around a large flat drag knob, with the holes left out where the logo sits at 3 o'clock; the
 // spool has two rings of holes, a raised hub drilled with small holes, a counterweight plate at 12 and the
 // handle at 6. The foot is dark whatever the finish.
+// The drag side has no spool cage: its plate is the frame, covering the spool, and its holes are drilled in that
+// plate (three rings of 24, not the spool's two of 20), so only the wound line shows through them.
 import { P, circle, foot, knob, rad, roundPoly, arcPts, screw, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the innermost holes.

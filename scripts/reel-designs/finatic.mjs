@@ -2,6 +2,8 @@
 // The spool side is the Iconic's.
 // No drag-side photo was found: the Finatic and Iconic frames are closely related, so the drag side reuses
 // the Iconic's swirl of arms with the Finatic's smaller drag cap — inferred, not checked against a photo.
+// Drag side: the frame is the Iconic's rim, foot, six curved arms and hub, round the drag cap. Through it shows the
+// spool's outer cage, which turns: the Iconic's, the same as this spool side's.
 import { f } from './lib.mjs';
 import { hatchSpool, iconicDrag } from './iconic.mjs';
 

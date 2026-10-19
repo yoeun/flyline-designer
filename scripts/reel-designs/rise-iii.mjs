@@ -1,7 +1,9 @@
 // Redington Rise III.
-// Photos are angled; the straight-on layout is inferred. Drag side: a V opening at the foot, its two bars running
-// from the rim at either end of the foot to a point opposite it at 6 o'clock, filled solid from the hub down; the spool's ring of rounded windows shows through the rest.
-// Body-colored knurled drag knob with five scalloped recesses and a silver cap. Spool side: ~24 rounded windows
+// Photos are angled; the straight-on layout is inferred. Drag side: the frame is a rim, the foot and a V opening at
+// the foot, its two bars running from the rim at either end of the foot to a point opposite it at 6 o'clock, filled
+// solid from the hub down, with a body-colored knurled drag knob (five scalloped recesses, a silver cap). Through
+// the rest shows the spool's cage, which turns: its ring of rounded windows, the same as the spool side's, without
+// the handle pad (the wound line hides it). Spool side: ~24 rounded windows
 // round the rim, an open center with three V-shaped spokes; handle and a counterweight pin sit opposite each other.
 import { P, circle, f, foot, knob, knurl, pad, rad, recessed, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
@@ -9,6 +11,7 @@ import { P, circle, f, foot, knob, knurl, pad, rad, recessed, ring, roundPoly, s
 export const arbor = 124;
 
 const L = P(194, rad(-125)), R = P(194, rad(-55)), APEX = [0, 194];
+// The spool's windows, shared by both sides.
 const WINDOWS = { n: 24, rIn: 124, rOut: 180, bar: 13, corner: 9 };
 
 const riseKnob =
@@ -21,7 +24,7 @@ const riseKnob =
   `<circle r="17" fill="#d9dcdf"/><circle r="17" fill="url(#sheen)"/><circle r="17" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>`;
 
 export const drag = svg({
-  back: [ring(190, 116) + slots(WINDOWS)],
+  cage: [ring(190, 112) + slots(WINDOWS)],
   body: [
     ring(200, 186),
     foot(130, -244, 14, 30),

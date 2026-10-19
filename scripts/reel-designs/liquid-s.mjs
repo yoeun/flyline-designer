@@ -1,8 +1,15 @@
 // Lamson Liquid S.
+// Drag side: the frame is a rim, the foot, one thick vertical spoke from the foot past the drag to 6 o'clock and two
+// Y arms branching off it up to the rim, round the knurled drag knob. Through it shows the spool's cage, which
+// turns: its 24 windows, the same as the spool side's, without the handle (the wound line hides it). Spool side:
+// that window ring set back behind the spool's rim and five swept spokes, with the handle partway along one.
 import { ACCENT, P, circle, foot, knob, knurl, rad, recessed, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
 export const arbor = 126;
+
+// The spool's 24 windows, shared by both sides.
+const RIM = { n: 24, rIn: 126, rOut: 180, bar: 12, corner: 7 };
 
 // Liquid S spool side: five spokes swept back 40°; the handle sits partway along the one ending at -105°.
 const LIQUID_SPOKES = [0, 1, 2, 3, 4].map((k) => -105 + k * 72);
@@ -13,7 +20,7 @@ const liquidHandle = (() => {
 
 // The drag button takes the finish's accent: orange-red on Smoke, yellow on Day Break.
 export const drag = svg({
-  back: [ring(190, 116) + slots({ n: 24, rIn: 126, rOut: 180, bar: 12, corner: 7 })],
+  cage: [ring(190, 116) + slots(RIM)],
   body: [
     ring(200, 189),
     foot(128, -244, 14, 34),
@@ -27,10 +34,10 @@ export const drag = svg({
 });
 
 export const spool = svg({
-  // The frame's slotted ring shows behind the spool, as on the drag side.
   foot: recessed(foot(128, -244, 14, 34)),
   handles: [[...liquidHandle, 16]],
-  back: [ring(190, 116) + slots({ n: 24, rIn: 126, rOut: 180, bar: 12, corner: 7 })],
+  // The spool's window ring, set back behind its rim and spokes.
+  back: [ring(190, 116) + slots(RIM)],
   body: [ring(200, 184), ...LIQUID_SPOKES.map((a) => spoke(a, 26, 188, 20, 13, 40)), circle(38)],
   details: `${knob(...liquidHandle, 16)}<circle r="30" fill="#fff" fill-opacity=".1"/>`,
 });

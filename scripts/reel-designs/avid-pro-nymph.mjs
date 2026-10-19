@@ -1,13 +1,15 @@
 // Maxcatch Avid Pro Nymph.
-// Drag side drawn from Maxcatch's three-quarter shot of the 3Five (and the left reel of their spec sheet): a
-// full-cage frame whose thin outer rim wraps round the spool, three broad spokes from a boss under the big black
-// drag knob (knurled skirt, flat logo face), each forking near the rim into two legs, one up to the foot, one to
-// about 4 o'clock and one to about 8. Behind them shows the spool's flange: a ring of about twenty rectangular
-// windows between radial bars. Spool side drawn from the right reel of the spec sheet (also at three-quarters) and
-// the exploded shot: inside the cage's rim, the same window ring around a big open center crossed by three slim
-// spokes from the knurled black spool cap, a black counterweight up-right and the black handle with its silver end
-// cap low-left; the frame's spokes show through the open center. Spoke angles, the forks, window count and the
-// handle and counterweight radii are read off angled shots, so approximate.
+// Drag side drawn from Maxcatch's three-quarter shot of the 3Five (and the left reel of their spec sheet). The frame
+// is a full cage: its thin outer rim wraps round the spool, with the foot and three broad spokes from a boss under
+// the big black drag knob (knurled skirt, flat logo face), each forking near the rim into two legs, one up to the
+// foot, one to about 4 o'clock and one to about 8. Through it shows the spool's cage, which turns: the spool side's
+// flange with its ring of about twenty rectangular windows between radial bars, and its three slim spokes (seen
+// from behind). The handle would show through too, but the wound line hides it. Spool side drawn from the right
+// reel of the spec sheet (also at three-quarters) and the exploded shot: inside the cage's rim, the same window
+// ring around a big open center crossed by three slim spokes from the knurled black spool cap, a black
+// counterweight up-right and the black handle with its silver end cap low-left; the frame's spokes show through the
+// open center. Spoke angles, the forks, window count and the handle and counterweight radii are read off angled
+// shots, so approximate.
 import { P, circle, f, foot, knurl, rad, recessed, ring, slots, strut, svg } from './lib.mjs';
 
 // The wound line starts on the drum, at the inside diameter Maxcatch gives for the 3Five: 60 mm inside a 95 mm
@@ -15,6 +17,7 @@ import { P, circle, f, foot, knurl, rad, recessed, ring, slots, strut, svg } fro
 export const arbor = 126;
 
 const CAGE = 186; // inner edge of the cage's rim; the spool's flange fits just inside it
+const LIP = arbor + 10; // inner edge of the flange, round the open center
 
 // The spool's flange: windows between radial bars from 146 to 178, inside an unbroken lip, `skip` lists window
 // indices (clockwise from 12 o'clock) left solid.
@@ -54,7 +57,7 @@ const DRAG_KNOB =
 
 export const drag = svg({
   // The spool's flange behind the spokes, and its slim spokes inside the drum (mirrored, seen from behind).
-  back: [ring(CAGE, arbor) + windows(), ...spoolSpokes(true)],
+  cage: [ring(CAGE + 4, LIP) + windows(), ...spoolSpokes(true)],
   body: [ring(200, CAGE), FOOT, circle(74), ...frameSpokes()],
   details:
     `<circle r="${CAGE}" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
@@ -92,12 +95,12 @@ export const spool = svg({
   // Through the open center: the drum's lip and the frame's spokes (mirrored, seen from behind) and boss.
   back: [ring(arbor + 6, arbor - 6), circle(74), ...frameSpokes(true, arbor)],
   body: [
-    circle(CAGE - 2) + windows([12]) + circle(arbor + 10),
+    circle(CAGE - 2) + windows([12]) + circle(LIP),
     ...spoolSpokes(),
     circle(44),
   ],
   details:
-    `<circle r="${arbor + 10}" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>` +
+    `<circle r="${LIP}" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>` +
     `<circle r="140" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="2"/>` +
     CAP +
     ball(weight) +

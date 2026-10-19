@@ -2,8 +2,9 @@
 // Drawn from Echo's product shot of the 6/8 (both sides in one image): the drag side straight on, the spool side
 // at three-quarters. The composite frame is a thick rim and five pairs of parallel chamfered bars (up-left,
 // up-right, a pair either side running slightly downhill and one straight down) from a boss around the black drag
-// knob, whose rim is scalloped with round dimples around a flat logo face. Behind them shows the perforated
-// spool's back flange: a ring of big holes, smaller holes inside it and a few tiny ones near the rim. The spool
+// knob, whose rim is scalloped with round dimples around a flat logo face; that is all frame. Behind it shows the
+// spool's cage, which turns: the same ring of big holes and smaller holes inside it as the spool side, without the
+// handle and counterweight (the wound line hides them). The spool
 // face is a plain outer band drilled with a ring of big holes, a recessed step with a ring of smaller holes, a flat
 // hub disc and the black spindle cap with two screws; the handle sits at 9 o'clock and a chrome counterweight at 3.
 // The chrome line guard on the foot's pillar is from Echo's description, not the photo. Hole counts and the spool
@@ -24,6 +25,11 @@ const PAIRS = [-122, -58, 14, 90, 166];
 const BAR_GAP = 23, BAR_W = 25, BOSS = 80;
 const BARS = PAIRS.flatMap((a) => [-1, 1].map((s) => [edge(rad(a), s * BAR_GAP, BOSS - 8), edge(rad(a), s * BAR_GAP, 192)]));
 
+// The spool's holes, shared by both sides: big ones round the band and smaller ones in the recessed step.
+const BIG_HOLES = 22;
+const BIG_HOLE_ANGLES = Array.from({ length: BIG_HOLES }, (_, k) => -90 + (360 / BIG_HOLES) * (k + 0.5));
+const STEP_HOLES = holes(20, 112, 9);
+
 // The base wide pillar, with the chrome line guard across it just above the rim.
 const FOOT = foot(130, -244, 14, 46);
 const GUARD = `<path d="${roundPoly([[-40, -222], [40, -222], [40, -208], [-40, -208]], 4)}" fill="#c9ccc8"/><path d="${roundPoly([[-40, -222], [40, -222], [40, -208], [-40, -208]], 4)}" fill="url(#sheen)"/>`;
@@ -38,8 +44,7 @@ const DRAG_KNOB =
   `<circle r="46" fill="url(#sheen)"/>`;
 
 export const drag = svg({
-  // The spool's back flange behind the bars.
-  back: [ring(192, 60) + holes(18, 148, 17) + holes(18, 106, 10, -80) + holes(18, 178, 5, -80)],
+  cage: [ring(192, 60) + BIG_HOLE_ANGLES.map((d) => circle(16, ...P(152, rad(d)))).join('') + STEP_HOLES],
   body: [ring(200, 178), circle(BOSS), FOOT, ...BARS.map(([p0, p1]) => strut(p0, p1, BAR_W))],
   details:
     `<circle r="178" fill="none" stroke="#000" stroke-opacity=".16" stroke-width="2"/>` +
@@ -53,18 +58,16 @@ export const drag = svg({
 // Spool side.
 const handle = P(138, rad(180));
 const weight = P(152, rad(0));
-const BIG_HOLES = 22;
 
 export const spool = svg({
   foot: recessed(FOOT) + GUARD,
   handles: [[...handle, 19]],
   // The recessed step inside the big holes, drilled with smaller holes.
-  back: [ring(132, 92) + holes(20, 112, 9)],
+  back: [ring(132, 92) + STEP_HOLES],
   body: [
     // Outer band and its big holes, leaving out the two under the counterweight and the handle's post.
     circle(200) +
-      Array.from({ length: BIG_HOLES }, (_, k) => -90 + (360 / BIG_HOLES) * (k + 0.5))
-        .filter((d) => Math.abs(((d + 540) % 360) - 180) > 10 && Math.abs(d - 180) > 10)
+      BIG_HOLE_ANGLES.filter((d) => Math.abs(((d + 540) % 360) - 180) > 10 && Math.abs(d - 180) > 10)
         .map((d) => circle(16, ...P(152, rad(d))))
         .join('') +
       circle(132),

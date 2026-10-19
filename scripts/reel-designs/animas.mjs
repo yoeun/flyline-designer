@@ -1,8 +1,9 @@
 // Ross Animas.
-// Drag side: five pairs of bars from the knob to the rim, evenly spaced with one pair straight down; each pair
-// spreads slightly toward the rim. A logo plaque sits at the top, between the two upper pairs. Behind this main cage,
-// the spool's outer cage of windows shows through, recessed. Spool side: eight Y's whose stems run in to the hub
-// and whose arms carry on as the outer cage's sixteen bars; wood-wrapped handle at 9 o'clock, counterweight at 3.
+// Drag side: the frame is a rim, the foot, five pairs of bars from the knob to the rim (evenly spaced with one pair
+// straight down; each pair spreads slightly toward the rim), a logo plaque at the top between the two upper pairs,
+// and the knob. Through it shows the spool's cage, which turns: its sixteen windows, the same as the spool side's,
+// without the handle and counterweight pads (the wound line hides them). Spool side: eight Y's whose stems run in
+// to the hub and whose arms carry on as the cage's sixteen bars; wood-wrapped handle at 9 o'clock, counterweight at 3.
 // Both from Ross's straight-on product photos; the spool's dark drag housing behind the spokes is left out.
 import { ACCENT, P, circle, f, foot, knurl, pad, rad, recessed, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
 
@@ -12,7 +13,8 @@ export const arbor = 146;
 // The spool: eight Y's 45° apart, stems at 12, 3, 6 and 9 o'clock; each Y's arms carry on as bars of the outer cage.
 const N = 8;
 const FORK = 360 / N / 4; // each arm of a Y sits this many degrees off its stem
-const OUTER = { n: 2 * N, rIn: 148, rOut: 188, bar: 13, corner: 8, off: -90 + FORK };
+// The spool's sixteen windows, shared by both sides.
+const OUTER = { n: 2 * N, rIn: 146, rOut: 188, bar: 13, corner: 8, off: -90 + FORK };
 
 const ANIMAS_FOOT = foot(140, -244, 14, 32);
 
@@ -42,7 +44,7 @@ const pair = (a) =>
   });
 
 export const drag = svg({
-  back: [ring(186, 138) + slots(OUTER)],
+  cage: [ring(192, 134) + slots(OUTER)],
   body: [ring(200, 184), ANIMAS_FOOT, ...PAIRS.flatMap(pair), plaque, circle(84)],
   details: plaqueArt + animasKnob,
 });
@@ -62,7 +64,7 @@ export const spool = svg({
   foot: recessed(ANIMAS_FOOT),
   handles: [[...handleAt, 30]],
   body: [
-    ring(200, 134) + slots({ ...OUTER, rIn: 146 }),
+    ring(200, 134) + slots(OUTER),
     ...ys,
     pad(164, 180, 58, 48),
     pad(164, 0, 54, 44),
