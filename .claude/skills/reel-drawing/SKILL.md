@@ -204,6 +204,10 @@ are chamfered. Drawn without them, a frame looks like flat pieces stacked on top
   - **A piece laid on top of another gets its whole outline chamfered** with `chamfer(id, d)`, which `bevel` is
     built on: e.g. the Liquid's middle drag spoke, which sits over the rim (`scripts/reel-designs/liquid-s.mjs`).
     The chamfer runs across the rim too, so the piece reads as separate.
+  - **Leave the edge chamfer off curved inside corners.** Round filleted joints, such as spoke tips flaring into a
+    rim (the Liquid's spool side), the flat chamfer's lit and shaded bands double up into stray parallel lines. Leave
+    the edge plain there, so the joint reads as one piece. Check joints in a render at 4× or more: at app size these
+    lines look like vague "odd shading".
   - **Pieces of one casting chamfer as one.** Give `chamfer` a list of paths (e.g. the Liquid's rim and Y arms) to
     chamfer their combined outline, with no lines where they overlap. Mask it off any piece laid on top, and keep
     it inside the outer edge's dark chamfer.
