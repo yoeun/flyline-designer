@@ -220,7 +220,7 @@ export const drag = svg({
   body: [circle(200) + FRAME_OPENINGS],
   details:
     // The drag knob: knurled rim, flat face, slotted center screw.
-    `<circle r="62" fill="#000" fill-opacity=".22"/><path d="${knurl(58, 1.4, 56)}" ${TRIM}/><path d="${knurl(58, 1.4, 56)}" fill="#000" fill-opacity=".18"/>` +
-    `<circle r="50" ${TRIM}/><circle r="58" fill="url(#sheen)"/>` +
-    screw(0, 0, 12),
+    `<circle r="74" fill="#000" fill-opacity=".22"/><path d="${knurl(70, 1.4, 68)}" ${TRIM}/><path d="${knurl(70, 1.4, 68)}" fill="#000" fill-opacity=".18"/>` +
+    `<circle r="60" ${TRIM}/><circle r="70" fill="url(#sheen)"/>` +
+    screw(0, 0, 14),
 });
