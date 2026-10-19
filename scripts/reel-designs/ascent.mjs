@@ -13,8 +13,8 @@
 // the spool. Port and slot sizes are read off small photos, so approximate.
 import { P, arcPts, circle, edge, f, foot, rad, roundPoly, svg } from './lib.mjs';
 
-// The spool's floor is hidden under the spokes: the wound line starts at the foot of the drop to the hub, inside
-// the ports' inner edge, so the ports show only line.
+// The spool's floor is hidden under the spokes: the wound line starts at the foot of the drop to the hub, just
+// inside the ports' inner edge, so the ports show only line.
 export const arbor = 100;
 
 // Spokes taper toward the center, so each window sits between bars `barOut` wide at rOut and `barIn` at rIn.
@@ -33,11 +33,12 @@ const pick = (d, keep) => (d.match(/M[^Z]*Z/g) ?? []).filter((_, k) => keep(k)).
 
 // Fourteen spokes, measured off the photo: about 22 wide at the rim, narrowing to 15 at the ports' inner edge and
 // holding about that across the hub to the cap.
-// Ports: fourteen windows from 104 to 172, one centered at 12 o'clock. `skip` lists the window indices (clockwise
+// Ports: fourteen windows from the hub's edge (just outside 100) to 172, so the line runs right down to the drop
+// with no face below it, one centered at 12 o'clock. `skip` lists the window indices (clockwise
 // from the top) filled in for the handle and counterweight.
 const N = 14, STEP = 360 / N;
 const ports = (skip = []) =>
-  pick(tapered({ n: N, rIn: 104, rOut: 172, barIn: 15, barOut: 22, corner: 9, off: -90 - STEP / 2 }), (k) => !skip.includes(k));
+  pick(tapered({ n: N, rIn: 101, rOut: 172, barIn: 15, barOut: 22, corner: 9, off: -90 - STEP / 2 }), (k) => !skip.includes(k));
 
 // Hub: fourteen radial slots from the cap's collar out to the disc's edge, one under each port, so the bars carry
 // the port ring's spokes on to the cap. On the spool side the two under the handle and counterweight are round
