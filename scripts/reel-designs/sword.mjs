@@ -55,25 +55,39 @@ const ACCENT_FOOT = `<path d="${FOOT}" ${ACCENT}/><path d="${FOOT}" fill="url(#s
 const PAIRS = [-60, 60, 180];
 // Each pair follows a centerline curving counterclockwise from the boss (70 out, 70° round from where it meets the
 // rim) to the rim (192), its two arms either side of it, 18 wide. The slot between them widens toward the rim, from
-// 6 at the boss to 30 at the rim.
-const PAIR = { sweep: 70, r0: 70, r1: 192, ease: 1.5, arm: 18, slotIn: 6, slotOut: 30, steps: 24 };
+// 10 at the boss to 90 at the rim.
+const PAIR = { sweep: 70, r0: 70, r1: 192, ease: 1.5, arm: 18, slotIn: 10, slotOut: 90, steps: 24 };
 const slotAt = (r) => PAIR.slotIn + (PAIR.slotOut - PAIR.slotIn) * ((r - PAIR.r0) / (PAIR.r1 - PAIR.r0));
-// A band following pair p's centerline from radius rA to rB, between lo(r) and hi(r) to either side of it (in units
-// along the circle at r; positive is clockwise), its corners rounded. Built radius by radius, so both sides start at
-// rA and end at rB exactly.
-function pairBand(p, lo, hi, rA = PAIR.r0, rB = PAIR.r1, corner = 4) {
-  const { sweep, r0, r1, ease, steps } = PAIR;
-  const center = (r) => rad(p + sweep - sweep * Math.max(0, (r - r0) / (r1 - r0)) ** ease);
-  const rs = Array.from({ length: steps + 1 }, (_, i) => rA + ((rB - rA) * i) / steps);
-  const side = (off) => rs.map((r) => P(r, center(r) + off(r) / r));
-  return roundPoly([...side(lo), ...side(hi).reverse()], corner);
+// The angle of pair p's centerline at radius r.
+const pairCenter = (p, r) => rad(p + PAIR.sweep - PAIR.sweep * Math.max(0, (r - PAIR.r0) / (PAIR.r1 - PAIR.r0)) ** PAIR.ease);
+// An opening between two curves lo(r) and hi(r) (angles, hi clockwise of lo), from radius rA to rB, closed by arcs at
+// both ends and its corners rounded. Built radius by radius, so its sides meet the arcs cleanly.
+function opening(lo, hi, rA, rB, corner = 8) {
+  const n = PAIR.steps, rs = Array.from({ length: n + 1 }, (_, i) => rA + ((rB - rA) * i) / n);
+  const arc = (r, a0, a1) => {
+    let b = a1;
+    while (b < a0) b += 2 * Math.PI;
+    return Array.from({ length: 9 }, (_, i) => P(r, a0 + ((b - a0) * (i + 1)) / 10));
+  };
+  return roundPoly(
+    [
+      ...rs.map((r) => P(r, lo(r))),
+      ...arc(rB, lo(rB), hi(rB)),
+      ...rs.slice().reverse().map((r) => P(r, hi(r))),
+      ...arc(rA, lo(rA), hi(rA)).reverse(),
+    ],
+    corner,
+  );
 }
-const ARMS = PAIRS.flatMap((p) => [
-  pairBand(p, (r) => slotAt(r) / 2, (r) => slotAt(r) / 2 + PAIR.arm, PAIR.r0, 184),
-  pairBand(p, (r) => -slotAt(r) / 2 - PAIR.arm, (r) => -slotAt(r) / 2, PAIR.r0, 184),
-]);
-// The slot between a pair's arms runs on into the rim, to 186, at its widening width.
-const rimSlot = (p) => pairBand(p, (r) => -slotAt(r) / 2, (r) => slotAt(r) / 2, 150, 186, 10);
+// The frame is one solid disc with its openings cut out: between each pair's arms a slot from the boss out into the
+// rim (to 186); between neighbouring pairs a big window from the boss to the rim's inner edge (166).
+const HALF = (r) => slotAt(r) / 2 / r, ARM_SPAN = (r) => (slotAt(r) / 2 + PAIR.arm) / r;
+const FRAME_OPENINGS = PAIRS.map((p, k) => {
+  const q = PAIRS[(k + 1) % 3];
+  const slot = opening((r) => pairCenter(p, r) - HALF(r), (r) => pairCenter(p, r) + HALF(r), 84, 186);
+  const window = opening((r) => pairCenter(p, r) + ARM_SPAN(r), (r) => pairCenter(q, r) - ARM_SPAN(r), 84, 166);
+  return slot + window;
+}).join('');
 
 
 // Spool side.
@@ -191,9 +205,8 @@ export const drag = svg({
   cage: [circle(196) + HOLES + INNER_EDGE, circle(116) + mirror(hubOpenings())],
   cageShade: 0.6,
   // The frame's rim is thick, covering the outer half of the small holes.
-  body: [ring(200, 166) + PAIRS.map((p) => rimSlot(p)).join(''), ...ARMS, circle(84)],
+  body: [circle(200) + FRAME_OPENINGS],
   details:
-    `<circle r="166" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
     `<circle r="84" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
     // The drag knob: knurled rim, flat face, slotted center screw.
     `<circle r="62" fill="#000" fill-opacity=".22"/><path d="${knurl(58, 1.4, 56)}" ${TRIM}/><path d="${knurl(58, 1.4, 56)}" fill="#000" fill-opacity=".18"/>` +
