@@ -4,9 +4,10 @@
 // near the rim, its inner edge scalloped round the big holes, opening onto a thin drum ring with three swept arms to
 // the hub, a big knurled logo knob in the middle, the handle up top-left and a silver counterweight at the bottom.
 // Drag side from Piscifun's straight-on drag-side render (the teal outlines in it only mark the shapes): a thick rim,
-// the foot, three pairs of near-straight arms leaning counterclockwise from a central boss to the rim, with a slot between each
-// pair's arms cutting into the rim, and the knob over the boss. Through it shows the spool's cage, which turns: the flange's twelve big holes, the small
-// holes between them and the scalloped inner edge, as on the spool side. Arm sweep and widths are approximate.
+// the foot, three pairs of near-straight arms leaning counterclockwise from a central boss to the rim, with a slot
+// between each pair's arms cutting into the rim, and the knob over the boss. Through it shows the spool's cage,
+// which turns: the flange's twelve big holes, the small holes between them and the scalloped inner edge, as on the
+// spool side. Arm lean and widths are approximate.
 // The foot and handle take the finish's accent (green on gunmetal, champagne on olive); the logo knob and drag knob
 // take its trim, falling back to the body color: green on gunmetal, gray on gray, body-colored on olive and black.
 import { ACCENT, P, TRIM, circle, f, foot, knurl, rad, ring, roundPoly, screw, svg } from './lib.mjs';
@@ -50,8 +51,8 @@ const FOOT = foot(134, -244, 14, 34);
 const ACCENT_FOOT = `<path d="${FOOT}" ${ACCENT}/><path d="${FOOT}" fill="url(#sheen)"/>`;
 
 // Drag side, from Piscifun's drag-side render: six arms in three pairs, 120° apart, each arm leaning counterclockwise
-// from the boss out to the rim. Between the pair's two arms a narrow curved slot runs on past the rim's inner edge,
-// cutting into the rim; between the pairs are the big windows.
+// from the boss out to the rim. Between the pair's two arms a slot widens toward the rim and runs on past its inner
+// edge, cutting into the rim; between the pairs are the big windows.
 const PAIRS = [-60, 60, 180];
 // Each pair follows a straight centerline leaning counterclockwise from the boss (70 out, 70° round from where it
 // meets the rim) to the rim (192), its two arms either side of it, 18 wide. The slot between them widens toward the rim, from
