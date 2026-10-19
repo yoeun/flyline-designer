@@ -54,25 +54,26 @@ const ACCENT_FOOT = `<path d="${FOOT}" ${ACCENT}/><path d="${FOOT}" fill="url(#s
 // cutting into the rim; between the pairs are the big windows.
 const PAIRS = [-60, 60, 180];
 // Each pair follows a centerline curving counterclockwise from the boss (70 out, 70° round from where it meets the
-// rim) to the rim (192), its two arms either side of it, 18 wide, with a 16-wide slot between them.
-const PAIR = { sweep: 70, r0: 70, r1: 192, ease: 1.5, arm: 18, slot: 16, steps: 24 };
-// A band along pair p's centerline, offset `off` to one side, `w` wide, from radius rA to rB, its corners rounded.
-function pairBand(p, off, w, rA = PAIR.r0, rB = PAIR.r1, corner = 4) {
+// rim) to the rim (192), its two arms either side of it, 18 wide. The slot between them widens toward the rim, from
+// 6 at the boss to 30 at the rim.
+const PAIR = { sweep: 70, r0: 70, r1: 192, ease: 1.5, arm: 18, slotIn: 6, slotOut: 30, steps: 24 };
+const slotAt = (r) => PAIR.slotIn + (PAIR.slotOut - PAIR.slotIn) * ((r - PAIR.r0) / (PAIR.r1 - PAIR.r0));
+// A band following pair p's centerline from radius rA to rB, between lo(r) and hi(r) to either side of it (in units
+// along the circle at r; positive is clockwise), its corners rounded. Built radius by radius, so both sides start at
+// rA and end at rB exactly.
+function pairBand(p, lo, hi, rA = PAIR.r0, rB = PAIR.r1, corner = 4) {
   const { sweep, r0, r1, ease, steps } = PAIR;
-  const at = (r) => P(r, rad(p + sweep - sweep * ((r - r0) / (r1 - r0)) ** ease));
-  const mid = Array.from({ length: steps + 1 }, (_, i) => at(rA + ((rB - rA) * i) / steps));
-  const edge = (o) =>
-    mid.map((q, i) => {
-      const a = mid[Math.min(i + 1, steps)], b = mid[Math.max(i - 1, 0)];
-      const dx = a[0] - b[0], dy = a[1] - b[1], l = Math.hypot(dx, dy);
-      return [q[0] - (dy / l) * o, q[1] + (dx / l) * o];
-    });
-  return roundPoly([...edge(off - w / 2), ...edge(off + w / 2).reverse()], corner);
+  const center = (r) => rad(p + sweep - sweep * Math.max(0, (r - r0) / (r1 - r0)) ** ease);
+  const rs = Array.from({ length: steps + 1 }, (_, i) => rA + ((rB - rA) * i) / steps);
+  const side = (off) => rs.map((r) => P(r, center(r) + off(r) / r));
+  return roundPoly([...side(lo), ...side(hi).reverse()], corner);
 }
-// The arms run on into the rim band (inner edge 166), stopping at 176 so the outer one of each pair stays inside it.
-const ARMS = PAIRS.flatMap((p) => [-1, 1].map((s) => pairBand(p, s * (PAIR.slot + PAIR.arm) / 2, PAIR.arm, PAIR.r0, 176)));
-// The slot between a pair's arms runs on into the rim, to 186, rounded at its end.
-const rimSlot = (p) => pairBand(p, 0, PAIR.slot, 150, 186, PAIR.slot / 2);
+const ARMS = PAIRS.flatMap((p) => [
+  pairBand(p, (r) => slotAt(r) / 2, (r) => slotAt(r) / 2 + PAIR.arm, PAIR.r0, 184),
+  pairBand(p, (r) => -slotAt(r) / 2 - PAIR.arm, (r) => -slotAt(r) / 2, PAIR.r0, 184),
+]);
+// The slot between a pair's arms runs on into the rim, to 186, at its widening width.
+const rimSlot = (p) => pairBand(p, (r) => -slotAt(r) / 2, (r) => slotAt(r) / 2, 150, 186, 10);
 
 
 // Spool side.
