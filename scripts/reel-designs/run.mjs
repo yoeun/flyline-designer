@@ -4,8 +4,8 @@
 // of the foot, and a wider one down) and a black drag knob with a knurled edge and the logo cap. Through it shows
 // the spool's back flange, which turns: 20 windows, plus the spool's eight primary spokes.
 // Spool side: the frame's rim, then the spool's face flange with 20 windows and handle pads at 12 and 6 o'clock,
-// a steep drop at the flange's inner edge, and eight evenly spaced primary spokes to the logo cap: four run on
-// from face bars at the rim, down the drop (per the user, like the Ventures Ascent's).
+// a steep drop at the flange's inner edge, and eight primary spokes, each a face bar running on from the rim, down
+// the drop, to the logo cap (per the user, like the Ventures Ascent's).
 // The two flanges' bars alternate: per the user, the light bars are the face flange's and the dark bars seen
 // halfway across each window are the back flange's. So the drag side's window ring is offset half a window from
 // the spool side's, and each side shows the other's bars through its windows (the app draws the far side behind).
@@ -20,17 +20,16 @@ const N = 20, STEP = 360 / N;
 const RIM = { n: N, rIn: 127, rOut: 177, barIn: 9, barOut: 12, corner: 3 };
 // Face flange: a window centered at 12 o'clock. Back flange: a bar there, half a window round.
 const FACE_OFF = -90 - STEP / 2, BACK_OFF = -90;
-// The spool's eight primary spokes, evenly spaced (per the user), 45° apart from 27° clockwise of 12 o'clock.
-// Every other one lands on a face bar and runs on into it; the rest end at the flange's inner edge, midway across
-// a window. The drag side draws them mirrored, as the app shows it behind the spool side.
-const SPOKES = Array.from({ length: 8 }, (_, k) => -63 + 45 * k);
-const onFaceBar = (a) => (((a - FACE_OFF) % STEP) + STEP) % STEP === 0;
-const innerSpokes = (angles) => angles.map((a) => spoke(a, 30, onFaceBar(a) ? 129 : 118, 11, 9));
+// The spool's eight primary spokes, each one solid piece from the hub out to the rim: a face bar carried on in, down
+// the drop. With 20 face bars 18° apart they can't be evenly spaced, so (measured off the photo) they come in four
+// pairs about the diagonals, 36° apart within a pair and 54° between pairs, every one on a face bar.
+const SPOKES = [-45, 45, 135, 225].flatMap((a) => [a - 18, a + 18]);
+const innerSpokes = SPOKES.map((a) => spoke(a, 30, 129, 11, 9));
 
 const FOOT = foot(150, -240, 14, 30);
 
 export const drag = svg({
-  cage: [ring(185, 113) + taperedSlots({ ...RIM, off: BACK_OFF }), ...innerSpokes(SPOKES.map((a) => 180 - a))],
+  cage: [ring(185, 113) + taperedSlots({ ...RIM, off: BACK_OFF }), ...innerSpokes],
   body: [ring(200, 179), FOOT, spoke(-130, 50, 194, 30, 42), spoke(-50, 50, 194, 30, 42), spoke(90, 50, 194, 54, 58), circle(64)],
   details:
     `<circle r="62" fill="#222426"/><circle r="62" fill="url(#sheen)"/>` +
@@ -49,7 +48,7 @@ const faceWindows = pickPaths(taperedSlots({ ...RIM, off: FACE_OFF }), (k) => !P
 export const spool = svg({
   foot: recessed(FOOT) + frameRim(),
   handles: [[0, -157, 14], [0, 157, 14]],
-  body: [ring(185, 113) + faceWindows, ...innerSpokes(SPOKES), circle(34)],
+  body: [ring(185, 113) + faceWindows, ...innerSpokes, circle(34)],
   details:
     sunkFace({ id: 'run', wall: 127, floor: 113, cut: faceWindows + circle(113) }) +
     `${knob(0, -157, 14)}${knob(0, 157, 14)}` +
