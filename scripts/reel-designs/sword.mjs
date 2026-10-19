@@ -77,6 +77,9 @@ const INNER_EDGE = (() => {
   return roundPoly(pts.reverse(), 2);
 })();
 
+// The chamfers on the frame and the spool's flange: narrow and light.
+const CHAMFER = { width: 2.5, light: 0.3, shade: 0.28 };
+
 const FOOT = foot(134, -244, 14, 34);
 const ACCENT_FOOT = `<path d="${FOOT}" ${ACCENT}/><path d="${FOOT}" fill="url(#sheen)"/>`;
 
@@ -192,6 +195,8 @@ export const spool = svg({
     '<stop offset=".86" stop-color="#000" stop-opacity=".05"/><stop offset=".97" stop-color="#000" stop-opacity=".45"/></radialGradient>' +
     `<mask id="sword-floor-mask"><use href="#back" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
     '<circle r="116" fill="url(#sword-floor)" mask="url(#sword-floor-mask)"/>' +
+    // Chamfers round the flange's holes and scalloped inner edge.
+    bevel('sword-spool', { windows: SPOOL_HOLES + INNER_EDGE, ...CHAMFER }) +
     // The thick outer rim's inner groove.
     `<circle r="182" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
     `<circle r="52" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
@@ -216,13 +221,15 @@ export const drag = svg({
   // with the three arms, mirrored as seen from behind. Shaded lighter than the default, which read too dark here.
   cage: [circle(196) + HOLES + INNER_EDGE, circle(116) + mirror(hubOpenings())],
   cageShade: 0.6,
+  // Chamfers round the cage's holes and scalloped inner edge, turning with it.
+  cageDetails: bevel('sword-cage', { windows: HOLES + INNER_EDGE, clip: 196, ...CHAMFER }),
   // The frame's rim is thick, covering the outer half of the small holes.
   body: [circle(200) + FRAME_OPENINGS],
   details:
     // Flat chamfers round the frame's openings, and a subtle dark one round its outer edge, across the foot's post so
     // the foot reads as a separate piece.
-    bevel('sword', { windows: FRAME_OPENINGS }) +
-    `<path d="${ring(200, 195)}" fill="#000" fill-opacity=".3" fill-rule="evenodd"/>` +
+    bevel('sword', { windows: FRAME_OPENINGS, ...CHAMFER }) +
+    `<path d="${ring(200, 197)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/>` +
     // The drag knob: knurled rim, flat face, slotted center screw.
     `<circle r="74" fill="#000" fill-opacity=".22"/><path d="${knurl(70, 1.4, 68)}" ${TRIM}/><path d="${knurl(70, 1.4, 68)}" fill="#000" fill-opacity=".18"/>` +
     `<circle r="60" ${TRIM}/><circle r="70" fill="url(#sheen)"/>` +

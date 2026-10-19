@@ -218,8 +218,9 @@ export const SHEEN_RECT = `<rect x="-215" y="-250" width="430" height="470" fill
 // the spool seen through the frame, in recessed metal: a [data-cage="cw"] piece that turns the other way, shaded as
 // one layer by --reel-cage at --reel-cage-opacity (25% black by default; ReelPreview lightens it instead on a dark
 // finish, where darker wouldn't show). cageFill paints it, e.g. TRIM for a spool in the trim color; cageShade
-// scales that shading for a design whose cage reads too dark (0.6 is 60% of it).
-export function svg({ foot = '', under = '', cage = [], cageFill = 'fill="currentColor"', cageShade = 1, back = [], body, details = '', handles = [] }) {
+// scales that shading for a design whose cage reads too dark (0.6 is 60% of it). cageDetails is markup drawn on the
+// cage, turning with it, e.g. chamfers round its holes.
+export function svg({ foot = '', under = '', cage = [], cageFill = 'fill="currentColor"', cageShade = 1, cageDetails = '', back = [], body, details = '', handles = [] }) {
   const backPaths = back.map((d) => `<path d="${d}"/>`).join('');
   const bodyPaths = body.map((d) => `<path d="${d}"/>`).join('');
   const handleAttr = handles.length ? ` data-handles="${handles.map((h) => h.map(f).join(' ')).join(',')}"` : '';
@@ -227,7 +228,7 @@ export function svg({ foot = '', under = '', cage = [], cageFill = 'fill="curren
   const turn = (markup) => (foot ? `<g data-cage="">${markup}</g>` : markup);
   const cagePaths = cage.map((d) => `<path d="${d}"/>`).join('');
   const spoolCage = cage.length
-    ? `<g data-cage="cw" fill-rule="evenodd"><g ${cageFill}>${cagePaths}</g><g style="fill:var(--reel-cage, #000);opacity:${cageShade === 1 ? 'var(--reel-cage-opacity, .25)' : `calc(var(--reel-cage-opacity, .25) * ${cageShade})`}">${cagePaths}</g></g>\n`
+    ? `<g data-cage="cw" fill-rule="evenodd"><g ${cageFill}>${cagePaths}</g><g style="fill:var(--reel-cage, #000);opacity:${cageShade === 1 ? 'var(--reel-cage-opacity, .25)' : `calc(var(--reel-cage-opacity, .25) * ${cageShade})`}">${cagePaths}</g>${cageDetails}</g>\n`
     : '';
   const behind = `${under ? under + '\n' : ''}${spoolCage}${back.length ? '<use href="#back" fill="currentColor"/><use href="#back" fill="#000" opacity=".2"/>' : ''}`;
   const shadow = foot
