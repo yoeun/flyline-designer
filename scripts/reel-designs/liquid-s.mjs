@@ -23,9 +23,12 @@ const spokeEnds = (a) => {
   const p0 = P(30, rad(a - 70)), p1 = P(190, rad(a));
   return [[p0[0] - (p1[0] - p0[0]) * 0.17, p0[1] - (p1[1] - p0[1]) * 0.17], p1];
 };
+// The handle sits on its spoke where the spool's floor is, between the ring's inner edge (116) and the windows (126).
 const liquidHandle = (() => {
-  const [[x0, y0], [x1, y1]] = spokeEnds(-105);
-  return [x0 + (x1 - x0) * 0.78, y0 + (y1 - y0) * 0.78];
+  const [p0, p1] = spokeEnds(-105);
+  const d = [p1[0] - p0[0], p1[1] - p0[1]], A = d[0] ** 2 + d[1] ** 2, B = p0[0] * d[0] + p0[1] * d[1];
+  const t = (-B + Math.sqrt(B * B - A * (p0[0] ** 2 + p0[1] ** 2 - 121 ** 2))) / A;
+  return [p0[0] + d[0] * t, p0[1] + d[1] * t];
 })();
 const along = ([a, b], t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
 // Each spoke from the center to the rim.
