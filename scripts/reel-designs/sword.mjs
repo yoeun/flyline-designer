@@ -3,10 +3,10 @@
 // and gray look the same): a flange drilled with a ring of twelve big round holes and twelve small ones between them
 // near the rim, its inner edge scalloped round the big holes, opening onto a thin drum ring with three swept arms to
 // the hub, a big knurled logo knob in the middle, the handle up top-left and a silver counterweight at the bottom.
-// No straight-on drag-side photo exists: the frame (a thin rim, the foot, five arms swept counter-clockwise from a
-// central boss in a "storm vortex", the knob over it) is inferred from Piscifun's stylized drag-side render and an
-// angled wet-studio shot. Through it shows the spool's cage, which turns: the flange's twelve big holes, the small
-// holes between them and the scalloped inner edge, as on the spool side. Spoke sweep and widths are approximate.
+// Drag side from Piscifun's straight-on drag-side render (the teal outlines in it only mark the shapes): a thick rim,
+// the foot, three pairs of arms curving counterclockwise from a central boss to the rim, with a slot between each
+// pair's arms cutting into the rim, and the knob over the boss. Through it shows the spool's cage, which turns: the flange's twelve big holes, the small
+// holes between them and the scalloped inner edge, as on the spool side. Arm sweep and widths are approximate.
 // The foot and handle take the finish's accent (green on gunmetal, champagne on olive); the logo knob and drag knob
 // take its trim, falling back to the body color: green on gunmetal, gray on gray, body-colored on olive and black.
 import { ACCENT, P, TRIM, circle, f, foot, knurl, rad, ring, roundPoly, screw, svg } from './lib.mjs';
@@ -49,8 +49,30 @@ const INNER_EDGE = (() => {
 const FOOT = foot(134, -244, 14, 34);
 const ACCENT_FOOT = `<path d="${FOOT}" ${ACCENT}/><path d="${FOOT}" fill="url(#sheen)"/>`;
 
-// Drag side: five arms swept counter-clockwise from the boss, ending at the rim every 72°.
-const ARMS = [0, 1, 2, 3, 4].map((k) => -150 + k * 72);
+// Drag side, from Piscifun's drag-side render: six arms in three pairs, 120° apart, each arm curving counterclockwise
+// from the boss out to the rim. Between the pair's two arms a narrow curved slot runs on past the rim's inner edge,
+// cutting into the rim; between the pairs are the big windows.
+const PAIRS = [-60, 60, 180];
+// Each pair follows a centerline curving counterclockwise from the boss (70 out, 70° round from where it meets the
+// rim) to the rim (192), its two arms either side of it, 18 wide, with a 16-wide slot between them.
+const PAIR = { sweep: 70, r0: 70, r1: 192, ease: 1.5, arm: 18, slot: 16, steps: 24 };
+// A band along pair p's centerline, offset `off` to one side, `w` wide, from radius rA to rB, its corners rounded.
+function pairBand(p, off, w, rA = PAIR.r0, rB = PAIR.r1, corner = 4) {
+  const { sweep, r0, r1, ease, steps } = PAIR;
+  const at = (r) => P(r, rad(p + sweep - sweep * ((r - r0) / (r1 - r0)) ** ease));
+  const mid = Array.from({ length: steps + 1 }, (_, i) => at(rA + ((rB - rA) * i) / steps));
+  const edge = (o) =>
+    mid.map((q, i) => {
+      const a = mid[Math.min(i + 1, steps)], b = mid[Math.max(i - 1, 0)];
+      const dx = a[0] - b[0], dy = a[1] - b[1], l = Math.hypot(dx, dy);
+      return [q[0] - (dy / l) * o, q[1] + (dx / l) * o];
+    });
+  return roundPoly([...edge(off - w / 2), ...edge(off + w / 2).reverse()], corner);
+}
+// The arms run on into the rim band (inner edge 166), stopping at 176 so the outer one of each pair stays inside it.
+const ARMS = PAIRS.flatMap((p) => [-1, 1].map((s) => pairBand(p, s * (PAIR.slot + PAIR.arm) / 2, PAIR.arm, PAIR.r0, 176)));
+// The slot between a pair's arms runs on into the rim, to 186, rounded at its end.
+const rimSlot = (p) => pairBand(p, 0, PAIR.slot, 150, 186, PAIR.slot / 2);
 
 
 // Spool side.
@@ -168,7 +190,7 @@ export const drag = svg({
   cage: [circle(196) + HOLES + INNER_EDGE, circle(116) + mirror(hubOpenings())],
   cageShade: 0.6,
   // The frame's rim is thick, covering the outer half of the small holes.
-  body: [ring(200, 166), ...ARMS.map((a) => curvedSpoke(a + 70, a, 70, 192, 26, 18, 1.5)), circle(84)],
+  body: [ring(200, 166) + PAIRS.map((p) => rimSlot(p)).join(''), ...ARMS, circle(84)],
   details:
     `<circle r="166" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
     `<circle r="84" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
