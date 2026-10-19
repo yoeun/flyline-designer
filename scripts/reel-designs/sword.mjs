@@ -198,9 +198,9 @@ const hubOpenings = () => {
   }).join('');
 };
 
-// The spool side. `rimHoles` ([cx, cy, r]) are drilled through its thick outer rim, as on the Sword II; `id` keeps
-// gradient and mask ids apart between designs.
-export const spoolSide = ({ rimHoles = [], id = 'sword' } = {}) => svg({
+// The spool side. `rimHoles` ([cx, cy, r]) are drilled through its thick outer rim, as on the Sword II; `groove`
+// draws the line between rim and cage; `id` keeps gradient and mask ids apart between designs.
+export const spoolSide = ({ rimHoles = [], groove = true, id = 'sword' } = {}) => svg({
   foot: ACCENT_FOOT + `<path d="${FOOT}" fill="#000" fill-opacity=".2"/>`,
   handles: [[...HANDLE, 22]],
   // A recessed floor runs straight on under the flange's scalloped inner edge, no gap, out to 116; inside 100 the
@@ -228,8 +228,8 @@ export const spoolSide = ({ rimHoles = [], id = 'sword' } = {}) => svg({
       : '') +
     // Chamfers round the flange's holes, any rim holes and the scalloped inner edge.
     ringChamfers(`${id}-spool-chamfer`, [...BIG_LIST.filter((_, k) => k !== 0 && k !== 6), ...SMALL_LIST, ...rimHoles]) +
-    // The thick outer rim's inner groove.
-    `<circle r="182" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
+    // The thick outer rim's inner groove, unless the rim runs straight on into the cage (as on the Sword II).
+    (groove ? `<circle r="182" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` : '') +
     `<circle r="52" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
     // The logo knob: trim, knurled rim, a pale mark for the logo.
     `<circle r="48" fill="#000" fill-opacity=".25"/><path d="${knurl(44, 1.2, 52)}" ${TRIM}/><path d="${knurl(44, 1.2, 52)}" fill="#000" fill-opacity=".2"/>` +
