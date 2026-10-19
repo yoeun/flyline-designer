@@ -122,22 +122,24 @@ export function spokeWindows({ spokes, rIn, rOut, fillet }) {
     .join('');
 }
 
-// Chamfered edges for the whole `body`, for svg's details: a lighting filter on the body's silhouette lights each
-// edge facing the top left and shades each edge facing the bottom right, leaving flat faces as they are. `width` is
-// the chamfer's width (the silhouette's blur) and `depth` its height (surfaceScale). Working on the silhouette, the
-// seams where body pieces overlap get none. `id` must be unique to the design.
-export function bevel(id, { width = 4, depth = 7 } = {}) {
+// Chamfered edges round a frame's openings, for svg's details: a lighting filter lights each edge facing the top left
+// and shades each edge facing the bottom right, leaving flat faces as they are. `windows` are the openings to
+// chamfer, as cut from the frame. Only their edges get it: the shape lit is a disc bigger than the reel minus
+// `windows`, clipped to `clip` (the frame's outer radius), so the outer rim and anything else, like a foot, stay
+// flat. `width` is the chamfer's width (blur) and `depth` its height (surfaceScale). `id` must be unique.
+export function bevel(id, { windows, clip = 200, width = 3, depth = 3 }) {
   const light = (azimuth) =>
-    `<feSpecularLighting in="edge" surfaceScale="${depth}" specularConstant="1.2" specularExponent="20" lighting-color="#fff">` +
+    `<feSpecularLighting in="edge" surfaceScale="${depth}" specularConstant="1" specularExponent="20" lighting-color="#fff">` +
     `<feDistantLight azimuth="${azimuth}" elevation="25"/></feSpecularLighting>`;
   return (
     `<filter id="${id}-bevel" x="-10%" y="-10%" width="120%" height="120%">` +
     `<feGaussianBlur in="SourceAlpha" stdDeviation="${width}" result="edge"/>` +
     light(225) + '<feComposite in2="SourceAlpha" operator="in" result="lit"/>' +
-    light(45) + '<feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0"/>' +
+    light(45) + '<feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .7 0"/>' +
     '<feComposite in2="SourceAlpha" operator="in" result="shade"/>' +
     '<feMerge><feMergeNode in="shade"/><feMergeNode in="lit"/></feMerge></filter>' +
-    `<use href="#body" filter="url(#${id}-bevel)"/>`
+    `<clipPath id="${id}-bevel-clip"><circle r="${clip}"/></clipPath>` +
+    `<g clip-path="url(#${id}-bevel-clip)"><path d="${circle(clip + 20) + windows}" fill-rule="evenodd" filter="url(#${id}-bevel)"/></g>`
   );
 }
 

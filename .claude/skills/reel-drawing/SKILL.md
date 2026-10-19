@@ -190,13 +190,17 @@ are chamfered. Drawn without them, a frame looks like flat pieces stacked on top
   `spokes` take `spoke()`'s geometry, `{ a, r0, r1, w0, w1 }`, so tapering spokes keep their taper. For spool
   windows, `taperedSlots`' and `slots`' `corner` does the same job: give it a real radius, not 2 or 3, when the
   photo's corners are visibly round.
-- **Chamfer the edges with `bevel(id, { width, depth })`** in `details` (before anything drawn on top of the
-  frame, like a knob). It lights each edge facing the top left and shades each edge facing the bottom right, by
-  the way the edge faces, not where it sits on the reel. It works on the body's whole silhouette, so seams between
-  overlapping pieces don't get edges. The Run uses the defaults (width 4, depth 7). When the user asked for "deeper",
-  depth and a slightly wider chamfer did it. Don't fake a bevel with a stroke or a band shaded by position: a
-  stroke outlines every overlapping piece, and a band lit by position gets inner edges backwards and washes out
-  narrow rims.
+- **Chamfer the interior edges with `bevel(id, { windows, width, depth })`** in `details` (before anything drawn on
+  top of the frame, like a knob). It lights each window edge facing the top left and shades each one facing the
+  bottom right, by the way the edge faces, not where it sits on the reel.
+  - **Only the openings get it.** Pass the frame's windows (e.g. the same `spokeWindows(…)` it's cut with). The
+    outer rim stays flat, and so does everything else in `body`.
+  - **The foot is a separate piece.** Never chamfer it together with the frame. Keep it out of what's beveled, and
+    treat any other separate part the same way.
+  - **Keep it subtle.** The defaults (width 3, depth 3) suit the Run. The user called depth 7 "too aggressive", so
+    go up from the defaults in small steps.
+  - **Don't fake it** with a stroke or a band shaded by position. A stroke outlines every overlapping piece, and a
+    band lit by position gets inner edges backwards and washes out narrow rims.
 
 ## 5a. SVG gradient gotchas
 

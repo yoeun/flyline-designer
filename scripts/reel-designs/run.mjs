@@ -37,13 +37,14 @@ const FRAME_SPOKES = [
   { a: 90, r0: 50, r1: 194, w0: 54, w1: 58 },
   { a: -90 - 2 * STEP + 360, r0: 50, r1: 194, w0: 30, w1: 42 },
 ];
-const DRAG_FRAME = circle(200) + spokeWindows({ spokes: FRAME_SPOKES, rIn: 70, rOut: 179, fillet: 12 });
+const FRAME_WINDOWS = spokeWindows({ spokes: FRAME_SPOKES, rIn: 70, rOut: 179, fillet: 12 });
+const DRAG_FRAME = circle(200) + FRAME_WINDOWS;
 
 export const drag = svg({
   cage: [ring(185, 113) + taperedSlots({ ...RIM, off: BACK_OFF }), ...innerSpokes],
   body: [DRAG_FRAME, FOOT],
   details:
-    bevel('run') +
+    bevel('run', { windows: FRAME_WINDOWS }) +
     `<circle r="59" fill="#000" fill-opacity=".35"/><circle r="57" fill="#222426"/><circle r="57" fill="url(#sheen)"/>` +
     Array.from({ length: 36 }, (_, i) => {
       const a = (i / 36) * 2 * Math.PI;
