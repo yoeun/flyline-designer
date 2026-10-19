@@ -1,7 +1,7 @@
 // Lamson Liquid S.
 // Drag side: the frame is a rim, the foot, one thick vertical spoke from the foot past the drag to 6 o'clock and two
 // Y arms branching off it up to the rim, round the knurled drag knob. Through it shows the spool's cage, which
-// turns: its back flange's 24 windows, without the handle (the wound line hides it). Spool side:
+// turns: its back flange's 22 windows, without the handle (the wound line hides it). Spool side:
 // that window ring set back behind the spool's rim and five swept spokes, with the handle partway along one.
 import { ACCENT, P, chamfer, circle, foot, knob, knurl, rad, recessed, ring, roundPoly, slots, strut, sunkFace, svg } from './lib.mjs';
 
@@ -11,9 +11,9 @@ export const arbor = 126;
 // The spool's face flange: 20 windows, 18° apart, a bar under each of the five main spokes' tips (at -105° and every
 // 72° on) and three bars between neighbours.
 const RIM = { n: 20, rIn: 126, rOut: 171, bar: 12, corner: 7, off: -105 };
-// Its back flange, seen through the drag side, is a different casting (per the user): 24 windows, as drawn before
-// the spool side was redrawn. Not checked against a photo of the drag side yet.
-const DRAG_CAGE = { n: 24, rIn: 126, rOut: 171, bar: 12, corner: 7 };
+// Its back flange, seen through the drag side, is a different casting: 22 windows (per the user; not yet checked
+// against a photo of the drag side).
+const DRAG_CAGE = { n: 22, rIn: 126, rOut: 171, bar: 12, corner: 7 };
 
 // Liquid S spool side, from Lamson's photo of the bare spool: five spokes, 72° apart, swept hard: each leaves the
 // hexagonal center almost tangent to it (70° back from where it meets the rim), so neighbours form a V beside it.
