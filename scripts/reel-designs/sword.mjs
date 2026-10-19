@@ -219,7 +219,6 @@ export const drag = svg({
   // The frame's rim is thick, covering the outer half of the small holes.
   body: [circle(200) + FRAME_OPENINGS],
   details:
-    `<circle r="84" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
     // The drag knob: knurled rim, flat face, slotted center screw.
     `<circle r="62" fill="#000" fill-opacity=".22"/><path d="${knurl(58, 1.4, 56)}" ${TRIM}/><path d="${knurl(58, 1.4, 56)}" fill="#000" fill-opacity=".18"/>` +
     `<circle r="50" ${TRIM}/><circle r="58" fill="url(#sheen)"/>` +
