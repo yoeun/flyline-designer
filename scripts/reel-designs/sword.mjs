@@ -32,10 +32,11 @@ function curvedSpoke(a0, a1, r0, r1, w0, w1, ease = 2, steps = 12) {
   return roundPoly([...side(1), ...side(-1).reverse()], 4);
 }
 
-// The spool flange's holes: twelve big, and twelve small between them in the thick outer rim.
+// The spool flange's holes: twelve big, and twelve small in the cage between them, just outside the big ones' ring
+// where the gap between neighbours widens. The thick outer rim outside them is plain.
 const BIG = Array.from({ length: 12 }, (_, k) => -90 + k * 30);
 const BIG_HOLES = BIG.map((a) => circle(27, ...P(147, rad(a)))).join('');
-const HOLES = BIG_HOLES + BIG.map((a) => circle(9.5, ...P(187, rad(a + 15)))).join('');
+const HOLES = BIG_HOLES + BIG.map((a) => circle(9, ...P(166, rad(a + 15)))).join('');
 // The flange's inner edge: reaching in to r 104 between the big holes, scalloped out to 114 round each one.
 const INNER_EDGE = (() => {
   const pts = Array.from({ length: 96 }, (_, i) => {
@@ -83,7 +84,7 @@ export const spool = svg({
     `<mask id="sword-floor-mask"><circle r="116" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
     '<circle r="116" fill="url(#sword-floor)" mask="url(#sword-floor-mask)"/>' +
     // The thick outer rim's inner groove.
-    `<circle r="176" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
+    `<circle r="182" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
     `<circle r="52" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
     // The logo knob: trim, knurled rim, a pale mark for the logo.
     `<circle r="48" fill="#000" fill-opacity=".25"/><path d="${knurl(44, 1.2, 52)}" ${TRIM}/><path d="${knurl(44, 1.2, 52)}" fill="#000" fill-opacity=".2"/>` +
