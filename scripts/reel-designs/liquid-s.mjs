@@ -3,7 +3,7 @@
 // Y arms branching off it up to the rim, round the knurled drag knob. Through it shows the spool's cage, which
 // turns: its 24 windows, the same as the spool side's, without the handle (the wound line hides it). Spool side:
 // that window ring set back behind the spool's rim and five swept spokes, with the handle partway along one.
-import { ACCENT, P, chamfer, circle, foot, knob, knurl, rad, recessed, ring, roundPoly, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, chamfer, circle, foot, knob, knurl, rad, recessed, ring, slots, spoke, strut, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
 export const arbor = 126;
@@ -18,9 +18,20 @@ const liquidHandle = (() => {
   return [x0 + (x1 - x0) * 0.62, y0 + (y1 - y0) * 0.62];
 })();
 
-// The drag side's middle spoke, one straight taper: wide under the foot, narrowing evenly to 6 o'clock. It's a
-// separate piece laid over the rim, so its whole outline is chamfered, across the rim too.
-const MIDDLE_SPOKE = roundPoly([[-52, -196], [52, -196], [22, 196], [-22, 196]], 8);
+// The drag side's middle spoke, one straight taper: 104 wide under the foot, narrowing evenly to 44 at 6 o'clock,
+// its ends following the rim's outer edge. It's a separate piece laid over the rim, so its whole outline is
+// chamfered, across the rim too.
+const MIDDLE_SPOKE = (() => {
+  // Where the side through (x0, -196) and (x1, 196) meets the rim's outer edge, top (-1) or bottom (1).
+  const meet = (x0, x1, end) => {
+    const k = (x1 - x0) / 392, c = x0 + 196 * k; // x = c + k * y
+    const y = (end * Math.sqrt(200 ** 2 * (1 + k * k) - c * c) - c * k) / (1 + k * k);
+    return [c + k * y, y];
+  };
+  const pt = ([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`;
+  const tl = meet(-52, -22, -1), tr = meet(52, 22, -1), br = meet(52, 22, 1), bl = meet(-52, -22, 1);
+  return `M${pt(tl)}A200 200 0 0 1 ${pt(tr)}L${pt(br)}A200 200 0 0 1 ${pt(bl)}Z`;
+})();
 
 // The drag button takes the finish's accent: orange-red on Smoke, yellow on Day Break.
 export const drag = svg({
