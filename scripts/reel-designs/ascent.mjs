@@ -86,7 +86,7 @@ export const drag = svg({
 });
 
 // Spool side: handle in the port at about 4 o'clock (index 6), counterweight in the one at about 11 (index 13).
-const handle = P(140, rad(-90 + STEP * 6));
+const handle = P(156, rad(-90 + STEP * 6));
 const weight = P(148, rad(-90 + STEP * 13));
 const HUB_SKIP = [6, 13];
 const ball = ([x, y]) =>
