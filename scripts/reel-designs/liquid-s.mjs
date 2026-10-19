@@ -44,9 +44,12 @@ export const drag = svg({
     strut([-30, -108], P(194, rad(-137)), 20, 15),
     strut([30, -108], P(194, rad(-43)), 20, 15),
   ],
-  // A dark chamfer, a flat facet, all the way round the frame's outer edge, running across the foot's post where it
-  // meets the frame, so the foot reads as a separate piece.
-  details: `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/>${chamfer('liquid-spoke', MIDDLE_SPOKE)}<path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" ${ACCENT}/><circle cx="-4" cy="5" r="3" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-5" r="3" fill="#000" fill-opacity=".45"/>`,
+  // The middle spoke's chamfer, then a dark chamfer, a flat facet, all the way round the frame's outer edge. That
+  // runs across the foot's post where it meets the frame, so the foot reads as a separate piece, and across the
+  // spoke's ends, where the spoke's own chamfer stops short of it, so the ends are shaded like the rim.
+  details:
+    `<clipPath id="liquid-spoke-clip"><circle r="196"/></clipPath><g clip-path="url(#liquid-spoke-clip)">${chamfer('liquid-spoke', MIDDLE_SPOKE)}</g>` +
+    `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/><path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" ${ACCENT}/><circle cx="-4" cy="5" r="3" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-5" r="3" fill="#000" fill-opacity=".45"/>`,
 });
 
 export const spool = svg({
