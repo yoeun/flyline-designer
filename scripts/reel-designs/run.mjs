@@ -2,8 +2,8 @@
 // Drawn from Redington's straight-on photos of both sides, empty, with a photo of the drag side with line on.
 // Drag side: the frame is a rim, the foot, three spokes that widen toward the rim (two up, 36° either side of the
 // foot, and a wider one down), each lined up with one of the back flange's bars behind it (per the user), and a
-// black drag knob with a knurled edge and the logo cap. Through it shows the spool's back flange, which turns: 20
-// windows, plus the spool's eight primary spokes.
+// black drag knob (r 57) with a knurled edge and the logo cap, in a collar (to r 70) where the three spokes meet.
+// Through it shows the spool's back flange, which turns: 20 windows, plus the spool's eight primary spokes.
 // Spool side: the frame's rim, then the spool's face flange with 20 windows and handle pads at 12 and 6 o'clock,
 // a steep drop at the flange's inner edge, and eight primary spokes, each a face bar running on from the rim, down
 // the drop, to the logo cap (per the user, like the Ventures Ascent's).
@@ -31,12 +31,12 @@ const FOOT = foot(150, -240, 14, 30);
 
 export const drag = svg({
   cage: [ring(185, 113) + taperedSlots({ ...RIM, off: BACK_OFF }), ...innerSpokes],
-  body: [ring(200, 179), FOOT, spoke(-90 - 2 * STEP, 50, 194, 30, 42), spoke(-90 + 2 * STEP, 50, 194, 30, 42), spoke(90, 50, 194, 54, 58), circle(64)],
+  body: [ring(200, 179), FOOT, spoke(-90 - 2 * STEP, 50, 194, 30, 42), spoke(-90 + 2 * STEP, 50, 194, 30, 42), spoke(90, 50, 194, 54, 58), circle(70)],
   details:
-    `<circle r="62" fill="#222426"/><circle r="62" fill="url(#sheen)"/>` +
+    `<circle r="59" fill="#000" fill-opacity=".35"/><circle r="57" fill="#222426"/><circle r="57" fill="url(#sheen)"/>` +
     Array.from({ length: 36 }, (_, i) => {
       const a = (i / 36) * 2 * Math.PI;
-      const [x0, y0] = P(52, a), [x1, y1] = P(59, a);
+      const [x0, y0] = P(48, a), [x1, y1] = P(55, a);
       return `<path d="M${f(x0)} ${f(y0)}L${f(x1)} ${f(y1)}" stroke="#000" stroke-opacity=".55" stroke-width="2"/>`;
     }).join('') +
     `<circle r="24" fill="#1d1f22"/><circle r="20" fill="none" stroke="#d6d9d4" stroke-width="2.5"/>`,
