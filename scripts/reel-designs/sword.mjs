@@ -11,9 +11,9 @@
 // take its trim, falling back to the body color: green on gunmetal, gray on gray, body-colored on olive and black.
 import { ACCENT, P, TRIM, circle, f, foot, knurl, rad, ring, roundPoly, screw, svg } from './lib.mjs';
 
-// Mid arbor, no arbor diameter published. In the empty spool photos the drum ring sits at about half the spool's
-// radius, just inside the flange's scalloped inner edge; the backing in the loaded photos fills down to it.
-export const arbor = 100;
+// Mid arbor, no arbor diameter published. Per the user, the spool's floor runs straight on under the flange's
+// scalloped inner edge (out to 116), so the backing starts there, under the ridges.
+export const arbor = 112;
 
 // A spoke curving from (r0, a0) to (r1, a1), w0 wide at the hub and w1 at the rim, as in sword-ii.mjs.
 function curvedSpoke(a0, a1, r0, r1, w0, w1, ease = 2, steps = 12) {
@@ -32,10 +32,10 @@ function curvedSpoke(a0, a1, r0, r1, w0, w1, ease = 2, steps = 12) {
   return roundPoly([...side(1), ...side(-1).reverse()], 4);
 }
 
-// The spool flange's holes: twelve big, twelve small between them near the rim.
+// The spool flange's holes: twelve big, and twelve small between them in the thick outer rim.
 const BIG = Array.from({ length: 12 }, (_, k) => -90 + k * 30);
 const BIG_HOLES = BIG.map((a) => circle(27, ...P(147, rad(a)))).join('');
-const HOLES = BIG_HOLES + BIG.map((a) => circle(6.5, ...P(184, rad(a + 15)))).join('');
+const HOLES = BIG_HOLES + BIG.map((a) => circle(9.5, ...P(187, rad(a + 15)))).join('');
 // The flange's inner edge: reaching in to r 104 between the big holes, scalloped out to 114 round each one.
 const INNER_EDGE = (() => {
   const pts = Array.from({ length: 96 }, (_, i) => {
@@ -72,16 +72,18 @@ const HUB_ARMS = [0, 1, 2].map((k) => -60 + k * 120);
 export const spool = svg({
   foot: ACCENT_FOOT + `<path d="${FOOT}" fill="#000" fill-opacity=".2"/>`,
   handles: [[...HANDLE, 22]],
-  // Recessed metal behind the hub's windows.
-  back: [circle(96)],
-  body: [
-    circle(200) + HOLES + INNER_EDGE,
-    ring(96, 86),
-    ...HUB_ARMS.map((a) => curvedSpoke(a, a - 50, 40, 90, 22, 18)),
-    circle(52),
-  ],
+  // The center is recessed: a floor running straight on under the flange's scalloped inner edge, no gap, with the
+  // three hub arms reaching out across it to the ridges.
+  back: [circle(116)],
+  body: [circle(200) + HOLES + INNER_EDGE, ...HUB_ARMS.map((a) => curvedSpoke(a, a - 50, 40, 112, 22, 16)), circle(52)],
   details:
-    `<circle r="192" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
+    // The floor in shadow just inside the ridges, where it drops under them; kept off the arms and knob.
+    '<radialGradient id="sword-floor" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="116">' +
+    '<stop offset=".72" stop-color="#000" stop-opacity="0"/><stop offset=".95" stop-color="#000" stop-opacity=".45"/></radialGradient>' +
+    `<mask id="sword-floor-mask"><circle r="116" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
+    '<circle r="116" fill="url(#sword-floor)" mask="url(#sword-floor-mask)"/>' +
+    // The thick outer rim's inner groove.
+    `<circle r="176" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
     `<circle r="52" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
     // The logo knob: trim, knurled rim, a pale mark for the logo.
     `<circle r="48" fill="#000" fill-opacity=".25"/><path d="${knurl(44, 1.2, 52)}" ${TRIM}/><path d="${knurl(44, 1.2, 52)}" fill="#000" fill-opacity=".2"/>` +
