@@ -54,10 +54,10 @@ const ACCENT_FOOT = `<path d="${FOOT}" ${ACCENT}/><path d="${FOOT}" fill="url(#s
 // from the boss out to the rim. Between the pair's two arms a slot widens toward the rim and runs on past its inner
 // edge, cutting into the rim; between the pairs are the big windows.
 const PAIRS = [-60, 60, 180];
-// Each pair follows a gently curved centerline leaning counterclockwise from the boss (70 out, 70° round from where it
+// Each pair follows a gently curved centerline leaning counterclockwise from the boss (70 out, 90° round from where it
 // meets the rim) to the rim (192), its two arms either side of it, 18 wide. The slot between them widens toward the rim, from
 // 10 at the boss to 90 at the rim.
-const PAIR = { sweep: 70, r0: 70, r1: 192, bend: 0.4, arm: 18, slotIn: 10, slotOut: 90, steps: 24 };
+const PAIR = { sweep: 90, r0: 70, r1: 192, bend: 0.4, arm: 18, slotIn: 10, slotOut: 90, steps: 24 };
 const slotAt = (r) => PAIR.slotIn + (PAIR.slotOut - PAIR.slotIn) * ((r - PAIR.r0) / (PAIR.r1 - PAIR.r0));
 // The angle of pair p's centerline at radius r: a gentle curve from P(r0, p + sweep) at the boss to P(r1, p) at the
 // rim, `bend` of the way from the straight line between them toward a spiral that curls into the rim.
