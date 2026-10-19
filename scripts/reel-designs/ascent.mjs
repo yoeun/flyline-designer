@@ -11,24 +11,39 @@
 // slots and the black center cap as the drag knob. That whole ported face is drawn as the frame, with no spool cage
 // behind it: nothing shows which of it is frame and which spool, and it has no spokes to keep if the port ring were
 // the spool. Port and slot sizes are read off small photos, so approximate.
-import { P, circle, f, foot, rad, slots, svg } from './lib.mjs';
+import { P, arcPts, circle, edge, f, foot, rad, roundPoly, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the ports, where the backing shows: about 0.53 of the rim.
 export const arbor = 106;
 
-// Ports: fourteen windows from 104 to 172 between straight bars, one centered at 12 o'clock. `skip` lists the
-// window indices (clockwise from the top) filled in for the handle and counterweight.
-const N = 14, STEP = 360 / N;
+// Spokes taper toward the center, so each window sits between bars `barOut` wide at rOut and `barIn` at rIn.
+const tapered = ({ n, rIn, rOut, barIn, barOut, corner, off }) =>
+  Array.from({ length: n }, (_, k) => {
+    const a0 = rad(off + (k * 360) / n), a1 = rad(off + ((k + 1) * 360) / n);
+    const A2 = edge(a0, barOut / 2, rOut), B2 = edge(a1, -barOut / 2, rOut);
+    const B1 = edge(a1, -barIn / 2, rIn), A1 = edge(a0, barIn / 2, rIn);
+    const at = ([x, y]) => Math.atan2(y, x);
+    const wrap = (from, to) => (to < from ? to + 2 * Math.PI : to);
+    const outer = arcPts(rOut, at(A2), wrap(at(A2), at(B2)));
+    const inner = arcPts(rIn, wrap(at(A1), at(B1)), at(A1), 6);
+    return roundPoly([...outer, ...inner], corner);
+  }).join('');
 const pick = (d, keep) => (d.match(/M[^Z]*Z/g) ?? []).filter((_, k) => keep(k)).join('');
+
+// Fourteen spokes, measured off the photo: about 22 wide at the rim, narrowing to 15 at the ports' inner edge and
+// holding about that across the hub to the cap.
+// Ports: fourteen windows from 104 to 172, one centered at 12 o'clock. `skip` lists the window indices (clockwise
+// from the top) filled in for the handle and counterweight.
+const N = 14, STEP = 360 / N;
 const ports = (skip = []) =>
-  pick(slots({ n: N, rIn: 104, rOut: 172, bar: 21, corner: 9, off: -90 - STEP / 2 }), (k) => !skip.includes(k));
+  pick(tapered({ n: N, rIn: 104, rOut: 172, barIn: 15, barOut: 22, corner: 9, off: -90 - STEP / 2 }), (k) => !skip.includes(k));
 
 // Hub: fourteen radial slots from the cap's collar out to the disc's edge, one under each port, so the bars carry
 // the port ring's spokes on to the cap. On the spool side the two under the handle and counterweight are round
-// holes instead.
+// holes in wider spokes instead.
 const HUB = 100;
 const hubSlots = (skip = []) =>
-  pick(slots({ n: N, rIn: 54, rOut: 93, bar: 11, corner: 4, off: -90 - STEP / 2 }), (k) => !skip.includes(k));
+  pick(tapered({ n: N, rIn: 52, rOut: 93, barIn: 12, barOut: 15, corner: 4, off: -90 - STEP / 2 }), (k) => !skip.includes(k));
 const hub = (skip = []) =>
   circle(HUB) + hubSlots(skip) + skip.map((k) => circle(12, ...P(76, rad(-90 + STEP * k)))).join('');
 
