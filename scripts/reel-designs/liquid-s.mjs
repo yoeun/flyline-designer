@@ -61,7 +61,8 @@ const tipFillets = ([p0, p1]) => {
 // The hexagonal center the spokes grow out of, under the round cap.
 const HEX = roundPoly(Array.from({ length: 6 }, (_, k) => P(46, rad(-90 + k * 60))), 8);
 // A spoke's deep chamfer, like the drag side's arms': a facet along its clockwise edge, 2/3 of its width, in one even
-// shade, the same on every spoke. It runs from the hexagonal center toward the rim, fading out at the tip.
+// shade, the same on every spoke. It runs from the spoke's base, where the neighbouring spoke cuts it off, toward the
+// rim, fading out at the tip.
 const spokeFacet = ([p0, p1], i) => {
   const l = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
   const n = [-(p1[1] - p0[1]) / l, (p1[0] - p0[0]) / l]; // the clockwise side
@@ -70,7 +71,13 @@ const spokeFacet = ([p0, p1], i) => {
     const d = [p1[0] - p0[0], p1[1] - p0[1]], B = p0[0] * d[0] + p0[1] * d[1], A = l * l, C = p0[0] ** 2 + p0[1] ** 2 - r * r;
     return Math.min(1, (-B + Math.sqrt(B * B - A * C)) / A);
   };
-  const t0 = cross(44), t1 = cross(181);
+  // It starts where the spoke's center line crosses the last other spoke's on its way out from the base.
+  const crossing = ([q0, q1]) => {
+    const d1 = [p1[0] - p0[0], p1[1] - p0[1]], d2 = [q1[0] - q0[0], q1[1] - q0[1]];
+    return ((q0[0] - p0[0]) * d2[1] - (q0[1] - p0[1]) * d2[0]) / (d1[0] * d2[1] - d1[1] * d2[0]);
+  };
+  const t0 = Math.max(0, ...SPOKE_LINES.filter((_, k) => k !== i).map(crossing).filter((t) => t > 0 && t < 0.5)) + 3 / l;
+  const t1 = cross(181);
   const w1 = SPOKE_W[1];
   const width = (t) => SPOKE_W[0] + (w1 - SPOKE_W[0]) * t;
   const at = (t, k) => { const c = along([p0, p1], t); return [c[0] + n[0] * width(t) * k, c[1] + n[1] * width(t) * k]; };
@@ -81,7 +88,9 @@ const spokeFacet = ([p0, p1], i) => {
   return (
     `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${g0[0].toFixed(1)}" y1="${g0[1].toFixed(1)}" x2="${g1[0].toFixed(1)}" y2="${g1[1].toFixed(1)}">` +
     '<stop offset="0" stop-color="#000" stop-opacity=".28"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>' +
-    `<path d="M${pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join('L')}Z" fill="url(#${id})"/>`
+    // Clipped where the other spokes cross it, so it stops at the neighbour its base runs into.
+    `<mask id="${id}-mask"><path d="${SPOOL_SPOKES[i]}" fill="#fff"/>${SPOOL_SPOKES.filter((_, k) => k !== i).map((d) => `<path d="${d}" fill="#000"/>`).join('')}</mask>` +
+    `<path d="M${pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join('L')}Z" fill="url(#${id})" mask="url(#${id}-mask)"/>`
   );
 };
 
