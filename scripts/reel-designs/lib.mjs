@@ -87,6 +87,60 @@ export function sunkFace({ id, wall, floor, cut }) {
   );
 }
 
+// Where one side (1 = clockwise, -1 = counterclockwise) of a straight tapering spoke crosses radius r. The spoke
+// runs along `a` degrees from r0 (w0 wide) to r1 (w1 wide), as `spoke` draws it.
+function spokeSide({ a, r0, r1, w0, w1 }, side, r) {
+  const t = rad(a), n = [-Math.sin(t), Math.cos(t)];
+  const p0 = P(r0, t).map((v, i) => v + (side * n[i] * w0) / 2), p1 = P(r1, t).map((v, i) => v + (side * n[i] * w1) / 2);
+  const d = [p1[0] - p0[0], p1[1] - p0[1]];
+  const A = d[0] ** 2 + d[1] ** 2, B = 2 * (p0[0] * d[0] + p0[1] * d[1]), C = p0[0] ** 2 + p0[1] ** 2 - r * r;
+  const u = (-B + Math.sqrt(B * B - 4 * A * C)) / (2 * A);
+  return [p0[0] + u * d[0], p0[1] + u * d[1]];
+}
+
+// The windows between spokes, an outer ring's inner edge (rOut) and a hub or inner ring (rIn), with every corner
+// rounded by `fillet` where a spoke meets a ring. Cut them out of one solid disc (`circle(rim) + spokeWindows(…)`)
+// instead of overlapping rings and `spoke`s, which leaves sharp inside corners. `spokes` are { a, r0, r1, w0, w1 },
+// in clockwise order; a window runs clockwise from each spoke to the next. Each window must span under 180°.
+export function spokeWindows({ spokes, rIn, rOut, fillet }) {
+  const pt = ([x, y]) => `${f(x)} ${f(y)}`;
+  const toward = (p, q) => {
+    const l = Math.hypot(q[0] - p[0], q[1] - p[1]);
+    return [p[0] + ((q[0] - p[0]) * fillet) / l, p[1] + ((q[1] - p[1]) * fillet) / l];
+  };
+  const along = (p, r, dir) => P(r, Math.atan2(p[1], p[0]) + (dir * fillet) / r);
+  return spokes
+    .map((from, i) => {
+      const to = spokes[(i + 1) % spokes.length];
+      const c1 = spokeSide(from, 1, rIn), c2 = spokeSide(from, 1, rOut), c3 = spokeSide(to, -1, rOut), c4 = spokeSide(to, -1, rIn);
+      return (
+        `M${pt(toward(c1, c2))}L${pt(toward(c2, c1))}Q${pt(c2)} ${pt(along(c2, rOut, 1))}` +
+        `A${rOut} ${rOut} 0 0 1 ${pt(along(c3, rOut, -1))}Q${pt(c3)} ${pt(toward(c3, c4))}L${pt(toward(c4, c3))}` +
+        `Q${pt(c4)} ${pt(along(c4, rIn, -1))}A${rIn} ${rIn} 0 0 0 ${pt(along(c1, rIn, 1))}Q${pt(c1)} ${pt(toward(c1, c2))}Z`
+      );
+    })
+    .join('');
+}
+
+// Chamfered edges for the whole `body`, for svg's details: a lighting filter on the body's silhouette lights each
+// edge facing the top left and shades each edge facing the bottom right, leaving flat faces as they are. `width` is
+// the chamfer's width (the silhouette's blur) and `depth` its height (surfaceScale). Working on the silhouette, the
+// seams where body pieces overlap get none. `id` must be unique to the design.
+export function bevel(id, { width = 4, depth = 7 } = {}) {
+  const light = (azimuth) =>
+    `<feSpecularLighting in="edge" surfaceScale="${depth}" specularConstant="1.2" specularExponent="20" lighting-color="#fff">` +
+    `<feDistantLight azimuth="${azimuth}" elevation="25"/></feSpecularLighting>`;
+  return (
+    `<filter id="${id}-bevel" x="-10%" y="-10%" width="120%" height="120%">` +
+    `<feGaussianBlur in="SourceAlpha" stdDeviation="${width}" result="edge"/>` +
+    light(225) + '<feComposite in2="SourceAlpha" operator="in" result="lit"/>' +
+    light(45) + '<feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0"/>' +
+    '<feComposite in2="SourceAlpha" operator="in" result="shade"/>' +
+    '<feMerge><feMergeNode in="shade"/><feMergeNode in="lit"/></feMerge></filter>' +
+    `<use href="#body" filter="url(#${id}-bevel)"/>`
+  );
+}
+
 // A straight spoke from r0 to r1 along `deg`, w0 wide at r0 and w1 wide at r1.
 export function spoke(deg, r0, r1, w0, w1 = w0, sweep = 0) {
   const a = rad(deg), s = rad(deg - sweep);

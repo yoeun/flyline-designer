@@ -1,6 +1,6 @@
 ---
 name: reel-drawing
-description: Use when drawing or fixing a reel's frame SVG in scripts/reel-designs (drag or spool side), when the user shares photos of a reel, or says a reel drawing looks wrong. Covers splitting the fixed frame from the spool cage that spins, tapering spokes, floating backing (no visible floor), gradient drops, insets and grooves, and checking the drawing against photos.
+description: Use when drawing or fixing a reel's frame SVG in scripts/reel-designs (drag or spool side), when the user shares photos of a reel, or says a reel drawing looks wrong. Covers splitting the fixed frame from the spool cage that spins, alternating flange bars, tapering spokes, floating backing (no visible floor), gradient drops, rounded corners where pieces meet, chamfered (beveled) edges, insets and grooves, and checking the drawing against photos.
 ---
 
 # Drawing a reel
@@ -57,6 +57,13 @@ export const drag = svg({
   the two read as separate pieces. Check both a light and a dark `--color` in the preview.
 - The cage must match the spool side: same window count, radii and bar width (share one `RIM` object), with no
   handle or knob pads.
+- **Check whether the spool's two flanges' bars line up or alternate.** On some reels (the Redington Run,
+  `scripts/reel-designs/run.mjs`) the back flange's bars sit halfway between the face flange's. In an empty photo
+  you see a thinner, darker bar midway across each window: that's the far flange's bar, not a divider in the
+  window. Then offset the drag side's cage half a window (`off` differs by `360 / n / 2`). Don't draw the far
+  bars yourself: the app draws each side's far side behind it, so they show through on their own.
+- **Frame spokes usually sit on a cage bar.** Check the photo, and when they do, take their angles from the cage's
+  bar angles rather than from measurements.
 - Spokes that look evenly spaced usually are: build them from one angle list (e.g. 72° apart for five) rather than
   measured angles.
 
@@ -171,6 +178,26 @@ Most reels have them, and they're what makes a flat drawing read as machined met
 - **Separate parts, one finish:** give the inset part a darker shade than the part around it, never the same flat
   color.
 
+### Rounded corners and chamfered edges
+
+Most reels need both, wherever pieces meet. A cast or machined frame has no sharp inside corners, and its edges
+are chamfered. Drawn without them, a frame looks like flat pieces stacked on top of each other.
+
+- **Round every corner where a spoke meets a rim, a hub or a collar.** Don't build a frame from overlapping
+  `ring`s, `spoke`s and `circle`s: that leaves sharp inside corners. Cut it as one solid piece instead:
+  `circle(200) + spokeWindows({ spokes, rIn, rOut, fillet })` from `lib.mjs`. The windows run between the spokes,
+  the outer ring's inner edge and the hub, with every corner rounded by `fillet` (the Run's drag frame uses 12).
+  `spokes` take `spoke()`'s geometry, `{ a, r0, r1, w0, w1 }`, so tapering spokes keep their taper. For spool
+  windows, `taperedSlots`' and `slots`' `corner` does the same job: give it a real radius, not 2 or 3, when the
+  photo's corners are visibly round.
+- **Chamfer the edges with `bevel(id, { width, depth })`** in `details` (before anything drawn on top of the
+  frame, like a knob). It lights each edge facing the top left and shades each edge facing the bottom right, by
+  the way the edge faces, not where it sits on the reel. It works on the body's whole silhouette, so seams between
+  overlapping pieces don't get edges. The Run uses the defaults (width 4, depth 7). When the user asked for "deeper",
+  depth and a slightly wider chamfer did it. Don't fake a bevel with a stroke or a band shaded by position: a
+  stroke outlines every overlapping piece, and a band lit by position gets inner edges backwards and washes out
+  narrow rims.
+
 ## 5a. SVG gradient gotchas
 
 - A `radialGradient` with `gradientUnits="userSpaceOnUse"` needs `cx="0" cy="0"`. Without them it centers on 50%
@@ -179,6 +206,11 @@ Most reels have them, and they're what makes a flat drawing read as machined met
   stops a few units apart.
 - To shade metal only, give the shading path the openings as even-odd cut-outs. Make its gradient fade to 0
   before the path's edges, because even-odd turns the parts of the cut-outs outside the shaded band back on.
+- A gradient's first and last stops carry on past the ends (pad), so a radial gradient whose first stop isn't 0
+  shades everything inside it, including an open, see-through center. Cut the open middle out of the path too
+  (e.g. `cut: windows + circle(innerEdge)` for `sunkFace`).
+- A `<mask>` reads luminance, not alpha. A filter result built from `SourceAlpha` is black, so as a mask it lets
+  nothing through. Build mask content from a white fill (`SourceGraphic` of a `fill="#fff"` shape).
 
 ## 6. Check it
 

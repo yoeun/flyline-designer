@@ -11,7 +11,7 @@
 // halfway across each window are the back flange's. So the drag side's window ring is offset half a window from
 // the spool side's, and each side shows the other's bars through its windows (the app draws the far side behind).
 // Measured by sampling the photos round the center (rim = 200).
-import { P, circle, f, foot, knob, pickPaths, recessed, ring, spoke, sunkFace, svg, frameRim, taperedSlots } from './lib.mjs';
+import { P, bevel, circle, f, foot, frameRim, knob, pickPaths, recessed, ring, spoke, spokeWindows, sunkFace, svg, taperedSlots } from './lib.mjs';
 
 // The wound line starts just inside the windows' inner edge, on the dark drop below them.
 export const arbor = 126;
@@ -29,10 +29,21 @@ const innerSpokes = SPOKES.map((a) => spoke(a, 30, 129, 11, 9));
 
 const FOOT = foot(150, -240, 14, 30);
 
+// The drag frame: three spokes, widening from the collar (r 50) to the rim (r 194), each on one of the back
+// flange's bars. The frame is one piece cut by three windows between the spokes, the rim's inner edge (179) and the
+// collar (70), with the corners rounded where the spokes meet the rim and the collar.
+const FRAME_SPOKES = [
+  { a: -90 + 2 * STEP, r0: 50, r1: 194, w0: 30, w1: 42 },
+  { a: 90, r0: 50, r1: 194, w0: 54, w1: 58 },
+  { a: -90 - 2 * STEP + 360, r0: 50, r1: 194, w0: 30, w1: 42 },
+];
+const DRAG_FRAME = circle(200) + spokeWindows({ spokes: FRAME_SPOKES, rIn: 70, rOut: 179, fillet: 12 });
+
 export const drag = svg({
   cage: [ring(185, 113) + taperedSlots({ ...RIM, off: BACK_OFF }), ...innerSpokes],
-  body: [ring(200, 179), FOOT, spoke(-90 - 2 * STEP, 50, 194, 30, 42), spoke(-90 + 2 * STEP, 50, 194, 30, 42), spoke(90, 50, 194, 54, 58), circle(70)],
+  body: [DRAG_FRAME, FOOT],
   details:
+    bevel('run') +
     `<circle r="59" fill="#000" fill-opacity=".35"/><circle r="57" fill="#222426"/><circle r="57" fill="url(#sheen)"/>` +
     Array.from({ length: 36 }, (_, i) => {
       const a = (i / 36) * 2 * Math.PI;
