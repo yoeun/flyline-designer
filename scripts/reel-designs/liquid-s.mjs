@@ -3,7 +3,7 @@
 // Y arms branching off it up to the rim, round the knurled drag knob. Through it shows the spool's cage, which
 // turns: its 24 windows, the same as the spool side's, without the handle (the wound line hides it). Spool side:
 // that window ring set back behind the spool's rim and five swept spokes, with the handle partway along one.
-import { ACCENT, P, chamfer, circle, foot, knob, knurl, rad, recessed, ring, slots, spoke, strut, svg } from './lib.mjs';
+import { ACCENT, P, chamfer, circle, foot, knob, knurl, rad, recessed, ring, slots, spoke, strut, sunkFace, svg } from './lib.mjs';
 
 // The wound line starts at the inner edge of the spool's windows.
 export const arbor = 126;
@@ -17,6 +17,13 @@ const liquidHandle = (() => {
   const [x0, y0] = P(26, rad(-145)), [x1, y1] = P(188, rad(-105));
   return [x0 + (x1 - x0) * 0.62, y0 + (y1 - y0) * 0.62];
 })();
+
+// The spool's window ring curves down to its floor below the windows: a gradient drop from the windows' inner edge
+// (126) to the ring's inner edge (116), on the ring only. A mask keeps it off the body (frame or spool spokes) that
+// crosses over it. `side` keeps the ids apart.
+const curvedFloor = (side) =>
+  `<mask id="liquid-${side}-floor"><rect x="-215" y="-250" width="430" height="470" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
+  `<g mask="url(#liquid-${side}-floor)">${sunkFace({ id: `liquid-${side}`, wall: RIM.rIn, floor: 116, cut: slots(RIM) + circle(116) })}</g>`;
 
 // The drag side's middle spoke, one straight taper: 104 wide under the foot, narrowing evenly to 44 at 6 o'clock,
 // its ends following the rim's outer edge. It's a separate piece laid over the rim, so its whole outline is
@@ -48,6 +55,7 @@ export const drag = svg({
   // runs across the foot's post where it meets the frame, so the foot reads as a separate piece, and across the
   // spoke's ends, where the spoke's own chamfer stops short of it, so the ends are shaded like the rim.
   details:
+    curvedFloor('drag') +
     `<clipPath id="liquid-spoke-clip"><circle r="196"/></clipPath><g clip-path="url(#liquid-spoke-clip)">${chamfer('liquid-spoke', MIDDLE_SPOKE)}</g>` +
     `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/><path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" ${ACCENT}/><circle cx="-4" cy="5" r="3" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-5" r="3" fill="#000" fill-opacity=".45"/>`,
 });
@@ -58,5 +66,5 @@ export const spool = svg({
   // The spool's window ring, set back behind its rim and spokes.
   back: [ring(190, 116) + slots(RIM)],
   body: [ring(200, 184), ...LIQUID_SPOKES.map((a) => spoke(a, 26, 188, 20, 13, 40)), circle(38)],
-  details: `${knob(...liquidHandle, 16)}<circle r="30" fill="#fff" fill-opacity=".1"/>`,
+  details: `${curvedFloor('spool')}${knob(...liquidHandle, 16)}<circle r="30" fill="#fff" fill-opacity=".1"/>`,
 });
