@@ -103,6 +103,8 @@ export default function App() {
   const svgRef = useRef(null);
   // The reel drawing, watched by the floating copy that shows once it scrolls away.
   const stageRef = useRef(null);
+  // The rack strip under it; the floating copy waits until this has scrolled away too.
+  const rackStripRef = useRef(null);
   const headerRef = useFixedHeader();
   // The page the address bar shows; a change of page pushes a history entry, design edits replace it.
   const urlPage = useRef(initial.page);
@@ -518,8 +520,9 @@ export default function App() {
               </div>
               <Checks setup={setup} />
             </div>
-            <FloatingPreview targetRef={stageRef} setup={setup} mode={mode} side={side} background={STAGE[theme]} />
+            <FloatingPreview targetRef={stageRef} untilRef={rackStripRef} setup={setup} mode={mode} side={side} background={STAGE[theme]} />
             <Rack
+              ref={rackStripRef}
               setups={rack}
               open={rackOpen}
               onToggle={() => setRackOpen((o) => !o)}
