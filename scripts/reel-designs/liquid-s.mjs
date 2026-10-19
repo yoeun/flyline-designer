@@ -42,7 +42,23 @@ const MIDDLE_SPOKE = (() => {
 
 // The drag side's Y arms leave the middle spoke a little below halfway between the drag knob and the rim (at about
 // y -98) and rise steeply to the rim.
-const ARMS = [strut([-30, -86], P(194, rad(-128)), 20, 15), strut([30, -86], P(194, rad(-52)), 20, 15)];
+const ARM_ENDS = [
+  [[-30, -86], P(194, rad(-128))],
+  [[30, -86], P(194, rad(-52))],
+];
+const ARMS = ARM_ENDS.map(([a, b]) => strut(a, b, 20, 15));
+// Each arm's one chamfer: a wide facet along its upper edge, over 2/3 of its width, in one shade by the way it faces
+// the light from the top left (the right arm's lit, the left arm's in shade). The arm's lower edge has none.
+const armFacet = ([a, b]) => {
+  const l = Math.hypot(b[0] - a[0], b[1] - a[1]);
+  let n = [-(b[1] - a[1]) / l, (b[0] - a[0]) / l];
+  if (n[1] > 0) n = [-n[0], -n[1]];
+  const at = (p, w, k) => [p[0] + n[0] * w * k, p[1] + n[1] * w * k];
+  const pts = [at(a, 20, 1 / 2), at(b, 15, 1 / 2), at(b, 15, -1 / 6), at(a, 20, -1 / 6)];
+  const facing = (n[0] + n[1]) * -Math.SQRT1_2; // toward the light
+  const fill = facing > 0 ? `fill="#fff" fill-opacity="${(0.15 + 0.3 * facing).toFixed(2)}"` : `fill="#000" fill-opacity="${(0.12 + 0.3 * -facing).toFixed(2)}"`;
+  return `<path d="M${pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join('L')}Z" ${fill}/>`;
+};
 
 // The drag button takes the finish's accent: orange-red on Smoke, yellow on Day Break.
 export const drag = svg({
@@ -53,14 +69,16 @@ export const drag = svg({
     MIDDLE_SPOKE,
     ...ARMS,
   ],
-  // Chamfers: the rim's inner edge and the arms as one casting, kept off the middle spoke laid over them; then the
-  // middle spoke's own, round its whole outline. Both stop inside the outer edge, where a dark chamfer, a flat facet,
-  // runs all the way round. That runs across the foot's post where it meets the frame, so the foot reads as a
-  // separate piece, and across the spoke's ends, so they're shaded like the rim.
+  // Chamfers: the rim's inner edge, and each arm's upper edge (inside the rim), kept off the middle spoke laid over
+  // them; then the middle spoke's own, round its whole outline. All stop inside the outer edge, where a dark chamfer,
+  // a flat facet, runs all the way round. That runs across the foot's post where it meets the frame, so the foot
+  // reads as a separate piece, and across the spoke's ends, so they're shaded like the rim.
   details:
     curvedFloor('drag') +
     `<mask id="liquid-frame-mask"><circle r="196" fill="#fff"/><path d="${MIDDLE_SPOKE}" fill="#000"/></mask>` +
-    `<g mask="url(#liquid-frame-mask)">${chamfer('liquid-frame', [ring(200, 181), ...ARMS])}</g>` +
+    `<mask id="liquid-arm-mask"><circle r="181" fill="#fff"/><path d="${MIDDLE_SPOKE}" fill="#000"/></mask>` +
+    `<g mask="url(#liquid-frame-mask)">${chamfer('liquid-frame', ring(200, 181))}</g>` +
+    `<g mask="url(#liquid-arm-mask)">${ARM_ENDS.map(armFacet).join('')}</g>` +
     `<clipPath id="liquid-spoke-clip"><circle r="196"/></clipPath><g clip-path="url(#liquid-spoke-clip)">${chamfer('liquid-spoke', MIDDLE_SPOKE)}</g>` +
     `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/><path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" ${ACCENT}/><circle cx="-4" cy="5" r="3" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-5" r="3" fill="#000" fill-opacity=".45"/>`,
 });
