@@ -141,7 +141,8 @@ const armFacet = ([a, b]) => {
 
 // The drag button takes the finish's accent: orange-red on Smoke, yellow on Day Break.
 export const drag = svg({
-  cage: [ring(190, 116) + slots(RIM)],
+  // The same cage seen from behind: its bars at the spool side's angles mirrored (a bar at 180° - RIM.off).
+  cage: [ring(190, 116) + slots({ ...RIM, off: 180 - RIM.off })],
   body: [
     ring(200, 181),
     foot(128, -244, 14, 34),
