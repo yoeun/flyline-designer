@@ -163,8 +163,9 @@ export const drag = svg({
 export const spool = svg({
   foot: recessed(foot(128, -244, 14, 34)),
   handles: [[...liquidHandle, 21]],
-  // The spool's window ring, set back behind its rim and spokes.
-  back: [ring(190, 116) + slots(RIM)],
+  // The spool's window ring, set back behind its rim and spokes. From this side it meets the rim directly, with no
+  // band of its own: the windows run on out under the rim, and the cage's darker shade sets it apart.
+  back: [ring(190, 116) + slots({ ...RIM, rOut: 186 })],
   body: [ring(200, 181), ...SPOOL_SPOKES, ...SPOKE_LINES.map(tipFillets), HEX],
   // A dark outer chamfer; each spoke's deep chamfer; then the round cap on the hexagon, and the handle. The rim's
   // inner edge has no chamfer: round the filleted spoke tips it doubled up into stray lines, and without it each
