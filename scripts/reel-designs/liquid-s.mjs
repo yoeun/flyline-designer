@@ -145,7 +145,7 @@ const armFacet = ([a, b]) => {
 // "LAMSON" printed up the middle spoke below the drag knob, reading from the rim in toward the center.
 const NAME =
   '<text transform="translate(0 182) rotate(-90)" dominant-baseline="central" font-family="Helvetica, Arial, sans-serif" ' +
-  'font-weight="700" font-size="17" letter-spacing="3" fill="#f2f2ee" fill-opacity=".85">LAMSON</text>';
+  'font-weight="700" font-size="17" letter-spacing="6" fill="#f2f2ee" fill-opacity=".85">LAMSON</text>';
 
 // The drag button takes the finish's accent: orange-red on Smoke, yellow on Day Break.
 export const drag = svg({
