@@ -199,20 +199,15 @@ const hubOpenings = () => {
 };
 
 // The recessed pockets round rim holes: straight-sided, 16 wide, from 8 outside each hole in to radius 165. With an
-// `id`, each takes one even tone by the way it faces the light from the top left: those facing it (round the top
-// left of the rim) a little lighter than the rim, those facing away (bottom right) a little darker, those between
-// close to the rim's own tone. Without one they're plain shapes, for masks.
+// `id`, each is a little darker than the rim, by the way it faces the light from the top left: 10% where it faces it
+// (round the top left of the rim) to 25% where it faces away. Without one they're plain shapes, for masks.
 const pockets = (holes, id) =>
   holes
     .map(([x, y]) => {
       const a = (Math.atan2(y, x) * 180) / Math.PI + 90, r = Math.hypot(x, y);
       // How squarely the pocket faces the light: 1 toward the top left, -1 away.
       const facing = -(x + y) / (r * Math.SQRT2);
-      const fill = !id
-        ? ''
-        : facing > 0
-          ? ` fill="#fff" fill-opacity="${(0.06 + 0.14 * facing).toFixed(2)}"`
-          : ` fill="#000" fill-opacity="${(0.08 + 0.2 * -facing).toFixed(2)}"`;
+      const fill = id ? ` fill="#000" fill-opacity="${(0.175 - 0.075 * facing).toFixed(2)}"` : '';
       // In the pocket's own frame +y points in toward the center.
       return `<rect x="-8" y="-8" width="16" height="${f(r - 165 + 8)}" rx="1.5" transform="translate(${f(x)} ${f(y)}) rotate(${f(a)})"${fill}/>`;
     })
