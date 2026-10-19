@@ -166,12 +166,16 @@ export const spool = svg({
   // The spool's window ring, set back behind its rim and spokes.
   back: [ring(190, 116) + slots(RIM)],
   body: [ring(200, 181), ...SPOOL_SPOKES, ...SPOKE_LINES.map(tipFillets), HEX],
-  // The rim's inner edge chamfered (off the spokes), inside a dark outer chamfer; each spoke's deep chamfer; then the
-  // round cap on the hexagon, and the handle.
+  // The rim's inner edge chamfered, inside a dark outer chamfer; each spoke's deep chamfer; then the round cap on the
+  // hexagon, and the handle.
   details:
     curvedFloor('spool') +
-    `<mask id="liquid-spool-mask"><circle r="196" fill="#fff"/>${[...SPOOL_SPOKES, ...SPOKE_LINES.map(tipFillets), HEX].map((d) => `<path d="${d}" fill="#000"/>`).join('')}</mask>` +
-    `<g mask="url(#liquid-spool-mask)">${chamfer('liquid-spool', ring(200, 181))}</g>` +
+    // The rim's edge chamfer follows the rim, fillets and spoke tips as one outline, so each tip reads as part of
+    // the rim; it fades out along the spokes, from 172 in to 150, leaving their long sides clean.
+    '<radialGradient id="liquid-spool-fade" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="196">' +
+    '<stop offset=".765" stop-color="#000"/><stop offset=".878" stop-color="#fff"/></radialGradient>' +
+    `<mask id="liquid-spool-mask"><circle r="196" fill="url(#liquid-spool-fade)"/></mask>` +
+    `<g mask="url(#liquid-spool-mask)">${chamfer('liquid-spool', [ring(200, 181), ...SPOOL_SPOKES, ...SPOKE_LINES.map(tipFillets)])}</g>` +
     `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/>` +
     SPOKE_LINES.map(spokeFacet).join('') +
     `<circle r="24" fill="#000" fill-opacity=".25"/><circle r="22" fill="currentColor"/><circle r="22" fill="url(#sheen)"/>` +
