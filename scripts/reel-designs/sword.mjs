@@ -74,9 +74,10 @@ const WEIGHT = P(147, rad(90));
 // The cavity's three arms: straight spokes, 20 wide, each leaning clockwise as it runs out, its outer edge
 // tangent to the ring round the dial (58) at angle a. Between them the floor is cut through, each opening bounded by
 // one arm's inner edge, the floor ring's inner edge (100), the next arm's tangent edge and the ring round the dial.
-// The tangent edge flows on into that ring; the other corners are rounded, most where an arm meets the center.
+// The tangent edge flows on into that ring; the other corners are rounded (12), as where the Run's drag spokes
+// meet its collar, so the arms keep their width all the way in.
 const HUB_ARMS = [0, 1, 2].map((k) => -60 + k * 120);
-const ARM = { rIn: 58, rOut: 100, w: 20, fillet: 10, filletIn: 32 };
+const ARM = { rIn: 58, rOut: 100, w: 20, fillet: 12, filletIn: 12 };
 const hubOpenings = () => {
   // An arm's edge: the tangent one (outer) or the inner one, as a point and a direction (clockwise, outward).
   const edge = (a, outer) => {
@@ -101,19 +102,20 @@ const hubOpenings = () => {
   // the outline on both sides and replaced by a curve through the corner.
   const fillet = (pts, corners) => {
     const n = pts.length, dist = (p, q) => Math.hypot(q[0] - p[0], q[1] - p[1]);
-    // The point `len` along the outline from pts[i], stepping by `step` (1 or -1), and how many points it passed.
+    // The point `len` along the outline from pts[i], stepping by `step` (1 or -1), and how many points it passed on
+    // the way, which the curve replaces.
     const walk = (i, len, step) => {
       let j = i, left = len;
       for (;;) {
         const k = (j + step + n) % n, l = dist(pts[j], pts[k]);
-        if (l >= left) return [[pts[j][0] + ((pts[k][0] - pts[j][0]) * left) / l, pts[j][1] + ((pts[k][1] - pts[j][1]) * left) / l], (j - i + step + n) % n];
+        if (l >= left) return [[pts[j][0] + ((pts[k][0] - pts[j][0]) * left) / l, pts[j][1] + ((pts[k][1] - pts[j][1]) * left) / l], (step * (j - i) + n) % n];
         left -= l; j = k;
       }
     };
     const cut = corners.map(([i, r]) => ({ i, before: walk(i, r, -1), after: walk(i, r, 1) }));
     const skip = new Set();
     cut.forEach(({ i, before, after }) => {
-      for (let s = 1; s <= (n - before[1]) % n; s++) skip.add((i - s + n) % n);
+      for (let s = 1; s <= before[1]; s++) skip.add((i - s + n) % n);
       for (let s = 1; s <= after[1]; s++) skip.add((i + s) % n);
     });
     const pt = ([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`;
