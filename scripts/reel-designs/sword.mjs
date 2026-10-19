@@ -74,14 +74,14 @@ export const spool = svg({
   foot: ACCENT_FOOT + `<path d="${FOOT}" fill="#000" fill-opacity=".2"/>`,
   handles: [[...HANDLE, 22]],
   // A recessed floor runs straight on under the flange's scalloped inner edge, no gap, out to 116; inside 100 the
-  // middle is cut out, leaving only the three hub arms reaching to the ridges and the center dial.
-  back: [ring(116, 100)],
-  body: [circle(200) + HOLES + INNER_EDGE, ...HUB_ARMS.map((a) => curvedSpoke(a, a - 50, 40, 112, 22, 16)), circle(52)],
+  // middle is cut out. The three hub arms are down in that cavity with the floor, reaching from the dial to it.
+  back: [ring(116, 100), ...HUB_ARMS.map((a) => curvedSpoke(a, a - 50, 40, 112, 22, 16))],
+  body: [circle(200) + HOLES + INNER_EDGE, circle(52)],
   details:
-    // The floor ring in shadow just inside the ridges, where it drops under them; kept off the arms.
+    // The floor ring and arms in shadow just inside the ridges, where they drop under them.
     '<radialGradient id="sword-floor" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="116">' +
     '<stop offset=".86" stop-color="#000" stop-opacity=".05"/><stop offset=".97" stop-color="#000" stop-opacity=".45"/></radialGradient>' +
-    `<mask id="sword-floor-mask"><path d="${ring(116, 100)}" fill="#fff" fill-rule="evenodd"/><use href="#body" fill="#000"/></mask>` +
+    `<mask id="sword-floor-mask"><use href="#back" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
     '<circle r="116" fill="url(#sword-floor)" mask="url(#sword-floor-mask)"/>' +
     // The thick outer rim's inner groove.
     `<circle r="182" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
