@@ -32,7 +32,7 @@ export const drag = svg({
   ],
   // A dark chamfer, a flat facet, all the way round the frame's outer edge, running across the foot's post where it
   // meets the frame, so the foot reads as a separate piece.
-  details: `<path d="${ring(200, 194)}" fill="#000" fill-opacity=".4" fill-rule="evenodd"/><path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" ${ACCENT}/><circle cx="-4" cy="5" r="3" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-5" r="3" fill="#000" fill-opacity=".45"/>`,
+  details: `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/><path d="${knurl(60, 3.5, 20)}" fill="#3a3d41"/><path d="${knurl(60, 3.5, 20)}" fill="url(#sheen)"/><circle r="36" fill="#2f3235"/><circle r="18" ${ACCENT}/><circle cx="-4" cy="5" r="3" fill="#000" fill-opacity=".45"/><circle cx="4" cy="-5" r="3" fill="#000" fill-opacity=".45"/>`,
 });
 
 export const spool = svg({
