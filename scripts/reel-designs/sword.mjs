@@ -4,7 +4,7 @@
 // near the rim, its inner edge scalloped round the big holes, opening onto a thin drum ring with three swept arms to
 // the hub, a big knurled logo knob in the middle, the handle up top-left and a silver counterweight at the bottom.
 // Drag side from Piscifun's straight-on drag-side render (the teal outlines in it only mark the shapes): a thick rim,
-// the foot, three pairs of arms curving counterclockwise from a central boss to the rim, with a slot between each
+// the foot, three pairs of near-straight arms leaning counterclockwise from a central boss to the rim, with a slot between each
 // pair's arms cutting into the rim, and the knob over the boss. Through it shows the spool's cage, which turns: the flange's twelve big holes, the small
 // holes between them and the scalloped inner edge, as on the spool side. Arm sweep and widths are approximate.
 // The foot and handle take the finish's accent (green on gunmetal, champagne on olive); the logo knob and drag knob
@@ -49,17 +49,23 @@ const INNER_EDGE = (() => {
 const FOOT = foot(134, -244, 14, 34);
 const ACCENT_FOOT = `<path d="${FOOT}" ${ACCENT}/><path d="${FOOT}" fill="url(#sheen)"/>`;
 
-// Drag side, from Piscifun's drag-side render: six arms in three pairs, 120° apart, each arm curving counterclockwise
+// Drag side, from Piscifun's drag-side render: six arms in three pairs, 120° apart, each arm leaning counterclockwise
 // from the boss out to the rim. Between the pair's two arms a narrow curved slot runs on past the rim's inner edge,
 // cutting into the rim; between the pairs are the big windows.
 const PAIRS = [-60, 60, 180];
-// Each pair follows a centerline curving counterclockwise from the boss (70 out, 70° round from where it meets the
-// rim) to the rim (192), its two arms either side of it, 18 wide. The slot between them widens toward the rim, from
+// Each pair follows a straight centerline leaning counterclockwise from the boss (70 out, 70° round from where it
+// meets the rim) to the rim (192), its two arms either side of it, 18 wide. The slot between them widens toward the rim, from
 // 10 at the boss to 90 at the rim.
-const PAIR = { sweep: 70, r0: 70, r1: 192, ease: 1.5, arm: 18, slotIn: 10, slotOut: 90, steps: 24 };
+const PAIR = { sweep: 70, r0: 70, r1: 192, arm: 18, slotIn: 10, slotOut: 90, steps: 24 };
 const slotAt = (r) => PAIR.slotIn + (PAIR.slotOut - PAIR.slotIn) * ((r - PAIR.r0) / (PAIR.r1 - PAIR.r0));
-// The angle of pair p's centerline at radius r.
-const pairCenter = (p, r) => rad(p + PAIR.sweep - PAIR.sweep * Math.max(0, (r - PAIR.r0) / (PAIR.r1 - PAIR.r0)) ** PAIR.ease);
+// The angle of pair p's centerline at radius r. The centerline is straight, from P(r0, p + sweep) at the boss to
+// P(r1, p) at the rim, so the arms run almost straight.
+const pairCenter = (p, r) => {
+  const a = P(PAIR.r0, rad(p + PAIR.sweep)), b = P(PAIR.r1, rad(p));
+  const d = [b[0] - a[0], b[1] - a[1]], A = d[0] ** 2 + d[1] ** 2, B = a[0] * d[0] + a[1] * d[1], C = a[0] ** 2 + a[1] ** 2 - r * r;
+  const t = (-B + Math.sqrt(Math.max(0, B * B - A * C))) / A;
+  return Math.atan2(a[1] + d[1] * t, a[0] + d[0] * t);
+};
 // An opening between two curves lo(r) and hi(r) (angles, hi clockwise of lo), from radius rA to rB, closed by arcs at
 // both ends and its corners rounded. Built radius by radius, so its sides meet the arcs cleanly.
 function opening(lo, hi, rA, rB, corner = 8) {
