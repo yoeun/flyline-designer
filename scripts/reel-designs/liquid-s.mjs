@@ -9,7 +9,7 @@ import { ACCENT, P, chamfer, circle, foot, knob, knurl, rad, recessed, ring, slo
 export const arbor = 126;
 
 // The spool's 24 windows, shared by both sides.
-const RIM = { n: 24, rIn: 126, rOut: 180, bar: 12, corner: 7 };
+const RIM = { n: 24, rIn: 126, rOut: 171, bar: 12, corner: 7 };
 
 // Liquid S spool side: five spokes swept back 40°; the handle sits partway along the one ending at -105°.
 const LIQUID_SPOKES = [0, 1, 2, 3, 4].map((k) => -105 + k * 72);
