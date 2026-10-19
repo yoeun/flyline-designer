@@ -44,8 +44,9 @@ const ports = (skip = []) =>
 const HUB = 100;
 const hubSlots = (skip = []) =>
   pick(tapered({ n: N, rIn: 52, rOut: 93, barIn: 12, barOut: 15, corner: 4, off: -90 - STEP / 2 }), (k) => !skip.includes(k));
-const hub = (skip = []) =>
-  circle(HUB) + hubSlots(skip) + skip.map((k) => circle(12, ...P(76, rad(-90 + STEP * k)))).join('');
+// The hub's openings: its slots, plus the round holes in the wider spokes.
+const openings = (skip = []) => hubSlots(skip) + skip.map((k) => circle(12, ...P(76, rad(-90 + STEP * k)))).join('');
+const hub = (skip = []) => circle(HUB) + openings(skip);
 
 const FOOT = foot(128, -244, 14, 32);
 const BLACK_FOOT = `<path d="${FOOT}" fill="#1f2123"/><path d="${FOOT}" fill="url(#sheen)"/>`;
@@ -55,7 +56,7 @@ const hubShade = (d) =>
   `<path d="${d}" fill="#000" fill-opacity=".22" fill-rule="evenodd"/><circle r="${HUB}" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/>`;
 // The face drops steeply to the hub at the arbor: a wall from 120 down to the hub's edge at 100, darkest at its
 // foot, with its shadow pooling on the hub floor just inside and a light lip at its top. Shaded on the metal only:
-// the ports cut out of the band, and both gradients fade out before the band's edges so the cut-outs stay clear.
+// the ports and the hub's openings cut out of the band, and both gradients fade out before the band's edges so the cut-outs stay clear.
 const WALL = 120;
 const at = (r, outer) => (r / outer).toFixed(3);
 const BEVEL_GRADIENT =
@@ -67,7 +68,7 @@ const BEVEL_GRADIENT =
   `<stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>`;
 const bevel = (skip) =>
   BEVEL_GRADIENT +
-  `<path d="${circle(WALL) + circle(86) + ports(skip)}" fill="url(#ascent-wall)" fill-rule="evenodd"/>` +
+  `<path d="${circle(WALL) + circle(86) + ports(skip) + openings(skip)}" fill="url(#ascent-wall)" fill-rule="evenodd"/>` +
   `<path d="${circle(WALL + 2) + circle(WALL - 2) + ports(skip)}" fill="url(#ascent-lip)" fill-rule="evenodd"/>`;
 // Black hub cap on the gunmetal collar.
 const CAP =
@@ -75,11 +76,9 @@ const CAP =
   `<circle r="40" fill="none" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>`;
 // The groove just inside the face's outer edge.
 const GROOVE = `<circle r="189" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>`;
-// What shows through the hub slots: the dark frame behind.
-const UNDER = `<circle r="${HUB}" fill="#161718"/>`;
 
 export const drag = svg({
-  under: UNDER + BLACK_FOOT,
+  under: BLACK_FOOT,
   back: [hub()],
   body: [circle(200) + ports() + circle(HUB)],
   details: GROOVE + hubShade(hub()) + bevel() + CAP,
@@ -101,7 +100,6 @@ const grip = ([x, y]) =>
 export const spool = svg({
   foot: BLACK_FOOT,
   handles: [[...handle, 20]],
-  under: UNDER,
   back: [hub(HUB_SKIP)],
   body: [circle(200) + ports([6, 13]) + circle(HUB)],
   details: GROOVE + hubShade(hub(HUB_SKIP)) + bevel([6, 13]) + CAP + ball(weight) + grip(handle),
