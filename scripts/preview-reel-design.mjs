@@ -28,7 +28,10 @@ if (!design) throw new Error('usage: preview-reel-design.mjs <design> [--color #
 const [r, g, b] = [1, 3, 5].map((i) => parseInt(color.slice(i, i + 2), 16));
 const cage = 0.299 * r + 0.587 * g + 0.114 * b <= 110 ? '--reel-cage:#fff;--reel-cage-opacity:.16' : '--reel-cage:#000;--reel-cage-opacity:.25';
 
-// A side as ReelPreview shows it, roughly: the frame over a wound line that fills the spool.
+// The radius the line starts at: the drawing's arbor (data-arbor on the drag side), as ReelPreview uses it.
+const arbor = Number(readFileSync(new URL(`${design}-drag.svg`, ASSETS), 'utf8').match(/<svg[^>]*\sdata-arbor="([\d.]+)"/)?.[1] ?? 90);
+
+// A side as ReelPreview shows it, roughly: the frame over a wound line from the arbor to the spool's edge.
 const side = (name) => {
   const svg = readFileSync(new URL(`${design}-${name}.svg`, ASSETS), 'utf8');
   // Ids get the side as a suffix: both sides share one page.
@@ -36,7 +39,7 @@ const side = (name) => {
     .replace(/^[\s\S]*?<svg[^>]*>/, '')
     .replace(/<\/svg>\s*$/, '')
     .replace(/(id="|url\(#|href="#)([\w-]+)/g, `$1$2-${name}`);
-  return `<figure><svg viewBox="-215 -250 430 470" height="${H}" color="${color}" style="${cage};${accent ? `--reel-accent:${accent};` : ''}${trim ? `--reel-trim:${trim}` : ''}"><rect x="-215" y="-250" width="430" height="470" fill="#e9ebe6"/><circle r="182" fill="#5d7f4f"/><circle r="90" fill="#e9ebe6"/>${inner}</svg><figcaption>${design} · ${name}</figcaption></figure>`;
+  return `<figure><svg viewBox="-215 -250 430 470" height="${H}" color="${color}" style="${cage};${accent ? `--reel-accent:${accent};` : ''}${trim ? `--reel-trim:${trim}` : ''}"><rect x="-215" y="-250" width="430" height="470" fill="#e9ebe6"/><circle r="182" fill="#5d7f4f"/><circle r="${arbor}" fill="#e9ebe6"/>${inner}</svg><figcaption>${design} · ${name}</figcaption></figure>`;
 };
 const photo = (file) => `<figure><img src="${pathToFileURL(resolve(file))}" height="${H}"><figcaption>${file.split('/').pop()}</figcaption></figure>`;
 
