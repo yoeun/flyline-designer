@@ -162,7 +162,7 @@ export const drag = svg({
 
 export const spool = svg({
   foot: recessed(foot(128, -244, 14, 34)),
-  handles: [[...liquidHandle, 16]],
+  handles: [[...liquidHandle, 21]],
   // The spool's window ring, set back behind its rim and spokes.
   back: [ring(190, 116) + slots(RIM)],
   body: [ring(200, 181), ...SPOOL_SPOKES, ...SPOKE_LINES.map(tipFillets), HEX],
@@ -174,5 +174,5 @@ export const spool = svg({
     `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/>` +
     SPOKE_LINES.map(spokeFacet).join('') +
     `<circle r="34" fill="#000" fill-opacity=".25"/><circle r="32" fill="currentColor"/><circle r="32" fill="url(#sheen)"/>` +
-    knob(...liquidHandle, 16),
+    knob(...liquidHandle, 21),
 });
