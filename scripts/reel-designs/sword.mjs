@@ -66,16 +66,32 @@ function fillet(pts, corners) {
 // The spool flange's holes: twelve big, and twelve small in the cage between them, just outside the big ones' ring
 // where the gap between neighbours widens. The thick outer rim outside them is plain.
 const BIG = Array.from({ length: 12 }, (_, k) => -90 + k * 30);
+// The holes as [cx, cy, r], for their chamfers.
+const BIG_LIST = BIG.map((a) => [...P(147, rad(a)), 27]);
+const SMALL_LIST = BIG.map((a) => [...P(166, rad(a + 15)), 9]);
 const BIG_HOLES = BIG.map((a) => circle(27, ...P(147, rad(a)))).join('');
 const HOLES = BIG_HOLES + BIG.map((a) => circle(9, ...P(166, rad(a + 15)))).join('');
 // The flange's inner edge: reaching in to r 104 between the big holes, scalloped out to 114 round each one.
-const INNER_EDGE = (() => {
+const scallop = (grow = 0) => {
   const pts = Array.from({ length: 96 }, (_, i) => {
     const a = (i * 360) / 96 - 90;
-    return P(109 + 5 * Math.cos(rad(12 * (a + 90))), rad(a));
+    return P(109 + grow + 5 * Math.cos(rad(12 * (a + 90))), rad(a));
   });
   return roundPoly(pts.reverse(), 2);
-})();
+};
+const INNER_EDGE = scallop();
+
+// Chamfers round the spool's holes and scalloped edge, drawn as plain gradient rings just inside the metal rather
+// than with bevel()'s filter: the spool spins, and a filter inside a turning group is redrawn every frame, which
+// made the spin crawl on phones. Each ring is shaded across its own box, dark toward the top left and light toward
+// the bottom right, where an opening's edge faces the light. `id` must be unique.
+const ringChamfers = (id, holes, w = 2.5) =>
+  `<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".28"/>` +
+  '<stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/>' +
+  '<stop offset="1" stop-color="#fff" stop-opacity=".3"/></linearGradient>' +
+  `<g fill="none" stroke="url(#${id})" stroke-width="${w}">` +
+  holes.map(([x, y, r]) => `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r + w / 2)}"/>`).join('') +
+  `<path d="${scallop(w / 2)}"/></g>`;
 
 // The chamfers on the frame and the spool's flange: narrow and light.
 const CHAMFER = { width: 2.5, light: 0.3, shade: 0.28 };
@@ -196,7 +212,7 @@ export const spool = svg({
     `<mask id="sword-floor-mask"><use href="#back" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
     '<circle r="116" fill="url(#sword-floor)" mask="url(#sword-floor-mask)"/>' +
     // Chamfers round the flange's holes and scalloped inner edge.
-    bevel('sword-spool', { windows: SPOOL_HOLES + INNER_EDGE, ...CHAMFER }) +
+    ringChamfers('sword-spool-chamfer', [...BIG_LIST.filter((_, k) => k !== 0 && k !== 6), ...SMALL_LIST]) +
     // The thick outer rim's inner groove.
     `<circle r="182" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
     `<circle r="52" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
@@ -222,7 +238,7 @@ export const drag = svg({
   cage: [circle(196) + HOLES + INNER_EDGE, circle(116) + mirror(hubOpenings())],
   cageShade: 0.6,
   // Chamfers round the cage's holes and scalloped inner edge, turning with it.
-  cageDetails: bevel('sword-cage', { windows: HOLES + INNER_EDGE, clip: 196, ...CHAMFER }),
+  cageDetails: ringChamfers('sword-cage-chamfer', [...BIG_LIST, ...SMALL_LIST]),
   // The frame's rim is thick, covering the outer half of the small holes.
   body: [circle(200) + FRAME_OPENINGS],
   details:
