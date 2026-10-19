@@ -14,7 +14,7 @@ const RIM = { n: 24, rIn: 126, rOut: 171, bar: 12, corner: 7 };
 // Liquid S spool side, from Lamson's photo of the bare spool: five spokes, 72° apart, swept hard: each leaves the
 // hexagonal center almost tangent to it (70° back from where it meets the rim), so neighbours form a V beside it.
 // They're thick at the center and taper to the rim, and each has one deep chamfer along its trailing (clockwise)
-// edge. The one ending at -105° stops at the handle; the windows show past it.
+// edge. The handle sits on the one ending at -105°.
 const LIQUID_SPOKES = [0, 1, 2, 3, 4].map((k) => -105 + k * 72);
 const SPOKE_W = [32, 14];
 // Each spoke's line runs back past the center until its base meets the next spoke counterclockwise (15% of its
@@ -28,15 +28,11 @@ const liquidHandle = (() => {
   return [x0 + (x1 - x0) * 0.78, y0 + (y1 - y0) * 0.78];
 })();
 const along = ([a, b], t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
-// Each spoke from the center to the rim, or, for the handle's, to just past the handle.
-const SPOKE_LINES = LIQUID_SPOKES.map((a) => {
-  const [p0, p1] = spokeEnds(a);
-  return a === -105 ? [p0, along([p0, p1], 0.85)] : [p0, p1];
-});
-const spokeWidthAt = (t) => SPOKE_W[0] + (SPOKE_W[1] - SPOKE_W[0]) * t;
-const SPOOL_SPOKES = SPOKE_LINES.map(([p0, p1], i) => strut(p0, p1, SPOKE_W[0], i === 0 ? spokeWidthAt(0.85) : SPOKE_W[1]));
+// Each spoke from the center to the rim.
+const SPOKE_LINES = LIQUID_SPOKES.map(spokeEnds);
+const SPOOL_SPOKES = SPOKE_LINES.map(([p0, p1]) => strut(p0, p1, ...SPOKE_W));
 // Where a spoke tip meets the rim it flares into it: a curved fillet on each side, from the spoke's edge 20 in from
-// the rim's inner edge (181) round to the rim 14 along it. The handle's spoke stops short of the rim, so has none.
+// the rim's inner edge (181) round to the rim 14 along it.
 const FILLET = { r: 181, back: 20, along: 14 };
 const tipFillets = ([p0, p1]) => {
   const l = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
@@ -72,7 +68,7 @@ const spokeFacet = ([p0, p1], i) => {
     return Math.min(1, (-B + Math.sqrt(B * B - A * C)) / A);
   };
   const t0 = cross(44), t1 = cross(181);
-  const w1 = i === 0 ? spokeWidthAt(0.85) : SPOKE_W[1];
+  const w1 = SPOKE_W[1];
   const width = (t) => SPOKE_W[0] + (w1 - SPOKE_W[0]) * t;
   const at = (t, k) => { const c = along([p0, p1], t); return [c[0] + n[0] * width(t) * k, c[1] + n[1] * width(t) * k]; };
   const pts = [at(t0, 0.5), at(t1, 0.5), at(t1, -1 / 6), at(t0, -1 / 6)];
@@ -157,12 +153,12 @@ export const spool = svg({
   handles: [[...liquidHandle, 16]],
   // The spool's window ring, set back behind its rim and spokes.
   back: [ring(190, 116) + slots(RIM)],
-  body: [ring(200, 181), ...SPOOL_SPOKES, ...SPOKE_LINES.slice(1).map(tipFillets), HEX],
+  body: [ring(200, 181), ...SPOOL_SPOKES, ...SPOKE_LINES.map(tipFillets), HEX],
   // The rim's inner edge chamfered (off the spokes), inside a dark outer chamfer; each spoke's deep chamfer; then the
   // round cap on the hexagon, and the handle.
   details:
     curvedFloor('spool') +
-    `<mask id="liquid-spool-mask"><circle r="196" fill="#fff"/>${[...SPOOL_SPOKES, ...SPOKE_LINES.slice(1).map(tipFillets), HEX].map((d) => `<path d="${d}" fill="#000"/>`).join('')}</mask>` +
+    `<mask id="liquid-spool-mask"><circle r="196" fill="#fff"/>${[...SPOOL_SPOKES, ...SPOKE_LINES.map(tipFillets), HEX].map((d) => `<path d="${d}" fill="#000"/>`).join('')}</mask>` +
     `<g mask="url(#liquid-spool-mask)">${chamfer('liquid-spool', ring(200, 181))}</g>` +
     `<path d="${ring(200, 196)}" fill="#000" fill-opacity=".2" fill-rule="evenodd"/>` +
     SPOKE_LINES.map(spokeFacet).join('') +
