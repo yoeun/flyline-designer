@@ -1,6 +1,6 @@
 ---
 name: reel-drawing
-description: Use when drawing or fixing a reel's frame SVG in scripts/reel-designs (drag or spool side), when the user shares photos of a reel, or says a reel drawing looks wrong. Covers splitting the fixed frame from the spool cage that spins, insets and grooves, and checking the drawing against photos.
+description: Use when drawing or fixing a reel's frame SVG in scripts/reel-designs (drag or spool side), when the user shares photos of a reel, or says a reel drawing looks wrong. Covers splitting the fixed frame from the spool cage that spins, tapering spokes, floating backing (no visible floor), gradient drops, insets and grooves, and checking the drawing against photos.
 ---
 
 # Drawing a reel
@@ -28,6 +28,17 @@ Commit the regenerated SVGs with the script.
   - **Spool side:** the outer rim is the frame's, and the whole spool sits inset inside it.
   - Handle and knob pads seen through the drag side's windows (dark dots on grey pads) are the back of the spool.
     Leave them out: the wound line hides them.
+- **Count and measure by sampling pixels, not by eye.** Walk a circle round the center at a few radii (Python with
+  PIL, run with `-I`) and record runs of line color (blue/green/yellow) or dark see-through pixels. The run count is
+  the window count, run lengths give each bar's width at that radius, and comparing radii shows the taper. Check
+  symmetry too: spokes at both 3 and 9 o'clock mean an even count. If the user's count disagrees with the samples,
+  say so and show the numbers.
+- **Look at what's below the backing in each window.** Either you see a floor (the spool's arbor, as metal under
+  the line) or you see straight through to the background. Some reels show no floor: the backing ends right on
+  background (floating backing). Many others do show a floor. Decide which for each reel before drawing, because it
+  sets the window shape and `arbor` (see 3b).
+- **Look at how the spokes change from the rim inward.** Most taper and converge toward the center, often with a
+  drop partway in where the face sinks. Measure each spoke's width at three or more radii (see 3a).
 - When the user corrects the frame/spool split or a measurement, trust that over the photo.
 
 ## 2. Draw the drag side
@@ -76,23 +87,98 @@ export const spool = svg({
 - Everything in `body`, `under`, `back` and `details` turns with the spool. Keep only round, unlit or truly fixed
   parts in `foot`.
 
+Sections 3a and 3b are independent: a reel can have tapering spokes with a drop and a visible floor, floating
+backing with straight spokes, both, or neither. Check each against the photo on its own. The Ventures Ascent
+(`scripts/reel-designs/ascent.mjs`) happens to have both, so don't take it as a sign that they go together.
+
+## 3a. Tapering, converging spokes with a drop
+
+Most reels' spokes taper: widest at the rim, converging toward the center. Many also drop partway in, where the
+face sinks toward the hub. This is about the spokes' shape and shading only. It says nothing about what shows
+below the backing (that's 3b).
+
+- **Draw the taper.** Use `taperedSlots({ n, rIn, rOut, barIn, barOut, corner, off })` from `lib.mjs` for the
+  windows between tapering spokes, or `spoke(deg, r0, r1, w0, w1)` for separate spokes. Take the widths from your
+  samples at several radii (the Ascent's are 22 at the rim, 15 at the drop, 11 at the cap). Straight bars of one
+  width look wrong whenever the photo's spokes narrow.
+- **One spoke is one shape from the rim to where it ends.** If spokes run through a drop to the hub, don't split
+  them into an outer ring plus a separate hub with its own spokes: the inner and outer counts and angles drift
+  apart, and the taper breaks at the seam. Keep one count and one `off` for the whole face. For a window centered at 12 o'clock,
+  `off = -90 - 360 / n / 2`.
+- **Shade the drop as a gradient on the spokes.** The drop is where the spokes bend down. Shade it with a
+  gradient running across the spokes, darkest at the wall's foot and fading to nothing at its top, with a faint
+  light lip there. Don't draw it as a separate piece or a flat darker ring. `sunkFace({ id, wall, floor, cut })`
+  does this for a circular drop, on the metal only (`cut` is every opening). Make it pronounced: when the Ascent's
+  was subtle, the user asked for "much bigger". Center it where the photo's drop is, measured like any other
+  radius.
+- **Handle and counterweight fill a window's outer part.** The spoke under them keeps a round hole in the hub, at
+  the same angle as the handle. Drop that window with `pickPaths(d, (k) => !skip.includes(k))` and add the hole.
+  Measure the handle's and the counterweight's radius off the photo (the Ascent's sit near the rim, at 156).
+
+## 3b. Floating backing: no visible floor
+
+Also called no visible floor: the backing ends right on the background, so it looks like it's floating in the
+window. This is about what shows below the backing only, whatever the spokes look like (that's 3a). When the
+photo shows no metal below the backing, the windows open straight through the reel.
+
+**Floating backing is never a default, and never a sweep.** Make a reel floating only when its own photo clearly
+shows background right below the backing, or the user says so for that reel. Without that, keep the floor the
+drawing has. When fixing several reels, decide each one separately: one reel being floating says nothing about the
+next, even from the same maker. If the photo is unclear (small, angled, or the line hides the arbor), ask the user
+rather than guessing. Say which reels you're making floating and why.
+
+For a floating reel:
+
+- **Run each window's opening down past where the line starts**, to the cap or to the inner end of the spokes,
+  with nothing behind it. Below the backing the window shows the app's background: never black, never metal.
+- **Put no disc or floor in `under` or `back`** behind the windows. On a dark stage a dark disc looks like an
+  opening, so check on a light background (section 4).
+- **Set `arbor` at or just inside where the photo's backing ends.** If the line starts outside that point, a
+  light sliver shows under the backing: the "floor" the user doesn't want. Don't stop the opening at a ring of
+  metal there either: no band of face between the backing and the background.
+- When a floor *is* visible, it's the spool's arbor: a recessed band under the line, shaded as a gradient (section
+  5), not the frame showing through.
+
 ## 4. Printing and see-through
 
 - The app draws the other side's frame mirrored behind the spool, so whatever a side draws shows through the other
   side's open middle. Keep a side's middle open: no solid discs for "the spool's inside" in `under`.
+  Check see-through on a light background: on a dark stage a solid dark disc looks the same as an opening, so
+  it's easy to miss.
 - Printing sits on the far face and must not show through: `<text>` is hidden there automatically. Tag every
   other printed mark (dial dots, pointers and face lines, logo marks) with `data-print=""`, on the element or a `<g>` round it.
 
-## 5. Grooves and insets
+## 5. Drops, grooves and insets
 
-Most reels have them, and they're what makes a flat drawing read as machined metal:
+Most reels have them, and they're what makes a flat drawing read as machined metal.
 
+- **Prefer gradients for depth.** A drop, a sunk face, a chamfer or a deep pocket reads as a slope in the photo:
+  dark at the bottom, fading up to the face. Draw it as a gradient across that slope, not as a flat band of a
+  darker shade or a hard line. Flat bands look like painted stripes. Use solid shades only for things that really
+  are flat: a pocket's floor or a part set evenly below the face.
+  - **Circular drops** (a sunk hub, an arbor wall, a recessed ring): a `radialGradient` centered on the reel.
+    `sunkFace` is the ready-made one; copy its stops for a ring that steps down and back up.
+  - **Raised parts** (a hub boss, a lip): reverse it, light at the top edge and darker down the outside.
+  - **Straight edges** (a spoke's side, a window's wall): a `linearGradient` across the edge.
+  - Strength: the deep drops on these reels run from about 0 to 0.7 black over 15 to 20 units (rim = 200). Under
+    0.4 tends to read as no drop at all at the app's size.
+  - Shade metal only: cut the openings out of the shading path (section 5a).
 - **Between parts:** a dark ring (`#1b1d1f` at about 70% opacity) where one piece sits inside another, like
-  `frameRim`'s groove.
+  `frameRim`'s groove. A thin groove can stay a solid line. Anything wider than a few units is a drop: use a
+  gradient.
 - **Recessed parts:** `back` (or `recessed()` for still parts) draws metal 20% darker. Use it for floors of
-  pockets and anything set below the face.
+  pockets and anything set below the face, then add a gradient at the wall where the face meets the floor.
 - **Separate parts, one finish:** give the inset part a darker shade than the part around it, never the same flat
   color.
+
+## 5a. SVG gradient gotchas
+
+- A `radialGradient` with `gradientUnits="userSpaceOnUse"` needs `cx="0" cy="0"`. Without them it centers on 50%
+  of the viewport, not the reel's center, and the shading lands off-center or not at all.
+- Write gradient stop offsets with `.toFixed(3)`, not `f()`. `f()` rounds to one decimal, which collapses
+  stops a few units apart.
+- To shade metal only, give the shading path the openings as even-odd cut-outs. Make its gradient fade to 0
+  before the path's edges, because even-odd turns the parts of the cut-outs outside the shaded band back on.
 
 ## 6. Check it
 
@@ -101,6 +187,11 @@ Most reels have them, and they're what makes a flat drawing read as machined met
   and read the PNG next to the photos.
 - For a close fit, overlay the drawing at half opacity on the photo, scaled so the rims match, in a page that
   headless Chrome screenshots.
+  - The script defaults to macOS Chrome. In a Linux cloud session, set `CHROME` to a wrapper that runs
+    `/opt/pw-browsers/chromium-*/chrome-linux/chrome --no-sandbox "$@"`.
+  - The side-by-side PNG is small. For details like a drop, a sliver under the backing, or see-through slots, also
+    screenshot the app at `deviceScaleFactor: 3` and crop: `?page=reels&model=<model-id>&side=spool` (Playwright is
+    installed globally: import it from `$(npm root -g)/playwright/index.mjs`).
 - `npx vitest run` (every design's spool side must keep its handles inside the turning cage).
 - Run the app (`?page=reels`, with `&demo=1` for a seeded rack) and spin the spool from both sides.
 - Note in the design's header comment where the drawing comes from and which parts are the frame and which the
