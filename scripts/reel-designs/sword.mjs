@@ -208,9 +208,9 @@ const pockets = (holes) =>
     })
     .join('');
 
-// The spool side. `rimHoles` ([cx, cy, r]) are drilled through its thick outer rim, as on the Sword II; `id` keeps
-// gradient and mask ids apart between designs.
-export const spoolSide = ({ rimHoles = [], id = 'sword' } = {}) => svg({
+// The spool side. `rimHoles` ([cx, cy, r]) are drilled through its thick outer rim, as on the Sword II; `grooveR` is
+// the radius of the groove between rim and cage; `id` keeps gradient and mask ids apart between designs.
+export const spoolSide = ({ rimHoles = [], grooveR = 182, id = 'sword' } = {}) => svg({
   foot: ACCENT_FOOT + `<path d="${FOOT}" fill="#000" fill-opacity=".2"/>`,
   handles: [[...HANDLE, 22]],
   // A recessed floor runs straight on under the flange's scalloped inner edge, no gap, out to 116; inside 100 the
@@ -230,11 +230,12 @@ export const spoolSide = ({ rimHoles = [], id = 'sword' } = {}) => svg({
       : '') +
     // Chamfers round the flange's holes, any rim holes and the scalloped inner edge.
     ringChamfers(`${id}-spool-chamfer`, [...BIG_LIST.filter((_, k) => k !== 0 && k !== 6), ...SMALL_LIST, ...rimHoles]) +
-    // The thick outer rim's inner groove, cut out where it crosses any pockets.
+    // The thick outer rim's inner groove, at `grooveR`. With rim holes it's kept to the metal and cut out where it
+    // crosses the pockets.
     (rimHoles.length
-      ? `<mask id="${id}-groove-mask"><rect x="-215" y="-250" width="430" height="470" fill="#fff"/><g fill="#000">${pockets(rimHoles)}</g></mask>`
+      ? `<mask id="${id}-groove-mask"><use href="#body" fill="#fff"/><g fill="#000">${pockets(rimHoles)}</g></mask>`
       : '') +
-    `<circle r="182" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"${rimHoles.length ? ` mask="url(#${id}-groove-mask)"` : ''}/>` +
+    `<circle r="${grooveR}" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"${rimHoles.length ? ` mask="url(#${id}-groove-mask)"` : ''}/>` +
     `<circle r="52" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
     // The logo knob: trim, knurled rim, a pale mark for the logo.
     `<circle r="48" fill="#000" fill-opacity=".25"/><path d="${knurl(44, 1.2, 52)}" ${TRIM}/><path d="${knurl(44, 1.2, 52)}" fill="#000" fill-opacity=".2"/>` +
