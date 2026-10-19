@@ -52,18 +52,6 @@ const ACCENT_FOOT = `<path d="${FOOT}" ${ACCENT}/><path d="${FOOT}" fill="url(#s
 // Drag side: five arms swept counter-clockwise from the boss, ending at the rim every 72°.
 const ARMS = [0, 1, 2, 3, 4].map((k) => -150 + k * 72);
 
-export const drag = svg({
-  under: ACCENT_FOOT,
-  cage: [circle(196) + HOLES + INNER_EDGE],
-  body: [ring(200, 184), ...ARMS.map((a) => curvedSpoke(a + 70, a, 70, 192, 26, 18, 1.5)), circle(84)],
-  details:
-    `<circle r="184" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
-    `<circle r="84" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
-    // The drag knob: knurled rim, flat face, slotted center screw.
-    `<circle r="62" fill="#000" fill-opacity=".22"/><path d="${knurl(58, 1.4, 56)}" ${TRIM}/><path d="${knurl(58, 1.4, 56)}" fill="#000" fill-opacity=".18"/>` +
-    `<circle r="50" ${TRIM}/><circle r="58" fill="url(#sheen)"/>` +
-    screw(0, 0, 12),
-});
 
 // Spool side.
 // The handle stands where the top big hole would be, and the counterweight where the bottom one would be, so those
@@ -168,4 +156,24 @@ export const spool = svg({
     `<circle cx="${f(HANDLE[0])}" cy="${f(HANDLE[1])}" r="22" ${ACCENT}/><circle cx="${f(HANDLE[0])}" cy="${f(HANDLE[1])}" r="22" fill="#000" fill-opacity=".2"/>` +
     `<circle cx="${f(HANDLE[0])}" cy="${f(HANDLE[1])}" r="17" ${ACCENT}/><circle cx="${f(HANDLE[0])}" cy="${f(HANDLE[1])}" r="22" fill="url(#sheen)"/>` +
     screw(...HANDLE, 6),
+});
+
+// A path of absolute M, L and Q commands mirrored left to right, as the spool's face looks from the drag side.
+const mirror = (d) => d.replace(/([MLQ])([^MLQZ]*)/g, (_, c, nums) => c + nums.trim().split(/[ ,]+/).map((v, k) => (k % 2 ? v : String(-Number(v)))).join(' '));
+
+export const drag = svg({
+  under: ACCENT_FOOT,
+  // The spool seen through the frame: its flange's holes and scalloped inner edge, and below that its recessed floor
+  // with the three arms, mirrored as seen from behind. Shaded lighter than the default, which read too dark here.
+  cage: [circle(196) + HOLES + INNER_EDGE, circle(116) + mirror(hubOpenings())],
+  cageShade: 0.6,
+  // The frame's rim is thick, covering the outer half of the small holes.
+  body: [ring(200, 166), ...ARMS.map((a) => curvedSpoke(a + 70, a, 70, 192, 26, 18, 1.5)), circle(84)],
+  details:
+    `<circle r="166" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
+    `<circle r="84" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
+    // The drag knob: knurled rim, flat face, slotted center screw.
+    `<circle r="62" fill="#000" fill-opacity=".22"/><path d="${knurl(58, 1.4, 56)}" ${TRIM}/><path d="${knurl(58, 1.4, 56)}" fill="#000" fill-opacity=".18"/>` +
+    `<circle r="50" ${TRIM}/><circle r="58" fill="url(#sheen)"/>` +
+    screw(0, 0, 12),
 });
