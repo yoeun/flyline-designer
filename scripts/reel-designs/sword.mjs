@@ -10,7 +10,7 @@
 // spool side. Arm lean and widths are approximate.
 // The foot and handle take the finish's accent (green on gunmetal, champagne on olive); the logo knob and drag knob
 // take its trim, falling back to the body color: green on gunmetal, gray on gray, body-colored on olive and black.
-import { ACCENT, P, TRIM, circle, f, foot, knurl, rad, ring, roundPoly, screw, svg } from './lib.mjs';
+import { ACCENT, P, TRIM, bevel, circle, f, foot, knurl, rad, ring, roundPoly, screw, svg } from './lib.mjs';
 
 // Mid arbor, no arbor diameter published. Per the user, the spool's floor runs straight on under the flange's
 // scalloped inner edge (out to 116), so the backing starts there, under the ridges.
@@ -219,6 +219,10 @@ export const drag = svg({
   // The frame's rim is thick, covering the outer half of the small holes.
   body: [circle(200) + FRAME_OPENINGS],
   details:
+    // Flat chamfers round the frame's openings, and a subtle dark one round its outer edge, across the foot's post so
+    // the foot reads as a separate piece.
+    bevel('sword', { windows: FRAME_OPENINGS }) +
+    `<path d="${ring(200, 195)}" fill="#000" fill-opacity=".3" fill-rule="evenodd"/>` +
     // The drag knob: knurled rim, flat face, slotted center screw.
     `<circle r="74" fill="#000" fill-opacity=".22"/><path d="${knurl(70, 1.4, 68)}" ${TRIM}/><path d="${knurl(70, 1.4, 68)}" fill="#000" fill-opacity=".18"/>` +
     `<circle r="60" ${TRIM}/><circle r="70" fill="url(#sheen)"/>` +
