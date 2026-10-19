@@ -5,8 +5,8 @@
 // the hub, a big knurled logo knob in the middle, the handle up top-left and a silver counterweight at the bottom.
 // No straight-on drag-side photo exists: the frame (a thin rim, the foot, five arms swept counter-clockwise from a
 // central boss in a "storm vortex", the knob over it) is inferred from Piscifun's stylized drag-side render and an
-// angled wet-studio shot. Through it shows the spool's cage, which turns: the flange's twelve big holes and scalloped
-// inner edge, as on the spool side (the small holes hide behind the rim). Spoke sweep and widths are approximate.
+// angled wet-studio shot. Through it shows the spool's cage, which turns: the flange's twelve big holes, the small
+// holes between them and the scalloped inner edge, as on the spool side. Spoke sweep and widths are approximate.
 // The foot and handle take the finish's accent (green on gunmetal, champagne on olive); the logo knob and drag knob
 // take its trim, falling back to the body color: green on gunmetal, gray on gray, body-colored on olive and black.
 import { ACCENT, P, TRIM, circle, f, foot, knurl, rad, ring, roundPoly, screw, svg } from './lib.mjs';
@@ -49,12 +49,12 @@ const INNER_EDGE = (() => {
 const FOOT = foot(134, -244, 14, 34);
 const ACCENT_FOOT = `<path d="${FOOT}" ${ACCENT}/><path d="${FOOT}" fill="url(#sheen)"/>`;
 
-// Drag side: five arms swept counter-clockwise from the boss, ending at the rim every 72°. The small holes hide behind the rim.
+// Drag side: five arms swept counter-clockwise from the boss, ending at the rim every 72°.
 const ARMS = [0, 1, 2, 3, 4].map((k) => -150 + k * 72);
 
 export const drag = svg({
   under: ACCENT_FOOT,
-  cage: [circle(196) + BIG_HOLES + INNER_EDGE],
+  cage: [circle(196) + HOLES + INNER_EDGE],
   body: [ring(200, 184), ...ARMS.map((a) => curvedSpoke(a + 70, a, 70, 192, 26, 18, 1.5)), circle(84)],
   details:
     `<circle r="184" fill="none" stroke="#000" stroke-opacity=".14" stroke-width="2"/>` +
