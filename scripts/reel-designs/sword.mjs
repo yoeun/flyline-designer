@@ -213,6 +213,15 @@ export const spoolSide = ({ rimHoles = [], id = 'sword' } = {}) => svg({
     `<stop offset=".86" stop-color="#000" stop-opacity=".05"/><stop offset=".97" stop-color="#000" stop-opacity=".45"/></radialGradient>` +
     `<mask id="${id}-floor-mask"><use href="#back" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
     `<circle r="116" fill="url(#${id}-floor)" mask="url(#${id}-floor-mask)"/>` +
+    // Each rim hole sits in a straight-sided recessed pocket across the rim, drawn as a dark rectangle round it.
+    rimHoles
+      .map(([x, y, r]) => {
+        const a = (Math.atan2(y, x) * 180) / Math.PI + 90;
+        // The pocket with the hole cut out of it, so the hole stays open.
+        const d = `M-6.5 -8H6.5Q8 -8 8 -6.5V6.5Q8 8 6.5 8H-6.5Q-8 8 -8 6.5V-6.5Q-8 -8 -6.5 -8Z${circle(r)}`;
+        return `<path d="${d}" fill-rule="evenodd" transform="translate(${f(x)} ${f(y)}) rotate(${f(a)})" fill="#000" fill-opacity=".38"/>`;
+      })
+      .join('') +
     // Chamfers round the flange's holes, any rim holes and the scalloped inner edge.
     ringChamfers(`${id}-spool-chamfer`, [...BIG_LIST.filter((_, k) => k !== 0 && k !== 6), ...SMALL_LIST, ...rimHoles]) +
     // The thick outer rim's inner groove.

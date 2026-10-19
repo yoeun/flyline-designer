@@ -1,7 +1,7 @@
 // Piscifun Sword II.
 // The same reel as the original Sword (per the user, and Piscifun's Sword II photos bear out the hole pattern), but
-// its spool's thick outer rim is drilled with a ring of small holes, 24 of them, one every 15°. Everything else is
-// the Sword's: see sword.mjs.
+// its spool's thick outer rim is drilled with a ring of small holes, 24 of them, one every 15°, each in a
+// straight-sided recessed pocket. Everything else, the drag side included, is the Sword's: see sword.mjs.
 import { P, rad } from './lib.mjs';
 import { drag, spoolSide } from './sword.mjs';
 
