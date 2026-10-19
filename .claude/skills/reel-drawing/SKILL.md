@@ -1,6 +1,6 @@
 ---
 name: reel-drawing
-description: Use when drawing or fixing a reel's frame SVG in scripts/reel-designs (drag or spool side), when the user shares photos of a reel, or says a reel drawing looks wrong. Covers splitting the fixed frame from the spool cage that spins, insets and grooves, and checking the drawing against photos.
+description: Use when drawing or fixing a reel's frame SVG in scripts/reel-designs (drag or spool side), when the user shares photos of a reel, or says a reel drawing looks wrong. Covers splitting the fixed frame from the spool cage that spins, tapering spokes, see-through windows with no floor, gradient drops, insets and grooves, and checking the drawing against photos.
 ---
 
 # Drawing a reel
@@ -33,6 +33,11 @@ Commit the regenerated SVGs with the script.
   the window count, run lengths give each bar's width at that radius, and comparing radii shows the taper. Check
   symmetry too: spokes at both 3 and 9 o'clock mean an even count. If the user's count disagrees with the samples,
   say so and show the numbers.
+- **Look at what's below the backing in each window.** Either you see a floor (the spool's arbor, as metal under
+  the line) or you see straight through to the background. Many reels show no floor: the backing ends right on
+  background. Decide which before drawing, because it sets the window shape and `arbor` (see 3b).
+- **Look at how the spokes change from the rim inward.** Most taper and converge toward the center, often with a
+  drop partway in where the face sinks. Measure each spoke's width at three or more radii (see 3a).
 - When the user corrects the frame/spool split or a measurement, trust that over the photo.
 
 ## 2. Draw the drag side
@@ -81,29 +86,42 @@ export const spool = svg({
 - Everything in `body`, `under`, `back` and `details` turns with the spool. Keep only round, unlit or truly fixed
   parts in `foot`.
 
-## 3a. Spokes that run from the rim to the hub
+## 3a. Tapering, converging spokes with a drop
 
-Many reels (the Ventures Ascent is the worked example: `scripts/reel-designs/ascent.mjs`) have one set of spokes
-running from the rim to the hub cap, with the face sunk inside the arbor. Photos make this look like a ported ring
-plus a slotted hub disc. It isn't, and drawing it that way is wrong in every way the user will notice:
+Most reels' spokes taper: widest at the rim, converging toward the center. Many also drop partway in, where the
+face sinks toward the hub. The Ventures Ascent is the worked example (`scripts/reel-designs/ascent.mjs`).
 
-- **One opening per window, from near the rim to the cap.** Don't stop windows at the hub and add a separate
-  slotted disc: that leaves a metal band under the backing, and inner and outer spoke counts drift apart. Below
-  the backing the window shows the background (see-through), never black and never metal.
-- **The spokes taper.** They're widest at the rim and narrow toward the cap (the Ascent's are 22, then 15 at the
-  drop, then 11 at the cap). Use `taperedSlots({ n, rIn, rOut, barIn, barOut, corner, off })` from `lib.mjs`, with
-  widths measured at a few radii. Straight `slots` bars look wrong here.
-- **Spokes line up across the whole face.** Same count inside and out, one `off` for everything. For a window
-  centered at 12 o'clock, `off = -90 - 360 / n / 2`.
-- **Handle and counterweight fill a window's outer part.** The spoke there keeps a round hole in the hub, at the
-  same angle as the handle. Drop that window with `pickPaths(d, (k) => !skip.includes(k))` and add the hole.
+- **Draw the taper.** Use `taperedSlots({ n, rIn, rOut, barIn, barOut, corner, off })` from `lib.mjs` for the
+  windows between tapering spokes, or `spoke(deg, r0, r1, w0, w1)` for separate spokes. Take the widths from your
+  samples at several radii (the Ascent's are 22 at the rim, 15 at the drop, 11 at the cap). Straight bars of one
+  width look wrong whenever the photo's spokes narrow.
+- **One spoke is one shape from the rim to where it ends.** If spokes run through a drop to the hub, don't split
+  them into an outer ring plus a slotted hub disc. That leaves a metal band across every window, and the inner and
+  outer counts drift apart. Keep one count and one `off` for the whole face. For a window centered at 12 o'clock,
+  `off = -90 - 360 / n / 2`.
+- **Shade the drop as a gradient on the spokes.** The drop is where the spokes bend down. Shade it with a
+  gradient running across the spokes, darkest at the wall's foot and fading to nothing at its top, with a faint
+  light lip there. Don't draw it as a separate piece or a flat darker ring. `sunkFace({ id, wall, floor, cut })`
+  does this for a circular drop, on the metal only (`cut` is every opening). Make it pronounced: when the Ascent's
+  was subtle, the user asked for "much bigger". Center it where the photo's drop is, often just either side of
+  where the backing begins.
+- **Handle and counterweight fill a window's outer part.** The spoke under them keeps a round hole in the hub, at
+  the same angle as the handle. Drop that window with `pickPaths(d, (k) => !skip.includes(k))` and add the hole.
   Measure the handle's and the counterweight's radius off the photo (the Ascent's sit near the rim, at 156).
-- **The sunk hub is shading, not a separate piece.** `sunkFace({ id, wall, floor, cut })` darkens the spokes
-  down a steep wall from `wall` to `floor`, with a light lip on top, on the metal only (`cut` is every opening).
-  Center the drop on where the backing begins, and make it pronounced: the user asked for "much bigger" when it
-  was subtle.
-- **`arbor` sits at the foot of the drop.** If the line starts outside where the windows begin, a light sliver
-  shows under the backing: the "floor" the user doesn't want.
+
+## 3b. No visible floor: backing ends on background
+
+When the photo shows no metal below the backing, the windows open straight through the reel:
+
+- **Run each window's opening down past where the line starts**, to the cap or to the inner end of the spokes,
+  with nothing behind it. Below the backing the window shows the app's background: never black, never metal.
+- **Put no disc or floor in `under` or `back`** behind the windows. On a dark stage a dark disc looks like an
+  opening, so check on a light background (section 4).
+- **Set `arbor` at or just inside the inner edge of the windows' metal**: at the foot of the drop when there is
+  one. If the line starts outside the point where the windows open, a light sliver shows under the backing. That
+  sliver is the "floor" the user doesn't want.
+- When a floor *is* visible, it's the spool's arbor: a recessed band under the line, shaded as a gradient (section
+  5), not the frame showing through.
 
 ## 4. Printing and see-through
 
@@ -114,14 +132,26 @@ plus a slotted hub disc. It isn't, and drawing it that way is wrong in every way
 - Printing sits on the far face and must not show through: `<text>` is hidden there automatically. Tag every
   other printed mark (dial dots, pointers and face lines, logo marks) with `data-print=""`, on the element or a `<g>` round it.
 
-## 5. Grooves and insets
+## 5. Drops, grooves and insets
 
-Most reels have them, and they're what makes a flat drawing read as machined metal:
+Most reels have them, and they're what makes a flat drawing read as machined metal.
 
+- **Prefer gradients for depth.** A drop, a sunk face, a chamfer or a deep pocket reads as a slope in the photo:
+  dark at the bottom, fading up to the face. Draw it as a gradient across that slope, not as a flat band of a
+  darker shade or a hard line. Flat bands look like painted stripes. Use solid shades only for things that really
+  are flat: a pocket's floor or a part set evenly below the face.
+  - **Circular drops** (a sunk hub, an arbor wall, a recessed ring): a `radialGradient` centered on the reel.
+    `sunkFace` is the ready-made one; copy its stops for a ring that steps down and back up.
+  - **Raised parts** (a hub boss, a lip): reverse it, light at the top edge and darker down the outside.
+  - **Straight edges** (a spoke's side, a window's wall): a `linearGradient` across the edge.
+  - Strength: the deep drops on these reels run from about 0 to 0.7 black over 15 to 20 units (rim = 200). Under
+    0.4 tends to read as no drop at all at the app's size.
+  - Shade metal only: cut the openings out of the shading path (section 5a).
 - **Between parts:** a dark ring (`#1b1d1f` at about 70% opacity) where one piece sits inside another, like
-  `frameRim`'s groove.
+  `frameRim`'s groove. A thin groove can stay a solid line. Anything wider than a few units is a drop: use a
+  gradient.
 - **Recessed parts:** `back` (or `recessed()` for still parts) draws metal 20% darker. Use it for floors of
-  pockets and anything set below the face.
+  pockets and anything set below the face, then add a gradient at the wall where the face meets the floor.
 - **Separate parts, one finish:** give the inset part a darker shade than the part around it, never the same flat
   color.
 
