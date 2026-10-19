@@ -10,6 +10,7 @@ import { CHIP } from './Chips.jsx';
 import FlippingReelPreview from './FlippingReelPreview.jsx';
 import Icon from './Icon.jsx';
 import ReelSideToggle from './ReelSideToggle.jsx';
+import Segmented from './Segmented.jsx';
 import Select from './Select.jsx';
 import Swatches from './Swatches.jsx';
 import FilterSheet from './FilterSheet.jsx';
@@ -30,13 +31,20 @@ const GROUPS = makerGroups(REEL_MODELS, 'Generic')
   .map(([maker, models]) => [maker, [...models.filter((m) => !m.discontinued), ...models.filter((m) => m.discontinued)]]);
 const ALL_MODELS = GROUPS.flatMap(([, models]) => models);
 
+// Reels drawn wound with line, or empty: empty shows both flanges' bars and the far side through the windows, to
+// check a drawing against a maker's empty product photos.
+const LINE_OPTIONS = [
+  ['shown', 'Line'],
+  ['hidden', 'Empty'],
+];
+
 // One model: a stage with the size picker at the top left and Drag/Spool at the top right, the reel
 // drawn to the page's scale, and the finishes along the bottom; the size's numbers below. `view` is the
-// page-wide line colors: { backing, head, running }. New setup opens the designer on the
+// page-wide line colors: { backing, head, running }, and `showLine` whether the reel is drawn with line. New setup opens the designer on the
 // size and finish picked here. A click anywhere on the card hands it to `onReveal`, to scroll it into view.
 // `shown` is the size, finish and side to open on (any of them null for the first); `onPick`, where given,
 // hears each change to them, so the page can keep them in its URL. `onOnly` shows just this model, as it is.
-function ModelCard({ model, view, onNewSetup, onReveal, shown = {}, onPick, onOnly }) {
+function ModelCard({ model, view, showLine, onNewSetup, onReveal, shown = {}, onPick, onOnly }) {
   const sizes = reelSizes(model.id);
   const colors = reelColors(model);
   const [sizeId, setSizeId] = useState(shown.size ?? sizes[0].id);
@@ -55,7 +63,7 @@ function ModelCard({ model, view, onNewSetup, onReveal, shown = {}, onPick, onOn
     ['Spool', `${size.spool}″`],
     ['Width', `${size.width}″`],
     size.rated ? ['Capacity', capacityText(size)] : size.arbor && ['Arbor', `${size.arbor}″`],
-    import.meta.env.DEV && ['Drawn with', `WF${setup.line.weight}F + ${setup.backing.yards} yd of ${setup.backing.pounds} lb`],
+    import.meta.env.DEV && showLine && ['Drawn with', `WF${setup.line.weight}F + ${setup.backing.yards} yd of ${setup.backing.pounds} lb`],
   ].filter(Boolean);
   const photos = PHOTOS_BY_MODEL[model.id] ?? [];
   return (
@@ -102,7 +110,7 @@ function ModelCard({ model, view, onNewSetup, onReveal, shown = {}, onPick, onOn
         </div>
         <div className="flex items-center justify-center" style={{ aspectRatio: AREA_RATIO }}>
           <span className="block" style={{ width: `${(size.rim / MAX_RIM) * 100}%` }}>
-            <FlippingReelPreview setup={setup} side={side} spins={spins} background="none" title={size.name} />
+            <FlippingReelPreview setup={setup} side={side} spins={spins} showLine={showLine} background="none" title={size.name} />
           </span>
         </div>
         {colors.length > 1 && <Swatches colors={colors} value={color} onChange={pick(setColor, 'color')} label={`${model.name} color`} size={24} touchSize={32} className="justify-center gap-3" />}
@@ -152,9 +160,20 @@ function Row({ label, className, labelClassName, children }) {
   );
 }
 
-// The line colors every reel is drawn with: backing, then running line, then head.
-function ColorRows({ view, onChange }) {
+// Line or empty, then, with line, the colors every reel is drawn with: backing, then running line, then head.
+function ViewRows({ line, onLineChange, view, onChange }) {
   const set = (key) => (id) => onChange({ ...view, [key]: id });
+  return (
+    <>
+      <Row label="Line">
+        <Segmented label="Line" options={LINE_OPTIONS} value={line} onChange={onLineChange} />
+      </Row>
+      {line === 'shown' && <ColorRows view={view} set={set} />}
+    </>
+  );
+}
+
+function ColorRows({ view, set }) {
   return (
     <>
       <Row label="Backing">
@@ -174,6 +193,7 @@ function ColorRows({ view, onChange }) {
 // single model the size, finish and side its card shows. Picks on the page go back through `onFilterChange`.
 export default function ReelsPage({ onNewSetup, filter = NO_REELS_FILTER, onFilterChange }) {
   const [view, setView] = useState(PREVIEW_COLORS);
+  const [line, setLine] = useState('shown');
   // The maker shown, or null for all of them; or, overriding it, just the models the URL names.
   const maker = filter.brand;
   const groups = filter.models.length
@@ -199,18 +219,22 @@ export default function ReelsPage({ onNewSetup, filter = NO_REELS_FILTER, onFilt
     if (by) window.scrollBy({ top: by, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   };
   // What the View button says once the view differs from the default.
-  const active = view !== PREVIEW_COLORS ? 'Custom colors' : '';
+  const active = line !== 'shown' ? 'Empty' : view !== PREVIEW_COLORS ? 'Custom colors' : '';
+  const reset = () => {
+    setView(PREVIEW_COLORS);
+    setLine('shown');
+  };
   return (
     <main className="flex flex-col gap-5 px-[max(16px,2.5vw)] pt-6 pb-10" aria-label="Reels">
-      {/* The title, the maker filter and, from sm up, the line colors stay in a bar under the fixed header while
-          the reels scroll, and each maker's heading sticks under it. On phones the chips are one row that scrolls
-          sideways, so the bar stays short. */}
+      {/* The title, the maker filter and, from sm up, the line toggle and colors stay in a bar under the fixed header
+          while the reels scroll, and each maker's heading sticks under it. On phones the chips are one row that
+          scrolls sideways, so the bar stays short. */}
       <div ref={barRef} className={PAGE_BAR}>
         <div className="flex items-center justify-between gap-3">
           <h2 className="font-heading text-[20px] font-bold tracking-[0.06em] uppercase">Reels</h2>
-          {/* On phones the line colors open in a sheet instead of a bar over the reels. */}
-          <FilterSheet title="View" icon="tune" active={active} onClear={() => setView(PREVIEW_COLORS)} clearLabel="Reset">
-            <ColorRows view={view} onChange={setView} />
+          {/* On phones the line toggle and colors open in a sheet instead of a bar over the reels. */}
+          <FilterSheet title="View" icon="tune" active={active} onClear={reset} clearLabel="Reset">
+            <ViewRows line={line} onLineChange={setLine} view={view} onChange={setView} />
           </FilterSheet>
         </div>
         {/* Pick one maker, or All; picking the chosen maker again goes back to All. Each chip says how many models it holds. */}
@@ -235,7 +259,7 @@ export default function ReelsPage({ onNewSetup, filter = NO_REELS_FILTER, onFilt
           </Row>
         )}
         <div className="hidden flex-col gap-2.5 sm:flex">
-          <ColorRows view={view} onChange={setView} />
+          <ViewRows line={line} onLineChange={setLine} view={view} onChange={setView} />
         </div>
       </div>
       <div ref={listRef} className="flex flex-col gap-5">
@@ -249,6 +273,7 @@ export default function ReelsPage({ onNewSetup, filter = NO_REELS_FILTER, onFilt
                   key={m.id}
                   model={m}
                   view={view}
+                  showLine={line === 'shown'}
                   onNewSetup={onNewSetup}
                   onReveal={reveal}
                   shown={m.id === only ? filter : undefined}
