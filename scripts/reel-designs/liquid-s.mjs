@@ -56,7 +56,8 @@ const armFacet = ([a, b]) => {
   const at = (p, w, k) => [p[0] + n[0] * w * k, p[1] + n[1] * w * k];
   const pts = [at(a, 20, 1 / 2), at(b, 15, 1 / 2), at(b, 15, -1 / 6), at(a, 20, -1 / 6)];
   const facing = (n[0] + n[1]) * -Math.SQRT1_2; // toward the light
-  const fill = facing > 0 ? `fill="#fff" fill-opacity="${(0.15 + 0.3 * facing).toFixed(2)}"` : `fill="#000" fill-opacity="${(0.12 + 0.3 * -facing).toFixed(2)}"`;
+  // One facing the light only weakly (the left arm's) would barely differ from the arm's face, so it's shaded.
+  const fill = facing > 0.3 ? `fill="#fff" fill-opacity="${(0.15 + 0.3 * facing).toFixed(2)}"` : 'fill="#000" fill-opacity=".25"';
   return `<path d="M${pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join('L')}Z" ${fill}/>`;
 };
 
