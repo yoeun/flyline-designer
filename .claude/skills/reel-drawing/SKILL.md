@@ -1,6 +1,6 @@
 ---
 name: reel-drawing
-description: Use when drawing or fixing a reel's frame SVG in scripts/reel-designs (drag or spool side), when the user shares photos of a reel, or says a reel drawing looks wrong. Covers splitting the fixed frame from the spool cage that spins, tapering spokes, see-through windows with no floor, gradient drops, insets and grooves, and checking the drawing against photos.
+description: Use when drawing or fixing a reel's frame SVG in scripts/reel-designs (drag or spool side), when the user shares photos of a reel, or says a reel drawing looks wrong. Covers splitting the fixed frame from the spool cage that spins, tapering spokes, floating backing (no visible floor), gradient drops, insets and grooves, and checking the drawing against photos.
 ---
 
 # Drawing a reel
@@ -35,7 +35,7 @@ Commit the regenerated SVGs with the script.
   say so and show the numbers.
 - **Look at what's below the backing in each window.** Either you see a floor (the spool's arbor, as metal under
   the line) or you see straight through to the background. Many reels show no floor: the backing ends right on
-  background. Decide which before drawing, because it sets the window shape and `arbor` (see 3b).
+  background (floating backing). Decide which before drawing, because it sets the window shape and `arbor` (see 3b).
 - **Look at how the spokes change from the rim inward.** Most taper and converge toward the center, often with a
   drop partway in where the face sinks. Measure each spoke's width at three or more radii (see 3a).
 - When the user corrects the frame/spool split or a measurement, trust that over the photo.
@@ -86,8 +86,8 @@ export const spool = svg({
 - Everything in `body`, `under`, `back` and `details` turns with the spool. Keep only round, unlit or truly fixed
   parts in `foot`.
 
-Sections 3a and 3b are independent: a reel can have tapering spokes with a drop and a visible floor, a floorless
-window with straight spokes, both, or neither. Check each against the photo on its own. The Ventures Ascent
+Sections 3a and 3b are independent: a reel can have tapering spokes with a drop and a visible floor, floating
+backing with straight spokes, both, or neither. Check each against the photo on its own. The Ventures Ascent
 (`scripts/reel-designs/ascent.mjs`) happens to have both, so don't take it as a sign that they go together.
 
 ## 3a. Tapering, converging spokes with a drop
@@ -114,10 +114,11 @@ below the backing (that's 3b).
   the same angle as the handle. Drop that window with `pickPaths(d, (k) => !skip.includes(k))` and add the hole.
   Measure the handle's and the counterweight's radius off the photo (the Ascent's sit near the rim, at 156).
 
-## 3b. No visible floor: backing ends on background
+## 3b. Floating backing: no visible floor
 
-This is about what shows below the backing only, whatever the spokes look like (that's 3a). When the photo shows
-no metal below the backing, the windows open straight through the reel:
+Also called no visible floor: the backing ends right on the background, so it looks like it's floating in the
+window. This is about what shows below the backing only, whatever the spokes look like (that's 3a). When the
+photo shows no metal below the backing, the windows open straight through the reel:
 
 - **Run each window's opening down past where the line starts**, to the cap or to the inner end of the spokes,
   with nothing behind it. Below the backing the window shows the app's background: never black, never metal.
