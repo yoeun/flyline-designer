@@ -3,7 +3,9 @@
 // Drag side: the frame is a rim, the foot, three spokes that widen toward the rim (two up, 36° either side of the
 // foot, and a wider one down), each lined up with one of the back flange's bars behind it (per the user), and a
 // black drag knob (r 57) with a knurled edge and the logo cap, in a collar (to r 70) where the three spokes meet.
-// Through it shows the spool's back flange, which turns: 20 windows, plus the spool's eight primary spokes.
+// Through it shows the spool's back flange, which turns: 20 windows. The spool's eight primary spokes are part of
+// the face flange, the far side from here, so the drag side doesn't draw them: they show through from the spool
+// side's drawing behind, shaded like the face flange's bars between the back flange's.
 // Spool side: the frame's rim, then the spool's face flange with 20 windows and handle pads at 12 and 6 o'clock,
 // a steep drop at the flange's inner edge, and eight primary spokes, each a face bar running on from the rim, down
 // the drop, to the logo cap (per the user, like the Ventures Ascent's).
@@ -41,7 +43,7 @@ const FRAME_WINDOWS = spokeWindows({ spokes: FRAME_SPOKES, rIn: 70, rOut: 179, f
 const DRAG_FRAME = circle(200) + FRAME_WINDOWS;
 
 export const drag = svg({
-  cage: [ring(185, 113) + taperedSlots({ ...RIM, off: BACK_OFF }), ...innerSpokes],
+  cage: [ring(185, 113) + taperedSlots({ ...RIM, off: BACK_OFF })],
   body: [DRAG_FRAME, FOOT],
   details:
     bevel('run', { windows: FRAME_WINDOWS }) +

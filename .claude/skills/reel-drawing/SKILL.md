@@ -62,6 +62,10 @@ export const drag = svg({
   you see a thinner, darker bar midway across each window: that's the far flange's bar, not a divider in the
   window. Then offset the drag side's cage half a window (`off` differs by `360 / n / 2`). Don't draw the far
   bars yourself: the app draws each side's far side behind it, so they show through on their own.
+- **The drag side's cage is only what's on the back flange.** Spool parts that belong to the face flange, like
+  spokes that carry on from face bars to the hub, stay out of `cage`. They show through from the spool side's
+  drawing behind, shaded as far side. Drawn into the cage, they get the near flange's shade, which the user found
+  confusing next to the far bars.
 - **Frame spokes usually sit on a cage bar.** Check the photo, and when they do, take their angles from the cage's
   bar angles rather than from measurements.
 - Spokes that look evenly spaced usually are: build them from one angle list (e.g. 72° apart for five) rather than
