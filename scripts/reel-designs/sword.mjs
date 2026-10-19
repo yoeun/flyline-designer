@@ -104,7 +104,7 @@ const pairCenter = (p, r) => {
 // An opening between two curves lo(r) and hi(r) (angles, hi clockwise of lo), from radius rA to rB, closed by arcs at
 // both ends, its corners rounded by cornerOut at rB and cornerIn at rA. Built radius by radius, so its sides meet
 // the arcs cleanly.
-function opening(lo, hi, rA, rB, cornerOut = 20, cornerIn = 20) {
+function opening(lo, hi, rA, rB, cornerOut = 40, cornerIn = 40) {
   const n = PAIR.steps, rs = Array.from({ length: n + 1 }, (_, i) => rA + ((rB - rA) * i) / n);
   const arc = (r, a0, a1) => {
     let b = a1;
@@ -125,7 +125,7 @@ function opening(lo, hi, rA, rB, cornerOut = 20, cornerIn = 20) {
 const HALF = (r) => slotAt(r) / 2 / r, ARM_SPAN = (r) => (slotAt(r) / 2 + PAIR.arm) / r;
 const FRAME_OPENINGS = PAIRS.map((p, k) => {
   const q = PAIRS[(k + 1) % 3];
-  const slot = opening((r) => pairCenter(p, r) - HALF(r), (r) => pairCenter(p, r) + HALF(r), 84, 186, 20, 4);
+  const slot = opening((r) => pairCenter(p, r) - HALF(r), (r) => pairCenter(p, r) + HALF(r), 84, 186, 40, 4);
   const window = opening((r) => pairCenter(p, r) + ARM_SPAN(r), (r) => pairCenter(q, r) - ARM_SPAN(r), 84, 166);
   return slot + window;
 }).join('');
