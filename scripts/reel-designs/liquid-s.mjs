@@ -16,7 +16,8 @@ const RIM = { n: 24, rIn: 126, rOut: 171, bar: 12, corner: 7 };
 // They're thick at the center and taper to the rim, and each has one deep chamfer along its trailing (clockwise)
 // edge. The handle sits on the one ending at -105°.
 const LIQUID_SPOKES = [0, 1, 2, 3, 4].map((k) => -105 + k * 72);
-const SPOKE_W = [32, 14];
+// They taper to the cage bars' width at the rim.
+const SPOKE_W = [32, RIM.bar];
 // Each spoke's line runs back past the center until its base meets the next spoke counterclockwise (15% of its
 // length back from P(30, a - 70)), so the bases lock together into a pinwheel round the center.
 const spokeEnds = (a) => {
