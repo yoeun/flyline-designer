@@ -71,14 +71,41 @@ export const drag = svg({
 const HANDLE = P(147, rad(-90));
 const SPOOL_HOLES = BIG.filter((a) => a !== -90 && a !== 90).map((a) => circle(27, ...P(147, rad(a)))).join('') + HOLES.slice(BIG_HOLES.length);
 const WEIGHT = P(147, rad(90));
+// The cavity's three arms: thick straight spokes, each leaning clockwise as it runs out (along the line from P(30, a)
+// to P(106, a + 40)), 24 wide. Between them the floor is cut through, each opening bounded by two arms, the floor
+// ring's inner edge (100) and the ring round the dial (58), with every corner rounded.
 const HUB_ARMS = [0, 1, 2].map((k) => -60 + k * 120);
+const ARM = { rIn: 58, rOut: 100, lean: 40, w: 24, fillet: 10 };
+const hubOpenings = () => {
+  // Where one side (1 = clockwise, -1 = counterclockwise) of the arm at `a` crosses radius r.
+  const side = (a, s, r) => {
+    const p0 = P(30, rad(a)), p1 = P(ARM.rOut + 6, rad(a + ARM.lean));
+    const l = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]), d = [(p1[0] - p0[0]) / l, (p1[1] - p0[1]) / l];
+    const o = [p0[0] - d[1] * s * ARM.w / 2, p0[1] + d[0] * s * ARM.w / 2];
+    const B = o[0] * d[0] + o[1] * d[1], C = o[0] ** 2 + o[1] ** 2 - r * r;
+    const t = -B + Math.sqrt(B * B - C);
+    return [o[0] + d[0] * t, o[1] + d[1] * t];
+  };
+  const ang = ([x, y]) => Math.atan2(y, x);
+  const arc = (r, from, to, n = 16) => {
+    let a0 = ang(from), a1 = ang(to);
+    while (a1 < a0) a1 += 2 * Math.PI;
+    return Array.from({ length: n + 1 }, (_, i) => P(r, a0 + ((a1 - a0) * i) / n));
+  };
+  return HUB_ARMS.map((a, k) => {
+    const b = HUB_ARMS[(k + 1) % 3];
+    const outer = arc(ARM.rOut, side(a, 1, ARM.rOut), side(b, -1, ARM.rOut));
+    const inner = arc(ARM.rIn, side(a, 1, ARM.rIn), side(b, -1, ARM.rIn)).reverse();
+    return roundPoly([...outer, ...inner], ARM.fillet);
+  }).join('');
+};
 
 export const spool = svg({
   foot: ACCENT_FOOT + `<path d="${FOOT}" fill="#000" fill-opacity=".2"/>`,
   handles: [[...HANDLE, 22]],
   // A recessed floor runs straight on under the flange's scalloped inner edge, no gap, out to 116; inside 100 the
   // middle is cut out. The three hub arms are down in that cavity with the floor, reaching from the dial to it.
-  back: [ring(116, 100), ...HUB_ARMS.map((a) => curvedSpoke(a, a - 50, 40, 112, 22, 16))],
+  back: [circle(116) + hubOpenings()],
   body: [circle(200) + SPOOL_HOLES + INNER_EDGE, circle(52)],
   details:
     // The floor ring and arms in shadow just inside the ridges, where they drop under them.
