@@ -199,24 +199,22 @@ const hubOpenings = () => {
 };
 
 // The recessed pockets round rim holes: straight-sided, 16 wide, from 8 outside each hole in to radius 165. With an
-// `id`, each is shaded as a recess lit from the top left: its own gradient runs across it toward the bottom right,
-// from the shade its top-left wall casts on the floor to the light its bottom-right side catches, so pockets facing
-// different ways round the rim each look different. Without one they're plain shapes, for masks.
+// `id`, each takes one even tone by the way it faces the light from the top left: those facing it (round the top
+// left of the rim) a little lighter than the rim, those facing away (bottom right) a little darker, those between
+// close to the rim's own tone. Without one they're plain shapes, for masks.
 const pockets = (holes, id) =>
   holes
-    .map(([x, y], k) => {
+    .map(([x, y]) => {
       const a = (Math.atan2(y, x) * 180) / Math.PI + 90, r = Math.hypot(x, y);
-      // The gradient is in the pocket's own frame (the rect's transform applies to it): its middle sits half way from
-      // 8 outside the hole to 165, and the light's direction (toward the bottom right) is turned back by the pocket's.
-      const mid = (r + 8 + 165) / 2, cy = r - mid, t = rad(-a);
-      const [dx, dy] = [11 * (Math.cos(t) - Math.sin(t)), 11 * (Math.sin(t) + Math.cos(t))];
-      const fill = id ? ` fill="url(#${id}-pocket-${k})"` : '';
-      const grad = id
-        ? `<linearGradient id="${id}-pocket-${k}" gradientUnits="userSpaceOnUse" x1="${f(-dx)}" y1="${f(cy - dy)}" x2="${f(dx)}" y2="${f(cy + dy)}">` +
-          '<stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity=".15"/></linearGradient>'
-        : '';
+      // How squarely the pocket faces the light: 1 toward the top left, -1 away.
+      const facing = -(x + y) / (r * Math.SQRT2);
+      const fill = !id
+        ? ''
+        : facing > 0
+          ? ` fill="#fff" fill-opacity="${(0.06 + 0.14 * facing).toFixed(2)}"`
+          : ` fill="#000" fill-opacity="${(0.08 + 0.2 * -facing).toFixed(2)}"`;
       // In the pocket's own frame +y points in toward the center.
-      return `${grad}<rect x="-8" y="-8" width="16" height="${f(r - 165 + 8)}" rx="1.5" transform="translate(${f(x)} ${f(y)}) rotate(${f(a)})"${fill}/>`;
+      return `<rect x="-8" y="-8" width="16" height="${f(r - 165 + 8)}" rx="1.5" transform="translate(${f(x)} ${f(y)}) rotate(${f(a)})"${fill}/>`;
     })
     .join('');
 
@@ -236,7 +234,8 @@ export const spoolSide = ({ rimHoles = [], grooveR = 182, id = 'sword' } = {}) =
     `<mask id="${id}-floor-mask"><use href="#back" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
     `<circle r="116" fill="url(#${id}-floor)" mask="url(#${id}-floor-mask)"/>` +
     // Each rim hole sits in a straight-sided recessed pocket that runs from near the rim's edge in to the flange hole
-    // in line with it (every rim hole lines up with a big or a small one), shaded as lit and kept to the metal.
+    // in line with it (every rim hole lines up with a big or a small one), lit by the way it faces and kept to the
+    // metal.
     (rimHoles.length
       ? `<mask id="${id}-pocket-mask"><use href="#body" fill="#fff"/></mask><g mask="url(#${id}-pocket-mask)">${pockets(rimHoles, id)}</g>`
       : '') +
