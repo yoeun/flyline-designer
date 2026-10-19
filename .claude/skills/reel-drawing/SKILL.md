@@ -197,6 +197,10 @@ are chamfered. Drawn without them, a frame looks like flat pieces stacked on top
     outer rim stays flat, and so does everything else in `body`.
   - **The foot is a separate piece.** Never chamfer it together with the frame. Keep it out of what's beveled, and
     treat any other separate part the same way.
+  - **Run a dark chamfer all the way round the frame's outer edge**: a radial gradient from clear at about 191 to
+    about 0.6 black at 200, over `ring(200, 190)`, in `details`. It runs across the foot's post where the post
+    meets the frame, so the foot reads as a separate piece. Without it the user saw frame and foot as one piece,
+    even with the foot left unchamfered.
   - **Keep it subtle.** The defaults (width 3, depth 3) suit the Run. The user called depth 7 "too aggressive", so
     go up from the defaults in small steps.
   - **Don't fake it** with a stroke or a band shaded by position. A stroke outlines every overlapping piece, and a
