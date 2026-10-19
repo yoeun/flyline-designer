@@ -13,8 +13,9 @@
 // the spool. Port and slot sizes are read off small photos, so approximate.
 import { P, arcPts, circle, edge, f, foot, rad, roundPoly, svg } from './lib.mjs';
 
-// The wound line starts at the inner edge of the ports, where the backing shows: about 0.53 of the rim.
-export const arbor = 106;
+// The spool's floor is hidden under the spokes: the wound line starts at the foot of the drop to the hub, inside
+// the ports' inner edge, so the ports show only line.
+export const arbor = 100;
 
 // Spokes taper toward the center, so each window sits between bars `barOut` wide at rOut and `barIn` at rIn.
 const tapered = ({ n, rIn, rOut, barIn, barOut, corner, off }) =>
