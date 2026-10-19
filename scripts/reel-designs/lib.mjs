@@ -122,21 +122,23 @@ export function spokeWindows({ spokes, rIn, rOut, fillet }) {
     .join('');
 }
 
-// Chamfered edges round a frame's openings, for svg's details: a lighting filter lights each edge facing the top left
-// and shades each edge facing the bottom right, leaving flat faces as they are. `windows` are the openings to
-// chamfer, as cut from the frame. Only their edges get it: the shape lit is a disc bigger than the reel minus
-// `windows`, clipped to `clip` (the frame's outer radius), so the outer rim and anything else, like a foot, stay
-// flat. `width` is the chamfer's width (blur) and `depth` its height (surfaceScale). `id` must be unique.
-export function bevel(id, { windows, clip = 200, width = 3, depth = 3 }) {
-  const light = (azimuth) =>
-    `<feSpecularLighting in="edge" surfaceScale="${depth}" specularConstant="1" specularExponent="20" lighting-color="#fff">` +
-    `<feDistantLight azimuth="${azimuth}" elevation="25"/></feSpecularLighting>`;
+// Chamfers round a frame's openings, for svg's details: a flat, angled facet of even width along each window's edge,
+// with crisp edges. Facets facing the top left are lit, those facing the bottom right shaded, each in one even shade
+// (a chamfer is a flat cut, not a rounded edge). `windows` are the openings to chamfer, as cut from the frame. Only
+// their edges get it: the shape shaded is a disc bigger than the reel minus `windows`, clipped to `clip` (the
+// frame's outer radius), so the outer rim and anything else, like a foot, stay flat. `width` is the facet's width;
+// `light` and `shade` its opacities. `id` must be unique to the design.
+export function bevel(id, { windows, clip = 200, width = 3.5, light = 0.45, shade = 0.4 }) {
+  const facing = (d, result) =>
+    `<feOffset in="SourceAlpha" dx="${d}" dy="${d}" result="${result}-off"/>` +
+    `<feComposite in="band" in2="${result}-off" operator="out" result="${result}"/>`;
   return (
     `<filter id="${id}-bevel" x="-10%" y="-10%" width="120%" height="120%">` +
-    `<feGaussianBlur in="SourceAlpha" stdDeviation="${width}" result="edge"/>` +
-    light(225) + '<feComposite in2="SourceAlpha" operator="in" result="lit"/>' +
-    light(45) + '<feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .7 0"/>' +
-    '<feComposite in2="SourceAlpha" operator="in" result="shade"/>' +
+    `<feMorphology in="SourceAlpha" operator="erode" radius="${width}" result="core"/>` +
+    '<feComposite in="SourceAlpha" in2="core" operator="out" result="band"/>' +
+    facing(2 * width, 'lit-a') + facing(-2 * width, 'shade-a') +
+    `<feFlood flood-color="#fff" flood-opacity="${light}"/><feComposite in2="lit-a" operator="in" result="lit"/>` +
+    `<feFlood flood-color="#000" flood-opacity="${shade}"/><feComposite in2="shade-a" operator="in" result="shade"/>` +
     '<feMerge><feMergeNode in="shade"/><feMergeNode in="lit"/></feMerge></filter>' +
     `<clipPath id="${id}-bevel-clip"><circle r="${clip}"/></clipPath>` +
     `<g clip-path="url(#${id}-bevel-clip)"><path d="${circle(clip + 20) + windows}" fill-rule="evenodd" filter="url(#${id}-bevel)"/></g>`

@@ -45,11 +45,9 @@ export const drag = svg({
   body: [DRAG_FRAME, FOOT],
   details:
     bevel('run', { windows: FRAME_WINDOWS }) +
-    // A dark chamfer all the way round the frame's outer edge, running across the foot's post where it meets the
-    // frame, so the foot reads as a separate piece.
-    '<radialGradient id="run-edge" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="200">' +
-    '<stop offset=".955" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></radialGradient>' +
-    `<path d="${ring(200, 190)}" fill="url(#run-edge)" fill-rule="evenodd"/>` +
+    // A dark chamfer, a flat facet, all the way round the frame's outer edge, running across the foot's post where it
+    // meets the frame, so the foot reads as a separate piece.
+    `<path d="${ring(200, 194)}" fill="#000" fill-opacity=".4" fill-rule="evenodd"/>` +
     `<circle r="59" fill="#000" fill-opacity=".35"/><circle r="57" fill="#222426"/><circle r="57" fill="url(#sheen)"/>` +
     Array.from({ length: 36 }, (_, i) => {
       const a = (i / 36) * 2 * Math.PI;
