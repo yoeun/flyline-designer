@@ -198,21 +198,23 @@ const hubOpenings = () => {
   }).join('');
 };
 
-export const spool = svg({
+// The spool side. `rimHoles` ([cx, cy, r]) are drilled through its thick outer rim, as on the Sword II; `id` keeps
+// gradient and mask ids apart between designs.
+export const spoolSide = ({ rimHoles = [], id = 'sword' } = {}) => svg({
   foot: ACCENT_FOOT + `<path d="${FOOT}" fill="#000" fill-opacity=".2"/>`,
   handles: [[...HANDLE, 22]],
   // A recessed floor runs straight on under the flange's scalloped inner edge, no gap, out to 116; inside 100 the
   // middle is cut out. The three hub arms are down in that cavity with the floor, reaching from the dial to it.
   back: [circle(116) + hubOpenings()],
-  body: [circle(200) + SPOOL_HOLES + INNER_EDGE, circle(52)],
+  body: [circle(200) + SPOOL_HOLES + INNER_EDGE + rimHoles.map(([x, y, r]) => circle(r, x, y)).join(''), circle(52)],
   details:
     // The floor ring and arms in shadow just inside the ridges, where they drop under them.
-    '<radialGradient id="sword-floor" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="116">' +
-    '<stop offset=".86" stop-color="#000" stop-opacity=".05"/><stop offset=".97" stop-color="#000" stop-opacity=".45"/></radialGradient>' +
-    `<mask id="sword-floor-mask"><use href="#back" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
-    '<circle r="116" fill="url(#sword-floor)" mask="url(#sword-floor-mask)"/>' +
-    // Chamfers round the flange's holes and scalloped inner edge.
-    ringChamfers('sword-spool-chamfer', [...BIG_LIST.filter((_, k) => k !== 0 && k !== 6), ...SMALL_LIST]) +
+    `<radialGradient id="${id}-floor" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="116">` +
+    `<stop offset=".86" stop-color="#000" stop-opacity=".05"/><stop offset=".97" stop-color="#000" stop-opacity=".45"/></radialGradient>` +
+    `<mask id="${id}-floor-mask"><use href="#back" fill="#fff"/><use href="#body" fill="#000"/></mask>` +
+    `<circle r="116" fill="url(#${id}-floor)" mask="url(#${id}-floor-mask)"/>` +
+    // Chamfers round the flange's holes, any rim holes and the scalloped inner edge.
+    ringChamfers(`${id}-spool-chamfer`, [...BIG_LIST.filter((_, k) => k !== 0 && k !== 6), ...SMALL_LIST, ...rimHoles]) +
     // The thick outer rim's inner groove.
     `<circle r="182" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2"/>` +
     `<circle r="52" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="2"/>` +
@@ -251,3 +253,5 @@ export const drag = svg({
     `<circle r="60" ${TRIM}/><circle r="70" fill="url(#sheen)"/>` +
     screw(0, 0, 14),
 });
+
+export const spool = spoolSide();
