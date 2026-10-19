@@ -86,40 +86,46 @@ export const spool = svg({
 - Everything in `body`, `under`, `back` and `details` turns with the spool. Keep only round, unlit or truly fixed
   parts in `foot`.
 
+Sections 3a and 3b are independent: a reel can have tapering spokes with a drop and a visible floor, a floorless
+window with straight spokes, both, or neither. Check each against the photo on its own. The Ventures Ascent
+(`scripts/reel-designs/ascent.mjs`) happens to have both, so don't take it as a sign that they go together.
+
 ## 3a. Tapering, converging spokes with a drop
 
 Most reels' spokes taper: widest at the rim, converging toward the center. Many also drop partway in, where the
-face sinks toward the hub. The Ventures Ascent is the worked example (`scripts/reel-designs/ascent.mjs`).
+face sinks toward the hub. This is about the spokes' shape and shading only. It says nothing about what shows
+below the backing (that's 3b).
 
 - **Draw the taper.** Use `taperedSlots({ n, rIn, rOut, barIn, barOut, corner, off })` from `lib.mjs` for the
   windows between tapering spokes, or `spoke(deg, r0, r1, w0, w1)` for separate spokes. Take the widths from your
   samples at several radii (the Ascent's are 22 at the rim, 15 at the drop, 11 at the cap). Straight bars of one
   width look wrong whenever the photo's spokes narrow.
 - **One spoke is one shape from the rim to where it ends.** If spokes run through a drop to the hub, don't split
-  them into an outer ring plus a slotted hub disc. That leaves a metal band across every window, and the inner and
-  outer counts drift apart. Keep one count and one `off` for the whole face. For a window centered at 12 o'clock,
+  them into an outer ring plus a separate hub with its own spokes: the inner and outer counts and angles drift
+  apart, and the taper breaks at the seam. Keep one count and one `off` for the whole face. For a window centered at 12 o'clock,
   `off = -90 - 360 / n / 2`.
 - **Shade the drop as a gradient on the spokes.** The drop is where the spokes bend down. Shade it with a
   gradient running across the spokes, darkest at the wall's foot and fading to nothing at its top, with a faint
   light lip there. Don't draw it as a separate piece or a flat darker ring. `sunkFace({ id, wall, floor, cut })`
   does this for a circular drop, on the metal only (`cut` is every opening). Make it pronounced: when the Ascent's
-  was subtle, the user asked for "much bigger". Center it where the photo's drop is, often just either side of
-  where the backing begins.
+  was subtle, the user asked for "much bigger". Center it where the photo's drop is, measured like any other
+  radius.
 - **Handle and counterweight fill a window's outer part.** The spoke under them keeps a round hole in the hub, at
   the same angle as the handle. Drop that window with `pickPaths(d, (k) => !skip.includes(k))` and add the hole.
   Measure the handle's and the counterweight's radius off the photo (the Ascent's sit near the rim, at 156).
 
 ## 3b. No visible floor: backing ends on background
 
-When the photo shows no metal below the backing, the windows open straight through the reel:
+This is about what shows below the backing only, whatever the spokes look like (that's 3a). When the photo shows
+no metal below the backing, the windows open straight through the reel:
 
 - **Run each window's opening down past where the line starts**, to the cap or to the inner end of the spokes,
   with nothing behind it. Below the backing the window shows the app's background: never black, never metal.
 - **Put no disc or floor in `under` or `back`** behind the windows. On a dark stage a dark disc looks like an
   opening, so check on a light background (section 4).
-- **Set `arbor` at or just inside the inner edge of the windows' metal**: at the foot of the drop when there is
-  one. If the line starts outside the point where the windows open, a light sliver shows under the backing. That
-  sliver is the "floor" the user doesn't want.
+- **Set `arbor` at or just inside where the photo's backing ends.** If the line starts outside that point, a
+  light sliver shows under the backing: the "floor" the user doesn't want. Don't stop the opening at a ring of
+  metal there either: no band of face between the backing and the background.
 - When a floor *is* visible, it's the spool's arbor: a recessed band under the line, shaded as a gradient (section
   5), not the frame showing through.
 
