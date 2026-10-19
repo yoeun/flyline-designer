@@ -76,7 +76,7 @@ const WEIGHT = P(147, rad(90));
 // one arm's inner edge, the floor ring's inner edge (100), the next arm's tangent edge and the ring round the dial.
 // The tangent edge flows on into that ring; the other corners are rounded, most where an arm meets the center.
 const HUB_ARMS = [0, 1, 2].map((k) => -60 + k * 120);
-const ARM = { rIn: 58, rOut: 100, w: 20, fillet: 10, filletIn: 16 };
+const ARM = { rIn: 58, rOut: 100, w: 20, fillet: 10, filletIn: 32 };
 const hubOpenings = () => {
   // An arm's edge: the tangent one (outer) or the inner one, as a point and a direction (clockwise, outward).
   const edge = (a, outer) => {
