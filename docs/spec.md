@@ -171,8 +171,8 @@ Similarity is measured as CIE76 ΔE in Lab color space.
 
 ## Palettes
 
-- **Fly line:** black, white, smoke, chartreuse, green, yellow, orange, red, blue, purple.
-- **Backing:** black, white, chartreuse, green, yellow, orange, red, blue, purple, shown in one row in gradient order.
+- **Fly line:** black, white, smoke, chartreuse, green, sage, yellow, orange, red, blue, dusty blue, purple.
+- **Backing:** black, white, chartreuse, green, sage, yellow, orange, red, blue, dusty blue, purple, shown in one row in gradient order.
 - **Reel:** black, gunmetal, silver, champagne, forest green, red, blue.
 
 ## Sharing and saving
