@@ -23,10 +23,12 @@ export const LINE_COLORS = [
   { id: 'smoke', name: 'Smoke', hex: '#a6b0ac' },
   { id: 'chartreuse', name: 'Chartreuse', hex: '#c8e03c' },
   { id: 'green', name: 'Green', hex: '#4c9a3e' },
+  { id: 'sage', name: 'Sage', hex: '#8fa38b' },
   { id: 'yellow', name: 'Yellow', hex: '#f2c92b' },
   { id: 'orange', name: 'Orange', hex: '#ee8728' },
   { id: 'red', name: 'Red', hex: '#d63b2f' },
   { id: 'blue', name: 'Blue', hex: '#2f6ccf' },
+  { id: 'dusty-blue', name: 'Dusty blue', hex: '#93b2ca' },
   { id: 'purple', name: 'Purple', hex: '#7a4bc3' },
 ];
 
@@ -52,7 +54,7 @@ export const MAKER_LINE_COLORS = MAKERS.flatMap((m) => m.COLORS);
 const lineColor = (id) => LINE_COLORS.find((c) => c.id === id) ?? MAKER_LINE_COLORS.find((c) => c.id === id);
 
 // Backing colors in gradient order.
-export const BACKING_COLORS = ['red', 'orange', 'yellow', 'chartreuse', 'green', 'blue', 'purple', 'white', 'black'].map(lineColor);
+export const BACKING_COLORS = ['red', 'orange', 'yellow', 'chartreuse', 'green', 'sage', 'blue', 'dusty-blue', 'purple', 'white', 'black'].map(lineColor);
 
 export const LINE_TYPES = [
   { id: 'floating', name: 'Floating', family: 'cool', diameterFactor: 1, suggested: null },
