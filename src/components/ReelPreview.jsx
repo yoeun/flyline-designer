@@ -2,7 +2,7 @@ import { useId } from 'react';
 import { cn } from '@/lib/utils';
 import { REEL_COLORS, findById, hexOf, reelAccent, reelTrim } from '../data/catalog.js';
 import { spoolLayout } from '../lib/geometry.js';
-import { frameArbor, frameMarkup, spinCage } from '../lib/reelFrames.js';
+import { frameArbor, frameMarkup, grabCage } from '../lib/reelFrames.js';
 
 const VIEW = { x: -215, y: -250, w: 430, h: 470 };
 const RIM_PX = 200;
@@ -119,11 +119,15 @@ export default function ReelPreview({ setup, mode = 'reel', side = 'drag', showL
             '--reel-cage-opacity': cageOn(reelHex)[1],
           }}
           opacity={reelOpacity}
-          // Clicking the handle turns the spool.
-          onClick={(e) => {
-            if (!e.target.closest('[data-handle]')) return;
+          // Dragging the handle turns the spool, and a flick sets it spinning; a click spins it a turn.
+          onPointerDown={(e) => {
+            if (e.button || !e.target.closest('[data-handle]')) return;
             e.stopPropagation();
-            spinCage(e.currentTarget);
+            grabCage(e.currentTarget, e.nativeEvent);
+          }}
+          // Nor does the click that ends a drag (aimed at this group, which held the pointer) reach the page.
+          onClick={(e) => {
+            if (e.target === e.currentTarget || e.target.closest('[data-handle]')) e.stopPropagation();
           }}
           dangerouslySetInnerHTML={{ __html: frameMarkup(layout.reel.design, side, uid, { handles: side === 'spool' }) }}
         />

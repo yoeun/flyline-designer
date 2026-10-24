@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { SIDES, spinCage } from '../lib/reelFrames.js';
+import { SIDES, cageRest, setCageRest, spinCage } from '../lib/reelFrames.js';
 import { cn } from '@/lib/utils';
 import ReelPreview from './ReelPreview.jsx';
 
@@ -13,6 +13,11 @@ export default function FlippingReelPreview({ side = 'drag', spins = 0, title, s
   useEffect(() => {
     if (spins) spinCage(faces.current[side]);
   }, [spins]);
+  // Only the spool side's handle turns the spool and leaves it off where it started; turned over, the drag side
+  // shows the spool where it was left.
+  useEffect(() => {
+    if (side === 'drag') setCageRest(faces.current.drag, cageRest(faces.current.spool));
+  }, [side]);
   return (
     <span className={cn('block perspective-[1600px]', className)}>
       <span className={cn('grid h-full transition-transform duration-500 ease-in-out transform-3d motion-reduce:transition-none', side === 'spool' && 'rotate-y-180')}>
