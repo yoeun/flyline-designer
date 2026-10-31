@@ -1,66 +1,79 @@
-# Production follows the `release` branch (see render.yaml). This workflow fast-forwards it to
-# `main` twice a day, or right after a merged PR whose description has a line that is exactly `!!hotfix`
-# (a title never counts: it must stay a normal Conventional Commit), or when run by hand. It never force-pushes: if `release` has diverged from `main` it fails.
 name: Release
 
+# Production (Render) deploys from the `release` branch, not `main`, so a
+# merge doesn't rebuild the site. This job releases `main`: scripts/release.sh
+# works out the version from the commit types (see its header), commits
+# `chore(release): vX.Y.Z` to `main`, tags it, moves `release` up to it and
+# creates the GitHub Release. It runs:
+#   - twice a day, 5:47 and 17:47 Pacific time, unless every commit since the
+#     last release is docs, test, ci, chore or style (they wait);
+#   - by hand from the Actions tab (Run workflow), to ship now (a patch at least);
+#   - right after a pull request merges into `main` as a hotfix: a line of
+#     its description that is exactly `!!hotfix`. A title never counts (it
+#     must stay a normal Conventional Commit, as it becomes the squash
+#     commit's subject), and nor does mentioning the marker in a sentence.
+# It costs a few seconds a run. Every other pull request event skips the
+# job, which is free.
 on:
   schedule:
-    # GitHub cron is UTC only (no timezone key), so this is 5:47 and 17:47 PST,
-    # and 6:47 and 18:47 PDT.
-    - cron: "47 1,13 * * *"
+    # UTC: this is 5:47 and 17:47 PST (winter) and 6:47 and 18:47 PDT
+    # (summer). Odd minutes avoid the load at the top of the hour.
+    - cron: '47 1,13 * * *'
   workflow_dispatch:
   pull_request:
     types: [closed]
     branches: [main]
 
 permissions:
-  contents: write
+  contents: write # to push `main`, `release` and the tag, and to create the release
 
-concurrency: release
+# Runs queue one after another rather than cancel each other: two releases
+# at once would race on the push.
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 jobs:
   release:
-    # Scheduled and manual runs always go; a closed PR only if it was merged and its description
-    # mentions the marker. This is a cheap prefilter; the Check step below requires the marker to be
-    # a line of its own, so a passing mention doesn't ship.
+    # A cheap first filter; the "Is it a release?" step checks the exact rule.
     if: >-
-      ${{ github.event_name != 'pull_request' ||
-      (github.event.pull_request.merged &&
-      contains(github.event.pull_request.body || '', '!!hotfix')) }}
+      ${{ github.event_name != 'pull_request' || (
+        github.event.pull_request.merged == true &&
+        contains(github.event.pull_request.body || '', '!!hotfix')
+      ) }}
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Check the hotfix marker
-        id: marker
-        if: ${{ github.event_name == 'pull_request' }}
+      - name: Is it a release?
+        id: gate
         env:
+          EVENT: ${{ github.event_name }}
           BODY: ${{ github.event.pull_request.body }}
         run: |
-          if printf '%s\n' "$BODY" | tr -d '\r' | grep -qxE '[[:space:]]*!!hotfix[[:space:]]*'; then
-            echo "skip=false" >> "$GITHUB_OUTPUT"
+          if [[ "$EVENT" != pull_request ]]; then
+            echo "ship=true" >> "$GITHUB_OUTPUT"
+          elif printf '%s\n' "$BODY" | tr -d '\r' | grep -qxE '[[:space:]]*!!hotfix[[:space:]]*'; then
+            echo "ship=true" >> "$GITHUB_OUTPUT"
           else
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "no hotfix marker, skipped" >> "$GITHUB_STEP_SUMMARY"
+            echo "Not a hotfix: the marker must be a line of its own in the description." >> "$GITHUB_STEP_SUMMARY"
           fi
-      - name: Fast-forward release to main
-        if: ${{ steps.marker.outputs.skip != 'true' }}
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.ship == 'true'
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Release
+        if: steps.gate.outputs.ship == 'true'
+        env:
+          EVENT: ${{ github.event_name }}
+          GH_TOKEN: ${{ github.token }}
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
         run: |
-          set -euo pipefail
-          git fetch origin main release
-          if [ "$(git rev-parse origin/release)" = "$(git rev-parse origin/main)" ]; then
-            echo "Nothing to release: release is already at main." >> "$GITHUB_STEP_SUMMARY"
-            exit 0
-          fi
-          if ! git merge-base --is-ancestor origin/release origin/main; then
-            echo "release has diverged from main; not pushing. Fix it by hand." | tee -a "$GITHUB_STEP_SUMMARY"
-            exit 1
-          fi
-          range="origin/release..origin/main"
-          git push origin origin/main:refs/heads/release
-          {
-            echo "### Released to production"
-            echo
-            git log --reverse --format='- %h %s' "$range"
-          } >> "$GITHUB_STEP_SUMMARY"
+          # The schedule skips a run of only docs, test, ci, chore and style
+          # commits; a manual run and a hotfix always release.
+          args=()
+          if [[ "$EVENT" != schedule ]]; then args+=(--force); fi
+          scripts/release.sh "${args[@]}"
