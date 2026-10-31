@@ -1,11 +1,19 @@
 # Render Blueprint: the app as a Static Site, the shares API as a Node web service and its Postgres
-# database, all deployed on every push to main. See the Deploy section of the README for connecting it.
+# database, deployed from the release branch, which a scheduled workflow
+# (.github/workflows/release.yml) fast-forwards to main twice a day. See the Deploy section of the README for connecting it.
 services:
   - type: web
     runtime: static
     name: flyline-designer
-    branch: main
+    branch: release
     autoDeployTrigger: commit
+    # Skip rebuilds for changes that can't affect the site.
+    buildFilter:
+      ignoredPaths:
+        - "**/*.md"
+        - docs/**
+        - server/**
+        - .github/**
     # Tests run first so a failing build is never published.
     buildCommand: npm ci && npm test && npm run build
     staticPublishPath: ./dist
@@ -42,9 +50,15 @@ services:
     name: flyline-designer-api
     # Free sleeps when idle, so the first call after a quiet spell waits for it to start.
     plan: free
-    branch: main
+    branch: release
     autoDeployTrigger: commit
     rootDir: server
+    # Only the API's own files matter (paths are from the repo root).
+    buildFilter:
+      paths:
+        - server/**
+      ignoredPaths:
+        - server/**/*.md
     buildCommand: npm ci
     startCommand: npm start
     healthCheckPath: /healthz
