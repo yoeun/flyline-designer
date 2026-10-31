@@ -45,7 +45,7 @@ The app runs on [Render](https://render.com/), set up by the Blueprint in [rende
 
 The API, the database and their plans are covered under [Sharing a rack](#sharing-a-rack).
 
-Production follows the `release` branch, not `main`. [release.yml](.github/workflows/release.yml) fast-forwards `release` to `main` twice a day, at 5:47 and 17:47 Pacific (the cron is in UTC, so it runs at 5:47 and 17:47 PST and 6:47 and 18:47 PDT), and never force-pushes: if `release` has diverged from `main` it fails. To ship sooner, start the PR title with `!!hotfix`, or put `!!hotfix` on a line of its own in the PR description (it releases right after the merge; a mention elsewhere does nothing) or run the **Release** workflow by hand from the Actions tab. Rebuilds are skipped for changes that can't affect a service (`buildFilter` in render.yaml).
+Production follows the `release` branch, not `main`. [release.yml](.github/workflows/release.yml) fast-forwards `release` to `main` twice a day, at 5:47 and 17:47 Pacific (the cron is in UTC, so it runs at 5:47 and 17:47 PST and 6:47 and 18:47 PDT), and never force-pushes: if `release` has diverged from `main` it fails. To ship sooner, put a line containing only `!!hotfix` in the PR description (it releases right after the merge; a mention elsewhere does nothing, and the title must stay a normal Conventional Commit) or run the **Release** workflow by hand from the Actions tab. Rebuilds are skipped for changes that can't affect a service (`buildFilter` in render.yaml).
 
 Render PR previews are off. To get one for a PR, set previews to manual (`previews: generation: manual` in render.yaml, or in the dashboard) and add `[render preview]` to the PR title.
 

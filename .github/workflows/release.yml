@@ -1,6 +1,6 @@
 # Production follows the `release` branch (see render.yaml). This workflow fast-forwards it to
-# `main` twice a day, or right after a merged PR whose title starts with `!!hotfix` or whose description has a line that is exactly `!!hotfix`,
-# or when run by hand. It never force-pushes: if `release` has diverged from `main` it fails.
+# `main` twice a day, or right after a merged PR whose description has a line that is exactly `!!hotfix`
+# (a title never counts: it must stay a normal Conventional Commit), or when run by hand. It never force-pushes: if `release` has diverged from `main` it fails.
 name: Release
 
 on:
@@ -20,14 +20,13 @@ concurrency: release
 
 jobs:
   release:
-    # Scheduled and manual runs always go; a closed PR only if it was merged and mentions the marker.
-    # This is a cheap prefilter; the Check step below requires the marker to be the title's start
-    # or a line of its own, so a passing mention doesn't ship.
+    # Scheduled and manual runs always go; a closed PR only if it was merged and its description
+    # mentions the marker. This is a cheap prefilter; the Check step below requires the marker to be
+    # a line of its own, so a passing mention doesn't ship.
     if: >-
       ${{ github.event_name != 'pull_request' ||
       (github.event.pull_request.merged &&
-      (contains(github.event.pull_request.title, '!!hotfix') ||
-      contains(github.event.pull_request.body || '', '!!hotfix'))) }}
+      contains(github.event.pull_request.body || '', '!!hotfix')) }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,10 +36,9 @@ jobs:
         id: marker
         if: ${{ github.event_name == 'pull_request' }}
         env:
-          TITLE: ${{ github.event.pull_request.title }}
           BODY: ${{ github.event.pull_request.body }}
         run: |
-          if [[ "$TITLE" == '!!hotfix'* ]] || printf '%s\n' "$BODY" | tr -d '\r' | grep -qxE '[[:space:]]*!!hotfix[[:space:]]*'; then
+          if printf '%s\n' "$BODY" | tr -d '\r' | grep -qxE '[[:space:]]*!!hotfix[[:space:]]*'; then
             echo "skip=false" >> "$GITHUB_OUTPUT"
           else
             echo "skip=true" >> "$GITHUB_OUTPUT"
