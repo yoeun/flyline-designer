@@ -1,5 +1,5 @@
 # Production follows the `release` branch (see render.yaml). This workflow fast-forwards it to
-# `main` twice a day, or right after a merged PR whose title or description has `!!hotfix`,
+# `main` twice a day, or right after a merged PR whose title starts with `!!hotfix` or whose description has a line that is exactly `!!hotfix`,
 # or when run by hand. It never force-pushes: if `release` has diverged from `main` it fails.
 name: Release
 
@@ -20,7 +20,9 @@ concurrency: release
 
 jobs:
   release:
-    # Scheduled and manual runs always go; a closed PR only if it was merged and asked for a hotfix.
+    # Scheduled and manual runs always go; a closed PR only if it was merged and mentions the marker.
+    # This is a cheap prefilter; the Check step below requires the marker to be the title's start
+    # or a line of its own, so a passing mention doesn't ship.
     if: >-
       ${{ github.event_name != 'pull_request' ||
       (github.event.pull_request.merged &&
@@ -31,7 +33,21 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Check the hotfix marker
+        id: marker
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          BODY: ${{ github.event.pull_request.body }}
+        run: |
+          if [[ "$TITLE" == '!!hotfix'* ]] || printf '%s\n' "$BODY" | tr -d '\r' | grep -qxE '[[:space:]]*!!hotfix[[:space:]]*'; then
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "no hotfix marker, skipped" >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Fast-forward release to main
+        if: ${{ steps.marker.outputs.skip != 'true' }}
         run: |
           set -euo pipefail
           git fetch origin main release
