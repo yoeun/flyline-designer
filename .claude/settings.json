@@ -1,0 +1,8 @@
+{
+  "extraKnownMarketplaces": {
+    "yoeun-skills": {
+      "source": { "source": "github", "repo": "yoeun/claude-skills" }
+    }
+  },
+  "enabledPlugins": { "yp@yoeun-skills": true }
+}
