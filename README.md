@@ -39,17 +39,22 @@ To try the rack page without saving setups by hand, open the app with `?demo=1` 
 
 The app runs on [Render](https://render.com/), set up by the Blueprint in [render.yaml](render.yaml):
 
-- `flyline-designer`: the app as a static site. Every push to `main` runs the tests, builds, and publishes `dist/`. A failing test stops the deploy.
+- `flyline-designer`: the app as a static site. Every push to the `release` branch runs the tests, builds, and publishes `dist/`. A failing test stops the deploy.
 - `flyline-designer-api`: the shares API in `server/`, a Node web service.
 - `flyline-designer-db`: the Postgres database the API keeps shared racks in. It accepts connections only from Render services.
 
 The API, the database and their plans are covered under [Sharing a rack](#sharing-a-rack).
 
+Production follows the `release` branch, not `main`. [release.yml](.github/workflows/release.yml) fast-forwards `release` to `main` twice a day, at 5:47 and 17:47 Pacific (the cron is in UTC, so it runs at 5:47 and 17:47 PST and 6:47 and 18:47 PDT), and never force-pushes: if `release` has diverged from `main` it fails. To ship sooner, put `!!hotfix` in the PR description or title (it releases right after the merge) or run the **Release** workflow by hand from the Actions tab. Rebuilds are skipped for changes that can't affect a service (`buildFilter` in render.yaml).
+
+Render PR previews are off. To get one for a PR, set previews to manual (`previews: generation: manual` in render.yaml, or in the dashboard) and add `[render preview]` to the PR title.
+
 To connect it (once):
 
 1. In the Render dashboard, choose **New → Blueprint** and pick this repository.
 2. Render reads `render.yaml` and creates the `flyline-designer` static site. Apply it.
-3. Add the final domain under the site's **Settings → Custom Domains** before people start using it. Saved racks live in the browser's `localStorage`, which belongs to one origin, so moving from `*.onrender.com` to a custom domain later would leave everyone's racks behind.
+3. Make sure both services deploy from the `release` branch (Settings, Branch), and create `release` from `main` if it doesn't exist.
+4. Add the final domain under the site's **Settings → Custom Domains** before people start using it. Saved racks live in the browser's `localStorage`, which belongs to one origin, so moving from `*.onrender.com` to a custom domain later would leave everyone's racks behind.
 
 The Blueprint also:
 

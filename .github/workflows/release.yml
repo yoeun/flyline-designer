@@ -1,0 +1,52 @@
+# Production follows the `release` branch (see render.yaml). This workflow fast-forwards it to
+# `main` twice a day, or right after a merged PR whose title or description has `!!hotfix`,
+# or when run by hand. It never force-pushes: if `release` has diverged from `main` it fails.
+name: Release
+
+on:
+  schedule:
+    # GitHub cron is UTC only (no timezone key), so this is 5:47 and 17:47 PST,
+    # and 6:47 and 18:47 PDT.
+    - cron: "47 1,13 * * *"
+  workflow_dispatch:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency: release
+
+jobs:
+  release:
+    # Scheduled and manual runs always go; a closed PR only if it was merged and asked for a hotfix.
+    if: >-
+      ${{ github.event_name != 'pull_request' ||
+      (github.event.pull_request.merged &&
+      (contains(github.event.pull_request.title, '!!hotfix') ||
+      contains(github.event.pull_request.body || '', '!!hotfix'))) }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fast-forward release to main
+        run: |
+          set -euo pipefail
+          git fetch origin main release
+          if [ "$(git rev-parse origin/release)" = "$(git rev-parse origin/main)" ]; then
+            echo "Nothing to release: release is already at main." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if ! git merge-base --is-ancestor origin/release origin/main; then
+            echo "release has diverged from main; not pushing. Fix it by hand." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          range="origin/release..origin/main"
+          git push origin origin/main:refs/heads/release
+          {
+            echo "### Released to production"
+            echo
+            git log --reverse --format='- %h %s' "$range"
+          } >> "$GITHUB_STEP_SUMMARY"
