@@ -1,5 +1,5 @@
-# Render Blueprint: the app as a Static Site, the shares API as a Node web service and its Postgres
-# database, deployed from the release branch, which a scheduled workflow
+# Render Blueprint: the app as a Static Site and the shares API as a Node web service, whose database is
+# its own role and database on the shared Render Postgres instance `shared-db` (like Tally and Jardinier), deployed from the release branch, which a scheduled workflow
 # (.github/workflows/release.yml) fast-forwards to main twice a day. See the Deploy section of the README for connecting it.
 services:
   - type: web
@@ -57,15 +57,28 @@ services:
     buildFilter:
       paths:
         - server/**
+        - render.yaml
       ignoredPaths:
         - server/**/*.md
+        - server/**/*.test.js
+    # The same region as shared-db: its internal URL only works within one.
+    region: oregon
     buildCommand: npm ci
-    startCommand: npm start
+    # shared-postgres.mjs creates the app's role and database (app_flyline_designer) on shared-db if missing,
+    # then prints its DATABASE_URL. It runs at start, not as a pre-deploy step, because those need a paid plan.
+    startCommand: node shared-postgres.mjs && DATABASE_URL="$(node shared-postgres.mjs --url)" node index.js
     healthCheckPath: /healthz
     envVars:
       - key: NODE_VERSION
         value: "24"
-      - key: DATABASE_URL
+      # The app's name on shared-db: its role and database are app_flyline_designer.
+      - key: APP_DB_NAME
+        value: flyline_designer
+      # POSTGRES_ADMIN_URL for the shared Render Postgres (instance `shared-db`).
+      - fromGroup: shared-db
+      # The old database, only so the API copies its shares into shared-db at start. Remove this and the
+      # database below once the copy has run (it expires 2026-11-16 on the free plan anyway).
+      - key: OLD_DATABASE_URL
         fromDatabase:
           name: flyline-designer-db
           property: connectionString
@@ -74,8 +87,8 @@ services:
         value: https://flyline-designer.onrender.com
 
 databases:
+  # The old database, kept only until its shares are copied to shared-db (see OLD_DATABASE_URL above).
   - name: flyline-designer-db
-    # Free databases expire after a while and take their shares with them: upgrade before real use.
     plan: free
     databaseName: flyline
     user: flyline
