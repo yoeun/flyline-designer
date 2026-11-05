@@ -41,7 +41,8 @@ The app runs on [Render](https://render.com/), set up by the Blueprint in [rende
 
 - `flyline-designer`: the app as a static site. Every push to the `release` branch runs the tests, builds, and publishes `dist/`. A failing test stops the deploy.
 - `flyline-designer-api`: the shares API in `server/`, a Node web service.
-- `flyline-designer-db`: the Postgres database the API keeps shared racks in. It accepts connections only from Render services.
+- The API keeps shared racks in its own role and database (`app_flyline_designer`) on the shared Render Postgres instance `shared-db`, which Tally and Jardinier also use. `server/shared-postgres.mjs` creates them when the API starts, with `POSTGRES_ADMIN_URL` from the `shared-db` environment group. The reel and line library is static (`data/lineups/`) and saved setups stay in the browser, so the database holds only shared racks.
+- `flyline-designer-db`: the old free database. The API copies its shares into `shared-db` at start (`OLD_DATABASE_URL`); it goes once that has run.
 
 The API, the database and their plans are covered under [Sharing a rack](#sharing-a-rack).
 
@@ -84,9 +85,9 @@ in memory otherwise. `ALLOWED_ORIGINS` lists the site origins that may call it, 
 reads the API address from `VITE_API_URL`. Both are set in `render.yaml`. Add a custom domain to
 `ALLOWED_ORIGINS` when there is one, and keep `VITE_API_URL` in step with the API's address on Render.
 
-The API and the database are on Render's free plans for now. The free API sleeps when idle, so the
-first share or view after a quiet spell can take a minute. Free databases expire and take every shared
-rack with them, so move the database to a paid plan before people rely on their links.
+The API is on Render's free plan, so it sleeps when idle and the first share or view after a quiet spell
+can take a minute. Its database is on the paid `shared-db` instance, so shares no longer expire with a
+free database.
 
 ## Contributing
 
