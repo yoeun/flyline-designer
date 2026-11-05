@@ -42,7 +42,6 @@ The app runs on [Render](https://render.com/), set up by the Blueprint in [rende
 - `flyline-designer`: the app as a static site. Every push to the `release` branch runs the tests, builds, and publishes `dist/`. A failing test stops the deploy.
 - `flyline-designer-api`: the shares API in `server/`, a Node web service.
 - The API keeps shared racks in its own role and database (`app_flyline_designer`) on the shared Render Postgres instance `shared-db`, which Tally and Jardinier also use. `server/shared-postgres.mjs` creates them when the API starts, with `POSTGRES_ADMIN_URL` from the `shared-db` environment group. The reel and line library is static (`data/lineups/`) and saved setups stay in the browser, so the database holds only shared racks.
-- `flyline-designer-db`: the old free database. The API copies its shares into `shared-db` at start (`OLD_DATABASE_URL`); it goes once that has run.
 
 The API, the database and their plans are covered under [Sharing a rack](#sharing-a-rack).
 

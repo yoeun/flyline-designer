@@ -76,21 +76,7 @@ services:
         value: flyline_designer
       # POSTGRES_ADMIN_URL for the shared Render Postgres (instance `shared-db`).
       - fromGroup: shared-db
-      # The old database, only so the API copies its shares into shared-db at start. Remove this and the
-      # database below once the copy has run (it expires 2026-11-16 on the free plan anyway).
-      - key: OLD_DATABASE_URL
-        fromDatabase:
-          name: flyline-designer-db
-          property: connectionString
       # The site origins that may call the API. Add the custom domain here when there is one.
       - key: ALLOWED_ORIGINS
         value: https://flyline-designer.onrender.com
 
-databases:
-  # The old database, kept only until its shares are copied to shared-db (see OLD_DATABASE_URL above).
-  - name: flyline-designer-db
-    plan: free
-    databaseName: flyline
-    user: flyline
-    # Only Render services can connect; nothing from the internet.
-    ipAllowList: []

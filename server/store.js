@@ -29,31 +29,6 @@ export function memoryStore() {
   };
 }
 
-// Copies every share from another Postgres database (the old flyline-designer-db) into this one, keeping
-// any that are already here. Used once while moving to the shared instance; safe to run again.
-export async function copyShares(fromUrl, toUrl) {
-  const { default: pg } = await import('pg');
-  const from = new pg.Client({ connectionString: fromUrl });
-  const to = new pg.Client({ connectionString: toUrl });
-  await from.connect();
-  try {
-    await to.connect();
-    const { rows } = await from.query('SELECT id, owner_hash, rack, created_at, updated_at FROM shares');
-    let copied = 0;
-    for (const r of rows) {
-      const { rowCount } = await to.query(
-        'INSERT INTO shares (id, owner_hash, rack, created_at, updated_at) VALUES ($1, $2, $3, $4, $5) ON CONFLICT (id) DO NOTHING',
-        [r.id, r.owner_hash, JSON.stringify(r.rack), r.created_at, r.updated_at],
-      );
-      copied += rowCount;
-    }
-    return { found: rows.length, copied };
-  } finally {
-    await from.end();
-    await to.end();
-  }
-}
-
 export async function postgresStore(connectionString) {
   const { default: pg } = await import('pg');
   const pool = new pg.Pool({ connectionString });
