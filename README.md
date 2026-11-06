@@ -91,7 +91,7 @@ free database.
 ## Contributing
 
 - PRs are squash merged, and the PR title becomes the commit on `main`.
-- PR titles follow [Conventional Commits](https://www.conventionalcommits.org/): `type(scope): subject`, for example `feat(editor): split color zones` or `fix: keep backing labels aligned`. A check on each PR enforces this.
+- PR titles follow [Conventional Commits](https://www.conventionalcommits.org/): `type(scope): subject`, for example `feat(editor): split color zones` or `fix: keep backing labels aligned`. Nothing checks this on CI; the release script counts a title that isn't one as a patch.
 
 ## How it works
 
